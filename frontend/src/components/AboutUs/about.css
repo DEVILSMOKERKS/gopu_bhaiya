@@ -1,0 +1,1587 @@
+/* About Page Styles */
+
+.about-container {
+    background: #fff;
+    min-height: 100vh;
+  }
+  
+  .about-banner {
+    position: relative;
+    height: 6rem;
+    background-image: url("../../assets/img/about2.jpg");
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 15px;
+    margin: 20px 10px;
+  }
+  
+  .about-banner-content {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+  }
+  
+  .about-banner-title {
+    color: #fff;
+    font-size: 2rem;
+    font-weight: bold;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    font-family: var(--font-family);
+  }
+  
+  .about-main-section {
+    background: #f9fafb;
+    padding: 2rem 0rem;
+  }
+  
+  .about-content-wrapper {
+    max-width: 100%;
+  }
+  
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    width: 100%;
+  }
+  
+  @media (min-width: 1024px) {
+    .about-grid {
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      width: 97%;
+      margin: 0 20px;
+    }
+  }
+  
+  .about-text-area {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  
+  .about-header {
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+  }
+  
+  .about-section-title {
+    color: var(--primary-color);
+    font-size: 30px;
+    font-weight: 600;
+    margin-right: 16px;
+    font-family: var(--font-family);
+  }
+  
+  .about-title-gradient-border {
+    width: 2px;
+    height: 36px;
+    background: linear-gradient(to bottom, var(--primary-color), #fff);
+    border-radius: 2px;
+    margin-left: 0;
+  }
+  
+  .about-main-title {
+    font-size: 22px;
+    font-weight: bold;
+    color: #222;
+    font-family: var(--font-family);
+    width: max-content;
+    margin-top: -30px;
+  }
+  
+  .about-text-content {
+    color: #444;
+    font-size: 1rem;
+    line-height: 1.7;
+    margin-bottom: 2rem;
+  }
+  
+  .about-view-btn {
+    padding: 0.5rem 1.5rem;
+    text-decoration: none;
+    border: 1px solid #bbb;
+    background: var(--primary-color);
+    color: #FFF;
+    font-size: 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+    font-family: "Crimson Pro";
+    display: inline-block;
+    width: 20%;
+  }
+  
+  .about-view-btn:hover {
+    background: #f3f4f6;
+    color: #166534;
+  }
+  
+  .about-image-area {
+    display: flex;
+    align-items: flex-start;
+    justify-content: end;
+  }
+  
+  .about-image-container {
+    position: relative;
+    width: 100%;
+    max-width: 650px;
+    overflow: hidden;
+    border-radius: 1rem;
+  }
+  
+  .about-main-img {
+    width: 100%;
+    max-width: 650px;
+    height: 400px;
+    border-radius: 1rem;
+    object-fit: cover;
+  }
+  
+  .about-logo-overlay {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    width: 64px;
+    height: 64px;
+    background: #92400e;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border: 3px solid #fff;
+  }
+  
+  .about-logo-content {
+    text-align: center;
+  }
+  
+  .about-logo-text {
+    color: #fff;
+    font-family: var(--font-family);
+    font-weight: bold;
+    font-size: 1rem;
+    letter-spacing: 0.1em;
+  }
+  
+  .about-logo-line {
+    width: 28px;
+    height: 2px;
+    background: #fcd34d;
+    margin: 0.25rem auto 0 auto;
+    border-radius: 1px;
+  }
+  
+  .about-title-line {
+    height: 2px;
+    width: 48px;
+    background: linear-gradient(to left, var(--primary-color), #fff);
+    border-radius: 2px;
+    margin-left: 12px;
+    margin-top: 0;
+    align-self: center;
+  }
+  
+  .mission-vision-section {
+    position: relative;
+    background: linear-gradient(to right, #84222c, #a73c5c);
+    padding: 3rem 0;
+    color: #fff;
+    overflow: hidden;
+    overflow-x: hidden;
+    width: 100%;
+  
+    box-sizing: border-box;
+  }
+  
+  .mission-vision-container {
+    width: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+    padding: 0;
+    position: relative;
+    box-sizing: border-box;
+  }
+  
+  .mission-vision-cards {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2.5rem;
+    width: 100%;
+    z-index: 2;
+  }
+  
+  @media (min-width: 768px) {
+    .mission-vision-cards {
+      flex-direction: row;
+      gap: 4rem;
+    }
+  }
+  
+  .mission-card,
+  .vision-card {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 0;
+    max-width: 480px;
+    background: transparent;
+  }
+  
+  .mission-icon,
+  .vision-icon {
+    min-width: 100px;
+    min-height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 1.25rem;
+    line-height: 1;
+  }
+  
+  .mission-title,
+  .vision-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    font-family: var(--font-family);
+  }
+  
+  .mission-text,
+  .vision-text {
+    font-size: 1rem;
+    line-height: 1.7;
+    max-width: 320px;
+    color: #fff;
+    font-family: "Crimson Pro", serif;
+  }
+  
+  .mission-vision-img {
+    height: 100px;
+    width: 100px;
+    object-fit: contain;
+    display: block;
+  }
+  
+  .mission-vision-diamond {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 60px;
+    width: 60px;
+    object-fit: contain;
+    z-index: 1;
+    opacity: 0.4;
+    margin-right: 0px;
+  }
+  
+  .mission-vision-necklace {
+    margin-top: -15px;
+    opacity: 0.4;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 120px;
+    width: 120px;
+    object-fit: contain;
+    z-index: 1;
+    margin-right: 10px;
+  }
+  
+  .craftsmanship-wrapper {
+    background: #fff;
+    padding: 4rem 0 4rem 0;
+  }
+  
+  .craftsmanship-container {
+    max-width: 100%;
+  }
+  
+  .craftsmanship-header {
+    text-align: center;
+    margin-bottom: 3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .craftsmanship-icon-wrapper {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .craftsmanship-header-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 70px;
+    height: 70px;
+    margin: 0 auto;
+  }
+  
+  .craftsmanship-header-img {
+    width: 125px;
+    height: 50px;
+    object-fit: contain;
+    display: block;
+    margin: 0 auto;
+  }
+  
+  .craftsmanship-title-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+  
+  .craftsmanship-title-line-left {
+    flex: 1;
+    height: 2px;
+    background: linear-gradient(to right, var(--primary-color), #fff);
+    min-width: 60px;
+    max-width: 120px;
+  }
+  
+  .craftsmanship-title-line-right {
+    flex: 1;
+    height: 2px;
+    background: linear-gradient(to left, var(--primary-color), #fff);
+    min-width: 60px;
+    max-width: 120px;
+  }
+  
+  .craftsmanship-main-title {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #fff;
+    margin: 0 1.5rem;
+    font-family: var(--font-family);
+    letter-spacing: 1px;
+    text-align: center;
+  }
+  
+  .craftsmanship-main-title-highlight {
+    color: #a73c5c;
+    font-weight: 700;
+    font-family: var(--font-family);
+  }
+  
+  .craftsmanship-subtitle {
+    color: #000;
+    font-size: 1rem;
+    font-family: "Crimson Pro", serif;
+    margin-top: -0.8rem;
+    text-align: center;
+  }
+  
+  .craftsmanship-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+  
+  @media (min-width: 900px) {
+    .craftsmanship-grid {
+      flex-direction: row;
+      gap: 2rem;
+    }
+  }
+  
+  .craftsmanship-card {
+    background: #fafafa;
+    padding: 2rem;
+    border-radius: 1rem;
+    border: 1.5px solid #e5e7eb;
+    text-align: center;
+    flex: 1 1 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 250px;
+    max-width: 350px;
+    margin: 0 auto;
+  }
+  
+  .craftsmanship-card-icon-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+  }
+  
+  .craftsmanship-card-icon-bg {
+    width: 64px;
+    height: 64px;
+    background: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #e5e7eb;
+  }
+  
+  .craftsmanship-card-icon {
+    color: #666;
+    font-size: 2rem;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .craftsmanship-card-title {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: #222;
+    margin-bottom: 1rem;
+    font-family: "Crimson Pro";
+  }
+  
+  .craftsmanship-card-description {
+    color: #666;
+    font-size: 1rem;
+    font-family: "Crimson Pro", serif;
+    line-height: 1.7;
+  }
+  
+  .craftsmanship-card-img-icon {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+    display: block;
+    margin: 0 auto;
+  }
+  
+  .craftsmanship-card-img {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+    display: block;
+    margin: 0 auto;
+  }
+  
+  .different-wrapper {
+    background: #fff;
+  }
+  
+  .different-main-section {
+    position: relative;
+    background-size: cover;
+    background-position: top center;
+    padding: 4rem 0;
+  }
+  
+  .different-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(104, 27, 43, 0.6);
+    z-index: 1;
+  }
+  
+  .different-content-container {
+    position: relative;
+    z-index: 2;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+  
+  .different-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+  }
+  @media (min-width: 1024px) {
+    .different-grid {
+      flex-direction: row;
+      gap: 3rem;
+      align-items: flex-start;
+    }
+    .different-image-area,
+    .different-text-area {
+      flex: 1 1 0;
+      max-width: 50%;
+    }
+  }
+  .different-image-area,
+  .different-text-area {
+    width: 100%;
+  }
+  
+  .different-image-area {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .different-image-frame {
+    background: #92400e;
+    padding: 4px;
+    border-radius: 12px;
+    width: 100%;
+    max-width: 700px;
+    overflow: hidden;
+  }
+  
+  .different-main-image {
+    width: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+    display: block;
+  }
+  
+  .different-text-area {
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  
+  .different-header {
+    text-align: center;
+    margin-bottom: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .different-title-line {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+  }
+  
+  .different-main-title {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #fff;
+    margin: 0 1.5rem;
+    font-family: "Cinzel", serif;
+    letter-spacing: 1px;
+    text-align: center;
+  }
+  
+  .different-features-list {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+  
+  .different-feature-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.5rem;
+  }
+  
+  .different-check-icon {
+    min-width: 32px;
+    min-height: 32px;
+    width: 32px;
+    height: 32px;
+    background: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 4px;
+  }
+  
+  .different-check-svg {
+    width: 18px;
+    height: 18px;
+    color: var(--primary-color);
+  }
+  
+  .different-feature-content {
+    flex: 1;
+  }
+  
+  .different-feature-title {
+    color: #fff;
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+    font-family: " Crimson Pro";
+  }
+  
+  .different-feature-description {
+    color: #e5e7eb;
+    font-size: 1rem;
+    font-family: "Crimson Pro", serif;
+    line-height: 1.7;
+  }
+  
+  /* Who We Are Section (inside WhatMakesUsDifferentSection) */
+  .who-we-are-section {
+    background: #fff;
+    padding: 4rem 0;
+  }
+  
+  .who-content-container {
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+  
+  .who-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+  }
+  @media (min-width: 1024px) {
+    .who-grid {
+      flex-direction: row;
+      gap: 3rem;
+      align-items: center;
+    }
+    .who-image-area,
+    .who-text-area {
+      flex: 1 1 0;
+      max-width: 50%;
+    }
+  }
+  .who-image-area {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 430px;
+    width: 568px;
+    overflow: hidden;
+    border-radius: 10px;
+  }
+  .who-main-image {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    object-fit: cover;
+  }
+  .who-text-area {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 2rem;
+  }
+  
+  .who-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+  
+  .who-section-title {
+    color: #9a0e0d;
+    font-size: 30px;
+    font-weight: bold;
+    font-family: var(--font-family);
+    margin-bottom: 0;
+    margin-right: 12px;
+    letter-spacing: 0.05em;
+  }
+  
+  .who-title-line {
+    height: 3px;
+    width: 120px;
+    background: linear-gradient(to right, #9a0e0d, #fff);
+    border-radius: 2px;
+    margin-left: 8px;
+  }
+  
+  .who-main-title {
+    font-size: 20px;
+    font-weight: bold;
+    color: #222;
+    margin-bottom: 1.5rem;
+    font-family: var(--font-family);
+  }
+  
+  .who-text-content {
+    color: #444;
+    font-size: 1rem;
+    line-height: 1.7;
+    margin-bottom: 2rem;
+  }
+  
+  .who-additional-text {
+    color: #000;
+    font-size: 12px;
+    margin-top: 1rem;
+    font-weight: 800;
+  }
+  
+  /* Remove/override .different-title-line, .different-line-left, .different-line-right, .different-main-title if present */
+  .different-title-line {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+  }
+  
+  .different-main-title {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #fff;
+    margin: 0 1.5rem;
+    font-family: var(--font-family);
+    letter-spacing: 1px;
+    text-align: center;
+  }
+  
+  .different-line-left {
+    display: none;
+  }
+  .different-line-right {
+    display: none;
+  }
+  
+  /* Use the craftsmanship-title-row and related classes for both sections */
+  .craftsmanship-title-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+  
+  .craftsmanship-title-line-left {
+    flex: 1;
+    height: 2px;
+    background: linear-gradient(to right, #9a0e0d, #fff);
+    min-width: 60px;
+    max-width: 120px;
+  }
+  
+  .craftsmanship-title-line-right {
+    flex: 1;
+    height: 2px;
+    background: linear-gradient(to left, #9a0e0d, #fff);
+    min-width: 60px;
+    max-width: 120px;
+  }
+  
+  .craftsmanship-main-title {
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--primary-color);
+    margin: 0 1.5rem;
+    font-family: var(--font-family);
+    letter-spacing: 1px;
+    text-align: center;
+  }
+  
+  .about-different-title {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #fff;
+    margin: 0 1.5rem;
+    font-family: var(--font-family);
+    letter-spacing: 1px;
+    text-align: center;
+  }
+  
+  .about-different-title-line {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .about-different-title-line-left {
+    flex: 1;
+    height: 2px;
+    background: linear-gradient(to right, #9a0e0d, #fff);
+    min-width: 60px;
+    max-width: 120px;
+  }
+  
+  .about-different-title-line-right {
+    flex: 1;
+    height: 2px;
+    background: linear-gradient(to left, #9a0e0d, #fff);
+    min-width: 60px;
+    max-width: 120px;
+  }
+  
+  /* .who-main-image {
+    width: 600px;
+    height: 350px;
+    object-fit: cover;
+    border-radius: 10px;
+    display: block;
+  } */
+  
+  /* journey section */
+  .journey-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 100px;
+    margin: 3rem 0 4rem 0;
+    width: 100%;
+  }
+  
+  .journey-title-area {
+    flex: 0 0 340px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-width: 390px;
+    margin-left: 2vw;
+  }
+  
+  .journey-title-icon {
+    width: 48px;
+    height: 32px;
+    margin-bottom: 0.5rem;
+  }
+  
+  .journey-title-block {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  }
+  
+  .journey-title-line-left {
+    width: 100px;
+    height: 1.5px;
+    background: linear-gradient(to right, transparent, #9a0e0d);
+    margin-right: 18px;
+    border-radius: 2px;
+  }
+  
+  .journey-title-line-right {
+    width: 100px;
+    height: 1.5px;
+    background: linear-gradient(to left, transparent, #9a0e0d);
+    margin-left: 18px;
+    border-radius: 2px;
+  }
+  
+  .journey-title-text {
+    color: #9a0e0d;
+    font-family: var(--font-family);
+    font-size: 40px;
+    font-weight: 700;
+    text-align: center;
+    letter-spacing: 1px;
+    line-height: 1.1;
+  }
+  
+  .journey-carousel-container {
+    background: #c5a97e99;
+    border-radius: 12px;
+    padding: 0 20px;
+    overflow: hidden;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+    height: 486px;
+    position: relative;
+  }
+  
+  .journey-carousel {
+    width: 100%;
+  }
+  
+  .journey-card {
+    background: #fff;
+    border-radius: 18px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
+    display: flex !important;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 1.2rem;
+    overflow: hidden;
+    width: 260px;
+    height: 355px;
+    transition: box-shadow 0.2s;
+  }
+  
+  .journey-card-img-wrapper {
+    height: 263px;
+    width: 320px;
+  }
+  
+  .journey-card-img {
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+  }
+  
+  .journey-card-content {
+    background: #fff;
+    width: 100%;
+    padding: 3px 10px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    border-radius: 0 0 18px 18px;
+    min-height: 120px;
+  }
+  
+  .journey-card-year {
+    color: var(--primary-color);
+    font-size: 26px;
+    font-weight: 700;
+    font-family: "Crimson Pro", serif;
+  }
+  
+  .journey-card-desc {
+    color: #222;
+    font-size: 12px;
+    font-family: "Open Sans", sans-serif;
+    font-weight: 400;
+    line-height: 18px;
+  }
+  
+  /* Slick carousel arrow custom styles */
+  .journey-carousel .slick-arrow {
+    background: #7b2d3b;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 38px;
+    height: 38px;
+    z-index: 2;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s;
+  }
+  .journey-carousel .slick-arrow:hover {
+    background: var(--primary-color);
+  }
+  .journey-carousel .slick-prev {
+    left: -48px;
+  }
+  .journey-carousel .slick-next {
+    right: -48px;
+  }
+  .journey-carousel .slick-arrow:before {
+    color: #fff;
+    font-size: 1.3rem;
+  }
+  
+  .journey-carousel-arrow-group {
+    display: flex;
+    gap: 1.2rem;
+    z-index: 3;
+    margin-top: 18px;
+    position: absolute;
+    top: 416px;
+    left: 15px;
+  }
+  
+  .journey-arrow {
+    background: #74293a;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    cursor: pointer;
+    transition: background 0.2s;
+    font-size: 1.3rem;
+    outline: none;
+    padding: 0;
+  }
+  
+  .journey-arrow svg {
+    color: #fff;
+  }
+  
+  .journey-arrow:hover {
+    background: var(--primary-color);
+  }
+  
+  /* Hide default slick arrows */
+  .journey-carousel .slick-arrow {
+    display: none !important;
+  }
+  
+  @media (max-width: 768px) {
+    /* Main About Section Mobile Fixes */
+    .about-main-section {
+      padding: 1.5rem 0;
+    }
+    
+    .about-content-wrapper {
+      padding: 0 1rem;
+    }
+    
+    .about-grid {
+      gap: 2rem;
+      padding: 0 1rem;
+    }
+    
+    .about-text-area {
+      padding: 0 1rem;
+      margin-bottom: 1rem;
+    }
+    
+    .about-section-title {
+      font-size: 24px;
+      margin-bottom: 1rem;
+    }
+    
+    .about-main-title {
+      font-size: 18px;
+      width: 100%;
+      margin-bottom: 1rem;
+      line-height: 1.4;
+    }
+    
+    .about-text-content p {
+      font-size: 15px;
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+    }
+    
+    .about-view-btn {
+      display: inline-block;
+      width: auto;
+      padding: 0.75rem 1.5rem;
+      font-size: 14px;
+    }
+    
+    .about-image-area {
+      padding: 0 1rem;
+    }
+    
+    .about-main-img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 0.75rem;
+    }
+    
+    .about-logo-overlay {
+      top: 0.5rem;
+      left: 0.5rem;
+      width: 50px;
+      height: 50px;
+    }
+    
+    .about-logo-text {
+      font-size: 0.8rem;
+    }
+    
+    .about-logo-line {
+      width: 20px;
+    }
+
+    /* Mission Vision Section Mobile */
+    .mission-vision-section {
+      padding: 2rem 1rem;
+    }
+    
+    .mission-vision-cards {
+      gap: 2rem;
+      padding: 0 1rem;
+    }
+    
+    .mission-card,
+    .vision-card {
+      flex-direction: column;
+      text-align: center;
+      max-width: 100%;
+    }
+    
+    .mission-icon,
+    .vision-icon {
+      margin-right: 0;
+      margin-bottom: 1rem;
+    }
+    
+    .mission-title,
+    .vision-title {
+      font-size: 1.25rem;
+      margin-bottom: 0.75rem;
+    }
+    
+    .mission-text,
+    .vision-text {
+      font-size: 14px;
+      max-width: 100%;
+      line-height: 1.6;
+    }
+
+    /* Journey Section Mobile - Complete Fix */
+    .journey-container {
+      flex-direction: column;
+      gap: 2rem;
+      margin: 2rem 0;
+      padding: 0 1rem;
+      width: 100%;
+    }
+    
+    .journey-title-area {
+      flex: none;
+      min-width: auto;
+      margin-left: 0;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+    }
+    
+    .journey-title-text {
+      font-size: 28px;
+      color: #9a0e0d;
+    }
+    
+    .journey-title-line-left,
+    .journey-title-line-right {
+      width: 60px;
+    }
+    
+    .journey-carousel-container {
+      height: auto;
+      padding: 1.5rem 0.25rem;
+      margin: 0;
+      background: #c5a97e99;
+      border-radius: 12px;
+      position: relative;
+      width: 100%;
+      box-sizing: border-box;
+      overflow: hidden;
+    }
+    
+    .journey-carousel {
+      padding: 0;
+      margin-bottom: 1.5rem;
+      width: 100%;
+      overflow: hidden;
+    }
+    
+    .journey-carousel .slick-slide {
+      padding: 0 0.25rem;
+      width: 250px !important;
+      flex: 0 0 250px !important;
+    }
+    
+    .journey-card {
+      width: 100% !important;
+      max-width: 280px;
+      height: auto;
+      margin: 0 auto;
+      background: #fff;
+      border-radius: 18px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
+      overflow: hidden;
+      display: flex !important;
+      flex-direction: column;
+    }
+    
+    .journey-card-img-wrapper {
+      height: 200px;
+      width: 100%;
+      overflow: hidden;
+    }
+    
+    .journey-card-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 0 0 18px 18px;
+    }
+    
+    .journey-card-content {
+      padding: 1.5rem;
+      text-align: center;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      min-height: 160px;
+    }
+    
+    .journey-card-year {
+      font-size: 24px;
+      margin-bottom: 0.75rem;
+      color: var(--primary-color);
+      font-weight: 700;
+    }
+    
+    .journey-card-desc {
+      font-size: 13px;
+      line-height: 1.5;
+      color: #444;
+      margin: 0;
+      overflow: visible;
+      white-space: normal;
+      word-wrap: break-word;
+      height: auto;
+    }
+    
+    .journey-carousel-arrow-group {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 0;
+      position: static;
+      width: 100%;
+    }
+    
+    .journey-arrow {
+      width: 44px;
+      height: 44px;
+      background: #74293a;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+      cursor: pointer;
+      transition: all 0.3s ease;
+      border: none;
+      outline: none;
+    }
+    
+    .journey-arrow:hover {
+      background: var(--primary-color);
+      transform: scale(1.05);
+    }
+    
+    .journey-arrow svg {
+      color: #fff;
+      width: 20px;
+      height: 20px;
+    }
+    
+    /* Force carousel slide width on mobile */
+    .journey-carousel .slick-slide[style*="width"] {
+      width: 250px !important;
+    }
+    
+    /* Ensure proper carousel track height */
+    .journey-carousel .slick-track {
+      height: auto !important;
+    }
+    
+    /* Force 1.5 card display on mobile */
+    .journey-carousel .slick-track {
+      display: flex !important;
+      align-items: stretch !important;
+    }
+
+    /* Craftsmanship Section Mobile */
+    .craftsmanship-wrapper {
+      padding: 2rem 0;
+    }
+    
+    .craftsmanship-container {
+      padding: 0 1rem;
+    }
+    
+    .craftsmanship-header {
+      margin-bottom: 2rem;
+    }
+    
+    .craftsmanship-title-row {
+      padding: 0 1rem;
+    }
+    
+    .craftsmanship-main-title {
+      font-size: 24px;
+      margin: 0 1rem;
+    }
+    
+    .craftsmanship-subtitle {
+      font-size: 15px;
+      padding: 0 1rem;
+      margin-top: 0.5rem;
+    }
+    
+    .craftsmanship-grid {
+      gap: 1.5rem;
+      padding: 0 1rem;
+    }
+    
+    .craftsmanship-card {
+      padding: 1.5rem;
+      margin: 0;
+    }
+    
+    .craftsmanship-card-title {
+      font-size: 1.1rem;
+    }
+    
+    .craftsmanship-card-description {
+      font-size: 14px;
+    }
+
+    /* What Makes Us Different Section Mobile */
+    .different-main-section {
+      padding: 2rem 0;
+    }
+    
+    .different-content-container {
+      padding: 0 1rem;
+    }
+    
+    .different-header {
+      margin-bottom: 2rem;
+    }
+    
+    .about-different-title {
+      font-size: 24px;
+      margin: 0 1rem;
+    }
+    
+    .about-different-title-line {
+      margin-bottom: 1rem;
+    }
+    
+    .different-grid {
+      flex-direction: column;
+      gap: 2rem;
+    }
+    
+    .different-image-area {
+      order: 2;
+    }
+    
+    .different-text-area {
+      order: 1;
+    }
+    
+    .different-main-image {
+      width: 100%;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+    
+    .different-features-list {
+      gap: 1.5rem;
+    }
+    
+    .different-feature-item {
+      gap: 1rem;
+    }
+    
+    .different-check-icon {
+      width: 24px;
+      height: 24px;
+      min-width: 24px;
+      min-height: 24px;
+    }
+    
+    .different-feature-title {
+      font-size: 18px;
+      margin-bottom: 0.5rem;
+    }
+    
+    .different-feature-description {
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    /* Who We Are Section Mobile */
+    .who-we-are-section {
+      padding: 2rem 0;
+    }
+    
+    .who-content-container {
+      padding: 0 1rem;
+    }
+    
+    .who-grid {
+      flex-direction: column;
+      gap: 2rem;
+    }
+    
+    .who-image-area {
+      order: 2;
+      height: 100%;
+      width: 100%;
+      padding: 0;
+    }
+    
+    .who-main-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+    
+    .who-text-area {
+      order: 1;
+      padding: 0 1rem;
+    }
+    
+    .who-section-title {
+      font-size: 24px;
+      margin-bottom: 1rem;
+    }
+    
+    .who-title-line {
+      width: 80px;
+    }
+    
+    .who-main-title {
+      font-size: 18px;
+      margin-bottom: 1rem;
+      line-height: 1.4;
+    }
+    
+    .who-text-content p {
+      font-size: 15px;
+      line-height: 1.6;
+      margin-bottom: 1rem;
+    }
+    
+    .who-additional-text {
+      font-size: 13px;
+      margin-top: 0.5rem;
+    }
+
+    /* Banner Section Mobile */
+    .about-banner {
+      height: 4rem;
+      margin: 1rem 0.5rem;
+    }
+    
+    .about-banner-title {
+      font-size: 1.5rem;
+    }
+  }
+
+  /* Extra small mobile devices (phones in portrait) */
+  @media (max-width: 480px) {
+    .journey-container {
+      padding: 0 0.5rem;
+    }
+ 
+    .journey-title-text {
+      font-size: 24px;
+    }
+    
+    .journey-title-line-left,
+    .journey-title-line-right {
+      width: 40px;
+    }
+    
+    .journey-carousel-container {
+      padding: 1rem 0.25rem;
+    }
+    
+    .journey-carousel .slick-slide {
+      padding: 0 0.25rem;
+      width: 250px !important;
+      flex: 0 0 250px !important;
+    }
+    
+    .journey-card {
+      max-width: 260px;
+      height: auto;
+    }
+    
+    .journey-card-img-wrapper {
+      height: 180px;
+      width: 100%;
+      overflow: hidden;
+    }
+    
+    .journey-card-content {
+      padding: 1rem;
+      min-height: 140px;
+    }
+    
+    .journey-card-year {
+      font-size: 22px;
+      margin-bottom: 0.5rem;
+    }
+    
+    .journey-card-desc {
+      font-size: 12px;
+      line-height: 1.4;
+      height: auto;
+    }
+    
+    .journey-arrow {
+      width: 40px;
+      height: 40px;
+    }
+    
+    .journey-arrow svg {
+      width: 18px;
+      height: 18px;
+    }
+    
+    .about-section-title {
+      font-size: 22px;
+    }
+    
+    .about-main-title {
+      font-size: 16px;
+    }
+    
+    .about-text-content p {
+      font-size: 14px;
+    }
+    
+    .mission-title,
+    .vision-title {
+      font-size: 1.1rem;
+    }
+    
+    .mission-text,
+    .vision-text {
+      font-size: 13px;
+    }
+    
+    .craftsmanship-main-title {
+      font-size: 22px;
+    }
+    
+    .about-different-title {
+      font-size: 22px;
+    }
+    
+    .different-feature-title {
+      font-size: 16px;
+    }
+    
+    .different-feature-description {
+      font-size: 13px;
+    }
+    
+    .who-section-title {
+      font-size: 22px;
+    }
+    
+    .who-main-title {
+      font-size: 16px;
+    }
+    
+    .who-text-content p {
+      font-size: 14px;
+    }
+  }
+  

@@ -1,0 +1,73 @@
+.paymentsuccessful-container {
+    min-height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    /* padding: 20px; */
+}
+
+.paymentsuccessful-content {
+    text-align: center;
+    max-width: 500px;
+    width: 100%;
+}
+
+.paymentsuccessful-icon {
+    margin-bottom: 20px;
+}
+
+.paymentsuccessful-title {
+    color: #4CAF50;
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 30px;
+    margin-top: 0;
+}
+
+.paymentsuccessful-message {
+    margin-bottom: 40px;
+}
+
+.paymentsuccessful-message p {
+    color: #666;
+    font-size: 1rem;
+    line-height: 1.5;
+    margin: 10px 0;
+}
+
+.paymentsuccessful-contact {
+    margin-top: 30px;
+}
+
+.paymentsuccessful-contact p {
+    color: #666;
+    font-size: 1rem;
+    line-height: 1.5;
+    margin: 8px 0;
+}
+
+.paymentsuccessful-phone {
+    font-weight: bold;
+    color: #333;
+    font-size: 1.1rem;
+}
+
+.paymentsuccessful-email {
+    font-weight: bold;
+    color: #333;
+    font-size: 1.1rem;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .paymentsuccessful-title {
+        font-size: 2rem;
+    }
+    
+    .paymentsuccessful-content {
+        padding: 0 20px;
+    }
+}
+
+

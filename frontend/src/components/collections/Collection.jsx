@@ -1,0 +1,56 @@
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import './Collection.css';
+import Collection1 from '../../assets/Images/collection/collection1.jpg'
+import Collection2 from '../../assets/Images/collection/collection4.jpg'
+import Collection4 from '../../assets/Images/collection/collection2.jpg'
+import Collection3 from '../../assets/Images/collection/collection3.jpg'
+
+const Collection = () => {
+  const navigate = useNavigate();
+
+  const handleCollectionClick = () => {
+    navigate('/shop');
+  };
+
+  return (
+    <div className="collection-container">
+
+      <div className="collection-grid">
+        <div className="collection-item" onClick={handleCollectionClick}>
+          <img
+            src={Collection1}
+            alt="Navy Blue Dress"
+            className="collection-image"
+          />
+        </div>
+
+        <div className="collection-item" onClick={handleCollectionClick}>
+          <img
+            src={Collection2}
+            alt="Blue Floral Dress"
+            className="collection-image"
+          />
+        </div>
+
+        <div className="collection-item" onClick={handleCollectionClick}>
+          <img
+            src={Collection3}
+            alt="White Embroidered Dress"
+            className="collection-image"
+          />
+        </div>
+
+        <div className="collection-item" onClick={handleCollectionClick}>
+          <img
+            src={Collection4}
+            alt="Green Pattern Dress"
+            className="collection-image"
+          />
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Collection;

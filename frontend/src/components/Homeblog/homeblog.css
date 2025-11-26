@@ -1,0 +1,238 @@
+.homeblog {
+  padding: 4rem 2rem;
+  background: #f8f9fa;
+}
+
+.homeblog-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 3rem;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.homeblog-title {
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: var(--primary-color);
+  margin: 0;
+  text-align: start;
+  font-family: var(--font-family);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: black;
+}
+
+.homeblog-view-all {
+  color: var(--primary-color);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+  padding: 0.5rem 1rem;
+  border: 2px solid var(--primary-color);
+  border-radius: 25px;
+}
+
+.homeblog-view-all:hover {
+  background: var(--primary-color);
+  color: white;
+  transform: translateY(-2px);
+}
+
+.homeblog-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.homeblog-card {
+  background: white;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  cursor: pointer;
+  position: relative;
+}
+
+.homeblog-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+.homeblog-image {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.homeblog-card:hover .homeblog-image {
+  transform: scale(1.05);
+}
+
+.homeblog-content {
+  padding: 1.5rem;
+}
+
+.homeblog-meta {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+}
+
+.homeblog-date {
+  color: #666;
+  font-weight: 500;
+}
+
+.homeblog-category {
+  background: var(--primary-color);
+  color: white;
+  padding: 0.25rem 0.75rem;
+  border-radius: 15px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.homeblog-card-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #333;
+  margin: 0 0 1rem 0;
+  line-height: 1.4;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  text-transform: capitalize;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+
+
+.homeblog-author {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding-top: 1rem;
+  border-top: 1px solid #eee;
+}
+
+.homeblog-author-photo {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.homeblog-author-icon {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  background: #f0f0f0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #666;
+  font-size: 18px;
+}
+
+.homeblog-author-name {
+  color: #333;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+/* Loading skeleton styles */
+.homeblog-skeleton {
+  pointer-events: none;
+}
+
+.homeblog-skeleton-image {
+  width: 100%;
+  height: 250px;
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: loading 1.5s infinite;
+}
+
+.homeblog-skeleton-title {
+  height: 1.5rem;
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: loading 1.5s infinite;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+}
+
+
+
+@keyframes loading {
+  0% {
+    background-position: 200% 0;
+  }
+
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* Error state */
+.homeblog-error {
+  text-align: center;
+  padding: 3rem;
+  color: #666;
+  font-size: 1.1rem;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .homeblog {
+    padding: 2rem 1rem;
+  }
+
+  .homeblog-header {
+    gap: 1rem;
+    text-align: center;
+  }
+
+  .homeblog-title {
+    font-size: 1.2rem;
+  }
+
+  .homeblog-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .homeblog-card-title {
+    font-size: 1rem;
+  }
+
+  .homeblog-content {
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .homeblog-title {
+    font-size: 1.2rem;
+  }
+
+  .homeblog-view-all {
+    font-size: 1rem;
+    padding: 0.4rem 0.8rem;
+  }
+
+  .homeblog-meta {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}

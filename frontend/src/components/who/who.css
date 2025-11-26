@@ -1,0 +1,287 @@
+/* Who We Are Container */
+.who-container {
+  height: auto;
+  background: white;
+  background-image: url(../../assets/img/who-we-are.png);
+  background-size: cover;
+  position: relative;
+  overflow: hidden;
+
+}
+
+
+
+/* Main Content */
+.who-content {
+  max-width: 95%;
+  margin: 0 auto;
+  padding: 2rem 2rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+  height: auto;
+  position: relative;
+  z-index: 1;
+}
+
+/* Left Section - Text Content */
+.who-text-section {
+  padding-right: 2rem;
+}
+
+.who-title {
+  font-size: 32px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 1rem 0;
+  letter-spacing: 2px;
+  line-height: 1.1;
+  text-align: start;
+  font-family: var(--font-family);
+  text-transform: uppercase;
+}
+
+.who-subtitle {
+  font-size: 1.3rem;
+  font-weight: 500;
+  color: #666666;
+  margin: 0 0 2rem 0;
+  line-height: 1.3;
+  text-align: start;
+}
+
+.who-description {
+  font-size: 0.9rem;
+  color: #4a4a4a;
+  line-height: 1.7;
+  margin: 0 0 1.5rem 0;
+  font-weight: 400;
+  text-align: start;
+}
+
+.who-cta-button {
+  background: black;
+  color: white;
+  outline: none;
+  cursor: pointer;
+  border: none;
+  padding: 0.9rem 2rem;
+  margin: 0;
+  font-family: inherit;
+  font-size: inherit;
+  position: relative;
+  display: inline-block;
+  letter-spacing: 0.05rem;
+  font-weight: 700;
+  font-size: 1.1rem;
+  border-radius: 500px;
+  overflow: hidden;
+  position: relative;
+  z-index: 10;
+  transition: color 0.4s;
+}
+
+.who-cta-button:hover {
+  color: white;
+}
+
+.who-cta-button::before,
+.who-cta-button::after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+.who-cta-button::before {
+  content: "";
+  background: var(--primary-color);
+  width: 120%;
+  left: -10%;
+  transform: skew(30deg);
+  transition: transform 0.4s cubic-bezier(0.3, 1, 0.8, 1);
+}
+
+.who-cta-button:hover::before {
+  transform: translate3d(100%, 0, 0);
+}
+
+
+
+/* Right Section - Framed Image */
+.who-image-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.who-image-frame {
+  position: relative;
+  width: 100%;
+}
+
+
+
+.who-main-image {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 12px;
+  z-index: 2;
+}
+
+/* Brand Overlay */
+.who-brand-overlay {
+  position: absolute;
+  bottom: 30px;
+  left: 30px;
+  z-index: 3;
+}
+
+.who-brand-box {
+  background: linear-gradient(135deg, #FF69B4, #FF1493);
+  padding: 12px 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(255, 105, 180, 0.4);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.who-brand-name {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: white;
+  letter-spacing: 2px;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.who-brand-tagline {
+  font-size: 0.7rem;
+  color: white;
+  font-weight: 500;
+  letter-spacing: 1px;
+  margin-top: 2px;
+  opacity: 0.9;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .who-content {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    padding: 1rem 1.5rem;
+  }
+
+  .who-text-section {
+    padding-right: 0;
+    text-align: center;
+  }
+
+  .who-title {
+    font-size: 2rem;
+  }
+
+  .who-subtitle {
+    font-size: 1.3rem;
+  }
+
+  .who-image-frame {
+    max-width: 400px;
+    height: 500px;
+  }
+}
+
+@media (max-width: 768px) {
+  .who-content {
+    padding: 1rem 1rem;
+    gap: 2rem;
+  }
+
+  .who-title {
+    font-size: 1.2rem;
+  }
+
+  .who-subtitle {
+    font-size: 14px;
+  }
+
+  .who-description {
+    font-size: 10px;
+  }
+
+  .who-image-frame {
+    max-width: 350px;
+    height: 450px;
+  }
+
+  .who-brand-overlay {
+    bottom: 20px;
+    left: 20px;
+  }
+
+  .who-brand-box {
+    padding: 10px 16px;
+  }
+
+  .who-brand-name {
+    font-size: 1rem;
+  }
+
+  .who-brand-tagline {
+    font-size: 0.6rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .who-title {
+    font-size: 1.2rem;
+  }
+
+  .who-subtitle {
+    font-size: 14px;
+    text-transform: capitalize;
+  }
+
+  .who-image-frame {
+    width: 100%;
+    height: 100%;
+  }
+
+  .who-cta-button {
+    padding: 0.4rem 1rem;
+    font-size: 14px;
+  }
+}
+
+/* Smooth animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.who-text-section {
+  animation: fadeInUp 0.8s ease-out;
+}
+
+.who-image-section {
+  animation: fadeInUp 0.8s ease-out 0.2s both;
+}
+
+/* Focus states for accessibility */
+.who-cta-button:focus {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+}

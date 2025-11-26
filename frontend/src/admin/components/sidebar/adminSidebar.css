@@ -1,0 +1,245 @@
+.admin-sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 280px;
+  height: 100vh;
+  background: #1f2937;
+  color: white;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  transform: translateX(0);
+}
+
+.admin-sidebar-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+.admin-sidebar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem;
+  border-bottom: 1px solid #374151;
+}
+
+.admin-logo h2 {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #f9fafb;
+}
+
+.admin-close-sidebar {
+  background: none;
+  border: none;
+  color: #9ca3af;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 4px;
+  transition: color 0.2s, background-color 0.2s;
+}
+
+.admin-close-sidebar:hover {
+  color: #f9fafb;
+  background-color: #374151;
+}
+
+.admin-sidebar-nav {
+  flex: 1;
+  padding: 1rem 0;
+}
+
+.admin-nav-menu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.admin-nav-item {
+  margin: 0;
+}
+
+.admin-nav-link {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1.5rem;
+  color: #d1d5db;
+  text-decoration: none;
+  transition: all 0.2s;
+  border: none;
+  background: none;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  position: relative;
+}
+
+.admin-nav-link:hover {
+  background-color: #374151;
+  color: #f9fafb;
+}
+
+.admin-nav-link.active {
+  background-color: #3b82f6;
+  color: white;
+}
+
+.admin-nav-link.expanded {
+  background-color: #374151;
+  color: #f9fafb;
+}
+
+.admin-nav-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+.admin-nav-label {
+  flex: 1;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.admin-expand-icon {
+  transition: transform 0.2s;
+  flex-shrink: 0;
+}
+
+.admin-expand-icon.expanded {
+  transform: rotate(180deg);
+}
+
+.admin-submenu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  background-color: #111827;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+
+.admin-submenu.expanded {
+  max-height: 500px;
+}
+
+.admin-submenu-link {
+  display: block;
+  padding: 0.5rem 1.5rem 0.5rem 3.5rem;
+  color: #9ca3af;
+  text-decoration: none;
+  font-size: 0.875rem;
+  transition: all 0.2s;
+  border-left: 2px solid transparent;
+}
+
+.admin-submenu-link:hover {
+  background-color: #374151;
+  color: #f9fafb;
+  border-left-color: #3b82f6;
+}
+
+.admin-submenu-link.active {
+  background-color: #374151;
+  color: #3b82f6;
+  border-left-color: #3b82f6;
+}
+
+.admin-sidebar-footer {
+  padding: 1rem 1.5rem;
+  border-top: 1px solid #374151;
+  background-color: #111827;
+}
+
+.admin-info {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.admin-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.admin-avatar-placeholder {
+  width: 100%;
+  height: 100%;
+  background-color: #3b82f6;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 0.875rem;
+}
+
+.admin-details h4 {
+  margin: 0 0 0.25rem 0;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #f9fafb;
+}
+
+.admin-details p {
+  margin: 0;
+  font-size: 0.75rem;
+  color: #9ca3af;
+}
+
+/* Responsive Design */
+@media (min-width: 1024px) {
+  .admin-sidebar {
+    transform: translateX(0);
+    position: fixed;
+  }
+  
+  .admin-sidebar-overlay {
+    display: none;
+  }
+  
+  .admin-close-sidebar {
+    display: none;
+  }
+}
+
+@media (max-width: 1023px) {
+  .admin-sidebar {
+    position: fixed;
+  }
+}
+
+/* Scrollbar Styling */
+.admin-sidebar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.admin-sidebar::-webkit-scrollbar-track {
+  background: #374151;
+}
+
+.admin-sidebar::-webkit-scrollbar-thumb {
+  background: #6b7280;
+  border-radius: 3px;
+}
+
+.admin-sidebar::-webkit-scrollbar-thumb:hover {
+  background: #9ca3af;
+}

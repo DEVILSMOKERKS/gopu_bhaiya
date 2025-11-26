@@ -1,0 +1,348 @@
+/* CategoryList Component Styles - Table-based UI */
+
+.categorylist-container {
+  padding: 2rem;
+  background: #f8f9fa;
+  min-height: 100vh;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+/* Header Section */
+.categorylist-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.categorylist-title {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #333;
+  margin: 0;
+}
+
+.categorylist-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* Search Container */
+.categorylist-search-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.categorylist-search-icon {
+  position: absolute;
+  left: 12px;
+  font-size: 16px;
+  color: #666;
+  z-index: 1;
+}
+
+.categorylist-search-input {
+  padding: 10px 10px 10px 40px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 14px;
+  width: 250px;
+  background: white;
+}
+
+.categorylist-search-input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 2px rgba(102, 126, 234, 0.1);
+}
+
+/* Add Category Button */
+.categorylist-add-btn {
+  background: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.categorylist-add-btn:hover {
+  background: var(--primary-color);
+}
+
+/* Error Message */
+.categorylist-error {
+  background: #fef2f2;
+  color: #dc2626;
+  padding: 12px 16px;
+  border-radius: 6px;
+  border: 1px solid #fecaca;
+  margin-bottom: 1rem;
+  font-size: 14px;
+}
+
+/* Table Container */
+.categorylist-table-container {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.categorylist-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+/* Table Header */
+.categorylist-table-header {
+  background: #f8f9fa;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.categorylist-th {
+  padding: 16px 12px;
+  text-align: left;
+  font-weight: 600;
+  color: #495057;
+  border-bottom: 1px solid #e9ecef;
+  font-size: 14px;
+}
+
+/* Table Body */
+.categorylist-table-body {
+  background: white;
+}
+
+.categorylist-table-row {
+  border-bottom: 1px solid #f1f3f4;
+  transition: background-color 0.2s ease;
+}
+
+.categorylist-table-row:hover {
+  background-color: #f8f9fa;
+}
+
+.categorylist-table-row:last-child {
+  border-bottom: none;
+}
+
+.categorylist-td {
+  padding: 16px 12px;
+  vertical-align: middle;
+  color: #333;
+  font-size: 14px;
+}
+
+/* Specific Cell Styles */
+.categorylist-id-cell {
+  font-weight: 600;
+  color: #666;
+  font-family: 'Monaco', 'Menlo', monospace;
+}
+
+.categorylist-name-cell {
+  font-weight: 600;
+  color: #333;
+}
+
+.categorylist-slug-cell {
+  color: #666;
+  font-family: 'Monaco', 'Menlo', monospace;
+  font-size: 13px;
+}
+
+.categorylist-description-cell {
+  color: #666;
+  max-width: 200px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.categorylist-status-cell {
+  text-align: start;
+}
+
+.categorylist-status-badge {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.categorylist-status-badge.active {
+  background: var(--primary-color);
+  color: white;
+}
+
+.categorylist-image-cell {
+  text-align: start;
+}
+
+.categorylist-category-image {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 6px;
+  border: 1px solid #e9ecef;
+}
+
+.categorylist-no-image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  background: #f8f9fa;
+  border: 1px solid #e9ecef;
+  border-radius: 6px;
+  margin: 0 auto;
+}
+
+.categorylist-no-image-text {
+  font-size: 12px;
+  color: #666;
+  text-align: center;
+  line-height: 1.2;
+}
+
+.categorylist-actions-cell {
+  text-align: start;
+}
+
+.categorylist-action-buttons {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+}
+
+.categorylist-action-btn {
+  width: 36px;
+  height: 36px;
+  border: 1px solid #ddd;
+  background: white;
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  transition: all 0.2s ease;
+}
+
+.categorylist-edit-btn:hover {
+  border-color: var(--primary-color);
+  background: #f8f9ff;
+}
+
+.categorylist-delete-btn:hover {
+  border-color: #dc2626;
+  background: #fef2f2;
+}
+
+.categorylist-action-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Empty Message */
+.categorylist-empty-message {
+  text-align: center;
+  padding: 3rem;
+  color: #666;
+  font-style: italic;
+}
+
+/* Loading State */
+.categorylist-loading {
+  text-align: center;
+  padding: 3rem;
+  color: #666;
+  font-size: 16px;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .categorylist-table {
+    font-size: 13px;
+  }
+  
+  .categorylist-th,
+  .categorylist-td {
+    padding: 12px 8px;
+  }
+  
+  .categorylist-search-input {
+    width: 200px;
+  }
+}
+
+@media (max-width: 768px) {
+  .categorylist-container {
+    padding: 1rem;
+  }
+  
+  .categorylist-header {
+    flex-direction: column;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+  
+  .categorylist-title {
+    font-size: 1.5rem;
+  }
+  
+  .categorylist-header-actions {
+    width: 100%;
+    justify-content: space-between;
+  }
+  
+  .categorylist-search-input {
+    width: 180px;
+  }
+  
+  .categorylist-table-container {
+    overflow-x: auto;
+  }
+  
+  .categorylist-table {
+    min-width: 800px;
+  }
+}
+
+@media (max-width: 480px) {
+  .categorylist-header-actions {
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+  }
+  
+  .categorylist-search-input {
+    width: 100%;
+  }
+  
+  .categorylist-add-btn {
+    width: 100%;
+  }
+  
+  .categorylist-th,
+  .categorylist-td {
+    padding: 8px 6px;
+    font-size: 12px;
+  }
+  
+  .categorylist-action-btn {
+    width: 32px;
+    height: 32px;
+    font-size: 14px;
+  }
+}

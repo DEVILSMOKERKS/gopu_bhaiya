@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/png" href="/logo.png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Saanz</title>
+
+  <!-- Meta Pixel Code -->
+  <script>
+    !function (f, b, e, v, n, t, s) {
+      if (f.fbq) return; n = f.fbq = function () {
+        n.callMethod ?
+          n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+      };
+      if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
+      n.queue = []; t = b.createElement(e); t.async = !0;
+      t.src = v; s = b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t, s)
+    }(window, document, 'script',
+      'https://connect.facebook.net/en_US/fbevents.js');
+
+    // Initialize with error handling
+    try {
+      fbq('init', '1879559569290679');
+      fbq('track', 'PageView');
+    } catch (error) {
+      console.log('Meta Pixel blocked by ad blocker');
+    }
+  </script>
+
+  <!-- Google OAuth Script -->
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+  
+  <!-- Razorpay Checkout Script -->
+  <script>
+    // Suppress otp-credentials warning
+    const originalConsoleWarn = console.warn;
+    console.warn = function (message) {
+      if (message && message.includes('otp-credentials')) {
+        return; // Suppress this specific warning
+      }
+      originalConsoleWarn.apply(console, arguments);
+    };
+  </script>
+  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+  <script type="module" crossorigin src="/assets/index-Cv6RgKSc.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-2XIwEPr-.css">
+</head>
+
+<body>
+  <!-- Meta Pixel noscript fallback -->
+  <noscript><img height="1" width="1" style="display:none"
+      src="https://www.facebook.com/tr?id=1879559569290679&ev=PageView&noscript=1" /></noscript>
+
+  <div id="root"></div>
+</body>
+
+</html>

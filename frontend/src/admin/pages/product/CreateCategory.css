@@ -1,0 +1,244 @@
+/* CreateCategory Component Styles */
+
+.createcategory-container {
+  padding: 2rem;
+  background: #f8fafc;
+  min-height: 100vh;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.createcategory-header {
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  margin-bottom: 2rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.createcategory-header h1 {
+  margin: 0 0 0.5rem 0;
+  color: #1e293b;
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.createcategory-header p {
+  margin: 0;
+  color: #64748b;
+  font-size: 1rem;
+}
+
+.createcategory-form {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.createcategory-form-section {
+  padding: 2rem;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.createcategory-form-section:last-child {
+  border-bottom: none;
+}
+
+.createcategory-form-section h2 {
+  margin: 0 0 1.5rem 0;
+  color: #1e293b;
+  font-size: 1.5rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.createcategory-form-section h2::before {
+  content: '';
+  width: 4px;
+  height: 24px;
+  background: var(--primary-color);
+  border-radius: 2px;
+}
+
+.createcategory-form-group {
+  margin-bottom: 1.5rem;
+}
+
+.createcategory-form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #374151;
+}
+
+.createcategory-form-group input,
+.createcategory-form-group textarea {
+  width: 100%;
+  padding: 0.75rem;
+  border: 2px solid #e2e8f0;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  transition: all 0.3s ease;
+  background: white;
+  box-sizing: border-box;
+}
+
+.createcategory-form-group input:focus,
+.createcategory-form-group textarea:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.createcategory-form-group textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.createcategory-form-group input[type="file"] {
+  padding: 0.5rem;
+  border: 2px dashed #cbd5e1;
+  background: #f8fafc;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.createcategory-form-group input[type="file"]:hover {
+  border-color: var(--primary-color);
+  background: #f1f5f9;
+}
+
+/* Image Preview */
+.createcategory-image-preview {
+  margin-top: 1rem;
+  text-align: start;
+}
+
+.createcategory-image-preview img {
+  max-width: 200px;
+  max-height: 200px;
+  width: auto;
+  height: auto;
+  border-radius: 8px;
+  border: 2px solid #e2e8f0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  object-fit: contain;
+}
+
+/* Error Message */
+.createcategory-error-message {
+  background: #fef2f2;
+  color: #dc2626;
+  padding: 1rem;
+  border-radius: 8px;
+  border: 1px solid #fecaca;
+  margin: 0 2rem 1rem 2rem;
+  font-size: 0.875rem;
+}
+
+/* Form Actions */
+.createcategory-form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  padding: 2rem;
+  background: #f8fafc;
+  border-top: 1px solid #e2e8f0;
+}
+
+.createcategory-btn-secondary {
+  padding: 0.75rem 1.5rem;
+  border: 2px solid #e2e8f0;
+  background: white;
+  color: #64748b;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.createcategory-btn-secondary:hover {
+  border-color: #cbd5e1;
+  color: #374151;
+  background: #f1f5f9;
+}
+
+.createcategory-btn-primary {
+  padding: 0.75rem 1.5rem;
+  background: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(102, 126, 234, 0.25);
+}
+
+.createcategory-btn-primary:hover:not(:disabled) {
+  background: var(--primary-color);
+  transform: translateY(-1px);
+}
+
+.createcategory-btn-primary:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .createcategory-container {
+    padding: 1rem;
+  }
+  
+  .createcategory-header {
+    padding: 1.5rem;
+  }
+  
+  .createcategory-header h1 {
+    font-size: 1.5rem;
+  }
+  
+  .createcategory-form-section {
+    padding: 1.5rem;
+  }
+  
+  .createcategory-form-section h2 {
+    font-size: 1.25rem;
+  }
+  
+  .createcategory-form-actions {
+    flex-direction: column;
+    padding: 1.5rem;
+  }
+  
+  .createcategory-btn-primary,
+  .createcategory-btn-secondary {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .createcategory-header h1 {
+    font-size: 1.25rem;
+  }
+  
+  .createcategory-form-section {
+    padding: 1rem;
+  }
+  
+  .createcategory-form-section h2 {
+    font-size: 1.125rem;
+  }
+  
+  .createcategory-image-preview img {
+    max-width: 150px;
+    max-height: 150px;
+  }
+}
