@@ -1,251 +1,158 @@
-# Saanz E-commerce Platform
+# Mateshwari-Murti
 
-A complete, modern e-commerce platform built with React, Node.js, and MySQL. Saanz provides a full-featured online shopping experience with user authentication, product management, shopping cart functionality, order processing, and an admin panel.
+An e-commerce platform built with React and Node.js/Express, featuring a complete admin dashboard and user interface for managing products, orders, and customer interactions.
 
-## 🚀 Features
+## Project Structure
 
-### Customer Features
-- **User Authentication**: Secure registration and login with JWT tokens
-- **Product Browsing**: Browse products with search, filtering, and pagination
-- **Shopping Cart**: Add, remove, and manage cart items
-- **Order Management**: Place orders and track order status
-- **Product Reviews**: Rate and review products
-- **Responsive Design**: Mobile-first design that works on all devices
-- **Modern UI**: Beautiful, intuitive interface with animations
+```
+Mateshwari-Murti/
+├── frontend/          # React frontend application
+├── server/            # Node.js/Express backend API
+└── assets/            # Static assets
+```
 
-### Admin Features
-- **Product Management**: Add, edit, and delete products
-- **Category Management**: Organize products by categories
-- **Order Management**: Process and track customer orders
-- **User Management**: View and manage customer accounts
-- **Dashboard**: Analytics and overview of store performance
+## Features
 
-### Technical Features
-- **RESTful API**: Complete backend API with proper authentication
-- **Database**: MySQL database with proper relationships
-- **Security**: Password hashing, JWT authentication, input validation
-- **Performance**: Optimized queries, lazy loading, and caching
-- **Error Handling**: Comprehensive error handling and user feedback
+- **User Management**: Authentication and authorization system
+- **Product Management**: Categories, subcategories, and product listings
+- **Shopping Cart & Wishlist**: Add to cart and wishlist functionality
+- **Order Management**: Complete order processing system
+- **Reviews & Ratings**: Product review system
+- **Blog System**: Content management for blogs
+- **Admin Dashboard**: Comprehensive admin panel for managing the platform
+- **Payment Integration**: Razorpay payment gateway integration
+- **Email Notifications**: Automated email system using Nodemailer
+- **Coupon & Offers**: Discount and promotional code system
+- **Newsletter**: Email subscription management
+- **Contact System**: Customer contact form handling
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 ### Frontend
-- **React 19** - Modern React with hooks and functional components
-- **React Router** - Client-side routing
-- **React Query** - Data fetching and caching
-- **React Hook Form** - Form handling and validation
-- **Framer Motion** - Smooth animations and transitions
-- **Tailwind CSS** - Utility-first CSS framework
-- **Lucide React** - Beautiful icons
-- **React Hot Toast** - Toast notifications
+- React 19
+- React Router DOM
+- Redux Toolkit
+- Vite
+- React Slick / Swiper
+- Lucide React Icons
 
 ### Backend
-- **Node.js** - JavaScript runtime
-- **Express.js** - Web framework
-- **MySQL** - Relational database
-- **JWT** - Authentication tokens
-- **bcrypt** - Password hashing
-- **Express Validator** - Input validation
-- **CORS** - Cross-origin resource sharing
-- **Helmet** - Security headers
+- Node.js
+- Express.js
+- MySQL2
+- JWT Authentication
+- Multer (File Upload)
+- Bcrypt (Password Hashing)
+- Razorpay (Payment Gateway)
+- Nodemailer (Email Service)
 
-## 📁 Project Structure
-
-```
-saanz/
-├── frontend/                 # React frontend application
-│   ├── src/
-│   │   ├── components/      # Reusable UI components
-│   │   ├── contexts/        # React contexts (Auth, Cart)
-│   │   ├── pages/          # Page components
-│   │   ├── services/       # API service functions
-│   │   └── App.jsx         # Main app component
-│   ├── package.json
-│   └── README.md
-├── server/                  # Node.js backend application
-│   ├── config/             # Database configuration
-│   ├── middleware/         # Express middleware
-│   ├── routes/             # API routes
-│   ├── database.sql        # Database schema
-│   ├── index.js            # Server entry point
-│   └── README.md
-└── README.md               # This file
-```
-
-## 🚀 Quick Start
+## Getting Started
 
 ### Prerequisites
-- Node.js (v18 or higher)
-- MySQL (v8.0 or higher)
+- Node.js (v14 or higher)
+- MySQL Database
 - npm or yarn
 
-### 1. Clone the Repository
+### Installation
+
+1. Clone the repository:
 ```bash
 git clone <repository-url>
-cd saanz
+cd Mateshwari-Murti
 ```
 
-### 2. Set Up the Database
-1. Create a MySQL database named `saanz_db`
-2. Run the SQL commands from `server/database.sql` to create tables and sample data
-
-### 3. Set Up the Backend
+2. Install backend dependencies:
 ```bash
 cd server
 npm install
 ```
 
-Create a `.env` file in the server directory:
-```env
-PORT=5000
-DB_HOST=localhost
-DB_USER=root
-DB_PASSWORD=your_password
-DB_NAME=saanz_db
-JWT_SECRET=your-super-secret-jwt-key-change-this-in-production
-NODE_ENV=development
-```
-
-Start the server:
+3. Install frontend dependencies:
 ```bash
-npm run dev
-```
-
-The server will start on `http://localhost:5000`
-
-### 4. Set Up the Frontend
-```bash
-cd frontend
+cd ../frontend
 npm install
 ```
 
-Start the development server:
+4. Set up environment variables:
+
+Create a `.env` file in the `server` directory:
+```env
+PORT=5000
+DB_HOST=localhost
+DB_USER=your_db_user
+DB_PASSWORD=your_db_password
+DB_NAME=your_database_name
+JWT_SECRET=your_jwt_secret
+EMAIL_HOST=smtp.gmail.com
+EMAIL_PORT=587
+EMAIL_USER=your_email
+EMAIL_PASS=your_email_password
+RAZORPAY_KEY_ID=your_razorpay_key
+RAZORPAY_KEY_SECRET=your_razorpay_secret
+```
+
+5. Set up the database:
+   - Import the SQL files from `server/database.sql` or `server/database_update.sql`
+   - Configure your database connection in `server/config/db.js`
+
+### Running the Application
+
+1. Start the backend server:
 ```bash
+cd server
+npm start
+# or
 npm run dev
 ```
 
-The frontend will start on `http://localhost:5173`
+2. Start the frontend development server:
+```bash
+cd frontend
+npm run dev
+```
 
-## 📚 API Documentation
+The application will be available at:
+- Frontend: `http://localhost:5173`
+- Backend API: `http://localhost:5000`
 
-### Authentication Endpoints
-- `POST /api/auth/register` - Register new user
-- `POST /api/auth/login` - User login
-- `GET /api/auth/profile` - Get user profile
-- `PUT /api/auth/profile` - Update user profile
+## API Endpoints
 
-### Product Endpoints
-- `GET /api/products` - Get all products (with pagination and filters)
-- `GET /api/products/featured` - Get featured products
-- `GET /api/products/:id` - Get single product
-- `POST /api/products` - Create product (Admin only)
-- `PUT /api/products/:id` - Update product (Admin only)
-- `DELETE /api/products/:id` - Delete product (Admin only)
-- `POST /api/products/:id/reviews` - Add product review
+The backend provides RESTful APIs for:
+- Authentication (`/api/auth`)
+- Admin operations (`/api/admin`)
+- Products (`/api/products`)
+- Categories (`/api/categories`)
+- Orders (`/api/orders`)
+- Cart (`/api/cart`)
+- Wishlist (`/api/wishlist`)
+- Reviews (`/api/reviews`)
+- Blogs (`/api/blogs`)
+- Contact (`/api/contact`)
+- Newsletter (`/api/newsletter`)
+- Coupons (`/api/coupons`)
+- Offers (`/api/offers`)
 
-### Cart Endpoints
-- `GET /api/cart` - Get user's cart
-- `POST /api/cart/add` - Add item to cart
-- `PUT /api/cart/update/:id` - Update cart item quantity
-- `DELETE /api/cart/remove/:id` - Remove item from cart
-- `DELETE /api/cart/clear` - Clear cart
+## Build for Production
 
-### Order Endpoints
-- `POST /api/orders` - Create order from cart
-- `GET /api/orders/my-orders` - Get user's orders
-- `GET /api/orders/:id` - Get single order
-- `GET /api/orders` - Get all orders (Admin only)
-- `PUT /api/orders/:id/status` - Update order status (Admin only)
-- `PUT /api/orders/:id/payment` - Update payment status (Admin only)
+### Frontend
+```bash
+cd frontend
+npm run build
+```
 
-### Category Endpoints
-- `GET /api/categories` - Get all categories
-- `GET /api/categories/:id` - Get single category with products
-- `POST /api/categories` - Create category (Admin only)
-- `PUT /api/categories/:id` - Update category (Admin only)
-- `DELETE /api/categories/:id` - Delete category (Admin only)
+The production build will be in the `frontend/dist` directory.
 
-## 🎨 Customization
+### Backend
+The backend runs directly with Node.js. For production, consider using:
+- PM2 for process management
+- Environment-specific configurations
+- Proper error logging and monitoring
 
-### Styling
-The project uses Tailwind CSS for styling. You can customize the design by:
-- Modifying the color scheme in `frontend/tailwind.config.js`
-- Updating component styles in the respective component files
-- Adding custom CSS in `frontend/src/index.css`
+## License
 
-### Configuration
-- **Database**: Update connection settings in `server/config/db.js`
-- **API Base URL**: Change the API base URL in `frontend/src/services/api.js`
-- **Environment Variables**: Modify the `.env` file for different environments
+ISC
 
-## 🔒 Security Features
+## Author
 
-- **Password Hashing**: All passwords are hashed using bcrypt
-- **JWT Authentication**: Secure token-based authentication
-- **Input Validation**: All inputs are validated using express-validator
-- **SQL Injection Prevention**: Parameterized queries prevent SQL injection
-- **CORS Protection**: Configured CORS for secure cross-origin requests
-- **Security Headers**: Helmet.js provides security headers
+Podosphere
 
-## 🧪 Testing
-
-### Demo Account
-You can use these credentials to test the application:
-- **Email**: demo@example.com
-- **Password**: password123
-
-### Sample Data
-The database comes with sample data including:
-- 5 product categories
-- 7 sample products with images
-- Sample user accounts
-
-## 📱 Responsive Design
-
-The application is fully responsive and works on:
-- Desktop computers
-- Tablets
-- Mobile phones
-- All modern browsers
-
-## 🚀 Deployment
-
-### Backend Deployment
-1. Set up a production MySQL database
-2. Update environment variables for production
-3. Deploy to your preferred hosting service (Heroku, DigitalOcean, AWS, etc.)
-
-### Frontend Deployment
-1. Build the production version: `npm run build`
-2. Deploy the `dist` folder to your hosting service
-3. Update the API base URL for production
-
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create a feature branch: `git checkout -b feature-name`
-3. Commit your changes: `git commit -am 'Add feature'`
-4. Push to the branch: `git push origin feature-name`
-5. Submit a pull request
-
-## 📄 License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
-
-## 🆘 Support
-
-If you encounter any issues or have questions:
-1. Check the documentation
-2. Search existing issues
-3. Create a new issue with detailed information
-
-## 🙏 Acknowledgments
-
-- React team for the amazing framework
-- Tailwind CSS for the utility-first CSS framework
-- Lucide for the beautiful icons
-- All the open-source contributors whose libraries made this project possible
-
----
-
-**Saanz E-commerce Platform** - Built with ❤️ for modern online shopping
