@@ -84,7 +84,6 @@ const Product = () => {
             value: product.min_price || product.price || 0,
             currency: 'INR'
           });
-          console.log('Facebook Pixel ViewContent tracked for product:', product.product_id);
         } catch (error) {
           console.error('Error tracking ViewContent:', error);
         }
@@ -150,7 +149,6 @@ const Product = () => {
           value: selectedSizeData ? selectedSizeData.sell_price : 0,
           currency: 'INR'
         });
-        console.log('Facebook Pixel AddToCart tracked for product:', product.product_id);
       } catch (error) {
         console.error('Error tracking AddToCart:', error);
       }
@@ -320,11 +318,11 @@ const Product = () => {
         x: e.clientX - dragStart.x,
         y: e.clientY - dragStart.y
       };
-      
+
       // Calculate boundaries to prevent dragging too far
       const maxOffsetX = (zoomLevel - 1) * 150;
       const maxOffsetY = (zoomLevel - 1) * 100;
-      
+
       setDragOffset({
         x: Math.max(-maxOffsetX, Math.min(maxOffsetX, newOffset.x)),
         y: Math.max(-maxOffsetY, Math.min(maxOffsetY, newOffset.y))
@@ -356,11 +354,11 @@ const Product = () => {
         x: touch.clientX - dragStart.x,
         y: touch.clientY - dragStart.y
       };
-      
+
       // Calculate boundaries to prevent dragging too far
       const maxOffsetX = (zoomLevel - 1) * 150;
       const maxOffsetY = (zoomLevel - 1) * 100;
-      
+
       setDragOffset({
         x: Math.max(-maxOffsetX, Math.min(maxOffsetX, newOffset.x)),
         y: Math.max(-maxOffsetY, Math.min(maxOffsetY, newOffset.y))
@@ -434,27 +432,27 @@ const Product = () => {
 
     if (selectedSize) {
       const selectedSizeData = product.sizes.find(size => size.size === selectedSize);
-      
+
       // Try different possible field names for actual price
       const actualPrice = selectedSizeData ? (
-        selectedSizeData.rate || 
-        selectedSizeData.mrp || 
-        selectedSizeData.actual_price || 
+        selectedSizeData.rate ||
+        selectedSizeData.mrp ||
+        selectedSizeData.actual_price ||
         selectedSizeData.original_price ||
         selectedSizeData.price
       ) : (
-        product.sizes[0].rate || 
-        product.sizes[0].mrp || 
-        product.sizes[0].actual_price || 
+        product.sizes[0].rate ||
+        product.sizes[0].mrp ||
+        product.sizes[0].actual_price ||
         product.sizes[0].original_price ||
         product.sizes[0].price
       );
-      
+
       return actualPrice || productActualPrice || 0;
     }
 
     // Return minimum actual price if no size is selected
-    const minActualPrice = Math.min(...product.sizes.map(size => 
+    const minActualPrice = Math.min(...product.sizes.map(size =>
       size.rate || size.mrp || size.actual_price || size.original_price || size.price || 0
     ));
     return minActualPrice || productActualPrice || 0;
@@ -464,11 +462,11 @@ const Product = () => {
   const getDiscountPercentage = () => {
     const actualPrice = getCurrentActualPrice();
     const sellingPrice = getCurrentPrice();
-    
+
     if (actualPrice <= 0 || sellingPrice >= actualPrice) {
       return 0;
     }
-    
+
     return Math.round(((actualPrice - sellingPrice) / actualPrice) * 100);
   };
 
@@ -605,7 +603,7 @@ const Product = () => {
               ))}
             </div>
             <div className="main-image-container">
-              <div 
+              <div
                 className="main-image-wrapper"
                 onClick={handleImageClick}
                 style={{
@@ -748,7 +746,7 @@ const Product = () => {
               </div>
               {getDiscountPercentage() > 0 && (
                 <div className="savings-info">
-                   You save ₹{(getCurrentActualPrice() - getCurrentPrice()).toLocaleString()}
+                  You save ₹{(getCurrentActualPrice() - getCurrentPrice()).toLocaleString()}
                 </div>
               )}
             </div>
@@ -831,8 +829,8 @@ const Product = () => {
           })()}
 
           {/* Buy Now Button */}
-          <button 
-            className="buy-now-btn" 
+          <button
+            className="buy-now-btn"
             onClick={handleBuyNow}
           >
             Buy Now
@@ -966,9 +964,9 @@ const Product = () => {
       {/* Size Chart Modal */}
       {showSizeChart && (
         <div className="size-chart-modal-overlay" onClick={closeSizeChart}>
-          <img 
-            src="/src/assets/img/size chart.jpg" 
-            alt="Size Chart" 
+          <img
+            src="/src/assets/img/size chart.jpg"
+            alt="Size Chart"
             className="size-chart-image"
             onClick={(e) => e.stopPropagation()}
             onError={(e) => {
@@ -984,7 +982,7 @@ const Product = () => {
           <div className="zoom-modal-content">
             <button className="zoom-close-btn" onClick={closeZoomModal}>×</button>
             <div className="zoom-modal-image-container">
-              <img 
+              <img
                 src={productImages.length > 0 ? `${API_URL.replace('/api', '')}${productImages[selectedImage]}` : '/src/assets/img/Bestseller1.jpg'}
                 alt={product.name}
                 className="zoom-modal-image"

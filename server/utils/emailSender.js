@@ -683,7 +683,6 @@ const emailTemplates = {
 // Send email function
 const sendEmail = async (to, template, data = {}) => {
   try {
-    console.log('sendEmail called with:', { to, template, data: JSON.stringify(data, null, 2) });
 
     const transporter = createTransporter();
 
@@ -699,7 +698,6 @@ const sendEmail = async (to, template, data = {}) => {
       template === 'contactConfirmation' || template === 'contactNotification' ||
       template === 'contactStatusUpdate' || template === 'newsletterWelcome' ||
       template === 'newsletterSubscription' || template === 'newsletter') {
-      console.log('Using data-based email template with data:', JSON.stringify(data, null, 2));
       emailContent = emailTemplate(data);
     } else {
       emailContent = typeof emailTemplate === 'function'
@@ -719,7 +717,6 @@ const sendEmail = async (to, template, data = {}) => {
     // Send email
     const info = await transporter.sendMail(mailOptions);
 
-    console.log('✅ Email sent successfully:', info.messageId);
     return {
       success: true,
       messageId: info.messageId,
@@ -752,7 +749,6 @@ const sendWelcomeEmail = async (email, adminName, loginUrl) => {
 };
 
 const sendOrderConfirmationEmail = async (email, orderData) => {
-  console.log('Sending order confirmation email with data:', JSON.stringify(orderData, null, 2));
   return await sendEmail(email, 'orderConfirmation', orderData);
 };
 

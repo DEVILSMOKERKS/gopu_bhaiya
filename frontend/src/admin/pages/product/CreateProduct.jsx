@@ -84,7 +84,7 @@ const CreateProduct = () => {
     const files = Array.from(e.target.files);
     const newImages = [...colors[colorIndex].images, ...files];
     const newPreviewUrls = [...colors[colorIndex].previewUrls];
-    
+
     files.forEach(file => {
       const reader = new FileReader();
       reader.onload = (e) => {
@@ -93,14 +93,14 @@ const CreateProduct = () => {
       };
       reader.readAsDataURL(file);
     });
-    
+
     updateColor(colorIndex, 'images', newImages);
   };
 
   const removeColorImage = (colorIndex, imageIndex) => {
     const newImages = colors[colorIndex].images.filter((_, i) => i !== imageIndex);
     const newPreviewUrls = colors[colorIndex].previewUrls.filter((_, i) => i !== imageIndex);
-    
+
     updateColor(colorIndex, 'images', newImages);
     updateColor(colorIndex, 'previewUrls', newPreviewUrls);
   };
@@ -114,7 +114,7 @@ const CreateProduct = () => {
   };
 
   const updateColor = (index, field, value) => {
-    setColors(prev => prev.map((color, i) => 
+    setColors(prev => prev.map((color, i) =>
       i === index ? { ...color, [field]: value } : color
     ));
   };
@@ -128,23 +128,23 @@ const CreateProduct = () => {
   };
 
   const updateSize = (index, field, value) => {
-    setSizes(prev => prev.map((size, i) => 
+    setSizes(prev => prev.map((size, i) =>
       i === index ? { ...size, [field]: value } : color
     ));
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
+
     // Validate product data
     const productValidation = validateProduct(formData, colors, sizes);
     const imageValidation = validateImageUpload(colors);
-    
+
     if (!productValidation.isValid) {
       showValidationErrors(productValidation.errors);
       return;
     }
-    
+
     if (!imageValidation.isValid) {
       showValidationErrors(imageValidation.errors);
       return;
@@ -154,7 +154,7 @@ const CreateProduct = () => {
 
     try {
       const formDataToSend = new FormData();
-      
+
       // Add basic product info
       Object.keys(formData).forEach(key => {
         if (formData[key]) {
@@ -167,19 +167,16 @@ const CreateProduct = () => {
       const colorsWithImageIndices = colors.map(color => {
         const colorWithIndices = { ...color };
         colorWithIndices.images = [];
-        
-        console.log(`Processing color ${color.name} with ${color.images.length} images`);
+
         color.images.forEach((file, fileIndex) => {
-          console.log(`Adding file ${file.name} at index ${imageIndex}`);
           formDataToSend.append('images', file);
           colorWithIndices.images.push(imageIndex);
           imageIndex++;
         });
-        
+
         return colorWithIndices;
       });
-      
-      console.log('Final colors with indices:', colorsWithImageIndices);
+
 
       // Add colors with image indices
       formDataToSend.append('colors', JSON.stringify(colorsWithImageIndices));
@@ -213,7 +210,7 @@ const CreateProduct = () => {
   return (
     <div className="createproduct-container">
       <div className="createproduct-header">
-        <button 
+        <button
           className="createproduct-back-btn"
           onClick={() => navigate('/admin/products')}
         >
@@ -335,7 +332,7 @@ const CreateProduct = () => {
                     />
                   </div>
                 </div>
-                
+
                 {/* Color-specific image upload */}
                 <div className="createproduct-color-images-section">
                   <h4>Images for {color.name || `Color ${colorIndex + 1}`}</h4>

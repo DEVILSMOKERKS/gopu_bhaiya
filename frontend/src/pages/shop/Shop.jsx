@@ -248,7 +248,6 @@ const Shop = () => {
 
       if (data.success) {
         setWishlistItems(prev => new Set([...prev, productId]));
-        console.log('Product added to wishlist successfully');
       } else {
         console.error('Failed to add to wishlist:', data.message);
       }
@@ -281,7 +280,6 @@ const Shop = () => {
           newSet.delete(productId);
           return newSet;
         });
-        console.log('Product removed from wishlist successfully');
       } else {
         console.error('Failed to remove from wishlist:', data.message);
       }
@@ -1168,7 +1166,7 @@ const Shop = () => {
               <button
                 onClick={clearAllFilters}
                 style={{
-                  background: '#9a0e0d',
+                  background: '#B68126',
                   color: 'white',
                   border: 'none',
                   padding: '0.75rem 1.5rem',

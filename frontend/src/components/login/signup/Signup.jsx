@@ -136,7 +136,6 @@ const Signup = () => {
 
     // Handle social signup (placeholder)
     const handleSocialSignup = (provider) => {
-        console.log(`${provider} signup clicked`);
         // Implement social signup functionality here
     };
 

@@ -92,9 +92,7 @@ const Cart = () => {
 
     // Try to fetch additional coupons from API
     try {
-      console.log('Fetching coupons from:', `${API_URL}/coupons/active`);
       const response = await axios.get(`${API_URL}/coupons/active`);
-      console.log('Available coupons response:', response.data);
       if (response.data.success && response.data.data.length > 0) {
         // Merge API coupons with default coupons
         const apiCoupons = response.data.data;
@@ -204,13 +202,11 @@ const Cart = () => {
 
     // If not a client-side coupon, try API validation
     try {
-      console.log('Applying coupon via API:', couponCode);
       const response = await axios.post(`${API_URL}/coupons/validate`, {
         coupon_code: couponCode,
         subtotal: subtotal
       });
 
-      console.log('Coupon validation response:', response.data);
 
       if (response.data.success) {
         setAppliedCoupon(response.data.data);

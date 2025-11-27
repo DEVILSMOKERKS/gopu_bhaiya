@@ -60,7 +60,6 @@ const HomeVideo = () => {
       videoRef.current.play().then(() => {
         setIsPlaying(true);
       }).catch(error => {
-        console.log('Autoplay prevented:', error);
       });
     }
   };

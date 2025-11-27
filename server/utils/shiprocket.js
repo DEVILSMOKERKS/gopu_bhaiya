@@ -18,10 +18,6 @@ const getAuthToken = async () => {
       return authToken;
     }
 
-    console.log('Attempting to authenticate with Shiprocket...');
-    console.log('URL:', `${SHIPROCKET_CONFIG.baseURL}/external/auth/login`);
-    console.log('Email:', SHIPROCKET_CONFIG.email);
-
     const response = await axios.post(`${SHIPROCKET_CONFIG.baseURL}/external/auth/login`, {
       email: SHIPROCKET_CONFIG.email,
       password: SHIPROCKET_CONFIG.password
@@ -33,13 +29,11 @@ const getAuthToken = async () => {
       }
     });
 
-    console.log('Shiprocket authentication response:', response.data);
 
     if (response.data && response.data.token) {
       authToken = response.data.token;
       // Set token expiry to 24 hours from now
       tokenExpiry = new Date(Date.now() + 24 * 60 * 60 * 1000);
-      console.log('Successfully authenticated with Shiprocket');
       return authToken;
     } else {
       throw new Error('Failed to get authentication token from Shiprocket');
@@ -91,16 +85,11 @@ const createShiprocketOrder = async (orderData) => {
     
     // Use customer's actual email
     const customerEmail = orderData.customer_email;
-    console.log('Customer email for Shiprocket:', customerEmail);
     if (!customerEmail) {
       throw new Error('Customer email is required for Shiprocket order');
     }
     billingAddress.email = customerEmail;
     shippingAddress.email = customerEmail;
-
-    // Debug: Log formatted addresses
-    console.log('Formatted billing address:', billingAddress);
-    console.log('Formatted shipping address:', shippingAddress);
 
     const shiprocketOrder = {
       order_id: orderData.order_number,
@@ -153,9 +142,6 @@ const createShiprocketOrder = async (orderData) => {
     };
 
     // Debug: Log the final Shiprocket order data
-    console.log('Shiprocket order data:', JSON.stringify(shiprocketOrder, null, 2));
-
-    console.log('Sending order to Shiprocket API...');
     const response = await axios.post(
       `${SHIPROCKET_CONFIG.baseURL}/external/orders/create/adhoc`,
       shiprocketOrder,
@@ -168,10 +154,8 @@ const createShiprocketOrder = async (orderData) => {
       }
     );
 
-    console.log('Shiprocket API response:', JSON.stringify(response.data, null, 2));
 
     if (response.data && response.data.shipment_id) {
-      console.log('✅ Shiprocket order created successfully');
       return {
         success: true,
         shipment_id: response.data.shipment_id,
@@ -250,14 +234,12 @@ const checkCourierServiceability = async (pickupPincode, deliveryPincode, weight
 // Test function to check Shiprocket connectivity
 const testShiprocketConnection = async () => {
   try {
-    console.log('Testing Shiprocket connection...');
     const response = await axios.get('https://apiv2.shiprocket.in/v1/external/auth/login', {
       timeout: 5000,
       headers: {
         'User-Agent': 'Mateshwari Moorti Bhandar/1.0'
       }
     });
-    console.log('Shiprocket API is reachable');
     return true;
   } catch (error) {
     console.error('Shiprocket connection test failed:', error.message);

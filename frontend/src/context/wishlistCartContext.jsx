@@ -58,7 +58,7 @@ export const WishlistCartProvider = ({ children }) => {
   // Add to cart function
   const addToCart = useCallback(async (productData) => {
     const { product_id, color_id, size_id, quantity = 1, product, size_name, color_name, sell_price } = productData;
-    
+
     try {
       if (isUserLoggedIn()) {
         // User is logged in - use API
@@ -78,7 +78,7 @@ export const WishlistCartProvider = ({ children }) => {
   // Buy Now function - adds to cart and prepares for direct checkout
   const buyNow = useCallback(async (productData, navigate) => {
     const { product_id, color_id, size_id, quantity = 1, product, size_name, color_name, sell_price } = productData;
-    
+
     try {
       if (isUserLoggedIn()) {
         // User is logged in - use API
@@ -89,7 +89,7 @@ export const WishlistCartProvider = ({ children }) => {
         // User is not logged in - use localStorage
         dispatch(addToCartLocal({ product_id, color_id, size_id, quantity, product, size_name, color_name, sell_price }));
       }
-      
+
       // Navigate to checkout after adding to cart
       if (navigate) {
         navigate('/checkout');
@@ -139,7 +139,7 @@ export const WishlistCartProvider = ({ children }) => {
   // Add to wishlist
   const addToWishlist = useCallback(async (productData) => {
     const { product_id, product } = productData;
-    
+
     try {
       if (isUserLoggedIn()) {
         // User is logged in - use API
@@ -178,9 +178,7 @@ export const WishlistCartProvider = ({ children }) => {
   const removeFromWishlistByProduct = useCallback(async (product_id) => {
     try {
       if (isUserLoggedIn()) {
-        // User is logged in - use API
-        // You would need to implement this API endpoint
-        console.log('Remove by product ID API not implemented yet');
+
       } else {
         // User is not logged in - use localStorage
         const wishlistItem = wishlist.items.find(item => item.product_id === product_id);
@@ -201,18 +199,18 @@ export const WishlistCartProvider = ({ children }) => {
 
   // Check if product is in cart
   const isInCart = useCallback((product_id, color_id = null, size_id = null) => {
-    return cart.items.some(item => 
-      item.product_id === product_id && 
-      item.color_id === color_id && 
+    return cart.items.some(item =>
+      item.product_id === product_id &&
+      item.color_id === color_id &&
       item.size_id === size_id
     );
   }, [cart.items]);
 
   // Get cart item quantity
   const getCartItemQuantity = useCallback((product_id, color_id = null, size_id = null) => {
-    const item = cart.items.find(item => 
-      item.product_id === product_id && 
-      item.color_id === color_id && 
+    const item = cart.items.find(item =>
+      item.product_id === product_id &&
+      item.color_id === color_id &&
       item.size_id === size_id
     );
     return item ? item.quantity : 0;
@@ -285,7 +283,7 @@ export const WishlistCartProvider = ({ children }) => {
     wishlist,
     loading,
     error,
-    
+
     // Actions
     addToCart,
     buyNow,
@@ -298,7 +296,7 @@ export const WishlistCartProvider = ({ children }) => {
     clearWishlist: clearWishlistData,
     clearError: clearErrorData,
     syncLocalStorageToAPI,
-    
+
     // Utility functions
     isInWishlist,
     isInCart,

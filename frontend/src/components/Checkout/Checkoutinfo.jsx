@@ -51,7 +51,6 @@ const Checkoutinfo = () => {
     if (checkoutData) {
       try {
         const data = JSON.parse(checkoutData);
-        console.log('Checkout data loaded from sessionStorage:', data);
         setCartItems(data.cartItems || []);
         setSubtotal(data.subtotal || 0);
         setAppliedCoupon(data.appliedCoupon || null);
@@ -64,7 +63,6 @@ const Checkoutinfo = () => {
 
     // If no sessionStorage data, use cart context
     if (cart && cart.items && cart.items.length > 0) {
-      console.log('Using cart context data:', cart);
       const transformedItems = cart.items.map(item => ({
         id: item.cart_id || item.product_id,
         product_id: item.product_id,
@@ -77,11 +75,11 @@ const Checkoutinfo = () => {
         quantity: item.quantity || 1,
         image: item.product?.image || '/src/assets/img/Bestseller1.jpg'
       }));
-      
+
       setCartItems(transformedItems);
       const calculatedSubtotal = transformedItems.reduce((sum, item) => sum + (item.price * item.quantity), 0);
       setSubtotal(calculatedSubtotal);
-      
+
       // Store in sessionStorage for consistency
       sessionStorage.setItem('checkoutData', JSON.stringify({
         cartItems: transformedItems,
@@ -91,7 +89,6 @@ const Checkoutinfo = () => {
       }));
     } else {
       // No cart data available, redirect to cart
-      console.log('No cart data available, redirecting to cart');
       navigate('/cart');
     }
   }, [cart, navigate]);
@@ -116,7 +113,7 @@ const Checkoutinfo = () => {
         quantity: item.quantity || 1,
         image: item.product?.image || '/src/assets/img/Bestseller1.jpg'
       }));
-      
+
       // Only update if the data has actually changed
       if (JSON.stringify(transformedItems) !== JSON.stringify(cartItems)) {
         setCartItems(transformedItems);
@@ -215,9 +212,7 @@ const Checkoutinfo = () => {
 
     // Try to fetch additional coupons from API
     try {
-      console.log('Fetching coupons from:', `${API_URL}/coupons/active`);
       const response = await axios.get(`${API_URL}/coupons/active`);
-      console.log('Available coupons response:', response.data);
       if (response.data.success && response.data.data.length > 0) {
         // Merge API coupons with default coupons
         const apiCoupons = response.data.data;
@@ -338,11 +333,11 @@ const Checkoutinfo = () => {
     };
 
     const upperCaseCode = couponCode.toUpperCase();
-    
+
     // Check if it's a valid client-side coupon
     if (clientSideCoupons[upperCaseCode]) {
       const coupon = clientSideCoupons[upperCaseCode];
-      
+
       // Check minimum order amount
       if (subtotal < coupon.min_order_amount) {
         setCouponError(`Minimum order amount of ₹${coupon.min_order_amount} required for this coupon`);
@@ -350,7 +345,7 @@ const Checkoutinfo = () => {
         setCouponLoading(false);
         return;
       }
-      
+
       // Apply the coupon
       setAppliedCoupon(coupon);
       setCouponError('');
@@ -362,18 +357,14 @@ const Checkoutinfo = () => {
         data.appliedCoupon = coupon;
         sessionStorage.setItem('checkoutData', JSON.stringify(data));
       }
-      
+
       setCouponLoading(false);
       return;
     }
 
     // If not a client-side coupon, try API validation
     try {
-      console.log('Applying coupon via API:', couponCode);
-      console.log('API URL:', `${API_URL}/coupons/validate/${couponCode}`);
-      
       const response = await axios.get(`${API_URL}/coupons/validate/${couponCode}`);
-      console.log('Coupon validation response:', response.data);
 
       if (response.data.success) {
         setAppliedCoupon(response.data.data);
@@ -392,7 +383,7 @@ const Checkoutinfo = () => {
       }
     } catch (error) {
       console.error('Coupon application error:', error);
-      
+
       // If API fails, show error but don't apply fallback
       if (error.response?.data?.message) {
         setCouponError(error.response.data.message);
@@ -508,7 +499,7 @@ const Checkoutinfo = () => {
             try {
               const contentIds = cartItems.map(item => item.product_id.toString());
               const totalValue = cartItems.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-              
+
               window.fbq('track', 'Purchase', {
                 content_ids: contentIds,
                 content_type: 'product',
@@ -516,7 +507,6 @@ const Checkoutinfo = () => {
                 currency: 'INR',
                 num_items: cartItems.length
               });
-              console.log('Facebook Pixel Purchase tracked for order:', codResponse.data.data.order_number);
             } catch (error) {
               console.error('Error tracking Purchase:', error);
             }
@@ -574,12 +564,7 @@ const Checkoutinfo = () => {
       (subtotal * appliedCoupon.discount_value / 100) :
       appliedCoupon.discount_value) : 0;
   const total = subtotal + codFee - discount;
-  
-  // Debug logging
-  console.log('Applied coupon:', appliedCoupon);
-  console.log('Subtotal:', subtotal);
-  console.log('Discount:', discount);
-  console.log('Total:', total);
+
 
   return (
     <div className="checkoutinfo-container">
@@ -823,19 +808,19 @@ const Checkoutinfo = () => {
             {cartItems.length > 0 ? (
               cartItems.map((item, index) => (
                 <div key={item.id || item.product_id || index} className="checkoutinfo-cart-item">
-                <div className="checkoutinfo-item-image">
-                    <img 
-                      src={item.image || '/src/assets/img/Bestseller1.jpg'} 
-                      alt={item.name || 'Product'} 
+                  <div className="checkoutinfo-item-image">
+                    <img
+                      src={item.image || '/src/assets/img/Bestseller1.jpg'}
+                      alt={item.name || 'Product'}
                       onError={(e) => {
                         e.target.src = '/src/assets/img/Bestseller1.jpg';
                       }}
                     />
-                </div>
-                <div className="checkoutinfo-item-details">
+                  </div>
+                  <div className="checkoutinfo-item-details">
                     <h3>{item.name || 'Product'}</h3>
                     <p>Size: {item.size || 'Standard'}, Color: {item.color || 'Default'}</p>
-                  <div className="checkoutinfo-quantity">
+                    <div className="checkoutinfo-quantity">
                       <span>Qty: {item.quantity || 1}</span>
                     </div>
                   </div>
@@ -862,8 +847,8 @@ const Checkoutinfo = () => {
             {/* Available Coupons Display */}
             <div className="checkoutinfo-available-coupons">
               {availableCoupons.map((coupon) => (
-                <div 
-                  key={coupon.coupon_id} 
+                <div
+                  key={coupon.coupon_id}
                   className="checkoutinfo-coupon-card"
                   onClick={() => {
                     setCouponCode(coupon.code);

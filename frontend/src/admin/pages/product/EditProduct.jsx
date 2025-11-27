@@ -82,7 +82,7 @@ const EditProduct = () => {
 
       if (data.success) {
         const product = data.data;
-        
+
         // Set basic form data
         setFormData({
           name: product.name || '',
@@ -107,7 +107,7 @@ const EditProduct = () => {
             previewUrls: [], // Preview URLs for new images
             existingImages: color.images || [] // Existing images from database (URLs)
           })));
-          
+
           // Set existing image previews for colors
           setTimeout(() => {
             setColors(prevColors => prevColors.map((color, index) => {
@@ -160,7 +160,7 @@ const EditProduct = () => {
     const files = Array.from(e.target.files);
     const newImages = [...colors[colorIndex].images, ...files];
     const newPreviewUrls = [...colors[colorIndex].previewUrls];
-    
+
     files.forEach(file => {
       const reader = new FileReader();
       reader.onload = (e) => {
@@ -169,7 +169,7 @@ const EditProduct = () => {
       };
       reader.readAsDataURL(file);
     });
-    
+
     updateColor(colorIndex, 'images', newImages);
   };
 
@@ -178,14 +178,14 @@ const EditProduct = () => {
       // Remove existing image
       const newExistingImages = colors[colorIndex].existingImages.filter((_, i) => i !== imageIndex);
       const newPreviewUrls = colors[colorIndex].previewUrls.filter((_, i) => i !== imageIndex);
-      
+
       updateColor(colorIndex, 'existingImages', newExistingImages);
       updateColor(colorIndex, 'previewUrls', newPreviewUrls);
     } else {
       // Remove new uploaded image
       const newImages = colors[colorIndex].images.filter((_, i) => i !== imageIndex);
       const newPreviewUrls = colors[colorIndex].previewUrls.filter((_, i) => i !== imageIndex);
-      
+
       updateColor(colorIndex, 'images', newImages);
       updateColor(colorIndex, 'previewUrls', newPreviewUrls);
     }
@@ -200,7 +200,7 @@ const EditProduct = () => {
   };
 
   const updateColor = (index, field, value) => {
-    setColors(prev => prev.map((color, i) => 
+    setColors(prev => prev.map((color, i) =>
       i === index ? { ...color, [field]: value } : color
     ));
   };
@@ -214,7 +214,7 @@ const EditProduct = () => {
   };
 
   const updateSize = (index, field, value) => {
-    setSizes(prev => prev.map((size, i) => 
+    setSizes(prev => prev.map((size, i) =>
       i === index ? { ...size, [field]: value } : size
     ));
   };
@@ -232,17 +232,17 @@ const EditProduct = () => {
 
     let totalNewImages = 0;
     let totalExistingImages = 0;
-    
+
     colors.forEach((color, colorIndex) => {
       // Count existing images
       if (color.existingImages && color.existingImages.length > 0) {
         totalExistingImages += color.existingImages.length;
       }
-      
+
       // Validate new uploaded images
       if (color.images && color.images.length > 0) {
         totalNewImages += color.images.length;
-        
+
         color.images.forEach((file, fileIndex) => {
           if (file.size > maxSize) {
             errors.push(`Color ${colorIndex + 1} - Image ${fileIndex + 1} size must be less than 5MB`);
@@ -282,9 +282,9 @@ const EditProduct = () => {
         if (!color.name || color.name.trim() === '') {
           errors.push(`Color ${index + 1} name is required`);
         }
-        
-        const totalImages = (color.existingImages ? color.existingImages.length : 0) + 
-                           (color.images ? color.images.length : 0);
+
+        const totalImages = (color.existingImages ? color.existingImages.length : 0) +
+          (color.images ? color.images.length : 0);
         if (totalImages === 0) {
           errors.push(`Color ${index + 1} must have at least one image`);
         }
@@ -322,16 +322,16 @@ const EditProduct = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
+
     // Validate product data
     const productValidation = validateProductForEdit(formData, colors, sizes);
     const imageValidation = validateImageUploadForEdit(colors);
-    
+
     if (!productValidation.isValid) {
       showValidationErrors(productValidation.errors);
       return;
     }
-    
+
     if (!imageValidation.isValid) {
       showValidationErrors(imageValidation.errors);
       return;
@@ -341,7 +341,7 @@ const EditProduct = () => {
 
     try {
       const formDataToSend = new FormData();
-      
+
       // Add basic product info
       Object.keys(formData).forEach(key => {
         if (formData[key]) {
@@ -352,25 +352,22 @@ const EditProduct = () => {
       // Add all new images from all colors
       let imageIndex = 0;
       const colorsWithImageIndices = colors.map(color => {
-        const colorWithIndices = { 
+        const colorWithIndices = {
           name: color.name,
           code: color.code,
           images: [],
           existingImages: color.existingImages || []
         };
-        
-        console.log(`Processing color ${color.name} with ${color.images.length} new images and ${color.existingImages.length} existing images`);
+
         color.images.forEach((file, fileIndex) => {
-          console.log(`Adding file ${file.name} at index ${imageIndex}`);
           formDataToSend.append('images', file);
           colorWithIndices.images.push(imageIndex);
           imageIndex++;
         });
-        
+
         return colorWithIndices;
       });
-      
-      console.log('Final colors with indices:', colorsWithImageIndices);
+
 
       // Add colors with image indices
       formDataToSend.append('colors', JSON.stringify(colorsWithImageIndices));
@@ -415,7 +412,7 @@ const EditProduct = () => {
   return (
     <div className="editproduct-container">
       <div className="editproduct-header">
-        <button 
+        <button
           className="editproduct-back-btn"
           onClick={() => navigate('/admin/products')}
         >
@@ -537,7 +534,7 @@ const EditProduct = () => {
                     />
                   </div>
                 </div>
-                
+
                 {/* Color-specific image upload */}
                 <div className="editproduct-color-images-section">
                   <h4>Images for {color.name || `Color ${colorIndex + 1}`}</h4>
@@ -565,8 +562,8 @@ const EditProduct = () => {
                         <div className="editproduct-preview-grid">
                           {color.existingImages.map((imageUrl, imageIndex) => (
                             <div key={`existing-${imageIndex}`} className="editproduct-image-preview">
-                              <img 
-                                src={`${API_URL.replace('/api', '')}${imageUrl}`} 
+                              <img
+                                src={`${API_URL.replace('/api', '')}${imageUrl}`}
                                 alt={`Existing ${imageIndex + 1}`}
                                 onError={(e) => {
                                   e.target.src = '/placeholder-product.jpg';
@@ -592,8 +589,8 @@ const EditProduct = () => {
                         <div className="editproduct-preview-grid">
                           {color.previewUrls.map((url, imageIndex) => (
                             <div key={`new-${imageIndex}`} className="editproduct-image-preview">
-                              <img 
-                                src={url} 
+                              <img
+                                src={url}
                                 alt={`New ${imageIndex + 1}`}
                                 onError={(e) => {
                                   e.target.src = '/placeholder-product.jpg';

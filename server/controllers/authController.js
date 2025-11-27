@@ -70,9 +70,7 @@ const register = async (req, res) => {
     }
 
     // Hash password
-    console.log('Register endpoint - received password:', password);
     const hashedPassword = await hashPassword(password);
-    console.log('Password hashed successfully');
 
     // Insert new user with additional fields
     let result;
@@ -93,7 +91,6 @@ const register = async (req, res) => {
       );
       result = insertResult;
     } catch (dbError) {
-      console.error('Database insert error:', dbError);
       throw dbError;
     }
 
@@ -116,13 +113,6 @@ const register = async (req, res) => {
     });
 
   } catch (error) {
-    console.error('Register error:', error);
-    console.error('Error details:', {
-      message: error.message,
-      code: error.code,
-      errno: error.errno,
-      sqlState: error.sqlState
-    });
     res.status(500).json({
       success: false,
       message: 'Internal server error',
@@ -170,7 +160,6 @@ const signup = async (req, res) => {
       );
       result = insertResult;
     } catch (dbError) {
-      console.error('Database insert error:', dbError);
       throw dbError;
     }
 
@@ -663,7 +652,6 @@ const forgotPassword = async (req, res) => {
 
     const { email } = req.body;
 
-    console.log('🔍 Password reset requested for email:', email);
 
     // Check if user exists
     const [users] = await db.execute(
@@ -672,7 +660,6 @@ const forgotPassword = async (req, res) => {
     );
 
     if (users.length === 0) {
-      console.log('❌ No user found with email:', email);
       return res.status(404).json({
         success: false,
         message: 'No account found with this email address',
@@ -681,7 +668,6 @@ const forgotPassword = async (req, res) => {
     }
 
     const user = users[0];
-    console.log('✅ User found:', user.name);
 
     // Generate JWT reset token (expires in 1 hour)
     const resetToken = jwt.sign(
@@ -694,11 +680,9 @@ const forgotPassword = async (req, res) => {
       { expiresIn: '1h' }
     );
 
-    console.log('🔐 Generated JWT reset token');
 
     // Generate reset link
     const resetLink = `${process.env.FRONTEND_URL || 'http://localhost:5173'}/reset-password?token=${resetToken}`;
-    console.log('🔗 Reset link generated:', resetLink);
 
     // Send email with reset link
     const emailSubject = 'Password Reset Request - Mateshwari Moorti Bhandar';
@@ -751,7 +735,6 @@ const forgotPassword = async (req, res) => {
     `;
 
     await sendEmail(user.email, emailSubject, emailHtml);
-    console.log('📧 Password reset email sent successfully');
 
     res.status(200).json({
       success: true,
@@ -783,7 +766,6 @@ const resetPassword = async (req, res) => {
 
     const { token, password } = req.body;
 
-    console.log('🔍 Password reset requested for token');
 
     // Verify JWT token
     let decoded;
@@ -794,7 +776,6 @@ const resetPassword = async (req, res) => {
         throw new Error('Invalid token type');
       }
     } catch (error) {
-      console.log('❌ Invalid or expired reset token');
       return res.status(400).json({
         success: false,
         message: 'Invalid or expired reset token. Please request a new password reset.',
@@ -809,7 +790,6 @@ const resetPassword = async (req, res) => {
     );
 
     if (users.length === 0) {
-      console.log('❌ User not found');
       return res.status(400).json({
         success: false,
         message: 'User not found. Please request a new password reset.',
@@ -818,11 +798,9 @@ const resetPassword = async (req, res) => {
     }
 
     const user = users[0];
-    console.log('✅ Valid reset token found for user:', user.name);
 
     // Hash the new password
     const hashedPassword = await hashPassword(password);
-    console.log('🔐 New password hashed successfully');
 
     // Update password
     await db.execute(
@@ -830,7 +808,6 @@ const resetPassword = async (req, res) => {
       [hashedPassword, user.id]
     );
 
-    console.log('✅ Password updated successfully');
 
     res.status(200).json({
       success: true,

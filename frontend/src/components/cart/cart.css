@@ -22,7 +22,7 @@
   width: 40px;
   height: 40px;
   border: 3px solid #f3f3f3;
-  border-top: 3px solid #8B0000;
+  border-top: 3px solid #956213;
   border-radius: 50%;
   animation: spin 1s linear infinite;
   margin-bottom: 1rem;
@@ -84,7 +84,7 @@
 }
 
 .cart-shop-now-btn {
-  background-color: #8B0000;
+  background-color: #956213;
   color: white;
   border: none;
   padding: 12px 24px;
@@ -111,7 +111,7 @@
 }
 
 .cart-back-link {
-  color: #8B0000;
+  color: #956213;
   text-decoration: none;
   font-size: 14px;
   font-weight: 500;
@@ -132,7 +132,7 @@
 }
 
 .cart-continue-shopping {
-  color: #8B0000;
+  color: #956213;
   text-decoration: none;
   font-size: 14px;
   font-weight: 500;
@@ -373,7 +373,7 @@
 }
 
 .cart-next-btn {
-  background-color: #8B0000;
+  background-color: #956213;
   color: white;
   border: none;
   padding: 15px 30px;
@@ -434,7 +434,7 @@
 .cart-coupon-card:hover {
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  border-color: #8B0000;
+  border-color: #956213;
 }
 
 .cart-coupon-header {
@@ -447,7 +447,7 @@
 .cart-coupon-code {
   font-size: 18px;
   font-weight: 700;
-  color: #8B0000;
+  color: #956213;
   letter-spacing: 1px;
 }
 
@@ -480,7 +480,7 @@
 
 .cart-coupon-min-order {
   font-size: 11px;
-  color: #8B0000;
+  color: #956213;
   font-weight: 500;
   background: #ffe6e6;
   padding: 2px 6px;

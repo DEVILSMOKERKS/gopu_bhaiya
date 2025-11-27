@@ -9,8 +9,6 @@ const getAllBlogs = async (req, res) => {
     const limitNum = parseInt(limit, 10) || 10;
     const offset = (pageNum - 1) * limitNum;
 
-    console.log('getAllBlogs - page:', page, 'limit:', limit, 'pageNum:', pageNum, 'limitNum:', limitNum, 'offset:', offset);
-
     // Validate parameters
     if (isNaN(pageNum) || pageNum <= 0) {
       return res.status(400).json({
@@ -44,14 +42,7 @@ const getAllBlogs = async (req, res) => {
     // Use string concatenation for LIMIT and OFFSET to avoid parameter binding issues
     query += ` ORDER BY b.created_at DESC LIMIT ${Number(limitNum)} OFFSET ${Number(offset)}`;
 
-    console.log('getAllBlogs - query:', query);
-    console.log('getAllBlogs - queryParams:', queryParams);
-    console.log('getAllBlogs - limitNum type:', typeof limitNum, 'value:', limitNum);
-    console.log('getAllBlogs - offset type:', typeof offset, 'value:', offset);
-
-    console.log('getAllBlogs - About to execute query with params:', queryParams);
     const [blogs] = await db.execute(query, queryParams);
-    console.log('getAllBlogs - Query executed successfully, blogs found:', blogs.length);
 
     // Get total count for pagination
     let countQuery = `

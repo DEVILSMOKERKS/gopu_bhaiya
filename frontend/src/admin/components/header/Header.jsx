@@ -38,7 +38,6 @@ const Header = ({ adminUser, onLogout, onToggleMobileSidebar }) => {
   const handleSearch = (e) => {
     e.preventDefault();
     // Implement search functionality
-    console.log('Searching for:', searchQuery);
   };
 
   const markNotificationAsRead = async (notificationId) => {

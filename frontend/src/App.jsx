@@ -27,7 +27,7 @@ const LoadingFallback = () => (
       width: '50px',
       height: '50px',
       border: '4px solid #f3f3f3',
-      borderTop: '4px solid #8B0000',
+      borderTop: '4px solid #956213',
       borderRadius: '50%',
       animation: 'spin 1s linear infinite',
       marginBottom: '20px'

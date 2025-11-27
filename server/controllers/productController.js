@@ -70,25 +70,20 @@ const createProduct = async (req, res) => {
         // Handle images for this color
         if (req.files && color.images) {
           const colorImages = Array.isArray(color.images) ? color.images : [color.images];
-          console.log(`Processing color ${color.name} with images:`, colorImages);
-          console.log('Available files:', req.files.map(f => f.filename));
           
           for (let i = 0; i < colorImages.length; i++) {
             const imageIndex = parseInt(colorImages[i]);
-            console.log(`Looking for image at index ${imageIndex}`);
             if (req.files[imageIndex]) {
               const imageUrl = `/products/${req.files[imageIndex].filename}`;
-              console.log(`Inserting image: ${imageUrl}`);
               await connection.execute(
                 'INSERT INTO product_images (color_id, image_url, is_default) VALUES (?, ?, ?)',
                 [colorId, imageUrl, i === 0] // First image is default
               );
             } else {
-              console.log(`No file found at index ${imageIndex}`);
             }
           }
         } else {
-          console.log(`No images for color ${color.name}`);
+          console.info(`No images for color ${color.name}`);
         }
       }
 
@@ -611,7 +606,6 @@ const getBestsellerProducts = async (req, res) => {
     const { limit = 10 } = req.query;
     const limitNum = parseInt(limit, 10) || 10;
 
-    console.log('getBestsellerProducts - limit:', limit, 'limitNum:', limitNum);
 
     // Validate limit parameter
     if (isNaN(limitNum) || limitNum <= 0 || limitNum > 100) {
@@ -624,11 +618,6 @@ const getBestsellerProducts = async (req, res) => {
     // Get products with highest sales/orders (you can modify this logic based on your business requirements)
     // For now, I'll get products that are marked as bestsellers or have high ratings
     const queryParams = [Number(limitNum)];
-    console.log('getBestsellerProducts - queryParams:', queryParams);
-    console.log('getBestsellerProducts - limitNum type:', typeof limitNum, 'value:', limitNum);
-    
-    console.log('getBestsellerProducts - About to execute query with params:', queryParams);
-    
     // Use string concatenation for LIMIT to avoid parameter binding issues
     const query = `SELECT 
          p.product_id,
@@ -660,7 +649,6 @@ const getBestsellerProducts = async (req, res) => {
        LIMIT ${Number(limitNum)}`;
     
     const [products] = await db.execute(query);
-    console.log('getBestsellerProducts - Query executed successfully, products found:', products.length);
 
     // Get colors and images for each product
     for (let product of products) {
@@ -719,7 +707,6 @@ const getNewArrivalProducts = async (req, res) => {
     const limitNum = parseInt(limit, 10) || 10;
     const daysNum = parseInt(days, 10) || 30;
 
-    console.log('getNewArrivalProducts - limit:', limit, 'days:', days, 'limitNum:', limitNum, 'daysNum:', daysNum);
 
     // Validate parameters
     if (isNaN(limitNum) || limitNum <= 0 || limitNum > 100) {
@@ -738,12 +725,6 @@ const getNewArrivalProducts = async (req, res) => {
 
     // Get products created within the specified number of days
     const queryParams = [Number(daysNum), Number(limitNum)];
-    console.log('getNewArrivalProducts - queryParams:', queryParams);
-    console.log('getNewArrivalProducts - daysNum type:', typeof daysNum, 'value:', daysNum);
-    console.log('getNewArrivalProducts - limitNum type:', typeof limitNum, 'value:', limitNum);
-    
-    console.log('getNewArrivalProducts - About to execute query with params:', queryParams);
-    
     // Use string concatenation for LIMIT to avoid parameter binding issues
     const query = `SELECT 
          p.product_id,
@@ -776,7 +757,6 @@ const getNewArrivalProducts = async (req, res) => {
        LIMIT ${Number(limitNum)}`;
     
     const [products] = await db.execute(query, [Number(daysNum)]);
-    console.log('getNewArrivalProducts - Query executed successfully, products found:', products.length);
 
     // Get colors and images for each product
     for (let product of products) {
@@ -838,7 +818,6 @@ const getAlsoLikeProducts = async (req, res) => {
     const { product_id, limit = 8 } = req.query;
     const limitNum = parseInt(limit, 10) || 8;
 
-    console.log('getAlsoLikeProducts - product_id:', product_id, 'limit:', limit, 'limitNum:', limitNum);
 
     if (!product_id) {
       return res.status(400).json({
@@ -907,7 +886,6 @@ const getAlsoLikeProducts = async (req, res) => {
        LIMIT ${Number(limitNum)}`;
     
     const [products] = await db.execute(query, [product_id, category_id, subcategory_id, category_id, subcategory_id]);
-    console.log('getAlsoLikeProducts - Query executed successfully, products found:', products.length);
 
     // Get colors and images for each product
     for (let product of products) {

@@ -35,7 +35,7 @@ const Wishlist = () => {
   const getCurrentImage = (item) => {
     // Handle both logged-in and non-logged-in data structures
     const product = item.product || item;
-    
+
     if (product.colors && product.colors.length > 0) {
       const itemId = item.wishlist_id || item.id;
       const selectedColorIndex = selectedColors[itemId] || 0;
@@ -44,7 +44,7 @@ const Wishlist = () => {
         return `${API_URL.replace('/api', '')}${selectedColor.images[0]}`;
       }
     }
-    
+
     // Fallback to a default image if no colors are available
     return placeholderImage;
   };
@@ -54,7 +54,7 @@ const Wishlist = () => {
     const product = item.product || item;
     const itemId = item.wishlist_id || item.id;
     const selectedSize = selectedSizes[itemId];
-    
+
     if (product.sizes && product.sizes.length > 0) {
       if (selectedSize) {
         const selectedSizeData = product.sizes.find(size => size.size === selectedSize);
@@ -65,12 +65,12 @@ const Wishlist = () => {
       // If no size selected, show the first size price
       return `₹${product.sizes[0].sell_price.toLocaleString()}`;
     }
-    
+
     // Fallback to min_price if available
     if (product.min_price) {
       return `₹${product.min_price.toLocaleString()}`;
     }
-    
+
     // Fallback to product price
     return product.price || 'Price not available';
   };
@@ -81,7 +81,6 @@ const Wishlist = () => {
       removeFromWishlist(item.wishlist_id);
     } else {
       // Fallback data
-      console.log('Removed from wishlist:', item.name);
     }
   };
 
@@ -91,21 +90,21 @@ const Wishlist = () => {
     const itemId = item.wishlist_id || item.id;
     const selectedSize = selectedSizes[itemId];
     const selectedColorIndex = selectedColors[itemId] || 0;
-    
+
     if (!selectedSize) {
       alert('Please select a size before adding to cart');
       return;
     }
-    
+
     // Find the selected color and size data
     const selectedColor = product.colors && product.colors[selectedColorIndex];
     const selectedSizeData = product.sizes && product.sizes.find(size => size.size === selectedSize);
-    
+
     if (!selectedColor || !selectedSizeData) {
       alert('Selected color or size not available');
       return;
     }
-    
+
     // Prepare cart item data
     const cartItemData = {
       product_id: item.product_id,
@@ -117,10 +116,10 @@ const Wishlist = () => {
       color_name: selectedColor.color_name,
       sell_price: selectedSizeData.sell_price
     };
-    
+
     // Add to cart using context
     addToCart(cartItemData);
-    
+
     // Show success message
     alert('Item added to cart successfully!');
   };
@@ -164,7 +163,7 @@ const Wishlist = () => {
         <div className="wishlist-empty">
           <div className="wishlist-empty-icon">
             <svg width="64" height="64" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M20.84 4.61C20.3292 4.099 19.7228 3.69364 19.0554 3.41708C18.3879 3.14052 17.6725 2.99817 16.95 2.99817C16.2275 2.99817 15.5121 3.14052 14.8446 3.41708C14.1772 3.69364 13.5708 4.099 13.06 4.61L12 5.67L10.94 4.61C9.9083 3.5783 8.50903 2.9987 7.05 2.9987C5.59096 2.9987 4.19169 3.5783 3.16 4.61C2.1283 5.6417 1.5487 7.04097 1.5487 8.5C1.5487 9.95903 2.1283 11.3583 3.16 12.39L12 21.23L20.84 12.39C21.351 11.8792 21.7564 11.2728 22.0329 10.6054C22.3095 9.93789 22.4518 9.22249 22.4518 8.5C22.4518 7.77751 22.3095 7.0621 22.0329 6.39464C21.7564 5.72718 21.351 5.12075 20.84 4.61Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+              <path d="M20.84 4.61C20.3292 4.099 19.7228 3.69364 19.0554 3.41708C18.3879 3.14052 17.6725 2.99817 16.95 2.99817C16.2275 2.99817 15.5121 3.14052 14.8446 3.41708C14.1772 3.69364 13.5708 4.099 13.06 4.61L12 5.67L10.94 4.61C9.9083 3.5783 8.50903 2.9987 7.05 2.9987C5.59096 2.9987 4.19169 3.5783 3.16 4.61C2.1283 5.6417 1.5487 7.04097 1.5487 8.5C1.5487 9.95903 2.1283 11.3583 3.16 12.39L12 21.23L20.84 12.39C21.351 11.8792 21.7564 11.2728 22.0329 10.6054C22.3095 9.93789 22.4518 9.22249 22.4518 8.5C22.4518 7.77751 22.3095 7.0621 22.0329 6.39464C21.7564 5.72718 21.351 5.12075 20.84 4.61Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
           </div>
           <h3 className="wishlist-empty-title">Your wishlist is empty</h3>
@@ -176,13 +175,13 @@ const Wishlist = () => {
           {wishlist.items.map((item) => (
             <div key={item.wishlist_id} className="wishlist-card">
               <div className="wishlist-card-image-container">
-                <img 
-                  src={getCurrentImage(item)} 
-                  alt={`${item.product?.name || item.name || 'Product'} product`} 
+                <img
+                  src={getCurrentImage(item)}
+                  alt={`${item.product?.name || item.name || 'Product'} product`}
                   className="wishlist-card-image"
                 />
-                <button 
-                  className="wishlist-remove-btn" 
+                <button
+                  className="wishlist-remove-btn"
                   aria-label="Remove from wishlist"
                   onClick={(e) => {
                     e.stopPropagation();
@@ -190,7 +189,7 @@ const Wishlist = () => {
                   }}
                 >
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                    <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                   </svg>
                 </button>
               </div>
@@ -204,7 +203,7 @@ const Wishlist = () => {
                   {(item.product?.colors || item.colors) && (item.product?.colors || item.colors).length > 0 && (
                     <div className="wishlist-color-swatches">
                       {(item.product?.colors || item.colors).map((colorData, colorIndex) => (
-                        <div 
+                        <div
                           key={colorIndex}
                           className={`wishlist-color-swatch ${selectedColors[item.wishlist_id || item.id] === colorIndex ? 'wishlist-color-swatch-active' : ''}`}
                           style={{ backgroundColor: colorData.color_code || '#000000' }}
@@ -218,7 +217,7 @@ const Wishlist = () => {
                     </div>
                   )}
                 </div>
-                
+
                 {/* Size Selection */}
                 <div className="wishlist-size-section">
                   <h4 className="wishlist-size-title">Select Size:</h4>
@@ -254,7 +253,7 @@ const Wishlist = () => {
                 </div>
 
                 {/* Add to Cart Button */}
-                <button 
+                <button
                   className="wishlist-add-to-cart-btn"
                   onClick={(e) => {
                     e.stopPropagation();

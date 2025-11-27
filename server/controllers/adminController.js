@@ -119,8 +119,6 @@ const forgotPassword = async (req, res) => {
 
     const { email } = req.body;
 
-    console.log('🔍 Password reset requested for email:', email);
-
     // Check if admin exists
     const [admins] = await db.execute(
       'SELECT id, name, email FROM admins WHERE email = ?',
@@ -128,7 +126,6 @@ const forgotPassword = async (req, res) => {
     );
 
     if (admins.length === 0) {
-      console.log('❌ No admin found with email:', email);
       return res.status(404).json({
         success: false,
         message: 'No admin account found with this email address',
@@ -137,13 +134,11 @@ const forgotPassword = async (req, res) => {
     }
 
     const admin = admins[0];
-    console.log('✅ Admin found:', admin.name);
 
     // Generate reset token
     const resetToken = crypto.randomBytes(32).toString('hex');
     const resetTokenExpiry = new Date(Date.now() + 3600000); // 1 hour from now
 
-    console.log('🔐 Generated reset token:', resetToken.substring(0, 10) + '...');
 
     // Store reset token in database
     await db.execute(
@@ -151,17 +146,15 @@ const forgotPassword = async (req, res) => {
       [resetToken, resetTokenExpiry, admin.id]
     );
 
-    console.log('💾 Reset token stored in database');
 
     // Generate reset link
     const resetLink = `${process.env.FRONTEND_URL || 'http://localhost:3000'}/admin/reset-password?token=${resetToken}`;
-    console.log('🔗 Reset link generated:', resetLink);
 
     // Check if email configuration is available
     if (!process.env.EMAIL_USER || !process.env.EMAIL_PASSWORD) {
-      console.log('⚠️ Email configuration missing. Showing reset link in development mode.');
-      console.log('📧 To enable email sending, add EMAIL_USER and EMAIL_PASSWORD to .env file');
-      
+      console.info('⚠️ Email configuration missing. Showing reset link in development mode.');
+      console.info('📧 To enable email sending, add EMAIL_USER and EMAIL_PASSWORD to .env file');
+
       return res.json({
         success: true,
         message: 'Password reset link generated (email not configured)',
@@ -172,12 +165,10 @@ const forgotPassword = async (req, res) => {
       });
     }
 
-    // Send password reset email
-    console.log('📧 Attempting to send email to:', admin.email);
+    // Send password reset emai
     const emailResult = await sendPasswordResetEmail(admin.email, admin.name, resetLink);
 
     if (emailResult.success) {
-      console.log('✅ Email sent successfully!');
       res.json({
         success: true,
         message: 'Password reset link has been sent to your email address',
@@ -187,12 +178,10 @@ const forgotPassword = async (req, res) => {
       });
     } else {
       // If email sending fails, still return success but log the error
-      console.error('❌ Email sending failed:', emailResult.error);
-      console.log('📧 Email error details:', emailResult.message);
-      
+      console.error('❌ Email sending failed:', emailResult.error)
+
       // In development, still return the reset link
       if (process.env.NODE_ENV === 'development') {
-        console.log('🔗 Development mode - Password reset link:', resetLink);
         res.json({
           success: true,
           message: 'Password reset link generated (email sending failed in development)',
@@ -212,16 +201,16 @@ const forgotPassword = async (req, res) => {
 
   } catch (error) {
     console.error('💥 Forgot password error:', error);
-    
+
     // Check if it's a nodemailer error
     if (error.message.includes('Cannot find module') && error.message.includes('nodemailer')) {
-      console.log('🔧 Solution: Install nodemailer with: npm install nodemailer');
+      console.info('🔧 Solution: Install nodemailer with: npm install nodemailer')
     }
-    
+
     if (error.message.includes('Invalid login')) {
-      console.log('🔧 Solution: Check EMAIL_USER and EMAIL_PASSWORD in .env file');
+      console.info('🔧 Solution: Check EMAIL_USER and EMAIL_PASSWORD in .env file');
     }
-    
+
     res.status(500).json({
       success: false,
       message: 'Internal server error',

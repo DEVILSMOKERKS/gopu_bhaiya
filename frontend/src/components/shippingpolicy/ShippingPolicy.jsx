@@ -17,12 +17,10 @@ const ShippingPolicy = () => {
 
   const fetchPolicyData = async () => {
     try {
-      console.log('🔄 Fetching Shipping Policy data...');
       const response = await axios.get(`${API_URL}/shipping-policy/all`);
 
       if (response.data.success) {
         const data = response.data.data;
-        console.log('✅ Shipping Policy Data fetched successfully:', data);
         setPolicyData(data);
       } else {
         console.error('❌ Failed to fetch Shipping Policy data:', response.data.message);

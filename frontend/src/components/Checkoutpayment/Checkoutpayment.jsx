@@ -116,7 +116,7 @@ const Checkoutpayment = () => {
           contact: orderData.customerPhone || '9999999999'
         },
         theme: {
-          color: '#9a0e0d'
+          color: '#B68126'
         },
         modal: {
           ondismiss: () => {

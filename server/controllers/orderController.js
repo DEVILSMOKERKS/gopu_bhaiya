@@ -68,7 +68,7 @@ const createCodOrder = async (req, res) => {
     } = req.body;
 
     // Debug: Log received data
-    console.log('Received order data:', {
+    console.info('Received order data:', {
       user_id,
       items: items,
       shipping_address: shipping_address,
@@ -215,9 +215,7 @@ const createCodOrder = async (req, res) => {
 
     // Check stock availability and get product details
     const validatedItems = [];
-    console.log('Processing items:', items);
     for (const item of items) {
-      console.log('Processing item:', item);
 
       // Validate item has required fields
       if (!item.product_id || !item.quantity) {
@@ -346,8 +344,6 @@ const createCodOrder = async (req, res) => {
     ];
 
     // Debug: Log parameters to check for undefined values
-    console.log('Order parameters:', orderParams);
-    console.log('Totals object:', totals);
 
     const [orderResult] = await connection.execute(
       `INSERT INTO orders (
@@ -414,7 +410,6 @@ const createCodOrder = async (req, res) => {
     // User details are already available from guest checkout handling
 
     // Debug: Log shipping address to see if it contains email
-    console.log('Shipping address from form:', JSON.stringify(shipping_address, null, 2));
 
     // Prepare order data for Shiprocket and email
     const orderDataForShiprocket = {
@@ -449,7 +444,6 @@ const createCodOrder = async (req, res) => {
         );
       }
     } catch (shiprocketError) {
-      console.error('Shiprocket order creation failed:', shiprocketError);
       // Don't fail the main order if Shiprocket fails
     }
 
@@ -475,7 +469,6 @@ const createCodOrder = async (req, res) => {
       const emailToSend = shipping_address.email || user.email;
       await sendOrderConfirmationEmail(emailToSend, orderDataForEmail);
     } catch (emailError) {
-      console.error('Order confirmation email failed:', emailError);
       // Don't fail the main order if email fails
     }
 
@@ -508,7 +501,6 @@ const createCodOrder = async (req, res) => {
 
   } catch (error) {
     await connection.rollback();
-    console.error('Create COD order error:', error);
     res.status(500).json({
       success: false,
       message: 'Error creating COD order',
@@ -593,7 +585,6 @@ const createOrder = async (req, res) => {
     });
 
   } catch (error) {
-    console.error('Create order error:', error);
     res.status(500).json({
       success: false,
       message: 'Error creating Razorpay order',

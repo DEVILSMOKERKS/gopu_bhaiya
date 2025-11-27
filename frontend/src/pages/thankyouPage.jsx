@@ -59,7 +59,6 @@ function ThankYouPage() {
             currency: 'INR',
             num_items: orderData.cartItems ? orderData.cartItems.length : 0
           });
-          console.log('Facebook Pixel Purchase tracked for online payment order:', orderData.orderNumber);
 
           // Clear the pending order data
           sessionStorage.removeItem('pendingOrder');
@@ -428,7 +427,7 @@ function ThankYouPage() {
       textDecoration: 'none',
     },
     primaryButton: {
-      backgroundColor: '#8B0000',
+      backgroundColor: '#956213',
       color: 'white',
     },
     secondaryButton: {
