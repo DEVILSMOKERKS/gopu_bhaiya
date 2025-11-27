@@ -1,73 +1,172 @@
+/* ============================================
+   MAKERS HANDS SECTION
+   ============================================ */
 .makers-hands {
-  padding: 80px 20px;
-  background: linear-gradient(135deg, #B68126 0%, #956213 100%);
-  color: #ffffff;
+  position: relative;
+  width: 100%;
+  height: auto;
+  background-size: contain;
+  background-position: center top;
+  background-repeat: no-repeat;
+  overflow: hidden;
+  /* Desktop background image */
+  background-image: var(--desktop-bg);
 }
 
-.container {
+/* Overlay for content positioning */
+.makers-hands-overlay {
+  position: relative;
+  width: 100%;
+  height: auto;
+  min-height: 0;
+  z-index: 1;
+}
+
+/* Container for features */
+.makers-hands-container {
   max-width: 1400px;
   margin: 0 auto;
+  padding: 80px 20px;
+  height: auto;
+  min-height: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.section-title {
-  font-size: 2.5rem;
-  font-weight: 700;
-  text-align: center;
-  margin-bottom: 60px;
-  color: #ffffff;
-  font-family: 'Playfair Display', serif;
-}
-
-.features-grid {
+/* Features Grid - Desktop: 4 columns */
+.makers-hands-features-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(4, 1fr);
   gap: 40px;
+  align-items: center;
+  width: 100%;
 }
 
-.feature-card {
+/* Feature Card */
+.makers-hands-feature-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   text-align: center;
-  padding: 40px 20px;
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 12px;
-  backdrop-filter: blur(10px);
-  transition: transform 0.3s ease, background 0.3s ease;
+  padding: 30px 20px;
 }
 
-.feature-card:hover {
-  transform: translateY(-10px);
-  background: rgba(255, 255, 255, 0.15);
-}
-
-.feature-icon {
-  font-size: 4rem;
+/* Feature Icon */
+.makers-hands-feature-icon {
+  width: 80px;
+  height: 80px;
   margin-bottom: 20px;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.feature-title {
-  font-size: 1.3rem;
+.makers-hands-feature-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* Feature Title */
+.makers-hands-feature-title {
+  font-size: 1.1rem;
   font-weight: 600;
-  margin-bottom: 15px;
-  color: #B68126;
+  color: #ffffff;
+  margin: 0;
+  line-height: 1.4;
+  font-family: var(--font-family);
+  text-align: center;
 }
 
-.feature-description {
-  font-size: 1rem;
-  line-height: 1.6;
-  color: rgba(255, 255, 255, 0.9);
-}
-
-@media (max-width: 768px) {
-  .section-title {
-    font-size: 2rem;
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
+@media (max-width: 968px) {
+  .makers-hands {
+    background-size: cover;
+    /* Mobile background image */
+    background-image: var(--mobile-bg);
   }
 
-  .features-grid {
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  .makers-hands-container {
+    padding: 60px 15px;
+  }
+
+  /* Mobile: 2x2 grid */
+  .makers-hands-features-grid {
+    grid-template-columns: repeat(2, 1fr);
     gap: 30px;
   }
 
-  .feature-icon {
-    font-size: 3rem;
+  .makers-hands-feature-icon {
+    width: 70px;
+    height: 70px;
+    margin-bottom: 15px;
+  }
+
+  .makers-hands-feature-title {
+    font-size: 1rem;
   }
 }
 
+@media (max-width: 768px) {
+  .makers-hands {
+    background-size: cover;
+    /* Mobile background image */
+    background-image: var(--mobile-bg);
+  }
+
+  .makers-hands-container {
+    padding: 50px 15px;
+  }
+
+  .makers-hands-features-grid {
+    gap: 25px;
+  }
+
+  .makers-hands-feature-card {
+    padding: 20px 15px;
+  }
+
+  .makers-hands-feature-icon {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 12px;
+  }
+
+  .makers-hands-feature-title {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .makers-hands {
+    background-size: cover;
+    /* Mobile background image */
+    background-image: var(--mobile-bg);
+  }
+
+  .makers-hands-container {
+    padding: 40px 10px;
+  }
+
+  .makers-hands-features-grid {
+    gap: 20px;
+  }
+
+  .makers-hands-feature-card {
+    padding: 15px 10px;
+  }
+
+  .makers-hands-feature-icon {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 10px;
+  }
+
+  .makers-hands-feature-title {
+    font-size: 0.85rem;
+    line-height: 1.3;
+  }
+}

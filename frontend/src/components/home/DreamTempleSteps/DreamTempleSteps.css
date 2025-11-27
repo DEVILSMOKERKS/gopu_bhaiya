@@ -1,90 +1,297 @@
 .dream-temple-steps {
   padding: 80px 20px;
   background: #ffffff;
+  position: relative;
 }
 
-.container {
+.dream-temple-container {
   max-width: 1400px;
   margin: 0 auto;
 }
 
-.section-title {
+.dream-temple-title {
   font-size: 2.5rem;
   font-weight: 700;
   text-align: center;
-  margin-bottom: 60px;
-  color: #1a1a2e;
-  font-family: 'Playfair Display', serif;
+  margin-bottom: 15px;
+  color: #000000;
+  font-family: var(--font-family);
 }
 
-.steps-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 40px;
-  margin-top: 40px;
-}
-
-.step-card {
+.dream-temple-subtitle {
+  font-size: 1.1rem;
   text-align: center;
-  padding: 30px 20px;
-  border-radius: 12px;
-  background: #f8f9fa;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  color: #666666;
+  margin-bottom: 60px;
+  font-family: var(--font-family);
+}
+
+.dream-temple-steps-wrapper {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 0;
+  flex-wrap: nowrap;
+  position: relative;
+  padding: 40px 20px;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.dream-temple-steps-wrapper::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  height: 0;
+}
+
+.dream-temple-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1 1 0;
+  min-width: 0;
+  max-width: 20%;
   position: relative;
 }
 
-.step-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-}
-
-.step-icon {
-  font-size: 4rem;
-  margin-bottom: 15px;
-}
-
-.step-number {
-  position: absolute;
-  top: -15px;
-  right: -15px;
-  width: 40px;
-  height: 40px;
-  background: #B68126;
-  color: #ffffff;
+.dream-temple-step-circle {
+  width: 120px;
+  height: 120px;
   border-radius: 50%;
+  background: #ffffff;
+  border: 2px solid #B68126;
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transition: all var(--transition-normal);
+  overflow: hidden;
+}
+
+.dream-temple-step-circle:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 20px rgba(182, 129, 38, 0.3);
+  border-color: #956213;
+}
+
+.dream-temple-step-illustration {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+.dream-temple-step-image {
+  width: 200%;
+  height: 200%;
+  object-fit: contain;
+  object-position: center;
+  border-radius: 50%;
+}
+
+.dream-temple-step-title {
+  font-size: 1rem;
+  font-weight: 400;
+  text-align: center;
+  color: #000000;
+  margin: 0;
+  line-height: 1.4;
+  max-width: 220px;
+  font-family: var(--font-family);
+}
+
+.dream-temple-step-number-prefix {
   font-weight: 700;
-  font-size: 1.2rem;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
-.step-title {
-  font-size: 1.3rem;
-  font-weight: 600;
-  margin: 15px 0 10px;
-  color: #1a1a2e;
+.dream-temple-connector {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  width: 65px;
+  padding: 0 10px;
+  position: relative;
+  align-self: flex-start;
+  margin-top: 60px;
 }
 
-.step-description {
-  font-size: 0.95rem;
-  color: #666;
-  line-height: 1.6;
+.dream-temple-arrow-icon {
+  width: 65px;
+  height: auto;
+  object-fit: contain;
+  flex-shrink: 0;
+  display: block;
+  margin: 0 auto;
+}
+
+.dream-temple-step-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #B68126;
+  font-size: 2rem;
+  font-weight: 700;
+  background: rgba(182, 129, 38, 0.1);
+  border-radius: 50%;
+  font-family: var(--font-family);
+}
+
+
+@media (max-width: 968px) {
+  .dream-temple-steps-wrapper {
+    justify-content: flex-start;
+    gap: 15px;
+    padding: 30px 15px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .dream-temple-steps-wrapper::-webkit-scrollbar {
+    display: none;
+  }
+
+  .dream-temple-step {
+    min-width: 180px;
+    max-width: none;
+    flex: 0 0 auto;
+    scroll-snap-align: center;
+  }
+
+  .dream-temple-step-circle {
+    width: 180px;
+    height: 180px;
+  }
+
+  .dream-temple-connector {
+    width: 50px;
+    margin-top: 90px;
+  }
+
+  .dream-temple-arrow-icon {
+    width: 50px;
+    height: 18px;
+  }
 }
 
 @media (max-width: 768px) {
-  .section-title {
+  .dream-temple-steps {
+    padding: 60px 10px;
+  }
+
+  .dream-temple-title {
     font-size: 2rem;
   }
 
-  .steps-grid {
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 30px;
+  .dream-temple-subtitle {
+    font-size: 1rem;
+    margin-bottom: 40px;
   }
 
-  .step-icon {
-    font-size: 3rem;
+  .dream-temple-steps-wrapper {
+    gap: 12px;
+    padding: 30px 10px;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .dream-temple-steps-wrapper::-webkit-scrollbar {
+    display: none;
+  }
+
+  .dream-temple-step {
+    min-width: 160px;
+    max-width: none;
+    flex: 0 0 auto;
+  }
+
+  .dream-temple-step-circle {
+    width: 160px;
+    height: 160px;
+  }
+
+  .dream-temple-step-title {
+    font-size: 0.9rem;
+    max-width: 160px;
+  }
+
+  .dream-temple-connector {
+    width: 50px;
+    margin-top: 80px;
+  }
+
+  .dream-temple-arrow-icon {
+    width: 50px;
+    height: 16px;
   }
 }
 
+@media (max-width: 480px) {
+  .dream-temple-steps {
+    padding: 40px 5px;
+  }
+
+  .dream-temple-container {
+    padding: 0 10px;
+  }
+
+  .dream-temple-title {
+    font-size: 1.5rem;
+  }
+
+  .dream-temple-subtitle {
+    font-size: 0.9rem;
+    margin-bottom: 30px;
+    padding: 0 10px;
+  }
+
+  .dream-temple-steps-wrapper {
+    gap: 10px;
+    padding: 30px 5px;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .dream-temple-steps-wrapper::-webkit-scrollbar {
+    display: none;
+  }
+
+  .dream-temple-step {
+    min-width: 140px;
+    max-width: none;
+    flex: 0 0 auto;
+  }
+
+  .dream-temple-step-circle {
+    width: 140px;
+    height: 140px;
+  }
+
+  .dream-temple-step-title {
+    font-size: 0.8rem;
+    max-width: 140px;
+  }
+
+  .dream-temple-connector {
+    width: 50px;
+    margin-top: 50px;
+  }
+
+  .dream-temple-arrow-icon {
+    width: 50px;
+    height: 50px;
+  }
+}

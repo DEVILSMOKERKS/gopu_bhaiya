@@ -11,7 +11,7 @@ import icon1 from "../../assets/img/icons/1.png";
 import icon2 from "../../assets/img/icons/2.png";
 import icon3 from "../../assets/img/icons/3.png";
 import aboutup from '../../assets/Images/collection/collection2.jpg';
-import aboutbg from '../../assets/Images/banner/hero4.webp';
+import aboutbg from '../../assets/Images/banner/hero-1.png';
 import HomeBlog from '../Homeblog/Homeblog';
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";

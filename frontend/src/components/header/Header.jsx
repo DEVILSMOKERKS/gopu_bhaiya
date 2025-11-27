@@ -1,16 +1,17 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { HiMenu, HiX, HiSearch } from 'react-icons/hi';
+import { FaInstagram, FaFacebook, FaYoutube } from 'react-icons/fa';
 import axios from 'axios';
 import { useWishlistCart } from '../../context/wishlistCartContext';
 import { useUser } from '../../context/UserContext';
 import './header.css';
 import logo from '../../assets/img/logo.png'
-// import MegaMenu from './MegaMenu' // Commented for future use
 
 const Header = ({ onAccountClick }) => {
   const location = useLocation();
   const navigate = useNavigate();
+  const isHomePage = location.pathname === '/';
   // const [activeMegaMenu, setActiveMegaMenu] = useState(null); // Commented for future use
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
@@ -163,172 +164,171 @@ const Header = ({ onAccountClick }) => {
 
   return (
     <>
-      <header className="header">
-        <div className="header-container">
-          {/* Mobile Hamburger Menu */}
-          <div className="header-mobile-menu-toggle">
-            <button
-              className="header-hamburger-btn"
-              onClick={toggleMobileMenu}
-              aria-label="Toggle mobile menu"
-            >
-              {isMobileMenuOpen ? (
-                <HiX className="header-hamburger-icon header-close-icon" />
-              ) : (
-                <HiMenu className="header-hamburger-icon" />
-              )}
-            </button>
-          </div>
-
-          {/* Logo/Brand Section */}
-          <div className="header-brand-section">
-            <Link to="/" onClick={closeMobileMenu}>
-              <img src={logo} alt="logo" />
-            </Link>
-          </div>
-
-          {/* Desktop Navigation Links */}
-          <nav className="header-navigation header-desktop-nav">
-            <ul className="header-nav-links">
-              <li>
-                <Link to="/" className={`header-nav-link ${location.pathname === '/' ? 'active' : ''}`}>
-                  HOME
-                </Link>
-              </li>
-              <li className="header-nav-item">
-                <Link to="/shop?collection=women" className="header-nav-link">WOMEN</Link>
-              </li>
-              <li className="header-nav-item">
-                <Link to="/shop?collection=coord-set" className="header-nav-link">Coord Set</Link>
-              </li>
-              <li className="header-nav-item">
-                <Link to="/shop?collection=kurti" className="header-nav-link">Kurti</Link>
-              </li>
-              <li className="header-nav-item">
-                <Link to="/shop?collection=shirts" className="header-nav-link">Shirts</Link>
-              </li>
-            </ul>
-          </nav>
-
-          {/* Icons Section */}
-          <div className="header-icons-section">
-            <button className="header-icon-btn" onClick={toggleSearch}>
-              {isSearchOpen ? (
-                <HiX className="header-icon" />
-              ) : (
-                <HiSearch className="header-icon" />
-              )}
-            </button>
-            <button className="header-icon-btn" onClick={handleAccountClick}>
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-                <circle cx="12" cy="7" r="4"></circle>
-              </svg>
-            </button>
-            <Link to="/wishlist">
-              <button className="header-icon-btn header-wishlist-btn">
-                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
-                </svg>
-                {wishlist.total_items > 0 && (
-                  <span className="header-badge header-wishlist-badge">{wishlist.total_items}</span>
-                )}
-              </button>
-            </Link>
-            <Link to="/cart">
-              <button className="header-icon-btn header-cart-btn">
-                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <circle cx="9" cy="21" r="1" />
-                  <circle cx="20" cy="21" r="1" />
-                  <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
-                </svg>
-                {cart.summary.total_items > 0 && (
-                  <span className="header-badge header-cart-badge">{cart.summary.total_items}</span>
-                )}
-              </button>
-            </Link>
-          </div>
-        </div>
-
-        {/* Search Bar */}
-        <div className={`header-search-container ${isSearchOpen ? 'open' : ''}`} ref={searchContainerRef}>
-          <form onSubmit={handleSearchSubmit} className="header-search-form">
-            <div className="header-search-input-wrapper">
-              <HiSearch className="header-search-icon" />
-              <input
-                id="search-input"
-                type="text"
-                placeholder="Search products, categories..."
-                value={searchQuery}
-                onChange={handleSearchInputChange}
-                className="header-search-input"
-              />
-              {searchQuery && (
-                <button
-                  type="button"
-                  className="header-clear-search-btn"
-                  onClick={() => {
-                    setSearchQuery('');
-                    setSearchResults([]);
-                    setShowSearchResults(false);
-                  }}
-                >
-                  <HiX className="header-clear-icon" />
-                </button>
-              )}
-            </div>
-          </form>
-
-          {/* Search Results */}
-          {showSearchResults && (
-            <div className="header-search-results">
-              {isSearching ? (
-                <div className="header-search-loading">
-                  <div className="header-search-spinner"></div>
-                  <span>Searching...</span>
-                </div>
-              ) : searchResults.length > 0 ? (
-                <div className="header-search-results-list">
-                  {searchResults.map((product) => (
-                    <div
-                      key={product.product_id}
-                      className="header-search-result-item"
-                      onClick={() => handleSearchResultClick(product)}
-                    >
-                      <div className="header-search-result-image">
-                        <img src={getProductImage(product)} alt={product.name} />
-                      </div>
-                      <div className="header-search-result-content">
-                        <h4 className="header-search-result-title">{product.name}</h4>
-                        <p className="header-search-result-category">
-                          {product.category_name} {product.subcategory_name && `> ${product.subcategory_name}`}
-                        </p>
-                        <p className="header-search-result-price">
-                          ₹{product.min_price} - ₹{product.max_price}
-                        </p>
-                      </div>
-                    </div>
-                  ))}
-                  {searchResults.length >= 8 && (
-                    <div className="header-search-view-all">
-                      <button
-                        type="button"
-                        onClick={handleSearchSubmit}
-                        className="header-search-view-all-btn"
-                      >
-                        View all results for "{searchQuery}"
-                      </button>
+      <header className={`header ${isHomePage ? 'header-home' : 'header-other'}`}>
+        {/* Home Page Header */}
+        {isHomePage ? (
+          <>
+            {/* Top Bar - Search, Logo, BULK ORDER */}
+            <div className="header-top-bar">
+              <div className="header-top-left">
+                <div className="header-search-bar-home" ref={searchContainerRef}>
+                  <form onSubmit={handleSearchSubmit} className="header-search-form-home">
+                    <HiSearch className="header-search-icon-home" />
+                    <input
+                      type="text"
+                      placeholder="Search"
+                      value={searchQuery}
+                      onChange={handleSearchInputChange}
+                      className="header-search-input-home"
+                    />
+                  </form>
+                  {showSearchResults && (
+                    <div className="header-search-results-home">
+                      {isSearching ? (
+                        <div className="header-search-loading">Searching...</div>
+                      ) : searchResults.length > 0 ? (
+                        <div className="header-search-results-list">
+                          {searchResults.map((product) => (
+                            <div
+                              key={product.product_id}
+                              className="header-search-result-item"
+                              onClick={() => handleSearchResultClick(product)}
+                            >
+                              <div className="header-search-result-image">
+                                <img src={getProductImage(product)} alt={product.name} />
+                              </div>
+                              <div className="header-search-result-content">
+                                <h4 className="header-search-result-title">{product.name}</h4>
+                                <p className="header-search-result-price">
+                                  ₹{product.min_price} - ₹{product.max_price}
+                                </p>
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                      ) : null}
                     </div>
                   )}
                 </div>
-              ) : searchQuery.trim() && (
-                <div className="header-search-no-results">
-                  <span>No products found for "{searchQuery}"</span>
-                </div>
-              )}
+              </div>
+              <div className="header-top-center">
+                <Link to="/" className="header-logo-link">
+                  <img src={logo} alt="Mateshwari Exports" className="header-logo-img" />
+                </Link>
+              </div>
+              <div className="header-top-right">
+                <button className="header-bulk-order-btn">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                    <polyline points="14 2 14 8 20 8"></polyline>
+                    <line x1="16" y1="13" x2="8" y2="13"></line>
+                    <line x1="16" y1="17" x2="8" y2="17"></line>
+                    <polyline points="10 9 9 9 8 9"></polyline>
+                  </svg>
+                  BULK ORDER
+                </button>
+              </div>
             </div>
-          )}
-        </div>
+            {/* Navigation Bar */}
+            <nav className="header-nav-bar-home">
+              <ul className="header-nav-links-home">
+                <li>
+                  <Link to="/" className={`header-nav-link-home ${location.pathname === '/' ? 'active' : ''}`}>
+                    HOME
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/About-us" className="header-nav-link-home">ABOUT US</Link>
+                </li>
+                <li>
+                  <Link to="/shop" className="header-nav-link-home">ALL PRODUCT</Link>
+                </li>
+                <li>
+                  <Link to="/how-to-place-order" className="header-nav-link-home">HOW TO PLACE ORDER</Link>
+                </li>
+                <li>
+                  <Link to="/contact-us" className="header-nav-link-home">CONTACT US</Link>
+                </li>
+              </ul>
+            </nav>
+          </>
+        ) : (
+          /* Other Pages Header */
+          <div className="header-container-other">
+            {/* Mobile Hamburger */}
+            <div className="header-mobile-menu-toggle">
+              <button
+                className="header-hamburger-btn"
+                onClick={toggleMobileMenu}
+                aria-label="Toggle mobile menu"
+              >
+                {isMobileMenuOpen ? (
+                  <HiX className="header-hamburger-icon header-close-icon" />
+                ) : (
+                  <HiMenu className="header-hamburger-icon" />
+                )}
+              </button>
+            </div>
+
+            {/* Logo Left */}
+            <div className="header-brand-section-other">
+              <Link to="/" onClick={closeMobileMenu}>
+                <img src={logo} alt="Mateshwari Exports" className="header-logo-img-other" />
+              </Link>
+            </div>
+
+            {/* Navigation Center */}
+            <nav className="header-navigation-other">
+              <ul className="header-nav-links-other">
+                <li>
+                  <Link to="/" className={`header-nav-link-other ${location.pathname === '/' ? 'active' : ''}`}>
+                    HOME
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/About-us" className="header-nav-link-other">ABOUT US</Link>
+                </li>
+                <li>
+                  <Link to="/shop" className="header-nav-link-other">ALL PRODUCT</Link>
+                </li>
+                <li>
+                  <Link to="/how-to-place-order" className="header-nav-link-other">HOW TO PLACE ORDER</Link>
+                </li>
+                <li>
+                  <Link to="/contact-us" className="header-nav-link-other">CONTACT US</Link>
+                </li>
+              </ul>
+            </nav>
+
+            {/* Social Icons Right */}
+            <div className="header-social-icons-other">
+              <a
+                href="https://www.instagram.com/mateshwari_exports/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="header-social-icon-link"
+              >
+                <FaInstagram className="header-social-icon" />
+              </a>
+              <a
+                href="https://www.facebook.com/mateshwariexports/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="header-social-icon-link"
+              >
+                <FaFacebook className="header-social-icon" />
+              </a>
+              <a
+                href="https://www.youtube.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="header-social-icon-link"
+              >
+                <FaYoutube className="header-social-icon" />
+              </a>
+            </div>
+          </div>
+        )}
 
         {/* Mobile Menu Backdrop */}
         {isMobileMenuOpen && (
@@ -338,83 +338,139 @@ const Header = ({ onAccountClick }) => {
           ></div>
         )}
 
-        {/* Mobile Navigation Menu */}
-        <div className={`header-mobile-nav-menu ${isMobileMenuOpen ? 'open' : ''}`}>
-          {/* Mobile Menu Header with Logo and Close Button */}
-          <div className="header-mobile-menu-header">
-            <div className="header-mobile-logo">
-              <img src={logo} alt="Mateshwari Moorti Bhandar" />
+        {/* Mobile Navigation Menu - Only for non-home pages */}
+        {!isHomePage && (
+          <>
+            {isMobileMenuOpen && (
+              <div
+                className={`header-mobile-menu-backdrop ${isMobileMenuOpen ? 'open' : ''}`}
+                onClick={closeMobileMenu}
+              ></div>
+            )}
+            <div className={`header-mobile-nav-menu ${isMobileMenuOpen ? 'open' : ''}`}>
+              <div className="header-mobile-menu-header">
+                <div className="header-mobile-logo">
+                  <img src={logo} alt="Mateshwari Exports" />
+                </div>
+                <button
+                  className="header-mobile-close-btn"
+                  onClick={closeMobileMenu}
+                  aria-label="Close mobile menu"
+                >
+                  <HiX className="header-mobile-close-icon" />
+                </button>
+              </div>
+              <nav className="header-mobile-navigation">
+                <ul className="header-mobile-nav-links">
+                  <li>
+                    <Link to="/" className={`header-mobile-nav-link ${location.pathname === '/' ? 'active' : ''}`} onClick={closeMobileMenu}>
+                      HOME
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/About-us" className="header-mobile-nav-link" onClick={closeMobileMenu}>ABOUT US</Link>
+                  </li>
+                  <li>
+                    <Link to="/shop" className="header-mobile-nav-link" onClick={closeMobileMenu}>ALL PRODUCT</Link>
+                  </li>
+                  <li>
+                    <Link to="/how-to-place-order" className="header-mobile-nav-link" onClick={closeMobileMenu}>HOW TO PLACE ORDER</Link>
+                  </li>
+                  <li>
+                    <Link to="/contact-us" className="header-mobile-nav-link" onClick={closeMobileMenu}>CONTACT US</Link>
+                  </li>
+                </ul>
+              </nav>
             </div>
-            <button
-              className="header-mobile-close-btn"
-              onClick={closeMobileMenu}
-              aria-label="Close mobile menu"
-            >
-              <HiX className="header-mobile-close-icon" />
-            </button>
-          </div>
+          </>
+        )}
 
-          <nav className="header-mobile-navigation">
-            <ul className="header-mobile-nav-links">
-              <li>
-                <Link to="/" className={`header-mobile-nav-link ${location.pathname === '/' ? 'active' : ''}`} onClick={closeMobileMenu}>
-                  HOME
-                </Link>
-              </li>
-              <li>
-                <Link to="/shop?collection=women" className="header-mobile-nav-link" onClick={closeMobileMenu}>WOMEN</Link>
-              </li>
-              <li>
-                <Link to="/shop?collection=coord-set" className="header-mobile-nav-link" onClick={closeMobileMenu}>Coord Set</Link>
-              </li>
-              <li>
-                <Link to="/shop?collection=kurti" className="header-mobile-nav-link" onClick={closeMobileMenu}>Kurti</Link>
-              </li>
-              <li>
-                <Link to="/shop?collection=shirts" className="header-mobile-nav-link" onClick={closeMobileMenu}>Shirts</Link>
-              </li>
-            </ul>
-
-            {/* Follow Us Section */}
-            <div className="header-mobile-follow-section">
-              <h3 className="header-mobile-follow-title">FOLLOW US</h3>
-              <div className="header-mobile-social-links">
+        {/* Mobile Header - Only visible on mobile for home page */}
+        {isHomePage && (
+          <>
+            <div className="header-mobile-home">
+              <button
+                className="header-mobile-hamburger"
+                onClick={toggleMobileMenu}
+                aria-label="Toggle mobile menu"
+              >
+                <HiMenu className="header-mobile-hamburger-icon" />
+              </button>
+              <Link to="/" className="header-mobile-logo-link">
+                <img src={logo} alt="Mateshwari Exports" className="header-mobile-logo-img" />
+              </Link>
+              <div className="header-mobile-social-icons">
                 <a
                   href="https://www.instagram.com/mateshwari_exports/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="header-mobile-social-link"
+                  className="header-mobile-social-icon-link"
                 >
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
-                  </svg>
+                  <FaInstagram className="header-mobile-social-icon" />
                 </a>
                 <a
                   href="https://www.facebook.com/mateshwariexports/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="header-mobile-social-link"
+                  className="header-mobile-social-icon-link"
                 >
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
-                  </svg>
+                  <FaFacebook className="header-mobile-social-icon" />
+                </a>
+                <a
+                  href="https://www.youtube.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="header-mobile-social-icon-link"
+                >
+                  <FaYoutube className="header-mobile-social-icon" />
                 </a>
               </div>
             </div>
-          </nav>
-        </div>
-
-        {/* Mega Menu - Commented for future use */}
-        {/* {activeMegaMenu && (
-          <MegaMenu
-            activeCategory={activeMegaMenu}
-            className={`megamenu-mega-menu show`}
-          />
-        )} */}
+            {/* Mobile Menu for Home Page */}
+            {isMobileMenuOpen && (
+              <div
+                className={`header-mobile-menu-backdrop ${isMobileMenuOpen ? 'open' : ''}`}
+                onClick={closeMobileMenu}
+              ></div>
+            )}
+            <div className={`header-mobile-nav-menu ${isMobileMenuOpen ? 'open' : ''}`}>
+              <div className="header-mobile-menu-header">
+                <div className="header-mobile-logo">
+                  <img src={logo} alt="Mateshwari Exports" />
+                </div>
+                <button
+                  className="header-mobile-close-btn"
+                  onClick={closeMobileMenu}
+                  aria-label="Close mobile menu"
+                >
+                  <HiX className="header-mobile-close-icon" />
+                </button>
+              </div>
+              <nav className="header-mobile-navigation">
+                <ul className="header-mobile-nav-links">
+                  <li>
+                    <Link to="/" className={`header-mobile-nav-link ${location.pathname === '/' ? 'active' : ''}`} onClick={closeMobileMenu}>
+                      HOME
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/About-us" className="header-mobile-nav-link" onClick={closeMobileMenu}>ABOUT US</Link>
+                  </li>
+                  <li>
+                    <Link to="/shop" className="header-mobile-nav-link" onClick={closeMobileMenu}>ALL PRODUCT</Link>
+                  </li>
+                  <li>
+                    <Link to="/how-to-place-order" className="header-mobile-nav-link" onClick={closeMobileMenu}>HOW TO PLACE ORDER</Link>
+                  </li>
+                  <li>
+                    <Link to="/contact-us" className="header-mobile-nav-link" onClick={closeMobileMenu}>CONTACT US</Link>
+                  </li>
+                </ul>
+              </nav>
+            </div>
+          </>
+        )}
       </header>
-
-      {/* Blur Overlay for Content */}
-      {isSearchOpen && <div className="header-content-blur-overlay" onClick={toggleSearch}></div>}
     </>
   );
 };

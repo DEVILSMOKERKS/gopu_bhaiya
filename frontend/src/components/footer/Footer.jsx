@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import './footer.css';
-import footerImage from '../../assets/img/Group 910.png';
-import { FaInstagram, FaFacebook, FaCheck, FaTimes } from 'react-icons/fa';
+import { FaInstagram, FaFacebook, FaYoutube, FaCheck, FaTimes, FaEnvelope, FaPhone, FaMapMarkerAlt } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import WhatsAppFloat from '../WhatsAppFloat/WhatsAppFloat';
+import logo from '../../assets/img/logo.png';
 
 
 const Footer = () => {
@@ -93,17 +93,26 @@ const Footer = () => {
 
   return (
     <footer className="footer">
+      {/* Background Watermark */}
+      <div className="footer-watermark">MATESHWARI EXPORTS</div>
 
       <div className="footer-main">
-        {/* Left Section - Email Subscription */}
+        {/* Left Section - Logo and Stay Connected */}
         <div className="footer-left-section">
-          <h3 className="footer-heading">Join Our Club, Get 15% Off For Your Birthday</h3>
-          <div className="footer-email-section">
-            <form onSubmit={handleEmailSubmit}>
-              <div className="email-input-container">
+          <div className="footer-logo-section">
+            <Link to="/" className="footer-logo-link">
+              <img src={logo} alt="Mateshwari Exports" className="footer-logo-img" />
+            </Link>
+          </div>
+
+          <div className="footer-stay-connected">
+            <h3 className="footer-stay-connected-title">Stay Connected With Divinity</h3>
+            
+            <form onSubmit={handleEmailSubmit} className="footer-email-form">
+              <div className="footer-email-input-wrapper">
                 <input
                   type="email"
-                  className={`email-input ${emailError ? 'error' : ''}`}
+                  className={`footer-email-input ${emailError ? 'error' : ''}`}
                   placeholder="Enter Your Email Address"
                   value={email}
                   onChange={handleEmailChange}
@@ -111,7 +120,7 @@ const Footer = () => {
                 />
                 <button
                   type="submit"
-                  className={`email-submit-btn ${!isFormValid() ? 'disabled' : ''}`}
+                  className={`footer-email-submit-btn ${!isFormValid() ? 'disabled' : ''}`}
                   disabled={!isFormValid()}
                 >
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -120,95 +129,101 @@ const Footer = () => {
                 </button>
               </div>
               {emailError && (
-                <div className="email-error-message">
+                <div className="footer-email-error">
                   {emailError}
                 </div>
               )}
             </form>
 
-            <div className="consent-checkbox">
+            <div className="footer-consent-checkbox">
               <input
                 type="checkbox"
-                id="consent"
+                id="footer-consent"
                 checked={consent}
                 onChange={(e) => setConsent(e.target.checked)}
               />
-              <label htmlFor="consent">
-                By Submitting your email, you agree to receive advertising emails from Mateshwari Moorti Bhandar.
+              <label htmlFor="footer-consent">
+                By Submitting Your Email, You Agree To Receive Advertising Emails From Mateshwari Exports.
               </label>
             </div>
 
-            <div className="social-icons">
+            <div className="footer-social-icons">
               <a
                 href="https://www.instagram.com/mateshwari_exports/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="social-icon"
+                className="footer-social-icon"
               >
-                <FaInstagram size={16} color="#FFFFFF" />
+                <FaInstagram />
               </a>
               <a
                 href="https://www.facebook.com/mateshwariexports/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="social-icon"
+                className="footer-social-icon"
               >
-                <FaFacebook size={16} color="#ffffff" />
+                <FaFacebook />
+              </a>
+              <a
+                href="https://www.youtube.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="footer-social-icon"
+              >
+                <FaYoutube />
               </a>
             </div>
           </div>
         </div>
 
-        {/* Right Section - Navigation Links */}
+        {/* Right Section - Navigation Columns */}
         <div className="footer-right-section">
-          {/* About Mateshwari Moorti Bhandar Column */}
+          {/* About Us Column */}
           <div className="footer-column">
-            <h3 className="footer-heading">About Mateshwari Moorti Bhandar</h3>
-            <ul className="footer-links">
-              <Link to="/shop">Collection</Link>
-              <Link to="/privacy-policy">Privacy Policy</Link>
-              <Link to="/terms-and-conditions">Terms & Condition</Link>
-              <Link to="/About-us">About us</Link>
-
+            <h3 className="footer-column-title">About Us</h3>
+            <ul className="footer-column-links">
+              <li><Link to="/">Home</Link></li>
+              <li><Link to="/About-us">About Us</Link></li>
+              <li><Link to="/shop">All Product</Link></li>
+              <li><Link to="/blogs">Blog</Link></li>
+              <li><Link to="/contact-us">Contact Us</Link></li>
             </ul>
           </div>
 
-          {/* Help & Support Column */}
+          {/* Useful Links Column */}
           <div className="footer-column">
-            <h3 className="footer-heading">Help & Support</h3>
-            <ul className="footer-links">
-              <Link to="/track-order">Track Order</Link>
-              <Link to="/shipping-policy">Shipping Policy</Link>
-              <Link to="/return-and-refund">Return & Refund Policy</Link>
-              <Link to="/contact-us">Contact Us</Link>
+            <h3 className="footer-column-title">Useful Links</h3>
+            <ul className="footer-column-links">
+              <li><Link to="/privacy-policy">Privacy Policy</Link></li>
+              <li><Link to="/terms-and-conditions">Terms & Condition</Link></li>
+              <li><Link to="/privacy-policy">Cookies Policy</Link></li>
             </ul>
           </div>
 
-          {/* Contact Info Column */}
+          {/* Site Links Column */}
           <div className="footer-column">
-            <h3 className="footer-heading">Contact Info</h3>
-            <ul className="footer-links">
+            <h3 className="footer-column-title">Site Links</h3>
+            <ul className="footer-column-links footer-contact-links">
               <li>
-                <a href="tel:+917791983156" style={{ color: "inherit", textDecoration: "none" }}>
-                  +91 77919 83156
-                </a>
+                <FaEnvelope className="footer-contact-icon" />
+                <a href="mailto:Mateshvariexporter@gmail.com">Mateshvariexporter@Gmail.Com</a>
               </li>
               <li>
-                <a href="mailto:Mateshvariexporter@gmail.com" style={{ color: "inherit", textDecoration: "none" }}>
-                  Mateshvariexporter@gmail.com
-                </a>
+                <FaPhone className="footer-contact-icon" />
+                <span>7791983156 | 8824292890 | 9784503338</span>
               </li>
-              <li>Jaipur, Rajasthan</li>
+              <li>
+                <FaMapMarkerAlt className="footer-contact-icon" />
+                <span>2310, Khajane Walo Ka Rasta, Nehru Tailour Chouraha, Chandpole Bazar, Jaipur-302001 (Rajasthan) INDIA</span>
+              </li>
             </ul>
           </div>
         </div>
       </div>
 
-      <div className="footer-bottom-border"></div>
-
       {/* Footer Bottom - Copyright */}
       <div className="footer-bottom">
-        <p>© 2023 Mateshwari Moorti Bhandar. All Rights Reserved.</p>
+        <p>© 2023 Mateshwari Exports. All Rights Reserved.</p>
       </div>
 
       {/* WhatsApp Float Component */}
@@ -235,16 +250,6 @@ const Footer = () => {
           </div>
         </div>
       )}
-
-      {/* <div className="footer-bottom-image" style={{
-        position: 'absolute',
-        top: '200px',
-        width: '100%',
-      }}>
-        <img src={footerImage} alt="" style={{
-            width: '100%',
-        }} />
-      </div> */}
     </footer>
   );
 };
