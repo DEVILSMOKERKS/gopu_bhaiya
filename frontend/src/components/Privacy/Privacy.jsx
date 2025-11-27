@@ -15,7 +15,7 @@ const Privacypolicy = () => {
         <section className="privacy-policy-section">
           <h2>1. Introduction</h2>
           <p>
-            Welcome to Saanz (Premium Fashion Clothing). We are committed to protecting your privacy and ensuring the security of your personal information. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website, use our mobile application, or make purchases from our fashion stores.
+            Welcome to Mateshwari Moorti Bhandar. We are committed to protecting your privacy and ensuring the security of your personal information. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website, use our mobile application, or make purchases from our store.
           </p>
           <p>
             By using our services, you consent to the data practices described in this policy. If you do not agree with our policies and practices, please do not use our services.
@@ -80,11 +80,11 @@ const Privacypolicy = () => {
         <section className="privacy-policy-section">
           <h2>12. Contact Information</h2>
           <div className="privacy-contact-info">
-            <p><strong>Saanz Fashion</strong></p>
+            <p><strong>Mateshwari Moorti Bhandar</strong></p>
             <p><strong>Email:</strong> saanzjaipurofficial@gmail.com</p>
             <p><strong>Phone:</strong> +91 98238 89134</p>
             <p><strong>Address:</strong> Plot No. D-142, Flat No. G-1, Kardhani Yojana, Kalwar Road, Govindpura, Jhotwara, Jaipur, Rajasthan (302012)</p>
-            <p><strong>Website:</strong> www.saanz.com</p>
+            <p><strong>Website:</strong> www.mateshwarimoortibhandar.com</p>
           </div>
         </section>
       </div>

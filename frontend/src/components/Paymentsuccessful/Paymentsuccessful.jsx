@@ -17,15 +17,15 @@ const Paymentsuccessful = () => {
                 <h1 className="paymentsuccessful-title">Payment Successful</h1>
                 
                 <div className="paymentsuccessful-message">
-                    <p>Thank You For Choosing Saanz, Your Order Will Be Generated Based On Your Delivery Request.</p>
+                    <p>Thank You For Choosing Mateshwari Moorti Bhandar, Your Order Will Be Generated Based On Your Delivery Request.</p>
                     <p>The Receipt Has Been Sent To Your Email</p>
                 </div>
                 
                 <div className="paymentsuccessful-contact">
                     <p>Please Contact Us For Any Query</p>
-                    <p className="paymentsuccessful-phone">+1(929)460-3208</p>
+                    <p className="paymentsuccessful-phone">+91 98238 89134</p>
                     <p>OR</p>
-                    <p className="paymentsuccessful-email">Hello @ Saanz.Com</p>
+                    <p className="paymentsuccessful-email">Hello @ MateshwariMoortiBhandar.Com</p>
                 </div>
             </div>
         </div>

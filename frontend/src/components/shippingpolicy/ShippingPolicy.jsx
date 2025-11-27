@@ -71,7 +71,7 @@ const ShippingPolicy = () => {
       <>
         <section className="shipping-policy-section">
           <h2>1. SHIPPING INFORMATION</h2>
-          <p>At Saanz Fashion, we understand the importance of timely delivery for your stylish clothing. We offer reliable shipping services across India with secure packaging and insurance coverage. Our commitment to excellence extends beyond crafting beautiful fashion to ensuring it reaches you safely and on time.</p>
+          <p>At Mateshwari Moorti Bhandar, we understand the importance of timely delivery for your marble idols and temple structures. We offer reliable shipping services across India with secure packaging and insurance coverage. Our commitment to excellence extends beyond crafting beautiful idols to ensuring they reach you safely and on time.</p>
           <p>We partner with trusted logistics providers to deliver your orders with the utmost care and attention. Every shipment is handled with the same precision and dedication that goes into creating our fashion pieces.</p>
         </section>
 
@@ -104,7 +104,7 @@ const ShippingPolicy = () => {
           
           <h3>3.1 Free Shipping</h3>
           <p>• Orders above ₹2,000: Free shipping across India</p>
-          <p>• Saanz Elite Members: Free shipping on all orders regardless of value</p>
+          <p>• Mateshwari Moorti Bhandar Elite Members: Free shipping on all orders regardless of value</p>
           <p>• Corporate orders: Free shipping for bulk purchases</p>
           <p>• Designer collections: Free shipping for orders above ₹5,000</p>
           
@@ -120,7 +120,7 @@ const ShippingPolicy = () => {
           <p>We ensure your clothing reaches you safely with multiple layers of protection and security measures. Our packaging is designed to withstand the rigors of transportation while maintaining the elegance of your purchase:</p>
           
           <h3>4.1 Secure Packaging</h3>
-          <p>• Premium fashion boxes with Saanz branding and elegant design</p>
+          <p>• Premium packaging boxes with Mateshwari Moorti Bhandar branding and elegant design</p>
           <p>• Tamper-evident seals for security and authenticity verification</p>
           <p>• Bubble wrap and protective materials to prevent damage</p>
           <p>• Water-resistant outer packaging for monsoon protection</p>
@@ -231,13 +231,13 @@ const ShippingPolicy = () => {
         <section className="shipping-policy-section">
           <h2>10. CONTACT INFORMATION</h2>
           <div className="shipping-policy-contact-info">
-            <p><strong>Saanz Fashion</strong></p>
-            <p><strong>Shipping Support:</strong> shipping@Saanzfashion.com</p>
-            <p><strong>Customer Care:</strong> care@Saanzfashion.com</p>
-            <p><strong>Phone:</strong> 1-800-Saanz-FASHION (Toll Free)</p>
-            <p><strong>WhatsApp:</strong> +91 88885555</p>
+            <p><strong>Mateshwari Moorti Bhandar</strong></p>
+            <p><strong>Shipping Support:</strong> shipping@mateshwarimoortibhandar.com</p>
+            <p><strong>Customer Care:</strong> care@mateshwarimoortibhandar.com</p>
+            <p><strong>Phone:</strong> +91 98238 89134</p>
+            <p><strong>WhatsApp:</strong> +91 98238 89134</p>
             <p><strong>Address:</strong> Plot no.9 Chandni Nagar, Durgapura Bypass, Vidhyadhar Nagar, Jaipur, Rajasthan, Pin 302018.</p>
-            <p><strong>Website:</strong> www.Saanzfashion.com</p>
+            <p><strong>Website:</strong> www.mateshwarimoortibhandar.com</p>
             <p><strong>Business Hours:</strong> Monday to Saturday: 9:00 AM - 8:00 PM</p>
             <p><strong>Emergency Support:</strong> Available 24/7 for urgent delivery issues</p>
           </div>

@@ -81,7 +81,7 @@ const Terms = () => {
               <li>Vouchers CASUAL10/15 are applicable only on casual and everyday clothing. Not applicable on designer items and accessories.</li>
               <li>Offers on clothing prices and discounts are valid only on selected products.</li>
               <li>All current vouchers are subject to discontinuation without prior notice.</li>
-              <li>The applicability of any additional voucher is at the sole discretion of Saanz.</li>
+              <li>The applicability of any additional voucher is at the sole discretion of Mateshwari Moorti Bhandar.</li>
             </ul>
           </div>
         </section>
@@ -96,35 +96,35 @@ const Terms = () => {
         <section className="terms-section">
           <h2>Trademarks</h2>
           <p>
-            The trademarks, names, logos and service marks (collectively "trademarks") displayed on this website are registered and unregistered trademarks of Saanz Fashion. Nothing contained on this website should be construed as granting any license or right to use any trademark without the prior written permission of Saanz Fashion.
+            The trademarks, names, logos and service marks (collectively "trademarks") displayed on this website are registered and unregistered trademarks of Mateshwari Moorti Bhandar Fashion. Nothing contained on this website should be construed as granting any license or right to use any trademark without the prior written permission of Mateshwari Moorti Bhandar Fashion.
           </p>
         </section>
 
         <section className="terms-section">
           <h2>External Links</h2>
           <p>
-            External links may be provided for your convenience, but they are beyond the control of Saanz Fashion and no representation is made as to their content. Use or reliance on any external links and the content thereon provided is at your own risk.
+            External links may be provided for your convenience, but they are beyond the control of Mateshwari Moorti Bhandar Fashion and no representation is made as to their content. Use or reliance on any external links and the content thereon provided is at your own risk.
           </p>
         </section>
 
         <section className="terms-section">
           <h2>Warranties</h2>
           <p>
-            Saanz Fashion makes no express, implied, residual, or other warranties, representations, statements, or guarantees whatsoever to you and specifically disclaims and excludes any and all implied warranties of merchantability, satisfactory quality, fitness for a particular purpose, and non-infringement of third party rights, unless otherwise disclaimable by law.
+            Mateshwari Moorti Bhandar Fashion makes no express, implied, residual, or other warranties, representations, statements, or guarantees whatsoever to you and specifically disclaims and excludes any and all implied warranties of merchantability, satisfactory quality, fitness for a particular purpose, and non-infringement of third party rights, unless otherwise disclaimable by law.
           </p>
         </section>
 
         <section className="terms-section">
           <h2>Prices</h2>
           <p>
-            Pricing is calculated based on current fabric costs, design complexity, and market trends, which are subject to fluctuations. Prices on Saanz.com can change without notice. You will be charged the price listed on the day of purchase.
+            Pricing is calculated based on current fabric costs, design complexity, and market trends, which are subject to fluctuations. Prices on Mateshwari Moorti Bhandar.com can change without notice. You will be charged the price listed on the day of purchase.
           </p>
         </section>
 
         <section className="terms-section">
           <h2>Disclaimer of Liability</h2>
           <p>
-            Saanz Fashion disclaims all liability for any loss, damage, personal injury, or expense of any kind whatsoever and howsoever caused, whether directly or indirectly from the use of or reliance upon any information, material, or services available on this website, or any other matter relating to this website and even if such loss or damage is caused by or results from the negligence or gross negligence of Saanz Fashion, or an authorized representative of Saanz Fashion, or for any other reason whatsoever.
+            Mateshwari Moorti Bhandar Fashion disclaims all liability for any loss, damage, personal injury, or expense of any kind whatsoever and howsoever caused, whether directly or indirectly from the use of or reliance upon any information, material, or services available on this website, or any other matter relating to this website and even if such loss or damage is caused by or results from the negligence or gross negligence of Mateshwari Moorti Bhandar Fashion, or an authorized representative of Mateshwari Moorti Bhandar Fashion, or for any other reason whatsoever.
           </p>
         </section>
 
@@ -146,7 +146,7 @@ const Terms = () => {
           <h2>Cancellation & Returns</h2>
           <p><strong>Order Cancellation:</strong> Orders can be canceled at no cost before the Dispatch Confirmation E-mail. Individual items can be canceled within an order if it contains 2 or more items without canceling the entire order.</p>
           <p><strong>Refunds for Prepaid Orders:</strong> Amount will be credited to the payment source (Credit Card/Debit Card/Net Banking).</p>
-          <p><strong>30 Day Money Back Policy:</strong> Refunds are credited to the Saanz Cash account (not applicable on designer items above INR 10,000, accessories, and customized orders). You can choose to make another purchase or get the amount refunded to your bank account.</p>
+          <p><strong>30 Day Money Back Policy:</strong> Refunds are credited to the Mateshwari Moorti Bhandar Cash account (not applicable on designer items above INR 10,000, accessories, and customized orders). You can choose to make another purchase or get the amount refunded to your bank account.</p>
           <p><strong>Refunds for Cash on Delivery Orders:</strong> Processed to the user's bank account.</p>
           <p><strong>Gift Card Orders:</strong> Refunded back to the gift card.</p>
           <p><strong>Return Conditions for Specific Vouchers:</strong> For products ordered using FLAT02, FLAT05, FLAT10, FLAT15, FLAT20, DIWALI05, DIWALI10, DIWALI15, DIWALI20, DIWALI25, LOVE05, LOVE10, LOVE15, all products in the order need to be returned together.</p>
@@ -162,14 +162,14 @@ const Terms = () => {
         <section className="terms-section">
           <h2>Contests</h2>
           <p>
-            Winners of contests and giveaways are selected at the company's discretion. Prizes/gifts are non-returnable/exchangeable. Any additional facilities are at the company's discretion. Saanz reserves the right to change contest terms and conditions without prior intimation. All disputes will be resolved via email at legal@Saanzfashion.com.
+            Winners of contests and giveaways are selected at the company's discretion. Prizes/gifts are non-returnable/exchangeable. Any additional facilities are at the company's discretion. Mateshwari Moorti Bhandar reserves the right to change contest terms and conditions without prior intimation. All disputes will be resolved via email at legal@Mateshwari Moorti Bhandarfashion.com.
           </p>
         </section>
 
         <section className="terms-section">
           <h2>Contact Information</h2>
           <div className="terms-contact-info">
-            <p><strong>Saanz Fashion</strong></p>
+            <p><strong>Mateshwari Moorti Bhandar Fashion</strong></p>
             <p><strong>Email:</strong> saanzjaipurofficial@gmail.com</p>
             <p><strong>Phone:</strong> +91 98238 89134</p>
             <p><strong>Address:</strong> Plot No. D-142, Flat No. G-1, Kardhani Yojana, Kalwar Road, Govindpura, Jhotwara, Jaipur, Rajasthan (302012)</p>

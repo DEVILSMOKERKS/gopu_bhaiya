@@ -2,12 +2,12 @@ import React, { useState, useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { useWishlistCart } from '../../context/wishlistCartContext';
-import './saanzweek.css';
+import './mmbweek.css';
 import BestSeller1 from '../../assets/img/Bestseller1.jpg'
 import BestSeller2 from '../../assets/img/Bestseller2.jpg'
 import BestSeller3 from '../../assets/img/Bestseller3.jpg'
 
-const SaanzWeek = () => {
+const MmbWeek = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [selectedColors, setSelectedColors] = useState({});
   const [weekData, setWeekData] = useState([]);
@@ -129,13 +129,13 @@ const SaanzWeek = () => {
   // Show loading state
   if (loading) {
     return (
-      <div className="saanzweek-container">
-        <div className="saanzweek-header">
-          <h2 className="saanzweek-title">Saanzweek</h2>
-          <p className="saanzweek-subtitle">Curated daily outfits for every day of the week</p>
+      <div className="mmbweek-container">
+        <div className="mmbweek-header">
+          <h2 className="mmbweek-title">MmbWeek</h2>
+          <p className="mmbweek-subtitle">Curated daily outfits for every day of the week</p>
         </div>
-        <div className="saanzweek-loading">
-          <div className="saanzweek-loading-spinner"></div>
+        <div className="mmbweek-loading">
+          <div className="mmbweek-loading-spinner"></div>
           <p>Loading new arrival products...</p>
         </div>
       </div>
@@ -145,12 +145,12 @@ const SaanzWeek = () => {
   // Show error state
   if (error) {
     return (
-      <div className="saanzweek-container">
-        <div className="saanzweek-header">
-          <h2 className="saanzweek-title">Saanzweek</h2>
-          <p className="saanzweek-subtitle">Curated daily outfits for every day of the week</p>
+      <div className="mmbweek-container">
+        <div className="mmbweek-header">
+          <h2 className="mmbweek-title">MmbWeek</h2>
+          <p className="mmbweek-subtitle">Curated daily outfits for every day of the week</p>
         </div>
-        <div className="saanzweek-error">
+        <div className="mmbweek-error">
           <p>{error}</p>
         </div>
       </div>
@@ -160,13 +160,13 @@ const SaanzWeek = () => {
   // Show no products available state
   if (weekData.length === 0) {
     return (
-      <div className="saanzweek-container">
-        <div className="saanzweek-header">
-          <h2 className="saanzweek-title">Saanzweek</h2>
-          <p className="saanzweek-subtitle">Curated daily outfits for every day of the week</p>
+      <div className="mmbweek-container">
+        <div className="mmbweek-header">
+          <h2 className="mmbweek-title">MmbWeek</h2>
+          <p className="mmbweek-subtitle">Curated daily outfits for every day of the week</p>
         </div>
-        <div className="saanzweek-no-products">
-          <div className="saanzweek-no-products-icon">
+        <div className="mmbweek-no-products">
+          <div className="mmbweek-no-products-icon">
             <svg width="64" height="64" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M20 7L10 17L5 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
@@ -179,15 +179,15 @@ const SaanzWeek = () => {
   }
 
   return (
-    <div className="saanzweek-container">
-      <div className="saanzweek-header">
-        <h2 className="saanzweek-title">Saanzweek</h2>
-        <p className="saanzweek-subtitle">Curated daily outfits for every day of the week</p>
+    <div className="mmbweek-container">
+      <div className="mmbweek-header">
+        <h2 className="mmbweek-title">MmbWeek</h2>
+        <p className="mmbweek-subtitle">Curated daily outfits for every day of the week</p>
       </div>
 
-      <div className="saanzweek-carousel-wrapper">
+      <div className="mmbweek-carousel-wrapper">
         <button
-          className="saanzweek-nav-btn saanzweek-prev-btn"
+          className="mmbweek-nav-btn mmbweek-prev-btn"
           onClick={prevSlide}
           aria-label="Previous slide"
         >
@@ -196,21 +196,21 @@ const SaanzWeek = () => {
           </svg>
         </button>
 
-        <div className="saanzweek-carousel" ref={carouselRef}>
+        <div className="mmbweek-carousel" ref={carouselRef}>
           {weekData.map((item, index) => (
             <div
               key={item.id}
-              className={`saanzweek-card ${index === currentIndex ? 'saanzweek-active' : ''}`}
+              className={`mmbweek-card ${index === currentIndex ? 'mmbweek-active' : ''}`}
               onClick={() => handleProductClick(item.id)}
             >
-              <div className="saanzweek-card-image-container">
+              <div className="mmbweek-card-image-container">
                 <img
                   src={getCurrentImage(item)}
                   alt={`${item.day} outfit`}
-                  className="saanzweek-card-image"
+                  className="mmbweek-card-image"
                 />
                 <button
-                  className={`saanzweek-heart-btn ${isInWishlist(item.id) ? 'saanzweek-heart-btn-active' : ''}`}
+                  className={`mmbweek-heart-btn ${isInWishlist(item.id) ? 'mmbweek-heart-btn-active' : ''}`}
                   aria-label={isInWishlist(item.id) ? "Remove from wishlist" : "Add to wishlist"}
                   onClick={(e) => {
                     e.stopPropagation();
@@ -239,16 +239,16 @@ const SaanzWeek = () => {
                   </svg>
                 </button>
               </div>
-              <div className="saanzweek-card-content">
-                <h3 className="saanzweek-day">{item.day}</h3>
-                <p className="saanzweek-description">{item.description}</p>
-                <div className="saanzweek-price-colors">
-                  <span className="saanzweek-price">{item.price}</span>
-                  <div className="saanzweek-color-swatches">
+              <div className="mmbweek-card-content">
+                <h3 className="mmbweek-day">{item.day}</h3>
+                <p className="mmbweek-description">{item.description}</p>
+                <div className="mmbweek-price-colors">
+                  <span className="mmbweek-price">{item.price}</span>
+                  <div className="mmbweek-color-swatches">
                     {item.colors.map((colorData, colorIndex) => (
                       <div
                         key={colorIndex}
-                        className={`saanzweek-color-swatch ${selectedColors[item.id] === colorIndex ? 'saanzweek-color-swatch-active' : ''}`}
+                        className={`mmbweek-color-swatch ${selectedColors[item.id] === colorIndex ? 'mmbweek-color-swatch-active' : ''}`}
                         style={{ backgroundColor: colorData.color }}
                         title={colorData.name}
                         onClick={(e) => {
@@ -265,7 +265,7 @@ const SaanzWeek = () => {
         </div>
 
         <button
-          className="saanzweek-nav-btn saanzweek-next-btn"
+          className="mmbweek-nav-btn mmbweek-next-btn"
           onClick={nextSlide}
           aria-label="Next slide"
         >
@@ -278,4 +278,4 @@ const SaanzWeek = () => {
   );
 };
 
-export default SaanzWeek;
+export default MmbWeek;

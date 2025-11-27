@@ -1,5 +1,5 @@
-/* SaanzWeek Carousel Container */
-.saanzweek-container {
+/* MmbWeek Carousel Container */
+.mmbweek-container {
   margin: 0 0;
   padding: 2rem 4rem 0rem 4rem;
   font-family: var(--font-family);
@@ -7,12 +7,12 @@
 }
 
 /* Header Section */
-.saanzweek-header {
+.mmbweek-header {
   text-align: left;
   margin-bottom: 2rem;
 }
 
-.saanzweek-title {
+.mmbweek-title {
   font-size: 32px;
   font-weight: 600;
   color: #2a2a2a;
@@ -22,7 +22,7 @@
   text-transform: uppercase;
 }
 
-.saanzweek-subtitle {
+.mmbweek-subtitle {
   font-size: 1.1rem;
   color: #666;
   margin: 0;
@@ -30,7 +30,7 @@
 }
 
 /* Loading State */
-.saanzweek-loading {
+.mmbweek-loading {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -39,7 +39,7 @@
   text-align: center;
 }
 
-.saanzweek-loading-spinner {
+.mmbweek-loading-spinner {
   width: 40px;
   height: 40px;
   border: 3px solid #f3f3f3;
@@ -59,14 +59,14 @@
   }
 }
 
-.saanzweek-loading p {
+.mmbweek-loading p {
   color: #666;
   font-size: 1rem;
   margin: 0;
 }
 
 /* Error State */
-.saanzweek-error {
+.mmbweek-error {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -74,7 +74,7 @@
   text-align: center;
 }
 
-.saanzweek-error p {
+.mmbweek-error p {
   color: #e74c3c;
   font-size: 1rem;
   margin: 0;
@@ -85,7 +85,7 @@
 }
 
 /* No Products Available State */
-.saanzweek-no-products {
+.mmbweek-no-products {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -94,19 +94,19 @@
   text-align: center;
 }
 
-.saanzweek-no-products-icon {
+.mmbweek-no-products-icon {
   color: #ccc;
   margin-bottom: 1.5rem;
 }
 
-.saanzweek-no-products h3 {
+.mmbweek-no-products h3 {
   font-size: 1.5rem;
   font-weight: 600;
   color: #666;
   margin: 0 0 0.5rem 0;
 }
 
-.saanzweek-no-products p {
+.mmbweek-no-products p {
   color: #999;
   font-size: 1rem;
   margin: 0;
@@ -114,7 +114,7 @@
 }
 
 /* Carousel Wrapper */
-.saanzweek-carousel-wrapper {
+.mmbweek-carousel-wrapper {
   position: relative;
   display: flex;
   align-items: center;
@@ -123,7 +123,7 @@
 }
 
 /* Navigation Buttons */
-.saanzweek-nav-btn {
+.mmbweek-nav-btn {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
@@ -143,26 +143,26 @@
   z-index: 10;
 }
 
-.saanzweek-nav-btn:hover {
+.mmbweek-nav-btn:hover {
   background: rgba(255, 255, 255, 1);
   box-shadow: 0 6px 25px rgba(0, 0, 0, 0.15);
   transform: translateY(-50%) scale(1.05);
 }
 
-.saanzweek-nav-btn:active {
+.mmbweek-nav-btn:active {
   transform: translateY(-50%) scale(0.95);
 }
 
-.saanzweek-prev-btn {
+.mmbweek-prev-btn {
   left: -24px;
 }
 
-.saanzweek-next-btn {
+.mmbweek-next-btn {
   right: -24px;
 }
 
 /* Main Carousel */
-.saanzweek-carousel {
+.mmbweek-carousel {
   display: flex;
   gap: 1.5rem;
   overflow-x: auto;
@@ -173,12 +173,12 @@
   width: 100%;
 }
 
-.saanzweek-carousel::-webkit-scrollbar {
+.mmbweek-carousel::-webkit-scrollbar {
   display: none;
 }
 
 /* Individual Cards */
-.saanzweek-card {
+.mmbweek-card {
   flex: 0 0 280px;
   background: white;
   border-radius: 16px;
@@ -189,37 +189,37 @@
   position: relative;
 }
 
-.saanzweek-card:hover {
+.mmbweek-card:hover {
   transform: translateY(-8px);
   box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
 }
 
-.saanzweek-card.saanzweek-active {
+.mmbweek-card.mmbweek-active {
   transform: translateY(-8px);
   box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
 }
 
 /* Card Image Container */
-.saanzweek-card-image-container {
+.mmbweek-card-image-container {
   position: relative;
   width: 100%;
   height: 320px;
   overflow: hidden;
 }
 
-.saanzweek-card-image {
+.mmbweek-card-image {
   width: 100%;
   height: 100%;
   object-fit: cover;
   transition: transform 0.3s ease;
 }
 
-.saanzweek-card:hover .saanzweek-card-image {
+.mmbweek-card:hover .mmbweek-card-image {
   transform: scale(1.05);
 }
 
 /* Heart Button */
-.saanzweek-heart-btn {
+.mmbweek-heart-btn {
   position: absolute;
   top: 12px;
   right: 12px;
@@ -238,32 +238,32 @@
   z-index: 5;
 }
 
-.saanzweek-heart-btn:hover {
+.mmbweek-heart-btn:hover {
   background: rgba(255, 255, 255, 1);
   color: #ff4757;
   transform: scale(1.1);
 }
 
-.saanzweek-heart-btn:active {
+.mmbweek-heart-btn:active {
   transform: scale(0.9);
 }
 
-.saanzweek-heart-btn-active {
+.mmbweek-heart-btn-active {
   color: #ff4757;
   background: rgba(255, 255, 255, 1);
 }
 
-.saanzweek-heart-btn-active:hover {
+.mmbweek-heart-btn-active:hover {
   color: #ff4757;
   transform: scale(1.1);
 }
 
 /* Card Content */
-.saanzweek-card-content {
+.mmbweek-card-content {
   padding: 1.25rem;
 }
 
-.saanzweek-day {
+.mmbweek-day {
   font-size: 1.1rem;
   font-weight: 600;
   color: #1a1a1a;
@@ -271,7 +271,7 @@
   text-align: start;
 }
 
-.saanzweek-description {
+.mmbweek-description {
   font-size: 0.9rem;
   color: #666;
   margin: 0 0 0.5rem 0;
@@ -285,25 +285,25 @@
 }
 
 /* Price and Colors Section */
-.saanzweek-price-colors {
+.mmbweek-price-colors {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-top: 0.4rem;
 }
 
-.saanzweek-price {
+.mmbweek-price {
   font-size: 1rem;
   font-weight: 600;
   color: #2a2a2a;
 }
 
-.saanzweek-color-swatches {
+.mmbweek-color-swatches {
   display: flex;
   gap: 0.5rem;
 }
 
-.saanzweek-color-swatch {
+.mmbweek-color-swatch {
   width: 20px;
   height: 20px;
   border-radius: 50%;
@@ -313,11 +313,11 @@
   transition: transform 0.2s ease;
 }
 
-.saanzweek-color-swatch:hover {
+.mmbweek-color-swatch:hover {
   transform: scale(1.2);
 }
 
-.saanzweek-color-swatch-active {
+.mmbweek-color-swatch-active {
   border: 3px solid #333;
   transform: scale(1.1);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
@@ -325,105 +325,105 @@
 
 /* Responsive Design */
 @media (max-width: 1024px) {
-  .saanzweek-container {
+  .mmbweek-container {
     padding: 1.5rem 1rem;
   }
 
-  .saanzweek-title {
+  .mmbweek-title {
     font-size: 2rem;
   }
 
-  .saanzweek-card {
+  .mmbweek-card {
     flex: 0 0 250px;
   }
 
-  .saanzweek-card-image-container {
+  .mmbweek-card-image-container {
     height: 280px;
   }
 }
 
 @media (max-width: 768px) {
-  .saanzweek-container {
+  .mmbweek-container {
     padding: 1rem 0.5rem;
   }
 
-  .saanzweek-title {
+  .mmbweek-title {
     font-size: 1.2rem;
   }
 
-  .saanzweek-subtitle {
+  .mmbweek-subtitle {
     font-size: 14px;
   }
 
-  .saanzweek-carousel-wrapper {
+  .mmbweek-carousel-wrapper {
     gap: 0.5rem;
   }
 
-  .saanzweek-nav-btn {
+  .mmbweek-nav-btn {
     width: 40px;
     height: 40px;
   }
 
-  .saanzweek-prev-btn {
+  .mmbweek-prev-btn {
     left: -20px;
   }
 
-  .saanzweek-next-btn {
+  .mmbweek-next-btn {
     right: -20px;
   }
 
-  .saanzweek-carousel {
+  .mmbweek-carousel {
     gap: 1rem;
   }
 
-  .saanzweek-card {
+  .mmbweek-card {
     flex: 0 0 220px;
   }
 
-  .saanzweek-card-image-container {
+  .mmbweek-card-image-container {
     height: 240px;
   }
 
-  .saanzweek-card-content {
+  .mmbweek-card-content {
     padding: 1rem;
   }
 
-  .saanzweek-day {
+  .mmbweek-day {
     font-size: 1rem;
   }
 
-  .saanzweek-description {
+  .mmbweek-description {
     font-size: 0.75rem;
   }
 }
 
 @media (max-width: 480px) {
-  .saanzweek-title {
+  .mmbweek-title {
     font-size: 1.2rem;
   }
 
-  .saanzweek-nav-btn {
+  .mmbweek-nav-btn {
     width: 36px;
     height: 36px;
   }
 
-  .saanzweek-prev-btn {
+  .mmbweek-prev-btn {
     left: -18px;
   }
 
-  .saanzweek-next-btn {
+  .mmbweek-next-btn {
     right: -18px;
   }
 
-  .saanzweek-card {
+  .mmbweek-card {
     flex: 0 0 200px;
   }
 
-  .saanzweek-card-image-container {
+  .mmbweek-card-image-container {
     height: 200px;
   }
 
-  .saanzweek-heart-btn {
+  .mmbweek-heart-btn {
     width: 32px;
     height: 32px;
   }
@@ -442,20 +442,20 @@
   }
 }
 
-.saanzweek-container {
+.mmbweek-container {
   animation: fadeInUp 0.6s ease-out;
 }
 
 /* Focus states for accessibility */
-.saanzweek-nav-btn:focus,
-.saanzweek-heart-btn:focus,
-.saanzweek-indicator:focus {
+.mmbweek-nav-btn:focus,
+.mmbweek-heart-btn:focus,
+.mmbweek-indicator:focus {
   outline: 2px solid var(--primary-color);
   outline-offset: 2px;
 }
 
 /* Loading state */
-.saanzweek-card-image {
+.mmbweek-card-image {
   background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
   background-size: 200% 100%;
   animation: loading 1.5s infinite;
@@ -473,15 +473,15 @@
 
 /* Touch device optimizations */
 @media (hover: none) and (pointer: coarse) {
-  .saanzweek-card:hover {
+  .mmbweek-card:hover {
     transform: none;
   }
 
-  .saanzweek-nav-btn:hover {
+  .mmbweek-nav-btn:hover {
     transform: translateY(-50%);
   }
 
-  .saanzweek-heart-btn:hover {
+  .mmbweek-heart-btn:hover {
     transform: none;
   }
 }

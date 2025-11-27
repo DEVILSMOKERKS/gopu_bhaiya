@@ -51,7 +51,7 @@ const ComingSoon = () => {
               </h1>
             </div> */}
             <div className="brand-info">
-              <h2 className="brand-title">Saanz</h2>
+              <h2 className="brand-title">Mateshwari Moorti Bhandar</h2>
               <div className="brand-tagline">Premium Fashion & Lifestyle</div>
             </div>
           </div>

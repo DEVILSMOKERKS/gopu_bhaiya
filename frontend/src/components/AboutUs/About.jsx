@@ -45,7 +45,7 @@ const AboutSection = () => {
               <h3 className="about-main-title">Crafting More Than Clothes — We Craft Confidence</h3>
               <div className="about-text-content">
                 <p>
-                  At Saanz, we believe that clothing should be more than just fabric – it should be a reflection of confidence, style, and individuality. Born from a passion for timeless fashion and rooted in quality craftsmanship, our brand blends contemporary trends with classic elegance.
+                  At Mateshwari Moorti Bhandar, we believe that clothing should be more than just fabric – it should be a reflection of confidence, style, and individuality. Born from a passion for timeless fashion and rooted in quality craftsmanship, our brand blends contemporary trends with classic elegance.
                 </p>
               </div>
               <HashLink smooth to="#journey-section" className="about-view-btn">
@@ -60,10 +60,10 @@ const AboutSection = () => {
                   alt="Fashion showcase"
                   className="about-main-img"
                 />
-                {/* Saanz Logo Overlay */}
+                {/* Mateshwari Moorti Bhandar Logo Overlay */}
                 <div className="about-logo-overlay">
                   <div className="about-logo-content">
-                    <div className="about-logo-text">Saanz</div>
+                    <div className="about-logo-text">Mateshwari Moorti Bhandar</div>
                     <div className="about-logo-line"></div>
                   </div>
                 </div>
@@ -395,7 +395,7 @@ const WhatMakesUsDifferentSection = () => {
               <h3 className="who-main-title">Crafting More Than Clothes — We Craft Confidence</h3>
               <div className="who-text-content">
                 <p>
-                  At Saanz, we believe that clothing should be more than just fabric – it should be a reflection of confidence, style, and individuality. Born from a passion for timeless fashion and rooted in quality craftsmanship, our brand blends contemporary trends with classic elegance.
+                  At Mateshwari Moorti Bhandar, we believe that clothing should be more than just fabric – it should be a reflection of confidence, style, and individuality. Born from a passion for timeless fashion and rooted in quality craftsmanship, our brand blends contemporary trends with classic elegance.
                 </p>
                 <p className="who-additional-text">
                   handcrafted by skilled artisans, we're proud to offer pieces that are as meaningful as they are magnificent

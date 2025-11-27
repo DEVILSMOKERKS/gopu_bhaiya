@@ -19,7 +19,7 @@ const MegaMenu = ({ activeCategory }) => {
       ],
       featured: [
         { name: "New In", link: "/shop/new" },
-        { name: "Saanzweek", link: "/shop/saanzweek" },
+        { name: "MmbWeek", link: "/shop/mmbweek" },
         { name: "Plus Size", link: "/shop/plus-size" },
         { name: "Best Seller", link: "/shop/best-seller" }
       ],
@@ -48,7 +48,7 @@ const MegaMenu = ({ activeCategory }) => {
       featured: [
         { name: "New In", link: "/shop/coord-set/new" },
         { name: "Best Seller", link: "/shop/coord-set/best-seller" },
-        { name: "Saanzweek", link: "/shop/coord-set/saanzweek" },
+        { name: "MmbWeek", link: "/shop/coord-set/mmbweek" },
         { name: "Limited Edition", link: "/shop/coord-set/limited" }
       ],
       more: [
@@ -76,7 +76,7 @@ const MegaMenu = ({ activeCategory }) => {
       featured: [
         { name: "New In", link: "/shop/kurti/new" },
         { name: "Best Seller", link: "/shop/kurti/best-seller" },
-        { name: "Saanzweek", link: "/shop/kurti/saanzweek" },
+        { name: "MmbWeek", link: "/shop/kurti/mmbweek" },
         { name: "Plus Size", link: "/shop/kurti/plus-size" }
       ],
       more: [
@@ -104,7 +104,7 @@ const MegaMenu = ({ activeCategory }) => {
       featured: [
         { name: "New In", link: "/shop/shirts/new" },
         { name: "Best Seller", link: "/shop/shirts/best-seller" },
-        { name: "Saanzweek", link: "/shop/shirts/saanzweek" },
+        { name: "MmbWeek", link: "/shop/shirts/mmbweek" },
         { name: "Premium Collection", link: "/shop/shirts/premium" }
       ],
       more: [
