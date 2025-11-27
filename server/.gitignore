@@ -1,6 +1,6 @@
 node_modules
 ./node_modules
 /node_modules
-/public/categories
-/public/products
-/public/subcategories
+# /public/categories
+# /public/products
+# /public/subcategories

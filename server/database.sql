@@ -392,6 +392,24 @@ CREATE TABLE
     FOREIGN KEY (author_id) REFERENCES admins (id) ON DELETE CASCADE
   );
 
+  CREATE TABLE
+    IF NOT EXISTS contact_queries (
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        name VARCHAR(100) NOT NULL,
+        email VARCHAR(100) NOT NULL,
+        phone VARCHAR(20) NOT NULL,
+        subject VARCHAR(255) NOT NULL,
+        message TEXT NOT NULL,
+        status ENUM ('pending', 'in_progress', 'resolved', 'closed') DEFAULT 'pending',
+        admin_notes TEXT,
+        resolved_by INT,
+        resolved_at TIMESTAMP NULL,
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+        updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+        FOREIGN KEY (resolved_by) REFERENCES admins (id) ON DELETE SET NULL
+    );
+
+
 -- Insert sample blog posts
 INSERT INTO
   blogs (
