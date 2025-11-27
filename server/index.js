@@ -33,7 +33,7 @@ const addStaticCorsHeaders = (req, res, next) => {
   next();
 };
 
-const allowOrigin = ['https://saanz.in', 'http://localhost:5173'];
+const allowOrigin = ['https://www.mateshwarimoortibhandar.com', 'http://localhost:5173'];
 // Middleware
 app.use(cors({
   origin: (origin, callback) => {

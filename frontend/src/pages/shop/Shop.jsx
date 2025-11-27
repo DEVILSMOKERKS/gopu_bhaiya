@@ -6,9 +6,9 @@ import './shop.css';
 // import shopBannerMobile from '../../assets/Images/banner/shopBannerMobile.jpg';
 import { useUser } from '../../context/UserContext';
 
-const shopBanner = "https://ik.imagekit.io/adsrc2244/saanz/main-page/hero6.jpg?updatedAt=1761545267298";
+const shopBanner = "https://ik.imagekit.io/adsrc2244/mateshwarimoortibhandar/main-page/hero6.jpg?updatedAt=1761545267298";
 
-const shopBannerMobile = "https://ik.imagekit.io/adsrc2244/saanz/main-page/shopBannerMobile.jpg?updatedAt=1761546052823"
+const shopBannerMobile = "https://ik.imagekit.io/adsrc2244/mateshwarimoortibhandar/main-page/shopBannerMobile.jpg?updatedAt=1761546052823"
 
 const Shop = () => {
   const navigate = useNavigate();

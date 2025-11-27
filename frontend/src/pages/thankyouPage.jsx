@@ -32,11 +32,11 @@ function ThankYouPage() {
     if (location.state) {
       setOrderNumber(location.state.orderNumber || '');
       setOrderId(location.state.orderId || '');
-      
+
       // Check if this is a COD order (no paymentId means COD)
       const isCOD = !location.state.paymentId;
       setIsCODOrder(isCOD);
-      
+
       // Load additional order details for COD orders
       if (isCOD && location.state.orderNumber) {
         loadOrderDetails(location.state.orderNumber);
@@ -51,7 +51,7 @@ function ThankYouPage() {
         if (pendingOrder) {
           const orderData = JSON.parse(pendingOrder);
           const contentIds = orderData.cartItems ? orderData.cartItems.map(item => item.product_id.toString()) : [];
-          
+
           window.fbq('track', 'Purchase', {
             content_ids: contentIds,
             content_type: 'product',
@@ -60,7 +60,7 @@ function ThankYouPage() {
             num_items: orderData.cartItems ? orderData.cartItems.length : 0
           });
           console.log('Facebook Pixel Purchase tracked for online payment order:', orderData.orderNumber);
-          
+
           // Clear the pending order data
           sessionStorage.removeItem('pendingOrder');
         }
@@ -75,11 +75,11 @@ function ThankYouPage() {
     try {
       const token = localStorage.getItem('token');
       const headers = token ? { Authorization: `Bearer ${token}` } : {};
-      
+
       const response = await fetch(`${import.meta.env.VITE_API_URL}/orders/details/${orderNumber}`, {
         headers
       });
-      
+
       if (response.ok) {
         const data = await response.json();
         if (data.success) {
@@ -485,13 +485,13 @@ function ThankYouPage() {
                 <span>Confirmed</span>
               </div>
             </div>
-            
+
             <div style={styles.orderInfoContent}>
               <div style={styles.orderInfoRow}>
                 <span style={styles.orderInfoLabel}>Order Number:</span>
                 <span style={styles.orderInfoValue}>{orderNumber}</span>
               </div>
-              
+
               {orderDetails && (
                 <>
                   <div style={styles.orderInfoRow}>
@@ -504,7 +504,7 @@ function ThankYouPage() {
                       })}
                     </span>
                   </div>
-                  
+
                   <div style={styles.orderInfoRow}>
                     <span style={styles.orderInfoLabel}>Payment Method:</span>
                     <span style={styles.orderInfoValue}>
@@ -512,7 +512,7 @@ function ThankYouPage() {
                       Cash on Delivery
                     </span>
                   </div>
-                  
+
                   <div style={styles.orderInfoRow}>
                     <span style={styles.orderInfoLabel}>Total Amount:</span>
                     <span style={styles.orderInfoValue}>
@@ -589,7 +589,7 @@ function ThankYouPage() {
               </div>
               <div style={styles.contactItem}>
                 <Mail size={16} />
-                <span>saanzjaipurofficial@gmail.com</span>
+                <span>Mateshvariexporter@gmail.com</span>
               </div>
               <div style={styles.contactItem}>
                 <MapPin size={16} />

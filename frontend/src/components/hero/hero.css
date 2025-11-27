@@ -34,11 +34,11 @@
 
 /* DESKTOP (Default) Image URLs */
 .hero-bg-image--1 {
-  background-image: url("https://ik.imagekit.io/adsrc2244/saanz/main-page/sdg%202.jpg?updatedAt=1761543215591");
+  background-image: url("https://ik.imagekit.io/adsrc2244/mateshwarimoortibhandar/main-page/sdg%202.jpg?updatedAt=1761543215591");
 }
 
 .hero-bg-image--2 {
-  background-image: url("https://ik.imagekit.io/adsrc2244/saanz/main-page/banner2.jpg?updatedAt=1759853802517");
+  background-image: url("https://ik.imagekit.io/adsrc2244/mateshwarimoortibhandar/main-page/banner2.jpg?updatedAt=1759853802517");
 }
 
 /* MOBILE (Media Query) Image URLs and Styling */
@@ -65,12 +65,12 @@
 
   .hero-bg-image--1 {
     /* background-image: url("../../assets/Images/banner/hero-11.jpg"); */
-    background-image: url("https://ik.imagekit.io/adsrc2244/saanz/main-page/hero-11-CALwOdT_.jpg?updatedAt=1760516702919");
+    background-image: url("https://ik.imagekit.io/adsrc2244/mateshwarimoortibhandar/main-page/hero-11-CALwOdT_.jpg?updatedAt=1760516702919");
   }
 
   .hero-bg-image--2 {
     /* background-image: url("../../assets/Images/banner/hero-13.jpg"); */
-    background-image: url("https://ik.imagekit.io/adsrc2244/saanz/main-page/hero-12.jpg?updatedAt=1761544186003");
+    background-image: url("https://ik.imagekit.io/adsrc2244/mateshwarimoortibhandar/main-page/hero-12.jpg?updatedAt=1761544186003");
   }
 
   .hero-headline {

@@ -144,7 +144,7 @@ const ContactUs = () => {
                   rel="noopener noreferrer"
                   style={{ color: "inherit", textDecoration: "none" }}
                 >
-              Plot No. D-142, Flat No. G-1, Kardhani Yojana, Kalwar Road,Govindpura, Jhotwara, Jaipur, Rajasthan (302012)
+                  Plot No. D-142, Flat No. G-1, Kardhani Yojana, Kalwar Road,Govindpura, Jhotwara, Jaipur, Rajasthan (302012)
                 </a>
               </div>
               <div className="contactus-contact-row">
@@ -154,13 +154,13 @@ const ContactUs = () => {
                   className="contactus-contact-icon"
                 />
                 <a
-                  href="tel:+9198238 89134"
+                  href="tel:+917791983156"
                   style={{ color: "inherit", textDecoration: "none" }}
                 >
-                  +91 98238 89134
+                  +91 77919 83156
                 </a>
                 <span style={{ margin: "0 8px 0 0" }}>,</span>
-                
+
               </div>
               <div className="contactus-contact-row">
                 <img
@@ -169,10 +169,10 @@ const ContactUs = () => {
                   className="contactus-contact-icon"
                 />
                 <a
-                  href="mailto:saanzjaipurofficial@gmail.com"
+                  href="mailto:Mateshvariexporter@gmail.com"
                   style={{ color: "inherit", textDecoration: "none" }}
                 >
-                saanzjaipurofficial@gmail.com
+                  Mateshvariexporter@gmail.com
                 </a>
               </div>
             </div>
@@ -232,7 +232,7 @@ const ContactUs = () => {
               placeholder="Type your message here..."
               required
               rows="4"
-          
+
             />
             <button type="submit" className="contactus-submit-btn" disabled={submitting}>
               {submitting ? 'Submitting...' : 'Submit'}

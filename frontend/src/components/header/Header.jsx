@@ -380,7 +380,7 @@ const Header = ({ onAccountClick }) => {
               <h3 className="header-mobile-follow-title">FOLLOW US</h3>
               <div className="header-mobile-social-links">
                 <a
-                  href="https://www.instagram.com/saanzjaipur?igsh=MXY0eThwMzI0NDkwcQ=="
+                  href="https://www.instagram.com/mateshwari_exports/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="header-mobile-social-link"
@@ -390,7 +390,7 @@ const Header = ({ onAccountClick }) => {
                   </svg>
                 </a>
                 <a
-                  href="https://www.facebook.com/share/1EyGdAjHEf/"
+                  href="https://www.facebook.com/mateshwariexports/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="header-mobile-social-link"

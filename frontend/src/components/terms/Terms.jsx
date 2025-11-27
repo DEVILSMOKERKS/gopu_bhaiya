@@ -170,10 +170,10 @@ const Terms = () => {
           <h2>Contact Information</h2>
           <div className="terms-contact-info">
             <p><strong>Mateshwari Moorti Bhandar Fashion</strong></p>
-            <p><strong>Email:</strong> saanzjaipurofficial@gmail.com</p>
-            <p><strong>Phone:</strong> +91 98238 89134</p>
+            <p><strong>Email:</strong> Mateshvariexporter@gmail.com</p>
+            <p><strong>Phone:</strong> +91 77919 83156</p>
             <p><strong>Address:</strong> Plot No. D-142, Flat No. G-1, Kardhani Yojana, Kalwar Road, Govindpura, Jhotwara, Jaipur, Rajasthan (302012)</p>
-            <p><strong>Website:</strong> www.saanz.com</p>
+            <p><strong>Website:</strong> www.mateshwarimoortibhandar.com</p>
           </div>
         </section>
       </div>

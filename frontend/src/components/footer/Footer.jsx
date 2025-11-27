@@ -140,7 +140,7 @@ const Footer = () => {
 
             <div className="social-icons">
               <a
-                href="https://www.instagram.com/saanzjaipur?igsh=MXY0eThwMzI0NDkwcQ=="
+                href="https://www.instagram.com/mateshwari_exports/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="social-icon"
@@ -148,7 +148,7 @@ const Footer = () => {
                 <FaInstagram size={16} color="#FFFFFF" />
               </a>
               <a
-                href="https://www.facebook.com/share/1EyGdAjHEf/"
+                href="https://www.facebook.com/mateshwariexports/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="social-icon"
@@ -161,7 +161,7 @@ const Footer = () => {
 
         {/* Right Section - Navigation Links */}
         <div className="footer-right-section">
-          {/* About Saanz Column */}
+          {/* About Mateshwari Moorti Bhandar Column */}
           <div className="footer-column">
             <h3 className="footer-heading">About Mateshwari Moorti Bhandar</h3>
             <ul className="footer-links">
@@ -189,13 +189,13 @@ const Footer = () => {
             <h3 className="footer-heading">Contact Info</h3>
             <ul className="footer-links">
               <li>
-                <a href="tel:+919823889134" style={{ color: "inherit", textDecoration: "none" }}>
-                  +91 98238 89134
+                <a href="tel:+917791983156" style={{ color: "inherit", textDecoration: "none" }}>
+                  +91 77919 83156
                 </a>
               </li>
               <li>
-                <a href="mailto:saanzjaipurofficial@gmail.com" style={{ color: "inherit", textDecoration: "none" }}>
-                  saanzjaipurofficial@gmail.com
+                <a href="mailto:Mateshvariexporter@gmail.com" style={{ color: "inherit", textDecoration: "none" }}>
+                  Mateshvariexporter@gmail.com
                 </a>
               </li>
               <li>Jaipur, Rajasthan</li>

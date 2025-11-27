@@ -206,7 +206,7 @@ const emailTemplates = {
           </div>
           
           <div style="text-align: center; margin: 30px 0;">
-            <a href="${process.env.FRONTEND_URL || 'https://saanz.com'}/track-order/${orderData.order_number}" 
+            <a href="${process.env.FRONTEND_URL}/track-order/${orderData.order_number}" 
                style="background: #3b82f6; color: white; padding: 12px 30px; text-decoration: none; border-radius: 8px; display: inline-block; font-weight: 500;">
               Track Your Order
             </a>
@@ -215,7 +215,7 @@ const emailTemplates = {
           <div style="background: #fef3c7; padding: 15px; border-radius: 8px; margin: 20px 0;">
             <p style="color: #92400e; margin: 0; font-size: 14px;">
               <strong>📞 Need Help?</strong> If you have any questions about your order, 
-              please contact our customer support team at support@saanz.com or call us at +91-XXXXXXXXXX
+              please contact our customer support team at Mateshvariexporter@gmail.com or call us at +91-XXXXXXXXXX
             </p>
           </div>
           
@@ -251,9 +251,9 @@ const emailTemplates = {
       ${orderData.shipping_address.city}, ${orderData.shipping_address.state || 'Rajasthan'} ${orderData.shipping_address.postalCode}
       Phone: ${orderData.shipping_address.phone}
       
-      Track your order: ${process.env.FRONTEND_URL || 'https://saanz.com'}/track-order/${orderData.order_number}
+      Track your order: ${process.env.FRONTEND_URL}/track-order/${orderData.order_number}
       
-      Need Help? Contact our customer support team at support@saanz.com
+      Need Help? Contact our customer support team at Mateshvariexporter@gmail.com
       
       Thank you for choosing Mateshwari Moorti Bhandar!
     `
@@ -285,7 +285,7 @@ const emailTemplates = {
           </div>
           
           <div style="text-align: center; margin: 30px 0;">
-            <a href="${process.env.FRONTEND_URL || 'https://saanz.com'}/track-order/${orderData.order_number}" 
+            <a href="${process.env.FRONTEND_URL}/track-order/${orderData.order_number}" 
                style="background: #f59e0b; color: white; padding: 12px 30px; text-decoration: none; border-radius: 8px; display: inline-block; font-weight: 500;">
               Track Your Package
             </a>
@@ -319,7 +319,7 @@ const emailTemplates = {
       - Courier: ${orderData.courier_name || 'Standard Delivery'}
       - Estimated Delivery: 3-5 business days
       
-      Track your package: ${process.env.FRONTEND_URL || 'https://saanz.com'}/track-order/${orderData.order_number}
+      Track your package: ${process.env.FRONTEND_URL}/track-order/${orderData.order_number}
       
       Pro Tip: You can also track your package directly on the courier's website using the tracking number above.
       
@@ -360,7 +360,7 @@ const emailTemplates = {
           
           <div style="background: #f0f9ff; padding: 15px; border-radius: 8px; margin: 20px 0;">
             <p style="color: #0369a1; margin: 0; font-size: 14px;">
-              <strong>📞 Need Immediate Help?</strong> For urgent matters, you can call us at +91 98238 89134 or email us at saanzjaipurofficial@gmail.com
+              <strong>📞 Need Immediate Help?</strong> For urgent matters, you can call us at +91 77919 83156 or email us at Mateshvariexporter@gmail.com
             </p>
           </div>
           
@@ -385,7 +385,7 @@ const emailTemplates = {
       
       Response Time: We typically respond to all inquiries within 24-48 hours during business days.
       
-      Need Immediate Help? For urgent matters, you can call us at +91 98238 89134 or email us at saanzjaipurofficial@gmail.com
+      Need Immediate Help? For urgent matters, you can call us at +91 77919 83156 or email us at Mateshvariexporter@gmail.com
       
       Thank you for choosing Mateshwari Moorti Bhandar! We appreciate your patience.
     `
@@ -423,7 +423,7 @@ const emailTemplates = {
           </div>
           
           <div style="text-align: center; margin: 30px 0;">
-            <a href="${process.env.ADMIN_PANEL_URL || 'https://admin.saanz.com'}/contact-queries/${contactData.queryId}" 
+            <a href="${process.env.ADMIN_PANEL_URL}/contact-queries/${contactData.queryId}" 
                style="background: #ef4444; color: white; padding: 12px 30px; text-decoration: none; border-radius: 8px; display: inline-block; font-weight: 500;">
               View Query Details
             </a>
@@ -452,7 +452,7 @@ const emailTemplates = {
       
       Action Required: Please review this query and respond to the customer within 24-48 hours.
       
-      View Query Details: ${process.env.ADMIN_PANEL_URL || 'https://admin.saanz.com'}/contact-queries/${contactData.queryId}
+      View Query Details: ${process.env.ADMIN_PANEL_URL}/contact-queries/${contactData.queryId}
       
       This is an automated notification from the Mateshwari Moorti Bhandar Admin Panel.
     `
@@ -493,7 +493,7 @@ const emailTemplates = {
           
           <div style="background: #f0f9ff; padding: 15px; border-radius: 8px; margin: 20px 0;">
             <p style="color: #0369a1; margin: 0; font-size: 14px;">
-              <strong>📞 Need More Help?</strong> If you have any questions about this update, please contact us at saanzjaipurofficial@gmail.com or call us at +91 98238 89134
+              <strong>📞 Need More Help?</strong> If you have any questions about this update, please contact us at Mateshvariexporter@gmail.com or call us at +91 77919 83156
             </p>
           </div>
           
@@ -523,7 +523,7 @@ const emailTemplates = {
         contactData.newStatus === 'resolved' ? 'Your query has been resolved. If you need further assistance, please let us know.' :
           contactData.newStatus === 'closed' ? 'Your query has been closed. Thank you for contacting us.' : 'Your query is being reviewed by our team.'}
       
-      Need More Help? If you have any questions about this update, please contact us at saanzjaipurofficial@gmail.com or call us at +91 98238 89134
+      Need More Help? If you have any questions about this update, please contact us at Mateshvariexporter@gmail.com or call us at +91 77919 83156
       
       Thank you for choosing Mateshwari Moorti Bhandar! We appreciate your patience.
     `
@@ -557,7 +557,7 @@ const emailTemplates = {
           </div>
           
           <div style="text-align: center; margin: 30px 0;">
-            <a href="https://saanz.in/shop" 
+            <a href="${process.env.FRONTEND_URL}/shop" 
                style="background: #8B0000; color: white; padding: 12px 30px; text-decoration: none; border-radius: 8px; display: inline-block; font-weight: 500;">
               Start Shopping
             </a>
@@ -583,7 +583,7 @@ const emailTemplates = {
       - 📱 Latest fashion trends and styling tips
       - 🎁 Special member-only promotions
       
-      Start Shopping: https://saanz.in/shop
+      Start Shopping: ${process.env.FRONTEND_URL}/shop
       
       Follow us on social media for daily inspiration and updates!
     `
@@ -609,7 +609,7 @@ const emailTemplates = {
           </div>
           
           <div style="text-align: center; margin: 30px 0;">
-            <a href="https://saanz.in/admin" 
+            <a href="${process.env.ADMIN_PANEL_URL}/admin" 
                style="background: #8B0000; color: white; padding: 12px 30px; text-decoration: none; border-radius: 8px; display: inline-block; font-weight: 500;">
               View in Admin Panel
             </a>
@@ -631,7 +631,7 @@ const emailTemplates = {
       - Subscriber ID: #${data.subscriberId}
       - Subscribed At: ${new Date().toLocaleString()}
       
-      View in Admin Panel: https://saanz.in/admin
+      View in Admin Panel: ${process.env.ADMIN_PANEL_URL}/admin
       
       This is an automated notification from the Mateshwari Moorti Bhandar newsletter subscription.
     `
@@ -652,7 +652,7 @@ const emailTemplates = {
           </div>
           
           <div style="text-align: center; margin: 30px 0;">
-            <a href="https://saanz.in/shop" 
+            <a href="${process.env.FRONTEND_URL}/shop" 
                style="background: #8B0000; color: white; padding: 12px 30px; text-decoration: none; border-radius: 8px; display: inline-block; font-weight: 500;">
               Shop Now
             </a>
@@ -672,7 +672,7 @@ const emailTemplates = {
       
       ${data.content.replace(/<[^>]*>/g, '')}
       
-      Shop Now: https://saanz.in/shop
+      Shop Now: ${process.env.FRONTEND_URL}/shop
       
       Thank you for being part of the Mateshwari Moorti Bhandar family!
       Follow us on social media for daily inspiration and updates.
@@ -709,7 +709,7 @@ const sendEmail = async (to, template, data = {}) => {
 
     // Email options
     const mailOptions = {
-      from: process.env.EMAIL_USER || 'noreply@saanz.com',
+      from: process.env.EMAIL_USER || 'Mateshvariexporter@gmail.com',
       to: to,
       subject: emailContent.subject,
       html: emailContent.html,

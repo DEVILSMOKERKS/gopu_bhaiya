@@ -7,8 +7,8 @@ import './hero.css';
 
 // Define image URLs solely for rotation count and for reference in CSS
 const desktopImageUrls = [
-  "https://ik.imagekit.io/adsrc2244/saanz/main-page/sdg%202.jpg?updatedAt=1761543215591",
-  "https://ik.imagekit.io/adsrc2244/saanz/main-page/banner2.jpg?updatedAt=1759853802517",
+  "https://ik.imagekit.io/adsrc2244/mateshwarimoortibhandar/main-page/sdg%202.jpg?updatedAt=1761543215591",
+  "https://ik.imagekit.io/adsrc2244/mateshwarimoortibhandar/main-page/banner2.jpg?updatedAt=1759853802517",
 ];
 const heroImages = desktopImageUrls; // Use desktop array length for rotation count
 

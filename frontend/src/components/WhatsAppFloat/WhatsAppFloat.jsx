@@ -16,7 +16,7 @@ const WhatsAppFloat = () => {
     }, []);
 
     // WhatsApp number and message
-    const whatsappNumber = "+919823889134"; // PVJ WhatsApp number
+    const whatsappNumber = "+917791983156"; // Mateshwari Moorti Bhandar WhatsApp number
     const defaultMessage = "Hello! I'm interested in Mateshwari Moorti Bhandar collection. Can you help me?";
 
     const handleWhatsAppClick = () => {

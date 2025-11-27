@@ -29,7 +29,7 @@ const getAuthToken = async () => {
       timeout: 10000, // 10 second timeout
       headers: {
         'Content-Type': 'application/json',
-        'User-Agent': 'Saanz-Ecommerce/1.0'
+        'User-Agent': 'Mateshwari Moorti Bhandar/1.0'
       }
     });
 
@@ -105,7 +105,7 @@ const createShiprocketOrder = async (orderData) => {
     const shiprocketOrder = {
       order_id: orderData.order_number,
       order_date: new Date().toISOString().split('T')[0],
-      pickup_location: "Saanz",
+      pickup_location: "Mateshwari Moorti Bhandar",
       billing_customer_name: billingAddress.name,
       billing_last_name: "",
       billing_address: billingAddress.address,
@@ -254,7 +254,7 @@ const testShiprocketConnection = async () => {
     const response = await axios.get('https://apiv2.shiprocket.in/v1/external/auth/login', {
       timeout: 5000,
       headers: {
-        'User-Agent': 'Saanz-Ecommerce/1.0'
+        'User-Agent': 'Mateshwari Moorti Bhandar/1.0'
       }
     });
     console.log('Shiprocket API is reachable');

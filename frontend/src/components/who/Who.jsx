@@ -20,7 +20,7 @@ const Who = () => {
             that reflect the beauty of our rich culture. With us, it's not just fashion — it's a celebration
             of tradition, comfort, and individuality.
           </p>
-          <a href="https://saanz.in/About-us" className="who-cta-button" target="_blank" rel="noopener noreferrer">
+          <a href="https://www.mateshwarimoortibhandar.com/About-us" className="who-cta-button" target="_blank" rel="noopener noreferrer">
             View More
           </a>
         </div>
@@ -29,7 +29,7 @@ const Who = () => {
         <div className="who-image-section">
           <div className="who-image-frame">
             <img
-              src={"https://ik.imagekit.io/adsrc2244/saanz/main-page/who-banner%202.png?updatedAt=1761544773496"}
+              src={"https://ik.imagekit.io/adsrc2244/mateshwarimoortibhandar/main-page/who-banner%202.png?updatedAt=1761544773496"}
               className="who-main-image"
             />
 

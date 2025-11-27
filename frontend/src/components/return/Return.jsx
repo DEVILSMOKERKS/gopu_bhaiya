@@ -93,10 +93,10 @@ const Return = () => {
         <section className="return-policy-section">
           <h2>11. Contact Information</h2>
           <div className="return-contact-info">
-            <p><strong>Customer Service:</strong> <a href="tel:+919823889134" style={{ textDecoration: 'none', color: 'inherit' }}>+91 98238 89134</a> (Mon-Sat: 9:00 AM - 8:00 PM)</p>
-            <p><strong>Email Support:</strong> <a href="mailto:saanzjaipurofficial@gmail.com" style={{ textDecoration: 'none', color: 'inherit' }}>saanzjaipurofficial@gmail.com</a> (Response within 24 hours)</p>
+            <p><strong>Customer Service:</strong> <a href="tel:+917791983156" style={{ textDecoration: 'none', color: 'inherit' }}>+91 77919 83156</a> (Mon-Sat: 9:00 AM - 8:00 PM)</p>
+            <p><strong>Email Support:</strong> <a href="mailto:Mateshvariexporter@gmail.com" style={{ textDecoration: 'none', color: 'inherit' }}>Mateshvariexporter@gmail.com</a> (Response within 24 hours)</p>
             <p><strong>Store Address:</strong> <a href="https://www.google.com/maps/place/Plot+No.+D-142,+Flat+No.+G-1,+Kardhani+Yojana,+Kalwar+Road,+Govindpura,+Jhotwara,+Jaipur,+Rajasthan+302012" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none', color: 'inherit' }}>Plot No. D-142, Flat No. G-1, Kardhani Yojana, Kalwar Road, Govindpura, Jhotwara, Jaipur, Rajasthan (302012)</a></p>
-            <p><strong>Website:</strong> <a href="https://www.saanz.com" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none', color: 'inherit' }}>www.saanz.com</a></p>
+            <p><strong>Website:</strong> <a href="https://www.mateshwarimoortibhandar.com" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none', color: 'inherit' }}>www.mateshwarimoortibhandar.com</a></p>
             <p><strong>Business Hours:</strong> Monday to Saturday: 9:00 AM - 8:00 PM (Closed on Sundays and National Holidays)</p>
           </div>
         </section>
