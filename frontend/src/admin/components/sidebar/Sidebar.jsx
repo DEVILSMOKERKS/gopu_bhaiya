@@ -207,7 +207,7 @@ const Sidebar = ({ isMobileOpen, onMobileClose }) => {
       <aside className={`admin-sidebar ${isMobileOpen ? 'mobile-open' : ''}`}>
         <div className="admin-sidebar-header">
           <div className="admin-logo">
-            <h2>Saanz Admin</h2>
+            <h2>Mateshwari Moorti Bhandar Admin</h2>
           </div>
 
         </div>

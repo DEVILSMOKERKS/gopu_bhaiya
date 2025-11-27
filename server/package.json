@@ -1,7 +1,7 @@
 {
   "name": "server",
   "version": "1.0.0",
-  "description": "This is saanz backend using mysql2, node, express",
+  "description": "This is Mateshwari Moorti Bhandar backend using mysql2, node, express",
   "license": "ISC",
   "author": "Podosphere",
   "type": "commonjs",

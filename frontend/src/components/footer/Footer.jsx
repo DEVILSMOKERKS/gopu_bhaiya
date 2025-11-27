@@ -134,7 +134,7 @@ const Footer = () => {
                 onChange={(e) => setConsent(e.target.checked)}
               />
               <label htmlFor="consent">
-                By Submitting your email, you agree to receive advertising emails from Saanz.
+                By Submitting your email, you agree to receive advertising emails from Mateshwari Moorti Bhandar.
               </label>
             </div>
 
@@ -163,7 +163,7 @@ const Footer = () => {
         <div className="footer-right-section">
           {/* About Saanz Column */}
           <div className="footer-column">
-            <h3 className="footer-heading">About Saanz</h3>
+            <h3 className="footer-heading">About Mateshwari Moorti Bhandar</h3>
             <ul className="footer-links">
               <Link to="/shop">Collection</Link>
               <Link to="/privacy-policy">Privacy Policy</Link>
@@ -208,7 +208,7 @@ const Footer = () => {
 
       {/* Footer Bottom - Copyright */}
       <div className="footer-bottom">
-        <p>© 2023 Saanz. All Rights Reserved.</p>
+        <p>© 2023 Mateshwari Moorti Bhandar. All Rights Reserved.</p>
       </div>
 
       {/* WhatsApp Float Component */}

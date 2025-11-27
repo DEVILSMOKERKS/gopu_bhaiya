@@ -11,7 +11,7 @@ const Who = () => {
           <h2 className="who-title">Who We Are</h2>
           <h3 className="who-subtitle">Celebrating Tradition With A Modern Touch</h3>
           <p className="who-description">
-            At SAANZ, we believe every woman deserves to feel graceful, confident, and connected to her roots.
+            At Mateshwari Moorti Bhandar, we believe every home deserves to feel divine, blessed, and connected to its spiritual roots.
             Our collection of kurtis blends timeless Indian craftsmanship with contemporary designs, offering
             styles that are perfect for every occasion — from casual elegance to festive celebrations.
           </p>

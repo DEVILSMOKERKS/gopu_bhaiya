@@ -25,20 +25,20 @@ const CanonicalURL = () => {
         // Also update page title dynamically based on route
         const updatePageTitle = () => {
             const routeTitles = {
-                '/': 'Saanz - Premium Fashion & Lifestyle',
-                '/shop': 'Shop - Saanz',
-                '/cart': 'Shopping Cart - Saanz',
-                '/checkout': 'Checkout - Saanz',
-                '/profile': 'My Profile - Saanz',
-                '/orders': 'My Orders - Saanz',
-                '/wishlist': 'My Wishlist - Saanz',
-                '/contact': 'Contact Us - Saanz',
-                '/about': 'About Us - Saanz',
-                '/forgot-password': 'Forgot Password - Saanz',
-                '/reset-password': 'Reset Password - Saanz'
+                '/': 'Mateshwari Moorti Bhandar - Handcrafted Marble Idols & Temples',
+                '/shop': 'Shop - Mateshwari Moorti Bhandar',
+                '/cart': 'Shopping Cart - Mateshwari Moorti Bhandar',
+                '/checkout': 'Checkout - Mateshwari Moorti Bhandar',
+                '/profile': 'My Profile - Mateshwari Moorti Bhandar',
+                '/orders': 'My Orders - Mateshwari Moorti Bhandar',
+                '/wishlist': 'My Wishlist - Mateshwari Moorti Bhandar',
+                '/contact': 'Contact Us - Mateshwari Moorti Bhandar',
+                '/about': 'About Us - Mateshwari Moorti Bhandar',
+                '/forgot-password': 'Forgot Password - Mateshwari Moorti Bhandar',
+                '/reset-password': 'Reset Password - Mateshwari Moorti Bhandar'
             };
 
-            const title = routeTitles[location.pathname] || 'Saanz - Premium Fashion & Lifestyle';
+            const title = routeTitles[location.pathname] || 'Mateshwari Moorti Bhandar - Handcrafted Marble Idols & Temples';
             document.title = title;
         };
 

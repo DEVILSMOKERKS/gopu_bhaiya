@@ -103,7 +103,7 @@ const Clientdiaries = () => {
     {
       id: 10,
       src: Collection2,
-      alt: "Customer wearing SAANZ jewelry",
+      alt: "Customer with Mateshwari Moorti Bhandar idols",
       size: "medium"
     },
     {
@@ -177,11 +177,11 @@ const Clientdiaries = () => {
       <div className="clientdiaries-carousel-header">
         <div className="clientdiaries-carousel-title-wrapper">
           <span className="clientdiaries-carousel-title-line"></span>
-          <h2 className="clientdiaries-carousel-title">SAANZ CLIENT DIARIES</h2>
+          <h2 className="clientdiaries-carousel-title">MATESHWARI MOORTI BHANDAR CLIENT DIARIES</h2>
           <span className="clientdiaries-carousel-title-line"></span>
         </div>
         <p className="clientdiaries-carousel-subtitle">
-          Share Your #SAANZExperience And Inspire Others With Your Story!
+          Share Your #MateshwariMoortiBhandarExperience And Inspire Others With Your Story!
         </p>
         <button className="clientdiaries-share-story-btn">Share Your Story</button>
       </div>

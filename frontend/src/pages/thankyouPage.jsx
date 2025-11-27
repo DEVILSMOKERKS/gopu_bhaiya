@@ -473,7 +473,7 @@ function ThankYouPage() {
 
           {/* Subtitle */}
           <p style={styles.codSubtitle}>
-            Thank you for choosing Saanz! Your order has been confirmed and will be processed shortly.
+            Thank you for choosing Mateshwari Moorti Bhandar! Your order has been confirmed and will be processed shortly.
           </p>
 
           {/* Order Information Card */}
@@ -643,7 +643,7 @@ function ThankYouPage() {
         </h1>
 
         <p style={styles.description}>
-          Thank You For Choosing Saanz, Your Order Will Be Generated Based On Your Delivery Request.
+          Thank You For Choosing Mateshwari Moorti Bhandar, Your Order Will Be Generated Based On Your Delivery Request.
         </p>
 
         <p style={styles.receiptText}>

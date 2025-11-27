@@ -11,7 +11,7 @@ const HomeFollow = () => {
     
     return (
         <div className="homefollowus">
-            <h2 className="homefollowus-title">Follow Us @SAANZ</h2>
+            <h2 className="homefollowus-title">Follow Us @Mateshwari Moorti Bhandar</h2>
             <div className="homefollowus-container">
                 <div className="homefollowus-main-image">
                     <a href={instagramUrl} target="_blank" rel="noopener noreferrer" className="instagram-link">

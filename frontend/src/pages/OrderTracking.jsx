@@ -97,7 +97,7 @@ const OrderTracking = () => {
               id="orderNumber"
               value={orderNumber}
               onChange={(e) => setOrderNumber(e.target.value)}
-              placeholder="Enter your order number (e.g., SAANZ1234567890)"
+              placeholder="Enter your order number (e.g., MMB1234567890)"
               className="order-number-input"
             />
           </div>

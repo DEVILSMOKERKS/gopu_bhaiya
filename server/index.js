@@ -90,14 +90,14 @@ app.use('/api/newsletter', newsletterRoutes);
 app.get('/api/health', (req, res) => {
   res.json({
     status: 'OK',
-    message: 'Saanz API is running',
+    message: 'Mateshwari Moorti Bhandar API is running',
     timestamp: new Date().toISOString()
   });
 });
 
 // Welcome endpoint
 app.get('/welcome', (req, res) => {
-  res.send('Welcome to Saanz E-commerce API');
+  res.send('Welcome to Mateshwari Moorti Bhandar E-commerce API');
 });
 
 // 404 handler
@@ -112,6 +112,6 @@ app.use((err, req, res, next) => {
 });
 
 app.listen(PORT, '0.0.0.0', () => {
-  console.log(`🚀 Saanz server is running on port ${PORT}`);
+  console.log(`🚀 Mateshwari Moorti Bhandar server is running on port ${PORT}`);
   console.log(`📊 Health check: http://localhost:${PORT}/api/health`);
 });

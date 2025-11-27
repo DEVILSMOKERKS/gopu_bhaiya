@@ -77,7 +77,7 @@ const Checkoutpayment = () => {
         key: 'rzp_live_RMZ53vN2VEkmXq',
         amount: Math.round(orderData.amount * 100),
         currency: orderData.currency,
-        name: 'Saanz',
+        name: 'Mateshwari Moorti Bhandar',
         description: `Order #${orderData.orderNumber}`,
         order_id: orderData.razorpayOrderId,
         handler: async (response) => {
@@ -168,8 +168,8 @@ const Checkoutpayment = () => {
         {/* Header */}
         <div className="checkoutpayment-header">
           <div className="checkoutpayment-logo">
-            <div className="checkoutpayment-logo-main">SAANZ</div>
-            <div className="checkoutpayment-logo-sub">BY SAANZ FASHION</div>
+            <div className="checkoutpayment-logo-main">Mateshwari Moorti Bhandar</div>
+            <div className="checkoutpayment-logo-sub">BY MATESHWARI MOORTI BHANDAR</div>
           </div>
           <div className="checkoutpayment-progress">
             <span className="checkoutpayment-active">Cart</span>

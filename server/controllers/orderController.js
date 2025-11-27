@@ -14,7 +14,7 @@ const razorpay = new Razorpay({
 const generateOrderNumber = () => {
   const timestamp = Date.now();
   const random = Math.floor(Math.random() * 1000);
-  return `SAANZ${timestamp}${random}`;
+  return `MMB${timestamp}${random}`;
 };
 
 // Helper function to calculate order totals
@@ -128,7 +128,7 @@ const createCodOrder = async (req, res) => {
       } else {
         // Create new user with static password
         const { hashPassword } = require('../utils/bcryptUtil');
-        const hashedPassword = await hashPassword('Saanz@#$123');
+        const hashedPassword = await hashPassword('MMB@#$123');
 
         // Validate and clean data before insertion
         const firstName = shipping_address.firstName?.trim() || '';
@@ -192,15 +192,15 @@ const createCodOrder = async (req, res) => {
         const { sendEmail } = require('../utils/emailSender');
         await sendEmail(
           shipping_address.email,
-          'Welcome to Saanz - Your Account Details',
+          'Welcome to Mateshwari Moorti Bhandar - Your Account Details',
           `
-            <h2>Welcome to Saanz!</h2>
+            <h2>Welcome to Mateshwari Moorti Bhandar!</h2>
             <p>Your account has been created successfully.</p>
             <p><strong>Your Login Details:</strong></p>
             <p>Email: ${shipping_address.email}</p>
-            <p>Password: Saanz@#$123</p>
+            <p>Password: MMB@#$123</p>
             <p>Please keep this password safe and change it after your first login.</p>
-            <p>Thank you for choosing Saanz!</p>
+            <p>Thank you for choosing Mateshwari Moorti Bhandar!</p>
           `
         );
       }
@@ -664,7 +664,7 @@ const verifyPayment = async (req, res) => {
       } else {
         // Create new user with static password
         const { hashPassword } = require('../utils/bcryptUtil');
-        const hashedPassword = await hashPassword('Saanz@#$123');
+        const hashedPassword = await hashPassword('MMB@#$123');
 
         // Validate and clean data before insertion
         const firstName = shipping_address.firstName?.trim() || '';
@@ -728,15 +728,15 @@ const verifyPayment = async (req, res) => {
         const { sendEmail } = require('../utils/emailSender');
         await sendEmail(
           shipping_address.email,
-          'Welcome to Saanz - Your Account Details',
+          'Welcome to Mateshwari Moorti Bhandar - Your Account Details',
           `
-            <h2>Welcome to Saanz!</h2>
+            <h2>Welcome to Mateshwari Moorti Bhandar!</h2>
             <p>Your account has been created successfully.</p>
             <p><strong>Your Login Details:</strong></p>
             <p>Email: ${shipping_address.email}</p>
-            <p>Password: Saanz@#$123</p>
+            <p>Password: MMB@#$123</p>
             <p>Please keep this password safe and change it after your first login.</p>
-            <p>Thank you for choosing Saanz!</p>
+            <p>Thank you for choosing Mateshwari Moorti Bhandar!</p>
           `
         );
       }

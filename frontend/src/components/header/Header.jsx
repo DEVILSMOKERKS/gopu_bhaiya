@@ -343,7 +343,7 @@ const Header = ({ onAccountClick }) => {
           {/* Mobile Menu Header with Logo and Close Button */}
           <div className="header-mobile-menu-header">
             <div className="header-mobile-logo">
-              <img src={logo} alt="SAANZ" />
+              <img src={logo} alt="Mateshwari Moorti Bhandar" />
             </div>
             <button
               className="header-mobile-close-btn"

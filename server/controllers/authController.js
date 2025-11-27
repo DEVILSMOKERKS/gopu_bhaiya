@@ -701,12 +701,12 @@ const forgotPassword = async (req, res) => {
     console.log('🔗 Reset link generated:', resetLink);
 
     // Send email with reset link
-    const emailSubject = 'Password Reset Request - Saanz';
+    const emailSubject = 'Password Reset Request - Mateshwari Moorti Bhandar';
     const emailHtml = `
       <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
         <div style="text-align: center; margin-bottom: 30px;">
-          <h1 style="color: #9a0e0d; margin: 0;">Saanz</h1>
-          <p style="color: #666; margin: 5px 0;">Premium Fashion & Lifestyle</p>
+          <h1 style="color: #9a0e0d; margin: 0;">Mateshwari Moorti Bhandar</h1>
+          <p style="color: #666; margin: 5px 0;">Handcrafted Marble Idols & Temples</p>
         </div>
         
         <div style="background: #f8f9fa; padding: 30px; border-radius: 10px; margin-bottom: 20px;">
@@ -715,7 +715,7 @@ const forgotPassword = async (req, res) => {
             Hello ${user.name},
           </p>
           <p style="color: #666; line-height: 1.6; margin-bottom: 20px;">
-            We received a request to reset your password for your Saanz account. If you made this request, click the button below to reset your password:
+            We received a request to reset your password for your Mateshwari Moorti Bhandar account. If you made this request, click the button below to reset your password:
           </p>
           
           <div style="text-align: center; margin: 30px 0;">
@@ -745,7 +745,7 @@ const forgotPassword = async (req, res) => {
         
         <div style="text-align: center; color: #999; font-size: 14px;">
           <p>If you didn't request this password reset, please ignore this email.</p>
-          <p>© 2024 Saanz. All rights reserved.</p>
+          <p>© 2024 Mateshwari Moorti Bhandar. All rights reserved.</p>
         </div>
       </div>
     `;

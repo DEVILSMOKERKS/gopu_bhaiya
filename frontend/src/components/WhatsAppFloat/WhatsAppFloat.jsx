@@ -17,7 +17,7 @@ const WhatsAppFloat = () => {
 
     // WhatsApp number and message
     const whatsappNumber = "+919823889134"; // PVJ WhatsApp number
-    const defaultMessage = "Hello! I'm interested in Saanz collection. Can you help me?";
+    const defaultMessage = "Hello! I'm interested in Mateshwari Moorti Bhandar collection. Can you help me?";
 
     const handleWhatsAppClick = () => {
         const encodedMessage = encodeURIComponent(defaultMessage);

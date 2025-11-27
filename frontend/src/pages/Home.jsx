@@ -1,33 +1,34 @@
-import React from 'react'
-import Hero from '../components/hero/Hero'
-import SaanzWeek from '../components/saanaweek/SaanzWeek'
-import Who from '../components/who/Who'
-import Homeblog from '../components/Homeblog/Homeblog'
-import HomeFollow from '../components/homefollowus/HomeFollow'
-import Collection from '../components/collections/Collection'
-import BestSeller from '../components/BestSeller/BestSeller'
-import Clientdiaries from '../components/clientdiaries/Clientdiaries'
-import ExploreCollection from '../components/exploreCollection/ExploreCollection'
-import SpotLight from '../components/SpotLight/SpotLight'
-import HomeVideo from '../components/HomeVideo/HomeVideo'
+import React from 'react';
+import HeroSection from '../components/home/HeroSection/HeroSection';
+import DreamTempleSteps from '../components/home/DreamTempleSteps/DreamTempleSteps';
+import MateshwariCollection from '../components/home/MateshwariCollection/MateshwariCollection';
+import MakersHands from '../components/home/MakersHands/MakersHands';
+import OurVision from '../components/home/OurVision/OurVision';
+import ManufacturingProcess from '../components/home/ManufacturingProcess/ManufacturingProcess';
+import HandcraftedIdols from '../components/home/HandcraftedIdols/HandcraftedIdols';
+import CustomTempleProjects from '../components/home/CustomTempleProjects/CustomTempleProjects';
+import TrustedClients from '../components/home/TrustedClients/TrustedClients';
+import ClientDiaries from '../components/home/ClientDiaries/ClientDiaries';
+import FollowUs from '../components/home/FollowUs/FollowUs';
+import OurBlogs from '../components/home/OurBlogs/OurBlogs';
 
 const Home = () => {
   return (
     <>
-      <Hero />
-      <SaanzWeek />
-      <ExploreCollection />
-      <Who />
-      <Collection />
-      {/* <HomeVideo /> */}
-      <BestSeller />
-      <SpotLight />
-
-      <Clientdiaries />
-      <HomeFollow />
-      <Homeblog />
+      <HeroSection />
+      <DreamTempleSteps />
+      <MateshwariCollection />
+      <MakersHands />
+      <OurVision />
+      <ManufacturingProcess />
+      <HandcraftedIdols />
+      <CustomTempleProjects />
+      <TrustedClients />
+      <ClientDiaries />
+      <FollowUs />
+      <OurBlogs />
     </>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;
