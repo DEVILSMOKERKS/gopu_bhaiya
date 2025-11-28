@@ -1,16 +1,16 @@
 import React, { useState } from 'react';
-import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 import { useWishlistCart } from '../../context/wishlistCartContext';
 import './Wishlist.css';
 
-// Import placeholder image
-import placeholderImage from '/placeholder-product.jpg';
-
+// Placeholder image path
+const placeholderImage = '/placeholder-product.jpg';
 
 const Wishlist = () => {
   const [selectedColors, setSelectedColors] = useState({});
   const [selectedSizes, setSelectedSizes] = useState({});
   const { wishlist, removeFromWishlist, addToCart, loading, error } = useWishlistCart();
+  const navigate = useNavigate();
 
   // Get API URL from environment variable
   const API_URL = import.meta.env.VITE_API_URL;
@@ -77,10 +77,7 @@ const Wishlist = () => {
 
   const handleRemoveFromWishlist = (item) => {
     if (item.wishlist_id) {
-      // Redux data
       removeFromWishlist(item.wishlist_id);
-    } else {
-      // Fallback data
     }
   };
 
@@ -91,7 +88,7 @@ const Wishlist = () => {
     const selectedSize = selectedSizes[itemId];
     const selectedColorIndex = selectedColors[itemId] || 0;
 
-    if (!selectedSize) {
+    if (!selectedSize && product.sizes && product.sizes.length > 0) {
       alert('Please select a size before adding to cart');
       return;
     }
@@ -100,21 +97,21 @@ const Wishlist = () => {
     const selectedColor = product.colors && product.colors[selectedColorIndex];
     const selectedSizeData = product.sizes && product.sizes.find(size => size.size === selectedSize);
 
-    if (!selectedColor || !selectedSizeData) {
-      alert('Selected color or size not available');
+    if (product.sizes && (!selectedColor || !selectedSizeData)) {
+      alert('Please select both color and size');
       return;
     }
 
     // Prepare cart item data
     const cartItemData = {
-      product_id: item.product_id,
-      color_id: selectedColor.color_id,
-      size_id: selectedSizeData.size_id,
+      product_id: item.product_id || product.product_id || product.id,
+      color_id: selectedColor?.color_id || null,
+      size_id: selectedSizeData?.size_id || null,
       quantity: 1,
       product: product,
-      size_name: selectedSizeData.size,
-      color_name: selectedColor.color_name,
-      sell_price: selectedSizeData.sell_price
+      size_name: selectedSizeData?.size || null,
+      color_name: selectedColor?.color_name || null,
+      sell_price: selectedSizeData?.sell_price || product.min_price || product.price
     };
 
     // Add to cart using context
@@ -153,13 +150,15 @@ const Wishlist = () => {
     );
   }
 
+  const wishlistItems = wishlist?.items || [];
+
   return (
     <div className="wishlist-container">
       <div className="wishlist-header">
-        <h2 className="wishlist-title">My Wishlist ({wishlist.total_items} items)</h2>
+        <h2 className="wishlist-title">My Wishlist ({wishlistItems.length} items)</h2>
       </div>
 
-      {wishlist.items.length === 0 ? (
+      {wishlistItems.length === 0 ? (
         <div className="wishlist-empty">
           <div className="wishlist-empty-icon">
             <svg width="64" height="64" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -168,103 +167,98 @@ const Wishlist = () => {
           </div>
           <h3 className="wishlist-empty-title">Your wishlist is empty</h3>
           <p className="wishlist-empty-description">Start adding items to your wishlist to see them here</p>
-          <button className="wishlist-empty-btn">Start Shopping</button>
+          <button className="wishlist-empty-btn" onClick={() => navigate('/shop')}>Start Shopping</button>
         </div>
       ) : (
         <div className="wishlist-grid">
-          {wishlist.items.map((item) => (
-            <div key={item.wishlist_id} className="wishlist-card">
-              <div className="wishlist-card-image-container">
-                <img
-                  src={getCurrentImage(item)}
-                  alt={`${item.product?.name || item.name || 'Product'} product`}
-                  className="wishlist-card-image"
-                />
-                <button
-                  className="wishlist-remove-btn"
-                  aria-label="Remove from wishlist"
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    handleRemoveFromWishlist(item);
-                  }}
-                >
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                  </svg>
-                </button>
-              </div>
-              <div className="wishlist-card-content">
-                <h3 className="wishlist-product-name">{item.product?.name || item.name || 'Product Name Not Available'}</h3>
-                <p className="wishlist-product-description">{item.product?.description || item.description || 'Product description not available'}</p>
-                <div className="wishlist-price-colors">
-                  <span className="wishlist-price">
-                    {getCurrentPrice(item)}
-                  </span>
-                  {(item.product?.colors || item.colors) && (item.product?.colors || item.colors).length > 0 && (
-                    <div className="wishlist-color-swatches">
-                      {(item.product?.colors || item.colors).map((colorData, colorIndex) => (
-                        <div
-                          key={colorIndex}
-                          className={`wishlist-color-swatch ${selectedColors[item.wishlist_id || item.id] === colorIndex ? 'wishlist-color-swatch-active' : ''}`}
-                          style={{ backgroundColor: colorData.color_code || '#000000' }}
-                          title={colorData.color_name}
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            handleColorSelect(item.wishlist_id || item.id, colorIndex);
-                          }}
-                        />
-                      ))}
-                    </div>
-                  )}
+          {wishlistItems.map((item) => {
+            const product = item.product || item;
+            const itemId = item.wishlist_id || item.id;
+            
+            return (
+              <div key={itemId} className="wishlist-card">
+                <div className="wishlist-card-image-container">
+                  <img
+                    src={getCurrentImage(item)}
+                    alt={`${product.name || 'Product'} product`}
+                    className="wishlist-card-image"
+                    onError={(e) => {
+                      e.target.src = placeholderImage;
+                    }}
+                  />
+                  <button
+                    className="wishlist-remove-btn"
+                    aria-label="Remove from wishlist"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handleRemoveFromWishlist(item);
+                    }}
+                  >
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                  </button>
                 </div>
-
-                {/* Size Selection */}
-                <div className="wishlist-size-section">
-                  <h4 className="wishlist-size-title">Select Size:</h4>
-                  <div className="wishlist-size-options">
-                    {(item.product?.sizes || item.sizes) && (item.product?.sizes || item.sizes).length > 0 ? (
-                      (item.product?.sizes || item.sizes).map((sizeData) => (
-                        <button
-                          key={sizeData.size_id}
-                          className={`wishlist-size-btn ${selectedSizes[item.wishlist_id || item.id] === sizeData.size ? 'wishlist-size-btn-active' : ''}`}
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            handleSizeSelect(item.wishlist_id || item.id, sizeData.size);
-                          }}
-                        >
-                          {sizeData.size}
-                        </button>
-                      ))
-                    ) : (
-                      availableSizes.map((size) => (
-                        <button
-                          key={size}
-                          className={`wishlist-size-btn ${selectedSizes[item.wishlist_id || item.id] === size ? 'wishlist-size-btn-active' : ''}`}
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            handleSizeSelect(item.wishlist_id || item.id, size);
-                          }}
-                        >
-                          {size}
-                        </button>
-                      ))
+                <div className="wishlist-card-content">
+                  <h3 className="wishlist-product-name">{product.name || 'Product Name Not Available'}</h3>
+                  <p className="wishlist-product-description">{product.description || 'Product description not available'}</p>
+                  <div className="wishlist-price-colors">
+                    <span className="wishlist-price">
+                      {getCurrentPrice(item)}
+                    </span>
+                    {product.colors && product.colors.length > 0 && (
+                      <div className="wishlist-color-swatches">
+                        {product.colors.map((colorData, colorIndex) => (
+                          <div
+                            key={colorIndex}
+                            className={`wishlist-color-swatch ${selectedColors[itemId] === colorIndex ? 'wishlist-color-swatch-active' : ''}`}
+                            style={{ backgroundColor: colorData.color_code || '#000000' }}
+                            title={colorData.color_name}
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              handleColorSelect(itemId, colorIndex);
+                            }}
+                          />
+                        ))}
+                      </div>
                     )}
                   </div>
-                </div>
 
-                {/* Add to Cart Button */}
-                <button
-                  className="wishlist-add-to-cart-btn"
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    handleAddToCart(item);
-                  }}
-                >
-                  Add to Cart
-                </button>
+                  {/* Size Selection */}
+                  {product.sizes && product.sizes.length > 0 && (
+                    <div className="wishlist-size-section">
+                      <h4 className="wishlist-size-title">Select Size:</h4>
+                      <div className="wishlist-size-options">
+                        {product.sizes.map((sizeData) => (
+                          <button
+                            key={sizeData.size_id}
+                            className={`wishlist-size-btn ${selectedSizes[itemId] === sizeData.size ? 'wishlist-size-btn-active' : ''}`}
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              handleSizeSelect(itemId, sizeData.size);
+                            }}
+                          >
+                            {sizeData.size}
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Add to Cart Button */}
+                  <button
+                    className="wishlist-add-to-cart-btn"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handleAddToCart(item);
+                    }}
+                  >
+                    Add to Cart
+                  </button>
+                </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       )}
     </div>
@@ -272,3 +266,4 @@ const Wishlist = () => {
 };
 
 export default Wishlist;
+

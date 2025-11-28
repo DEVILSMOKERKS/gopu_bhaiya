@@ -61,12 +61,7 @@ const AboutSection = () => {
                   className="about-main-img"
                 />
                 {/* Mateshwari Moorti Bhandar Logo Overlay */}
-                <div className="about-logo-overlay">
-                  <div className="about-logo-content">
-                    <div className="about-logo-text">Mateshwari Moorti Bhandar</div>
-                    <div className="about-logo-line"></div>
-                  </div>
-                </div>
+              
               </div>
             </div>
           </div>
@@ -228,61 +223,60 @@ const CraftsmanshipSection = () => {
       <div className="craftsmanship-container">
         {/* Header Section */}
         <div className="craftsmanship-header">
-          <div className="craftsmanship-icon-wrapper">
-          </div>
+          <div className="craftsmanship-icon-wrapper"></div>
           <div className="craftsmanship-title-row">
             <span className="craftsmanship-title-line-left"></span>
             <h2 className="craftsmanship-main-title">
-              Quality & Craftsmanship
+              Mateshwari Moorti Bhandar Craftsmanship
             </h2>
             <span className="craftsmanship-title-line-right"></span>
           </div>
           <p className="craftsmanship-subtitle">
-            Every Piece Is A Promise Of Comfort, Style, And Durability.
+            Each idol is a masterpiece, sculpted with devotion, precision, and deep reverence to tradition.
           </p>
         </div>
         {/* Features Grid */}
         <div className="craftsmanship-grid">
-          {/* Premium Materials Card */}
+          {/* Pure Marble Selection Card */}
           <div className="craftsmanship-card">
             <div className="craftsmanship-card-icon-wrapper">
               <div className="craftsmanship-card-icon-bg">
                 <span className="craftsmanship-card-icon">
-                  <img src={icon1} alt="Premium Materials Icon" className="craftsmanship-card-img" />
+                  <img src={icon1} alt="Pure Marble Icon" className="craftsmanship-card-img" />
                 </span>
               </div>
             </div>
-            <h3 className="craftsmanship-card-title">Premium Materials</h3>
+            <h3 className="craftsmanship-card-title">Finest Quality Marble</h3>
             <p className="craftsmanship-card-description">
-              We use only the finest fabrics and materials, carefully selected for their comfort, durability, and sustainable qualities.
+              We use only the best and purest marble, handpicked for durability and divine aura, ensuring every moorti is flawless.
             </p>
           </div>
-          {/* Expert Tailoring Card */}
+          {/* Tradition & Skill Card */}
           <div className="craftsmanship-card">
             <div className="craftsmanship-card-icon-wrapper">
               <div className="craftsmanship-card-icon-bg">
                 <span className="craftsmanship-card-icon">
-                  <img src={icon2} alt="Expert Tailoring Icon" className="craftsmanship-card-img" />
+                  <img src={icon2} alt="Artisan Skill Icon" className="craftsmanship-card-img" />
                 </span>
               </div>
             </div>
-            <h3 className="craftsmanship-card-title">Expert Tailoring</h3>
+            <h3 className="craftsmanship-card-title">Generations of Artistry</h3>
             <p className="craftsmanship-card-description">
-              Our skilled artisans bring decades of experience to each garment, ensuring perfect fit and exceptional quality.
+              Our artisans inherit centuries-old sculpting techniques, bringing legends and deities to life with intricate handiwork and soulful expression.
             </p>
           </div>
-          {/* Sustainable Fashion Card */}
+          {/* Devotional Detailing Card */}
           <div className="craftsmanship-card">
             <div className="craftsmanship-card-icon-wrapper">
               <div className="craftsmanship-card-icon-bg">
                 <span className="craftsmanship-card-icon">
-                  <img src={icon3} alt="Sustainable Fashion Icon" className="craftsmanship-card-img" />
+                  <img src={icon3} alt="Devotional Detail Icon" className="craftsmanship-card-img" />
                 </span>
               </div>
             </div>
-            <h3 className="craftsmanship-card-title">Sustainable Fashion</h3>
+            <h3 className="craftsmanship-card-title">Devotional Detailing</h3>
             <p className="craftsmanship-card-description">
-              We're committed to eco-friendly practices, using sustainable materials and ethical manufacturing processes.
+              Every idol features carefully carved features and sacred motifs, finished with hand painting and ornamentation that honors our spiritual heritage.
             </p>
           </div>
         </div>
