@@ -1,81 +1,193 @@
+/* ============================================
+   CLIENT DIARIES SECTION
+   ============================================ */
 .client-diaries {
-  padding: 80px 20px;
-  background: #ffffff;
+  padding: 0;
+  background: var(--primary-brown);
+  position: relative;
 }
 
-.container {
+.client-diaries-container {
   max-width: 1400px;
   margin: 0 auto;
+  position: relative;
+  padding-bottom: 40px;
 }
 
-.section-title {
-  font-size: 2.5rem;
-  font-weight: 700;
+.client-diaries-header {
   text-align: center;
-  margin-bottom: 60px;
-  color: #1a1a2e;
-  font-family: 'Playfair Display', serif;
+  position: absolute;
+  top: 0%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  height: 50%;
+  z-index: 10;
+  background: linear-gradient(360deg, rgba(182, 129, 38, 0) 5.89%, rgba(182, 129, 38, 0.5) 57.2%, rgba(182, 129, 38, 0.8) 108.51%);
+  padding: 30px 40px;
+  border-radius: 8px;
 }
 
-.testimonials-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 30px;
-}
 
-.testimonial-card {
-  background: #f8f9fa;
-  border-radius: 12px;
-  padding: 30px;
-  text-align: center;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
 
-.testimonial-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-}
-
-.testimonial-image {
+.client-diaries-title {
+  font-size: 2.2rem;
+  font-weight: 500;
+  color: #ffffff;
   margin-bottom: 20px;
+  font-family: var(--font-family);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
-.client-image {
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
+.client-diaries-subtitle {
+  font-size: 1.1rem;
+  color: #ffffff;
+  margin-bottom: 30px;
+  font-family: var(--font-family);
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+  line-height: 1.6;
+}
+
+.client-diaries-button {
+  background: #ffffff;
+  color: var(--primary-green);
+  border: none;
+  padding: 15px 40px;
+  border-radius: 0;
+  font-size: 1rem;
+  font-weight: 600;
+  font-family: var(--font-family);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.client-diaries-button:hover {
+  background: #f0f0f0;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+.client-diaries-button:active {
+  transform: translateY(0);
+}
+
+.client-diaries-scroll-wrapper {
+  height: 600px;
+  overflow: hidden;
+  position: relative;
+}
+
+.client-diaries-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 15px;
+  grid-auto-rows: 200px;
+}
+
+.client-diaries-card {
+  border-radius: 12px;
+  overflow: hidden;
+  position: relative;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.client-diaries-card:hover {
+  transform: scale(1.05);
+  z-index: 2;
+}
+
+.client-diaries-card.small {
+  grid-row: span 1;
+}
+
+.client-diaries-card.medium {
+  grid-row: span 2;
+}
+
+.client-diaries-card.large {
+  grid-row: span 3;
+}
+
+.client-diaries-image {
+  width: 100%;
+  height: 100%;
   object-fit: cover;
-  border: 4px solid #B68126;
-  margin: 0 auto;
   display: block;
 }
 
-.testimonial-content {
-  margin-top: 20px;
-}
-
-.testimonial-quote {
-  font-size: 1rem;
-  line-height: 1.6;
-  color: #333;
-  font-style: italic;
-  margin-bottom: 15px;
-}
-
-.testimonial-name {
-  font-size: 0.9rem;
-  font-weight: 600;
-  color: #B68126;
-}
-
-@media (max-width: 768px) {
-  .section-title {
-    font-size: 2rem;
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
+@media (max-width: 968px) {
+  .client-diaries-header {
+    top: 0%;
+    width: 100%;
   }
 
-  .testimonials-grid {
-    grid-template-columns: 1fr;
-    gap: 20px;
+  .client-diaries-container {
+    padding-bottom: 20px;
+  }
+
+  .client-diaries-scroll-wrapper {
+    height: 500px;
+  }
+
+  .client-diaries-grid {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 12px;
+    grid-auto-rows: 150px;
+  }
+
+  .client-diaries-title {
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+  }
+
+  .client-diaries-subtitle {
+    font-size: 1rem;
+    margin-bottom: 25px;
+  }
+
+  .client-diaries-button {
+    padding: 12px 30px;
+    font-size: 0.9rem;
   }
 }
 
+@media (max-width: 480px) {
+  .client-diaries-header {
+    top: 0%;
+    width: 100%;
+  }
+
+  .client-diaries-container {
+    padding-bottom: 15px;
+  }
+
+  .client-diaries-scroll-wrapper {
+    height: 400px;
+  }
+
+  .client-diaries-grid {
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 10px;
+    grid-auto-rows: 120px;
+  }
+
+  .client-diaries-title {
+    font-size: 1.3rem;
+    margin-bottom: 12px;
+  }
+
+  .client-diaries-subtitle {
+    font-size: 0.85rem;
+    margin-bottom: 20px;
+  }
+
+  .client-diaries-button {
+    padding: 10px 25px;
+    font-size: 0.85rem;
+  }
+}

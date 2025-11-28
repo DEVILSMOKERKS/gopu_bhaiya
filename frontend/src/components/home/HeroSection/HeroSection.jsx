@@ -2,11 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import './HeroSection.css';
 // Import local images
-import hero1 from '../../../assets/Images/banner/hero-1.png';
-import hero2 from '../../../assets/Images/banner/hero-1.png';
-import hero11 from '../../../assets/Images/banner/hero-1.png';
-import hero12 from '../../../assets/Images/banner/hero-1.png';
-import hero13 from '../../../assets/Images/banner/hero-1.png';
+import hero1 from '../../../assets/Images/banner/hero-1.jpg';
+import hero2 from '../../../assets/Images/banner/hero-1.jpg';
+import hero11 from '../../../assets/Images/banner/hero-1.jpg';
+import hero12 from '../../../assets/Images/banner/hero-1.jpg';
+import hero13 from '../../../assets/Images/banner/hero-1.jpg';
 
 const HeroSection = () => {
   const [currentSlide, setCurrentSlide] = useState(0);

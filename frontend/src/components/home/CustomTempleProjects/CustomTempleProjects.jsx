@@ -1,44 +1,33 @@
 import React from 'react';
 import './CustomTempleProjects.css';
+// Import background images - Update these paths when images are available
+import customProjectsBgDesktop from '../../../assets/Images/banner/customProjectsBgDesktop.jpg';
+import customProjectsBgMobile from '../../../assets/Images/banner/customProjectsBgMobile.jpg';
 
 const CustomTempleProjects = () => {
   const stats = [
-    { number: '97+', label: 'Custom Temples' },
-    { number: '999+', label: 'Idols' },
-    { number: '50+', label: 'Countries Exported To' }
+    { number: '97+', label: 'Cities' },
+    { number: '999+', label: 'Project' },
+    { number: '50+', label: 'Years Of Experience' }
   ];
 
-  const projectImages = [
-    { src: 'https://via.placeholder.com/300x300/8B4513/FFFFFF?text=Temple+1', alt: 'Custom Temple Project' },
-    { src: 'https://via.placeholder.com/300x300/8B4513/FFFFFF?text=Temple+2', alt: 'Temple Installation' },
-    { src: 'https://via.placeholder.com/300x300/8B4513/FFFFFF?text=Idol+1', alt: 'Handcrafted Idol' },
-    { src: 'https://via.placeholder.com/300x300/8B4513/FFFFFF?text=Idol+2', alt: 'Marble Statue' }
-  ];
+  const sectionStyle = {
+    '--desktop-bg': customProjectsBgDesktop ? `url(${customProjectsBgDesktop})` : 'none',
+    '--mobile-bg': customProjectsBgMobile ? `url(${customProjectsBgMobile})` : 'none'
+  };
 
   return (
-    <section className="custom-temple-projects">
-      <div className="projects-background">
-        <div className="container">
-          <h2 className="section-title">Our Custom Temple and Projects</h2>
-          <div className="stats-grid">
-            {stats.map((stat, index) => (
-              <div key={index} className="stat-card">
-                <div className="stat-number">{stat.number}</div>
-                <div className="stat-label">{stat.label}</div>
-              </div>
-            ))}
-          </div>
-          <div className="projects-grid">
-            {projectImages.map((image, index) => (
-              <div key={index} className="project-image-card">
-                <img 
-                  src={image.src} 
-                  alt={image.alt}
-                  className="project-image"
-                />
-              </div>
-            ))}
-          </div>
+    <section className="custom-temple-projects" style={sectionStyle}>
+      <div className="custom-temple-projects-container">
+        <h2 className="custom-temple-projects-title">Our Custom Completed Projects</h2>
+        <p className="custom-temple-projects-subtitle">Crafted With Creativity, Built With Excellence</p>
+        <div className="custom-temple-projects-stats">
+          {stats.map((stat, index) => (
+            <div key={index} className="custom-temple-projects-stat-card">
+              <div className="custom-temple-projects-stat-number">{stat.number}</div>
+              <div className="custom-temple-projects-stat-label">{stat.label}</div>
+            </div>
+          ))}
         </div>
       </div>
     </section>

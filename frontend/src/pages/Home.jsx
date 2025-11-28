@@ -3,6 +3,7 @@ import HeroSection from '../components/home/HeroSection/HeroSection';
 import DreamTempleSteps from '../components/home/DreamTempleSteps/DreamTempleSteps';
 import MateshwariCollection from '../components/home/MateshwariCollection/MateshwariCollection';
 import MakersHands from '../components/home/MakersHands/MakersHands';
+import DirectFromMakersHands from '../components/home/DirectFromMakersHands/DirectFromMakersHands';
 import OurVision from '../components/home/OurVision/OurVision';
 import ManufacturingProcess from '../components/home/ManufacturingProcess/ManufacturingProcess';
 import HandcraftedIdols from '../components/home/HandcraftedIdols/HandcraftedIdols';
@@ -19,6 +20,7 @@ const Home = () => {
       <DreamTempleSteps />
       <MateshwariCollection />
       <MakersHands />
+      <DirectFromMakersHands />
       <OurVision />
       <ManufacturingProcess />
       <HandcraftedIdols />

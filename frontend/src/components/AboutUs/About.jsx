@@ -11,7 +11,7 @@ import icon1 from "../../assets/img/icons/1.png";
 import icon2 from "../../assets/img/icons/2.png";
 import icon3 from "../../assets/img/icons/3.png";
 import aboutup from '../../assets/Images/collection/collection2.jpg';
-import aboutbg from '../../assets/Images/banner/hero-1.png';
+import aboutbg from '../../assets/Images/banner/hero-1.jpg';
 import HomeBlog from '../Homeblog/Homeblog';
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
@@ -270,7 +270,7 @@ const CraftsmanshipSection = () => {
             <div className="craftsmanship-card-icon-wrapper">
               <div className="craftsmanship-card-icon-bg">
                 <span className="craftsmanship-card-icon">
-                  <img src={icon3} alt="Devotional Detail Icon" className="craftsmanship-card-img" />
+                    <img src={icon3} alt="Devotional Detail Icon" className="craftsmanship-card-img" />
                 </span>
               </div>
             </div>

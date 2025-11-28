@@ -1,61 +1,217 @@
+/* ============================================
+   MANUFACTURES IN MOTION SECTION
+   ============================================ */
 .manufacturing-process {
   padding: 80px 20px;
-  background: #f8f9fa;
+  background: #ffffff;
 }
 
-.container {
+.manufacturing-process-container {
   max-width: 1400px;
   margin: 0 auto;
 }
 
-.section-title {
+.manufacturing-process-title {
   font-size: 2.5rem;
   font-weight: 700;
-  text-align: center;
-  margin-bottom: 60px;
-  color: #1a1a2e;
-  font-family: 'Playfair Display', serif;
+  text-align: left;
+  margin-bottom: 40px;
+  color: #000000;
+  font-family: var(--font-family);
 }
 
-.process-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 30px;
+/* ============================================
+   DESKTOP GRID - HORIZONTAL SCROLL
+   ============================================ */
+.manufacturing-process-grid-desktop {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  /* Firefox */
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scroll-behavior: smooth;
+  padding-bottom: 10px;
+  margin-bottom: 30px;
 }
 
-.process-image-card {
+.manufacturing-process-grid-desktop::-webkit-scrollbar {
+  display: none;
+  /* Chrome, Safari, Opera */
+}
+
+.manufacturing-process-grid-desktop .manufacturing-process-card {
+  flex: 0 0 calc(25% - 15px);
+  /* 4 cards per view with gap */
+  min-width: calc(25% - 15px);
+  scroll-snap-align: start;
+}
+
+.manufacturing-process-card {
   position: relative;
   border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
   background: #ffffff;
+  transition: transform var(--transition-normal);
+  aspect-ratio: 2 / 3;
+  /* Vertical rectangle ratio */
+  min-height: 500px;
 }
 
-.process-image-card:hover {
+.manufacturing-process-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
 }
 
-.process-image {
+.manufacturing-process-image {
   width: 100%;
-  height: 300px;
+  height: 100%;
   object-fit: cover;
   display: block;
+  border-radius: 12px;
 }
 
-@media (max-width: 768px) {
-  .section-title {
-    font-size: 2rem;
+/* ============================================
+   MOBILE GRID - 2 IMAGES
+   ============================================ */
+.manufacturing-process-grid-mobile {
+  display: none;
+}
+
+/* ============================================
+   PAGINATION DOTS
+   ============================================ */
+.manufacturing-process-pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin-top: 30px;
+}
+
+.manufacturing-process-pagination-desktop {
+  display: flex;
+}
+
+.manufacturing-process-pagination-mobile {
+  display: none;
+}
+
+.manufacturing-process-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: none;
+  background: #d0d0d0;
+  cursor: pointer;
+  transition: all var(--transition-normal);
+  padding: 0;
+}
+
+.manufacturing-process-dot.active {
+  width: 40px;
+  height: 10px;
+  border-radius: 20px;
+  background: var(--primary-brown);
+}
+
+.manufacturing-process-dot:hover:not(.active) {
+  background: #666666;
+}
+
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
+@media (max-width: 968px) {
+  .manufacturing-process {
+    padding: 60px 15px;
   }
 
-  .process-grid {
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
+  .manufacturing-process-title {
+    font-size: 1.5rem;
+    text-align: center;
+    margin-bottom: 30px;
   }
 
-  .process-image {
-    height: 250px;
+  /* Hide desktop grid */
+  .manufacturing-process-grid-desktop {
+    display: none;
+  }
+
+  /* Show mobile grid */
+  .manufacturing-process-grid-mobile {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    scroll-behavior: smooth;
+    padding-bottom: 10px;
+    margin-bottom: 30px;
+  }
+
+  .manufacturing-process-grid-mobile::-webkit-scrollbar {
+    display: none;
+  }
+
+  .manufacturing-process-grid-mobile .manufacturing-process-card {
+    flex: 0 0 calc(50% - 7.5px);
+    min-width: calc(50% - 7.5px);
+    scroll-snap-align: start;
+  }
+
+  .manufacturing-process-card {
+    border-radius: 12px;
+    aspect-ratio: 2 / 3;
+    min-height: 400px;
+  }
+
+  .manufacturing-process-image {
+    border-radius: 12px;
+  }
+
+  /* Hide desktop pagination, show mobile */
+  .manufacturing-process-pagination-desktop {
+    display: none;
+  }
+
+  .manufacturing-process-pagination-mobile {
+    display: flex;
   }
 }
 
+@media (max-width: 480px) {
+  .manufacturing-process {
+    padding: 40px 10px;
+  }
+
+  .manufacturing-process-title {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+  }
+
+  .manufacturing-process-grid-mobile {
+    gap: 10px;
+  }
+
+  .manufacturing-process-grid-mobile .manufacturing-process-card {
+    flex: 0 0 calc(50% - 5px);
+    min-width: calc(50% - 5px);
+  }
+
+  .manufacturing-process-card {
+    min-height: 350px;
+  }
+
+  .manufacturing-process-pagination {
+    margin-top: 20px;
+  }
+}

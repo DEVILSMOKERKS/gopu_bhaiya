@@ -1,0 +1,459 @@
+/* ============================================
+   DIRECT FROM MAKERS HANDS SECTION
+   ============================================ */
+.direct-makers-hands {
+    padding: 80px 20px;
+    background: #ffffff;
+}
+
+.direct-makers-hands-container {
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.direct-makers-hands-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+.direct-makers-hands-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    text-align: left;
+    margin: 0;
+    color: #000000;
+    font-family: var(--font-family);
+}
+
+.direct-makers-hands-view-all {
+    background: transparent;
+    border: none;
+    color: #000000;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: underline;
+    font-family: var(--font-family);
+    transition: color var(--transition-normal);
+    padding: 0;
+}
+
+.direct-makers-hands-view-all:hover {
+    color: var(--primary-brown);
+}
+
+/* ============================================
+   DESKTOP GRID - 3 PRODUCTS WITH HORIZONTAL SCROLL
+   ============================================ */
+.direct-makers-hands-desktop-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.direct-makers-hands-grid-desktop {
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    scroll-behavior: smooth;
+    flex: 1;
+    /* Prevent click scrolling, allow drag */
+    cursor: grab;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+.direct-makers-hands-grid-desktop:active {
+    cursor: grabbing;
+}
+
+.direct-makers-hands-grid-desktop.dragging {
+    cursor: grabbing;
+}
+
+.direct-makers-hands-grid-desktop::-webkit-scrollbar {
+    display: none;
+}
+
+.direct-makers-hands-grid-desktop .direct-makers-hands-card {
+    flex: 0 0 calc(33.333% - 20px);
+    min-width: calc(33.333% - 20px);
+    scroll-snap-align: start;
+    /* Prevent card click from triggering scroll */
+    pointer-events: auto;
+}
+
+
+.direct-makers-hands-card {
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    transition: transform var(--transition-normal);
+}
+
+.direct-makers-hands-card:hover {
+    transform: translateY(-5px);
+}
+
+.direct-makers-hands-image-wrapper {
+    position: relative;
+    width: 100%;
+    padding-top: 130%;
+    overflow: hidden;
+    background: #f5f5f5;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+.direct-makers-hands-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--transition-normal);
+}
+
+.direct-makers-hands-card:hover .direct-makers-hands-image {
+    transform: scale(1.05);
+}
+
+.direct-makers-hands-wishlist-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: rgba(255, 255, 255, 0.9);
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all var(--transition-normal);
+    z-index: 2;
+}
+
+.direct-makers-hands-wishlist-btn:hover {
+    background: rgba(255, 255, 255, 1);
+    transform: scale(1.1);
+}
+
+.direct-makers-hands-wishlist-icon {
+    font-size: 1.5rem;
+    color: #000000;
+    stroke-width: 2;
+    transition: color var(--transition-normal);
+}
+
+.direct-makers-hands-wishlist-icon.filled {
+    color: #ff0000;
+    fill: #ff0000;
+}
+
+.direct-makers-hands-card-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    text-align: left;
+    color: #000000;
+    margin: 0 0 8px 0;
+    font-family: var(--font-family);
+}
+
+.direct-makers-hands-card-description {
+    font-size: 0.9rem;
+    color: #666666;
+    text-align: left;
+    margin: 0 0 10px 0;
+    font-family: var(--font-family);
+    line-height: 1.4;
+}
+
+.direct-makers-hands-card-price {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #000000;
+    text-align: left;
+    margin: 0;
+    font-family: var(--font-family);
+}
+
+.direct-makers-hands-loading {
+    text-align: center;
+    padding: 60px 20px;
+    font-size: 1.2rem;
+    color: #666666;
+}
+
+/* ============================================
+   EMPTY STATE STYLES
+   ============================================ */
+.direct-makers-hands-empty-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 80px 20px;
+    text-align: center;
+}
+
+.direct-makers-hands-empty-icon-wrapper {
+    width: 120px;
+    height: 120px;
+    margin-bottom: 30px;
+    color: #d0d0d0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.direct-makers-hands-empty-icon-wrapper svg {
+    width: 100%;
+    height: 100%;
+}
+
+.direct-makers-hands-empty-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #666666;
+    margin: 0 0 15px 0;
+    font-family: var(--font-family);
+}
+
+.direct-makers-hands-empty-message {
+    font-size: 1rem;
+    color: #999999;
+    margin: 0;
+    max-width: 500px;
+    line-height: 1.6;
+    font-family: var(--font-family);
+}
+
+/* ============================================
+   MOBILE GRID - 2 PRODUCTS WITH PAGINATION
+   ============================================ */
+.direct-makers-hands-grid-mobile {
+    display: none;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    scroll-behavior: smooth;
+}
+
+.direct-makers-hands-grid-mobile::-webkit-scrollbar {
+    display: none;
+}
+
+.direct-makers-hands-pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    margin-top: 30px;
+}
+
+.direct-makers-hands-pagination-desktop {
+    display: flex;
+}
+
+.direct-makers-hands-pagination-mobile {
+    display: none;
+}
+
+.direct-makers-hands-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    border: none;
+    background: #d0d0d0;
+    cursor: pointer;
+    transition: all var(--transition-normal);
+    padding: 0;
+}
+
+.direct-makers-hands-dot.active {
+    width: 12px;
+    height: 12px;
+    background: var(--primary-brown);
+}
+
+.direct-makers-hands-dot:hover {
+    background: #666666;
+}
+
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
+@media (max-width: 968px) {
+    .direct-makers-hands {
+        padding: 60px 15px;
+    }
+
+    .direct-makers-hands-header {
+        margin-bottom: 30px;
+    }
+
+    .direct-makers-hands-title {
+        font-size: 1.2rem;
+    }
+
+    .direct-makers-hands-view-all {
+        font-size: 0.9rem;
+    }
+
+    /* Hide desktop grid on mobile */
+    .direct-makers-hands-grid-desktop {
+        display: none;
+    }
+
+    /* Show mobile grid */
+    .direct-makers-hands-grid-mobile {
+        display: flex;
+        flex-direction: row;
+        gap: 15px;
+        overflow-x: auto;
+        overflow-y: hidden;
+        -webkit-overflow-scrolling: touch;
+        scroll-snap-type: x mandatory;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+        padding-bottom: 10px;
+    }
+
+    .direct-makers-hands-grid-mobile::-webkit-scrollbar {
+        display: none;
+    }
+
+    .direct-makers-hands-grid-mobile .direct-makers-hands-card {
+        flex: 0 0 calc(50% - 7.5px);
+        min-width: calc(50% - 7.5px);
+        scroll-snap-align: start;
+    }
+
+    .direct-makers-hands-image-wrapper {
+        padding-top: 130%;
+    }
+
+    .direct-makers-hands-card-title {
+        font-size: 1rem;
+    }
+
+    .direct-makers-hands-card-description {
+        font-size: 0.85rem;
+    }
+
+    .direct-makers-hands-card-price {
+        font-size: 1.1rem;
+    }
+
+    .direct-makers-hands-wishlist-btn {
+        width: 35px;
+        height: 35px;
+        top: 10px;
+        right: 10px;
+    }
+
+    .direct-makers-hands-wishlist-icon {
+        font-size: 1.2rem;
+    }
+
+    /* Hide desktop pagination, show mobile */
+    .direct-makers-hands-pagination-desktop {
+        display: none;
+    }
+
+    .direct-makers-hands-pagination-mobile {
+        display: flex;
+    }
+}
+
+@media (max-width: 480px) {
+    .direct-makers-hands {
+        padding: 40px 10px;
+    }
+
+    .direct-makers-hands-header {
+        margin-bottom: 20px;
+    }
+
+    .direct-makers-hands-title {
+        font-size: 1rem;
+    }
+
+    .direct-makers-hands-view-all {
+        font-size: 0.85rem;
+    }
+
+    .direct-makers-hands-grid-mobile {
+        gap: 10px;
+    }
+
+    .direct-makers-hands-grid-mobile .direct-makers-hands-card {
+        flex: 0 0 calc(50% - 5px);
+        min-width: calc(50% - 5px);
+    }
+
+    .direct-makers-hands-image-wrapper {
+        padding-top: 130%;
+        margin-bottom: 10px;
+    }
+
+    .direct-makers-hands-card-title {
+        font-size: 0.9rem;
+    }
+
+    .direct-makers-hands-card-description {
+        font-size: 0.8rem;
+    }
+
+    .direct-makers-hands-card-price {
+        font-size: 1rem;
+    }
+
+    .direct-makers-hands-wishlist-btn {
+        width: 30px;
+        height: 30px;
+        top: 8px;
+        right: 8px;
+    }
+
+    .direct-makers-hands-wishlist-icon {
+        font-size: 1rem;
+    }
+
+    .direct-makers-hands-pagination {
+        margin-top: 20px;
+    }
+
+    .direct-makers-hands-empty-state {
+        padding: 60px 20px;
+    }
+
+    .direct-makers-hands-empty-icon-wrapper {
+        width: 100px;
+        height: 100px;
+        margin-bottom: 25px;
+    }
+
+    .direct-makers-hands-empty-title {
+        font-size: 1.3rem;
+    }
+
+    .direct-makers-hands-empty-message {
+        font-size: 0.9rem;
+        padding: 0 20px;
+    }
+}

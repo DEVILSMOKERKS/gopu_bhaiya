@@ -1,6 +1,6 @@
 import React from 'react';
 import './MakersHands.css';
-import makersHandsBg from '../../../assets/Images/banner/makers-hands-bg.png';
+import makersHandsBg from '../../../assets/Images/banner/makers-hands-bg.jpg';
 import makersHandsBgMobile from '../../../assets/Images/banner/makers-hands-bg-mobile.png';
 
 const MakersHands = () => {

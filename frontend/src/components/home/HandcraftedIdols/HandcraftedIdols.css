@@ -1,90 +1,150 @@
+/* ============================================
+   HANDCRAFTED IDOLS SECTION
+   ============================================ */
 .handcrafted-idols {
   padding: 80px 20px;
   background: #ffffff;
 }
 
-.container {
+.handcrafted-idols-wrapper {
+  width: 90%;
   max-width: 1400px;
   margin: 0 auto;
 }
 
-.section-title {
-  font-size: 2.5rem;
-  font-weight: 700;
-  text-align: center;
-  margin-bottom: 60px;
-  color: #1a1a2e;
-  font-family: 'Playfair Display', serif;
+/* Title */
+.handcrafted-idols-title {
+  font-size: 28px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: #000000;
+  font-family: var(--font-family);
+  text-align: left;
 }
 
-.idols-grid {
+.handcrafted-idols-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(3, 1fr);
   gap: 30px;
+  row-gap: 30px;
 }
 
-.idol-card {
-  background: #ffffff;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  cursor: pointer;
-}
-
-.idol-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-}
-
-.idol-image-wrapper {
+/* ITEM CARD */
+.handcrafted-idol-item {
   position: relative;
-  width: 100%;
-  padding-top: 120%;
   overflow: hidden;
+  cursor: pointer;
+  transition: transform var(--transition-normal);
+  width: 100%;
   background: #f5f5f5;
 }
 
-.idol-image {
-  position: absolute;
-  top: 0;
-  left: 0;
+.handcrafted-idol-item:hover {
+  transform: translateY(-3px);
+}
+
+.handcrafted-idol-item img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.3s ease;
+  display: block;
 }
 
-.idol-card:hover .idol-image {
-  transform: scale(1.05);
+/* Item 1 - Radha Krishna (Top Left) */
+.handcrafted-idol-item:nth-child(1) {
+  grid-row: span 2 / span 2;
+  grid-column-start: 1;
+  grid-row-start: 1;
 }
 
-.idol-content {
-  padding: 20px;
-  text-align: center;
+/* Item 2 - Saraswati Murti (Tall, Top Right) */
+.handcrafted-idol-item:nth-child(2) {
+  grid-row: span 3 / span 3;
+  grid-column-start: 2;
+  grid-row-start: 1;
 }
 
-.idol-title {
-  font-size: 1.1rem;
+/* Item 3 - Marble Mandir (Bottom Left) */
+.handcrafted-idol-item:nth-child(3) {
+  grid-row: span 2 / span 3;
+  grid-column-start: 1;
+  grid-row-start: 3;
+}
+
+/* Item 4 - Radha Krishna (Bottom Right) */
+.handcrafted-idol-item:nth-child(4) {
+  grid-row: span 2 / span 2;
+  grid-column-start: 2;
+  grid-row-start: 4;
+}
+
+
+/* TAG OVERLAY (GREEN LABEL) */
+.handcrafted-idol-tag {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  background: var(--primary-green);
+  padding: 6px 12px;
+  font-size: 14px;
+  color: white;
+  font-family: var(--font-family);
   font-weight: 600;
-  color: #1a1a2e;
+  z-index: 2;
 }
 
-.loading {
-  text-align: center;
-  padding: 60px 20px;
-  font-size: 1.2rem;
-  color: #666;
-}
-
-@media (max-width: 768px) {
-  .section-title {
-    font-size: 2rem;
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
+@media (max-width: 968px) {
+  .handcrafted-idols {
+    padding: 60px 15px;
   }
 
-  .idols-grid {
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 20px;
+  .handcrafted-idols-wrapper {
+    width: 95%;
+  }
+
+  .handcrafted-idols-title {
+    font-size: 24px;
+    margin-bottom: 18px;
+  }
+
+  .handcrafted-idols-grid {
+    gap: 15px;
+  }
+
+  .handcrafted-idol-tag {
+    font-size: 12px;
+    padding: 5px 10px;
+    bottom: 8px;
+    left: 8px;
   }
 }
 
+@media (max-width: 480px) {
+  .handcrafted-idols {
+    padding: 40px 10px;
+  }
+
+  .handcrafted-idols-wrapper {
+    width: 100%;
+  }
+
+  .handcrafted-idols-title {
+    font-size: 20px;
+    margin-bottom: 15px;
+  }
+
+  .handcrafted-idols-grid {
+    gap: 12px;
+  }
+
+  .handcrafted-idol-tag {
+    font-size: 11px;
+    padding: 4px 8px;
+    bottom: 6px;
+    left: 6px;
+  }
+}

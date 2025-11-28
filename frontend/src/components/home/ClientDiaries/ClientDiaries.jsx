@@ -1,66 +1,108 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import './ClientDiaries.css';
+// Import client images
+import Collection1 from '../../../assets/img/Collection/Collection1.jpg';
+import Collection2 from '../../../assets/img/Collection/Collection2.jpg';
+import Collection3 from '../../../assets/img/Collection/Collection3.jpg';
+import Collection4 from '../../../assets/img/Collection/Collection4.jpg';
 
 const ClientDiaries = () => {
-  const testimonials = [
-    {
-      id: 1,
-      name: 'Client Name 1',
-      image: 'https://via.placeholder.com/100x100/8B4513/FFFFFF?text=C1',
-      quote: 'Exceptional craftsmanship and beautiful designs.'
-    },
-    {
-      id: 2,
-      name: 'Client Name 2',
-      image: 'https://via.placeholder.com/100x100/8B4513/FFFFFF?text=C2',
-      quote: 'Our temple looks absolutely divine!'
-    },
-    {
-      id: 3,
-      name: 'Client Name 3',
-      image: 'https://via.placeholder.com/100x100/8B4513/FFFFFF?text=C3',
-      quote: 'Best quality marble idols we\'ve ever seen.'
-    },
-    {
-      id: 4,
-      name: 'Client Name 4',
-      image: 'https://via.placeholder.com/100x100/8B4513/FFFFFF?text=C4',
-      quote: 'Professional service from start to finish.'
-    },
-    {
-      id: 5,
-      name: 'Client Name 5',
-      image: 'https://via.placeholder.com/100x100/8B4513/FFFFFF?text=C5',
-      quote: 'Highly recommend Mateshwari Exports!'
-    },
-    {
-      id: 6,
-      name: 'Client Name 6',
-      image: 'https://via.placeholder.com/100x100/8B4513/FFFFFF?text=C6',
-      quote: 'Exceeded all our expectations.'
-    }
+  const scrollRef = useRef(null);
+
+  const clientImages = [
+    { id: 1, image: Collection1, size: 'medium' },
+    { id: 2, image: Collection2, size: 'large' },
+    { id: 3, image: Collection3, size: 'small' },
+    { id: 4, image: Collection4, size: 'medium' },
+    { id: 5, image: Collection1, size: 'small' },
+    { id: 6, image: Collection2, size: 'large' },
+    { id: 7, image: Collection3, size: 'medium' },
+    { id: 8, image: Collection4, size: 'small' },
+    { id: 9, image: Collection1, size: 'large' },
+    { id: 10, image: Collection2, size: 'medium' },
+    { id: 11, image: Collection3, size: 'small' },
+    { id: 12, image: Collection4, size: 'medium' },
+    { id: 13, image: Collection1, size: 'large' }
   ];
+
+  // Duplicate images for seamless loop
+  const duplicatedImages = [...clientImages, ...clientImages];
+
+  useEffect(() => {
+    const scrollContainer = scrollRef.current;
+    if (!scrollContainer) return;
+
+    // Start from bottom
+    const scrollHeight = scrollContainer.scrollHeight;
+    const clientHeight = scrollContainer.clientHeight;
+    let scrollPosition = scrollHeight - clientHeight;
+    scrollContainer.scrollTop = scrollPosition;
+
+    const scrollSpeed = 0.5;
+    let animationId;
+
+    const scroll = () => {
+      const currentScrollHeight = scrollContainer.scrollHeight;
+      const currentClientHeight = scrollContainer.clientHeight;
+      const maxScrollTop = currentScrollHeight - currentClientHeight;
+
+      // Scroll upward (decrease scrollPosition)
+      scrollPosition -= scrollSpeed;
+
+      // Reset to bottom when reaching the top for seamless loop
+      if (scrollPosition <= 0) {
+        scrollPosition = maxScrollTop;
+        scrollContainer.scrollTop = maxScrollTop;
+      } else {
+        scrollContainer.scrollTop = scrollPosition;
+      }
+
+      animationId = requestAnimationFrame(scroll);
+    };
+
+    // Small delay to ensure container is ready
+    setTimeout(() => {
+      animationId = requestAnimationFrame(scroll);
+    }, 100);
+
+    return () => {
+      if (animationId) {
+        cancelAnimationFrame(animationId);
+      }
+    };
+  }, []);
+
+  const handleShareStory = () => {
+    // Handle share story button click
+    console.log('Share Your Story clicked');
+  };
 
   return (
     <section className="client-diaries">
-      <div className="container">
-        <h2 className="section-title">MATESHWARI EXPORTS' Client Diaries</h2>
-        <div className="testimonials-grid">
-          {testimonials.map((testimonial) => (
-            <div key={testimonial.id} className="testimonial-card">
-              <div className="testimonial-image">
-                <img 
-                  src={testimonial.image} 
-                  alt={testimonial.name}
-                  className="client-image"
+      <div className="client-diaries-container">
+        <div className="client-diaries-header">
+          <h2 className="client-diaries-title">MATESHWARI EXPORTS Client Diaries</h2>
+          <p className="client-diaries-subtitle">
+            Share Your #MATESHWARI EXPORTSExperience And Inspire Others With Your Story!
+          </p>
+          <button className="client-diaries-button" onClick={handleShareStory}>
+            Share Your Story
+          </button>
+        </div>
+
+        <div className="client-diaries-scroll-wrapper" ref={scrollRef}>
+          <div className="client-diaries-grid">
+            {duplicatedImages.map((client, index) => (
+              <div key={`${client.id}-${index}`} className={`client-diaries-card ${client.size}`}>
+                <img
+                  src={client.image}
+                  alt={`Client ${client.id}`}
+                  className="client-diaries-image"
+                  loading="lazy"
                 />
               </div>
-              <div className="testimonial-content">
-                <p className="testimonial-quote">"{testimonial.quote}"</p>
-                <p className="testimonial-name">- {testimonial.name}</p>
-              </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
     </section>

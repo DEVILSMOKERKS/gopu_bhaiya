@@ -17,61 +17,71 @@ export const sampleProducts = [
     {
         product_id: 1,
         name: "Ganesh Ji",
-        min_price: 15000,
+        min_price: 180000,
+        description: "Lorem Ipsum To Add....",
         images: [product1]
     },
     {
         product_id: 2,
         name: "Shiv Ji",
-        min_price: 25000,
+        min_price: 180000,
+        description: "Lorem Ipsum To Add....",
         images: [product2]
     },
     {
         product_id: 3,
         name: "Hanuman Ji",
-        min_price: 20000,
+        min_price: 180000,
+        description: "Lorem Ipsum To Add....",
         images: [product3]
     },
     {
         product_id: 4,
         name: "Durga Mata",
-        min_price: 30000,
+        min_price: 180000,
+        description: "Lorem Ipsum To Add....",
         images: [product4]
     },
     {
         product_id: 5,
         name: "Radhe Krishna",
-        min_price: 35000,
+        min_price: 180000,
+        description: "Lorem Ipsum To Add....",
         images: [product5]
     },
     {
         product_id: 6,
         name: "Lakshmi Mata",
-        min_price: 22000,
+        min_price: 180000,
+        description: "Lorem Ipsum To Add....",
         images: [product6]
     },
     {
         product_id: 7,
         name: "Saraswati Mata",
-        min_price: 18000,
+        min_price: 180000,
+        description: "Lorem Ipsum To Add....",
         images: [product7]
     },
     {
         product_id: 8,
         name: "Ram Darbar",
-        min_price: 40000,
+        min_price: 180000,
+        description: "Lorem Ipsum To Add....",
         images: [product8]
     },
     {
         product_id: 9,
         name: "Krishna Ji",
-        min_price: 28000,
+        min_price: 180000,
+        description: "Lorem Ipsum To Add....",
         images: [product9]
     },
     {
         product_id: 10,
         name: "Buddha Statue",
-        min_price: 32000,
+        min_price: 180000,
+        description: "Lorem Ipsum To Add....",
         images: [product10]
     }
 ];

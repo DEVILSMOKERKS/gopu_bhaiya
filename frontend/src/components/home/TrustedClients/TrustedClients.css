@@ -1,64 +1,115 @@
+/* ============================================
+   TRUSTED CLIENTS SECTION
+   ============================================ */
 .trusted-clients {
-  padding: 80px 20px;
-  background: linear-gradient(135deg, #B68126 0%, #956213 100%);
+  padding: 60px 20px;
+  background: var(--primary-brown);
+  margin-top: 40px;
+  margin-bottom: 40px;
 }
 
-.container {
+.trusted-clients-container {
   max-width: 1400px;
   margin: 0 auto;
 }
 
-.section-title {
-  font-size: 2.5rem;
+.trusted-clients-title {
+  font-size: 1.8rem;
   font-weight: 700;
   text-align: center;
-  margin-bottom: 60px;
+  margin-bottom: 40px;
   color: #ffffff;
-  font-family: 'Playfair Display', serif;
+  font-family: var(--font-family);
 }
 
-.clients-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+.trusted-clients-scroll-wrapper {
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  width: 100%;
+}
+
+.trusted-clients-scroll-wrapper::-webkit-scrollbar {
+  display: none;
+}
+
+.trusted-clients-logos {
+  display: flex;
+  flex-direction: row;
   gap: 30px;
+  width: max-content;
+  padding: 0;
 }
 
-.client-logo-card {
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 12px;
-  padding: 30px 20px;
+.trusted-clients-logo-card {
+  flex: 0 0 auto;
+  padding: 15px 30px;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  border-radius: 8px;
   display: flex;
   align-items: center;
   justify-content: center;
-  backdrop-filter: blur(10px);
-  transition: transform 0.3s ease, background 0.3s ease;
+  background: transparent;
+  position: relative;
 }
 
-.client-logo-card:hover {
-  transform: translateY(-5px);
-  background: rgba(255, 255, 255, 0.15);
+.trusted-clients-logo-text {
+  font-family: var(--font-family);
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--primary-brown);
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.9);
+  text-shadow: 0 0 2px rgba(255, 255, 255, 0.5);
+  font-style: italic;
 }
 
-.client-logo {
-  max-width: 100%;
-  height: auto;
-  filter: brightness(0) invert(1);
-  opacity: 0.8;
-  transition: opacity 0.3s ease;
-}
-
-.client-logo-card:hover .client-logo {
-  opacity: 1;
-}
-
-@media (max-width: 768px) {
-  .section-title {
-    font-size: 2rem;
+/* ============================================
+   RESPONSIVE DESIGN - SAME UI ON ALL SCREENS
+   ============================================ */
+@media (max-width: 968px) {
+  .trusted-clients {
+    padding: 50px 15px;
   }
 
-  .clients-grid {
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  .trusted-clients-title {
+    font-size: 1.5rem;
+    margin-bottom: 30px;
+  }
+
+  .trusted-clients-logos {
+    gap: 25px;
+  }
+
+  .trusted-clients-logo-card {
+    padding: 10px 20px;
+  }
+
+  .trusted-clients-logo-text {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .trusted-clients {
+    padding: 40px 10px;
+  }
+
+  .trusted-clients-title {
+    font-size: 1.1rem;
+    margin-bottom: 25px;
+  }
+
+  .trusted-clients-logos {
     gap: 20px;
   }
-}
 
+  .trusted-clients-logo-card {
+    padding: 15px;
+  }
+
+  .trusted-clients-logo-text {
+    font-size: 0.85rem;
+  }
+}

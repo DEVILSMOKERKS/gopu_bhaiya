@@ -1,46 +1,88 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import './OurVision.css';
+import ourVisionBgDesktop1 from '../../../assets/Images/banner/our-vision-bg-desktop1.png';
+import ourVisionBgDesktop2 from '../../../assets/Images/banner/our-vision-bg-desktop2.png';
+import ourVisionBgMobile from '../../../assets/Images/banner/our-vision-bg-mobile.png';
+import saraswatiImage from '../../../assets/Images/banner/saraswati.jpg';
+import mandirImage from '../../../assets/Images/banner/mandir.jpg';
 
 const OurVision = () => {
+  const navigate = useNavigate();
+
+  const handleViewMore = () => {
+    navigate('/about');
+  };
+
+  const sectionStyle = {
+    '--desktop-bg-left': ourVisionBgDesktop1 ? `url(${ourVisionBgDesktop1})` : 'none',
+    '--desktop-bg-right': ourVisionBgDesktop2 ? `url(${ourVisionBgDesktop2})` : 'none',
+    '--mobile-bg': ourVisionBgMobile ? `url(${ourVisionBgMobile})` : 'none'
+  };
+
   return (
-    <section className="our-vision">
-      <div className="container">
-        <h2 className="section-title">Our Vision</h2>
-        <div className="vision-content">
-          <div className="vision-text">
-            <p>
-              Our vision is to preserve and promote the rich cultural heritage of India 
-              through exquisite handcrafted marble idols and temple structures. We strive 
-              to bring the divine grace of traditional Indian craftsmanship to homes and 
-              temples worldwide, ensuring that every piece tells a story of devotion, 
-              artistry, and timeless beauty.
+    <section className="our-vision" style={sectionStyle}>
+      <div className="our-vision-container">
+        <div className="our-vision-content">
+          {/* Left Section - Text Content */}
+          <div className="our-vision-text-section">
+            <h2 className="our-vision-title">Our Vision</h2>
+            <h3 className="our-vision-subtitle">
+              Bringing Your Dream Temple To Life With Mateshwari Exports
+            </h3>
+            <p className="our-vision-description">
+              At Mateshwari Exports, we harmonize tradition, craftsmanship, and innovation to create timeless Pooja Room experiences. For the first time in the industry, we introduce a fully immersive virtual tour of our sacred spaces—designed to bring our artistry to your screen, wherever you are.
             </p>
-            <p>
-              With a commitment to quality, authenticity, and customer satisfaction, 
-              we aim to be the trusted partner for all your spiritual and cultural needs, 
-              connecting hearts with the divine through our masterfully crafted creations.
-            </p>
+
+            <div className="our-vision-features">
+              <div className="our-vision-feature-item">
+                <strong>Timeless Craftsmanship</strong> - Blending tradition with innovation to create sacred Pooja Rooms.
+              </div>
+              <div className="our-vision-feature-item">
+                <strong>Virtual Tour Experience</strong> - Explore our designs from anywhere with an immersive tour.
+              </div>
+              <div className="our-vision-feature-item">
+                <strong>Custom Designs</strong> - Tailored Pooja Room layouts that reflect your vision.
+              </div>
+              <div className="our-vision-feature-item">
+                <strong>Superior Craftsmanship</strong> - Intricate detailing and premium materials used in every creation.
+              </div>
+              <div className="our-vision-feature-item">
+                <strong>Transform Your Home</strong> - Bring a divine aura to your space with our Pooja Rooms.
+              </div>
+            </div>
+
+            <button className="our-vision-cta-button" onClick={handleViewMore}>
+              View More
+            </button>
           </div>
-          <div className="vision-images">
-            <div className="vision-image-grid">
-              <div className="vision-image-item">
-                <img 
-                  src="https://via.placeholder.com/300x300/8B4513/FFFFFF?text=Idol+1" 
-                  alt="Saraswati Idol"
-                />
+
+          {/* Right Section - Images */}
+          <div className="our-vision-image-section">
+            <div className="our-vision-image-wrapper">
+              {/* First image with mask - Saraswati */}
+              <div className="our-vision-img-mask">
+                {saraswatiImage ? (
+                  <img src={saraswatiImage} alt="Saraswati Idol" />
+                ) : (
+                  <div className="our-vision-image-placeholder">
+                    <span>Saraswati Idol</span>
+                  </div>
+                )}
               </div>
-              <div className="vision-image-item">
-                <img 
-                  src="https://via.placeholder.com/300x300/8B4513/FFFFFF?text=Idol+2" 
-                  alt="Temple Setup"
+
+              {/* Main image - Mandir */}
+              {mandirImage ? (
+                <img
+                  className="our-vision-main-image"
+                  src={mandirImage}
+                  alt="Pooja Mandir"
                 />
-              </div>
-              <div className="vision-image-item">
-                <img 
-                  src="https://via.placeholder.com/300x300/8B4513/FFFFFF?text=Idol+3" 
-                  alt="Deity Statue"
-                />
-              </div>
+              ) : (
+                <div className="our-vision-image-placeholder our-vision-main-image">
+                  <span>Pooja Mandir</span>
+                </div>
+              )}
             </div>
           </div>
         </div>
@@ -50,4 +92,3 @@ const OurVision = () => {
 };
 
 export default OurVision;
-

@@ -1,74 +1,63 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
 import './HandcraftedIdols.css';
+// Import handcrafted idols images
+import radhaKrishna1 from '../../../assets/Images/banner/radhaKrishna1.jpg';
+import saraswatiMurti from '../../../assets/Images/banner/saraswatiMurti.jpg';
+import marbleMandir from '../../../assets/Images/banner/marbleMandir.jpg';
+import radhaKrishna2 from '../../../assets/Images/banner/radhaKrishna2.jpg';
 
 const HandcraftedIdols = () => {
-  const [products, setProducts] = useState([]);
-  const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
-  const API_URL = import.meta.env.VITE_API_URL;
 
-  useEffect(() => {
-    fetchProducts();
-  }, []);
-
-  const fetchProducts = async () => {
-    try {
-      const response = await axios.get(`${API_URL}/products?limit=6`);
-      if (response.data.success) {
-        setProducts(response.data.data);
-      }
-    } catch (error) {
-      console.error('Error fetching products:', error);
-    } finally {
-      setLoading(false);
+  const idolsData = [
+    {
+      id: 1,
+      image: radhaKrishna1,
+      label: 'Radha Krishna',
+      isTall: false
+    },
+    {
+      id: 2,
+      image: saraswatiMurti,
+      label: 'Saraswati Murti',
+      isTall: true
+    },
+    {
+      id: 3,
+      image: marbleMandir,
+      label: 'Marbel Mandir',
+      isTall: false
+    },
+    {
+      id: 4,
+      image: radhaKrishna2,
+      label: 'Radha Krishna',
+      isTall: false
     }
-  };
+  ];
 
-  const getProductImage = (product) => {
-    if (product.colors && product.colors.length > 0 && product.colors[0].images && product.colors[0].images.length > 0) {
-      return `${API_URL.replace('/api', '')}${product.colors[0].images[0]}`;
-    }
-    return 'https://via.placeholder.com/300x400/8B4513/FFFFFF?text=Idol';
+  const handleCardClick = (id) => {
+    navigate(`/product/${id}`);
   };
-
-  const handleProductClick = (productId) => {
-    navigate(`/product/${productId}`);
-  };
-
-  if (loading) {
-    return (
-      <section className="handcrafted-idols">
-        <div className="container">
-          <h2 className="section-title">Handcrafted Idols</h2>
-          <div className="loading">Loading...</div>
-        </div>
-      </section>
-    );
-  }
 
   return (
     <section className="handcrafted-idols">
-      <div className="container">
-        <h2 className="section-title">Handcrafted Idols</h2>
-        <div className="idols-grid">
-          {products.map((product) => (
-            <div 
-              key={product.product_id} 
-              className="idol-card"
-              onClick={() => handleProductClick(product.product_id)}
+      <div className="handcrafted-idols-wrapper">
+        <h2 className="handcrafted-idols-title">Handcrafted Idols</h2>
+        <div className="handcrafted-idols-grid">
+          {idolsData.map((idol) => (
+            <div
+              key={idol.id}
+              className={`handcrafted-idol-item ${idol.isTall ? 'tall' : ''}`}
+              onClick={() => handleCardClick(idol.id)}
             >
-              <div className="idol-image-wrapper">
-                <img 
-                  src={getProductImage(product)} 
-                  alt={product.name}
-                  className="idol-image"
-                />
-              </div>
-              <div className="idol-content">
-                <h3 className="idol-title">{product.name}</h3>
-              </div>
+              <img
+                src={idol.image}
+                alt={idol.label}
+                className="handcrafted-idol-image"
+              />
+              <span className="handcrafted-idol-tag">{idol.label}</span>
             </div>
           ))}
         </div>
@@ -79,3 +68,4 @@ const HandcraftedIdols = () => {
 
 export default HandcraftedIdols;
 
+                
