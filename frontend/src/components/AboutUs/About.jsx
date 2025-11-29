@@ -10,21 +10,22 @@ import diamond from "../../assets/img/icons/diamond.png";
 import icon1 from "../../assets/img/icons/1.png";
 import icon2 from "../../assets/img/icons/2.png";
 import icon3 from "../../assets/img/icons/3.png";
-import aboutup from '../../assets/Images/collection/collection2.jpg';
-import aboutbg from '../../assets/Images/banner/hero-1.jpg';
+import aboutup from '../../assets/Images/collection/aboutup.jpg';
+import aboutbg from '../../assets/Images/banner/aboutbg.jpg';
 import aboutBannerDesktop from '../../assets/Images/banner/customProjectsBgDesktop.jpg';
 import aboutBannerMobile from '../../assets/Images/banner/customProjectsBgDesktop.jpg';
 import whoWeAreBgDesktop1 from '../../assets/Images/banner/our-vision-bg-desktop1.png';
 import whoWeAreBgDesktop2 from '../../assets/Images/banner/our-vision-bg-desktop2.png';
 import whoWeAreBgMobile from '../../assets/Images/banner/our-vision-bg-mobile.png';
 import HomeBlog from '../Homeblog/Homeblog';
+import { HashLink } from 'react-router-hash-link';
+import TimelineStory from './TimelineStory';
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import rectangle137 from '../../assets/img/Bestseller1.jpg';
 import rectangle1372 from '../../assets/img/Bestseller2.jpg';
 import rectangle1373 from '../../assets/img/Bestseller3.jpg';
-import { HashLink } from 'react-router-hash-link';
 
 const AboutSection = () => {
   const bannerStyle = {
@@ -88,12 +89,98 @@ const AboutSection = () => {
       <MissionVisionSection />
       {/* journey section */}
       <div id="journey-section">
-        <JourneySection />
+        {/* Desktop Timeline */}
+        <div className="journey-timeline-desktop-wrapper">
+          <TimelineStory />
+        </div>
+        {/* Mobile Carousel */}
+        <JourneyMobileCarousel />
       </div>
       {/* Craftsmanship Section */}
       <CraftsmanshipSection />
       {/* What Makes Us Different Section */}
       <WhatMakesUsDifferentSection />
+    </div>
+  );
+};
+
+const JourneyMobileCarousel = () => {
+  const [currentSlide, setCurrentSlide] = React.useState(0);
+
+  const settings = {
+    dots: true,
+    infinite: false,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    arrows: false,
+    autoplay: false,
+    centerMode: false,
+    beforeChange: (current, next) => setCurrentSlide(next),
+    customPaging: (i) => (
+      <div className={`journey-dot ${i === currentSlide ? 'active' : ''}`}></div>
+    ),
+    appendDots: (dots) => (
+      <div className="journey-dots-container">
+        <ul className="journey-dots">{dots}</ul>
+      </div>
+    ),
+  };
+
+  const journeyData = [
+    {
+      year: '2015',
+      desc: `Mateshwari Exports was founded with a vision to bring divine craftsmanship to every home. We started our journey by creating handcrafted idols and temple solutions, combining traditional artistry with modern precision.`,
+      img: rectangle137
+    },
+    {
+      year: '2018',
+      desc: `Expanded our product range to include custom temple designs and premium Pooja Room solutions. Our commitment to quality and authenticity helped us establish a strong presence in the spiritual home decor market.`,
+      img: rectangle1372
+    },
+    {
+      year: '2021',
+      desc: `Launched our innovative virtual tour experience, becoming the first in the industry to offer immersive digital exploration of our sacred spaces. This milestone marked our entry into the digital era of spiritual commerce.`,
+      img: rectangle1373
+    },
+    {
+      year: '2022',
+      desc: `Achieved significant growth in our manufacturing capabilities and customer base. We introduced bulk order services and expanded our reach to serve temples, institutions, and individual devotees nationwide.`,
+      img: rectangle137
+    },
+    {
+      year: '2023',
+      desc: `Continuing our legacy of excellence, we remain dedicated to preserving traditional craftsmanship while embracing innovation. Today, Mateshwari Exports stands as a trusted name in divine home solutions.`,
+      img: rectangle1372
+    },
+  ];
+
+  return (
+    <div className="journey-carousel-mobile">
+      <div className="journey-carousel-header">
+        <p className="journey-carousel-subtitle">About Mateshwari Exports</p>
+        <h2 className="journey-carousel-title">Our Story of Growth & Success</h2>
+        <p className="journey-carousel-description">
+          Since 2015, we've been dedicated to creating divine experiences through our handcrafted idols and temple solutions, bringing spiritual elegance to homes and hearts across the nation.
+        </p>
+      </div>
+      <div className="journey-carousel-container-mobile">
+        <Slider {...settings} className="journey-carousel-slider">
+          {journeyData.map((item, idx) => (
+            <div key={idx}>
+              <div className="journey-carousel-card">
+                <div className="journey-carousel-img-wrapper">
+                  <img src={item.img} alt={item.year} className="journey-carousel-img" />
+                </div>
+                <div className="journey-carousel-content">
+                  <div className="journey-carousel-year">{item.year}</div>
+                  <p className="journey-carousel-desc">{item.desc}</p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </Slider>
+      </div>
     </div>
   );
 };
@@ -134,174 +221,59 @@ const MissionVisionSection = () => {
   );
 };
 
-const JourneySection = () => {
-  const [currentSlide, setCurrentSlide] = React.useState(0);
-  const sliderRef = React.useRef(null);
-
-  const settings = {
-    dots: true,
-    infinite: false,
-    speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    arrows: false,
-    autoplay: false,
-    centerMode: false,
-    beforeChange: (current, next) => setCurrentSlide(next),
-    customPaging: (i) => (
-      <div className={`journey-dot ${i === currentSlide ? 'active' : ''}`}></div>
-    ),
-    appendDots: (dots) => (
-      <div className="journey-dots-container">
-        <ul className="journey-dots">{dots}</ul>
-      </div>
-    ),
-  };
-
-  const journeyData = [
-    {
-      year: '2015',
-      desc: `T3 Stocks is a leading stock market institute in Jaipur, dedicated to empowering individuals with the knowledge and strategies needed for profitable trading.`,
-      img: rectangle137
-    },
-    {
-      year: '2018',
-      desc: `T3 Stocks is a leading stock market institute in Jaipur, dedicated to empowering individuals with the knowledge and strategies needed for profitable trading.`,
-      img: rectangle1372
-    },
-    {
-      year: '2021',
-      desc: `T3 Stocks is a leading stock market institute in Jaipur, dedicated to empowering individuals with the knowledge and strategies needed for profitable trading.`,
-      img: rectangle1373
-    },
-    {
-      year: '2022',
-      desc: `T3 Stocks is a leading stock market institute in Jaipur, dedicated to empowering individuals with the knowledge and strategies needed for profitable trading.`,
-      img: rectangle137
-    },
-    {
-      year: '2023',
-      desc: `T3 Stocks is a leading stock market institute in Jaipur, dedicated to empowering individuals with the knowledge and strategies needed for profitable trading.`,
-      img: rectangle1372
-    },
-  ];
-
-  return (
-    <div className="journey-section-wrapper">
-      {/* Desktop Timeline Version */}
-      <div className="journey-timeline-desktop">
-        <div className="journey-timeline-header">
-          <p className="journey-timeline-subtitle">About Mateshwari Exports</p>
-          <h2 className="journey-timeline-title">Our Story of Growth & Success</h2>
-          <p className="journey-timeline-description">
-            Since 2015, we've empowered individuals to achieve financial success in the stock market, and our impact continues to grow.
-          </p>
-        </div>
-        <div className="journey-timeline-container">
-          <div className="journey-timeline-line"></div>
-          {journeyData.map((item, idx) => (
-            <div
-              key={idx}
-              className={`journey-timeline-item ${idx % 2 === 0 ? 'left' : 'right'}`}
-            >
-              <div className="journey-timeline-marker"></div>
-              <div className="journey-timeline-content">
-                <div className="journey-timeline-year">{item.year}</div>
-                <p className="journey-timeline-text">{item.desc}</p>
-                <div className="journey-timeline-image">
-                  <img src={item.img} alt={item.year} />
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {/* Mobile Carousel Version */}
-      <div className="journey-carousel-mobile">
-        <h2 className="journey-carousel-title">The Journey</h2>
-        <div className="journey-carousel-container-mobile">
-          <Slider {...settings} className="journey-carousel-slider" ref={sliderRef}>
-            {journeyData.map((item, idx) => (
-              <div key={idx}>
-                <div className="journey-carousel-card">
-                  <div className="journey-carousel-img-wrapper">
-                    <img src={item.img} alt={item.year} className="journey-carousel-img" />
-                  </div>
-                  <div className="journey-carousel-content">
-                    <div className="journey-carousel-year">{item.year}</div>
-                    <p className="journey-carousel-desc">{item.desc}</p>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </Slider>
-        </div>
-      </div>
-    </div>
-  );
-}
-
 const CraftsmanshipSection = () => {
   return (
     <div className="craftsmanship-wrapper">
       <div className="craftsmanship-container">
         {/* Header Section */}
         <div className="craftsmanship-header">
-          <div className="craftsmanship-icon-wrapper"></div>
-          <div className="craftsmanship-title-row">
-            <span className="craftsmanship-title-line-left"></span>
-            <h2 className="craftsmanship-main-title">
-              Mateshwari Moorti Bhandar Craftsmanship
-            </h2>
-            <span className="craftsmanship-title-line-right"></span>
-          </div>
+          <h2 className="craftsmanship-main-title">Craftsmanship & Quality</h2>
           <p className="craftsmanship-subtitle">
-            Each idol is a masterpiece, sculpted with devotion, precision, and deep reverence to tradition.
+            Crafting Sacred Murtis With Timeless Precision
           </p>
         </div>
         {/* Features Grid */}
         <div className="craftsmanship-grid">
-          {/* Pure Marble Selection Card */}
+          {/* Divine Craftsmanship Card */}
           <div className="craftsmanship-card">
             <div className="craftsmanship-card-icon-wrapper">
               <div className="craftsmanship-card-icon-bg">
                 <span className="craftsmanship-card-icon">
-                  <img src={icon1} alt="Pure Marble Icon" className="craftsmanship-card-img" />
+                  <img src={icon1} alt="Divine Craftsmanship Icon" className="craftsmanship-card-img" />
                 </span>
               </div>
             </div>
-            <h3 className="craftsmanship-card-title">Finest Quality Marble</h3>
+            <h3 className="craftsmanship-card-title">Divine Craftsmanship</h3>
             <p className="craftsmanship-card-description">
-              We use only the best and purest marble, handpicked for durability and divine aura, ensuring every moorti is flawless.
+              Every Murti Is Hand-Carved With Precision, Purity, And Devotion.
             </p>
           </div>
-          {/* Tradition & Skill Card */}
+          {/* Certified Materials Card */}
           <div className="craftsmanship-card">
             <div className="craftsmanship-card-icon-wrapper">
               <div className="craftsmanship-card-icon-bg">
                 <span className="craftsmanship-card-icon">
-                  <img src={icon2} alt="Artisan Skill Icon" className="craftsmanship-card-img" />
+                  <img src={icon2} alt="Certified Materials Icon" className="craftsmanship-card-img" />
                 </span>
               </div>
             </div>
-            <h3 className="craftsmanship-card-title">Generations of Artistry</h3>
+            <h3 className="craftsmanship-card-title">Certified Materials</h3>
             <p className="craftsmanship-card-description">
-              Our artisans inherit centuries-old sculpting techniques, bringing legends and deities to life with intricate handiwork and soulful expression.
+              Delivering Sacred Artistry From India To The World With Unmatched Excellence.
             </p>
           </div>
-          {/* Devotional Detailing Card */}
+          {/* Global Heritage Card */}
           <div className="craftsmanship-card">
             <div className="craftsmanship-card-icon-wrapper">
               <div className="craftsmanship-card-icon-bg">
                 <span className="craftsmanship-card-icon">
-                  <img src={icon3} alt="Devotional Detail Icon" className="craftsmanship-card-img" />
+                  <img src={icon3} alt="Global Heritage Icon" className="craftsmanship-card-img" />
                 </span>
               </div>
             </div>
-            <h3 className="craftsmanship-card-title">Devotional Detailing</h3>
+            <h3 className="craftsmanship-card-title">Global Heritage</h3>
             <p className="craftsmanship-card-description">
-              Every idol features carefully carved features and sacred motifs, finished with hand painting and ornamentation that honors our spiritual heritage.
+              Delivering Sacred Artistry From India To The World With Unmatched Excellence.
             </p>
           </div>
         </div>
@@ -346,9 +318,9 @@ const WhatMakesUsDifferentSection = () => {
                     <Check className="different-check-svg" />
                   </div>
                   <div className="different-feature-content">
-                    <h3 className="different-feature-title">Premium Quality Fabrics</h3>
+                    <h3 className="different-feature-title">Certified Precious Stone & Marvel</h3>
                     <p className="different-feature-description">
-                      We source only the finest materials, ensuring every garment feels luxurious and lasts through countless wears.
+                      Every Stone And Metal We Use Is Certified For Purity And Quality, Giving You Complete Confidence In Your Purchase.
                     </p>
                   </div>
                 </div>
@@ -358,9 +330,9 @@ const WhatMakesUsDifferentSection = () => {
                     <Check className="different-check-svg" />
                   </div>
                   <div className="different-feature-content">
-                    <h3 className="different-feature-title">Perfect Fit Guarantee</h3>
+                    <h3 className="different-feature-title">Handcrafted By Local Artisans</h3>
                     <p className="different-feature-description">
-                      Our expert tailoring ensures every piece fits perfectly, making you look and feel your absolute best.
+                      Our Pieces Are Crafted By Skilled Local Artisans, Preserving Traditional Techniques While Supporting Local Communities.
                     </p>
                   </div>
                 </div>
@@ -370,9 +342,9 @@ const WhatMakesUsDifferentSection = () => {
                     <Check className="different-check-svg" />
                   </div>
                   <div className="different-feature-content">
-                    <h3 className="different-feature-title">Sustainable & Ethical</h3>
+                    <h3 className="different-feature-title">Custom Design & Idols Collection</h3>
                     <p className="different-feature-description">
-                      We're committed to eco-friendly practices and fair labor, making fashion that's good for you and the planet.
+                      Create Your Dream Idols With Our Bespoke Design Service, Perfect For Creating Heirloom Pieces And Mandir Collections.
                     </p>
                   </div>
                 </div>
@@ -382,9 +354,9 @@ const WhatMakesUsDifferentSection = () => {
                     <Check className="different-check-svg" />
                   </div>
                   <div className="different-feature-content">
-                    <h3 className="different-feature-title">Timeless Design</h3>
+                    <h3 className="different-feature-title">100% Transparency & BIS Hallmarked Murti</h3>
                     <p className="different-feature-description">
-                      Our pieces are designed to transcend trends, creating a wardrobe that's both stylish and enduring.
+                      Every Stone And Metal We Use Is Certified For Purity And Quality, Giving You Complete Confidence In Your Purchase.
                     </p>
                   </div>
                 </div>

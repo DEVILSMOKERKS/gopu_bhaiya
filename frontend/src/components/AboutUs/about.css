@@ -314,110 +314,80 @@
 
 .craftsmanship-wrapper {
   background: #fff;
-  padding: 4rem 0 4rem 0;
+  padding: 4rem 2rem;
 }
 
 .craftsmanship-container {
-  max-width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .craftsmanship-header {
   text-align: center;
   margin-bottom: 3rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.craftsmanship-icon-wrapper {
-  display: flex;
-  justify-content: center;
-}
-
-.craftsmanship-header-icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 70px;
-  height: 70px;
-  margin: 0 auto;
-}
-
-.craftsmanship-header-img {
-  width: 125px;
-  height: 50px;
-  object-fit: contain;
-  display: block;
-  margin: 0 auto;
-}
-
-.craftsmanship-title-row {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  margin-bottom: 1rem;
-}
-
-.craftsmanship-title-line-left {
-  flex: 1;
-  height: 2px;
-  background: linear-gradient(to right, var(--primary-color), #fff);
-  min-width: 60px;
-  max-width: 120px;
-}
-
-.craftsmanship-title-line-right {
-  flex: 1;
-  height: 2px;
-  background: linear-gradient(to left, var(--primary-color), #fff);
-  min-width: 60px;
-  max-width: 120px;
 }
 
 .craftsmanship-main-title {
-  font-size: 2rem;
+  font-size: 2.5rem;
   font-weight: bold;
-  color: #fff;
-  margin: 0 1.5rem;
+  color: #000;
+  margin: 0 0 0.5rem 0;
   font-family: var(--font-family);
-  letter-spacing: 1px;
+  letter-spacing: 0.5px;
   text-align: center;
-}
-
-.craftsmanship-main-title-highlight {
-  color: #a73c5c;
-  font-weight: 700;
-  font-family: var(--font-family);
 }
 
 .craftsmanship-subtitle {
   color: #000;
-  font-size: 1rem;
-  font-family: "Crimson Pro", serif;
-  margin-top: -0.8rem;
+  font-size: 1.1rem;
+  font-weight: 400;
+  font-family: var(--font-family);
+  margin: 0;
   text-align: center;
 }
 
 .craftsmanship-grid {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
   gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+@media (max-width: 968px) {
+  .craftsmanship-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+
+  .different-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .different-image-area {
+    order: 2;
+  }
+
+  .different-text-area {
+    order: 1;
+  }
+
+  .different-image-frame {
+    background: #fff;
+    padding: 8px;
+    border-radius: 12px;
+  }
 }
 
 .craftsmanship-card {
-  background: #fafafa;
-  padding: 2rem;
-  border-radius: 1rem;
-  border: 1.5px solid #e5e7eb;
+  background: #f0f8f0;
+  padding: 2.5rem 2rem;
+  border-radius: 12px;
   text-align: center;
-  flex: 1 1 0;
   display: flex;
   flex-direction: column;
   align-items: center;
-  min-width: 350px;
-  max-width: 350px;
-  margin: 0 auto;
 }
 
 .craftsmanship-card-icon-wrapper {
@@ -427,47 +397,41 @@
 }
 
 .craftsmanship-card-icon-bg {
-  width: 64px;
-  height: 64px;
+  width: 80px;
+  height: 80px;
   background: #fff;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 2px solid #e5e7eb;
+  border: 2px solid var(--primary-color);
 }
 
 .craftsmanship-card-icon {
   color: #666;
   font-size: 2rem;
-  width: 32px;
-  height: 32px;
+  width: 100%;
+  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 .craftsmanship-card-title {
-  font-size: 1.25rem;
+  font-size: 1.5rem;
   font-weight: bold;
-  color: #222;
+  color: #000;
   margin-bottom: 1rem;
-  font-family: "Crimson Pro";
+  font-family: var(--font-family);
 }
 
 .craftsmanship-card-description {
-  color: #666;
+  color: #000;
   font-size: 1rem;
-  font-family: "Crimson Pro", serif;
-  line-height: 1.7;
-}
-
-.craftsmanship-card-img-icon {
-  width: 50px;
-  height: 50px;
-  object-fit: contain;
-  display: block;
-  margin: 0 auto;
+  font-weight: 400;
+  font-family: var(--font-family);
+  line-height: 1.6;
+  margin: 0;
 }
 
 .craftsmanship-card-img {
@@ -487,6 +451,8 @@
   background-size: cover;
   background-position: top center;
   padding: 4rem 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  background-blend-mode: multiply;
 }
 
 .different-overlay {
@@ -505,14 +471,10 @@
 }
 
 .different-grid {
-  display: flex;
-  flex-direction: column;
-  gap: 3rem;
-}
-
-.different-image-area,
-.different-text-area {
-  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
 }
 
 .different-image-area {
@@ -522,18 +484,19 @@
 }
 
 .different-image-frame {
-  background: #92400e;
-  padding: 4px;
+  background: transparent;
+  padding: 0;
   border-radius: 12px;
   width: 100%;
-  max-width: 700px;
+  max-width: 100%;
   overflow: hidden;
 }
 
 .different-main-image {
   width: 100%;
+  height: auto;
   object-fit: cover;
-  border-radius: 10px;
+  border-radius: 12px;
   display: block;
 }
 
@@ -583,22 +546,24 @@
 }
 
 .different-check-icon {
-  min-width: 32px;
-  min-height: 32px;
-  width: 32px;
-  height: 32px;
-  background: #fff;
+  min-width: 40px;
+  min-height: 40px;
+  width: 40px;
+  height: 40px;
+  background: var(--primary-color);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   margin-top: 4px;
+  flex-shrink: 0;
 }
 
 .different-check-svg {
-  width: 18px;
-  height: 18px;
-  color: var(--primary-color);
+  width: 20px;
+  height: 20px;
+  color: #fff;
+  stroke-width: 3;
 }
 
 .different-feature-content {
@@ -816,141 +781,14 @@
    JOURNEY SECTION - Desktop Timeline & Mobile Carousel
    ============================================ */
 
-.journey-section-wrapper {
-  width: 100%;
-  background: #fff;
-  padding: 4rem 0;
-}
-
-/* Desktop Timeline Version */
-.journey-timeline-desktop {
+.journey-timeline-desktop-wrapper {
   display: block;
-  width: 100%;
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 0 2rem;
 }
 
-.journey-timeline-header {
-  text-align: center;
-  margin-bottom: 4rem;
-}
-
-.journey-timeline-subtitle {
-  font-size: 1rem;
-  color: #666;
-  font-family: var(--font-family);
-  margin: 0 0 0.5rem 0;
-  font-weight: 400;
-}
-
-.journey-timeline-title {
-  font-size: 2.5rem;
-  font-weight: 700;
-  color: #000;
-  font-family: var(--font-family);
-  margin: 0 0 1rem 0;
-  letter-spacing: 0.5px;
-}
-
-.journey-timeline-description {
-  font-size: 1rem;
-  color: #666;
-  font-family: var(--font-family);
-  margin: 0;
-  line-height: 1.6;
-  max-width: 800px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.journey-timeline-container {
-  position: relative;
-  padding: 2rem 0;
-}
-
-.journey-timeline-line {
-  position: absolute;
-  left: 50%;
-  top: 0;
-  bottom: 0;
-  width: 3px;
-  background: var(--primary-brown);
-  transform: translateX(-50%);
-  z-index: 1;
-}
-
-.journey-timeline-item {
-  position: relative;
-  margin-bottom: 4rem;
-  display: flex;
-  align-items: flex-start;
-  width: 100%;
-  min-height: 200px;
-}
-
-.journey-timeline-item.left {
-  flex-direction: row;
-  justify-content: flex-end;
-  padding-right: calc(50% + 50px);
-  padding-left: 2rem;
-}
-
-.journey-timeline-item.right {
-  flex-direction: row;
-  justify-content: flex-start;
-  padding-left: calc(50% + 50px);
-  padding-right: 2rem;
-}
-
-.journey-timeline-marker {
-  position: absolute;
-  left: 50%;
-  top: 0;
-  width: 20px;
-  height: 20px;
-  background: var(--primary-brown);
-  border-radius: 50%;
-  transform: translateX(-50%);
-  z-index: 2;
-  border: 4px solid #fff;
-  box-shadow: 0 0 0 2px var(--primary-brown);
-}
-
-.journey-timeline-content {
-  width: calc(50% - 60px);
-  max-width: 500px;
-}
-
-.journey-timeline-year {
-  font-size: 3rem;
-  font-weight: 700;
-  color: #000;
-  font-family: var(--font-family);
-  margin-bottom: 1rem;
-  line-height: 1;
-}
-
-.journey-timeline-text {
-  font-size: 1rem;
-  color: #333;
-  font-family: var(--font-family);
-  line-height: 1.6;
-  margin-bottom: 1.5rem;
-}
-
-.journey-timeline-image {
-  width: 100%;
-  border-radius: 8px;
-  overflow: hidden;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
-
-.journey-timeline-image img {
-  width: 100%;
-  height: auto;
-  display: block;
-  object-fit: cover;
+@media (max-width: 968px) {
+  .journey-timeline-desktop-wrapper {
+    display: none;
+  }
 }
 
 /* Mobile Carousel Version */
@@ -959,6 +797,21 @@
   width: 100%;
   background: #e8d5b7;
   padding: 3rem 1.5rem;
+  margin-top: 2rem;
+}
+
+.journey-carousel-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.journey-carousel-subtitle {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #666;
+  margin: 0 0 0.5rem 0;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 .journey-carousel-title {
@@ -967,8 +820,18 @@
   color: #000;
   font-family: var(--font-family);
   text-align: center;
-  margin: 0 0 2rem 0;
+  margin: 0 0 1rem 0;
   letter-spacing: 0.5px;
+}
+
+.journey-carousel-description {
+  font-size: 1rem;
+  color: #555;
+  line-height: 1.6;
+  margin: 0;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .journey-carousel-container-mobile {
@@ -980,12 +843,28 @@
   width: 100%;
 }
 
+.journey-carousel-slider .slick-slide {
+  padding: 0 10px;
+}
+
+.journey-carousel-slider .slick-list {
+  margin: 0 -10px;
+}
+
+.journey-carousel-slider .slick-slide {
+  padding: 0 10px;
+}
+
+.journey-carousel-slider .slick-list {
+  margin: 0 -10px;
+}
+
 .journey-carousel-card {
   background: #fff;
   border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  margin: 0 10px;
+  margin: 0 auto;
   max-width: 100%;
 }
 
@@ -1077,16 +956,6 @@
   display: none !important;
 }
 
-/* Desktop: Show timeline, hide carousel */
-@media (min-width: 969px) {
-  .journey-timeline-desktop {
-    display: block;
-  }
-
-  .journey-carousel-mobile {
-    display: none;
-  }
-}
 
 /* ============================================
    MEDIA QUERIES
@@ -1229,13 +1098,13 @@
     height: 70px;
   }
 
-  /* Journey Section - Show Mobile, Hide Desktop */
-  .journey-timeline-desktop {
-    display: none;
-  }
-
+  /* Journey Section - Mobile Carousel */
   .journey-carousel-mobile {
     display: block;
+  }
+
+  .journey-carousel-subtitle {
+    font-size: 0.85rem;
   }
 
   .journey-carousel-title {
@@ -1261,33 +1130,29 @@
 
   /* Craftsmanship Section Mobile */
   .craftsmanship-wrapper {
-    padding: 2rem 0;
+    padding: 3rem 0.5rem;
   }
 
   .craftsmanship-container {
-    padding: 0 1rem;
+    padding: 0;
   }
 
   .craftsmanship-header {
     margin-bottom: 2rem;
   }
 
-  .craftsmanship-title-row {
-    padding: 0 1rem;
-  }
-
   .craftsmanship-main-title {
-    font-size: 24px;
-    margin: 0 1rem;
+    font-size: 1.75rem;
+    margin: 0 0 0.5rem 0;
   }
 
   .craftsmanship-subtitle {
-    font-size: 15px;
-    padding: 0 1rem;
-    margin-top: 0.5rem;
+    font-size: 1rem;
+    margin: 0;
   }
 
   .craftsmanship-grid {
+    grid-template-columns: 1fr;
     gap: 1.5rem;
     padding: 0 1rem;
   }
@@ -1328,7 +1193,7 @@
   }
 
   .different-grid {
-    flex-direction: column;
+    grid-template-columns: 1fr;
     gap: 2rem;
   }
 
@@ -1338,6 +1203,12 @@
 
   .different-text-area {
     order: 1;
+  }
+
+  .different-image-frame {
+    background: #fff;
+    padding: 8px;
+    border-radius: 12px;
   }
 
   .different-main-image {
@@ -1355,10 +1226,15 @@
   }
 
   .different-check-icon {
-    width: 24px;
-    height: 24px;
-    min-width: 24px;
-    min-height: 24px;
+    width: 36px;
+    height: 36px;
+    min-width: 36px;
+    min-height: 36px;
+  }
+
+  .different-check-svg {
+    width: 18px;
+    height: 18px;
   }
 
   .different-feature-title {
@@ -1534,9 +1410,17 @@
     padding: 2rem 0.5rem;
   }
 
+  .journey-carousel-subtitle {
+    font-size: 0.8rem;
+  }
+
   .journey-carousel-title {
     font-size: 1.5rem;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .journey-carousel-description {
+    font-size: 0.9rem;
   }
 
   .journey-carousel-img-wrapper {
