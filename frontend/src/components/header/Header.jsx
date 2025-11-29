@@ -134,7 +134,7 @@ const Header = ({ onAccountClick }) => {
     if (!isSearchOpen) {
       // Focus on search input when opening
       setTimeout(() => {
-        const searchInput = document.getElementById('search-input');
+        const searchInput = document.getElementById('search-input') || document.getElementById('search-input-other');
         if (searchInput) {
           searchInput.focus();
         }
@@ -286,47 +286,81 @@ const Header = ({ onAccountClick }) => {
                   </Link>
                 </li>
                 <li>
-                  <Link to="/About-us" className="header-nav-link-other">ABOUT US</Link>
+                  <Link to="/About-us" className={`header-nav-link-other ${location.pathname === '/About-us' ? 'active' : ''}`}>ABOUT US</Link>
                 </li>
                 <li>
-                  <Link to="/shop" className="header-nav-link-other">ALL PRODUCT</Link>
+                  <Link to="/shop" className={`header-nav-link-other ${location.pathname === '/shop' || location.pathname.startsWith('/product') ? 'active' : ''}`}>ALL PRODUCT</Link>
                 </li>
                 <li>
-                  <Link to="/how-to-place-order" className="header-nav-link-other">HOW TO PLACE ORDER</Link>
+                  <Link to="/how-to-place-order" className={`header-nav-link-other ${location.pathname === '/how-to-place-order' ? 'active' : ''}`}>HOW TO PLACE ORDER</Link>
                 </li>
                 <li>
-                  <Link to="/contact-us" className="header-nav-link-other">CONTACT US</Link>
+                  <Link to="/contact-us" className={`header-nav-link-other ${location.pathname === '/contact-us' ? 'active' : ''}`}>CONTACT US</Link>
                 </li>
               </ul>
             </nav>
 
-            {/* Social Icons Right */}
-            <div className="header-social-icons-other">
-              <a
-                href="https://www.instagram.com/mateshwari_exports/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="header-social-icon-link"
-              >
-                <FaInstagram className="header-social-icon" />
-              </a>
-              <a
-                href="https://www.facebook.com/mateshwariexports/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="header-social-icon-link"
-              >
-                <FaFacebook className="header-social-icon" />
-              </a>
-              <a
-                href="https://www.youtube.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="header-social-icon-link"
-              >
-                <FaYoutube className="header-social-icon" />
-              </a>
+            {/* Right Section - BULK ORDER and Search */}
+            <div className="header-right-section-other">
+              <button className="header-bulk-order-btn-other">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                  <polyline points="14 2 14 8 20 8"></polyline>
+                  <line x1="16" y1="13" x2="8" y2="13"></line>
+                  <line x1="16" y1="17" x2="8" y2="17"></line>
+                  <polyline points="10 9 9 9 8 9"></polyline>
+                </svg>
+                BULK ORDER
+              </button>
+              <div className="header-search-icon-other" onClick={toggleSearch}>
+                <HiSearch className="header-search-icon" />
+              </div>
             </div>
+
+            {/* Search Bar - Toggleable */}
+            {isSearchOpen && (
+              <div className="header-search-bar-other" ref={searchContainerRef}>
+                <form onSubmit={handleSearchSubmit} className="header-search-form-other">
+                  <HiSearch className="header-search-icon-other-input" />
+                  <input
+                    id="search-input-other"
+                    type="text"
+                    placeholder="Search"
+                    value={searchQuery}
+                    onChange={handleSearchInputChange}
+                    className="header-search-input-other"
+                    autoFocus
+                  />
+                </form>
+                {showSearchResults && (
+                  <div className="header-search-results-other">
+                    {isSearching ? (
+                      <div className="header-search-loading">Searching...</div>
+                    ) : searchResults.length > 0 ? (
+                      <div className="header-search-results-list">
+                        {searchResults.map((product) => (
+                          <div
+                            key={product.product_id}
+                            className="header-search-result-item"
+                            onClick={() => handleSearchResultClick(product)}
+                          >
+                            <div className="header-search-result-image">
+                              <img src={getProductImage(product)} alt={product.name} />
+                            </div>
+                            <div className="header-search-result-content">
+                              <h4 className="header-search-result-title">{product.name}</h4>
+                              <p className="header-search-result-price">
+                                ₹{product.min_price} - ₹{product.max_price}
+                              </p>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    ) : null}
+                  </div>
+                )}
+              </div>
+            )}
           </div>
         )}
 

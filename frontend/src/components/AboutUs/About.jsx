@@ -12,6 +12,11 @@ import icon2 from "../../assets/img/icons/2.png";
 import icon3 from "../../assets/img/icons/3.png";
 import aboutup from '../../assets/Images/collection/collection2.jpg';
 import aboutbg from '../../assets/Images/banner/hero-1.jpg';
+import aboutBannerDesktop from '../../assets/Images/banner/customProjectsBgDesktop.jpg';
+import aboutBannerMobile from '../../assets/Images/banner/customProjectsBgDesktop.jpg';
+import whoWeAreBgDesktop1 from '../../assets/Images/banner/our-vision-bg-desktop1.png';
+import whoWeAreBgDesktop2 from '../../assets/Images/banner/our-vision-bg-desktop2.png';
+import whoWeAreBgMobile from '../../assets/Images/banner/our-vision-bg-mobile.png';
 import HomeBlog from '../Homeblog/Homeblog';
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
@@ -22,51 +27,63 @@ import rectangle1373 from '../../assets/img/Bestseller3.jpg';
 import { HashLink } from 'react-router-hash-link';
 
 const AboutSection = () => {
+  const bannerStyle = {
+    '--desktop-bg': aboutBannerDesktop ? `url(${aboutBannerDesktop})` : 'none',
+    '--mobile-bg': aboutBannerMobile ? `url(${aboutBannerMobile})` : 'none'
+  };
+
   return (
     <div className="about-container">
       {/* Top Banner Image */}
-      <div className="about-banner">
+      <div className="about-banner" style={bannerStyle}>
         <div className="about-banner-overlay"></div>
         <div className="about-banner-content">
           <h1 className="about-banner-title">ABOUT US</h1>
         </div>
       </div>
 
-      {/* Main Content Section */}
-      <div className="about-main-section">
-        <div className="about-content-wrapper">
-          <div className="about-grid">
-            {/* Left Text Section */}
-            <div className="about-text-area">
-              <div className="about-header">
-                <h2 className="about-section-title">WHO WE ARE</h2>
-                <div className="about-title-line"></div>
-              </div>
-              <h3 className="about-main-title">Crafting More Than Clothes — We Craft Confidence</h3>
-              <div className="about-text-content">
-                <p>
-                  At Mateshwari Moorti Bhandar, we believe that clothing should be more than just fabric – it should be a reflection of confidence, style, and individuality. Born from a passion for timeless fashion and rooted in quality craftsmanship, our brand blends contemporary trends with classic elegance.
-                </p>
-              </div>
-              <HashLink smooth to="#journey-section" className="about-view-btn">
+      {/* Main Content Section - Who We Are */}
+      <section className="about-who-we-are" style={{
+        '--desktop-bg-left': whoWeAreBgDesktop1 ? `url(${whoWeAreBgDesktop1})` : 'none',
+        '--desktop-bg-right': whoWeAreBgDesktop2 ? `url(${whoWeAreBgDesktop2})` : 'none',
+        '--mobile-bg': whoWeAreBgMobile ? `url(${whoWeAreBgMobile})` : 'none'
+      }}>
+        <div className="about-who-we-are-container">
+          <div className="about-who-we-are-content">
+            {/* Left Section - Text Content */}
+            <div className="about-who-we-are-text-section">
+              <h2 className="about-who-we-are-title">Who We Are</h2>
+              <h3 className="about-who-we-are-subtitle">
+                Celebrating Tradition With A Modern Touch
+              </h3>
+              <p className="about-who-we-are-description">
+                At Mateshwari Exports, we believe every woman deserves to feel graceful, confident, and connected to her roots. Our collection of kurtis blends timeless Indian craftsmanship with contemporary designs, offering styles that are perfect for every occasion — from casual elegance to festive celebrations. Each piece is thoughtfully made using quality fabrics, intricate detailing, and vibrant colors that reflect the beauty of our rich culture. With us, it's not just fashion — it's a celebration of tradition, comfort, and individuality.
+              </p>
+
+              <HashLink smooth to="#journey-section" className="about-who-we-are-cta-button">
                 View More
               </HashLink>
             </div>
-            {/* Right Image Section */}
-            <div className="about-image-area">
-              <div className="about-image-container">
-                <img
-                  src={about1}
-                  alt="Fashion showcase"
-                  className="about-main-img"
-                />
-                {/* Mateshwari Moorti Bhandar Logo Overlay */}
-              
+
+            {/* Right Section - Images */}
+            <div className="about-who-we-are-image-section">
+              <div className="about-who-we-are-image-wrapper">
+                {about1 ? (
+                  <img
+                    className="about-who-we-are-main-image"
+                    src={about1}
+                    alt="Who We Are"
+                  />
+                ) : (
+                  <div className="about-who-we-are-image-placeholder about-who-we-are-main-image">
+                    <span>Who We Are</span>
+                  </div>
+                )}
               </div>
             </div>
           </div>
         </div>
-      </div>
+      </section>
       {/* Mission & Vision Section */}
       <MissionVisionSection />
       {/* journey section */}
@@ -84,10 +101,8 @@ const AboutSection = () => {
 const MissionVisionSection = () => {
   return (
     <div className="mission-vision-section">
-      {/* Top Left Necklace Image */}
-      <img src={necklace} alt="Fashion Accessory" className="mission-vision-necklace" />
       <div className="mission-vision-container">
-        {/* Mission & Vision Cards Centered */}
+        {/* Mission & Vision Cards */}
         <div className="mission-vision-cards">
           {/* Mission */}
           <div className="mission-card">
@@ -97,7 +112,7 @@ const MissionVisionSection = () => {
             <div>
               <h2 className="mission-title">OUR MISSION</h2>
               <p className="mission-text">
-                Empower individuals with stylish, comfortable, and sustainable fashion that reflects their unique personality and lifestyle.
+                Capture Hearts With Exquisite Designs At An Exceptional Value, And An Unmatched Customer Experience.
               </p>
             </div>
           </div>
@@ -109,108 +124,118 @@ const MissionVisionSection = () => {
             <div>
               <h2 className="vision-title">OUR VISION</h2>
               <p className="vision-text">
-                Become the most trusted fashion brand in India & beyond, known for quality, style, and sustainability!
+                Become The Most Loved Jewellery Brand In India & Beyond!
               </p>
             </div>
           </div>
         </div>
-        {/* Right Center Diamond Image */}
-        <img src={diamond3} alt="Fashion Icon" className="mission-vision-diamond" />
       </div>
     </div>
   );
 };
 
 const JourneySection = () => {
+  const [currentSlide, setCurrentSlide] = React.useState(0);
+  const sliderRef = React.useRef(null);
+
   const settings = {
-    dots: false,
+    dots: true,
     infinite: false,
     speed: 500,
-    slidesToShow: 2.5,
+    slidesToShow: 1,
     slidesToScroll: 1,
     arrows: false,
     autoplay: false,
     centerMode: false,
-    variableWidth: false,
-    responsive: [
-      {
-        breakpoint: 900,
-        settings: {
-          slidesToShow: 1.5,
-          slidesToScroll: 1,
-          centerMode: false,
-        },
-      },
-      {
-        breakpoint: 768,
-        settings: {
-          slidesToShow: 1.5,
-          slidesToScroll: 1,
-          centerMode: false,
-          variableWidth: false,
-        }
-      },
-      {
-        breakpoint: 480,
-        settings: {
-          slidesToShow: 1.5,
-          slidesToScroll: 1,
-          centerMode: false,
-          variableWidth: false,
-        }
-      }
-    ],
-  };
-  const sliderRef = React.useRef(null);
-  
-  const journeyData = [
-    { year: '2018', desc: `Started with a vision to create comfortable, stylish clothing that empowers individuals to express their unique style.`, img: rectangle137 },
-    { year: '2020', desc: `Expanded our collection to include sustainable fashion, focusing on eco-friendly materials and ethical manufacturing.`, img: rectangle1372 },
-    { year: '2022', desc: `Became a trusted name in fashion, known for quality craftsmanship and innovative designs that stand the test of time.`, img: rectangle1373 },
-  ];
-  
-  return (
-    <div className="journey-container">
-      <div className="journey-title-area">
-   
-        <div className="journey-title-block">
-          <div className="journey-title-line journey-title-line-left" />
-          <h2 className="journey-title-text">The Journey</h2>
-          <div className="journey-title-line journey-title-line-right" />
-        </div>
+    beforeChange: (current, next) => setCurrentSlide(next),
+    customPaging: (i) => (
+      <div className={`journey-dot ${i === currentSlide ? 'active' : ''}`}></div>
+    ),
+    appendDots: (dots) => (
+      <div className="journey-dots-container">
+        <ul className="journey-dots">{dots}</ul>
       </div>
-      <div className="journey-carousel-container">
-        <Slider {...settings} className="journey-carousel" ref={sliderRef}>
+    ),
+  };
+
+  const journeyData = [
+    {
+      year: '2015',
+      desc: `T3 Stocks is a leading stock market institute in Jaipur, dedicated to empowering individuals with the knowledge and strategies needed for profitable trading.`,
+      img: rectangle137
+    },
+    {
+      year: '2018',
+      desc: `T3 Stocks is a leading stock market institute in Jaipur, dedicated to empowering individuals with the knowledge and strategies needed for profitable trading.`,
+      img: rectangle1372
+    },
+    {
+      year: '2021',
+      desc: `T3 Stocks is a leading stock market institute in Jaipur, dedicated to empowering individuals with the knowledge and strategies needed for profitable trading.`,
+      img: rectangle1373
+    },
+    {
+      year: '2022',
+      desc: `T3 Stocks is a leading stock market institute in Jaipur, dedicated to empowering individuals with the knowledge and strategies needed for profitable trading.`,
+      img: rectangle137
+    },
+    {
+      year: '2023',
+      desc: `T3 Stocks is a leading stock market institute in Jaipur, dedicated to empowering individuals with the knowledge and strategies needed for profitable trading.`,
+      img: rectangle1372
+    },
+  ];
+
+  return (
+    <div className="journey-section-wrapper">
+      {/* Desktop Timeline Version */}
+      <div className="journey-timeline-desktop">
+        <div className="journey-timeline-header">
+          <p className="journey-timeline-subtitle">About Mateshwari Exports</p>
+          <h2 className="journey-timeline-title">Our Story of Growth & Success</h2>
+          <p className="journey-timeline-description">
+            Since 2015, we've empowered individuals to achieve financial success in the stock market, and our impact continues to grow.
+          </p>
+        </div>
+        <div className="journey-timeline-container">
+          <div className="journey-timeline-line"></div>
           {journeyData.map((item, idx) => (
-            <div key={idx}>
-              <div className="journey-card">
-                <div className='journey-card-img-wrapper'>
-                  <img src={item.img} alt={item.year} className="journey-card-img" />
-                </div>
-                <div className="journey-card-content">
-                  <div className="journey-card-year">{item.year}</div>
-                  <div className="journey-card-desc">{item.desc}</div>
+            <div
+              key={idx}
+              className={`journey-timeline-item ${idx % 2 === 0 ? 'left' : 'right'}`}
+            >
+              <div className="journey-timeline-marker"></div>
+              <div className="journey-timeline-content">
+                <div className="journey-timeline-year">{item.year}</div>
+                <p className="journey-timeline-text">{item.desc}</p>
+                <div className="journey-timeline-image">
+                  <img src={item.img} alt={item.year} />
                 </div>
               </div>
             </div>
           ))}
-        </Slider>
-        {/* Custom arrows below the carousel */}
-        <div className="journey-carousel-arrow-group">
-          <button
-            className="journey-arrow"
-            onClick={() => sliderRef.current && sliderRef.current.slickPrev()}
-            aria-label="Previous"
-          >
-            <ArrowLeft size={22} />
-          </button>
-          <button
-            className="journey-arrow"
-            onClick={() => sliderRef.current && sliderRef.current.slickNext()}
-            aria-label="Next"
-          >
-            <ArrowRight size={22} />
-          </button>
+        </div>
+      </div>
+
+      {/* Mobile Carousel Version */}
+      <div className="journey-carousel-mobile">
+        <h2 className="journey-carousel-title">The Journey</h2>
+        <div className="journey-carousel-container-mobile">
+          <Slider {...settings} className="journey-carousel-slider" ref={sliderRef}>
+            {journeyData.map((item, idx) => (
+              <div key={idx}>
+                <div className="journey-carousel-card">
+                  <div className="journey-carousel-img-wrapper">
+                    <img src={item.img} alt={item.year} className="journey-carousel-img" />
+                  </div>
+                  <div className="journey-carousel-content">
+                    <div className="journey-carousel-year">{item.year}</div>
+                    <p className="journey-carousel-desc">{item.desc}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </Slider>
         </div>
       </div>
     </div>
@@ -270,7 +295,7 @@ const CraftsmanshipSection = () => {
             <div className="craftsmanship-card-icon-wrapper">
               <div className="craftsmanship-card-icon-bg">
                 <span className="craftsmanship-card-icon">
-                    <img src={icon3} alt="Devotional Detail Icon" className="craftsmanship-card-img" />
+                  <img src={icon3} alt="Devotional Detail Icon" className="craftsmanship-card-img" />
                 </span>
               </div>
             </div>

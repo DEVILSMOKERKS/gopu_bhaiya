@@ -7,7 +7,7 @@
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  min-height: 600px;
+  min-height: 400px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -25,7 +25,7 @@
   .custom-temple-projects {
     background-image: var(--mobile-bg);
     padding: 80px 15px;
-    min-height: 500px;
+    min-height: 400px;
   }
 }
 
@@ -104,7 +104,7 @@
 @media (max-width: 968px) {
   .custom-temple-projects {
     padding: 60px 15px;
-    min-height: 500px;
+    min-height: 400px;
   }
 
   .custom-temple-projects-title {

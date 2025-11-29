@@ -140,7 +140,6 @@
   width: 100%;
   max-width: 600px;
   height: 450px;
-  padding-left: 20%;
 }
 
 .our-vision-main-image {
@@ -149,28 +148,6 @@
   object-fit: cover;
   border-radius: 0;
   filter: drop-shadow(0 0 3px var(--primary-color));
-}
-
-/* First image shape mask + overlap - Saraswati */
-.our-vision-img-mask {
-  position: absolute;
-  left: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 200px;
-  height: 660px;
-  overflow: visible;
-  z-index: 10;
-  /* CUSTOM SHAPE — same as your Figma leaf shape */
-  clip-path: polygon(50% 0%, 80% 10%, 100% 20%, 100% 84%, 80% 92%, 50% 100%, 20% 92%, 0% 84%, 0% 20%, 20% 10%);
-  filter: drop-shadow(0 0 3px var(--primary-color));
-}
-
-.our-vision-img-mask img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
 }
 
 .our-vision-image-placeholder {
@@ -185,11 +162,6 @@
   color: #999999;
   font-size: 0.9rem;
   font-family: var(--font-family);
-}
-
-.our-vision-img-mask .our-vision-image-placeholder {
-  min-height: 100%;
-  border-radius: 0;
 }
 
 
@@ -235,17 +207,11 @@
   .our-vision-image-wrapper {
     max-width: 100%;
     height: 400px;
-    padding-left: 20%;
   }
 
   .our-vision-main-image {
     width: 100%;
     height: 100%;
-  }
-
-  .our-vision-img-mask {
-    width: 150px;
-    height: 540px;
   }
 }
 
@@ -290,16 +256,10 @@
 
   .our-vision-image-wrapper {
     height: auto;
-    padding-left: 20%;
   }
 
   .our-vision-main-image {
     width: 100%;
     height: 100%;
-  }
-
-  .our-vision-img-mask {
-    width: 120px;
-    height: 260px;
   }
 }

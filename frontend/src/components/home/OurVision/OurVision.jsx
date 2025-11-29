@@ -4,8 +4,7 @@ import './OurVision.css';
 import ourVisionBgDesktop1 from '../../../assets/Images/banner/our-vision-bg-desktop1.png';
 import ourVisionBgDesktop2 from '../../../assets/Images/banner/our-vision-bg-desktop2.png';
 import ourVisionBgMobile from '../../../assets/Images/banner/our-vision-bg-mobile.png';
-import saraswatiImage from '../../../assets/Images/banner/saraswati.jpg';
-import mandirImage from '../../../assets/Images/banner/mandir.jpg';
+import about1 from '../../../assets/img/who-banner.png';
 
 const OurVision = () => {
   const navigate = useNavigate();
@@ -60,27 +59,15 @@ const OurVision = () => {
           {/* Right Section - Images */}
           <div className="our-vision-image-section">
             <div className="our-vision-image-wrapper">
-              {/* First image with mask - Saraswati */}
-              <div className="our-vision-img-mask">
-                {saraswatiImage ? (
-                  <img src={saraswatiImage} alt="Saraswati Idol" />
-                ) : (
-                  <div className="our-vision-image-placeholder">
-                    <span>Saraswati Idol</span>
-                  </div>
-                )}
-              </div>
-
-              {/* Main image - Mandir */}
-              {mandirImage ? (
+              {about1 ? (
                 <img
                   className="our-vision-main-image"
-                  src={mandirImage}
-                  alt="Pooja Mandir"
+                  src={about1}
+                  alt="Our Vision"
                 />
               ) : (
                 <div className="our-vision-image-placeholder our-vision-main-image">
-                  <span>Pooja Mandir</span>
+                  <span>Our Vision</span>
                 </div>
               )}
             </div>
