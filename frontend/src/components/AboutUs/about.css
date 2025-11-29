@@ -360,6 +360,25 @@
     gap: 1.5rem;
   }
 
+  .crafting-temples-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .crafting-temples-image-area {
+    display: none;
+  }
+
+  .crafting-temples-image-area-mobile {
+    display: block;
+    order: 2;
+    margin-top: 2rem;
+  }
+
+  .crafting-temples-text-area {
+    order: 1;
+  }
+
   .different-grid {
     grid-template-columns: 1fr;
     gap: 2rem;
@@ -585,92 +604,98 @@
   line-height: 1.7;
 }
 
-/* Who We Are Section (inside WhatMakesUsDifferentSection) */
-.who-we-are-section {
+/* Crafting Temples Section */
+.crafting-temples-section {
   background: #fff;
-  padding: 4rem 0;
+  padding: 4rem 2rem;
 }
 
-.who-content-container {
+.crafting-temples-container {
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 0 2rem;
 }
 
-.who-grid {
-  display: flex;
-  flex-direction: column;
-  gap: 3rem;
+.crafting-temples-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
 }
 
-.who-image-area {
+.crafting-temples-image-area {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 430px;
-  width: 568px;
-  overflow: hidden;
-  border-radius: 10px;
 }
 
-.who-main-image {
+.crafting-temples-image-area-mobile {
+  display: none;
+}
+
+.crafting-temples-image {
   width: 100%;
-  height: 100%;
-  border-radius: 10px;
+  height: auto;
   object-fit: cover;
+  border-radius: 10px;
+  display: block;
 }
 
-.who-text-area {
+.crafting-temples-text-area {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 0 2rem;
 }
 
-.who-header {
-  display: flex;
-  align-items: center;
-  margin-bottom: 1rem;
-}
-
-.who-section-title {
-  color: #9a0e0d;
-  font-size: 30px;
+.crafting-temples-title {
+  font-size: 1.5rem;
   font-weight: bold;
-  font-family: var(--font-family);
-  margin-bottom: 0;
-  margin-right: 12px;
-  letter-spacing: 0.05em;
-}
-
-.who-title-line {
-  height: 3px;
-  width: 120px;
-  background: linear-gradient(to right, #9a0e0d, #fff);
-  border-radius: 2px;
-  margin-left: 8px;
-}
-
-.who-main-title {
-  font-size: 20px;
-  font-weight: bold;
-  color: #222;
-  margin-bottom: 1.5rem;
-  font-family: var(--font-family);
-}
-
-.who-text-content {
-  color: #444;
-  font-size: 1rem;
-  line-height: 1.7;
-  margin-bottom: 2rem;
-}
-
-.who-additional-text {
   color: #000;
-  font-size: 12px;
-  margin-top: 1rem;
-  font-weight: 800;
+  margin: 0 0 0.5rem 0;
+  font-family: var(--font-family);
 }
+
+.crafting-temples-subtitle {
+  font-size: 1rem;
+  font-weight: bold;
+  color: #000;
+  margin: 0 0 0.7rem 0;
+  font-family: var(--font-family);
+}
+
+.crafting-temples-intro {
+  font-size: 0.9rem;
+  color: #333;
+  margin: 0 0 0.5rem 0;
+  font-family: var(--font-family);
+}
+
+.crafting-temples-features {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.crafting-temples-feature-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.crafting-temples-feature-title {
+  font-size: 0.9rem;
+  font-weight: bold;
+  color: #000;
+  margin: 0;
+  font-family: var(--font-family);
+}
+
+.crafting-temples-feature-desc {
+  font-size: 0.9rem;
+  color: #333;
+  margin: 0;
+  font-family: var(--font-family);
+}
+
 
 /* Remove/override .different-title-line, .different-line-left, .different-line-right, .different-main-title if present */
 .different-title-line {
@@ -769,13 +794,6 @@
   max-width: 120px;
 }
 
-/* .who-main-image {
-    width: 600px;
-    height: 350px;
-    object-fit: cover;
-    border-radius: 10px;
-    display: block;
-  } */
 
 /* ============================================
    JOURNEY SECTION - Desktop Timeline & Mobile Carousel
@@ -1247,63 +1265,54 @@
     line-height: 1.5;
   }
 
-  /* Who We Are Section Mobile */
-  .who-we-are-section {
-    padding: 2rem 0;
+  /* Crafting Temples Section Mobile */
+  .crafting-temples-section {
+    padding: 2rem 1rem;
   }
 
-  .who-content-container {
-    padding: 0 1rem;
+  .crafting-temples-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
   }
 
-  .who-grid {
-    flex-direction: column;
-    gap: 2rem;
+  .crafting-temples-image-area {
+    display: none;
   }
 
-  .who-image-area {
+  .crafting-temples-image-area-mobile {
+    display: block;
     order: 2;
-    height: 100%;
-    width: 100%;
-    padding: 0;
+    margin-top: 1rem;
   }
 
-  .who-main-image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 8px;
-  }
-
-  .who-text-area {
+  .crafting-temples-text-area {
     order: 1;
-    padding: 0 1rem;
   }
 
-  .who-section-title {
-    font-size: 24px;
-    margin-bottom: 1rem;
+  .crafting-temples-title {
+    font-size: 1.5rem;
   }
 
-  .who-title-line {
-    width: 80px;
+  .crafting-temples-subtitle {
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
   }
 
-  .who-main-title {
-    font-size: 18px;
-    margin-bottom: 1rem;
-    line-height: 1.4;
+  .crafting-temples-intro {
+    font-size: 0.95rem;
+    margin-bottom: 0.5rem;
   }
 
-  .who-text-content p {
-    font-size: 15px;
-    line-height: 1.6;
-    margin-bottom: 1rem;
+  .crafting-temples-features {
+    gap: 0.25rem;
   }
 
-  .who-additional-text {
-    font-size: 13px;
-    margin-top: 0.5rem;
+  .crafting-temples-feature-title {
+    font-size: 1rem;
+  }
+
+  .crafting-temples-feature-desc {
+    font-size: 0.9rem;
   }
 
   /* Banner Section Mobile */
@@ -1324,6 +1333,31 @@
 
   .about-banner {
     min-height: 350px;
+  }
+
+  /* Crafting Temples Section Small Mobile */
+  .crafting-temples-section {
+    padding: 2rem 1rem;
+  }
+
+  .crafting-temples-title {
+    font-size: 1.5rem;
+  }
+
+  .crafting-temples-subtitle {
+    font-size: 1.1rem;
+  }
+
+  .crafting-temples-intro {
+    font-size: 0.9rem;
+  }
+
+  .crafting-temples-feature-title {
+    font-size: 0.95rem;
+  }
+
+  .crafting-temples-feature-desc {
+    font-size: 0.85rem;
   }
 
   /* Who We Are Section Small Mobile */
@@ -1475,17 +1509,5 @@
 
   .different-feature-description {
     font-size: 13px;
-  }
-
-  .who-section-title {
-    font-size: 22px;
-  }
-
-  .who-main-title {
-    font-size: 16px;
-  }
-
-  .who-text-content p {
-    font-size: 14px;
   }
 }

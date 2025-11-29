@@ -3,10 +3,6 @@ import './about.css';
 import about1 from '../../assets/img/who-banner.png';
 import missionIcon from '../../assets/img/icons/mission.png';
 import visionIcon from '../../assets/img/icons/vision.png';
-import diamond3 from '../../assets/img/icons/diamond3.png';
-import necklace from '../../assets/img/icons/necklace.png';
-import { Gem, Award, Palette, Check, ArrowLeft, ArrowRight } from 'lucide-react';
-import diamond from "../../assets/img/icons/diamond.png";
 import icon1 from "../../assets/img/icons/1.png";
 import icon2 from "../../assets/img/icons/2.png";
 import icon3 from "../../assets/img/icons/3.png";
@@ -17,15 +13,18 @@ import aboutBannerMobile from '../../assets/Images/banner/customProjectsBgDeskto
 import whoWeAreBgDesktop1 from '../../assets/Images/banner/our-vision-bg-desktop1.png';
 import whoWeAreBgDesktop2 from '../../assets/Images/banner/our-vision-bg-desktop2.png';
 import whoWeAreBgMobile from '../../assets/Images/banner/our-vision-bg-mobile.png';
-import HomeBlog from '../Homeblog/Homeblog';
 import { HashLink } from 'react-router-hash-link';
+import { Check } from 'lucide-react';
 import TimelineStory from './TimelineStory';
+import OurBlogs from '../home/OurBlogs/OurBlogs';
+import TrustedClients from '../home/TrustedClients/TrustedClients';
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import rectangle137 from '../../assets/img/Bestseller1.jpg';
 import rectangle1372 from '../../assets/img/Bestseller2.jpg';
 import rectangle1373 from '../../assets/img/Bestseller3.jpg';
+import mandir from '../../assets/Images/banner/mandir.jpg';
 
 const AboutSection = () => {
   const bannerStyle = {
@@ -365,40 +364,65 @@ const WhatMakesUsDifferentSection = () => {
           </div>
         </div>
       </div>
-      {/* Who We Are Section */}
-      <div className="who-we-are-section">
-        <div className="who-content-container">
-          <div className="who-grid">
-            {/* Left Image Section */}
-            <div className="who-image-area">
+      {/* Crafting Temples Section */}
+      <div className="crafting-temples-section">
+        <div className="crafting-temples-container">
+          <div className="crafting-temples-grid">
+            {/* Left Image Section - Desktop */}
+            <div className="crafting-temples-image-area">
               <img
-                src={aboutbg}
-                alt="Fashion models showcasing our collection"
-                className="who-main-image"
+                src={mandir}
+                alt="Beautifully crafted Pooja Room temple"
+                className="crafting-temples-image"
               />
             </div>
             {/* Right Text Section */}
-            <div className="who-text-area">
-              <div className="who-header">
-                <h2 className="who-section-title">WHO WE ARE</h2>
-                <div className="who-title-line"></div>
+            <div className="crafting-temples-text-area">
+              <h2 className="crafting-temples-title">Crafting Temples, Building Trust</h2>
+              <h3 className="crafting-temples-subtitle">Bringing Your Dream Temple To Life With Mateshwari Exports</h3>
+              <p className="crafting-temples-intro">
+                At Mateshwari Exports, we harmonize tradition, craftsmanship, and innovation to create timeless Pooja Room experiences. For the first time in the industry, we introduce a fully immersive virtual tour of our sacred spaces—designed to bring our artistry to your screen, wherever you are.
+              </p>
+              <div className="crafting-temples-features">
+                <div className="crafting-temples-feature-item">
+                  <h4 className="crafting-temples-feature-title">Timeless Craftsmanship</h4>
+                  <p className="crafting-temples-feature-desc">Blending tradition with innovation to create sacred Pooja Rooms.</p>
+                </div>
+                <div className="crafting-temples-feature-item">
+                  <h4 className="crafting-temples-feature-title">Virtual Tour Experience</h4>
+                  <p className="crafting-temples-feature-desc">Explore our designs from anywhere with an immersive tour.</p>
+                </div>
+                <div className="crafting-temples-feature-item">
+                  <h4 className="crafting-temples-feature-title">Custom Designs</h4>
+                  <p className="crafting-temples-feature-desc">Tailored Pooja Room layouts that reflect your vision.</p>
+                </div>
+                <div className="crafting-temples-feature-item">
+                  <h4 className="crafting-temples-feature-title">Superior Craftsmanship</h4>
+                  <p className="crafting-temples-feature-desc">Intricate detailing and premium materials used in every creation.</p>
+                </div>
+                <div className="crafting-temples-feature-item">
+                  <h4 className="crafting-temples-feature-title">Transform Your Home</h4>
+                  <p className="crafting-temples-feature-desc">Bring a divine aura to your space with our Pooja Rooms.</p>
+                </div>
               </div>
-              <h3 className="who-main-title">Crafting More Than Clothes — We Craft Confidence</h3>
-              <div className="who-text-content">
-                <p>
-                  At Mateshwari Moorti Bhandar, we believe that clothing should be more than just fabric – it should be a reflection of confidence, style, and individuality. Born from a passion for timeless fashion and rooted in quality craftsmanship, our brand blends contemporary trends with classic elegance.
-                </p>
-                <p className="who-additional-text">
-                  handcrafted by skilled artisans, we're proud to offer pieces that are as meaningful as they are magnificent
-                </p>
-              </div>
+            </div>
+            {/* Mobile Image Section */}
+            <div className="crafting-temples-image-area-mobile">
+              <img
+                src={mandir}
+                alt="Beautifully crafted Pooja Room temple"
+                className="crafting-temples-image"
+              />
             </div>
           </div>
         </div>
       </div>
 
-      {/* blog section */}
-      <HomeBlog />
+      {/* Our Blogs Section */}
+      <OurBlogs />
+      
+      {/* Trusted Clients Section */}
+      <TrustedClients />
 
     </div>
   );

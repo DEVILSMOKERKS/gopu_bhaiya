@@ -255,21 +255,6 @@ const Header = ({ onAccountClick }) => {
         ) : (
           /* Other Pages Header */
           <div className="header-container-other">
-            {/* Mobile Hamburger */}
-            <div className="header-mobile-menu-toggle">
-              <button
-                className="header-hamburger-btn"
-                onClick={toggleMobileMenu}
-                aria-label="Toggle mobile menu"
-              >
-                {isMobileMenuOpen ? (
-                  <HiX className="header-hamburger-icon header-close-icon" />
-                ) : (
-                  <HiMenu className="header-hamburger-icon" />
-                )}
-              </button>
-            </div>
-
             {/* Logo Left */}
             <div className="header-brand-section-other">
               <Link to="/" onClick={closeMobileMenu}>
@@ -364,146 +349,88 @@ const Header = ({ onAccountClick }) => {
           </div>
         )}
 
-        {/* Mobile Menu Backdrop */}
+        {/* Mobile Header - For all pages */}
+        <div className="header-mobile-home">
+          <button
+            className="header-mobile-hamburger"
+            onClick={toggleMobileMenu}
+            aria-label="Toggle mobile menu"
+          >
+            <HiMenu className="header-mobile-hamburger-icon" />
+          </button>
+          <Link to="/" className="header-mobile-logo-link">
+            <img src={logo} alt="Mateshwari Exports" className="header-mobile-logo-img" />
+          </Link>
+          <div className="header-mobile-social-icons">
+            <a
+              href="https://www.instagram.com/mateshwari_exports/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="header-mobile-social-icon-link"
+            >
+              <FaInstagram className="header-mobile-social-icon" />
+            </a>
+            <a
+              href="https://www.facebook.com/mateshwariexports/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="header-mobile-social-icon-link"
+            >
+              <FaFacebook className="header-mobile-social-icon" />
+            </a>
+            <a
+              href="https://www.youtube.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="header-mobile-social-icon-link"
+            >
+              <FaYoutube className="header-mobile-social-icon" />
+            </a>
+          </div>
+        </div>
+
+        {/* Mobile Menu for all pages */}
         {isMobileMenuOpen && (
           <div
             className={`header-mobile-menu-backdrop ${isMobileMenuOpen ? 'open' : ''}`}
             onClick={closeMobileMenu}
           ></div>
         )}
-
-        {/* Mobile Navigation Menu - Only for non-home pages */}
-        {!isHomePage && (
-          <>
-            {isMobileMenuOpen && (
-              <div
-                className={`header-mobile-menu-backdrop ${isMobileMenuOpen ? 'open' : ''}`}
-                onClick={closeMobileMenu}
-              ></div>
-            )}
-            <div className={`header-mobile-nav-menu ${isMobileMenuOpen ? 'open' : ''}`}>
-              <div className="header-mobile-menu-header">
-                <div className="header-mobile-logo">
-                  <img src={logo} alt="Mateshwari Exports" />
-                </div>
-                <button
-                  className="header-mobile-close-btn"
-                  onClick={closeMobileMenu}
-                  aria-label="Close mobile menu"
-                >
-                  <HiX className="header-mobile-close-icon" />
-                </button>
-              </div>
-              <nav className="header-mobile-navigation">
-                <ul className="header-mobile-nav-links">
-                  <li>
-                    <Link to="/" className={`header-mobile-nav-link ${location.pathname === '/' ? 'active' : ''}`} onClick={closeMobileMenu}>
-                      HOME
-                    </Link>
-                  </li>
-                  <li>
-                    <Link to="/About-us" className="header-mobile-nav-link" onClick={closeMobileMenu}>ABOUT US</Link>
-                  </li>
-                  <li>
-                    <Link to="/shop" className="header-mobile-nav-link" onClick={closeMobileMenu}>ALL PRODUCT</Link>
-                  </li>
-                  <li>
-                    <Link to="/how-to-place-order" className="header-mobile-nav-link" onClick={closeMobileMenu}>HOW TO PLACE ORDER</Link>
-                  </li>
-                  <li>
-                    <Link to="/contact-us" className="header-mobile-nav-link" onClick={closeMobileMenu}>CONTACT US</Link>
-                  </li>
-                </ul>
-              </nav>
+        <div className={`header-mobile-nav-menu ${isMobileMenuOpen ? 'open' : ''}`}>
+          <div className="header-mobile-menu-header">
+            <div className="header-mobile-logo">
+              <img src={logo} alt="Mateshwari Exports" />
             </div>
-          </>
-        )}
-
-        {/* Mobile Header - Only visible on mobile for home page */}
-        {isHomePage && (
-          <>
-            <div className="header-mobile-home">
-              <button
-                className="header-mobile-hamburger"
-                onClick={toggleMobileMenu}
-                aria-label="Toggle mobile menu"
-              >
-                <HiMenu className="header-mobile-hamburger-icon" />
-              </button>
-              <Link to="/" className="header-mobile-logo-link">
-                <img src={logo} alt="Mateshwari Exports" className="header-mobile-logo-img" />
-              </Link>
-              <div className="header-mobile-social-icons">
-                <a
-                  href="https://www.instagram.com/mateshwari_exports/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="header-mobile-social-icon-link"
-                >
-                  <FaInstagram className="header-mobile-social-icon" />
-                </a>
-                <a
-                  href="https://www.facebook.com/mateshwariexports/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="header-mobile-social-icon-link"
-                >
-                  <FaFacebook className="header-mobile-social-icon" />
-                </a>
-                <a
-                  href="https://www.youtube.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="header-mobile-social-icon-link"
-                >
-                  <FaYoutube className="header-mobile-social-icon" />
-                </a>
-              </div>
-            </div>
-            {/* Mobile Menu for Home Page */}
-            {isMobileMenuOpen && (
-              <div
-                className={`header-mobile-menu-backdrop ${isMobileMenuOpen ? 'open' : ''}`}
-                onClick={closeMobileMenu}
-              ></div>
-            )}
-            <div className={`header-mobile-nav-menu ${isMobileMenuOpen ? 'open' : ''}`}>
-              <div className="header-mobile-menu-header">
-                <div className="header-mobile-logo">
-                  <img src={logo} alt="Mateshwari Exports" />
-                </div>
-                <button
-                  className="header-mobile-close-btn"
-                  onClick={closeMobileMenu}
-                  aria-label="Close mobile menu"
-                >
-                  <HiX className="header-mobile-close-icon" />
-                </button>
-              </div>
-              <nav className="header-mobile-navigation">
-                <ul className="header-mobile-nav-links">
-                  <li>
-                    <Link to="/" className={`header-mobile-nav-link ${location.pathname === '/' ? 'active' : ''}`} onClick={closeMobileMenu}>
-                      HOME
-                    </Link>
-                  </li>
-                  <li>
-                    <Link to="/About-us" className="header-mobile-nav-link" onClick={closeMobileMenu}>ABOUT US</Link>
-                  </li>
-                  <li>
-                    <Link to="/shop" className="header-mobile-nav-link" onClick={closeMobileMenu}>ALL PRODUCT</Link>
-                  </li>
-                  <li>
-                    <Link to="/how-to-place-order" className="header-mobile-nav-link" onClick={closeMobileMenu}>HOW TO PLACE ORDER</Link>
-                  </li>
-                  <li>
-                    <Link to="/contact-us" className="header-mobile-nav-link" onClick={closeMobileMenu}>CONTACT US</Link>
-                  </li>
-                </ul>
-              </nav>
-            </div>
-          </>
-        )}
+            <button
+              className="header-mobile-close-btn"
+              onClick={closeMobileMenu}
+              aria-label="Close mobile menu"
+            >
+              <HiX className="header-mobile-close-icon" />
+            </button>
+          </div>
+          <nav className="header-mobile-navigation">
+            <ul className="header-mobile-nav-links">
+              <li>
+                <Link to="/" className={`header-mobile-nav-link ${location.pathname === '/' ? 'active' : ''}`} onClick={closeMobileMenu}>
+                  HOME
+                </Link>
+              </li>
+              <li>
+                <Link to="/About-us" className="header-mobile-nav-link" onClick={closeMobileMenu}>ABOUT US</Link>
+              </li>
+              <li>
+                <Link to="/shop" className="header-mobile-nav-link" onClick={closeMobileMenu}>ALL PRODUCT</Link>
+              </li>
+              <li>
+                <Link to="/how-to-place-order" className="header-mobile-nav-link" onClick={closeMobileMenu}>HOW TO PLACE ORDER</Link>
+              </li>
+              <li>
+                <Link to="/contact-us" className="header-mobile-nav-link" onClick={closeMobileMenu}>CONTACT US</Link>
+              </li>
+            </ul>
+          </nav>
+        </div>
       </header>
     </>
   );

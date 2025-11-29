@@ -591,6 +591,7 @@
    RESPONSIVE DESIGN
    ============================================ */
 @media (max-width: 968px) {
+
   /* Hide desktop elements on mobile */
   .header-top-bar,
   .header-nav-bar-home,
@@ -598,18 +599,13 @@
     display: none;
   }
 
-  /* Show mobile header for home page */
-  .header-home .header-mobile-home {
+  /* Show mobile header for all pages */
+  .header-mobile-home {
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 1rem 1.5rem;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  }
-
-  /* Show mobile menu toggle for other pages */
-  .header-other .header-mobile-menu-toggle {
-    display: block;
   }
 
   .header-mobile-hamburger {
@@ -668,24 +664,6 @@
     height: 16px;
   }
 
-  /* Adjust other pages header for mobile */
-  .header-container-other {
-    display: flex;
-    padding: 1rem 1.5rem;
-  }
-
-  .header-navigation-other {
-    display: none;
-  }
-
-  .header-right-section-other {
-    display: none;
-  }
-
-  .header-search-bar-other {
-    display: none;
-  }
-
   .header-search-bar-home {
     width: 100%;
     max-width: 250px;
@@ -693,6 +671,7 @@
 }
 
 @media (max-width: 768px) {
+
   .header-nav-links-home,
   .header-nav-links-other {
     gap: 1.5rem;
