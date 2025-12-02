@@ -9,6 +9,7 @@ import ManufacturingProcess from '../components/home/ManufacturingProcess/Manufa
 import HandcraftedIdols from '../components/home/HandcraftedIdols/HandcraftedIdols';
 import CustomTempleProjects from '../components/home/CustomTempleProjects/CustomTempleProjects';
 import PoojaRoomBudget from '../components/home/PoojaRoomBudget/PoojaRoomBudget';
+import WelcomeToTilak from '../components/home/WelcomeToTilak/WelcomeToTilak';
 import TrustedClients from '../components/home/TrustedClients/TrustedClients';
 import ClientDiaries from '../components/home/ClientDiaries/ClientDiaries';
 import FollowUs from '../components/home/FollowUs/FollowUs';
@@ -27,6 +28,7 @@ const Home = () => {
       <HandcraftedIdols />
       <CustomTempleProjects />
       <PoojaRoomBudget />
+      <WelcomeToTilak />
       <TrustedClients />
       <ClientDiaries />
       <FollowUs />

@@ -1,0 +1,207 @@
+.book-appointment-page {
+  padding-top: 100px;
+  min-height: 100vh;
+  background: #ffffff;
+}
+
+.book-appointment-header {
+  text-align: center;
+  padding: 60px 20px 40px;
+  background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+}
+
+.book-appointment-title {
+  font-size: 24px !important;
+  margin-bottom: 15px;
+  color: #000000;
+}
+
+.book-appointment-subtitle {
+  font-size: 18px;
+  color: #2e2e2e;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.book-appointment-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+.book-appointment-content {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 40px;
+}
+
+.appointment-form-section {
+  background: #ffffff;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.appointment-form-title {
+  font-size: 24px;
+  margin-bottom: 30px;
+  color: #000000;
+  font-family: var(--futura-pt-medium, 'Arial', 'Helvetica', sans-serif);
+}
+
+.appointment-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-group label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #333;
+  font-family: var(--futura-pt-medium, 'Arial', 'Helvetica', sans-serif);
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  padding: 12px 16px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 16px;
+  font-family: var(--futura-pt-light, 'Arial', 'Helvetica', sans-serif);
+  transition: border-color 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: #B68126;
+}
+
+.appointment-submit-btn {
+  padding: 16px 32px;
+  background: #B68126;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: var(--futura-pt-medium, 'Arial', 'Helvetica', sans-serif);
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+  margin-top: 10px;
+}
+
+.appointment-submit-btn:hover {
+  background: #956213;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(182, 129, 38, 0.3);
+}
+
+.appointment-info-section {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.appointment-info-title {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #000000;
+  font-family: var(--futura-pt-medium, 'Arial', 'Helvetica', sans-serif);
+}
+
+.appointment-benefits {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.benefit-item {
+  display: flex;
+  gap: 15px;
+  padding: 20px;
+  background: #f8f9fa;
+  border-radius: 8px;
+  transition: transform 0.3s ease;
+}
+
+.benefit-item:hover {
+  transform: translateX(5px);
+}
+
+.benefit-icon {
+  font-size: 32px;
+  flex-shrink: 0;
+}
+
+.benefit-item h3 {
+  font-size: 18px;
+  margin-bottom: 8px;
+  color: #000000;
+  font-family: var(--futura-pt-medium, 'Arial', 'Helvetica', sans-serif);
+}
+
+.benefit-item p {
+  font-size: 14px;
+  color: #666;
+  margin: 0;
+}
+
+.contact-info-card {
+  background: #f8f9fa;
+  padding: 30px;
+  border-radius: 8px;
+  border-left: 4px solid #B68126;
+}
+
+.contact-info-card h3 {
+  font-size: 20px;
+  margin-bottom: 15px;
+  color: #000000;
+  font-family: var(--futura-pt-medium, 'Arial', 'Helvetica', sans-serif);
+}
+
+.contact-info-card p {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 10px;
+  line-height: 1.6;
+}
+
+@media (max-width: 968px) {
+  .book-appointment-content {
+    grid-template-columns: 1fr;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .appointment-form-section {
+    padding: 25px;
+  }
+
+  .book-appointment-header {
+    padding: 40px 15px 30px;
+  }
+}
+

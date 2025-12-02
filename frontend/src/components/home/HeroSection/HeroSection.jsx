@@ -7,6 +7,8 @@ import hero2 from '../../../assets/Images/banner/hero-1.jpg';
 import hero11 from '../../../assets/Images/banner/hero-1.jpg';
 import hero12 from '../../../assets/Images/banner/hero-1.jpg';
 import hero13 from '../../../assets/Images/banner/hero-1.jpg';
+// Import video
+import heroVideo from '../../../assets/Images/1763831233129.mp4';
 
 const HeroSection = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -70,27 +72,64 @@ const HeroSection = () => {
 
   return (
     <section className="hero-slider-section">
-      {/* Desktop Layout - Only Images */}
+      {/* Desktop Layout - Video Background */}
       <div className="hero-slider-desktop">
         <div className="hero-slider-images">
-          <div className="hero-statues-wrapper">
+          {/* Video Background */}
+          <video
+            className="hero-video-background"
+            autoPlay
+            loop
+            muted
+            playsInline
+          >
+            <source src={heroVideo} type="video/mp4" />
+            {/* Fallback image if video fails to load */}
             <img
               src={currentSlideData.desktopImage}
               alt={currentSlideData.title}
               className="hero-statues-image"
             />
+          </video>
+          {/* Overlay for better text visibility */}
+          <div className="hero-video-overlay"></div>
+          {/* Optional: Text Content Overlay */}
+          <div className="hero-content-overlay">
+            <p className="hero-subtitle">Your Ultimate Pooja Room Destination</p>
+            <h1 className="hero-title">YOUR SPIRITUAL CONNECTION, MADE</h1>
+          
           </div>
         </div>
       </div>
 
-      {/* Mobile Layout - Only Images */}
+      {/* Mobile Layout - Video Background */}
       <div className="hero-slider-mobile">
         <div className="hero-mobile-image-wrapper">
-          <img
-            src={currentSlideData.mobileImage}
-            alt={currentSlideData.title}
-            className="hero-mobile-image"
-          />
+          {/* Video Background */}
+          <video
+            className="hero-video-background"
+            autoPlay
+            loop
+            muted
+            playsInline
+          >
+            <source src={heroVideo} type="video/mp4" />
+            {/* Fallback image if video fails to load */}
+            <img
+              src={currentSlideData.mobileImage}
+              alt={currentSlideData.title}
+              className="hero-mobile-image"
+            />
+          </video>
+          {/* Overlay for better text visibility */}
+          <div className="hero-video-overlay"></div>
+          {/* Optional: Text Content Overlay */}
+          <div className="hero-content-overlay">
+            <p className="hero-subtitle">Your Ultimate Pooja Room Destination</p>
+            <h1 className="hero-title">YOUR SPIRITUAL CONNECTION, MADE</h1>
+            <h1 className="hero-title-large">SIMPLE</h1>
+            <p className="hero-tagline">— TILAK STONE ARTS</p>
+          </div>
         </div>
       </div>
 

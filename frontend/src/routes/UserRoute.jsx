@@ -34,6 +34,13 @@ import OrderTracking from '../pages/OrderTracking'
 import Blogs from '../pages/Blogs'
 import BlogDetail from '../pages/BlogDetail'
 
+// New Pages
+import BookAppointment from '../pages/BookAppointment'
+import Testimonials from '../pages/Testimonials'
+import Projects from '../pages/Projects'
+import OurCreations from '../pages/OurCreations'
+import OurServices from '../pages/OurServices'
+
 
 const UserRoute = ({
   onAccountClick,
@@ -105,6 +112,13 @@ const UserRoute = ({
         {/* Blog Routes */}
         <Route path='/blogs' element={<Blogs />} />
         <Route path='/blog/:slug' element={<BlogDetail />} />
+
+        {/* New Page Routes */}
+        <Route path='/book-appointment' element={<BookAppointment />} />
+        <Route path='/testimonials' element={<Testimonials />} />
+        <Route path='/projects' element={<Projects />} />
+        <Route path='/our-creations' element={<OurCreations />} />
+        <Route path='/our-services' element={<OurServices />} />
       </Routes>
       {!isComingSoon && <Footer />}
 

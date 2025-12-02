@@ -4,19 +4,19 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  font-family: var(--__futura_pt_light_ef3a57), var(--__futura_pt_light_Fallback_ef3a57), sans-serif;
+  font-family: var(--__futura_pt_light_ef3a57, 'Arial', 'Helvetica Neue', 'Helvetica', sans-serif), var(--__futura_pt_light_Fallback_ef3a57, 'Arial', 'Helvetica Neue', 'Helvetica', sans-serif), 'Arial', 'Helvetica Neue', 'Helvetica', sans-serif;
 }
 
 :root {
   /* Font Family - Headings */
-  --font-heading: var(--__futura_pt_medium_6c980f), var(--__futura_pt_medium_Fallback_6c980f), sans-serif;
-  --futura-pt-medium: var(--__futura_pt_medium_6c980f), var(--__futura_pt_medium_Fallback_6c980f), sans-serif;
+  --font-heading: var(--__futura_pt_medium_6c980f, 'Arial', 'Helvetica Neue', 'Helvetica', sans-serif), var(--__futura_pt_medium_Fallback_6c980f, 'Arial', 'Helvetica Neue', 'Helvetica', sans-serif), 'Arial', 'Helvetica Neue', 'Helvetica', sans-serif;
+  --futura-pt-medium: var(--__futura_pt_medium_6c980f, 'Arial', 'Helvetica Neue', 'Helvetica', sans-serif), var(--__futura_pt_medium_Fallback_6c980f, 'Arial', 'Helvetica Neue', 'Helvetica', sans-serif), 'Arial', 'Helvetica Neue', 'Helvetica', sans-serif;
   
   /* Font Family - Body */
-  --font-family: var(--__futura_pt_light_ef3a57), var(--__futura_pt_light_Fallback_ef3a57), sans-serif;
-  --font-body: var(--__futura_pt_light_ef3a57), var(--__futura_pt_light_Fallback_ef3a57), sans-serif;
-  --font-primary: var(--__futura_pt_medium_6c980f), var(--__futura_pt_medium_Fallback_6c980f), sans-serif;
-  --futura-pt-light: var(--__futura_pt_light_ef3a57), var(--__futura_pt_light_Fallback_ef3a57), sans-serif;
+  --font-family: var(--__futura_pt_light_ef3a57, 'Arial', 'Helvetica Neue', 'Helvetica', sans-serif), var(--__futura_pt_light_Fallback_ef3a57, 'Arial', 'Helvetica Neue', 'Helvetica', sans-serif), 'Arial', 'Helvetica Neue', 'Helvetica', sans-serif;
+  --font-body: var(--__futura_pt_light_ef3a57, 'Arial', 'Helvetica Neue', 'Helvetica', sans-serif), var(--__futura_pt_light_Fallback_ef3a57, 'Arial', 'Helvetica Neue', 'Helvetica', sans-serif), 'Arial', 'Helvetica Neue', 'Helvetica', sans-serif;
+  --font-primary: var(--__futura_pt_medium_6c980f, 'Arial', 'Helvetica Neue', 'Helvetica', sans-serif), var(--__futura_pt_medium_Fallback_6c980f, 'Arial', 'Helvetica Neue', 'Helvetica', sans-serif), 'Arial', 'Helvetica Neue', 'Helvetica', sans-serif;
+  --futura-pt-light: var(--__futura_pt_light_ef3a57, 'Arial', 'Helvetica Neue', 'Helvetica', sans-serif), var(--__futura_pt_light_Fallback_ef3a57, 'Arial', 'Helvetica Neue', 'Helvetica', sans-serif), 'Arial', 'Helvetica Neue', 'Helvetica', sans-serif;
   
   /* Bootstrap Heading Color (if not defined) */
   --bs-heading-color: inherit;
@@ -108,21 +108,24 @@ img {
   height: auto;
 }
 
-/* Heading Styles */
+/* Heading Styles - Desktop: 24px */
 .h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
   margin-top: 0;
   margin-bottom: .5rem;
   font-weight: 500;
   line-height: 1.2;
   color: var(--bs-heading-color);
+  font-size: 24px !important; /* Desktop heading size - force override */
+  font-family: var(--futura-pt-medium, var(--font-heading, 'Arial', 'Helvetica', sans-serif)) !important; /* Force font override */
 }
 
 /* Heading Styles with Futura PT Medium - Uppercase */
 .h2style, .h3style, .h4style, .h5style, h2, h3, h4, h5 {
-  font-family: var(--futura-pt-medium);
+  font-family: var(--futura-pt-medium, var(--font-heading, 'Arial', 'Helvetica', sans-serif)) !important; /* Force font override */
   text-transform: uppercase !important;
   font-weight: 500 !important;
   letter-spacing: .15rem;
+  font-size: 24px !important; /* Desktop heading size - force override */
 }
 
 /* Paragraph Styles */
@@ -141,4 +144,19 @@ p {
 /* Body Text */
 body, span, div, a, button, input, textarea, select, label {
   font-family: var(--font-body);
+}
+
+/* Responsive Heading Sizes */
+@media (max-width: 968px) {
+  .h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6,
+  .h2style, .h3style, .h4style, .h5style {
+    font-size: 20px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6,
+  .h2style, .h3style, .h4style, .h5style {
+    font-size: 18px !important;
+  }
 }

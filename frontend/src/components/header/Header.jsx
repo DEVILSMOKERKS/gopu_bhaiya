@@ -19,10 +19,27 @@ const Header = ({ onAccountClick }) => {
   const [searchResults, setSearchResults] = useState([]);
   const [isSearching, setIsSearching] = useState(false);
   const [showSearchResults, setShowSearchResults] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
   const { cart, wishlist } = useWishlistCart();
   const { user, isAuthenticated } = useUser();
   const searchTimeoutRef = useRef(null);
   const searchContainerRef = useRef(null);
+
+  // Handle scroll event to change header background
+  useEffect(() => {
+    // On non-home pages, header should start as scrolled (white background)
+    if (!isHomePage) {
+      setIsScrolled(true);
+    }
+
+    const handleScroll = () => {
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      setIsScrolled(scrollTop > 50);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [isHomePage]);
 
   // Get API URL from environment variable
   const API_URL = import.meta.env.VITE_API_URL;
@@ -164,190 +181,100 @@ const Header = ({ onAccountClick }) => {
 
   return (
     <>
-      <header className={`header ${isHomePage ? 'header-home' : 'header-other'}`}>
-        {/* Home Page Header */}
-        {isHomePage ? (
-          <>
-            {/* Top Bar - Search, Logo, BULK ORDER */}
-            <div className="header-top-bar">
-              <div className="header-top-left">
-                <div className="header-search-bar-home" ref={searchContainerRef}>
-                  <form onSubmit={handleSearchSubmit} className="header-search-form-home">
-                    <HiSearch className="header-search-icon-home" />
-                    <input
-                      type="text"
-                      placeholder="Search"
-                      value={searchQuery}
-                      onChange={handleSearchInputChange}
-                      className="header-search-input-home"
-                    />
-                  </form>
-                  {showSearchResults && (
-                    <div className="header-search-results-home">
-                      {isSearching ? (
-                        <div className="header-search-loading">Searching...</div>
-                      ) : searchResults.length > 0 ? (
-                        <div className="header-search-results-list">
-                          {searchResults.map((product) => (
-                            <div
-                              key={product.product_id}
-                              className="header-search-result-item"
-                              onClick={() => handleSearchResultClick(product)}
-                            >
-                              <div className="header-search-result-image">
-                                <img src={getProductImage(product)} alt={product.name} />
-                              </div>
-                              <div className="header-search-result-content">
-                                <h4 className="header-search-result-title">{product.name}</h4>
-                                <p className="header-search-result-price">
-                                  ₹{product.min_price} - ₹{product.max_price}
-                                </p>
-                              </div>
-                            </div>
-                          ))}
-                        </div>
-                      ) : null}
-                    </div>
-                  )}
-                </div>
-              </div>
-              <div className="header-top-center">
-                <Link to="/" className="header-logo-link">
-                  <img src={logo} alt="Mateshwari Exports" className="header-logo-img" />
-                </Link>
-              </div>
-              <div className="header-top-right">
-                <button className="header-bulk-order-btn">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-                    <polyline points="14 2 14 8 20 8"></polyline>
-                    <line x1="16" y1="13" x2="8" y2="13"></line>
-                    <line x1="16" y1="17" x2="8" y2="17"></line>
-                    <polyline points="10 9 9 9 8 9"></polyline>
-                  </svg>
-                  BULK ORDER
-                </button>
-              </div>
-            </div>
-            {/* Navigation Bar */}
-            <nav className="header-nav-bar-home">
-              <ul className="header-nav-links-home">
-                <li>
-                  <Link to="/" className={`header-nav-link-home ${location.pathname === '/' ? 'active' : ''}`}>
-                    HOME
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/About-us" className="header-nav-link-home">ABOUT US</Link>
-                </li>
-                <li>
-                  <Link to="/shop" className="header-nav-link-home">ALL PRODUCT</Link>
-                </li>
-                <li>
-                  <Link to="/how-to-place-order" className="header-nav-link-home">HOW TO PLACE ORDER</Link>
-                </li>
-                <li>
-                  <Link to="/contact-us" className="header-nav-link-home">CONTACT US</Link>
-                </li>
-              </ul>
-            </nav>
-          </>
-        ) : (
-          /* Other Pages Header */
-          <div className="header-container-other">
-            {/* Logo Left */}
-            <div className="header-brand-section-other">
-              <Link to="/" onClick={closeMobileMenu}>
-                <img src={logo} alt="Mateshwari Exports" className="header-logo-img-other" />
-              </Link>
-            </div>
-
-            {/* Navigation Center */}
-            <nav className="header-navigation-other">
-              <ul className="header-nav-links-other">
-                <li>
-                  <Link to="/" className={`header-nav-link-other ${location.pathname === '/' ? 'active' : ''}`}>
-                    HOME
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/About-us" className={`header-nav-link-other ${location.pathname === '/About-us' ? 'active' : ''}`}>ABOUT US</Link>
-                </li>
-                <li>
-                  <Link to="/shop" className={`header-nav-link-other ${location.pathname === '/shop' || location.pathname.startsWith('/product') ? 'active' : ''}`}>ALL PRODUCT</Link>
-                </li>
-                <li>
-                  <Link to="/how-to-place-order" className={`header-nav-link-other ${location.pathname === '/how-to-place-order' ? 'active' : ''}`}>HOW TO PLACE ORDER</Link>
-                </li>
-                <li>
-                  <Link to="/contact-us" className={`header-nav-link-other ${location.pathname === '/contact-us' ? 'active' : ''}`}>CONTACT US</Link>
-                </li>
-              </ul>
-            </nav>
-
-            {/* Right Section - BULK ORDER and Search */}
-            <div className="header-right-section-other">
-              <button className="header-bulk-order-btn-other">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-                  <polyline points="14 2 14 8 20 8"></polyline>
-                  <line x1="16" y1="13" x2="8" y2="13"></line>
-                  <line x1="16" y1="17" x2="8" y2="17"></line>
-                  <polyline points="10 9 9 9 8 9"></polyline>
-                </svg>
-                BULK ORDER
-              </button>
-              <div className="header-search-icon-other" onClick={toggleSearch}>
-                <HiSearch className="header-search-icon" />
-              </div>
-            </div>
-
-            {/* Search Bar - Toggleable */}
-            {isSearchOpen && (
-              <div className="header-search-bar-other" ref={searchContainerRef}>
-                <form onSubmit={handleSearchSubmit} className="header-search-form-other">
-                  <HiSearch className="header-search-icon-other-input" />
-                  <input
-                    id="search-input-other"
-                    type="text"
-                    placeholder="Search"
-                    value={searchQuery}
-                    onChange={handleSearchInputChange}
-                    className="header-search-input-other"
-                    autoFocus
-                  />
-                </form>
-                {showSearchResults && (
-                  <div className="header-search-results-other">
-                    {isSearching ? (
-                      <div className="header-search-loading">Searching...</div>
-                    ) : searchResults.length > 0 ? (
-                      <div className="header-search-results-list">
-                        {searchResults.map((product) => (
-                          <div
-                            key={product.product_id}
-                            className="header-search-result-item"
-                            onClick={() => handleSearchResultClick(product)}
-                          >
-                            <div className="header-search-result-image">
-                              <img src={getProductImage(product)} alt={product.name} />
-                            </div>
-                            <div className="header-search-result-content">
-                              <h4 className="header-search-result-title">{product.name}</h4>
-                              <p className="header-search-result-price">
-                                ₹{product.min_price} - ₹{product.max_price}
-                              </p>
-                            </div>
+      <header className={`header ${isScrolled ? 'header-scrolled' : 'header-transparent'}`}>
+        {/* Unified Header Structure for All Pages */}
+        {/* Top Bar - Search, Logo, BULK ORDER */}
+        <div className="header-top-bar">
+          <div className="header-top-left">
+            <div className="header-search-bar-home" ref={searchContainerRef}>
+              <form onSubmit={handleSearchSubmit} className="header-search-form-home">
+                <HiSearch className="header-search-icon-home" />
+                <input
+                  type="text"
+                  placeholder="Search"
+                  value={searchQuery}
+                  onChange={handleSearchInputChange}
+                  className="header-search-input-home"
+                />
+              </form>
+              {showSearchResults && (
+                <div className="header-search-results-home">
+                  {isSearching ? (
+                    <div className="header-search-loading">Searching...</div>
+                  ) : searchResults.length > 0 ? (
+                    <div className="header-search-results-list">
+                      {searchResults.map((product) => (
+                        <div
+                          key={product.product_id}
+                          className="header-search-result-item"
+                          onClick={() => handleSearchResultClick(product)}
+                        >
+                          <div className="header-search-result-image">
+                            <img src={getProductImage(product)} alt={product.name} />
                           </div>
-                        ))}
-                      </div>
-                    ) : null}
-                  </div>
-                )}
-              </div>
-            )}
+                          <div className="header-search-result-content">
+                            <h4 className="header-search-result-title">{product.name}</h4>
+                            <p className="header-search-result-price">
+                              ₹{product.min_price} - ₹{product.max_price}
+                            </p>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  ) : null}
+                </div>
+              )}
+            </div>
           </div>
-        )}
+          <div className="header-top-center">
+            <Link to="/" className="header-logo-link">
+              <img src={logo} alt="Mateshwari Exports" className="header-logo-img" />
+            </Link>
+          </div>
+          <div className="header-top-right">
+            <button className="header-bulk-order-btn">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                <polyline points="14 2 14 8 20 8"></polyline>
+                <line x1="16" y1="13" x2="8" y2="13"></line>
+                <line x1="16" y1="17" x2="8" y2="17"></line>
+                <polyline points="10 9 9 9 8 9"></polyline>
+              </svg>
+              BULK ORDER
+            </button>
+          </div>
+        </div>
+        {/* Navigation Bar - Same for All Pages */}
+        <nav className="header-nav-bar-home">
+          <ul className="header-nav-links-home">
+            <li>
+              <Link to="/" className={`header-nav-link-home ${location.pathname === '/' ? 'active' : ''}`}>
+                HOME
+              </Link>
+            </li>
+            <li>
+              <Link to="/projects" className={`header-nav-link-home ${location.pathname === '/projects' ? 'active' : ''}`}>PROJECTS</Link>
+            </li>
+            <li>
+              <Link to="/our-creations" className={`header-nav-link-home ${location.pathname === '/our-creations' ? 'active' : ''}`}>OUR CREATIONS</Link>
+            </li>
+            <li>
+              <Link to="/our-services" className={`header-nav-link-home ${location.pathname === '/our-services' ? 'active' : ''}`}>OUR SERVICES</Link>
+            </li>
+            <li>
+              <Link to="/how-to-place-order" className={`header-nav-link-home ${location.pathname === '/how-to-place-order' ? 'active' : ''}`}>HOW IT WORKS</Link>
+            </li>
+            <li>
+              <Link to="/blogs" className={`header-nav-link-home ${location.pathname === '/blogs' || location.pathname.startsWith('/blog/') ? 'active' : ''}`}>BLOG</Link>
+            </li>
+            <li>
+              <Link to="/book-appointment" className={`header-nav-link-home ${location.pathname === '/book-appointment' ? 'active' : ''}`}>BOOK APPOINTMENT</Link>
+            </li>
+            <li>
+              <Link to="/testimonials" className={`header-nav-link-home ${location.pathname === '/testimonials' ? 'active' : ''}`}>TESTIMONIALS</Link>
+            </li>
+          </ul>
+        </nav>
 
         {/* Mobile Header - For all pages */}
         <div className="header-mobile-home">
@@ -417,16 +344,25 @@ const Header = ({ onAccountClick }) => {
                 </Link>
               </li>
               <li>
-                <Link to="/About-us" className="header-mobile-nav-link" onClick={closeMobileMenu}>ABOUT US</Link>
+                <Link to="/projects" className={`header-mobile-nav-link ${location.pathname === '/projects' ? 'active' : ''}`} onClick={closeMobileMenu}>PROJECTS</Link>
               </li>
               <li>
-                <Link to="/shop" className="header-mobile-nav-link" onClick={closeMobileMenu}>ALL PRODUCT</Link>
+                <Link to="/our-creations" className={`header-mobile-nav-link ${location.pathname === '/our-creations' ? 'active' : ''}`} onClick={closeMobileMenu}>OUR CREATIONS</Link>
               </li>
               <li>
-                <Link to="/how-to-place-order" className="header-mobile-nav-link" onClick={closeMobileMenu}>HOW TO PLACE ORDER</Link>
+                <Link to="/our-services" className={`header-mobile-nav-link ${location.pathname === '/our-services' ? 'active' : ''}`} onClick={closeMobileMenu}>OUR SERVICES</Link>
               </li>
               <li>
-                <Link to="/contact-us" className="header-mobile-nav-link" onClick={closeMobileMenu}>CONTACT US</Link>
+                <Link to="/how-to-place-order" className={`header-mobile-nav-link ${location.pathname === '/how-to-place-order' ? 'active' : ''}`} onClick={closeMobileMenu}>HOW IT WORKS</Link>
+              </li>
+              <li>
+                <Link to="/blogs" className={`header-mobile-nav-link ${location.pathname === '/blogs' ? 'active' : ''}`} onClick={closeMobileMenu}>BLOG</Link>
+              </li>
+              <li>
+                <Link to="/book-appointment" className={`header-mobile-nav-link ${location.pathname === '/book-appointment' ? 'active' : ''}`} onClick={closeMobileMenu}>BOOK APPOINTMENT</Link>
+              </li>
+              <li>
+                <Link to="/testimonials" className={`header-mobile-nav-link ${location.pathname === '/testimonials' ? 'active' : ''}`} onClick={closeMobileMenu}>TESTIMONIALS</Link>
               </li>
             </ul>
           </nav>

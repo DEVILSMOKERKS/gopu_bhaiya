@@ -63,9 +63,9 @@ const DreamTempleSteps = () => {
                     )}
                   </div>
                 </div>
-                <h3 className="dream-temple-step-title">
+                <p className="dream-temple-step-title">
                   <span className="dream-temple-step-number-prefix">{step.number} -</span> {step.title}
-                </h3>
+                </p>
               </div>
 
               {/* Connecting Arrow (except for last step) */}

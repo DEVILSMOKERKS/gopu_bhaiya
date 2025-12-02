@@ -7,16 +7,82 @@
   left: 0;
   right: 0;
   z-index: 1000;
-  background: #1a1a1a;
   color: var(--text-white);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 /* ============================================
-   HOME PAGE HEADER
+   HEADER TRANSPARENT STATE (Initial)
    ============================================ */
-.header-home {
-  background: #1a1a1a;
+.header-transparent {
+  background: transparent !important;
+  box-shadow: none;
 }
+
+.header-transparent .header-top-bar {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.header-transparent .header-nav-bar-home {
+  background: transparent;
+}
+
+/* ============================================
+   HEADER SCROLLED STATE (White Background)
+   ============================================ */
+.header-scrolled {
+  background: #ffffff !important;
+  color: #000000;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.header-scrolled .header-top-bar {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.header-scrolled .header-search-input-home {
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  color: #000000 !important;
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.header-scrolled .header-search-input-home::placeholder {
+  color: rgba(0, 0, 0, 0.6) !important;
+}
+
+.header-scrolled .header-search-icon-home {
+  color: #000000 !important;
+}
+
+.header-scrolled .header-bulk-order-btn {
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  color: #000000 !important;
+}
+
+.header-scrolled .header-bulk-order-btn:hover {
+  background: rgba(0, 0, 0, 0.05);
+  color: #000000 !important;
+}
+
+.header-scrolled .header-nav-link-home {
+  color: #000000 !important;
+}
+
+.header-scrolled .header-nav-link-home:hover {
+  color: var(--primary-color) !important;
+}
+
+.header-scrolled .header-nav-link-home.active {
+  color: var(--primary-color) !important;
+}
+
+.header-scrolled .header-nav-bar-home {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+/* ============================================
+   HOME PAGE HEADER (No longer needed - unified structure)
+   ============================================ */
 
 /* Top Bar - Search, Logo, BULK ORDER */
 .header-top-bar {
@@ -192,11 +258,8 @@
 }
 
 /* ============================================
-   OTHER PAGES HEADER
+   OTHER PAGES HEADER (No longer needed - unified structure)
    ============================================ */
-.header-other {
-  background: #1a1a1a;
-}
 
 .header-container-other {
   position: relative;
