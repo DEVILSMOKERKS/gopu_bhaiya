@@ -1,12 +1,12 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useState } from 'react';
 import './PoojaRoomBudget.css';
+import PricingPanel from '../PricingPanel/PricingPanel';
 // Import local images
 import mandirImg from '../../../assets/Images/banner/mandir.jpg';
 import marbleMandirImg from '../../../assets/Images/banner/marbleMandir.jpg';
 
 const PoojaRoomBudget = () => {
-  const navigate = useNavigate();
+  const [isPricingPanelOpen, setIsPricingPanelOpen] = useState(false);
 
   const poojaRooms = [
     {
@@ -40,55 +40,70 @@ const PoojaRoomBudget = () => {
   ];
 
   const handleUnderstandPricing = () => {
-    // Navigate to pricing page or open modal
-    navigate('/contact-us');
+    setIsPricingPanelOpen(true);
+    // Prevent body scroll when panel is open
+    document.body.style.overflow = 'hidden';
+  };
+
+  const handleClosePricingPanel = () => {
+    setIsPricingPanelOpen(false);
+    // Restore body scroll
+    document.body.style.overflow = 'unset';
   };
 
   return (
-    <section className="pooja-room-budget">
-      <div className="pooja-room-budget-container">
-        {/* Header Section */}
-        <div className="pooja-room-budget-header">
-          <h2 className="pooja-room-budget-title">POOJA ROOM FOR EVERY BUDGET</h2>
-          <p className="pooja-room-budget-subtitle">
-            Discover the perfect pooja room for your home with our curated categories, offering timeless designs at prices that fit every budget.
-          </p>
-        </div>
+    <>
+      <section className="pooja-room-budget">
+        <div className="pooja-room-budget-container">
+          {/* Header Section */}
+          <div className="pooja-room-budget-header">
+            <h2 className="pooja-room-budget-title">POOJA ROOM FOR EVERY BUDGET</h2>
+            <p className="pooja-room-budget-subtitle">
+              Discover the perfect pooja room for your home with our curated categories, offering timeless designs at prices that fit every budget.
+            </p>
+          </div>
 
-        {/* Pooja Room Grid */}
-        <div className="pooja-room-budget-grid">
-          {poojaRooms.map((room) => (
-            <div key={room.id} className="pooja-room-budget-card">
-              <div className="pooja-room-budget-image-wrapper">
-                <img
-                  src={room.image}
-                  alt={room.size}
-                  className="pooja-room-budget-image"
-                />
-                {/* Price Overlay - Top Left */}
-                <div className="pooja-room-budget-price-overlay">
-                  <span className="pooja-room-budget-price">Starting at {room.price}</span>
-                </div>
-                {/* Size Overlay - Bottom Left */}
-                <div className="pooja-room-budget-size-overlay">
-                  <span className="pooja-room-budget-size">{room.size}</span>
+          {/* Pooja Room Grid */}
+          <div className="pooja-room-budget-grid">
+            {poojaRooms.map((room) => (
+              <div key={room.id} className="pooja-room-budget-card">
+                <div className="pooja-room-budget-image-wrapper">
+                  <img
+                    src={room.image}
+                    alt={room.size}
+                    className="pooja-room-budget-image"
+                  />
+                  {/* Price Overlay - Top Left */}
+                  <div className="pooja-room-budget-price-overlay">
+                    <span className="pooja-room-budget-price">Starting at {room.price}</span>
+                  </div>
+                  {/* Size Overlay - Bottom Left */}
+                  <div className="pooja-room-budget-size-overlay">
+                    <span className="pooja-room-budget-size">{room.size}</span>
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
 
-        {/* CTA Button */}
-        <div className="pooja-room-budget-cta">
-          <button 
-            className="pooja-room-budget-button"
-            onClick={handleUnderstandPricing}
-          >
-            Understand Pricing
-          </button>
+          {/* CTA Button */}
+          <div className="pooja-room-budget-cta">
+            <button 
+              className="pooja-room-budget-button"
+              onClick={handleUnderstandPricing}
+            >
+              Understand Pricing
+            </button>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+
+      {/* Pricing Panel */}
+      <PricingPanel 
+        isOpen={isPricingPanelOpen} 
+        onClose={handleClosePricingPanel} 
+      />
+    </>
   );
 };
 

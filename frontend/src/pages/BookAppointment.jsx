@@ -1,17 +1,57 @@
 import React, { useState } from 'react';
 import { Helmet } from 'react-helmet-async';
+import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import './BookAppointment.css';
 
 const BookAppointment = () => {
   const [formData, setFormData] = useState({
     name: '',
-    email: '',
-    phone: '',
-    date: '',
-    time: '',
-    service: '',
-    message: ''
+    contactNumber: '',
+    city: '',
+    appointmentType: 'store-tour',
+    selectedDate: null,
+    selectedTime: ''
   });
+
+  const [currentMonth, setCurrentMonth] = useState(new Date().getMonth());
+  const [currentYear, setCurrentYear] = useState(new Date().getFullYear());
+
+  const appointmentTypes = [
+    {
+      id: 'store-tour',
+      title: 'Store Tour',
+      duration: '45 minutes',
+      icon: (
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+          <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+          <polyline points="9 22 9 12 15 12 15 22"></polyline>
+        </svg>
+      )
+    },
+    {
+      id: 'temple-customization',
+      title: 'Temple Customization',
+      duration: '1 hour 30 minutes',
+      icon: (
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+          <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+          <path d="M2 17l10 5 10-5"></path>
+          <path d="M2 12l10 5 10-5"></path>
+        </svg>
+      )
+    }
+  ];
+
+  const timeSlots = [
+    '11:30 AM', '12:15 PM', '1:00 PM', '1:45 PM', '2:30 PM',
+    '3:15 PM', '4:00 PM', '4:45 PM', '5:30 PM', '6:15 PM', '7:00 PM'
+  ];
+
+  const daysOfWeek = ['Sun', 'Mon', 'Tues', 'Wed', 'Thu', 'Fri', 'Sat'];
+  const monthNames = [
+    'January', 'February', 'March', 'April', 'May', 'June',
+    'July', 'August', 'September', 'October', 'November', 'December'
+  ];
 
   const handleChange = (e) => {
     setFormData({
@@ -20,19 +60,98 @@ const BookAppointment = () => {
     });
   };
 
+  const handleAppointmentTypeChange = (typeId) => {
+    setFormData({
+      ...formData,
+      appointmentType: typeId
+    });
+  };
+
+  const handleDateSelect = (date) => {
+    setFormData({
+      ...formData,
+      selectedDate: date
+    });
+  };
+
+  const handleTimeSelect = (time) => {
+    setFormData({
+      ...formData,
+      selectedTime: time
+    });
+  };
+
+  const getDaysInMonth = (month, year) => {
+    return new Date(year, month + 1, 0).getDate();
+  };
+
+  const getFirstDayOfMonth = (month, year) => {
+    return new Date(year, month, 1).getDay();
+  };
+
+  const handlePreviousMonth = () => {
+    if (currentMonth === 0) {
+      setCurrentMonth(11);
+      setCurrentYear(currentYear - 1);
+    } else {
+      setCurrentMonth(currentMonth - 1);
+    }
+  };
+
+  const handleNextMonth = () => {
+    if (currentMonth === 11) {
+      setCurrentMonth(0);
+      setCurrentYear(currentYear + 1);
+    } else {
+      setCurrentMonth(currentMonth + 1);
+    }
+  };
+
+  const renderCalendar = () => {
+    const daysInMonth = getDaysInMonth(currentMonth, currentYear);
+    const firstDay = getFirstDayOfMonth(currentMonth, currentYear);
+    const days = [];
+    
+    // Empty cells for days before the first day of the month
+    for (let i = 0; i < firstDay; i++) {
+      days.push(<div key={`empty-${i}`} className="calendar-day empty"></div>);
+    }
+
+    // Days of the month
+    for (let day = 1; day <= daysInMonth; day++) {
+      const dateStr = `${currentYear}-${String(currentMonth + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+      const isSelected = formData.selectedDate === dateStr;
+      const isPast = new Date(dateStr) < new Date(new Date().setHours(0, 0, 0, 0));
+      
+      days.push(
+        <div
+          key={day}
+          className={`calendar-day ${isSelected ? 'selected' : ''} ${isPast ? 'past' : ''}`}
+          onClick={() => !isPast && handleDateSelect(dateStr)}
+        >
+          {day}
+        </div>
+      );
+    }
+
+    return days;
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Handle form submission here
+    if (!formData.selectedDate || !formData.selectedTime) {
+      alert('Please select both date and time');
+      return;
+    }
     console.log('Appointment booked:', formData);
     alert('Appointment request submitted! We will contact you soon.');
     setFormData({
       name: '',
-      email: '',
-      phone: '',
-      date: '',
-      time: '',
-      service: '',
-      message: ''
+      contactNumber: '',
+      city: '',
+      appointmentType: 'store-tour',
+      selectedDate: null,
+      selectedTime: ''
     });
   };
 
@@ -44,154 +163,121 @@ const BookAppointment = () => {
       </Helmet>
       
       <div className="book-appointment-page">
-        <div className="book-appointment-header">
-          <h1 className="book-appointment-title h2style">Book Appointment</h1>
-          <p className="book-appointment-subtitle">
-            Schedule a visit to our showroom or request a consultation for your custom requirements
-          </p>
-        </div>
-
         <div className="book-appointment-container">
-          <div className="book-appointment-content">
-            <div className="appointment-form-section">
-              <h2 className="appointment-form-title">Schedule Your Visit</h2>
-              <form onSubmit={handleSubmit} className="appointment-form">
-                <div className="form-row">
-                  <div className="form-group">
-                    <label htmlFor="name">Full Name *</label>
-                    <input
-                      type="text"
-                      id="name"
-                      name="name"
-                      value={formData.name}
-                      onChange={handleChange}
-                      required
-                      placeholder="Enter your full name"
-                    />
+          <h1 className="book-appointment-title">BOOK AN APPOINTMENT NOW</h1>
+
+          <form onSubmit={handleSubmit} className="appointment-form">
+            {/* Personal Information Fields */}
+            <div className="form-row">
+              <div className="form-group">
+                <label htmlFor="name">Full Name *</label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  required
+                />
+              </div>
+              <div className="form-group">
+                <label htmlFor="contactNumber">Contact Number *</label>
+                <input
+                  type="tel"
+                  id="contactNumber"
+                  name="contactNumber"
+                  value={formData.contactNumber}
+                  onChange={handleChange}
+                  required
+                />
+              </div>
+              <div className="form-group">
+                <label htmlFor="city">City *</label>
+                <input
+                  type="text"
+                  id="city"
+                  name="city"
+                  value={formData.city}
+                  onChange={handleChange}
+                  required
+                />
+              </div>
+            </div>
+
+            {/* Appointment Type Selection */}
+            <div className="appointment-type-section">
+              <div className="appointment-type-grid">
+                {appointmentTypes.map((type) => (
+                  <div
+                    key={type.id}
+                    className={`appointment-type-card ${formData.appointmentType === type.id ? 'selected' : ''}`}
+                    onClick={() => handleAppointmentTypeChange(type.id)}
+                  >
+                    <div className="appointment-type-radio">
+                      <div className={`radio-circle ${formData.appointmentType === type.id ? 'filled' : ''}`}></div>
+                      <div className="appointment-type-icon">{type.icon}</div>
+                    </div>
+                    <div className="appointment-type-content">
+                      <h3 className="appointment-type-title">{type.title}</h3>
+                      <p className="appointment-type-duration">{type.duration}</p>
+                    </div>
                   </div>
-                  <div className="form-group">
-                    <label htmlFor="email">Email Address *</label>
-                    <input
-                      type="email"
-                      id="email"
-                      name="email"
-                      value={formData.email}
-                      onChange={handleChange}
-                      required
-                      placeholder="Enter your email"
-                    />
+                ))}
+              </div>
+            </div>
+
+            {/* Date and Time Selection */}
+            <div className="datetime-section">
+              {/* Calendar Section */}
+              <div className="calendar-section">
+                <div className="calendar-header">
+                  <span className="select-date-label">SELECT DATE:</span>
+                </div>
+                <div className="calendar-container">
+                  <div className="calendar-month-header">
+                    <button type="button" className="calendar-nav-btn" onClick={handlePreviousMonth}>
+                      <FaChevronLeft />
+                    </button>
+                    <span className="calendar-month-year">
+                      {monthNames[currentMonth]} {currentYear}
+                    </span>
+                    <button type="button" className="calendar-nav-btn" onClick={handleNextMonth}>
+                      <FaChevronRight />
+                    </button>
+                  </div>
+                  <div className="calendar-weekdays">
+                    {daysOfWeek.map((day) => (
+                      <div key={day} className="calendar-weekday">{day}</div>
+                    ))}
+                  </div>
+                  <div className="calendar-days">
+                    {renderCalendar()}
                   </div>
                 </div>
+              </div>
 
-                <div className="form-row">
-                  <div className="form-group">
-                    <label htmlFor="phone">Phone Number *</label>
-                    <input
-                      type="tel"
-                      id="phone"
-                      name="phone"
-                      value={formData.phone}
-                      onChange={handleChange}
-                      required
-                      placeholder="Enter your phone number"
-                    />
-                  </div>
-                  <div className="form-group">
-                    <label htmlFor="service">Service Interested In *</label>
-                    <select
-                      id="service"
-                      name="service"
-                      value={formData.service}
-                      onChange={handleChange}
-                      required
+              {/* Time Slots Section */}
+              <div className="time-slots-section">
+                <div className="time-slots-grid">
+                  {timeSlots.map((time) => (
+                    <button
+                      key={time}
+                      type="button"
+                      className={`time-slot-btn ${formData.selectedTime === time ? 'selected' : ''}`}
+                      onClick={() => handleTimeSelect(time)}
                     >
-                      <option value="">Select a service</option>
-                      <option value="custom-temple">Custom Temple Design</option>
-                      <option value="pooja-room">Pooja Room Design</option>
-                      <option value="marble-idols">Marble Idols</option>
-                      <option value="consultation">General Consultation</option>
-                      <option value="bulk-order">Bulk Order</option>
-                    </select>
-                  </div>
-                </div>
-
-                <div className="form-row">
-                  <div className="form-group">
-                    <label htmlFor="date">Preferred Date *</label>
-                    <input
-                      type="date"
-                      id="date"
-                      name="date"
-                      value={formData.date}
-                      onChange={handleChange}
-                      required
-                      min={new Date().toISOString().split('T')[0]}
-                    />
-                  </div>
-                  <div className="form-group">
-                    <label htmlFor="time">Preferred Time *</label>
-                    <input
-                      type="time"
-                      id="time"
-                      name="time"
-                      value={formData.time}
-                      onChange={handleChange}
-                      required
-                    />
-                  </div>
-                </div>
-
-                <div className="form-group">
-                  <label htmlFor="message">Additional Message</label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    value={formData.message}
-                    onChange={handleChange}
-                    rows="5"
-                    placeholder="Tell us about your requirements..."
-                  ></textarea>
-                </div>
-
-                <button type="submit" className="appointment-submit-btn">
-                  Book Appointment
-                </button>
-              </form>
-            </div>
-
-            <div className="appointment-info-section">
-              <h2 className="appointment-info-title">Why Book an Appointment?</h2>
-              <div className="appointment-benefits">
-                <div className="benefit-item">
-                  <div className="benefit-icon">📅</div>
-                  <h3>Personalized Consultation</h3>
-                  <p>Get expert advice tailored to your specific needs and preferences</p>
-                </div>
-                <div className="benefit-item">
-                  <div className="benefit-icon">🏛️</div>
-                  <h3>Showroom Visit</h3>
-                  <p>Experience our craftsmanship up close and see our extensive collection</p>
-                </div>
-                <div className="benefit-item">
-                  <div className="benefit-icon">✏️</div>
-                  <h3>Custom Design Discussion</h3>
-                  <p>Discuss your vision and get professional design recommendations</p>
-                </div>
-                <div className="benefit-item">
-                  <div className="benefit-icon">💰</div>
-                  <h3>Pricing & Budget Planning</h3>
-                  <p>Understand pricing options and plan your project within your budget</p>
+                      {time}
+                    </button>
+                  ))}
                 </div>
               </div>
-
-              <div className="contact-info-card">
-                <h3>Contact Information</h3>
-                <p><strong>Phone:</strong> 7791983156 | 8824292890 | 9784503338</p>
-                <p><strong>Email:</strong> Mateshvariexporter@gmail.com</p>
-                <p><strong>Address:</strong> 2310, Khajane walo ka Rasta, Nehru Tailour Chouraha, Chandpole Bazar, Jaipur-302001 (Rajasthan) INDIA</p>
-              </div>
             </div>
-          </div>
+
+            {/* Submit Button */}
+            <button type="submit" className="book-appointment-btn">
+              Book Appointment
+            </button>
+          </form>
         </div>
       </div>
     </>
@@ -199,4 +285,3 @@ const BookAppointment = () => {
 };
 
 export default BookAppointment;
-
