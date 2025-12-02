@@ -232,9 +232,9 @@ const ShippingPolicy = () => {
             <p><strong>Mateshwari Moorti Bhandar</strong></p>
             <p><strong>Shipping Support:</strong> Mateshvariexporter@gmail.com</p>
             <p><strong>Customer Care:</strong> Mateshvariexporter@gmail.com</p>
-            <p><strong>Phone:</strong> +91 77919 83156</p>
-            <p><strong>WhatsApp:</strong> +91 77919 83156</p>
-            <p><strong>Address:</strong> Plot no.9 Chandni Nagar, Durgapura Bypass, Vidhyadhar Nagar, Jaipur, Rajasthan, Pin 302018.</p>
+            <p><strong>Phone:</strong> +91 77919 83156 | +91 88242 92890 | +91 97845 03338</p>
+            <p><strong>WhatsApp:</strong> +91 77919 83156 | +91 88242 92890 | +91 97845 03338</p>
+            <p><strong>Address:</strong> 2310, Khajane walo ka Rasta, Nehru Tailour Chouraha, Chandpole Bazar, Jaipur-302001 (Rajasthan) INDIA</p>
             <p><strong>Website:</strong> www.mateshwarimoortibhandar.com</p>
             <p><strong>Business Hours:</strong> Monday to Saturday: 9:00 AM - 8:00 PM</p>
             <p><strong>Emergency Support:</strong> Available 24/7 for urgent delivery issues</p>

@@ -206,7 +206,7 @@ const Footer = () => {
             <ul className="footer-column-links footer-contact-links">
               <li>
                 <FaEnvelope className="footer-contact-icon" />
-                <a href="mailto:Mateshvariexporter@gmail.com">Mateshvariexporter@Gmail.Com</a>
+                <a href="mailto:Mateshvariexporter@gmail.com">Mateshvariexporter@gmail.com</a>
               </li>
               <li>
                 <FaPhone className="footer-contact-icon" />
@@ -214,7 +214,7 @@ const Footer = () => {
               </li>
               <li>
                 <FaMapMarkerAlt className="footer-contact-icon" />
-                <span>2310, Khajane Walo Ka Rasta, Nehru Tailour Chouraha, Chandpole Bazar, Jaipur-302001 (Rajasthan) INDIA</span>
+                <span>2310, Khajane walo ka Rasta, Nehru Tailour Chouraha, Chandpole Bazar, Jaipur-302001 (Rajasthan) INDIA</span>
               </li>
             </ul>
           </div>

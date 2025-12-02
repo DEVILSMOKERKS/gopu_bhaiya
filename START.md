@@ -48,3 +48,4 @@ Start-Process powershell -ArgumentList "-NoExit", "-Command", "cd frontend; npm 
 - **Module errors**: Run `npm install` in both `server` and `frontend` folders
 
 
+

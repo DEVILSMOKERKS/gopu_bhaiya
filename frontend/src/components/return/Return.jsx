@@ -93,9 +93,9 @@ const Return = () => {
         <section className="return-policy-section">
           <h2>11. Contact Information</h2>
           <div className="return-contact-info">
-            <p><strong>Customer Service:</strong> <a href="tel:+917791983156" style={{ textDecoration: 'none', color: 'inherit' }}>+91 77919 83156</a> (Mon-Sat: 9:00 AM - 8:00 PM)</p>
+            <p><strong>Customer Service:</strong> <a href="tel:+917791983156" style={{ textDecoration: 'none', color: 'inherit' }}>+91 77919 83156</a> | <a href="tel:+918824292890" style={{ textDecoration: 'none', color: 'inherit' }}>+91 88242 92890</a> | <a href="tel:+919784503338" style={{ textDecoration: 'none', color: 'inherit' }}>+91 97845 03338</a> (Mon-Sat: 9:00 AM - 8:00 PM)</p>
             <p><strong>Email Support:</strong> <a href="mailto:Mateshvariexporter@gmail.com" style={{ textDecoration: 'none', color: 'inherit' }}>Mateshvariexporter@gmail.com</a> (Response within 24 hours)</p>
-            <p><strong>Store Address:</strong> <a href="https://www.google.com/maps/place/Plot+No.+D-142,+Flat+No.+G-1,+Kardhani+Yojana,+Kalwar+Road,+Govindpura,+Jhotwara,+Jaipur,+Rajasthan+302012" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none', color: 'inherit' }}>Plot No. D-142, Flat No. G-1, Kardhani Yojana, Kalwar Road, Govindpura, Jhotwara, Jaipur, Rajasthan (302012)</a></p>
+            <p><strong>Store Address:</strong> <a href="https://www.google.com/maps/search/2310,+Khajane+walo+ka+Rasta,+Nehru+Tailour+Chouraha,+Chandpole+Bazar,+Jaipur-302001" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none', color: 'inherit' }}>2310, Khajane walo ka Rasta, Nehru Tailour Chouraha, Chandpole Bazar, Jaipur-302001 (Rajasthan) INDIA</a></p>
             <p><strong>Website:</strong> <a href="https://www.mateshwarimoortibhandar.com" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none', color: 'inherit' }}>www.mateshwarimoortibhandar.com</a></p>
             <p><strong>Business Hours:</strong> Monday to Saturday: 9:00 AM - 8:00 PM (Closed on Sundays and National Holidays)</p>
           </div>

@@ -215,7 +215,7 @@ const emailTemplates = {
           <div style="background: #fef3c7; padding: 15px; border-radius: 8px; margin: 20px 0;">
             <p style="color: #92400e; margin: 0; font-size: 14px;">
               <strong>📞 Need Help?</strong> If you have any questions about your order, 
-              please contact our customer support team at Mateshvariexporter@gmail.com or call us at +91-XXXXXXXXXX
+              please contact our customer support team at Mateshvariexporter@gmail.com or call us at +91 77919 83156 | +91 88242 92890 | +91 97845 03338
             </p>
           </div>
           
@@ -360,7 +360,7 @@ const emailTemplates = {
           
           <div style="background: #f0f9ff; padding: 15px; border-radius: 8px; margin: 20px 0;">
             <p style="color: #0369a1; margin: 0; font-size: 14px;">
-              <strong>📞 Need Immediate Help?</strong> For urgent matters, you can call us at +91 77919 83156 or email us at Mateshvariexporter@gmail.com
+              <strong>📞 Need Immediate Help?</strong> For urgent matters, you can call us at +91 77919 83156 | +91 88242 92890 | +91 97845 03338 or email us at Mateshvariexporter@gmail.com
             </p>
           </div>
           
@@ -385,7 +385,7 @@ const emailTemplates = {
       
       Response Time: We typically respond to all inquiries within 24-48 hours during business days.
       
-      Need Immediate Help? For urgent matters, you can call us at +91 77919 83156 or email us at Mateshvariexporter@gmail.com
+      Need Immediate Help? For urgent matters, you can call us at +91 77919 83156 | +91 88242 92890 | +91 97845 03338 or email us at Mateshvariexporter@gmail.com
       
       Thank you for choosing Mateshwari Moorti Bhandar! We appreciate your patience.
     `
@@ -493,7 +493,7 @@ const emailTemplates = {
           
           <div style="background: #f0f9ff; padding: 15px; border-radius: 8px; margin: 20px 0;">
             <p style="color: #0369a1; margin: 0; font-size: 14px;">
-              <strong>📞 Need More Help?</strong> If you have any questions about this update, please contact us at Mateshvariexporter@gmail.com or call us at +91 77919 83156
+              <strong>📞 Need More Help?</strong> If you have any questions about this update, please contact us at Mateshvariexporter@gmail.com or call us at +91 77919 83156 | +91 88242 92890 | +91 97845 03338
             </p>
           </div>
           
@@ -523,7 +523,7 @@ const emailTemplates = {
         contactData.newStatus === 'resolved' ? 'Your query has been resolved. If you need further assistance, please let us know.' :
           contactData.newStatus === 'closed' ? 'Your query has been closed. Thank you for contacting us.' : 'Your query is being reviewed by our team.'}
       
-      Need More Help? If you have any questions about this update, please contact us at Mateshvariexporter@gmail.com or call us at +91 77919 83156
+      Need More Help? If you have any questions about this update, please contact us at Mateshvariexporter@gmail.com or call us at +91 77919 83156 | +91 88242 92890 | +91 97845 03338
       
       Thank you for choosing Mateshwari Moorti Bhandar! We appreciate your patience.
     `

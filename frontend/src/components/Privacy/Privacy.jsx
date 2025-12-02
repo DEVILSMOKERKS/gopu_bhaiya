@@ -82,8 +82,8 @@ const Privacypolicy = () => {
           <div className="privacy-contact-info">
             <p><strong>Mateshwari Moorti Bhandar</strong></p>
             <p><strong>Email:</strong> Mateshvariexporter@gmail.com</p>
-            <p><strong>Phone:</strong> +91 77919 83156</p>
-            <p><strong>Address:</strong> Plot No. D-142, Flat No. G-1, Kardhani Yojana, Kalwar Road, Govindpura, Jhotwara, Jaipur, Rajasthan (302012)</p>
+            <p><strong>Phone:</strong> +91 77919 83156 | +91 88242 92890 | +91 97845 03338</p>
+            <p><strong>Address:</strong> 2310, Khajane walo ka Rasta, Nehru Tailour Chouraha, Chandpole Bazar, Jaipur-302001 (Rajasthan) INDIA</p>
             <p><strong>Website:</strong> www.mateshwarimoortibhandar.com</p>
           </div>
         </section>

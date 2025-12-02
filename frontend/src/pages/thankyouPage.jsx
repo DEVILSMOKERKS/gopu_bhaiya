@@ -584,7 +584,7 @@ function ThankYouPage() {
             <div style={styles.contactInfo}>
               <div style={styles.contactItem}>
                 <Phone size={16} />
-                <span>+91 9876543210</span>
+                <span>+91 77919 83156 | +91 88242 92890 | +91 97845 03338</span>
               </div>
               <div style={styles.contactItem}>
                 <Mail size={16} />
@@ -592,7 +592,7 @@ function ThankYouPage() {
               </div>
               <div style={styles.contactItem}>
                 <MapPin size={16} />
-                <span>Available 24/7</span>
+                <span>2310, Khajane walo ka Rasta, Nehru Tailour Chouraha, Chandpole Bazar, Jaipur-302001 (Rajasthan) INDIA</span>
               </div>
             </div>
           </div>

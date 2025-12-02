@@ -4,12 +4,22 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  font-family: 'Work Sans', sans-serif;
+  font-family: var(--__futura_pt_light_ef3a57), var(--__futura_pt_light_Fallback_ef3a57), sans-serif;
 }
 
 :root {
-  /* Font Family */
-  --font-family: 'Work Sans', sans-serif;
+  /* Font Family - Headings */
+  --font-heading: var(--__futura_pt_medium_6c980f), var(--__futura_pt_medium_Fallback_6c980f), sans-serif;
+  --futura-pt-medium: var(--__futura_pt_medium_6c980f), var(--__futura_pt_medium_Fallback_6c980f), sans-serif;
+  
+  /* Font Family - Body */
+  --font-family: var(--__futura_pt_light_ef3a57), var(--__futura_pt_light_Fallback_ef3a57), sans-serif;
+  --font-body: var(--__futura_pt_light_ef3a57), var(--__futura_pt_light_Fallback_ef3a57), sans-serif;
+  --font-primary: var(--__futura_pt_medium_6c980f), var(--__futura_pt_medium_Fallback_6c980f), sans-serif;
+  --futura-pt-light: var(--__futura_pt_light_ef3a57), var(--__futura_pt_light_Fallback_ef3a57), sans-serif;
+  
+  /* Bootstrap Heading Color (if not defined) */
+  --bs-heading-color: inherit;
 
   /* Primary Colors - From Image */
   --primary-color: #B68126;
@@ -96,4 +106,39 @@ img {
   width: 100%;
   display: block;
   height: auto;
+}
+
+/* Heading Styles */
+.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
+  margin-top: 0;
+  margin-bottom: .5rem;
+  font-weight: 500;
+  line-height: 1.2;
+  color: var(--bs-heading-color);
+}
+
+/* Heading Styles with Futura PT Medium - Uppercase */
+.h2style, .h3style, .h4style, .h5style, h2, h3, h4, h5 {
+  font-family: var(--futura-pt-medium);
+  text-transform: uppercase !important;
+  font-weight: 500 !important;
+  letter-spacing: .15rem;
+}
+
+/* Paragraph Styles */
+p {
+  display: block;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  unicode-bidi: isolate;
+  font-family: var(--futura-pt-light) !important;
+  font-size: 1.17rem;
+  color: #2e2e2e;
+}
+
+/* Body Text */
+body, span, div, a, button, input, textarea, select, label {
+  font-family: var(--font-body);
 }

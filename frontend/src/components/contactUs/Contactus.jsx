@@ -139,12 +139,12 @@ const ContactUs = () => {
                   className="contactus-contact-icon"
                 />
                 <a
-                  href="https://www.google.com/maps/place/Plot+No.+D-142,+Flat+No.+G-1,+Kardhani+Yojana,+Kalwar+Road,+Govindpura,+Jhotwara,+Jaipur,+Rajasthan+302012"
+                  href="https://www.google.com/maps/search/2310,+Khajane+walo+ka+Rasta,+Nehru+Tailour+Chouraha,+Chandpole+Bazar,+Jaipur-302001"
                   target="_blank"
                   rel="noopener noreferrer"
                   style={{ color: "inherit", textDecoration: "none" }}
                 >
-                  Plot No. D-142, Flat No. G-1, Kardhani Yojana, Kalwar Road,Govindpura, Jhotwara, Jaipur, Rajasthan (302012)
+                  2310, Khajane walo ka Rasta, Nehru Tailour Chouraha, Chandpole Bazar, Jaipur-302001 (Rajasthan) INDIA
                 </a>
               </div>
               <div className="contactus-contact-row">
@@ -159,7 +159,20 @@ const ContactUs = () => {
                 >
                   +91 77919 83156
                 </a>
-                <span style={{ margin: "0 8px 0 0" }}>,</span>
+                <span style={{ margin: "0 8px" }}>|</span>
+                <a
+                  href="tel:+918824292890"
+                  style={{ color: "inherit", textDecoration: "none" }}
+                >
+                  +91 88242 92890
+                </a>
+                <span style={{ margin: "0 8px" }}>|</span>
+                <a
+                  href="tel:+919784503338"
+                  style={{ color: "inherit", textDecoration: "none" }}
+                >
+                  +91 97845 03338
+                </a>
 
               </div>
               <div className="contactus-contact-row">
@@ -244,7 +257,7 @@ const ContactUs = () => {
       {/* map */}
       <div id="map" className="contactus-googlemap">
         <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3559.1234567890123!2d75.76991568465547!3d26.863326047415356!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x396db56788547435%3A0xe1075755bf375bee!2sPlot+No.+D-142%2C+Flat+No.+G-1%2C+Kardhani+Yojana%2C+Kalwar+Road%2C+Govindpura%2C+Jhotwara%2C+Jaipur%2C+Rajasthan+302012!5e0!3m2!1sen!2sin!4v1751001931260!5m2!1sen!2sin"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3559.1234567890123!2d75.76991568465547!3d26.863326047415356!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x396db56788547435%3A0xe1075755bf375bee!2s2310%2C+Khajane+walo+ka+Rasta%2C+Nehru+Tailour+Chouraha%2C+Chandpole+Bazar%2C+Jaipur-302001!5e0!3m2!1sen!2sin!4v1751001931260!5m2!1sen!2sin"
           style={{ border: 0 }}
           allowFullScreen=""
           loading="lazy"

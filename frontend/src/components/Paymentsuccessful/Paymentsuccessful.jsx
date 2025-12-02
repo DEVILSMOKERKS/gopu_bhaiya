@@ -23,9 +23,9 @@ const Paymentsuccessful = () => {
 
                 <div className="paymentsuccessful-contact">
                     <p>Please Contact Us For Any Query</p>
-                    <p className="paymentsuccessful-phone">+91 77919 83156</p>
+                    <p className="paymentsuccessful-phone">+91 77919 83156 | +91 88242 92890 | +91 97845 03338</p>
                     <p>OR</p>
-                    <p className="paymentsuccessful-email">Hello @ MateshwariMoortiBhandar.Com</p>
+                    <p className="paymentsuccessful-email">Mateshvariexporter@gmail.com</p>
                 </div>
             </div>
         </div>
