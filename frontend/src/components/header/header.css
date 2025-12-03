@@ -255,6 +255,10 @@
   align-items: center;
 }
 
+.header-nav-item-home {
+  position: relative;
+}
+
 .header-nav-link-home {
   color: #000000; /* Default to black for non-home pages */
   text-decoration: none;

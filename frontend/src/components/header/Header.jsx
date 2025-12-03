@@ -5,6 +5,7 @@ import { FaInstagram, FaFacebook, FaYoutube } from 'react-icons/fa';
 import axios from 'axios';
 import { useWishlistCart } from '../../context/wishlistCartContext';
 import { useUser } from '../../context/UserContext';
+import HomeMegaMenu from './HomeMegaMenu';
 import './header.css';
 import logo from '../../assets/img/logo.png'
 
@@ -20,10 +21,12 @@ const Header = ({ onAccountClick }) => {
   const [isSearching, setIsSearching] = useState(false);
   const [showSearchResults, setShowSearchResults] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isHomeMegaMenuOpen, setIsHomeMegaMenuOpen] = useState(false);
   const { cart, wishlist } = useWishlistCart();
   const { user, isAuthenticated } = useUser();
   const searchTimeoutRef = useRef(null);
   const searchContainerRef = useRef(null);
+  const homeMenuTimeoutRef = useRef(null);
 
   // Handle scroll event to change header background
   useEffect(() => {
@@ -38,7 +41,12 @@ const Header = ({ onAccountClick }) => {
     };
 
     window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      if (homeMenuTimeoutRef.current) {
+        clearTimeout(homeMenuTimeoutRef.current);
+      }
+    };
   }, [isHomePage]);
 
   // Get API URL from environment variable
@@ -247,10 +255,29 @@ const Header = ({ onAccountClick }) => {
         {/* Navigation Bar - Same for All Pages */}
         <nav className="header-nav-bar-home">
           <ul className="header-nav-links-home">
-            <li>
+            <li
+              className="header-nav-item-home"
+              onMouseEnter={() => {
+                clearTimeout(homeMenuTimeoutRef.current);
+                setIsHomeMegaMenuOpen(true);
+              }}
+              onMouseLeave={() => {
+                homeMenuTimeoutRef.current = setTimeout(() => {
+                  setIsHomeMegaMenuOpen(false);
+                }, 200);
+              }}
+            >
               <Link to="/" className={`header-nav-link-home ${location.pathname === '/' ? 'active' : ''}`}>
                 HOME
               </Link>
+              <HomeMegaMenu
+                isOpen={isHomeMegaMenuOpen}
+                onMouseLeave={() => {
+                  homeMenuTimeoutRef.current = setTimeout(() => {
+                    setIsHomeMegaMenuOpen(false);
+                  }, 200);
+                }}
+              />
             </li>
             <li>
               <Link to="/projects" className={`header-nav-link-home ${location.pathname === '/projects' ? 'active' : ''}`}>PROJECTS</Link>
