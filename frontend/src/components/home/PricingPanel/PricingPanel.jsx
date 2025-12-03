@@ -82,3 +82,4 @@ const PricingPanel = ({ isOpen, onClose }) => {
 
 export default PricingPanel;
 
+
