@@ -1,5 +1,8 @@
+'use client';
+
 import React, { useState, useEffect, useRef } from 'react';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import Link from 'next/link';
+import { usePathname, useRouter } from 'next/navigation';
 import { HiMenu, HiX, HiSearch } from 'react-icons/hi';
 import { FaInstagram, FaFacebook, FaYoutube } from 'react-icons/fa';
 import axios from 'axios';
@@ -8,11 +11,12 @@ import { useUser } from '../../context/UserContext';
 import HomeMegaMenu from './HomeMegaMenu';
 import './header.css';
 import logo from '../../assets/img/logo.png'
+import { getApiUrl } from '../../utils/env';
 
 const Header = ({ onAccountClick }) => {
-  const location = useLocation();
-  const navigate = useNavigate();
-  const isHomePage = location.pathname === '/';
+  const pathname = usePathname();
+  const router = useRouter();
+  const isHomePage = pathname === '/';
   // const [activeMegaMenu, setActiveMegaMenu] = useState(null); // Commented for future use
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
@@ -50,7 +54,7 @@ const Header = ({ onAccountClick }) => {
   }, [isHomePage]);
 
   // Get API URL from environment variable
-  const API_URL = import.meta.env.VITE_API_URL;
+  const API_URL = getApiUrl();
 
   // Debounced search function
   const performSearch = async (query) => {
@@ -100,7 +104,7 @@ const Header = ({ onAccountClick }) => {
     setSearchResults([]);
     setShowSearchResults(false);
     setIsSearchOpen(false);
-    navigate(`/product/${product.product_id}`);
+    router.push(`/product/${product.product_id}`);
   };
 
   // Handle search form submit
@@ -235,7 +239,7 @@ const Header = ({ onAccountClick }) => {
             </div>
           </div>
           <div className="header-top-center">
-            <Link to="/" className="header-logo-link">
+            <Link href="/" className="header-logo-link">
               <img src={logo} alt="Mateshwari Exports" className="header-logo-img" />
             </Link>
           </div>
@@ -267,7 +271,7 @@ const Header = ({ onAccountClick }) => {
                 }, 200);
               }}
             >
-              <Link to="/" className={`header-nav-link-home ${location.pathname === '/' ? 'active' : ''}`}>
+              <Link href="/" className={`header-nav-link-home ${pathname === '/' ? 'active' : ''}`}>
                 HOME
               </Link>
               <HomeMegaMenu
@@ -280,25 +284,25 @@ const Header = ({ onAccountClick }) => {
               />
             </li>
             <li>
-              <Link to="/projects" className={`header-nav-link-home ${location.pathname === '/projects' ? 'active' : ''}`}>PROJECTS</Link>
+              <Link href="/projects" className={`header-nav-link-home ${pathname === '/projects' ? 'active' : ''}`}>PROJECTS</Link>
             </li>
             <li>
-              <Link to="/our-creations" className={`header-nav-link-home ${location.pathname === '/our-creations' ? 'active' : ''}`}>OUR CREATIONS</Link>
+              <Link href="/our-creations" className={`header-nav-link-home ${pathname === '/our-creations' ? 'active' : ''}`}>OUR CREATIONS</Link>
             </li>
             <li>
-              <Link to="/our-services" className={`header-nav-link-home ${location.pathname === '/our-services' ? 'active' : ''}`}>OUR SERVICES</Link>
+              <Link href="/our-services" className={`header-nav-link-home ${pathname === '/our-services' ? 'active' : ''}`}>OUR SERVICES</Link>
             </li>
             <li>
-              <Link to="/how-to-place-order" className={`header-nav-link-home ${location.pathname === '/how-to-place-order' ? 'active' : ''}`}>HOW IT WORKS</Link>
+              <Link href="/how-to-place-order" className={`header-nav-link-home ${pathname === '/how-to-place-order' ? 'active' : ''}`}>HOW IT WORKS</Link>
             </li>
             <li>
-              <Link to="/blogs" className={`header-nav-link-home ${location.pathname === '/blogs' || location.pathname.startsWith('/blog/') ? 'active' : ''}`}>BLOG</Link>
+              <Link href="/blogs" className={`header-nav-link-home ${pathname === '/blogs' || pathname?.startsWith('/blog/') ? 'active' : ''}`}>BLOG</Link>
             </li>
             <li>
-              <Link to="/book-appointment" className={`header-nav-link-home ${location.pathname === '/book-appointment' ? 'active' : ''}`}>BOOK APPOINTMENT</Link>
+              <Link href="/book-appointment" className={`header-nav-link-home ${pathname === '/book-appointment' ? 'active' : ''}`}>BOOK APPOINTMENT</Link>
             </li>
             <li>
-              <Link to="/testimonials" className={`header-nav-link-home ${location.pathname === '/testimonials' ? 'active' : ''}`}>TESTIMONIALS</Link>
+              <Link href="/testimonials" className={`header-nav-link-home ${pathname === '/testimonials' ? 'active' : ''}`}>TESTIMONIALS</Link>
             </li>
           </ul>
         </nav>
@@ -312,7 +316,7 @@ const Header = ({ onAccountClick }) => {
           >
             <HiMenu className="header-mobile-hamburger-icon" />
           </button>
-          <Link to="/" className="header-mobile-logo-link">
+          <Link href="/" className="header-mobile-logo-link">
             <img src={logo} alt="Mateshwari Exports" className="header-mobile-logo-img" />
           </Link>
           <div className="header-mobile-social-icons">
@@ -366,30 +370,30 @@ const Header = ({ onAccountClick }) => {
           <nav className="header-mobile-navigation">
             <ul className="header-mobile-nav-links">
               <li>
-                <Link to="/" className={`header-mobile-nav-link ${location.pathname === '/' ? 'active' : ''}`} onClick={closeMobileMenu}>
+                <Link href="/" className={`header-mobile-nav-link ${pathname === '/' ? 'active' : ''}`} onClick={closeMobileMenu}>
                   HOME
                 </Link>
               </li>
               <li>
-                <Link to="/projects" className={`header-mobile-nav-link ${location.pathname === '/projects' ? 'active' : ''}`} onClick={closeMobileMenu}>PROJECTS</Link>
+                <Link href="/projects" className={`header-mobile-nav-link ${pathname === '/projects' ? 'active' : ''}`} onClick={closeMobileMenu}>PROJECTS</Link>
               </li>
               <li>
-                <Link to="/our-creations" className={`header-mobile-nav-link ${location.pathname === '/our-creations' ? 'active' : ''}`} onClick={closeMobileMenu}>OUR CREATIONS</Link>
+                <Link href="/our-creations" className={`header-mobile-nav-link ${pathname === '/our-creations' ? 'active' : ''}`} onClick={closeMobileMenu}>OUR CREATIONS</Link>
               </li>
               <li>
-                <Link to="/our-services" className={`header-mobile-nav-link ${location.pathname === '/our-services' ? 'active' : ''}`} onClick={closeMobileMenu}>OUR SERVICES</Link>
+                <Link href="/our-services" className={`header-mobile-nav-link ${pathname === '/our-services' ? 'active' : ''}`} onClick={closeMobileMenu}>OUR SERVICES</Link>
               </li>
               <li>
-                <Link to="/how-to-place-order" className={`header-mobile-nav-link ${location.pathname === '/how-to-place-order' ? 'active' : ''}`} onClick={closeMobileMenu}>HOW IT WORKS</Link>
+                <Link href="/how-to-place-order" className={`header-mobile-nav-link ${pathname === '/how-to-place-order' ? 'active' : ''}`} onClick={closeMobileMenu}>HOW IT WORKS</Link>
               </li>
               <li>
-                <Link to="/blogs" className={`header-mobile-nav-link ${location.pathname === '/blogs' ? 'active' : ''}`} onClick={closeMobileMenu}>BLOG</Link>
+                <Link href="/blogs" className={`header-mobile-nav-link ${pathname === '/blogs' ? 'active' : ''}`} onClick={closeMobileMenu}>BLOG</Link>
               </li>
               <li>
-                <Link to="/book-appointment" className={`header-mobile-nav-link ${location.pathname === '/book-appointment' ? 'active' : ''}`} onClick={closeMobileMenu}>BOOK APPOINTMENT</Link>
+                <Link href="/book-appointment" className={`header-mobile-nav-link ${pathname === '/book-appointment' ? 'active' : ''}`} onClick={closeMobileMenu}>BOOK APPOINTMENT</Link>
               </li>
               <li>
-                <Link to="/testimonials" className={`header-mobile-nav-link ${location.pathname === '/testimonials' ? 'active' : ''}`} onClick={closeMobileMenu}>TESTIMONIALS</Link>
+                <Link href="/testimonials" className={`header-mobile-nav-link ${pathname === '/testimonials' ? 'active' : ''}`} onClick={closeMobileMenu}>TESTIMONIALS</Link>
               </li>
             </ul>
           </nav>

@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useState, useEffect } from 'react';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import './HeroSection.css';
@@ -7,8 +9,9 @@ import hero2 from '../../../assets/Images/banner/hero-1.jpg';
 import hero11 from '../../../assets/Images/banner/hero-1.jpg';
 import hero12 from '../../../assets/Images/banner/hero-1.jpg';
 import hero13 from '../../../assets/Images/banner/hero-1.jpg';
-// Import video
-import heroVideo from '../../../assets/Images/1763831233129.mp4';
+// Video path - should be in public folder for Next.js compatibility
+// If video doesn't exist, this will fail gracefully
+const heroVideo = '/videos/hero-video.mp4';
 
 const HeroSection = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -82,15 +85,27 @@ const HeroSection = () => {
             loop
             muted
             playsInline
+            onError={(e) => {
+              // Hide video if it fails to load, show image instead
+              e.target.style.display = 'none';
+            }}
           >
             <source src={heroVideo} type="video/mp4" />
-            {/* Fallback image if video fails to load */}
-            <img
-              src={currentSlideData.desktopImage}
-              alt={currentSlideData.title}
-              className="hero-statues-image"
-            />
           </video>
+          {/* Fallback image if video fails to load */}
+          <img
+            src={currentSlideData.desktopImage}
+            alt={currentSlideData.title}
+            className="hero-statues-image"
+            style={{ display: 'none' }}
+            onLoad={(e) => {
+              // Show image if video is not available
+              const video = e.target.previousElementSibling;
+              if (video && video.tagName === 'VIDEO' && !video.canPlayType('video/mp4')) {
+                e.target.style.display = 'block';
+              }
+            }}
+          />
           {/* Overlay for better text visibility */}
           <div className="hero-video-overlay"></div>
           {/* Optional: Text Content Overlay */}
@@ -112,6 +127,9 @@ const HeroSection = () => {
             loop
             muted
             playsInline
+            onError={(e) => {
+              e.target.style.display = 'none';
+            }}
           >
             <source src={heroVideo} type="video/mp4" />
             {/* Fallback image if video fails to load */}

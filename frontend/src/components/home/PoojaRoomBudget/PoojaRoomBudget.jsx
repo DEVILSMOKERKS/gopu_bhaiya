@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useState } from 'react';
 import './PoojaRoomBudget.css';
 import PricingPanel from '../PricingPanel/PricingPanel';

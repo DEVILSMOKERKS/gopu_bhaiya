@@ -1,5 +1,7 @@
+'use client';
+
 import React, { useState, useEffect, useRef } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useRouter } from 'next/navigation';
 import { HiHeart, HiOutlineHeart } from 'react-icons/hi';
 import { useWishlistCart } from '../../../context/wishlistCartContext';
 import { sampleProducts } from '../../../data/productsData';
@@ -10,7 +12,7 @@ const DirectFromMakersHands = () => {
     const [loading, setLoading] = useState(true);
     const [currentPage, setCurrentPage] = useState(0);
     const desktopScrollRef = useRef(null);
-    const navigate = useNavigate();
+    const router = useRouter();
     const { addToWishlist, isInWishlist, removeFromWishlist } = useWishlistCart();
 
     useEffect(() => {
@@ -47,11 +49,11 @@ const DirectFromMakersHands = () => {
         if (isDragging) {
             return;
         }
-        navigate(`/product/${productId}`);
+        router.push(`/product/${productId}`);
     };
 
     const handleViewAll = () => {
-        navigate('/shop');
+        router.push('/shop');
     };
 
     const scrollDesktopToPage = (pageIndex) => {

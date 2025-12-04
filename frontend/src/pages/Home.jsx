@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 import HeroSection from '../components/home/HeroSection/HeroSection';
 import DreamTempleSteps from '../components/home/DreamTempleSteps/DreamTempleSteps';

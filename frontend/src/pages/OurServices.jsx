@@ -1,6 +1,8 @@
+'use client';
+
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import './OurServices.css';
 
 const OurServices = () => {
@@ -76,7 +78,7 @@ const OurServices = () => {
                     <li key={index}>{feature}</li>
                   ))}
                 </ul>
-                <Link to="/book-appointment" className="service-cta-btn">
+                <Link href="/book-appointment" className="service-cta-btn">
                   Learn More
                 </Link>
               </div>
@@ -90,10 +92,10 @@ const OurServices = () => {
                 Contact us today to discuss your requirements and get a personalized quote
               </p>
               <div className="cta-buttons">
-                <Link to="/book-appointment" className="cta-primary-btn">
+                <Link href="/book-appointment" className="cta-primary-btn">
                   Book Appointment
                 </Link>
-                <Link to="/contact-us" className="cta-secondary-btn">
+                <Link href="/contact-us" className="cta-secondary-btn">
                   Contact Us
                 </Link>
               </div>

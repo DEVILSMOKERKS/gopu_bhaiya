@@ -1,6 +1,8 @@
+'use client';
+
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import './OurCreations.css';
 
 const OurCreations = () => {
@@ -85,7 +87,7 @@ const OurCreations = () => {
           <div className="creations-cta">
             <h2 className="cta-title">Interested in Custom Creations?</h2>
             <p className="cta-text">We specialize in creating unique pieces tailored to your vision</p>
-            <Link to="/book-appointment" className="cta-button">
+            <Link href="/book-appointment" className="cta-button">
               Book a Consultation
             </Link>
           </div>

@@ -1,8 +1,9 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
+import { getApiUrl } from '../../utils/env';
 
-// API base URL
-const API_BASE_URL = import.meta.env.VITE_API_URL;
+// API base URL - Next.js compatible
+const API_BASE_URL = getApiUrl();
 
 // Helper function to get auth token
 const getAuthToken = () => {

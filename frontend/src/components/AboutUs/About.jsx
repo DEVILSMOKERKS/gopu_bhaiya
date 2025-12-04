@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 import './about.css';
 import about1 from '../../assets/img/who-banner.png';
@@ -13,7 +15,7 @@ import aboutBannerMobile from '../../assets/Images/banner/customProjectsBgDeskto
 import whoWeAreBgDesktop1 from '../../assets/Images/banner/our-vision-bg-desktop1.png';
 import whoWeAreBgDesktop2 from '../../assets/Images/banner/our-vision-bg-desktop2.png';
 import whoWeAreBgMobile from '../../assets/Images/banner/our-vision-bg-mobile.png';
-import { HashLink } from 'react-router-hash-link';
+import Link from 'next/link';
 import { Check } from 'lucide-react';
 import TimelineStory from './TimelineStory';
 import OurBlogs from '../home/OurBlogs/OurBlogs';
@@ -60,9 +62,9 @@ const AboutSection = () => {
                 At Mateshwari Exports, we believe every woman deserves to feel graceful, confident, and connected to her roots. Our collection of kurtis blends timeless Indian craftsmanship with contemporary designs, offering styles that are perfect for every occasion — from casual elegance to festive celebrations. Each piece is thoughtfully made using quality fabrics, intricate detailing, and vibrant colors that reflect the beauty of our rich culture. With us, it's not just fashion — it's a celebration of tradition, comfort, and individuality.
               </p>
 
-              <HashLink smooth to="#journey-section" className="about-who-we-are-cta-button">
+              <Link href="#journey-section" className="about-who-we-are-cta-button" scroll={true}>
                 View More
-              </HashLink>
+              </Link>
             </div>
 
             {/* Right Section - Images */}

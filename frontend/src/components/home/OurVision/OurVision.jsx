@@ -1,5 +1,7 @@
+'use client';
+
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useRouter } from 'next/navigation';
 import './OurVision.css';
 import ourVisionBgDesktop1 from '../../../assets/Images/banner/our-vision-bg-desktop1.png';
 import ourVisionBgDesktop2 from '../../../assets/Images/banner/our-vision-bg-desktop2.png';
@@ -7,10 +9,10 @@ import ourVisionBgMobile from '../../../assets/Images/banner/our-vision-bg-mobil
 import about1 from '../../../assets/img/who-banner.png';
 
 const OurVision = () => {
-  const navigate = useNavigate();
+  const router = useRouter();
 
   const handleViewMore = () => {
-    navigate('/about');
+    router.push('/about-us');
   };
 
   const sectionStyle = {

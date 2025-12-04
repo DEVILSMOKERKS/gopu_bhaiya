@@ -1,5 +1,7 @@
+'use client';
+
 import React from 'react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import './HomeMegaMenu.css';
 
 const HomeMegaMenu = ({ isOpen, onMouseLeave }) => {
@@ -51,7 +53,7 @@ const HomeMegaMenu = ({ isOpen, onMouseLeave }) => {
       <ul className="home-megamenu-list">
         {menuItems.map((item) => (
           <li key={item.id} className="home-megamenu-item">
-            <Link to={item.link} className="home-megamenu-link">
+            <Link href={item.link} className="home-megamenu-link">
               {item.title.toUpperCase()}
             </Link>
           </li>

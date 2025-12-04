@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useState, useRef, useEffect } from 'react';
 import './ManufacturingProcess.css';
 // Import manufacturing process images

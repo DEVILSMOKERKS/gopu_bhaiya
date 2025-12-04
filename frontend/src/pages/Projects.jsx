@@ -1,6 +1,8 @@
+'use client';
+
 import React, { useState } from 'react';
 import { Helmet } from 'react-helmet-async';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import './Projects.css';
 
 const Projects = () => {
@@ -113,7 +115,7 @@ const Projects = () => {
                     <span className="project-location">📍 {project.location}</span>
                     <span className="project-year">{project.year}</span>
                   </div>
-                  <Link to={`/project/${project.id}`} className="project-view-btn">
+                  <Link href={`/project/${project.id}`} className="project-view-btn">
                     View Details
                   </Link>
                 </div>

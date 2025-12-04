@@ -1,5 +1,7 @@
+'use client';
+
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useRouter } from 'next/navigation';
 import './HandcraftedIdols.css';
 // Import handcrafted idols images
 import radhaKrishna1 from '../../../assets/Images/banner/radhaKrishna1.jpg';
@@ -8,7 +10,7 @@ import marbleMandir from '../../../assets/Images/banner/marbleMandir.jpg';
 import radhaKrishna2 from '../../../assets/Images/banner/radhaKrishna2.jpg';
 
 const HandcraftedIdols = () => {
-  const navigate = useNavigate();
+  const router = useRouter();
 
   const idolsData = [
     {
@@ -38,7 +40,7 @@ const HandcraftedIdols = () => {
   ];
 
   const handleCardClick = (id) => {
-    navigate(`/product/${id}`);
+    router.push(`/product/${id}`);
   };
 
   return (

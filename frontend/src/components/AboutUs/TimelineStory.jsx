@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useEffect, useRef } from 'react';
 import './TimelineStory.css';
 import Bestseller1 from '../../assets/img/Bestseller1.jpg';

@@ -1,5 +1,7 @@
+'use client';
+
 import React, { createContext, useState, useEffect, useContext } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useRouter } from 'next/navigation';
 import axios from 'axios';
 
 // Create context
@@ -16,8 +18,8 @@ export const useUser = () => {
 
 // Provider component
 export const UserProvider = ({ children }) => {
-  const navigate = useNavigate();
-  const API_URL = import.meta.env.VITE_API_URL;
+  const router = useRouter();
+  const API_URL = process.env.NEXT_PUBLIC_API_URL || process.env.VITE_API_URL;
 
   const [user, setUser] = useState(() => {
     const storedUser = localStorage.getItem('user');
@@ -256,7 +258,7 @@ export const UserProvider = ({ children }) => {
       setError(null);
       setSuccess(null);
       
-      navigate('/login');
+      router.push('/login');
     }
   };
 

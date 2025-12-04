@@ -1,13 +1,15 @@
+'use client';
+
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useRouter } from 'next/navigation';
 import axios from 'axios';
 import './OurBlogs.css';
 
 const OurBlogs = () => {
   const [blogs, setBlogs] = useState([]);
   const [loading, setLoading] = useState(true);
-  const navigate = useNavigate();
-  const API_URL = import.meta.env.VITE_API_URL;
+  const router = useRouter();
+  const API_URL = process.env.NEXT_PUBLIC_API_URL || process.env.VITE_API_URL;
 
   useEffect(() => {
     fetchBlogs();
@@ -35,7 +37,7 @@ const OurBlogs = () => {
   };
 
   const handleBlogClick = (slug) => {
-    navigate(`/blog/${slug}`);
+    router.push(`/blog/${slug}`);
   };
 
   if (loading) {

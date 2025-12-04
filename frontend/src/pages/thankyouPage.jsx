@@ -1,10 +1,12 @@
+'use client';
+
 import React, { useState, useEffect } from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useRouter, useSearchParams } from 'next/navigation';
 import { Check, Home, User, ShoppingBag, Clock, Truck, Phone, Mail, MapPin, CreditCard, Shield, Gift, Star } from 'lucide-react';
 
 function ThankYouPage() {
-  const navigate = useNavigate();
-  const location = useLocation();
+  const router = useRouter();
+  const searchParams = useSearchParams();
   const [user, setUser] = useState(null);
   const [orderNumber, setOrderNumber] = useState('');
   const [orderId, setOrderId] = useState('');
@@ -28,19 +30,27 @@ function ThankYouPage() {
       setUser(null);
     }
 
-    // Get order details from location state
-    if (location.state) {
-      setOrderNumber(location.state.orderNumber || '');
-      setOrderId(location.state.orderId || '');
+    // Get order details from URL search params or sessionStorage
+    const orderNum = searchParams?.get('orderNumber') || sessionStorage.getItem('orderNumber') || '';
+    const orderIdParam = searchParams?.get('orderId') || sessionStorage.getItem('orderId') || '';
+    const paymentId = searchParams?.get('paymentId') || sessionStorage.getItem('paymentId') || '';
 
-      // Check if this is a COD order (no paymentId means COD)
-      const isCOD = !location.state.paymentId;
-      setIsCODOrder(isCOD);
+    if (orderNum) {
+      setOrderNumber(orderNum);
+      sessionStorage.setItem('orderNumber', orderNum);
+    }
+    if (orderIdParam) {
+      setOrderId(orderIdParam);
+      sessionStorage.setItem('orderId', orderIdParam);
+    }
 
-      // Load additional order details for COD orders
-      if (isCOD && location.state.orderNumber) {
-        loadOrderDetails(location.state.orderNumber);
-      }
+    // Check if this is a COD order (no paymentId means COD)
+    const isCOD = !paymentId;
+    setIsCODOrder(isCOD);
+
+    // Load additional order details for COD orders
+    if (isCOD && orderNum) {
+      loadOrderDetails(orderNum);
     }
 
     // Track Purchase event for Facebook Pixel (for online payments only)
@@ -67,7 +77,7 @@ function ThankYouPage() {
         console.error('Error tracking Purchase for online payment:', error);
       }
     }
-  }, [location.state, isCODOrder]);
+  }, [searchParams, isCODOrder]);
 
   // Load order details for COD orders
   const loadOrderDetails = async (orderNumber) => {
@@ -75,7 +85,8 @@ function ThankYouPage() {
       const token = localStorage.getItem('token');
       const headers = token ? { Authorization: `Bearer ${token}` } : {};
 
-      const response = await fetch(`${import.meta.env.VITE_API_URL}/orders/details/${orderNumber}`, {
+      const API_URL = process.env.NEXT_PUBLIC_API_URL || process.env.VITE_API_URL;
+      const response = await fetch(`${API_URL}/orders/details/${orderNumber}`, {
         headers
       });
 
@@ -91,12 +102,12 @@ function ThankYouPage() {
   };
 
   const handleHomeClick = () => {
-    navigate('/');
+    router.push('/');
   };
 
   const handleProfileClick = () => {
     if (user) {
-      navigate('/profile');
+      router.push('/profile');
     } else {
       navigate('/login');
     }

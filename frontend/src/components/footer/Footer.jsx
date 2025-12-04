@@ -1,7 +1,9 @@
+'use client';
+
 import React, { useState } from 'react';
 import './footer.css';
 import { FaInstagram, FaFacebook, FaYoutube, FaCheck, FaTimes, FaEnvelope, FaPhone, FaMapMarkerAlt } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import axios from 'axios';
 import WhatsAppFloat from '../WhatsAppFloat/WhatsAppFloat';
 import logo from '../../assets/img/logo.png';
@@ -15,7 +17,7 @@ const Footer = () => {
   const [emailError, setEmailError] = useState('');
 
   // Get API URL from environment variable
-  const API_URL = import.meta.env.VITE_API_URL;
+  const API_URL = process.env.NEXT_PUBLIC_API_URL || process.env.VITE_API_URL;
 
   const showNotification = (type, message) => {
     setNotification({ show: true, type, message });
@@ -100,7 +102,7 @@ const Footer = () => {
         {/* Left Section - Logo and Stay Connected */}
         <div className="footer-left-section">
           <div className="footer-logo-section">
-            <Link to="/" className="footer-logo-link">
+            <Link href="/" className="footer-logo-link">
               <img src={logo} alt="Mateshwari Exports" className="footer-logo-img" />
             </Link>
           </div>
@@ -182,11 +184,11 @@ const Footer = () => {
           <div className="footer-column">
             <h3 className="footer-column-title">About Us</h3>
             <ul className="footer-column-links">
-              <li><Link to="/">Home</Link></li>
-              <li><Link to="/About-us">About Us</Link></li>
-              <li><Link to="/shop">All Product</Link></li>
-              <li><Link to="/blogs">Blog</Link></li>
-              <li><Link to="/contact-us">Contact Us</Link></li>
+              <li><Link href="/">Home</Link></li>
+              <li><Link href="/about-us">About Us</Link></li>
+              <li><Link href="/shop">All Product</Link></li>
+              <li><Link href="/blogs">Blog</Link></li>
+              <li><Link href="/contact-us">Contact Us</Link></li>
             </ul>
           </div>
 
@@ -194,9 +196,9 @@ const Footer = () => {
           <div className="footer-column">
             <h3 className="footer-column-title">Useful Links</h3>
             <ul className="footer-column-links">
-              <li><Link to="/privacy-policy">Privacy Policy</Link></li>
-              <li><Link to="/terms-and-conditions">Terms & Condition</Link></li>
-              <li><Link to="/privacy-policy">Cookies Policy</Link></li>
+              <li><Link href="/privacy-policy">Privacy Policy</Link></li>
+              <li><Link href="/terms-and-conditions">Terms & Condition</Link></li>
+              <li><Link href="/privacy-policy">Cookies Policy</Link></li>
             </ul>
           </div>
 

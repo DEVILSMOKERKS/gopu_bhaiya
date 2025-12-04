@@ -1,5 +1,7 @@
+'use client';
+
 import React, { createContext, useState, useEffect, useContext } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useRouter } from 'next/navigation';
 import axios from 'axios';
 
 // Create context
@@ -16,8 +18,8 @@ export const useAdmin = () => {
 
 // Provider component
 export const AdminProvider = ({ children }) => {
-  const navigate = useNavigate();
-  const API_URL = import.meta.env.VITE_API_URL;
+  const router = useRouter();
+  const API_URL = process.env.NEXT_PUBLIC_API_URL || process.env.VITE_API_URL;
 
   const [admin, setAdmin] = useState(() => {
     const storedAdmin = localStorage.getItem('admin');
@@ -139,7 +141,7 @@ export const AdminProvider = ({ children }) => {
       setError(null);
       setSuccess(null);
       
-      navigate('/admin/login');
+      router.push('/admin/login');
     }
   };
 

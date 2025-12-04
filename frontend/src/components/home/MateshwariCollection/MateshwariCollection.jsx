@@ -1,5 +1,7 @@
+'use client';
+
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useRouter } from 'next/navigation';
 import { HiHeart, HiOutlineHeart } from 'react-icons/hi';
 import { useWishlistCart } from '../../../context/wishlistCartContext';
 import { sampleProducts } from '../../../data/productsData';
@@ -9,7 +11,7 @@ const MateshwariCollection = () => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(0);
-  const navigate = useNavigate();
+  const router = useRouter();
   const { addToWishlist, isInWishlist, removeFromWishlist } = useWishlistCart();
 
   useEffect(() => {
@@ -42,7 +44,7 @@ const MateshwariCollection = () => {
   };
 
   const handleProductClick = (productId) => {
-    navigate(`/product/${productId}`);
+    router.push(`/product/${productId}`);
   };
 
   // For mobile: calculate pagination
