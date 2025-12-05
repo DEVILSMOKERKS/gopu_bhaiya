@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import './HandcraftedIdols.css';
 // Import handcrafted idols images
@@ -54,10 +55,12 @@ const HandcraftedIdols = () => {
               className={`handcrafted-idol-item ${idol.isTall ? 'tall' : ''}`}
               onClick={() => handleCardClick(idol.id)}
             >
-              <img
+              <Image
                 src={idol.image}
                 alt={idol.label}
                 className="handcrafted-idol-image"
+                width={400}
+                height={600}
               />
               <span className="handcrafted-idol-tag">{idol.label}</span>
             </div>

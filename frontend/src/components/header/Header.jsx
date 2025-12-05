@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname, useRouter } from 'next/navigation';
 import { HiMenu, HiX, HiSearch } from 'react-icons/hi';
 import { FaInstagram, FaFacebook, FaYoutube } from 'react-icons/fa';
@@ -222,7 +223,7 @@ const Header = ({ onAccountClick }) => {
                           onClick={() => handleSearchResultClick(product)}
                         >
                           <div className="header-search-result-image">
-                            <img src={getProductImage(product)} alt={product.name} />
+                            <Image src={getProductImage(product)} alt={product.name} width={100} height={100} />
                           </div>
                           <div className="header-search-result-content">
                             <h4 className="header-search-result-title">{product.name}</h4>
@@ -240,7 +241,7 @@ const Header = ({ onAccountClick }) => {
           </div>
           <div className="header-top-center">
             <Link href="/" className="header-logo-link">
-              <img src={logo} alt="Mateshwari Exports" className="header-logo-img" />
+              <Image src={logo} alt="Mateshwari Exports" className="header-logo-img" width={150} height={50} priority />
             </Link>
           </div>
           <div className="header-top-right">
@@ -317,7 +318,7 @@ const Header = ({ onAccountClick }) => {
             <HiMenu className="header-mobile-hamburger-icon" />
           </button>
           <Link href="/" className="header-mobile-logo-link">
-            <img src={logo} alt="Mateshwari Exports" className="header-mobile-logo-img" />
+            <Image src={logo} alt="Mateshwari Exports" className="header-mobile-logo-img" width={150} height={50} priority />
           </Link>
           <div className="header-mobile-social-icons">
             <a
@@ -357,7 +358,7 @@ const Header = ({ onAccountClick }) => {
         <div className={`header-mobile-nav-menu ${isMobileMenuOpen ? 'open' : ''}`}>
           <div className="header-mobile-menu-header">
             <div className="header-mobile-logo">
-              <img src={logo} alt="Mateshwari Exports" />
+              <Image src={logo} alt="Mateshwari Exports" width={150} height={50} priority />
             </div>
             <button
               className="header-mobile-close-btn"

@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Image from 'next/image';
 import './about.css';
 import about1 from '../../assets/img/who-banner.png';
 import missionIcon from '../../assets/img/icons/mission.png';
@@ -71,10 +72,12 @@ const AboutSection = () => {
             <div className="about-who-we-are-image-section">
               <div className="about-who-we-are-image-wrapper">
                 {about1 ? (
-                  <img
+                  <Image
                     className="about-who-we-are-main-image"
                     src={about1}
                     alt="Who We Are"
+                    width={600}
+                    height={800}
                   />
                 ) : (
                   <div className="about-who-we-are-image-placeholder about-who-we-are-main-image">
@@ -171,7 +174,7 @@ const JourneyMobileCarousel = () => {
             <div key={idx}>
               <div className="journey-carousel-card">
                 <div className="journey-carousel-img-wrapper">
-                  <img src={item.img} alt={item.year} className="journey-carousel-img" />
+                  <Image src={item.img} alt={item.year} className="journey-carousel-img" width={400} height={300} />
                 </div>
                 <div className="journey-carousel-content">
                   <div className="journey-carousel-year">{item.year}</div>
@@ -195,7 +198,7 @@ const MissionVisionSection = () => {
           {/* Mission */}
           <div className="mission-card">
             <div className="mission-icon">
-              <img src={missionIcon} alt="Mission Icon" className="mission-vision-img" />
+              <Image src={missionIcon} alt="Mission Icon" className="mission-vision-img" width={80} height={80} />
             </div>
             <div>
               <h2 className="mission-title">OUR MISSION</h2>
@@ -207,7 +210,7 @@ const MissionVisionSection = () => {
           {/* Vision */}
           <div className="vision-card">
             <div className="vision-icon">
-              <img src={visionIcon} alt="Vision Icon" className="mission-vision-img" />
+              <Image src={visionIcon} alt="Vision Icon" className="mission-vision-img" width={80} height={80} />
             </div>
             <div>
               <h2 className="vision-title">OUR VISION</h2>
@@ -240,7 +243,7 @@ const CraftsmanshipSection = () => {
             <div className="craftsmanship-card-icon-wrapper">
               <div className="craftsmanship-card-icon-bg">
                 <span className="craftsmanship-card-icon">
-                  <img src={icon1} alt="Divine Craftsmanship Icon" className="craftsmanship-card-img" />
+                  <Image src={icon1} alt="Divine Craftsmanship Icon" className="craftsmanship-card-img" width={60} height={60} />
                 </span>
               </div>
             </div>
@@ -254,7 +257,7 @@ const CraftsmanshipSection = () => {
             <div className="craftsmanship-card-icon-wrapper">
               <div className="craftsmanship-card-icon-bg">
                 <span className="craftsmanship-card-icon">
-                  <img src={icon2} alt="Certified Materials Icon" className="craftsmanship-card-img" />
+                  <Image src={icon2} alt="Certified Materials Icon" className="craftsmanship-card-img" width={60} height={60} />
                 </span>
               </div>
             </div>
@@ -268,7 +271,7 @@ const CraftsmanshipSection = () => {
             <div className="craftsmanship-card-icon-wrapper">
               <div className="craftsmanship-card-icon-bg">
                 <span className="craftsmanship-card-icon">
-                  <img src={icon3} alt="Global Heritage Icon" className="craftsmanship-card-img" />
+                  <Image src={icon3} alt="Global Heritage Icon" className="craftsmanship-card-img" width={60} height={60} />
                 </span>
               </div>
             </div>
@@ -302,10 +305,12 @@ const WhatMakesUsDifferentSection = () => {
             {/* Left Image Section */}
             <div className="different-image-area">
               <div className="different-image-frame">
-                <img
+                <Image
                   src={aboutup}
                   alt="Fashion model"
                   className="different-main-image"
+                  width={600}
+                  height={800}
                 />
               </div>
             </div>
@@ -372,10 +377,12 @@ const WhatMakesUsDifferentSection = () => {
           <div className="crafting-temples-grid">
             {/* Left Image Section - Desktop */}
             <div className="crafting-temples-image-area">
-              <img
+              <Image
                 src={mandir}
                 alt="Beautifully crafted Pooja Room temple"
                 className="crafting-temples-image"
+                width={600}
+                height={800}
               />
             </div>
             {/* Right Text Section */}
@@ -410,10 +417,12 @@ const WhatMakesUsDifferentSection = () => {
             </div>
             {/* Mobile Image Section */}
             <div className="crafting-temples-image-area-mobile">
-              <img
+              <Image
                 src={mandir}
                 alt="Beautifully crafted Pooja Room temple"
                 className="crafting-temples-image"
+                width={400}
+                height={600}
               />
             </div>
           </div>

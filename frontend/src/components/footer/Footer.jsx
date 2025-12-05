@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import Image from 'next/image';
 import './footer.css';
 import { FaInstagram, FaFacebook, FaYoutube, FaCheck, FaTimes, FaEnvelope, FaPhone, FaMapMarkerAlt } from 'react-icons/fa';
 import Link from 'next/link';
@@ -103,7 +104,7 @@ const Footer = () => {
         <div className="footer-left-section">
           <div className="footer-logo-section">
             <Link href="/" className="footer-logo-link">
-              <img src={logo} alt="Mateshwari Exports" className="footer-logo-img" />
+              <Image src={logo} alt="Mateshwari Exports" className="footer-logo-img" width={200} height={60} priority />
             </Link>
           </div>
 

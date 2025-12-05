@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import Image from 'next/image';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import './HeroSection.css';
 // Import local images
@@ -93,10 +94,12 @@ const HeroSection = () => {
             <source src={heroVideo} type="video/mp4" />
           </video>
           {/* Fallback image if video fails to load */}
-          <img
+          <Image
             src={currentSlideData.desktopImage}
             alt={currentSlideData.title}
             className="hero-statues-image"
+            width={1920}
+            height={1080}
             style={{ display: 'none' }}
             onLoad={(e) => {
               // Show image if video is not available
@@ -133,10 +136,12 @@ const HeroSection = () => {
           >
             <source src={heroVideo} type="video/mp4" />
             {/* Fallback image if video fails to load */}
-            <img
+            <Image
               src={currentSlideData.mobileImage}
               alt={currentSlideData.title}
               className="hero-mobile-image"
+              width={768}
+              height={1024}
             />
           </video>
           {/* Overlay for better text visibility */}

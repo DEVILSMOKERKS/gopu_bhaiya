@@ -45,3 +45,4 @@ If you encounter errors:
 4. **Build errors**: Check that all components have proper `'use client'` directives where needed
 
 
+
