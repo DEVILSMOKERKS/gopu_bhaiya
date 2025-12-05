@@ -4,3 +4,4 @@ export default function BlogDetailPage() {
   return <BlogDetail />;
 }
 
+

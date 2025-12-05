@@ -4,3 +4,4 @@ export default function ViewProductPage() {
   return <ViewProduct />;
 }
 
+

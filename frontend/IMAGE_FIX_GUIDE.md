@@ -50,3 +50,4 @@ If images still don't show:
 - `next.config.js` - Added image handling in webpack
 - Created `src/utils/imageLoader.js` - Helper utilities (optional)
 
+

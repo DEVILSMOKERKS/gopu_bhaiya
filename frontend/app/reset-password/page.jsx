@@ -4,3 +4,4 @@ export default function ResetPasswordPage() {
   return <ResetPassword />;
 }
 
+

@@ -79,3 +79,4 @@ This project was migrated from React + Vite to Next.js. See `MIGRATION_GUIDE.md`
 - `npm start` - Start production server
 - `npm run lint` - Run ESLint
 
+

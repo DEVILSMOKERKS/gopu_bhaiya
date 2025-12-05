@@ -4,3 +4,4 @@ export default function NewsletterSendPage() {
   return <NewsletterSend />;
 }
 
+

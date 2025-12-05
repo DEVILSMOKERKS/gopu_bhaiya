@@ -4,3 +4,4 @@ export default function ProductPage({ params }) {
   return <Product />;
 }
 
+
