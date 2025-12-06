@@ -1,11 +1,13 @@
 import React from 'react';
+import Image from 'next/image';
 import './DreamTempleSteps.css';
-import step1Image from '../../../assets/img/steps/step1.jpg'
-import step2Image from '../../../assets/img/steps/step2.jpg'
-import step3Image from '../../../assets/img/steps/step3.jpg'
-import step4Image from '../../../assets/img/steps/step4.jpg'
-import step5Image from '../../../assets/img/steps/step5.jpg'
-import arrowIcon from '../../../assets/img/icons/arrow-right.png'
+
+import step1Image from '../../../assets/Images/collection/stapimg1.webp';
+import step2Image from '../../../assets/Images/collection/stapimg2.webp';
+import step3Image from '../../../assets/Images/collection/stapimg3.webp';
+import step4Image from '../../../assets/Images/collection/stapimg4.webp';
+import step5Image from '../../../assets/Images/collection/stapimg5.webp';
+import rightArrow from '../../../assets/right_arrow.svg';
 
 const DreamTempleSteps = () => {
   const steps = [
@@ -51,10 +53,14 @@ const DreamTempleSteps = () => {
                 <div className="dream-temple-step-circle">
                   <div className="dream-temple-step-illustration">
                     {step.image ? (
-                      <img
+                      <Image
                         src={step.image}
                         alt={step.title}
                         className="dream-temple-step-image"
+                        width={90}
+                        height={90}
+                        unoptimized // Optional: You can remove if using optimized loader and your next.config is ready
+                        style={{ objectFit: 'contain' }}
                       />
                     ) : (
                       <div className="dream-temple-step-placeholder">
@@ -71,10 +77,14 @@ const DreamTempleSteps = () => {
               {/* Connecting Arrow (except for last step) */}
               {index < steps.length - 1 && (
                 <div className="dream-temple-connector">
-                  <img
-                    src={arrowIcon}
+                  <Image
+                    src={rightArrow}
                     alt="arrow"
                     className="dream-temple-arrow-icon"
+                    width={36}
+                    height={36}
+                    unoptimized // Optional: You can remove if using optimized loader and your next.config is ready
+                    style={{ objectFit: 'contain' }}
                   />
                 </div>
               )}
