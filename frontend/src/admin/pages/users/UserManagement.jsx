@@ -21,8 +21,8 @@ const UserManagement = () => {
   const fetchUsers = async () => {
     try {
       setLoading(true);
-      const token = localStorage.getItem('adminToken');
-      
+      const token = typeof window !== 'undefined' ? localStorage.getItem('adminToken') : null;
+
       const params = new URLSearchParams({
         page: currentPage,
         limit: usersPerPage,
@@ -62,9 +62,9 @@ const UserManagement = () => {
   const handleStatusChange = async (userId, newStatus) => {
     try {
       setUpdatingStatus(userId);
-      const token = localStorage.getItem('adminToken');
-      
-      const response = await axios.patch(`${API_URL}/admin/users/${userId}/status`, 
+      const token = typeof window !== 'undefined' ? localStorage.getItem('adminToken') : null;
+
+      const response = await axios.patch(`${API_URL}/admin/users/${userId}/status`,
         { status: newStatus },
         {
           headers: {
@@ -74,7 +74,7 @@ const UserManagement = () => {
       );
 
       if (response.data.success) {
-        setUsers(users.map(user => 
+        setUsers(users.map(user =>
           user.id === userId ? { ...user, status: newStatus } : user
         ));
       }
@@ -92,8 +92,8 @@ const UserManagement = () => {
     }
 
     try {
-      const token = localStorage.getItem('adminToken');
-      
+      const token = typeof window !== 'undefined' ? localStorage.getItem('adminToken') : null;
+
       const response = await axios.delete(`${API_URL}/admin/users/${userId}`, {
         headers: {
           Authorization: `Bearer ${token}`
@@ -332,7 +332,7 @@ const UserManagement = () => {
           >
             Previous
           </button>
-          
+
           {Array.from({ length: Math.min(5, totalPages) }, (_, i) => {
             let pageNum;
             if (totalPages <= 5) {
@@ -344,7 +344,7 @@ const UserManagement = () => {
             } else {
               pageNum = currentPage - 2 + i;
             }
-            
+
             return (
               <button
                 key={pageNum}
@@ -355,7 +355,7 @@ const UserManagement = () => {
               </button>
             );
           })}
-          
+
           <button
             onClick={() => handlePageChange(currentPage + 1)}
             disabled={currentPage === totalPages}
@@ -379,7 +379,7 @@ const UserManagement = () => {
                 ×
               </button>
             </div>
-            
+
             <div className="modal-content">
               {/* User Summary */}
               <div className="user-summary-section">

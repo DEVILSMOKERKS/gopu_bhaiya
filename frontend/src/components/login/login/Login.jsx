@@ -33,6 +33,8 @@ const Login = () => {
 
     // Check if user is already logged in
     useEffect(() => {
+        if (typeof window === 'undefined') return;
+
         const userData = localStorage.getItem('user');
         const token = localStorage.getItem('token');
 
@@ -48,7 +50,7 @@ const Login = () => {
                 localStorage.removeItem('token');
             }
         }
-    }, [navigate]);
+    }, [router]);
 
     // Handle input changes with real-time validation
     const handleInputChange = (e) => {

@@ -24,7 +24,7 @@ const OrderDetails = ({ orderId }) => {
   const fetchOrderDetails = async () => {
     try {
       setLoading(true);
-      const token = localStorage.getItem('token');
+      const token = typeof window !== 'undefined' ? localStorage.getItem('token') : null;
 
       if (!token) {
         router.push('/login');
@@ -54,7 +54,7 @@ const OrderDetails = ({ orderId }) => {
     }
 
     try {
-      const token = localStorage.getItem('token');
+      const token = typeof window !== 'undefined' ? localStorage.getItem('token') : null;
       const response = await axios.post(`${API_URL}/orders/cancel/${orderId}`, {}, {
         headers: { Authorization: `Bearer ${token}` }
       });
@@ -76,7 +76,7 @@ const OrderDetails = ({ orderId }) => {
     }
 
     try {
-      const token = localStorage.getItem('token');
+      const token = typeof window !== 'undefined' ? localStorage.getItem('token') : null;
       const response = await axios.post(`${API_URL}/orders/return/${orderId}`, {
         reason: returnReason
       }, {

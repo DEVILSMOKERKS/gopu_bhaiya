@@ -22,6 +22,7 @@ import {
 
 // Helper function to check if user is logged in
 const isUserLoggedIn = () => {
+  if (typeof window === 'undefined') return false;
   return !!localStorage.getItem('token');
 };
 
@@ -90,10 +91,8 @@ export const WishlistCartProvider = ({ children }) => {
         dispatch(addToCartLocal({ product_id, color_id, size_id, quantity, product, size_name, color_name, sell_price }));
       }
 
-      // Navigate to checkout after adding to cart
-      if (navigate) {
-        navigate('/checkout');
-      }
+      // Navigation to checkout should be handled by the component using router
+      // Components should call router.push('/checkout') after buyNow()
     } catch (error) {
       console.error('Error in buy now:', error);
       dispatch(setError(error.message || 'Failed to process buy now'));

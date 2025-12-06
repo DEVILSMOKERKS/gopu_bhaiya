@@ -35,7 +35,7 @@ const ViewProduct = ({ productId }) => {
     } catch (error) {
       console.error('Error fetching product:', error);
       alert('Failed to load product');
-      navigate('/admin/products');
+      router.push('/admin/products');
     } finally {
       setLoading(false);
     }
@@ -47,7 +47,7 @@ const ViewProduct = ({ productId }) => {
     }
 
     try {
-      const token = localStorage.getItem('adminToken');
+      const token = typeof window !== 'undefined' ? localStorage.getItem('adminToken') : null;
       const response = await axios.delete(`${API_URL}/products/${productId}`, {
         headers: {
           'Authorization': `Bearer ${token}`,
@@ -123,7 +123,7 @@ const ViewProduct = ({ productId }) => {
         <div className="viewproduct-error">
           <h2>Product not found</h2>
           <p>The product you're looking for doesn't exist.</p>
-          <button onClick={() => navigate('/admin/products')}>
+          <button onClick={() => router.push('/admin/products')}>
             Back to Products
           </button>
         </div>
@@ -134,7 +134,7 @@ const ViewProduct = ({ productId }) => {
   return (
     <div className="viewproduct-container">
       <div className="viewproduct-header">
-        <button 
+        <button
           className="viewproduct-back-btn"
           onClick={() => navigate('/admin/products')}
         >
@@ -175,7 +175,7 @@ const ViewProduct = ({ productId }) => {
                 </div>
               )}
             </div>
-            
+
             {getCurrentImages().length > 1 && (
               <div className="viewproduct-image-thumbnails">
                 {getCurrentImages().map((image, index) => (
@@ -252,7 +252,7 @@ const ViewProduct = ({ productId }) => {
                           setSelectedColor(index);
                           setSelectedImage(0);
                         }}
-                        style={{ 
+                        style={{
                           backgroundColor: selectedColor === index ? color.color_code : 'transparent',
                           borderColor: color.color_code
                         }}
@@ -335,35 +335,35 @@ const ViewProduct = ({ productId }) => {
                   <p>{product.fitting_info}</p>
                 </div>
               )}
-              
+
               {product.fabric_info && (
                 <div className="viewproduct-info-item">
                   <h4>Fabric Information</h4>
                   <p>{product.fabric_info}</p>
                 </div>
               )}
-              
+
               {product.care_info && (
                 <div className="viewproduct-info-item">
                   <h4>Care Instructions</h4>
                   <p>{product.care_info}</p>
                 </div>
               )}
-              
+
               {product.product_detail && (
                 <div className="viewproduct-info-item">
                   <h4>Product Details</h4>
                   <p>{product.product_detail}</p>
                 </div>
               )}
-              
+
               {product.shipping_info && (
                 <div className="viewproduct-info-item">
                   <h4>Shipping Information</h4>
                   <p>{product.shipping_info}</p>
                 </div>
               )}
-              
+
               {product.return_policy && (
                 <div className="viewproduct-info-item">
                   <h4>Return Policy</h4>
@@ -392,7 +392,7 @@ const ViewProduct = ({ productId }) => {
               <div className="viewproduct-stat-item">
                 <span className="viewproduct-stat-label">Total Images</span>
                 <span className="viewproduct-stat-value">
-                  {product.colors ? 
+                  {product.colors ?
                     product.colors.reduce((total, color) => total + (color.images ? color.images.length : 0), 0) : 0
                   }
                 </span>

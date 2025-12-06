@@ -24,4 +24,6 @@ node_modules
 *.sln
 *.sw?
 
-frontend/frontend/
+.next/
+out/
+

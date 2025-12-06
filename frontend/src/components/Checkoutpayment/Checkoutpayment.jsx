@@ -19,6 +19,8 @@ const Checkoutpayment = () => {
   }, []);
 
   const loadOrderData = () => {
+    if (typeof window === 'undefined') return;
+
     try {
       const pendingOrder = sessionStorage.getItem('pendingOrder');
       if (pendingOrder) {
@@ -31,7 +33,7 @@ const Checkoutpayment = () => {
       }
     } catch (error) {
       console.error('Error loading order data:', error);
-      navigate('/cart');
+      router.push('/cart');
       return;
     } finally {
       setIsLoading(false);
@@ -93,8 +95,10 @@ const Checkoutpayment = () => {
 
             if (verifyResponse.data.success) {
               // Clear session storage
-              sessionStorage.removeItem('pendingOrder');
-              sessionStorage.removeItem('checkoutData');
+              if (typeof window !== 'undefined') {
+                sessionStorage.removeItem('pendingOrder');
+                sessionStorage.removeItem('checkoutData');
+              }
 
               // Navigate to success page
               router.push('/paymentsuccessful', {

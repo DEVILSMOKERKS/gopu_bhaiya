@@ -51,7 +51,7 @@ const ProductReview = ({ productId, productName }) => {
 
   const fetchUserReview = async () => {
     try {
-      const token = localStorage.getItem('token');
+      const token = typeof window !== 'undefined' ? localStorage.getItem('token') : null;
       const response = await axios.get(`${API_URL}/reviews/user/${productId}`, {
         headers: {
           'Authorization': `Bearer ${token}`
@@ -75,7 +75,7 @@ const ProductReview = ({ productId, productName }) => {
 
     try {
       setSubmitting(true);
-      const token = localStorage.getItem('token');
+      const token = typeof window !== 'undefined' ? localStorage.getItem('token') : null;
       const formDataToSend = new FormData();
       formDataToSend.append('product_id', productId);
       formDataToSend.append('rating', formData.rating);
@@ -118,7 +118,7 @@ const ProductReview = ({ productId, productName }) => {
 
     try {
       setSubmitting(true);
-      const token = localStorage.getItem('token');
+      const token = typeof window !== 'undefined' ? localStorage.getItem('token') : null;
       const formDataToSend = new FormData();
       formDataToSend.append('rating', formData.rating);
       formDataToSend.append('review_text', formData.review_text);
@@ -157,7 +157,7 @@ const ProductReview = ({ productId, productName }) => {
     }
 
     try {
-      const token = localStorage.getItem('token');
+      const token = typeof window !== 'undefined' ? localStorage.getItem('token') : null;
       const response = await axios.delete(`${API_URL}/reviews/${userReview.review_id}`, {
         headers: {
           'Authorization': `Bearer ${token}`
@@ -186,7 +186,7 @@ const ProductReview = ({ productId, productName }) => {
     }
 
     try {
-      const token = localStorage.getItem('token');
+      const token = typeof window !== 'undefined' ? localStorage.getItem('token') : null;
       const response = await axios.post(`${API_URL}/reviews/${reviewId}/like`, {}, {
         headers: {
           'Authorization': `Bearer ${token}`

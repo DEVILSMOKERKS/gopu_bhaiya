@@ -27,8 +27,8 @@ const OrderManagement = () => {
   const fetchOrders = async () => {
     try {
       setLoading(true);
-      const token = localStorage.getItem('adminToken');
-      
+      const token = typeof window !== 'undefined' ? localStorage.getItem('adminToken') : null;
+
       if (!token) {
         setError('Authentication required');
         return;
@@ -57,7 +57,7 @@ const OrderManagement = () => {
 
   const fetchAnalytics = async () => {
     try {
-      const token = localStorage.getItem('adminToken');
+      const token = typeof window !== 'undefined' ? localStorage.getItem('adminToken') : null;
       const response = await axios.get(`${API_URL}/orders/admin/analytics`, {
         headers: { Authorization: `Bearer ${token}` }
       });
@@ -72,7 +72,7 @@ const OrderManagement = () => {
 
   const fetchOrderDetails = async (orderId) => {
     try {
-      const token = localStorage.getItem('adminToken');
+      const token = typeof window !== 'undefined' ? localStorage.getItem('adminToken') : null;
       const response = await axios.get(`${API_URL}/orders/admin/order/${orderId}`, {
         headers: { Authorization: `Bearer ${token}` }
       });
@@ -89,7 +89,7 @@ const OrderManagement = () => {
 
   const updateOrderStatus = async (orderId, status) => {
     try {
-      const token = localStorage.getItem('adminToken');
+      const token = typeof window !== 'undefined' ? localStorage.getItem('adminToken') : null;
       const response = await axios.put(`${API_URL}/orders/admin/update-status/${orderId}`, {
         status
       }, {
@@ -111,7 +111,7 @@ const OrderManagement = () => {
 
   const updateTrackingInfo = async (orderId, trackingNumber) => {
     try {
-      const token = localStorage.getItem('adminToken');
+      const token = typeof window !== 'undefined' ? localStorage.getItem('adminToken') : null;
       const response = await axios.put(`${API_URL}/orders/admin/update-tracking/${orderId}`, {
         tracking_number: trackingNumber
       }, {
@@ -333,7 +333,7 @@ const OrderManagement = () => {
           >
             Previous
           </button>
-          
+
           {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
             <button
               key={page}
@@ -343,7 +343,7 @@ const OrderManagement = () => {
               {page}
             </button>
           ))}
-          
+
           <button
             onClick={() => setCurrentPage(currentPage + 1)}
             disabled={currentPage === totalPages}
@@ -360,7 +360,7 @@ const OrderManagement = () => {
           <div className="order-modal">
             <div className="modal-header">
               <h2>Order #{selectedOrder.order.order_number}</h2>
-              <button 
+              <button
                 className="close-btn"
                 onClick={() => setShowOrderModal(false)}
               >
@@ -403,9 +403,9 @@ const OrderManagement = () => {
                   {selectedOrder.items.map((item, index) => (
                     <div key={index} className="item-row">
                       <div className="item-image">
-                        <img 
-                          src={item.product_image ? `${API_URL.replace('/api', '')}${item.product_image}` : '/src/assets/img/Bestseller1.jpg'} 
-                          alt={item.product_name} 
+                        <img
+                          src={item.product_image ? `${API_URL.replace('/api', '')}${item.product_image}` : '/src/assets/img/Bestseller1.jpg'}
+                          alt={item.product_name}
                           onError={(e) => {
                             e.target.src = '/src/assets/img/Bestseller1.jpg';
                           }}

@@ -21,30 +21,17 @@ export const AdminProvider = ({ children }) => {
   const router = useRouter();
   const API_URL = process.env.NEXT_PUBLIC_API_URL || process.env.VITE_API_URL;
 
-  const [admin, setAdmin] = useState(() => {
-    const storedAdmin = localStorage.getItem('admin');
-    return storedAdmin ? JSON.parse(storedAdmin) : null;
-  });
-
-  const [token, setToken] = useState(() => localStorage.getItem('adminToken') || null);
+  const [admin, setAdmin] = useState(null);
+  const [token, setToken] = useState(null);
 
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(null);
 
-  // Update localStorage when admin/token changes
+  // Initialize auth state on mount (client-side only)
   useEffect(() => {
-    if (admin && token) {
-      localStorage.setItem('admin', JSON.stringify(admin));
-      localStorage.setItem('adminToken', token);
-    } else {
-      localStorage.removeItem('admin');
-      localStorage.removeItem('adminToken');
-    }
-  }, [admin, token]);
+    if (typeof window === 'undefined') return;
 
-  // Initialize auth state on mount
-  useEffect(() => {
     const initializeAuth = async () => {
       const storedToken = localStorage.getItem('adminToken');
       const storedAdmin = localStorage.getItem('admin');
@@ -52,27 +39,31 @@ export const AdminProvider = ({ children }) => {
       if (storedToken && storedAdmin) {
         try {
           setLoading(true);
-          
+
           // Verify token by fetching admin profile
           const response = await axios.get(`${API_URL}/admin/me`, {
             headers: { Authorization: `Bearer ${storedToken}` }
           });
-          
+
           if (response.data.success) {
             setAdmin(response.data.data.admin);
             setToken(storedToken);
             setSuccess('Welcome back!');
           } else {
             // Token is invalid, clear storage
-            localStorage.removeItem('adminToken');
-            localStorage.removeItem('admin');
+            if (typeof window !== 'undefined') {
+              localStorage.removeItem('adminToken');
+              localStorage.removeItem('admin');
+            }
             setAdmin(null);
             setToken(null);
           }
         } catch (error) {
           console.error('Admin auth initialization error:', error);
-          localStorage.removeItem('adminToken');
-          localStorage.removeItem('admin');
+          if (typeof window !== 'undefined') {
+            localStorage.removeItem('adminToken');
+            localStorage.removeItem('admin');
+          }
           setAdmin(null);
           setToken(null);
         } finally {
@@ -85,6 +76,19 @@ export const AdminProvider = ({ children }) => {
 
     initializeAuth();
   }, [API_URL]);
+
+  // Update localStorage when admin/token changes (client-side only)
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+
+    if (admin && token) {
+      localStorage.setItem('admin', JSON.stringify(admin));
+      localStorage.setItem('adminToken', token);
+    } else {
+      localStorage.removeItem('admin');
+      localStorage.removeItem('adminToken');
+    }
+  }, [admin, token]);
 
   // Login function
   const login = async (credentials) => {
@@ -133,14 +137,16 @@ export const AdminProvider = ({ children }) => {
       console.error('Admin logout error:', error);
     } finally {
       // Clear localStorage and state
-      localStorage.removeItem('adminToken');
-      localStorage.removeItem('admin');
-      
+      if (typeof window !== 'undefined') {
+        localStorage.removeItem('adminToken');
+        localStorage.removeItem('admin');
+      }
+
       setAdmin(null);
       setToken(null);
       setError(null);
       setSuccess(null);
-      
+
       router.push('/admin/login');
     }
   };
@@ -170,7 +176,7 @@ export const AdminProvider = ({ children }) => {
       const response = await axios.get(`${API_URL}/admin/me`, {
         headers: { Authorization: `Bearer ${token}` }
       });
-      
+
       if (response.data.success) {
         updateAdmin(response.data.data.admin);
         return { success: true, data: response.data.data.admin };

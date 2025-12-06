@@ -277,7 +277,9 @@ const Cart = () => {
     };
 
     // Store checkout data in sessionStorage
-    sessionStorage.setItem('checkoutData', JSON.stringify(checkoutData));
+    if (typeof window !== 'undefined') {
+      sessionStorage.setItem('checkoutData', JSON.stringify(checkoutData));
+    }
 
     // Navigate to checkout
     router.push('/checkout');

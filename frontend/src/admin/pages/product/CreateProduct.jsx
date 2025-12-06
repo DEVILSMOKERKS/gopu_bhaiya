@@ -186,7 +186,7 @@ const CreateProduct = () => {
       // Add sizes
       formDataToSend.append('sizes', JSON.stringify(sizes));
 
-      const token = localStorage.getItem('adminToken');
+      const token = typeof window !== 'undefined' ? localStorage.getItem('adminToken') : null;
       const response = await axios.post(`${API_URL}/products`, formDataToSend, {
         headers: {
           'Authorization': `Bearer ${token}`

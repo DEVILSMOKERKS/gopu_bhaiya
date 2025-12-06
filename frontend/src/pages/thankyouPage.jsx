@@ -15,6 +15,8 @@ function ThankYouPage() {
 
   // Check if user is logged in and load order details
   useEffect(() => {
+    if (typeof window === 'undefined') return;
+
     const userData = localStorage.getItem('user');
     const token = localStorage.getItem('token');
 
@@ -31,26 +33,28 @@ function ThankYouPage() {
     }
 
     // Get order details from URL search params or sessionStorage
-    const orderNum = searchParams?.get('orderNumber') || sessionStorage.getItem('orderNumber') || '';
-    const orderIdParam = searchParams?.get('orderId') || sessionStorage.getItem('orderId') || '';
-    const paymentId = searchParams?.get('paymentId') || sessionStorage.getItem('paymentId') || '';
+    if (typeof window !== 'undefined') {
+      const orderNum = searchParams?.get('orderNumber') || sessionStorage.getItem('orderNumber') || '';
+      const orderIdParam = searchParams?.get('orderId') || sessionStorage.getItem('orderId') || '';
+      const paymentId = searchParams?.get('paymentId') || sessionStorage.getItem('paymentId') || '';
 
-    if (orderNum) {
-      setOrderNumber(orderNum);
-      sessionStorage.setItem('orderNumber', orderNum);
-    }
-    if (orderIdParam) {
-      setOrderId(orderIdParam);
-      sessionStorage.setItem('orderId', orderIdParam);
-    }
-
-    // Check if this is a COD order (no paymentId means COD)
-    const isCOD = !paymentId;
-    setIsCODOrder(isCOD);
-
-    // Load additional order details for COD orders
-    if (isCOD && orderNum) {
-      loadOrderDetails(orderNum);
+      if (orderNum) {
+        setOrderNumber(orderNum);
+        sessionStorage.setItem('orderNumber', orderNum);
+      }
+      if (orderIdParam) {
+        setOrderId(orderIdParam);
+        sessionStorage.setItem('orderId', orderIdParam);
+      }
+      
+      // Check if this is a COD order (no paymentId means COD)
+      const isCOD = !paymentId;
+      setIsCODOrder(isCOD);
+      
+      // Load additional order details for COD orders
+      if (isCOD && orderNum) {
+        loadOrderDetails(orderNum);
+      }
     }
 
     // Track Purchase event for Facebook Pixel (for online payments only)

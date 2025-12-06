@@ -143,7 +143,7 @@ const EditProduct = ({ productId }) => {
     } catch (error) {
       console.error('Error fetching product:', error);
       alert('Failed to load product');
-      navigate('/admin/products');
+      router.push('/admin/products');
     } finally {
       setLoading(false);
     }
@@ -376,7 +376,7 @@ const EditProduct = ({ productId }) => {
       // Add sizes
       formDataToSend.append('sizes', JSON.stringify(sizes));
 
-      const token = localStorage.getItem('adminToken');
+      const token = typeof window !== 'undefined' ? localStorage.getItem('adminToken') : null;
       const response = await axios.put(`${API_URL}/products/${productId}`, formDataToSend, {
         headers: {
           'Authorization': `Bearer ${token}`

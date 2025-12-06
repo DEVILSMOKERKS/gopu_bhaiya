@@ -23,7 +23,7 @@ const NewsletterStatistics = () => {
     const fetchStatistics = async () => {
         try {
             setLoading(true);
-            const token = localStorage.getItem('adminToken');
+            const token = typeof window !== 'undefined' ? localStorage.getItem('adminToken') : null;
             const response = await axios.get(`${API_URL}/newsletter/statistics`, {
                 headers: {
                     Authorization: `Bearer ${token}`

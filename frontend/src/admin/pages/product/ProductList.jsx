@@ -83,7 +83,7 @@ const ProductList = () => {
     }
 
     try {
-      const token = localStorage.getItem('adminToken');
+      const token = typeof window !== 'undefined' ? localStorage.getItem('adminToken') : null;
       const response = await axios.delete(`${API_URL}/products/${productId}`, {
         headers: {
           'Authorization': `Bearer ${token}`,
@@ -123,7 +123,7 @@ const ProductList = () => {
 
   const getDefaultImage = (product) => {
     if (product.colors && product.colors.length > 0) {
-      const defaultColor = product.colors.find(color => 
+      const defaultColor = product.colors.find(color =>
         color.images && color.images.length > 0
       );
       if (defaultColor && defaultColor.images.length > 0) {
@@ -136,7 +136,7 @@ const ProductList = () => {
   const exportToCSV = async () => {
     try {
       setLoading(true);
-      
+
       // Fetch all products for export (without pagination)
       const params = new URLSearchParams({
         limit: 10000, // Large number to get all products
@@ -147,10 +147,10 @@ const ProductList = () => {
       });
 
       const response = await axios.get(`${API_URL}/products?${params}`);
-      
+
       if (response.data.success) {
         const allProducts = response.data.data;
-        
+
         // Prepare CSV data
         const csvHeaders = [
           'Product ID',
@@ -174,13 +174,13 @@ const ProductList = () => {
         const csvData = allProducts.map(product => {
           // Get all colors
           const colors = product.colors ? product.colors.map(color => color.color_name).join('; ') : 'N/A';
-          
+
           // Get all sizes
           const sizes = product.sizes ? product.sizes.map(size => `${size.size} (₹${size.sell_price})`).join('; ') : 'N/A';
-          
+
           // Calculate total stock
           const totalStock = product.sizes ? product.sizes.reduce((sum, size) => sum + (size.stock || 0), 0) : 0;
-          
+
           // Count total images
           const totalImages = product.colors ? product.colors.reduce((sum, color) => sum + (color.images ? color.images.length : 0), 0) : 0;
 
@@ -261,7 +261,7 @@ const ProductList = () => {
               onChange={(e) => setSearchTerm(e.target.value)}
             />
           </div>
-          
+
           <div className="productlist-filters">
             <select
               value={categoryFilter}
@@ -302,7 +302,7 @@ const ProductList = () => {
         </div>
 
         <div className="productlist-action-buttons">
-          <button 
+          <button
             className="productlist-action-btn productlist-export-btn"
             onClick={exportToCSV}
             disabled={loading}
@@ -426,7 +426,7 @@ const ProductList = () => {
           >
             Previous
           </button>
-          
+
           <div className="productlist-page-numbers">
             {Array.from({ length: totalPages }, (_, i) => i + 1).map(page => (
               <button

@@ -20,30 +20,17 @@ export const UserProvider = ({ children }) => {
   const router = useRouter();
   const API_URL = process.env.NEXT_PUBLIC_API_URL || process.env.VITE_API_URL;
 
-  const [user, setUser] = useState(() => {
-    const storedUser = localStorage.getItem('user');
-    return storedUser ? JSON.parse(storedUser) : null;
-  });
-
-  const [token, setToken] = useState(() => localStorage.getItem('token') || null);
+  const [user, setUser] = useState(null);
+  const [token, setToken] = useState(null);
 
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(null);
 
-  // Update localStorage when user/token changes
+  // Initialize auth state on mount (client-side only)
   useEffect(() => {
-    if (user && token) {
-      localStorage.setItem('user', JSON.stringify(user));
-      localStorage.setItem('token', token);
-    } else {
-      localStorage.removeItem('user');
-      localStorage.removeItem('token');
-    }
-  }, [user, token]);
+    if (typeof window === 'undefined') return;
 
-  // Initialize auth state on mount
-  useEffect(() => {
     const initializeAuth = async () => {
       const storedToken = localStorage.getItem('token');
       const storedUser = localStorage.getItem('user');
@@ -63,15 +50,19 @@ export const UserProvider = ({ children }) => {
             setSuccess('Welcome back!');
           } else {
             // Token is invalid, clear storage
-            localStorage.removeItem('token');
-            localStorage.removeItem('user');
+            if (typeof window !== 'undefined') {
+              localStorage.removeItem('token');
+              localStorage.removeItem('user');
+            }
             setUser(null);
             setToken(null);
           }
         } catch (error) {
           console.error('Auth initialization error:', error);
-          localStorage.removeItem('token');
-          localStorage.removeItem('user');
+          if (typeof window !== 'undefined') {
+            localStorage.removeItem('token');
+            localStorage.removeItem('user');
+          }
           setUser(null);
           setToken(null);
         } finally {
@@ -84,6 +75,19 @@ export const UserProvider = ({ children }) => {
 
     initializeAuth();
   }, [API_URL]);
+
+  // Update localStorage when user/token changes (client-side only)
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    
+    if (user && token) {
+      localStorage.setItem('user', JSON.stringify(user));
+      localStorage.setItem('token', token);
+    } else {
+      localStorage.removeItem('user');
+      localStorage.removeItem('token');
+    }
+  }, [user, token]);
 
   // Login function
   const login = async (credentials) => {
@@ -249,8 +253,10 @@ export const UserProvider = ({ children }) => {
       console.error('Logout error:', error);
     } finally {
       // Clear localStorage and state
-      localStorage.removeItem('token');
-      localStorage.removeItem('user');
+      if (typeof window !== 'undefined') {
+        localStorage.removeItem('token');
+        localStorage.removeItem('user');
+      }
       
       setUser(null);
       setToken(null);

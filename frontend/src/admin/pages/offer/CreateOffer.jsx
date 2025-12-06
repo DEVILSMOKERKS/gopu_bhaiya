@@ -47,7 +47,7 @@ const CreateOffer = () => {
     setLoading(true);
 
     try {
-      const token = localStorage.getItem('adminToken');
+      const token = typeof window !== 'undefined' ? localStorage.getItem('adminToken') : null;
       const response = await axios.post(`${API_URL}/offers`, formData, {
         headers: {
           'Content-Type': 'application/json',

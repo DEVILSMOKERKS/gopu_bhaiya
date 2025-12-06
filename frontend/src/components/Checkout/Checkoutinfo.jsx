@@ -49,6 +49,8 @@ const Checkoutinfo = () => {
   // Load cart data from cart context and sessionStorage
   useEffect(() => {
     // First, try to get data from sessionStorage (from cart page)
+    if (typeof window === 'undefined') return;
+
     const checkoutData = sessionStorage.getItem('checkoutData');
     if (checkoutData) {
       try {
@@ -83,17 +85,19 @@ const Checkoutinfo = () => {
       setSubtotal(calculatedSubtotal);
 
       // Store in sessionStorage for consistency
-      sessionStorage.setItem('checkoutData', JSON.stringify({
-        cartItems: transformedItems,
-        subtotal: calculatedSubtotal,
-        appliedCoupon: null,
-        paymentMethod: 'online'
-      }));
-    } else {
-      // No cart data available, redirect to cart
-      router.push('/cart');
+      if (typeof window !== 'undefined') {
+        sessionStorage.setItem('checkoutData', JSON.stringify({
+          cartItems: transformedItems,
+          subtotal: calculatedSubtotal,
+          appliedCoupon: null,
+          paymentMethod: 'online'
+        }));
+      } else {
+        // No cart data available, redirect to cart
+        router.push('/cart');
+      }
     }
-  }, [cart, navigate]);
+  }, [cart, router]);
 
   // Fetch available coupons on component mount
   useEffect(() => {
@@ -353,7 +357,7 @@ const Checkoutinfo = () => {
       setCouponError('');
 
       // Update sessionStorage with coupon
-      const checkoutData = sessionStorage.getItem('checkoutData');
+      const checkoutData = typeof window !== 'undefined' ? sessionStorage.getItem('checkoutData') : null;
       if (checkoutData) {
         const data = JSON.parse(checkoutData);
         data.appliedCoupon = coupon;
@@ -373,11 +377,13 @@ const Checkoutinfo = () => {
         setCouponError('');
 
         // Update sessionStorage with new coupon
-        const checkoutData = sessionStorage.getItem('checkoutData');
-        if (checkoutData) {
-          const data = JSON.parse(checkoutData);
-          data.appliedCoupon = response.data.data;
-          sessionStorage.setItem('checkoutData', JSON.stringify(data));
+        if (typeof window !== 'undefined') {
+          const checkoutData = sessionStorage.getItem('checkoutData');
+          if (checkoutData) {
+            const data = JSON.parse(checkoutData);
+            data.appliedCoupon = response.data.data;
+            sessionStorage.setItem('checkoutData', JSON.stringify(data));
+          }
         }
       } else {
         setCouponError(response.data.message || 'Invalid coupon code');
@@ -412,17 +418,19 @@ const Checkoutinfo = () => {
     setCouponError('');
 
     // Update sessionStorage to remove coupon
-    const checkoutData = sessionStorage.getItem('checkoutData');
-    if (checkoutData) {
-      const data = JSON.parse(checkoutData);
-      data.appliedCoupon = null;
-      sessionStorage.setItem('checkoutData', JSON.stringify(data));
+    if (typeof window !== 'undefined') {
+      const checkoutData = sessionStorage.getItem('checkoutData');
+      if (checkoutData) {
+        const data = JSON.parse(checkoutData);
+        data.appliedCoupon = null;
+        sessionStorage.setItem('checkoutData', JSON.stringify(data));
+      }
     }
   };
 
   // Handle navigation back to cart
   const handleReturnToCart = () => {
-    navigate('/cart');
+    router.push('/cart');
   };
 
 
@@ -515,11 +523,13 @@ const Checkoutinfo = () => {
           }
 
           // Store order data in sessionStorage for thankyou page
-          sessionStorage.setItem('orderData', JSON.stringify({
-            orderNumber: codResponse.data.data.order_number,
-            orderId: codResponse.data.data.order_id
-          }));
-          sessionStorage.removeItem('checkoutData');
+          if (typeof window !== 'undefined') {
+            sessionStorage.setItem('orderData', JSON.stringify({
+              orderNumber: codResponse.data.data.order_number,
+              orderId: codResponse.data.data.order_id
+            }));
+            sessionStorage.removeItem('checkoutData');
+          }
           // Navigate to success page
           router.push('/thankyou');
         }
@@ -532,17 +542,19 @@ const Checkoutinfo = () => {
           const { razorpay_order_id, order_number } = createResponse.data.data;
 
           // Store order data for online payment
-          sessionStorage.setItem('pendingOrder', JSON.stringify({
-            razorpayOrderId: razorpay_order_id,
-            orderNumber: order_number,
-            amount: total,
-            currency: 'INR',
-            customerName: `${formData.firstName} ${formData.lastName}`,
-            customerEmail: formData.email,
-            customerPhone: formData.phone,
-            shippingAddress: formData,
-            cartItems: cartItems
-          }));
+          if (typeof window !== 'undefined') {
+            sessionStorage.setItem('pendingOrder', JSON.stringify({
+              razorpayOrderId: razorpay_order_id,
+              orderNumber: order_number,
+              amount: total,
+              currency: 'INR',
+              customerName: `${formData.firstName} ${formData.lastName}`,
+              customerEmail: formData.email,
+              customerPhone: formData.phone,
+              shippingAddress: formData,
+              cartItems: cartItems
+            }));
+          }
 
           // Navigate to payment page
           router.push('/checkout/payment');

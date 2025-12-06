@@ -26,7 +26,7 @@ const SubcategoryList = () => {
     try {
       const response = await axios.get(`${API_URL}/subcategories`);
       const result = response.data;
-      
+
       if (response.status === 200) {
         setSubcategories(result.data);
       } else {
@@ -152,8 +152,8 @@ const SubcategoryList = () => {
                   </td>
                   <td className="subcategorylist-td subcategorylist-image-cell">
                     {subcategory.image_url ? (
-                      <img 
-                        src={`${API_URL.replace('/api', '')}${subcategory.image_url}`} 
+                      <img
+                        src={`${API_URL.replace('/api', '')}${subcategory.image_url}`}
                         alt={subcategory.name}
                         className="subcategorylist-subcategory-image"
                         onError={(e) => {

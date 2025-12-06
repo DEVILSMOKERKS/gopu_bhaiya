@@ -1,3 +1,5 @@
+'use client';
+
 import React, { createContext, useContext, useReducer, useEffect } from 'react';
 
 const NotificationContext = createContext();
@@ -13,17 +15,17 @@ const notificationReducer = (state, action) => {
   switch (action.type) {
     case 'SET_LOADING':
       return { ...state, loading: action.payload };
-    
+
     case 'SET_ERROR':
       return { ...state, error: action.payload };
-    
+
     case 'SET_NOTIFICATIONS':
-      return { 
-        ...state, 
+      return {
+        ...state,
         notifications: action.payload,
         unreadCount: action.payload.filter(notification => !notification.read).length
       };
-    
+
     case 'ADD_NOTIFICATION':
       const newNotification = {
         ...action.payload,
@@ -36,7 +38,7 @@ const notificationReducer = (state, action) => {
         notifications: [newNotification, ...state.notifications],
         unreadCount: state.unreadCount + 1
       };
-    
+
     case 'MARK_AS_READ':
       return {
         ...state,
@@ -47,7 +49,7 @@ const notificationReducer = (state, action) => {
         ),
         unreadCount: Math.max(0, state.unreadCount - 1)
       };
-    
+
     case 'MARK_ALL_AS_READ':
       return {
         ...state,
@@ -57,24 +59,24 @@ const notificationReducer = (state, action) => {
         })),
         unreadCount: 0
       };
-    
+
     case 'REMOVE_NOTIFICATION':
       const removedNotification = state.notifications.find(n => n.id === action.payload);
       return {
         ...state,
         notifications: state.notifications.filter(notification => notification.id !== action.payload),
-        unreadCount: removedNotification && !removedNotification.read 
-          ? Math.max(0, state.unreadCount - 1) 
+        unreadCount: removedNotification && !removedNotification.read
+          ? Math.max(0, state.unreadCount - 1)
           : state.unreadCount
       };
-    
+
     case 'CLEAR_ALL_NOTIFICATIONS':
       return {
         ...state,
         notifications: [],
         unreadCount: 0
       };
-    
+
     default:
       return state;
   }
@@ -83,8 +85,10 @@ const notificationReducer = (state, action) => {
 export const NotificationProvider = ({ children }) => {
   const [state, dispatch] = useReducer(notificationReducer, initialState);
 
-  // Load notifications from localStorage on mount
+  // Load notifications from localStorage on mount (client-side only)
   useEffect(() => {
+    if (typeof window === 'undefined') return;
+
     const savedNotifications = localStorage.getItem('notifications');
     if (savedNotifications) {
       try {
@@ -96,8 +100,10 @@ export const NotificationProvider = ({ children }) => {
     }
   }, []);
 
-  // Save notifications to localStorage whenever they change
+  // Save notifications to localStorage whenever they change (client-side only)
   useEffect(() => {
+    if (typeof window === 'undefined') return;
+
     localStorage.setItem('notifications', JSON.stringify(state.notifications));
   }, [state.notifications]);
 

@@ -5,18 +5,20 @@ import { getApiUrl } from '../../utils/env';
 // API base URL - Next.js compatible
 const API_BASE_URL = getApiUrl();
 
-// Helper function to get auth token
+// Helper function to get auth token (SSR safe)
 const getAuthToken = () => {
+  if (typeof window === 'undefined') return null;
   return localStorage.getItem('token');
 };
 
-// Helper function to check if user is logged in
+// Helper function to check if user is logged in (SSR safe)
 const isUserLoggedIn = () => {
   return !!getAuthToken();
 };
 
-// Helper function to get localStorage data
+// Helper function to get localStorage data (SSR safe)
 const getLocalStorageData = (key) => {
+  if (typeof window === 'undefined') return [];
   try {
     const data = localStorage.getItem(key);
     return data ? JSON.parse(data) : [];
@@ -26,8 +28,9 @@ const getLocalStorageData = (key) => {
   }
 };
 
-// Helper function to set localStorage data
+// Helper function to set localStorage data (SSR safe)
 const setLocalStorageData = (key, data) => {
+  if (typeof window === 'undefined') return;
   try {
     localStorage.setItem(key, JSON.stringify(data));
   } catch (error) {

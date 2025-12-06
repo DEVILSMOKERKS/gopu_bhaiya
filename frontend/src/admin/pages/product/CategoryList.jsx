@@ -26,7 +26,7 @@ const CategoryList = () => {
     try {
       const response = await axios.get(`${API_URL}/categories`);
       const result = response.data;
-      
+
       if (response.status === 200) {
         setCategories(result.data);
       } else {
@@ -143,8 +143,8 @@ const CategoryList = () => {
                   </td>
                   <td className="categorylist-td categorylist-image-cell">
                     {category.image_url ? (
-                      <img 
-                        src={`${API_URL.replace('/api', '')}${category.image_url}`} 
+                      <img
+                        src={`${API_URL.replace('/api', '')}${category.image_url}`}
                         alt={category.name}
                         className="categorylist-category-image"
                         onError={(e) => {

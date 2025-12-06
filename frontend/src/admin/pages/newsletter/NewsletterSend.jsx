@@ -24,7 +24,7 @@ const NewsletterSend = () => {
 
     const fetchSubscribers = async () => {
         try {
-            const token = localStorage.getItem('adminToken');
+            const token = typeof window !== 'undefined' ? localStorage.getItem('adminToken') : null;
             const response = await axios.get(`${API_URL}/newsletter/subscribers`, {
                 headers: {
                     Authorization: `Bearer ${token}`
@@ -81,7 +81,7 @@ const NewsletterSend = () => {
             setError('');
             setSuccess('');
 
-            const token = localStorage.getItem('adminToken');
+            const token = typeof window !== 'undefined' ? localStorage.getItem('adminToken') : null;
             const response = await axios.post(`${API_URL}/newsletter/send`, {
                 subject: formData.subject,
                 content: formData.content,

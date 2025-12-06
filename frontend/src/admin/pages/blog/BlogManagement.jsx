@@ -40,7 +40,7 @@ const BlogManagement = () => {
   const fetchBlogs = async () => {
     try {
       setLoading(true);
-      const token = localStorage.getItem('adminToken');
+      const token = typeof window !== 'undefined' ? localStorage.getItem('adminToken') : null;
       const params = new URLSearchParams({
         page: currentPage,
         limit: 10
@@ -78,7 +78,7 @@ const BlogManagement = () => {
   const handleCreateBlog = async (e) => {
     e.preventDefault();
     try {
-      const token = localStorage.getItem('adminToken');
+      const token = typeof window !== 'undefined' ? localStorage.getItem('adminToken') : null;
       const formDataToSend = new FormData();
       
       formDataToSend.append('title', formData.title);
@@ -116,7 +116,7 @@ const BlogManagement = () => {
   const handleEditBlog = async (e) => {
     e.preventDefault();
     try {
-      const token = localStorage.getItem('adminToken');
+      const token = typeof window !== 'undefined' ? localStorage.getItem('adminToken') : null;
       const formDataToSend = new FormData();
       
       formDataToSend.append('title', formData.title);
@@ -157,7 +157,7 @@ const BlogManagement = () => {
     }
 
     try {
-      const token = localStorage.getItem('adminToken');
+      const token = typeof window !== 'undefined' ? localStorage.getItem('adminToken') : null;
       const response = await axios.delete(`${API_URL}/admin/blogs/${blogId}`, {
         headers: {
           'Authorization': `Bearer ${token}`

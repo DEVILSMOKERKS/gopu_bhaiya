@@ -81,7 +81,7 @@ const EditOffer = ({ offerId }) => {
     setSaving(true);
 
     try {
-      const token = localStorage.getItem('adminToken');
+      const token = typeof window !== 'undefined' ? localStorage.getItem('adminToken') : null;
       const response = await axios.put(`${API_URL}/offers/${offerId}`, formData, {
         headers: {
           'Content-Type': 'application/json',

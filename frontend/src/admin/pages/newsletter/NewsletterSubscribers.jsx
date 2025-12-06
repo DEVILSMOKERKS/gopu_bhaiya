@@ -23,7 +23,7 @@ const NewsletterSubscribers = () => {
     const fetchSubscribers = async () => {
         try {
             setLoading(true);
-            const token = localStorage.getItem('adminToken');
+            const token = typeof window !== 'undefined' ? localStorage.getItem('adminToken') : null;
             const response = await axios.get(`${API_URL}/newsletter/subscribers`, {
                 headers: {
                     Authorization: `Bearer ${token}`
@@ -73,7 +73,7 @@ const NewsletterSubscribers = () => {
 
         try {
             setDeleteLoading(true);
-            const token = localStorage.getItem('adminToken');
+            const token = typeof window !== 'undefined' ? localStorage.getItem('adminToken') : null;
 
             for (const subscriberId of selectedSubscribers) {
                 await axios.delete(`${API_URL}/newsletter/subscribers/${subscriberId}`, {

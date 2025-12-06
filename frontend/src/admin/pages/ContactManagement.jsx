@@ -20,7 +20,7 @@ const ContactManagement = () => {
   const fetchQueries = async () => {
     try {
       setLoading(true);
-      const token = localStorage.getItem('adminToken');
+      const token = typeof window !== 'undefined' ? localStorage.getItem('adminToken') : null;
       const response = await axios.get(`${API_URL}/admin/contact-queries`, {
         headers: { Authorization: `Bearer ${token}` },
         params: {
@@ -45,7 +45,7 @@ const ContactManagement = () => {
   // Fetch statistics
   const fetchStats = async () => {
     try {
-      const token = localStorage.getItem('adminToken');
+      const token = typeof window !== 'undefined' ? localStorage.getItem('adminToken') : null;
       const response = await axios.get(`${API_URL}/admin/contact-statistics`, {
         headers: { Authorization: `Bearer ${token}` }
       });
@@ -61,7 +61,7 @@ const ContactManagement = () => {
   // Update query status
   const updateStatus = async (queryId, newStatus, adminNotes) => {
     try {
-      const token = localStorage.getItem('adminToken');
+      const token = typeof window !== 'undefined' ? localStorage.getItem('adminToken') : null;
       const response = await axios.put(
         `${API_URL}/admin/contact-queries/${queryId}/status`,
         { status: newStatus, admin_notes: adminNotes },
@@ -84,7 +84,7 @@ const ContactManagement = () => {
     if (!window.confirm('Are you sure you want to delete this query?')) return;
 
     try {
-      const token = localStorage.getItem('adminToken');
+      const token = typeof window !== 'undefined' ? localStorage.getItem('adminToken') : null;
       const response = await axios.delete(`${API_URL}/admin/contact-queries/${queryId}`, {
         headers: { Authorization: `Bearer ${token}` }
       });
@@ -284,7 +284,7 @@ const ContactManagement = () => {
               <h2>Query Details #{selectedQuery.id}</h2>
               <button className="close-btn" onClick={() => setShowModal(false)}>×</button>
             </div>
-            
+
             <div className="query-details">
               <div className="detail-row">
                 <label>Name:</label>
@@ -336,7 +336,7 @@ const ContactManagement = () => {
                 <select
                   id="newStatus"
                   defaultValue={selectedQuery.status}
-                  onChange={(e) => setSelectedQuery({...selectedQuery, newStatus: e.target.value})}
+                  onChange={(e) => setSelectedQuery({ ...selectedQuery, newStatus: e.target.value })}
                 >
                   <option value="pending">Pending</option>
                   <option value="in_progress">In Progress</option>
@@ -346,7 +346,7 @@ const ContactManagement = () => {
                 <textarea
                   placeholder="Add admin notes (optional)"
                   value={selectedQuery.adminNotes || ''}
-                  onChange={(e) => setSelectedQuery({...selectedQuery, adminNotes: e.target.value})}
+                  onChange={(e) => setSelectedQuery({ ...selectedQuery, adminNotes: e.target.value })}
                   rows="3"
                 />
                 <button

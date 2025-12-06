@@ -58,7 +58,7 @@ const OfferList = () => {
     }
 
     try {
-      const token = localStorage.getItem('adminToken');
+      const token = typeof window !== 'undefined' ? localStorage.getItem('adminToken') : null;
       const response = await axios.delete(`${API_URL}/offers/${offerId}`, {
         headers: {
           'Authorization': `Bearer ${token}`

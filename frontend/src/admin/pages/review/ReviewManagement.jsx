@@ -22,7 +22,7 @@ const ReviewManagement = () => {
   const fetchReviews = async () => {
     try {
       setLoading(true);
-      const token = localStorage.getItem('adminToken');
+      const token = typeof window !== 'undefined' ? localStorage.getItem('adminToken') : null;
       const queryParams = new URLSearchParams({
         page: currentPage,
         limit: 10,
@@ -36,7 +36,7 @@ const ReviewManagement = () => {
       });
 
       const result = response.data;
-      
+
       if (result.success) {
         setReviews(result.data);
         setTotalPages(result.pagination.total_pages);
@@ -50,7 +50,7 @@ const ReviewManagement = () => {
 
   const handleStatusUpdate = async (reviewId, newStatus) => {
     try {
-      const token = localStorage.getItem('adminToken');
+      const token = typeof window !== 'undefined' ? localStorage.getItem('adminToken') : null;
       const response = await axios.put(`${API_URL}/reviews/admin/${reviewId}/status`, { status: newStatus }, {
         headers: {
           'Content-Type': 'application/json',
@@ -59,7 +59,7 @@ const ReviewManagement = () => {
       });
 
       const result = response.data;
-      
+
       if (result.success) {
         if (newStatus === 'rejected') {
           alert('Review rejected successfully! The review will no longer be visible to users.');
@@ -84,7 +84,7 @@ const ReviewManagement = () => {
     }
 
     try {
-      const token = localStorage.getItem('adminToken');
+      const token = typeof window !== 'undefined' ? localStorage.getItem('adminToken') : null;
       const response = await axios.delete(`${API_URL}/reviews/admin/${reviewId}`, {
         headers: {
           'Authorization': `Bearer ${token}`
@@ -92,7 +92,7 @@ const ReviewManagement = () => {
       });
 
       const result = response.data;
-      
+
       if (result.success) {
         alert('Review deleted successfully!');
         fetchReviews();
@@ -185,7 +185,7 @@ const ReviewManagement = () => {
             onChange={(e) => setFilters(prev => ({ ...prev, product_id: e.target.value }))}
           />
         </div>
-        <button 
+        <button
           className="clear-filters-btn"
           onClick={() => setFilters({ status: '', product_id: '' })}
         >
@@ -220,9 +220,9 @@ const ReviewManagement = () => {
                 </td>
                 <td>
                   <div className="user-info">
-                                          <img 
-                        src={review.user_photo ? `${API_URL.replace('/api', '')}${review.user_photo}` : '/src/assets/img/default-avatar.png'} 
-                        alt={review.user_name}
+                    <img
+                      src={review.user_photo ? `${API_URL.replace('/api', '')}${review.user_photo}` : '/src/assets/img/default-avatar.png'}
+                      alt={review.user_name}
                       className="user-avatar"
                     />
                     <div>
@@ -243,10 +243,10 @@ const ReviewManagement = () => {
                       <p className="review-text">{review.review_text}</p>
                     )}
                     {review.review_image && (
-                                              <img 
-                          src={`${API_URL.replace('/api', '')}${review.review_image}`} 
-                          alt="Review" 
-                          className="review-thumbnail"
+                      <img
+                        src={`${API_URL.replace('/api', '')}${review.review_image}`}
+                        alt="Review"
+                        className="review-thumbnail"
                       />
                     )}
                     <span className="likes-count">👍 {review.likes_count || 0}</span>
