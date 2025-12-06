@@ -1,5 +1,7 @@
+'use client';
+
 import React, { useState, useRef, useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useRouter } from 'next/navigation';
 import axios from 'axios';
 import './AlsoLike.css';
 import BestSeller1 from '../../assets/img/Bestseller1.jpg'
@@ -7,15 +9,14 @@ import BestSeller2 from '../../assets/img/Bestseller2.jpg'
 import BestSeller3 from '../../assets/img/Bestseller3.jpg'
 import { CloudCog } from 'lucide-react';
 
-const AlsoLike = () => {
-  const { productId } = useParams();
+const AlsoLike = ({ productId }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [selectedColors, setSelectedColors] = useState({});
   const [alsoLikeData, setAlsoLikeData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const carouselRef = useRef(null);
-  const navigate = useNavigate();
+  const router = useRouter();
 
   // Get API URL from environment variable
   const API_URL = import.meta.env.VITE_API_URL;
@@ -104,7 +105,7 @@ const AlsoLike = () => {
   };
 
   const handleProductClick = (productId) => {
-    navigate(`/product/${productId}`);
+    router.push(`/product/${productId}`);
   };
 
   const getCurrentImage = (product) => {

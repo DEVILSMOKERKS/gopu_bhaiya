@@ -1,5 +1,8 @@
+'use client';
+
 import React, { useState, useEffect } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 import { FcGoogle } from "react-icons/fc";
 import { PiFacebookLogoFill } from "react-icons/pi";
 import { Eye, EyeOff, AlertCircle, CheckCircle, Loader2 } from 'lucide-react';
@@ -9,7 +12,7 @@ import loginimage from '../../../assets/img/loginimage.jpg';
 import './login.css';
 
 const Login = () => {
-    const navigate = useNavigate();
+    const router = useRouter();
     const { login, loading, error, clearError } = useUser();
 
     const [formData, setFormData] = useState({
@@ -37,7 +40,7 @@ const Login = () => {
             try {
                 const parsedUser = JSON.parse(userData);
                 // User is already logged in, redirect to profile
-                navigate('/profile');
+                router.push('/profile');
             } catch (error) {
                 console.error('Error parsing user data:', error);
                 // Clear invalid data
@@ -111,7 +114,7 @@ const Login = () => {
             if (result.success) {
                 setSuccessMessage('Login successful! Redirecting...');
                 setTimeout(() => {
-                    navigate('/');
+                    router.push('/');
                 }, 1500);
             } else {
                 // Error is already set in the user context
@@ -170,7 +173,7 @@ const Login = () => {
 
                 setSuccess('Google login successful! Redirecting...');
                 setTimeout(() => {
-                    navigate('/');
+                    router.push('/');
                 }, 1500);
             } else {
                 setError(result.data.message || 'Google login failed');
@@ -292,13 +295,13 @@ const Login = () => {
 
                 {/* Forgot Password Link */}
                 <div className="login-forgot-password">
-                    <Link to="/forgot-password">Forgot your password?</Link>
+                    <Link href="/forgot-password">Forgot your password?</Link>
                 </div>
 
                 {/* Sign Up Link */}
                 <p className='login-signup-link'>
                     Don't have an account?
-                    <Link to='/signup'>Sign up</Link>
+                    <Link href='/signup'>Sign up</Link>
                 </p>
 
                 {/* Divider */}
@@ -334,8 +337,8 @@ const Login = () => {
                 {/* Terms */}
                 <p className='login-terms'>
                     By clicking Sign In, you agree to our{' '}
-                    <Link to='/terms'>Terms of Service</Link> and{' '}
-                    <Link to='/privacy'>Privacy Policy</Link>
+                    <Link href='/terms-and-conditions'>Terms of Service</Link> and{' '}
+                    <Link href='/privacy-policy'>Privacy Policy</Link>
                 </p>
             </div>
         </div>

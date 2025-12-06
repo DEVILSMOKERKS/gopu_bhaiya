@@ -1,5 +1,8 @@
+'use client';
+
 import React, { useState, useEffect } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 import { FcGoogle } from "react-icons/fc";
 import { PiFacebookLogoFill } from "react-icons/pi";
 import { Eye, EyeOff, AlertCircle, CheckCircle, Loader2 } from 'lucide-react';
@@ -8,8 +11,8 @@ import { validateSignupForm, validateField } from '../../../Utils/validation.js'
 import Signupimage from '../../../assets/img/loginimage.jpg';
 import './signup.css';
 
-const Signup = () => {
-    const navigate = useNavigate();
+const Signup = ({ onClose }) => {
+    const router = useRouter();
     const { signup, loading, error, clearError } = useUser();
 
     const [formData, setFormData] = useState({
@@ -40,7 +43,7 @@ const Signup = () => {
             try {
                 const parsedUser = JSON.parse(userData);
                 // User is already logged in, redirect to profile
-                navigate('/profile');
+                router.push('/profile');
             } catch (error) {
                 console.error('Error parsing user data:', error);
                 // Clear invalid data
@@ -121,7 +124,8 @@ const Signup = () => {
             if (result.success) {
                 setSuccessMessage('Account created successfully! Redirecting...');
                 setTimeout(() => {
-                    navigate('/');
+                    if (onClose) onClose();
+                    router.push('/');
                 }, 1500);
             } else {
                 // Error is already set in the user context
@@ -147,6 +151,25 @@ const Signup = () => {
 
     return (
         <div className="signup-container">
+            {onClose && (
+                <button
+                    onClick={onClose}
+                    style={{
+                        position: 'absolute',
+                        top: '10px',
+                        right: '10px',
+                        background: 'none',
+                        border: 'none',
+                        fontSize: '24px',
+                        cursor: 'pointer',
+                        color: '#666',
+                        zIndex: 1001
+                    }}
+                    aria-label="Close signup modal"
+                >
+                    ×
+                </button>
+            )}
             <div className="signup-img">
                 <img src={Signupimage} alt='Beautiful signup background' />
             </div>
@@ -301,7 +324,7 @@ const Signup = () => {
                 {/* Sign In Link */}
                 <p className='signup-login-link'>
                     Already have an account?
-                    <Link to='/login'>Sign in</Link>
+                    <Link href='/login'>Sign in</Link>
                 </p>
 
                 {/* Divider */}
@@ -337,8 +360,8 @@ const Signup = () => {
                 {/* Terms */}
                 <p className='signup-terms'>
                     By clicking Create Account, you agree to our{' '}
-                    <Link to='/terms'>Terms of Service</Link> and{' '}
-                    <Link to='/privacy'>Privacy Policy</Link>
+                    <Link href='/terms-and-conditions'>Terms of Service</Link> and{' '}
+                    <Link href='/privacy-policy'>Privacy Policy</Link>
                 </p>
             </div>
         </div>

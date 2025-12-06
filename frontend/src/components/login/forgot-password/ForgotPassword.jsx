@@ -1,5 +1,7 @@
+'use client';
+
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { Mail, ArrowLeft, CheckCircle, AlertCircle, Loader2 } from 'lucide-react';
 import axios from 'axios';
 import loginimage from '../../../assets/img/loginimage.jpg';
@@ -143,9 +145,9 @@ const ForgotPassword = () => {
         <div className="forgot-password-footer">
           <p>
             Remember your password?
-            <Link to="/login" className="login-link">Sign in</Link>
+            <Link href="/login" className="login-link">Sign in</Link>
           </p>
-          <Link to="/login" className="back-to-login">
+          <Link href="/login" className="back-to-login">
             <ArrowLeft className="back-icon" />
             Back to Login
           </Link>

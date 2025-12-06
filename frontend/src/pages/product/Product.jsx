@@ -1,13 +1,17 @@
+'use client';
+
 import React, { useState, useEffect } from 'react';
-import { useParams, Link, useNavigate } from 'react-router-dom';
+import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 import axios from 'axios';
 import { useWishlistCart } from '../../context/wishlistCartContext';
 import './product.css';
 import AlsoLike from '../../components/alsoLike/AlsoLike';
 import ProductReview from './ProductReview';
 
-const Product = () => {
-  const { productId } = useParams();
+const Product = ({ productId: productIdProp }) => {
+  const router = useRouter();
+  const productId = productIdProp;
   const [selectedImage, setSelectedImage] = useState(0);
   const [selectedColor, setSelectedColor] = useState(0);
   const [selectedSize, setSelectedSize] = useState('');
@@ -32,7 +36,7 @@ const Product = () => {
   const [isZoomModalDragging, setIsZoomModalDragging] = useState(false);
   const [zoomModalDragStart, setZoomModalDragStart] = useState({ x: 0, y: 0 });
   const { addToCart, buyNow, addToWishlist, isInWishlist, removeFromWishlistByProduct, isInCart } = useWishlistCart();
-  const navigate = useNavigate();
+  // navigate removed - use router.push() instead
 
   // Get API URL from environment variable
   const API_URL = import.meta.env.VITE_API_URL;
@@ -814,7 +818,7 @@ const Product = () => {
               return (
                 <button
                   className="go-to-cart-btn"
-                  onClick={() => navigate('/cart')}
+                  onClick={() => router.push('/cart')}
                 >
                   Go to Cart
                 </button>
@@ -959,7 +963,7 @@ const Product = () => {
       <ProductReview productId={productId} productName={product.name} />
 
       {/* You May Also Like Section */}
-      <AlsoLike />
+      <AlsoLike productId={productId} />
 
       {/* Size Chart Modal */}
       {showSizeChart && (

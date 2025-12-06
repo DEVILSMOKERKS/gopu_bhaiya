@@ -1,13 +1,16 @@
+'use client';
+
 import React, { useState, useEffect } from 'react';
-import { Link, useSearchParams, useNavigate } from 'react-router-dom';
+import { useSearchParams, useRouter } from 'next/navigation';
+import Link from 'next/link';
 import { Lock, Eye, EyeOff, CheckCircle, AlertCircle, Loader2, ArrowLeft } from 'lucide-react';
 import axios from 'axios';
 import loginimage from '../../../assets/img/loginimage.jpg';
 import './ResetPassword.css';
 
 const ResetPassword = () => {
-    const [searchParams] = useSearchParams();
-    const navigate = useNavigate();
+    const searchParams = useSearchParams();
+    const router = useRouter();
     const token = searchParams.get('token');
 
     const [formData, setFormData] = useState({
@@ -94,7 +97,7 @@ const ResetPassword = () => {
             if (response.data.success) {
                 setSuccessMessage('Password has been reset successfully! You can now login with your new password.');
                 setTimeout(() => {
-                    navigate('/login');
+                    router.push('/login');
                 }, 3000);
             } else {
                 setError(response.data.message || 'Failed to reset password');
@@ -116,7 +119,7 @@ const ResetPassword = () => {
                             <p>The password reset link is invalid or has expired. Please request a new password reset.</p>
                         </div>
                         <div className="reset-password-footer">
-                            <Link to="/forgot-password" className="back-to-forgot">
+                            <Link href="/forgot-password" className="back-to-forgot">
                                 <ArrowLeft className="back-icon" />
                                 Request New Reset Link
                             </Link>
@@ -235,9 +238,9 @@ const ResetPassword = () => {
                 <div className="reset-password-footer">
                     <p>
                         Remember your password?
-                        <Link to="/login" className="login-link">Sign in</Link>
+                        <Link href="/login" className="login-link">Sign in</Link>
                     </p>
-                    <Link to="/login" className="back-to-login">
+                    <Link href="/login" className="back-to-login">
                         <ArrowLeft className="back-icon" />
                         Back to Login
                     </Link>

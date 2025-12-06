@@ -1,9 +1,11 @@
+"use client";
+import Link from "next/link";
 import React, { useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { usePathname, useSearchParams } from "next/navigation";
 import './adminSidebar.css';
 
 const Sidebar = ({ isMobileOpen, onMobileClose }) => {
-  const location = useLocation();
+  const pathname = usePathname();
   const [expandedMenus, setExpandedMenus] = useState([]);
 
   const menuItems = [
@@ -187,16 +189,16 @@ const Sidebar = ({ isMobileOpen, onMobileClose }) => {
 
   const isMenuActive = (item) => {
     if (item.path) {
-      return location.pathname === item.path;
+      return pathname === item.path;
     }
     if (item.submenu) {
-      return item.submenu.some(subItem => location.pathname === subItem.path);
+      return item.submenu.some(subItem => pathname === subItem.path);
     }
     return false;
   };
 
   const isSubmenuActive = (submenuPath) => {
-    return location.pathname === submenuPath;
+    return pathname === submenuPath;
   };
 
   return (
