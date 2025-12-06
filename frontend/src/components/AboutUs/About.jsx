@@ -60,7 +60,7 @@ const AboutSection = () => {
                 Celebrating Tradition With A Modern Touch
               </h3>
               <p className="about-who-we-are-description">
-                At Mateshwari Exports, we believe every woman deserves to feel graceful, confident, and connected to her roots. Our collection of kurtis blends timeless Indian craftsmanship with contemporary designs, offering styles that are perfect for every occasion — from casual elegance to festive celebrations. Each piece is thoughtfully made using quality fabrics, intricate detailing, and vibrant colors that reflect the beauty of our rich culture. With us, it's not just fashion — it's a celebration of tradition, comfort, and individuality.
+                At Mateshwari Exports, we believe every woman deserves to feel graceful, confident, and connected to her roots. Our collection of kurtis blends timeless Indian craftsmanship with contemporary designs, offering styles that are perfect for every occasion — from casual elegance to festive celebrations. Each piece is thoughtfully made using quality fabrics, intricate detailing, and vibrant colors that reflect the beauty of our rich culture. With us, it&apos;s not just fashion — it&apos;s a celebration of tradition, comfort, and individuality.
               </p>
 
               <Link href="#journey-section" className="about-who-we-are-cta-button" scroll={true}>
@@ -165,7 +165,7 @@ const JourneyMobileCarousel = () => {
         <p className="journey-carousel-subtitle">About Mateshwari Exports</p>
         <h2 className="journey-carousel-title">Our Story of Growth & Success</h2>
         <p className="journey-carousel-description">
-          Since 2015, we've been dedicated to creating divine experiences through our handcrafted idols and temple solutions, bringing spiritual elegance to homes and hearts across the nation.
+          Since 2015, we&apos;ve been dedicated to creating divine experiences through our handcrafted idols and temple solutions, bringing spiritual elegance to homes and hearts across the nation.
         </p>
       </div>
       <div className="journey-carousel-container-mobile">

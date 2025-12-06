@@ -82,7 +82,7 @@ const MateshwariCollection = () => {
             </div>
             <h3 className="mateshwari-collection-empty-title">No Products Available</h3>
             <p className="mateshwari-collection-empty-message">
-              We're currently updating our collection. Please check back soon for new arrivals.
+              We&apos;re currently updating our collection. Please check back soon for new arrivals.
             </p>
           </div>
         </div>

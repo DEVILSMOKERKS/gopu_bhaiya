@@ -85,7 +85,7 @@ const ForgotPassword = () => {
       {/* Form Section */}
       <div className="forgot-password-form">
         <h1>Forgot Password?</h1>
-        <p className="forgot-password-subtitle">Don't worry! Enter your email address and we'll send you a link to reset your password.</p>
+        <p className="forgot-password-subtitle">Don&apos;t worry! Enter your email address and we&apos;ll send you a link to reset your password.</p>
 
         <form onSubmit={handleSubmit}>
           <div className="forgot-password-form-group">

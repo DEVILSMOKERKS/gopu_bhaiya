@@ -122,7 +122,7 @@ const ViewProduct = ({ productId }) => {
       <div className="viewproduct-container">
         <div className="viewproduct-error">
           <h2>Product not found</h2>
-          <p>The product you're looking for doesn't exist.</p>
+          <p>The product you&apos;re looking for doesn&apos;t exist.</p>
           <button onClick={() => router.push('/admin/products')}>
             Back to Products
           </button>

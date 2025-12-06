@@ -36,11 +36,11 @@ const Return = () => {
         <section className="return-policy-section">
           <h2>3. Exchange Process</h2>
           <p>To initiate an exchange, follow these simple steps:</p>
-          <p><strong>Step 1:</strong> Log into your Mateshwari Moorti Bhandar account and navigate to "My Orders" section. Select the item you wish to exchange and click "Initiate Exchange" within 30 days of delivery.</p>
+          <p><strong>Step 1:</strong> Log into your Mateshwari Moorti Bhandar account and navigate to &quot;My Orders&quot; section. Select the item you wish to exchange and click &quot;Initiate Exchange&quot; within 30 days of delivery.</p>
           <p><strong>Step 2:</strong> Choose the item you want to exchange for. Ensure the item is in its original condition with all packaging, tags, labels, and documentation included. Any missing components may affect your exchange eligibility.</p>
           <p><strong>Step 3:</strong> Download and print the exchange shipping label provided by Mateshwari Moorti Bhandar. Securely package the item and attach the label to your package.</p>
           <p><strong>Step 4:</strong> Drop off your package at any authorized courier location. Exchange shipping is free for all eligible exchanges within India.</p>
-          <p><strong>Step 5:</strong> Once we receive and inspect your exchange, we will process your new item shipment within 5-7 business days. If there's a price difference, it will be handled according to our exchange policy.</p>
+          <p><strong>Step 5:</strong> Once we receive and inspect your exchange, we will process your new item shipment within 5-7 business days. If there&apos;s a price difference, it will be handled according to our exchange policy.</p>
         </section>
 
         <section className="return-policy-section">

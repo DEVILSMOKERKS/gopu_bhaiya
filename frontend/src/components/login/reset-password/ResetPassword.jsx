@@ -140,7 +140,7 @@ const ResetPassword = () => {
             {/* Form Section */}
             <div className="reset-password-form">
                 <h1>Reset Your Password</h1>
-                <p className="reset-password-subtitle">Enter your new password below. Make sure it's strong and secure.</p>
+                <p className="reset-password-subtitle">Enter your new password below. Make sure it&apos;s strong and secure.</p>
 
                 <form onSubmit={handleSubmit}>
                     <div className="reset-password-form-group">

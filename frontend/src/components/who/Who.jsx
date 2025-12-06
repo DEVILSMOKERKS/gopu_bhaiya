@@ -17,7 +17,7 @@ const Who = () => {
           </p>
           <p className="who-description">
             Each piece is thoughtfully made using quality fabrics, intricate detailing, and vibrant colors
-            that reflect the beauty of our rich culture. With us, it's not just fashion — it's a celebration
+            that reflect the beauty of our rich culture. With us, it&apos;s not just fashion — it&apos;s a celebration
             of tradition, comfort, and individuality.
           </p>
           <a href="https://www.mateshwarimoortibhandar.com/About-us" className="who-cta-button" target="_blank" rel="noopener noreferrer">
@@ -31,6 +31,7 @@ const Who = () => {
             <img
               src={"https://ik.imagekit.io/adsrc2244/mateshwarimoortibhandar/main-page/who-banner%202.png?updatedAt=1761544773496"}
               className="who-main-image"
+              alt="Who We Are - Mateshwari Moorti Bhandar"
             />
 
           </div>

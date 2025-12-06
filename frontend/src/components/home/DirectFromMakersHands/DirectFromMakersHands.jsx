@@ -117,7 +117,7 @@ const DirectFromMakersHands = () => {
             <section className="direct-makers-hands">
                 <div className="direct-makers-hands-container">
                     <div className="direct-makers-hands-header">
-                        <h2 className="direct-makers-hands-title">Direct From The Makers' Hands</h2>
+                        <h2 className="direct-makers-hands-title">Direct From The Makers&apos; Hands</h2>
                         <button className="direct-makers-hands-view-all" onClick={handleViewAll}>
                             View All
                         </button>
@@ -134,7 +134,7 @@ const DirectFromMakersHands = () => {
             <section className="direct-makers-hands">
                 <div className="direct-makers-hands-container">
                     <div className="direct-makers-hands-header">
-                        <h2 className="direct-makers-hands-title">Direct From The Makers' Hands</h2>
+                        <h2 className="direct-makers-hands-title">Direct From The Makers&apos; Hands</h2>
                         <button className="direct-makers-hands-view-all" onClick={handleViewAll}>
                             View All
                         </button>
@@ -149,7 +149,7 @@ const DirectFromMakersHands = () => {
                         </div>
                         <h3 className="direct-makers-hands-empty-title">No Products Available</h3>
                         <p className="direct-makers-hands-empty-message">
-                            We're currently updating our collection. Please check back soon for new arrivals.
+                            We&apos;re currently updating our collection. Please check back soon for new arrivals.
                         </p>
                     </div>
                 </div>

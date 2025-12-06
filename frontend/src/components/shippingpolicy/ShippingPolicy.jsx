@@ -198,7 +198,7 @@ const ShippingPolicy = () => {
 
         <section className="shipping-policy-section">
           <h2>8. DELIVERY ISSUES</h2>
-          <p>In case of delivery issues, we're here to help and ensure your satisfaction. Our customer support team is trained to handle various scenarios professionally:</p>
+          <p>In case of delivery issues, we&apos;re here to help and ensure your satisfaction. Our customer support team is trained to handle various scenarios professionally:</p>
 
           <h3>8.1 Failed Deliveries</h3>
           <p>• Multiple delivery attempts made (up to 3 attempts)</p>

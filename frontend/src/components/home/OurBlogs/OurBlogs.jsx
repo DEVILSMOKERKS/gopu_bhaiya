@@ -112,7 +112,7 @@ const OurBlogs = () => {
             </div>
             <h3 className="our-blogs-empty-title">No Blogs Available</h3>
             <p className="our-blogs-empty-text">
-              We're working on creating amazing content for you. Check back soon!
+              We&apos;re working on creating amazing content for you. Check back soon!
             </p>
           </div>
         )}

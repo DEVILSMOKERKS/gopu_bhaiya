@@ -171,7 +171,7 @@ const Orders = () => {
               </svg>
             </div>
             <h3>No orders found</h3>
-            <p>You haven't placed any orders yet.</p>
+            <p>You haven&apos;t placed any orders yet.</p>
             <button onClick={() => router.push('/shop')}>Start Shopping</button>
           </div>
         ) : (

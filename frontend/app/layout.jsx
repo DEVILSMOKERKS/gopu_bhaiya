@@ -41,7 +41,7 @@ export default function RootLayout({ children }) {
         {/* Google OAuth Script */}
         <script key="google-oauth" src="https://accounts.google.com/gsi/client" async defer></script>
         {/* Razorpay Checkout Script */}
-        <script key="razorpay" src="https://checkout.razorpay.com/v1/checkout.js"></script>
+        <script key="razorpay" src="https://checkout.razorpay.com/v1/checkout.js" async defer></script>
       </head>
       <body>
         {/* Meta Pixel noscript fallback */}
@@ -51,6 +51,7 @@ export default function RootLayout({ children }) {
             width="1"
             style={{ display: 'none' }}
             src="https://www.facebook.com/tr?id=1879559569290679&ev=PageView&noscript=1"
+            alt="pixal-facbook"
           />
         </noscript>
         <Provider store={store}>

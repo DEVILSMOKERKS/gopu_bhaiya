@@ -125,7 +125,7 @@ const ContactUs = () => {
           </div>
           <h3 className="contactus-title">GET IN TOUCH WITH US</h3>
           <p className="contactus-desc">
-            Have a question or custom request? Fill out the form below — we're
+            Have a question or custom request? Fill out the form below — we&apos;re
             here to help. Thank you
           </p>
           <img src={lineImg} alt="" className="contactus-line1" />

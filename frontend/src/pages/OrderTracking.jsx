@@ -193,8 +193,8 @@ const OrderTracking = () => {
                 <line x1="12" y1="17" x2="12.01" y2="17" />
               </svg>
             </div>
-            <h4>Can't find your order?</h4>
-            <p>Make sure you're entering the correct order number. You can find it in your order confirmation email or in your account dashboard.</p>
+            <h4>Can&apos;t find your order?</h4>
+            <p>Make sure you&apos;re entering the correct order number. You can find it in your order confirmation email or in your account dashboard.</p>
           </div>
           <div className="help-item">
             <div className="help-icon">
@@ -205,7 +205,7 @@ const OrderTracking = () => {
               </svg>
             </div>
             <h4>Order not updating?</h4>
-            <p>Tracking information is updated in real-time. If you don't see recent updates, please check back later or contact our support team.</p>
+            <p>Tracking information is updated in real-time. If you don&apos;t see recent updates, please check back later or contact our support team.</p>
           </div>
           <div className="help-item">
             <div className="help-icon">

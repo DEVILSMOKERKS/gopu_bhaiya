@@ -156,7 +156,7 @@ const AdminAuthPopup = ({ isOpen, onClose, onLogin }) => {
                 </div>
 
                 <p className="admin-form-reset-instructions">
-                  Enter your email address and we'll send you a link to reset your password.
+                  Enter your email address and we&apos;ll send you a link to reset your password.
                 </p>
 
                 <button
@@ -180,7 +180,7 @@ const AdminAuthPopup = ({ isOpen, onClose, onLogin }) => {
                 <div className="admin-form-success-icon">✓</div>
                 <h3>Reset Link Sent!</h3>
                 <p>
-                  We've sent a password reset link to <strong>{resetEmail}</strong>.
+                  We&apos;ve sent a password reset link to <strong>{resetEmail}</strong>.
                   Please check your email and click the link to reset your password.
                 </p>
                 <button

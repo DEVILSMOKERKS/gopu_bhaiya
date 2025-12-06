@@ -573,7 +573,7 @@ function ThankYouPage() {
                 <div style={styles.nextStepNumber}>1</div>
                 <div style={styles.nextStepContent}>
                   <h4 style={styles.nextStepTitle}>Order Processing</h4>
-                  <p style={styles.nextStepText}>We'll prepare your order within 24 hours</p>
+                  <p style={styles.nextStepText}>We&apos;ll prepare your order within 24 hours</p>
                 </div>
               </div>
               <div style={styles.nextStep}>
@@ -587,7 +587,7 @@ function ThankYouPage() {
                 <div style={styles.nextStepNumber}>3</div>
                 <div style={styles.nextStepContent}>
                   <h4 style={styles.nextStepTitle}>Delivery</h4>
-                  <p style={styles.nextStepText}>You'll receive your order in 3-7 business days</p>
+                  <p style={styles.nextStepText}>You&apos;ll receive your order in 3-7 business days</p>
                 </div>
               </div>
             </div>

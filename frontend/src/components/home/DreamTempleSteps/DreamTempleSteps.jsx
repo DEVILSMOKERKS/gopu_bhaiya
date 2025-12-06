@@ -43,7 +43,7 @@ const DreamTempleSteps = () => {
       <div className="dream-temple-container">
         <h2 className="dream-temple-title">Your Dream Temple in 5 steps</h2>
         <p className="dream-temple-subtitle">
-          Looking to design your Dream Temple? Here's how you can get started.
+          Looking to design your Dream Temple? Here&apos;s how you can get started.
         </p>
 
         <div className="dream-temple-steps-wrapper">

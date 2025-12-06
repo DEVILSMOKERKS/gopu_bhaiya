@@ -96,7 +96,7 @@ const Terms = () => {
         <section className="terms-section">
           <h2>Trademarks</h2>
           <p>
-            The trademarks, names, logos and service marks (collectively "trademarks") displayed on this website are registered and unregistered trademarks of Mateshwari Moorti Bhandar Fashion. Nothing contained on this website should be construed as granting any license or right to use any trademark without the prior written permission of Mateshwari Moorti Bhandar Fashion.
+            The trademarks, names, logos and service marks (collectively &quot;trademarks&quot;) displayed on this website are registered and unregistered trademarks of Mateshwari Moorti Bhandar Fashion. Nothing contained on this website should be construed as granting any license or right to use any trademark without the prior written permission of Mateshwari Moorti Bhandar Fashion.
           </p>
         </section>
 
@@ -147,7 +147,7 @@ const Terms = () => {
           <p><strong>Order Cancellation:</strong> Orders can be canceled at no cost before the Dispatch Confirmation E-mail. Individual items can be canceled within an order if it contains 2 or more items without canceling the entire order.</p>
           <p><strong>Refunds for Prepaid Orders:</strong> Amount will be credited to the payment source (Credit Card/Debit Card/Net Banking).</p>
           <p><strong>30 Day Money Back Policy:</strong> Refunds are credited to the Mateshwari Moorti Bhandar Cash account (not applicable on designer items above INR 10,000, accessories, and customized orders). You can choose to make another purchase or get the amount refunded to your bank account.</p>
-          <p><strong>Refunds for Cash on Delivery Orders:</strong> Processed to the user's bank account.</p>
+          <p><strong>Refunds for Cash on Delivery Orders:</strong> Processed to the user&apos;s bank account.</p>
           <p><strong>Gift Card Orders:</strong> Refunded back to the gift card.</p>
           <p><strong>Return Conditions for Specific Vouchers:</strong> For products ordered using FLAT02, FLAT05, FLAT10, FLAT15, FLAT20, DIWALI05, DIWALI10, DIWALI15, DIWALI20, DIWALI25, LOVE05, LOVE10, LOVE15, all products in the order need to be returned together.</p>
         </section>

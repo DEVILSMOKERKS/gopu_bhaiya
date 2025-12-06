@@ -251,14 +251,14 @@ const Hero = () => {
                       onClick={handleSearchSubmit}
                       className="hero-search-view-all-btn"
                     >
-                      View all results for "{searchQuery}"
+                      View all results for &quot;{searchQuery}&quot;
                     </button>
                   </div>
                 )}
               </div>
             ) : searchQuery.trim() && (
               <div className="hero-search-no-results">
-                <span>No products found for "{searchQuery}"</span>
+                <span>No products found for &quot;{searchQuery}&quot;</span>
               </div>
             )}
           </div>

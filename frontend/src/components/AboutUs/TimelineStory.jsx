@@ -80,7 +80,7 @@ function TimelineStory() {
                 <p className="timeline-subtitle">About Mateshwari Exports</p>
                 <h1 className="timeline-title">Our Story of Growth & Success</h1>
                 <p className="timeline-description">
-                    Since 2015, we've been dedicated to creating divine experiences through our handcrafted idols and temple solutions, bringing spiritual elegance to homes and hearts across the nation.
+                    Since 2015, we&apos;ve been dedicated to creating divine experiences through our handcrafted idols and temple solutions, bringing spiritual elegance to homes and hearts across the nation.
                 </p>
             </div>
 

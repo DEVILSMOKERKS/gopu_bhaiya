@@ -957,7 +957,7 @@ const Shop = () => {
           {/* Search Results Header */}
           {searchQuery && (
             <div className="shop-search-results-header">
-              <h2>Search Results for "{searchQuery}"</h2>
+              <h2>Search Results for &quot;{searchQuery}&quot;</h2>
               <p>Found {filteredProducts.length} products</p>
               <button
                 className="shop-clear-search-btn"

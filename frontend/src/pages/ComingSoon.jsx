@@ -68,7 +68,7 @@ const ComingSoon = () => {
               <span className="title-line">Is Coming</span>
             </h1>
             <p className="hero-description">
-              We're crafting a world of luxury, style, and innovation.
+              We&apos;re crafting a world of luxury, style, and innovation.
               Get ready to experience fashion redefined.
             </p>
           </div>
