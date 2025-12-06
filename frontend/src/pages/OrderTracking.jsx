@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useState } from 'react';
 import axios from 'axios';
 import './OrderTracking.css';
@@ -13,7 +15,7 @@ const OrderTracking = () => {
 
   const handleTrackOrder = async (e) => {
     e.preventDefault();
-    
+
     if (!orderNumber.trim()) {
       setError('Please enter an order number');
       return;
@@ -78,9 +80,9 @@ const OrderTracking = () => {
       <div className="tracking-header">
         <div className="tracking-icon">
           <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-            <path d="M12 2L2 7l10 5 10-5-10-5z"/>
-            <path d="M2 17l10 5 10-5"/>
-            <path d="M2 12l10 5 10-5"/>
+            <path d="M12 2L2 7l10 5 10-5-10-5z" />
+            <path d="M2 17l10 5 10-5" />
+            <path d="M2 12l10 5 10-5" />
           </svg>
         </div>
         <h1>Track Your Order</h1>
@@ -120,7 +122,7 @@ const OrderTracking = () => {
           <div className="order-summary">
             <h2>Order #{order.order_number}</h2>
             <div className="order-status">
-              <span 
+              <span
                 className="status-badge"
                 style={{ backgroundColor: getStatusColor(order.order_status) }}
               >
@@ -130,7 +132,7 @@ const OrderTracking = () => {
             <div className="order-info">
               <p><strong>Order Date:</strong> {formatDate(order.created_at)}</p>
               <p><strong>Total Amount:</strong> ₹{order.final_amount}</p>
-              <p><strong>Payment Status:</strong> 
+              <p><strong>Payment Status:</strong>
                 <span className={`payment-status ${order.payment_status}`}>
                   {order.payment_status === 'paid' ? 'Paid' : 'Pending'}
                 </span>
@@ -138,7 +140,7 @@ const OrderTracking = () => {
               {order.tracking_number && (
                 <p><strong>Tracking Number:</strong> {order.tracking_number}</p>
               )}
-              
+
             </div>
           </div>
 
@@ -165,7 +167,7 @@ const OrderTracking = () => {
             <div className="delivery-progress">
               {['pending', 'processing', 'shipped', 'delivered'].map((status, index) => (
                 <div key={status} className="progress-step">
-                  <div className={`step-icon ${order.order_status === status ? 'active' : 
+                  <div className={`step-icon ${order.order_status === status ? 'active' :
                     tracking.some(t => t.status === status) ? 'completed' : ''}`}>
                     {tracking.some(t => t.status === status) ? '✓' : index + 1}
                   </div>
@@ -186,9 +188,9 @@ const OrderTracking = () => {
           <div className="help-item">
             <div className="help-icon">
               <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                <circle cx="12" cy="12" r="10"/>
-                <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>
-                <line x1="12" y1="17" x2="12.01" y2="17"/>
+                <circle cx="12" cy="12" r="10" />
+                <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" />
+                <line x1="12" y1="17" x2="12.01" y2="17" />
               </svg>
             </div>
             <h4>Can't find your order?</h4>
@@ -197,9 +199,9 @@ const OrderTracking = () => {
           <div className="help-item">
             <div className="help-icon">
               <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                <circle cx="12" cy="12" r="3"/>
-                <path d="M12 1v6m0 6v6"/>
-                <path d="M21 12h-6m-6 0H3"/>
+                <circle cx="12" cy="12" r="3" />
+                <path d="M12 1v6m0 6v6" />
+                <path d="M21 12h-6m-6 0H3" />
               </svg>
             </div>
             <h4>Order not updating?</h4>
@@ -208,7 +210,7 @@ const OrderTracking = () => {
           <div className="help-item">
             <div className="help-icon">
               <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
               </svg>
             </div>
             <h4>Contact Support</h4>

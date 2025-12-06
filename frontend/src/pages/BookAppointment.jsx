@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
@@ -111,7 +113,7 @@ const BookAppointment = () => {
     const daysInMonth = getDaysInMonth(currentMonth, currentYear);
     const firstDay = getFirstDayOfMonth(currentMonth, currentYear);
     const days = [];
-    
+
     // Empty cells for days before the first day of the month
     for (let i = 0; i < firstDay; i++) {
       days.push(<div key={`empty-${i}`} className="calendar-day empty"></div>);
@@ -122,7 +124,7 @@ const BookAppointment = () => {
       const dateStr = `${currentYear}-${String(currentMonth + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
       const isSelected = formData.selectedDate === dateStr;
       const isPast = new Date(dateStr) < new Date(new Date().setHours(0, 0, 0, 0));
-      
+
       days.push(
         <div
           key={day}
@@ -161,7 +163,7 @@ const BookAppointment = () => {
         <title>Book Appointment - Mateshwari Exports</title>
         <meta name="description" content="Book an appointment with Mateshwari Exports to discuss your spiritual and artistic needs." />
       </Helmet>
-      
+
       <div className="book-appointment-page">
         <div className="book-appointment-container">
           <h1 className="book-appointment-title">BOOK AN APPOINTMENT NOW</h1>

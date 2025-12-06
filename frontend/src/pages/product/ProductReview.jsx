@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useUser } from '../../context/UserContext';
@@ -36,7 +38,7 @@ const ProductReview = ({ productId, productName }) => {
     try {
       setLoading(true);
       const response = await axios.get(`${API_URL}/reviews/product/${productId}`);
-      
+
       if (response.data.success) {
         setReviews(response.data.data.reviews);
         setAverageRating(response.data.data.average_rating);
@@ -57,7 +59,7 @@ const ProductReview = ({ productId, productName }) => {
           'Authorization': `Bearer ${token}`
         }
       });
-      
+
       if (response.data.success && response.data.data) {
         setUserReview(response.data.data);
       }
@@ -91,7 +93,7 @@ const ProductReview = ({ productId, productName }) => {
       });
 
       const result = response.data;
-      
+
       if (result.success) {
         alert('Review submitted successfully! It will be visible after approval.');
         setShowReviewModal(false);
@@ -133,7 +135,7 @@ const ProductReview = ({ productId, productName }) => {
       });
 
       const result = response.data;
-      
+
       if (result.success) {
         alert('Review updated successfully!');
         setShowEditModal(false);
@@ -165,7 +167,7 @@ const ProductReview = ({ productId, productName }) => {
       });
 
       const result = response.data;
-      
+
       if (result.success) {
         alert('Review deleted successfully!');
         setUserReview(null);
@@ -194,7 +196,7 @@ const ProductReview = ({ productId, productName }) => {
       });
 
       const result = response.data;
-      
+
       if (result.success) {
         fetchReviews(); // Refresh reviews to update like count
       }
@@ -282,8 +284,8 @@ const ProductReview = ({ productId, productName }) => {
           <div className="user-review-content">
             <div className="user-review-rating">
               <div className="reviewer-info">
-                <img 
-                  src={user?.photo ? `${API_URL.replace('/api', '')}${user.photo}` : 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMjAiIGN5PSIyMCIgcj0iMjAiIGZpbGw9IiNFNUU3RUIiLz4KPHN2ZyB4PSIxMiIgeT0iMTIiIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIj4KPHBhdGggZD0iTTEyIDEyQzE0LjIwOTEgMTIgMTYgMTAuMjA5MSAxNiA4QzE2IDUuNzkwODYgMTQuMjA5MSA0IDEyIDRDOS43OTA4NiA0IDggNS43OTA4NiA4IDhDOCAxMC4yMDkxIDkuNzkwODYgMTIgMTJaIiBmaWxsPSIjOUI5QkEwIi8+CjxwYXRoIGQ9Ik0xMiAxNEM5LjMzIDE0IDcgMTYuMzMgNyAxOVYyMEgxN1YxOUMxNyAxNi4zMyAxNC42NyAxNCAxMiAxNFoiIGZpbGw9IiM5QjlCQTAiLz4KPC9zdmc+Cjwvc3ZnPgo='} 
+                <img
+                  src={user?.photo ? `${API_URL.replace('/api', '')}${user.photo}` : 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMjAiIGN5PSIyMCIgcj0iMjAiIGZpbGw9IiNFNUU3RUIiLz4KPHN2ZyB4PSIxMiIgeT0iMTIiIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIj4KPHBhdGggZD0iTTEyIDEyQzE0LjIwOTEgMTIgMTYgMTAuMjA5MSAxNiA4QzE2IDUuNzkwODYgMTQuMjA5MSA0IDEyIDRDOS43OTA4NiA0IDggNS43OTA4NiA4IDhDOCAxMC4yMDkxIDkuNzkwODYgMTIgMTJaIiBmaWxsPSIjOUI5QkEwIi8+CjxwYXRoIGQ9Ik0xMiAxNEM5LjMzIDE0IDcgMTYuMzMgNyAxOVYyMEgxN1YxOUMxNyAxNi4zMyAxNC42NyAxNCAxMiAxNFoiIGZpbGw9IiM5QjlCQTAiLz4KPC9zdmc+Cjwvc3ZnPgo='}
                   alt={user?.name || 'User'}
                   className="reviewer-avatar"
                   loading="lazy"
@@ -299,18 +301,18 @@ const ProductReview = ({ productId, productName }) => {
             {userReview.review_text && (
               <p className="user-review-text">{userReview.review_text}</p>
             )}
-                         {userReview.review_image && (
-               <img 
-                 src={`${API_URL.replace('/api', '')}${userReview.review_image}`} 
-                 alt="Review" 
-                 className="user-review-image"
-               />
-             )}
-             {userReview.status === 'rejected' && (
-               <div className="review-status">
-                 Status: <span className="status-rejected">Rejected</span>
-               </div>
-             )}
+            {userReview.review_image && (
+              <img
+                src={`${API_URL.replace('/api', '')}${userReview.review_image}`}
+                alt="Review"
+                className="user-review-image"
+              />
+            )}
+            {userReview.status === 'rejected' && (
+              <div className="review-status">
+                Status: <span className="status-rejected">Rejected</span>
+              </div>
+            )}
           </div>
         </div>
       )}
@@ -322,8 +324,8 @@ const ProductReview = ({ productId, productName }) => {
             <div key={review.review_id} className="review-item">
               <div className="review-header-info">
                 <div className="reviewer-info">
-                  <img 
-                    src={review.user_photo ? `${API_URL.replace('/api', '')}${review.user_photo}` : 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMjAiIGN5PSIyMCIgcj0iMjAiIGZpbGw9IiNFNUU3RUIiLz4KPHN2ZyB4PSIxMiIgeT0iMTIiIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIj4KPHBhdGggZD0iTTEyIDEyQzE0LjIwOTEgMTIgMTYgMTAuMjA5MSAxNiA4QzE2IDUuNzkwODYgMTQuMjA5MSA0IDEyIDRDOS43OTA4NiA0IDggNS43OTA4NiA4IDhDOCAxMC4yMDkxIDkuNzkwODYgMTIgMTJaIiBmaWxsPSIjOUI5QkEwIi8+CjxwYXRoIGQ9Ik0xMiAxNEM5LjMzIDE0IDcgMTYuMzMgNyAxOVYyMEgxN1YxOUMxNyAxNi4zMyAxNC42NyAxNCAxMiAxNFoiIGZpbGw9IiM5QjlCQTAiLz4KPC9zdmc+Cjwvc3ZnPgo='} 
+                  <img
+                    src={review.user_photo ? `${API_URL.replace('/api', '')}${review.user_photo}` : 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMjAiIGN5PSIyMCIgcj0iMjAiIGZpbGw9IiNFNUU3RUIiLz4KPHN2ZyB4PSIxMiIgeT0iMTIiIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIj4KPHBhdGggZD0iTTEyIDEyQzE0LjIwOTEgMTIgMTYgMTAuMjA5MSAxNiA4QzE2IDUuNzkwODYgMTQuMjA5MSA0IDEyIDRDOS43OTA4NiA0IDggNS43OTA4NiA4IDhDOCAxMC4yMDkxIDkuNzkwODYgMTIgMTJaIiBmaWxsPSIjOUI5QkEwIi8+CjxwYXRoIGQ9Ik0xMiAxNEM5LjMzIDE0IDcgMTYuMzMgNyAxOVYyMEgxN1YxOUMxNyAxNi4zMyAxNC42NyAxNCAxMiAxNFoiIGZpbGw9IiM5QjlCQTAiLz4KPC9zdmc+Cjwvc3ZnPgo='}
                     alt={review.user_name}
                     className="reviewer-avatar"
                     onError={(e) => {
@@ -341,14 +343,14 @@ const ProductReview = ({ productId, productName }) => {
                 <p className="review-text">{review.review_text}</p>
               )}
               {review.review_image && (
-                <img 
-                  src={`${API_URL.replace('/api', '')}${review.review_image}`} 
-                  alt="Review" 
+                <img
+                  src={`${API_URL.replace('/api', '')}${review.review_image}`}
+                  alt="Review"
                   className="review-image"
                 />
               )}
               <div className="review-actions">
-                <button 
+                <button
                   className="like-review-btn"
                   onClick={() => handleLikeReview(review.review_id)}
                 >
@@ -377,7 +379,7 @@ const ProductReview = ({ productId, productName }) => {
           <div className="review-modal" onClick={(e) => e.stopPropagation()}>
             <div className="modal-header">
               <h3>Write a Review</h3>
-              <button 
+              <button
                 className="close-modal-btn"
                 onClick={() => setShowReviewModal(false)}
               >
@@ -387,7 +389,7 @@ const ProductReview = ({ productId, productName }) => {
             <form onSubmit={handleSubmitReview} className="review-form">
               <div className="form-group">
                 <label>Rating:</label>
-                {renderStars(formData.rating, true, (star) => 
+                {renderStars(formData.rating, true, (star) =>
                   setFormData(prev => ({ ...prev, rating: star }))
                 )}
               </div>
@@ -431,7 +433,7 @@ const ProductReview = ({ productId, productName }) => {
           <div className="review-modal" onClick={(e) => e.stopPropagation()}>
             <div className="modal-header">
               <h3>Edit Review</h3>
-              <button 
+              <button
                 className="close-modal-btn"
                 onClick={() => setShowEditModal(false)}
               >
@@ -441,7 +443,7 @@ const ProductReview = ({ productId, productName }) => {
             <form onSubmit={handleUpdateReview} className="review-form">
               <div className="form-group">
                 <label>Rating:</label>
-                {renderStars(formData.rating, true, (star) => 
+                {renderStars(formData.rating, true, (star) =>
                   setFormData(prev => ({ ...prev, rating: star }))
                 )}
               </div>

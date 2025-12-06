@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useState, useEffect } from 'react'
 import './ComingSoon.css'
 import logo from '../assets/img/logo.png'
@@ -39,7 +41,7 @@ const ComingSoon = () => {
         <div className="geometric-pattern"></div>
         <div className="floating-particles"></div>
       </div>
-      
+
       {/* Main Content */}
       <div className="main-content">
         {/* Header Section */}
@@ -66,7 +68,7 @@ const ComingSoon = () => {
               <span className="title-line">Is Coming</span>
             </h1>
             <p className="hero-description">
-              We're crafting a world of luxury, style, and innovation. 
+              We're crafting a world of luxury, style, and innovation.
               Get ready to experience fashion redefined.
             </p>
           </div>
@@ -106,18 +108,18 @@ const ComingSoon = () => {
           <div className="newsletter-content">
             <h3 className="newsletter-title">Join the Elite</h3>
             <p className="newsletter-description">
-              Be among the first to experience luxury redefined. 
+              Be among the first to experience luxury redefined.
               Exclusive early access awaits.
             </p>
             <div className="newsletter-form">
               <div className="input-group">
-                <input 
-                  type="email" 
-                  placeholder="Enter your email address" 
+                <input
+                  type="email"
+                  placeholder="Enter your email address"
                   className="newsletter-input"
                   id="newsletter-email"
                 />
-                <button 
+                <button
                   className="newsletter-button"
                   onClick={() => {
                     const email = document.getElementById('newsletter-email').value;

@@ -9,7 +9,7 @@ import visionIcon from '../../assets/img/icons/vision.png';
 import icon1 from "../../assets/img/icons/1.png";
 import icon2 from "../../assets/img/icons/2.png";
 import icon3 from "../../assets/img/icons/3.png";
-import aboutup from '../../assets/Images/collection/aboutup.jpg';
+import aboutup from '../../assets/Images/banner/aboutup.jpg';
 import aboutbg from '../../assets/Images/banner/aboutbg.jpg';
 import aboutBannerDesktop from '../../assets/Images/banner/customProjectsBgDesktop.jpg';
 import aboutBannerMobile from '../../assets/Images/banner/customProjectsBgDesktop.jpg';

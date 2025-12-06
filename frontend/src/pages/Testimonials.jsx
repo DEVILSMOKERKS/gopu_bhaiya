@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import './Testimonials.css';
@@ -71,15 +73,15 @@ const Testimonials = () => {
 
   const categories = ['all', 'temple', 'pooja-room', 'idols'];
 
-  const filteredTestimonials = activeFilter === 'all' 
-    ? testimonials 
+  const filteredTestimonials = activeFilter === 'all'
+    ? testimonials
     : testimonials.filter(t => t.category === activeFilter);
 
   const renderStars = (rating) => {
     return [...Array(5)].map((_, index) => (
-      <FaStar 
-        key={index} 
-        className={index < rating ? 'star filled' : 'star'} 
+      <FaStar
+        key={index}
+        className={index < rating ? 'star filled' : 'star'}
       />
     ));
   };
