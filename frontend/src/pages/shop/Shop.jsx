@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import Image from 'next/image';
 import { useRouter, useSearchParams, usePathname } from 'next/navigation';
 import axios from 'axios';
 import './shop.css';
@@ -648,8 +649,8 @@ const Shop = () => {
         <div className="shop-breadcrumb">
           <span>Home / Shop All</span>
         </div>
-        <div className="shop-hero-banner">
-          <img src={shopBanner} alt="Shop Banner" className="shop-banner-image" />
+        <div className="shop-hero-banner" style={{ position: 'relative', width: '100%', height: '300px' }}>
+          <Image src={shopBanner} alt="Shop Banner" className="shop-banner-image" fill style={{ objectFit: 'cover' }} />
         </div>
         <div className="shop-skeleton-content">
           {/* Left Sidebar Skeleton */}
@@ -728,11 +729,11 @@ const Shop = () => {
         <div className="shop-breadcrumb">
           <span>Home / Shop All</span>
         </div>
-        <div className="shop-hero-banner">
-          <img src={shopBanner} alt="Shop Banner" className="shop-banner-image" />
+        <div className="shop-hero-banner" style={{ position: 'relative', width: '100%', height: '300px' }}>
+          <Image src={shopBanner} alt="Shop Banner" className="shop-banner-image" fill style={{ objectFit: 'cover' }} />
         </div>
-        <div className="shop-hero-banner-mobile">
-          <img src={shopBannerMobile} alt="Shop Banner" className="shop-banner-image" />
+        <div className="shop-hero-banner-mobile" style={{ position: 'relative', width: '100%', height: '200px' }}>
+          <Image src={shopBannerMobile} alt="Shop Banner" className="shop-banner-image" fill style={{ objectFit: 'cover' }} />
         </div>
         <div className="shop-content">
           <div className="shop-products-section">
@@ -749,11 +750,11 @@ const Shop = () => {
     <div className="shop-container">
 
       {/* Hero Banner */}
-      <div className="shop-hero-banner">
-        <img src={shopBanner} alt="Shop Banner" className="shop-banner-image" />
+      <div className="shop-hero-banner" style={{ position: 'relative', width: '100%', height: '300px' }}>
+        <Image src={shopBanner} alt="Shop Banner" className="shop-banner-image" fill style={{ objectFit: 'cover' }} />
       </div>
-      <div className="shop-hero-banner-mobile">
-        <img src={shopBannerMobile} alt="Shop Banner" className="shop-banner-image" />
+      <div className="shop-hero-banner-mobile" style={{ position: 'relative', width: '100%', height: '200px' }}>
+        <Image src={shopBannerMobile} alt="Shop Banner" className="shop-banner-image" fill style={{ objectFit: 'cover' }} />
       </div>
       <div className="shop-content">
         {/* Mobile Filter Button */}

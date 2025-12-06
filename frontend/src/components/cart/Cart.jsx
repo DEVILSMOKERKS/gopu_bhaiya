@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import axios from 'axios';
@@ -377,7 +378,7 @@ const Cart = () => {
               <div key={item.cart_id} className="cart-item-row">
                 <div className="cart-item-product">
                   <div className="cart-item-image">
-                    <img src={item.product?.image || '/src/assets/img/Bestseller1.jpg'} alt={item.product?.name || 'Product'} />
+                    <Image src={item.product?.image || '/src/assets/img/Bestseller1.jpg'} alt={item.product?.name || 'Product'} width={100} height={100} style={{ objectFit: 'cover' }} />
                   </div>
                   <div className="cart-item-details">
                     <h3 className="cart-item-name">{item.product?.name || 'Product'}</h3>

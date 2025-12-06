@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import axios from 'axios';
 import './OrderDetails.css';
@@ -215,9 +216,12 @@ const OrderDetails = ({ orderId }) => {
             {items.map((item, index) => (
               <div key={index} className="item-card">
                 <div className="item-image">
-                  <img
+                  <Image
                     src={item.product_image ? `${API_URL.replace('/api', '')}${item.product_image}` : '/src/assets/img/Bestseller1.jpg'}
                     alt={item.product_name}
+                    width={100}
+                    height={100}
+                    style={{ objectFit: 'cover' }}
                     onError={(e) => {
                       e.target.src = '/src/assets/img/Bestseller1.jpg';
                     }}

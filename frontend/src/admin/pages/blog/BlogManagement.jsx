@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import axios from 'axios';
 import './BlogManagement.css';
@@ -326,10 +327,13 @@ const BlogManagement = () => {
               <tr key={blog.blog_id}>
                 <td>
                   <div className="blog-title-cell">
-                    <img
+                    <Image
                       src={`${API_URL.replace('/api', '')}${blog.featured_image}`}
                       alt={blog.title}
                       className="blog-thumbnail"
+                      width={60}
+                      height={60}
+                      style={{ objectFit: 'cover' }}
                     />
                     <span>{blog.title}</span>
                   </div>

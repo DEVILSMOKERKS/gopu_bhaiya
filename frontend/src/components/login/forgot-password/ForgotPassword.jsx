@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { Mail, ArrowLeft, CheckCircle, AlertCircle, Loader2 } from 'lucide-react';
 import axios from 'axios';
 import loginimage from '../../../assets/img/loginimage.jpg';
@@ -79,7 +80,7 @@ const ForgotPassword = () => {
     <div className="forgot-password-container">
       {/* Image Section */}
       <div className="forgot-password-img">
-        <img src={loginimage} alt="Forgot Password" />
+        <Image src={loginimage} alt="Forgot Password" fill style={{ objectFit: 'cover' }} />
       </div>
 
       {/* Form Section */}

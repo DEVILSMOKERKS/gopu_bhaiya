@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import axios from 'axios';
 import { useWishlistCart } from '../../context/wishlistCartContext';
@@ -822,9 +823,12 @@ const Checkoutinfo = () => {
               cartItems.map((item, index) => (
                 <div key={item.id || item.product_id || index} className="checkoutinfo-cart-item">
                   <div className="checkoutinfo-item-image">
-                    <img
+                    <Image
                       src={item.image || '/src/assets/img/Bestseller1.jpg'}
                       alt={item.name || 'Product'}
+                      width={100}
+                      height={100}
+                      style={{ objectFit: 'cover' }}
                       onError={(e) => {
                         e.target.src = '/src/assets/img/Bestseller1.jpg';
                       }}

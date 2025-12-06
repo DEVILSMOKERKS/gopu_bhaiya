@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
+import Image from 'next/image';
 import Link from 'next/link';
 import './OurCreations.css';
 
@@ -69,9 +70,9 @@ const OurCreations = () => {
         <div className="creations-container">
           <div className="creations-grid">
             {creations.map(creation => (
-              <Link key={creation.id} to={creation.link} className="creation-card">
+              <Link key={creation.id} href={creation.link} className="creation-card">
                 <div className="creation-image-wrapper">
-                  <img src={creation.image} alt={creation.title} className="creation-image" />
+                  <Image src={creation.image} alt={creation.title} className="creation-image" fill style={{ objectFit: 'cover' }} />
                   <div className="creation-overlay">
                     <span className="creation-view-text">View Collection</span>
                   </div>

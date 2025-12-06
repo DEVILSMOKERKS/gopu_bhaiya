@@ -3,6 +3,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
+import Image from 'next/image';
 import axios from 'axios';
 import { HiSearch, HiX } from 'react-icons/hi';
 import { useUser } from '../../context/UserContext';
@@ -231,7 +232,7 @@ const Hero = () => {
                     onClick={() => handleSearchResultClick(product)}
                   >
                     <div className="hero-search-result-image">
-                      <img src={getProductImage(product)} alt={product.name} />
+                      <Image src={getProductImage(product)} alt={product.name} width={80} height={80} style={{ objectFit: 'cover' }} />
                     </div>
                     <div className="hero-search-result-content">
                       <h4 className="hero-search-result-title">{product.name}</h4>

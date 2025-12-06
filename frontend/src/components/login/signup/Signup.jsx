@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
+import Image from 'next/image';
 import { FcGoogle } from "react-icons/fc";
 import { PiFacebookLogoFill } from "react-icons/pi";
 import { Eye, EyeOff, AlertCircle, CheckCircle, Loader2 } from 'lucide-react';
@@ -173,7 +174,7 @@ const Signup = ({ onClose }) => {
                 </button>
             )}
             <div className="signup-img">
-                <img src={Signupimage} alt='Beautiful signup background' />
+                <Image src={Signupimage} alt='Beautiful signup background' fill style={{ objectFit: 'cover' }} />
             </div>
 
             <div className="signup-form">

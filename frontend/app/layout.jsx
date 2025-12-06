@@ -2,6 +2,7 @@
 
 import { Provider } from 'react-redux';
 import { HelmetProvider } from 'react-helmet-async';
+import Image from 'next/image';
 import { store } from '../src/store/store';
 import { UserProvider } from '../src/context/UserContext';
 import { WishlistCartProvider } from '../src/context/wishlistCartContext';
@@ -46,12 +47,13 @@ export default function RootLayout({ children }) {
       <body>
         {/* Meta Pixel noscript fallback */}
         <noscript>
-          <img
-            height="1"
-            width="1"
+          <Image
+            height={1}
+            width={1}
             style={{ display: 'none' }}
             src="https://www.facebook.com/tr?id=1879559569290679&ev=PageView&noscript=1"
             alt="pixal-facbook"
+            unoptimized
           />
         </noscript>
         <Provider store={store}>

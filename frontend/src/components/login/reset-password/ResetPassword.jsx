@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
 import Link from 'next/link';
+import Image from 'next/image';
 import { Lock, Eye, EyeOff, CheckCircle, AlertCircle, Loader2, ArrowLeft } from 'lucide-react';
 import axios from 'axios';
 import loginimage from '../../../assets/img/loginimage.jpg';
@@ -134,7 +135,7 @@ const ResetPassword = () => {
         <div className="reset-password-container">
             {/* Image Section */}
             <div className="reset-password-img">
-                <img src={loginimage} alt="Reset Password" />
+                <Image src={loginimage} alt="Reset Password" fill style={{ objectFit: 'cover' }} />
             </div>
 
             {/* Form Section */}

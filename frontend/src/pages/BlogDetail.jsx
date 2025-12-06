@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import axios from 'axios';
 import './BlogDetail.css';
@@ -112,10 +113,13 @@ const BlogDetail = ({ slug }) => {
 
             <div className="blog-detail-author">
               {blog.author_photo && (
-                <img
+                <Image
                   src={blog.author_photo}
                   alt={blog.author_name}
                   className="blog-detail-author-photo"
+                  width={60}
+                  height={60}
+                  style={{ objectFit: 'cover', borderRadius: '50%' }}
                 />
               )}
               <div className="blog-detail-author-info">
