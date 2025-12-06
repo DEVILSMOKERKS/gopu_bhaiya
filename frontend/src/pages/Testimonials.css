@@ -4,32 +4,32 @@
   background: #f8f9fa;
 }
 
-.testimonials-header {
+.testimonials-page .testimonials-header {
   text-align: center;
   padding: 60px 20px 40px;
   background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
 }
 
-.testimonials-title {
+.testimonials-page .testimonials-title {
   font-size: 24px !important;
   margin-bottom: 15px;
   color: #000000;
 }
 
-.testimonials-subtitle {
+.testimonials-page .testimonials-subtitle {
   font-size: 18px;
   color: #2e2e2e;
   max-width: 600px;
   margin: 0 auto;
 }
 
-.testimonials-container {
+.testimonials-page .testimonials-container {
   max-width: 1200px;
   margin: 0 auto;
   padding: 40px 20px;
 }
 
-.testimonials-filters {
+.testimonials-page .testimonials-filters {
   display: flex;
   justify-content: center;
   gap: 15px;
@@ -37,7 +37,7 @@
   flex-wrap: wrap;
 }
 
-.filter-btn {
+.testimonials-page .filter-btn {
   padding: 10px 24px;
   background: #ffffff;
   border: 1px solid #ddd;
@@ -51,24 +51,24 @@
   letter-spacing: 0.05rem;
 }
 
-.filter-btn:hover {
+.testimonials-page .filter-btn:hover {
   border-color: #B68126;
   color: #B68126;
 }
 
-.filter-btn.active {
+.testimonials-page .filter-btn.active {
   background: #B68126;
   color: #ffffff;
   border-color: #B68126;
 }
 
-.testimonials-grid {
+.testimonials-page .testimonials-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
   gap: 30px;
 }
 
-.testimonial-card {
+.testimonials-page .testimonial-card {
   background: #ffffff;
   padding: 30px;
   border-radius: 12px;
@@ -76,19 +76,19 @@
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.testimonial-card:hover {
+.testimonials-page .testimonial-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
 }
 
-.testimonial-header {
+.testimonials-page .testimonial-header {
   display: flex;
   gap: 15px;
   margin-bottom: 20px;
   align-items: flex-start;
 }
 
-.testimonial-avatar {
+.testimonials-page .testimonial-avatar {
   width: 60px;
   height: 60px;
   border-radius: 50%;
@@ -97,49 +97,49 @@
   background: #f0f0f0;
 }
 
-.testimonial-avatar img {
+.testimonials-page .testimonial-avatar img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-.testimonial-info {
+.testimonials-page .testimonial-info {
   flex: 1;
 }
 
-.testimonial-name {
+.testimonials-page .testimonial-name {
   font-size: 18px;
   margin-bottom: 5px;
   color: #000000;
   font-family: var(--futura-pt-medium, 'Arial', 'Helvetica', sans-serif);
 }
 
-.testimonial-location {
+.testimonials-page .testimonial-location {
   font-size: 14px;
   color: #666;
   margin-bottom: 8px;
 }
 
-.testimonial-rating {
+.testimonials-page .testimonial-rating {
   display: flex;
   gap: 3px;
 }
 
-.star {
+.testimonials-page .star {
   color: #ddd;
   font-size: 14px;
 }
 
-.star.filled {
+.testimonials-page .star.filled {
   color: #ffc107;
 }
 
-.testimonial-content {
+.testimonials-page .testimonial-content {
   position: relative;
   margin-bottom: 20px;
 }
 
-.quote-icon {
+.testimonials-page .quote-icon {
   position: absolute;
   top: -5px;
   left: -5px;
@@ -148,7 +148,7 @@
   opacity: 0.3;
 }
 
-.testimonial-text {
+.testimonials-page .testimonial-text {
   font-size: 16px;
   color: #2e2e2e;
   line-height: 1.6;
@@ -156,7 +156,7 @@
   margin: 0;
 }
 
-.testimonial-footer {
+.testimonials-page .testimonial-footer {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -164,12 +164,12 @@
   border-top: 1px solid #f0f0f0;
 }
 
-.testimonial-date {
+.testimonials-page .testimonial-date {
   font-size: 12px;
   color: #999;
 }
 
-.testimonial-category {
+.testimonials-page .testimonial-category {
   font-size: 12px;
   padding: 4px 12px;
   background: #f8f9fa;
@@ -179,24 +179,16 @@
 }
 
 @media (max-width: 768px) {
-  .testimonials-grid {
+  .testimonials-page .testimonials-grid {
     grid-template-columns: 1fr;
   }
 
-  .testimonials-filters {
+  .testimonials-page .testimonials-filters {
     gap: 10px;
   }
 
-  .filter-btn {
+  .testimonials-page .filter-btn {
     padding: 8px 16px;
     font-size: 12px;
   }
 }
-
-
-
-
-
-
-
-
