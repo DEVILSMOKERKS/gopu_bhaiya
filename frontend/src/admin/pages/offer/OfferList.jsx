@@ -1,11 +1,13 @@
+'use client';
+
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useRouter } from 'next/navigation';
 import axios from 'axios';
 import { FaPlus, FaEdit, FaTrash, FaEye, FaSearch, FaFilter } from 'react-icons/fa';
 import './OfferList.css';
 
 const OfferList = () => {
-  const navigate = useNavigate();
+  const router = useRouter();
   const [offers, setOffers] = useState([]);
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState('');
@@ -110,7 +112,7 @@ const OfferList = () => {
         </div>
         <button
           className="add-btn"
-          onClick={() => navigate('/admin/offers/create')}
+          onClick={() => router.push('/admin/offers/create')}
         >
           <FaPlus /> Add New Offer
         </button>
@@ -153,7 +155,7 @@ const OfferList = () => {
                 <p>No offers found</p>
                 <button
                   className="add-btn"
-                  onClick={() => navigate('/admin/offers/create')}
+                  onClick={() => router.push('/admin/offers/create')}
                 >
                   <FaPlus /> Create Your First Offer
                 </button>
@@ -166,7 +168,7 @@ const OfferList = () => {
                     <div className="offer-actions">
                       <button
                         className="action-btn edit"
-                        onClick={() => navigate(`/admin/offers/edit/${offer.offer_id}`)}
+                        onClick={() => router.push(`/admin/offers/edit/${offer.offer_id}`)}
                         title="Edit Offer"
                       >
                         <FaEdit />

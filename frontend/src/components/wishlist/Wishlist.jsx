@@ -1,5 +1,7 @@
+'use client';
+
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useRouter } from 'next/navigation';
 import { useWishlistCart } from '../../context/wishlistCartContext';
 import './Wishlist.css';
 
@@ -10,7 +12,7 @@ const Wishlist = () => {
   const [selectedColors, setSelectedColors] = useState({});
   const [selectedSizes, setSelectedSizes] = useState({});
   const { wishlist, removeFromWishlist, addToCart, loading, error } = useWishlistCart();
-  const navigate = useNavigate();
+  const router = useRouter();
 
   // Get API URL from environment variable
   const API_URL = import.meta.env.VITE_API_URL;
@@ -167,14 +169,14 @@ const Wishlist = () => {
           </div>
           <h3 className="wishlist-empty-title">Your wishlist is empty</h3>
           <p className="wishlist-empty-description">Start adding items to your wishlist to see them here</p>
-          <button className="wishlist-empty-btn" onClick={() => navigate('/shop')}>Start Shopping</button>
+          <button className="wishlist-empty-btn" onClick={() => router.push('/shop')}>Start Shopping</button>
         </div>
       ) : (
         <div className="wishlist-grid">
           {wishlistItems.map((item) => {
             const product = item.product || item;
             const itemId = item.wishlist_id || item.id;
-            
+
             return (
               <div key={itemId} className="wishlist-card">
                 <div className="wishlist-card-image-container">

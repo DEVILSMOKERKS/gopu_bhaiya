@@ -1,13 +1,15 @@
+'use client';
+
 import React, { useState, useEffect } from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useRouter, useSearchParams } from 'next/navigation';
 import axios from 'axios';
 import './checkoutpayment.css';
 
 const API_URL = import.meta.env.VITE_API_URL;
 
 const Checkoutpayment = () => {
-  const navigate = useNavigate();
-  const location = useLocation();
+  const router = useRouter();
+  const searchParams = useSearchParams();
   const [isLoading, setIsLoading] = useState(true);
   const [orderData, setOrderData] = useState(null);
   const [paymentError, setPaymentError] = useState('');
@@ -24,7 +26,7 @@ const Checkoutpayment = () => {
         setOrderData(data);
       } else {
         // No pending order, redirect to cart
-        navigate('/cart');
+        router.push('/cart');
         return;
       }
     } catch (error) {
@@ -95,7 +97,7 @@ const Checkoutpayment = () => {
               sessionStorage.removeItem('checkoutData');
 
               // Navigate to success page
-              navigate('/paymentsuccessful', {
+              router.push('/paymentsuccessful', {
                 state: {
                   orderNumber: orderData.orderNumber,
                   orderId: verifyResponse.data.data.order_id,
@@ -137,7 +139,7 @@ const Checkoutpayment = () => {
   };
 
   const handleBackToCheckout = () => {
-    navigate('/checkout');
+    router.push('/checkout');
   };
 
   if (isLoading) {

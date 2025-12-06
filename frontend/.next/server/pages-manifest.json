@@ -1,5 +1,22 @@
 {
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
+  "/BlogDetail": "pages/BlogDetail.js",
+  "/Blogs": "pages/Blogs.js",
+  "/BookAppointment": "pages/BookAppointment.js",
+  "/ComingSoon": "pages/ComingSoon.js",
+  "/Home": "pages/Home.js",
+  "/Orders": "pages/Orders.js",
+  "/OrderDetails": "pages/OrderDetails.js",
+  "/OrderTracking": "pages/OrderTracking.js",
+  "/OurCreations": "pages/OurCreations.js",
+  "/OurServices": "pages/OurServices.js",
+  "/Projects": "pages/Projects.js",
+  "/Shop": "pages/Shop.js",
+  "/Testimonials": "pages/Testimonials.js",
+  "/product/Product": "pages/product/Product.js",
+  "/product/ProductReview": "pages/product/ProductReview.js",
+  "/thankyouPage": "pages/thankyouPage.js",
+  "/shop/Shop": "pages/shop/Shop.js",
   "/_document": "pages/_document.js"
 }

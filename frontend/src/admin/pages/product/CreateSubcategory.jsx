@@ -1,12 +1,14 @@
+'use client';
+
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useRouter } from 'next/navigation';
 import axios from 'axios';
 import { useAdmin } from '../../../context/AdminContext';
 import './CreateSubcategory.css';
 
 const CreateSubcategory = () => {
   const { token } = useAdmin();
-  const navigate = useNavigate();
+  const router = useRouter();
   const [formData, setFormData] = useState({
     name: '',
     description: '',
@@ -94,7 +96,7 @@ const CreateSubcategory = () => {
 
       if (response.status === 201) {
         alert('Subcategory created successfully!');
-        navigate('/admin/subcategories');
+        router.push('/admin/subcategories');
       } else {
         setError(result.message || 'Failed to create subcategory');
       }

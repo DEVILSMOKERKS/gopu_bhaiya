@@ -1,13 +1,14 @@
+'use client';
+
 import React, { useState, useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useRouter } from 'next/navigation';
 import axios from 'axios';
 import { useAdmin } from '../../../context/AdminContext';
 import './EditSubcategory.css';
 
-const EditSubcategory = () => {
-  const { id } = useParams();
+const EditSubcategory = ({ id }) => {
   const { token } = useAdmin();
-  const navigate = useNavigate();
+  const router = useRouter();
   const [formData, setFormData] = useState({
     name: '',
     description: '',
@@ -34,7 +35,7 @@ const EditSubcategory = () => {
     try {
       const response = await axios.get(`${API_URL}/categories`);
       const result = response.data;
-      
+
       if (response.status === 200) {
         setCategories(result.data);
       } else {
@@ -52,7 +53,7 @@ const EditSubcategory = () => {
     try {
       const response = await axios.get(`${API_URL}/subcategories/${id}`);
       const result = response.data;
-      
+
       if (response.status === 200) {
         setFormData({
           name: result.data.name,
@@ -83,7 +84,7 @@ const EditSubcategory = () => {
     const file = e.target.files[0];
     if (file) {
       setNewImage(file);
-      
+
       // Create preview
       const reader = new FileReader();
       reader.onload = (e) => {
@@ -117,7 +118,7 @@ const EditSubcategory = () => {
 
       if (response.status === 200) {
         alert('Subcategory updated successfully!');
-        navigate('/admin/subcategories');
+        router.push('/admin/subcategories');
       } else {
         setError(result.message || 'Failed to update subcategory');
       }
@@ -147,7 +148,7 @@ const EditSubcategory = () => {
       <form onSubmit={handleSubmit} className="editsubcategory-form">
         <div className="editsubcategory-form-section">
           <h2>Basic Information</h2>
-          
+
           <div className="editsubcategory-form-group">
             <label htmlFor="category_id">Parent Category *</label>
             <select
@@ -194,7 +195,7 @@ const EditSubcategory = () => {
 
         <div className="editsubcategory-form-section">
           <h2>Subcategory Image</h2>
-          
+
           <div className="editsubcategory-form-group">
             <label htmlFor="image">Subcategory Image</label>
             <input
@@ -204,13 +205,13 @@ const EditSubcategory = () => {
               onChange={handleImageChange}
               accept="image/*"
             />
-            
+
             {/* Current image display */}
             {currentImage && !imagePreview && (
               <div className="editsubcategory-image-preview">
                 <p>Current Image:</p>
-                <img 
-                  src={`${API_URL.replace('/api', '')}${currentImage}`} 
+                <img
+                  src={`${API_URL.replace('/api', '')}${currentImage}`}
                   alt="Current subcategory"
                   onError={(e) => {
                     e.target.style.display = 'none';
@@ -222,7 +223,7 @@ const EditSubcategory = () => {
                 </div>
               </div>
             )}
-            
+
             {/* New image preview */}
             {imagePreview && (
               <div className="editsubcategory-image-preview">

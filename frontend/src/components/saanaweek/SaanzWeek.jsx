@@ -1,5 +1,7 @@
+'use client';
+
 import React, { useState, useRef, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useRouter } from 'next/navigation';
 import axios from 'axios';
 import { useWishlistCart } from '../../context/wishlistCartContext';
 import './mmbweek.css';
@@ -7,14 +9,14 @@ import BestSeller1 from '../../assets/img/Bestseller1.jpg'
 import BestSeller2 from '../../assets/img/Bestseller2.jpg'
 import BestSeller3 from '../../assets/img/Bestseller3.jpg'
 
-const MmbWeek = () => {
+const SaanzWeek = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [selectedColors, setSelectedColors] = useState({});
   const [weekData, setWeekData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const carouselRef = useRef(null);
-  const navigate = useNavigate();
+  const router = useRouter();
   const { addToWishlist, isInWishlist, removeFromWishlistByProduct } = useWishlistCart();
 
   // Get API URL from environment variable
@@ -108,7 +110,7 @@ const MmbWeek = () => {
   };
 
   const handleProductClick = (productId) => {
-    navigate(`/product/${productId}`);
+    router.push(`/product/${productId}`);
   };
 
   const getCurrentImage = (product) => {

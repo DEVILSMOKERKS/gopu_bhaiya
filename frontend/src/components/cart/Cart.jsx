@@ -1,12 +1,15 @@
+'use client';
+
 import React, { useState, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 import axios from 'axios';
 import { useWishlistCart } from '../../context/wishlistCartContext';
 import './cart.css';
 
 const Cart = () => {
   const { cart, updateCartItem, removeFromCart, loading, error } = useWishlistCart();
-  const navigate = useNavigate();
+  const router = useRouter();
 
   // Get API URL from environment variable
   const API_URL = import.meta.env.VITE_API_URL;
@@ -277,7 +280,7 @@ const Cart = () => {
     sessionStorage.setItem('checkoutData', JSON.stringify(checkoutData));
 
     // Navigate to checkout
-    navigate('/checkout');
+    router.push('/checkout');
   };
 
   // Show loading state
@@ -309,14 +312,14 @@ const Cart = () => {
     return (
       <div className="cart-page">
         <div className="cart-header">
-          <Link to="/" className="cart-back-link">Back</Link>
+          <Link href="/" className="cart-back-link">Back</Link>
           <h1 className="cart-title">Your Cart</h1>
-          <Link to="/shop" className="cart-continue-shopping">Continue Shopping</Link>
+          <Link href="/shop" className="cart-continue-shopping">Continue Shopping</Link>
         </div>
         <div className="cart-empty">
           <h2>Your cart is empty</h2>
           <p>Add some items to your cart to get started.</p>
-          <Link to="/shop" className="cart-shop-now-btn">Shop Now</Link>
+          <Link href="/shop" className="cart-shop-now-btn">Shop Now</Link>
         </div>
       </div>
     );
@@ -348,7 +351,7 @@ const Cart = () => {
     <div className="cart-page">
       {/* Header */}
       <div className="cart-header">
-        <Link to="/" className="cart-back-link">Back</Link>
+        <Link href="/" className="cart-back-link">Back</Link>
         <h1 className="cart-title">Your Cart</h1>
         <Link to="/shop" className="cart-continue-shopping">Continue Shopping</Link>
       </div>

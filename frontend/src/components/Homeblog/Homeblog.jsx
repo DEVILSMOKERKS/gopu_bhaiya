@@ -1,5 +1,8 @@
+'use client';
+
 import React, { useState, useEffect } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 import axios from 'axios';
 import { HiUser } from 'react-icons/hi';
 import './homeblog.css';
@@ -8,7 +11,7 @@ const HomeBlog = () => {
   const [blogPosts, setBlogPosts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const navigate = useNavigate();
+  const router = useRouter();
 
   // Get API URL from environment variable
   const API_URL = import.meta.env.VITE_API_URL;
@@ -37,7 +40,7 @@ const HomeBlog = () => {
 
 
   const handleCardClick = (slug) => {
-    navigate(`/blog/${slug}`);
+    router.push(`/blog/${slug}`);
   };
 
   const formatDate = (dateString) => {
@@ -54,7 +57,7 @@ const HomeBlog = () => {
       <section className="homeblog">
         <div className="homeblog-header">
           <h2 className="homeblog-title">Our Blogs</h2>
-          <Link to="/blogs" className="homeblog-view-all">View All</Link>
+          <Link href="/blogs" className="homeblog-view-all">View All</Link>
         </div>
         <div className="homeblog-grid">
           {[1, 2, 3].map((i) => (
@@ -76,7 +79,7 @@ const HomeBlog = () => {
       <section className="homeblog">
         <div className="homeblog-header">
           <h2 className="homeblog-title">Our Blogs</h2>
-          <Link to="/blogs" className="homeblog-view-all">View All</Link>
+          <Link href="/blogs" className="homeblog-view-all">View All</Link>
         </div>
         <div className="homeblog-error">
           <p>{error}</p>

@@ -1,11 +1,13 @@
+'use client';
+
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useRouter } from 'next/navigation';
 import axios from 'axios';
 import { FaSave, FaArrowLeft } from 'react-icons/fa';
 import './OfferForm.css';
 
 const CreateOffer = () => {
-  const navigate = useNavigate();
+  const router = useRouter();
   const [loading, setLoading] = useState(false);
 
   const [formData, setFormData] = useState({
@@ -57,7 +59,7 @@ const CreateOffer = () => {
 
       if (data.success) {
         alert('Offer created successfully!');
-        navigate('/admin/offers');
+        router.push('/admin/offers');
       } else {
         alert(data.message || 'Failed to create offer');
       }

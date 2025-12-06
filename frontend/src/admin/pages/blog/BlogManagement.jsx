@@ -1,5 +1,7 @@
+'use client';
+
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useRouter } from 'next/navigation';
 import axios from 'axios';
 import './BlogManagement.css';
 
@@ -13,6 +15,7 @@ const BlogManagement = () => {
   const [statusFilter, setStatusFilter] = useState('');
   const [showCreateModal, setShowCreateModal] = useState(false);
   const [showEditModal, setShowEditModal] = useState(false);
+  const router = useRouter();
   const [selectedBlog, setSelectedBlog] = useState(null);
   const [formData, setFormData] = useState({
     title: '',

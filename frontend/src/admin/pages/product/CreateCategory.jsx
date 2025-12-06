@@ -1,12 +1,14 @@
+'use client';
+
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useRouter } from 'next/navigation';
 import axios from 'axios';
 import { useAdmin } from '../../../context/AdminContext';
 import './CreateCategory.css';
 
 const CreateCategory = () => {
   const { token } = useAdmin();
-  const navigate = useNavigate();
+  const router = useRouter();
   const [formData, setFormData] = useState({
     name: '',
     description: '',
@@ -65,7 +67,7 @@ const CreateCategory = () => {
 
       if (response.data.success) {
         alert('Category created successfully!');
-        navigate('/admin/categories');
+        router.push('/admin/categories');
       } else {
         setError(response.data.message || 'Failed to create category');
       }

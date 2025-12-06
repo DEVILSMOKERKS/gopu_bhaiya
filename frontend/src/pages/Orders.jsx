@@ -1,5 +1,7 @@
+'use client';
+
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useRouter } from 'next/navigation';
 import axios from 'axios';
 import './Orders.css';
 
@@ -12,7 +14,7 @@ const Orders = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
   const [selectedStatus, setSelectedStatus] = useState('');
-  const navigate = useNavigate();
+  const router = useRouter();
 
   useEffect(() => {
     fetchOrders();
@@ -22,9 +24,9 @@ const Orders = () => {
     try {
       setLoading(true);
       const token = localStorage.getItem('token');
-      
+
       if (!token) {
-        navigate('/login');
+        router.push('/login');
         return;
       }
 
@@ -82,7 +84,7 @@ const Orders = () => {
   };
 
   const handleOrderClick = (orderId) => {
-    navigate(`/orders/${orderId}`);
+    router.push(`/orders/${orderId}`);
   };
 
   const handleStatusFilter = (status) => {
@@ -163,14 +165,14 @@ const Orders = () => {
           <div className="user-orders-no-orders">
             <div className="user-orders-no-orders-icon">
               <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
-                <line x1="3" y1="6" x2="21" y2="6"/>
-                <path d="M16 10a4 4 0 0 1-8 0"/>
+                <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z" />
+                <line x1="3" y1="6" x2="21" y2="6" />
+                <path d="M16 10a4 4 0 0 1-8 0" />
               </svg>
             </div>
             <h3>No orders found</h3>
             <p>You haven't placed any orders yet.</p>
-            <button onClick={() => navigate('/shop')}>Start Shopping</button>
+            <button onClick={() => router.push('/shop')}>Start Shopping</button>
           </div>
         ) : (
           orders.map((order) => (
@@ -181,7 +183,7 @@ const Orders = () => {
                   <p className="user-orders-order-date">{formatDate(order.created_at)}</p>
                 </div>
                 <div className="user-orders-order-status">
-                  <span 
+                  <span
                     className="user-orders-status-badge"
                     style={{ backgroundColor: getStatusColor(order.order_status) }}
                   >
@@ -194,7 +196,7 @@ const Orders = () => {
                 <div className="user-orders-order-summary">
                   <p><strong>Total Items:</strong> {order.total_items}</p>
                   <p><strong>Total Amount:</strong> ₹{order.final_amount}</p>
-                  <p><strong>Payment Status:</strong> 
+                  <p><strong>Payment Status:</strong>
                     <span className={`user-orders-payment-status ${order.payment_status}`}>
                       {order.payment_status === 'paid' ? 'Paid' : 'Pending'}
                     </span>
@@ -204,7 +206,7 @@ const Orders = () => {
                 <div className="user-orders-order-actions">
                   <button className="user-orders-view-details-btn">View Details</button>
                   {order.order_status === 'pending' && (
-                    <button 
+                    <button
                       className="user-orders-cancel-btn"
                       onClick={(e) => {
                         e.stopPropagation();
@@ -215,7 +217,7 @@ const Orders = () => {
                     </button>
                   )}
                   {order.order_status === 'delivered' && (
-                    <button 
+                    <button
                       className="user-orders-return-btn"
                       onClick={(e) => {
                         e.stopPropagation();
@@ -242,7 +244,7 @@ const Orders = () => {
           >
             Previous
           </button>
-          
+
           {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
             <button
               key={page}
@@ -252,7 +254,7 @@ const Orders = () => {
               {page}
             </button>
           ))}
-          
+
           <button
             onClick={() => handlePageChange(currentPage + 1)}
             disabled={currentPage === totalPages}

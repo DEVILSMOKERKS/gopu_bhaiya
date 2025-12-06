@@ -1,11 +1,13 @@
+'use client';
+
 import React, { useState, useEffect } from 'react';
-import { useSearchParams, useNavigate } from 'react-router-dom';
+import { useSearchParams, useRouter } from 'next/navigation';
 import axios from 'axios';
 import './ResetPassword.css';
 
 const ResetPassword = () => {
-  const [searchParams] = useSearchParams();
-  const navigate = useNavigate();
+  const searchParams = useSearchParams();
+  const router = useRouter();
   const [formData, setFormData] = useState({
     password: '',
     confirmPassword: ''
@@ -36,7 +38,7 @@ const ResetPassword = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
+
     if (formData.password !== formData.confirmPassword) {
       setError('Passwords do not match');
       return;
@@ -62,7 +64,7 @@ const ResetPassword = () => {
       if (response.status === 200 && data.success) {
         setSuccess(true);
         setTimeout(() => {
-          navigate('/admin');
+          router.push('/admin');
         }, 3000);
       } else {
         setError(data.message || 'Failed to reset password');
@@ -81,7 +83,7 @@ const ResetPassword = () => {
           <div className="error-icon">⚠️</div>
           <h2>Invalid Reset Link</h2>
           <p>The password reset link is invalid or has expired.</p>
-          <button 
+          <button
             className="back-to-login-btn"
             onClick={() => navigate('/admin')}
           >
@@ -99,7 +101,7 @@ const ResetPassword = () => {
           <div className="success-icon">✓</div>
           <h2>Password Reset Successful!</h2>
           <p>Your password has been reset successfully. You will be redirected to the login page in a few seconds.</p>
-          <button 
+          <button
             className="back-to-login-btn"
             onClick={() => navigate('/admin')}
           >
@@ -150,16 +152,16 @@ const ResetPassword = () => {
 
           {error && <div className="error-message">{error}</div>}
 
-          <button 
-            type="submit" 
+          <button
+            type="submit"
             className="reset-password-btn"
             disabled={loading}
           >
             {loading ? 'Resetting Password...' : 'Reset Password'}
           </button>
 
-          <button 
-            type="button" 
+          <button
+            type="button"
             className="back-to-login-btn"
             onClick={() => navigate('/admin')}
           >

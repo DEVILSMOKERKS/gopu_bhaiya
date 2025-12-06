@@ -1,12 +1,14 @@
+'use client';
+
 import React, { useState, useEffect } from 'react';
-import { useNavigate, useParams, Link } from 'react-router-dom';
+import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 import axios from 'axios';
 import { FaArrowLeft, FaEdit, FaTrash, FaEye } from 'react-icons/fa';
 import './ViewProduct.css';
 
-const ViewProduct = () => {
-  const navigate = useNavigate();
-  const { productId } = useParams();
+const ViewProduct = ({ productId }) => {
+  const router = useRouter();
   const [loading, setLoading] = useState(true);
   const [product, setProduct] = useState(null);
   const [selectedColor, setSelectedColor] = useState(0);
@@ -28,7 +30,7 @@ const ViewProduct = () => {
         setProduct(data.data);
       } else {
         alert('Product not found');
-        navigate('/admin/products');
+        router.push('/admin/products');
       }
     } catch (error) {
       console.error('Error fetching product:', error);
@@ -56,7 +58,7 @@ const ViewProduct = () => {
       const data = response.data;
       if (data.success) {
         alert('Product deleted successfully!');
-        navigate('/admin/products');
+        router.push('/admin/products');
       } else {
         alert(data.message || 'Failed to delete product');
       }

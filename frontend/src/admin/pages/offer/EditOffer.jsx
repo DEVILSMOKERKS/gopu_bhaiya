@@ -1,12 +1,13 @@
+'use client';
+
 import React, { useState, useEffect } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useRouter } from 'next/navigation';
 import axios from 'axios';
 import { FaSave, FaArrowLeft } from 'react-icons/fa';
 import './OfferForm.css';
 
-const EditOffer = () => {
-  const navigate = useNavigate();
-  const { offerId } = useParams();
+const EditOffer = ({ offerId }) => {
+  const router = useRouter();
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
 
@@ -33,7 +34,7 @@ const EditOffer = () => {
 
       if (data.success) {
         const offer = data.data;
-        
+
         setFormData({
           offer_title: offer.offer_title || '',
           offer_description: offer.offer_description || '',
@@ -44,7 +45,7 @@ const EditOffer = () => {
         });
       } else {
         alert('Offer not found');
-        navigate('/admin/offers');
+        router.push('/admin/offers');
       }
     } catch (error) {
       console.error('Error fetching offer:', error);
@@ -65,7 +66,7 @@ const EditOffer = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
+
     // Validate form data
     if (!formData.offer_title || !formData.discount_percent) {
       alert('Offer title and discount percent are required');
@@ -92,7 +93,7 @@ const EditOffer = () => {
 
       if (data.success) {
         alert('Offer updated successfully!');
-        navigate('/admin/offers');
+        router.push('/admin/offers');
       } else {
         alert(data.message || 'Failed to update offer');
       }
@@ -118,7 +119,7 @@ const EditOffer = () => {
   return (
     <div className="offer-form-container">
       <div className="offer-form-header">
-        <button 
+        <button
           className="back-btn"
           onClick={() => navigate('/admin/offers')}
         >
@@ -131,7 +132,7 @@ const EditOffer = () => {
       <form onSubmit={handleSubmit} className="offer-form">
         <div className="form-section">
           <h2>Offer Details</h2>
-          
+
           <div className="form-group">
             <label>Offer Title *</label>
             <input

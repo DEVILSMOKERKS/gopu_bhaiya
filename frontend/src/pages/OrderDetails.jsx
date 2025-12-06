@@ -1,13 +1,14 @@
+'use client';
+
 import React, { useState, useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useRouter } from 'next/navigation';
 import axios from 'axios';
 import './OrderDetails.css';
 
 const API_URL = import.meta.env.VITE_API_URL;
 
-const OrderDetails = () => {
-  const { orderId } = useParams();
-  const navigate = useNavigate();
+const OrderDetails = ({ orderId }) => {
+  const router = useRouter();
   const [order, setOrder] = useState(null);
   const [items, setItems] = useState([]);
   const [tracking, setTracking] = useState([]);
@@ -24,9 +25,9 @@ const OrderDetails = () => {
     try {
       setLoading(true);
       const token = localStorage.getItem('token');
-      
+
       if (!token) {
-        navigate('/login');
+        router.push('/login');
         return;
       }
 
@@ -151,7 +152,7 @@ const OrderDetails = () => {
       <div className="order-details-container">
         <div className="error-message">
           <p>{error || 'Order not found'}</p>
-          <button onClick={() => navigate('/orders')}>Back to Orders</button>
+          <button onClick={() => router.push('/orders')}>Back to Orders</button>
         </div>
       </div>
     );
@@ -161,15 +162,15 @@ const OrderDetails = () => {
     <div className="order-details-container">
       {/* Header */}
       <div className="order-details-header">
-        <button className="back-btn" onClick={() => navigate('/orders')}>
+        <button className="back-btn" onClick={() => router.push('/orders')}>
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <path d="M19 12H5M12 19l-7-7 7-7"/>
+            <path d="M19 12H5M12 19l-7-7 7-7" />
           </svg>
           Back to Orders
         </button>
         <h1>Order #{order.order_number}</h1>
         <div className="order-status-header">
-          <span 
+          <span
             className="status-badge"
             style={{ backgroundColor: getStatusColor(order.order_status) }}
           >
@@ -214,9 +215,9 @@ const OrderDetails = () => {
             {items.map((item, index) => (
               <div key={index} className="item-card">
                 <div className="item-image">
-                  <img 
-                    src={item.product_image ? `${API_URL.replace('/api', '')}${item.product_image}` : '/src/assets/img/Bestseller1.jpg'} 
-                    alt={item.product_name} 
+                  <img
+                    src={item.product_image ? `${API_URL.replace('/api', '')}${item.product_image}` : '/src/assets/img/Bestseller1.jpg'}
+                    alt={item.product_name}
                     onError={(e) => {
                       e.target.src = '/src/assets/img/Bestseller1.jpg';
                     }}

@@ -1,12 +1,14 @@
+'use client';
+
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useRouter } from 'next/navigation';
 import axios from 'axios';
 import { useAdmin } from '../../../context/AdminContext';
 import './CategoryList.css';
 
 const CategoryList = () => {
   const { token } = useAdmin();
-  const navigate = useNavigate();
+  const router = useRouter();
   const [categories, setCategories] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
@@ -95,7 +97,7 @@ const CategoryList = () => {
             />
           </div>
           <button
-            onClick={() => navigate('/admin/categories/create')}
+            onClick={() => router.push('/admin/categories/create')}
             className="categorylist-add-btn"
           >
             + Add Category
@@ -159,7 +161,7 @@ const CategoryList = () => {
                   <td className="categorylist-td categorylist-actions-cell">
                     <div className="categorylist-action-buttons">
                       <button
-                        onClick={() => navigate(`/admin/categories/edit/${category.id}`)}
+                        onClick={() => router.push(`/admin/categories/edit/${category.id}`)}
                         className="categorylist-action-btn categorylist-edit-btn"
                         title="Edit"
                       >

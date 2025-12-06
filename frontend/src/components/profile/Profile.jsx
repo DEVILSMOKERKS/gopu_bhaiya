@@ -1,12 +1,14 @@
+'use client';
+
 import React, { useState, useEffect } from 'react';
 import { useUser } from '../../context/UserContext';
-import { useNavigate } from 'react-router-dom';
-import { 
-  HiUser, 
-  HiMail, 
-  HiPhone, 
-  HiCalendar, 
-  HiLocationMarker, 
+import { useRouter } from 'next/navigation';
+import {
+  HiUser,
+  HiMail,
+  HiPhone,
+  HiCalendar,
+  HiLocationMarker,
   HiCamera,
   HiPencil,
   HiCheck,
@@ -20,7 +22,7 @@ import './Profile.css';
 
 const Profile = () => {
   const { user, logout, updateUser, updateProfile, updateProfilePhoto, loading, error, success, clearError, clearSuccess } = useUser();
-  const navigate = useNavigate();
+  const router = useRouter();
   const API_URL = import.meta.env.VITE_API_URL;
 
   const [isEditing, setIsEditing] = useState(false);
@@ -123,7 +125,7 @@ const Profile = () => {
 
   const handleLogout = async () => {
     await logout();
-    navigate('/');
+    router.push('/');
   };
 
   const formatDate = (dateString) => {
@@ -151,7 +153,7 @@ const Profile = () => {
   }
 
   if (!user) {
-    navigate('/login');
+    router.push('/login');
     return null;
   }
 
@@ -168,7 +170,7 @@ const Profile = () => {
           <HiUser />
           <span>Profile</span>
         </div>
-        <div className="user-profile-nav-item" onClick={() => navigate('/orders')}>
+        <div className="user-profile-nav-item" onClick={() => router.push('/orders')}>
           <HiShoppingBag />
           <span>My Orders</span>
         </div>
@@ -240,14 +242,14 @@ const Profile = () => {
               </div>
               {photoFile && (
                 <div className="user-profile-photo-actions">
-                  <button 
+                  <button
                     className="user-profile-btn user-profile-btn-primary"
                     onClick={handlePhotoUpdate}
                     disabled={isPhotoUploading}
                   >
                     {isPhotoUploading ? 'Uploading...' : 'Save Photo'}
                   </button>
-                  <button 
+                  <button
                     className="user-profile-btn user-profile-btn-secondary"
                     onClick={() => {
                       setPhotoFile(null);

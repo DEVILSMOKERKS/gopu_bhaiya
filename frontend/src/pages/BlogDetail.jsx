@@ -1,14 +1,15 @@
+'use client';
+
 import React, { useState, useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useRouter } from 'next/navigation';
 import axios from 'axios';
 import './BlogDetail.css';
 
-const BlogDetail = () => {
+const BlogDetail = ({ slug }) => {
   const [blog, setBlog] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const { slug } = useParams();
-  const navigate = useNavigate();
+  const router = useRouter();
 
   // Get API URL from environment variable
   const API_URL = import.meta.env.VITE_API_URL;
@@ -21,7 +22,7 @@ const BlogDetail = () => {
     try {
       setLoading(true);
       const response = await axios.get(`${API_URL}/blogs/${slug}`);
-      
+
       if (response.data.success) {
         setBlog(response.data.data);
       } else {
@@ -36,7 +37,7 @@ const BlogDetail = () => {
   };
 
   const handleRelatedBlogClick = (relatedSlug) => {
-    navigate(`/blog/${relatedSlug}`);
+    router.push(`/blog/${relatedSlug}`);
   };
 
   const formatDate = (dateString) => {
@@ -81,7 +82,7 @@ const BlogDetail = () => {
         <div className="blog-detail-error">
           <h2>Blog Not Found</h2>
           <p>{error}</p>
-          <button onClick={() => navigate('/blogs')} className="back-to-blogs-button">
+          <button onClick={() => router.push('/blogs')} className="back-to-blogs-button">
             Back to Blogs
           </button>
         </div>
@@ -104,16 +105,16 @@ const BlogDetail = () => {
                 {formatReadingTime(blog.content)} min read
               </span>
             </div>
-            
+
             <h1 className="blog-detail-title">{blog.title}</h1>
-            
-            
+
+
 
             <div className="blog-detail-author">
               {blog.author_photo && (
-                <img 
-                  src={blog.author_photo} 
-                  alt={blog.author_name} 
+                <img
+                  src={blog.author_photo}
+                  alt={blog.author_name}
                   className="blog-detail-author-photo"
                 />
               )}
@@ -126,15 +127,15 @@ const BlogDetail = () => {
 
           {blog.featured_image && (
             <div className="blog-detail-image-container">
-                             <img 
-                 src={`${API_URL.replace('/api', '')}${blog.featured_image}`}
-                 alt={blog.title}
-                 className="blog-detail-image"
-               />
+              <img
+                src={`${API_URL.replace('/api', '')}${blog.featured_image}`}
+                alt={blog.title}
+                className="blog-detail-image"
+              />
             </div>
           )}
 
-          <div 
+          <div
             className="blog-detail-content"
             dangerouslySetInnerHTML={{ __html: blog.content }}
           />
@@ -164,14 +165,14 @@ const BlogDetail = () => {
                     className="related-blog-card"
                     onClick={() => handleRelatedBlogClick(relatedBlog.slug)}
                   >
-                                         <img
-                       src={`${API_URL.replace('/api', '')}${relatedBlog.featured_image}`}
-                       alt={relatedBlog.title}
-                       className="related-blog-image"
-                     />
+                    <img
+                      src={`${API_URL.replace('/api', '')}${relatedBlog.featured_image}`}
+                      alt={relatedBlog.title}
+                      className="related-blog-image"
+                    />
                     <div className="related-blog-content">
                       <h4 className="related-blog-title">{relatedBlog.title}</h4>
-                      
+
                       <span className="related-blog-date">{formatDate(relatedBlog.created_at)}</span>
                     </div>
                   </div>

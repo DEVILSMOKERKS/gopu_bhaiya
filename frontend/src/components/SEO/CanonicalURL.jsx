@@ -1,12 +1,16 @@
+'use client';
+
 import React, { useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import { usePathname, useSearchParams } from 'next/navigation';
 
 const CanonicalURL = () => {
-    const location = useLocation();
+    const pathname = usePathname();
+    const searchParams = useSearchParams();
 
     useEffect(() => {
         // Get current URL with search params if any
-        const currentUrl = window.location.origin + location.pathname + location.search;
+        const search = searchParams.toString();
+        const currentUrl = window.location.origin + pathname + (search ? `?${search}` : '');
 
         // Find existing canonical link or create new one
         let canonicalLink = document.querySelector('link[rel="canonical"]');
@@ -38,12 +42,12 @@ const CanonicalURL = () => {
                 '/reset-password': 'Reset Password - Mateshwari Moorti Bhandar'
             };
 
-            const title = routeTitles[location.pathname] || 'Mateshwari Moorti Bhandar - Handcrafted Marble Idols & Temples';
+            const title = routeTitles[pathname] || 'Mateshwari Moorti Bhandar - Handcrafted Marble Idols & Temples';
             document.title = title;
         };
 
         updatePageTitle();
-    }, [location.pathname, location.search]);
+    }, [pathname, searchParams]);
 
     return null; // This component doesn't render anything
 };

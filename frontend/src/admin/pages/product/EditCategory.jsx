@@ -1,13 +1,14 @@
+'use client';
+
 import React, { useState, useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useRouter } from 'next/navigation';
 import axios from 'axios';
 import { useAdmin } from '../../../context/AdminContext';
 import './EditCategory.css';
 
-const EditCategory = () => {
-  const { id } = useParams();
+const EditCategory = ({ id }) => {
   const { token } = useAdmin();
-  const navigate = useNavigate();
+  const router = useRouter();
   const [formData, setFormData] = useState({
     name: '',
     description: ''
@@ -34,7 +35,7 @@ const EditCategory = () => {
         }
       });
       const result = response.data;
-      
+
       if (response.status === 200) {
         setFormData({
           name: result.data.name,
@@ -64,7 +65,7 @@ const EditCategory = () => {
     const file = e.target.files[0];
     if (file) {
       setNewImage(file);
-      
+
       // Create preview
       const reader = new FileReader();
       reader.onload = (e) => {
@@ -97,7 +98,7 @@ const EditCategory = () => {
 
       if (response.status === 200) {
         alert('Category updated successfully!');
-        navigate('/admin/categories');
+        router.push('/admin/categories');
       } else {
         setError(result.message || 'Failed to update category');
       }
@@ -127,7 +128,7 @@ const EditCategory = () => {
       <form onSubmit={handleSubmit} className="editcategory-form">
         <div className="editcategory-form-section">
           <h2>Basic Information</h2>
-          
+
           <div className="editcategory-form-group">
             <label htmlFor="name">Category Name *</label>
             <input
@@ -156,7 +157,7 @@ const EditCategory = () => {
 
         <div className="editcategory-form-section">
           <h2>Category Image</h2>
-          
+
           <div className="editcategory-form-group">
             <label htmlFor="image">Category Image</label>
             <input
@@ -166,13 +167,13 @@ const EditCategory = () => {
               onChange={handleImageChange}
               accept="image/*"
             />
-            
+
             {/* Current image display */}
             {currentImage && !imagePreview && (
               <div className="editcategory-image-preview">
                 <p>Current Image:</p>
-                <img 
-                  src={`${API_URL.replace('/api', '')}${currentImage}`} 
+                <img
+                  src={`${API_URL.replace('/api', '')}${currentImage}`}
                   alt="Current category"
                   onError={(e) => {
                     e.target.style.display = 'none';
@@ -184,7 +185,7 @@ const EditCategory = () => {
                 </div>
               </div>
             )}
-            
+
             {/* New image preview */}
             {imagePreview && (
               <div className="editcategory-image-preview">

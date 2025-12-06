@@ -1,12 +1,14 @@
+'use client';
+
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useRouter } from 'next/navigation';
 import axios from 'axios';
 import { FaPlus, FaTrash, FaUpload, FaSave, FaArrowLeft } from 'react-icons/fa';
 import { validateProduct, validateImageUpload, showValidationErrors } from './validation';
 import './CreateProduct.css';
 
 const CreateProduct = () => {
-  const navigate = useNavigate();
+  const router = useRouter();
   const [loading, setLoading] = useState(false);
   const [categories, setCategories] = useState([]);
   const [subcategories, setSubcategories] = useState([]);
@@ -195,7 +197,7 @@ const CreateProduct = () => {
 
       if (data.success) {
         alert('Product created successfully!');
-        navigate('/admin/products');
+        router.push('/admin/products');
       } else {
         alert(data.message || 'Failed to create product');
       }

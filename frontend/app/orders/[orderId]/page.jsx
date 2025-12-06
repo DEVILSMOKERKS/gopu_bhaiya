@@ -19,7 +19,7 @@ export default function OrderDetailsPage() {
     return null;
   }
 
-  return <OrderDetails />;
+  return <OrderDetails orderId={params.orderId} />;
 }
 
 

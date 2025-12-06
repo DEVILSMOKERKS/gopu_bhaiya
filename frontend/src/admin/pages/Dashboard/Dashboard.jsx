@@ -1,5 +1,8 @@
+'use client';
+
 import React, { useEffect, useState, useContext } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { useRouter } from "next/navigation";
+import Link from "next/link";
 import axios from "axios";
 import { IndianRupee, ShoppingBag, Users, Wallet, Plus, FolderPlus, Layers, Package } from "lucide-react";
 import "./adminDashboard.css";
@@ -8,7 +11,7 @@ import { useAdmin } from '../../../context/AdminContext';
 const API_URL = import.meta.env.VITE_API_URL;
 
 const Dashboard = () => {
-  const navigate = useNavigate();
+  const router = useRouter();
   const { token } = useAdmin();
 
   // State for each section
@@ -25,7 +28,7 @@ const Dashboard = () => {
     if (!token) return;
     setLoading(true);
     setError("");
-    
+
     // Fetch dashboard data using the same APIs as OrderManagement
     const fetchDashboardData = async () => {
       try {
@@ -203,7 +206,7 @@ const Dashboard = () => {
       <div className="recent-orders-section dashboard-section-gap">
         <div className="recent-orders-title">
           <span>Recent Orders</span>
-          <Link to="/admin/orders" className="dashboard-viewall-btn">View all</Link>
+          <Link href="/admin/orders" className="dashboard-viewall-btn">View all</Link>
         </div>
         <div className="orders-table-wrapper">
           <table className="orders-table">
@@ -257,9 +260,9 @@ const Dashboard = () => {
           <span>Quick Actions</span>
         </div>
         <div className="quick-actions-grid">
-          <button 
+          <button
             className="quick-action-btn"
-            onClick={() => navigate('/admin/products/create')}
+            onClick={() => router.push('/admin/products/create')}
           >
             <div className="quick-action-icon">
               <Plus size={24} stroke="var(--primary-color)" />
@@ -270,9 +273,9 @@ const Dashboard = () => {
             </div>
           </button>
 
-          <button 
+          <button
             className="quick-action-btn"
-            onClick={() => navigate('/admin/categories/create')}
+            onClick={() => router.push('/admin/categories/create')}
           >
             <div className="quick-action-icon">
               <FolderPlus size={24} stroke="var(--primary-color)" />
@@ -283,9 +286,9 @@ const Dashboard = () => {
             </div>
           </button>
 
-          <button 
+          <button
             className="quick-action-btn"
-            onClick={() => navigate('/admin/subcategories/create')}
+            onClick={() => router.push('/admin/subcategories/create')}
           >
             <div className="quick-action-icon">
               <Layers size={24} stroke="var(--primary-color)" />
@@ -296,9 +299,9 @@ const Dashboard = () => {
             </div>
           </button>
 
-          <button 
+          <button
             className="quick-action-btn"
-            onClick={() => navigate('/admin/orders')}
+            onClick={() => router.push('/admin/orders')}
           >
             <div className="quick-action-icon">
               <Package size={24} stroke="var(--primary-color)" />

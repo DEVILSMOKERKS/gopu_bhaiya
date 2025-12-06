@@ -1,5 +1,7 @@
+'use client';
+
 import React, { useState, useEffect } from 'react';
-import { useNavigate, useSearchParams } from 'react-router-dom';
+import { useRouter, useSearchParams } from 'next/navigation';
 import axios from 'axios';
 import './Blogs.css';
 import { HiUser } from 'react-icons/hi';
@@ -9,8 +11,8 @@ const Blogs = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [pagination, setPagination] = useState({});
-  const [searchParams, setSearchParams] = useSearchParams();
-  const navigate = useNavigate();
+  const searchParams = useSearchParams();
+  const router = useRouter();
 
   // Get API URL from environment variable
   const API_URL = import.meta.env.VITE_API_URL;
@@ -59,7 +61,7 @@ const Blogs = () => {
     if (search) newParams.set('search', search);
     newParams.set('page', '1');
 
-    setSearchParams(newParams);
+    router.push(`/blogs?${newParams.toString()}`);
   };
 
   const handlePageChange = (page) => {
@@ -67,11 +69,11 @@ const Blogs = () => {
     if (currentSearch) newParams.set('search', currentSearch);
     newParams.set('page', page.toString());
 
-    setSearchParams(newParams);
+    router.push(`/blogs?${newParams.toString()}`);
   };
 
   const handleBlogClick = (slug) => {
-    navigate(`/blog/${slug}`);
+    router.push(`/blog/${slug}`);
   };
 
   const formatDate = (dateString) => {
@@ -84,7 +86,7 @@ const Blogs = () => {
   };
 
   const clearFilters = () => {
-    setSearchParams({ page: '1' });
+    router.push('/blogs?page=1');
   };
 
   if (loading && blogs.length === 0) {
@@ -137,7 +139,7 @@ const Blogs = () => {
 
           {currentSearch && (
             <div className="clear-filters">
-              <button onClick={() => setSearchParams({})} className="clear-filters-button">
+              <button onClick={() => router.push('/blogs')} className="clear-filters-button">
                 Clear Search
               </button>
             </div>

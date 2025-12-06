@@ -1,5 +1,7 @@
+'use client';
+
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useRouter } from 'next/navigation';
 import axios from 'axios';
 import { useWishlistCart } from '../../context/wishlistCartContext';
 import './checkoutinfo.css';
@@ -9,7 +11,7 @@ import { HiOutlineDevicePhoneMobile } from "react-icons/hi2";
 const API_URL = import.meta.env.VITE_API_URL;
 
 const Checkoutinfo = () => {
-  const navigate = useNavigate();
+  const router = useRouter();
   const { cart } = useWishlistCart();
   const [formData, setFormData] = useState({
     email: '',
@@ -89,7 +91,7 @@ const Checkoutinfo = () => {
       }));
     } else {
       // No cart data available, redirect to cart
-      navigate('/cart');
+      router.push('/cart');
     }
   }, [cart, navigate]);
 
@@ -512,15 +514,14 @@ const Checkoutinfo = () => {
             }
           }
 
-          // Clear session storage
+          // Store order data in sessionStorage for thankyou page
+          sessionStorage.setItem('orderData', JSON.stringify({
+            orderNumber: codResponse.data.data.order_number,
+            orderId: codResponse.data.data.order_id
+          }));
           sessionStorage.removeItem('checkoutData');
           // Navigate to success page
-          navigate('/thankyou', {
-            state: {
-              orderNumber: codResponse.data.data.order_number,
-              orderId: codResponse.data.data.order_id
-            }
-          });
+          router.push('/thankyou');
         }
       } else {
         // For online payment, create Razorpay order first
@@ -544,7 +545,7 @@ const Checkoutinfo = () => {
           }));
 
           // Navigate to payment page
-          navigate('/checkout/payment');
+          router.push('/checkout/payment');
         }
       }
     } catch (error) {
@@ -832,7 +833,7 @@ const Checkoutinfo = () => {
             ) : (
               <div className="checkoutinfo-empty-cart">
                 <p>No items in cart</p>
-                <button onClick={() => navigate('/cart')} className="checkoutinfo-back-to-cart">
+                <button onClick={() => router.push('/cart')} className="checkoutinfo-back-to-cart">
                   Go to Cart
                 </button>
               </div>

@@ -1,5 +1,8 @@
+'use client';
+
 import React, { useState, useEffect, useRef } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 import axios from 'axios';
 import { HiSearch, HiX } from 'react-icons/hi';
 import { useUser } from '../../context/UserContext';
@@ -20,7 +23,7 @@ const Hero = () => {
   const [isSearching, setIsSearching] = useState(false);
   const [showSearchResults, setShowSearchResults] = useState(false);
   const { isAuthenticated } = useUser();
-  const navigate = useNavigate();
+  const router = useRouter();
   const searchTimeoutRef = useRef(null);
   const searchContainerRef = useRef(null);
 
@@ -72,14 +75,14 @@ const Hero = () => {
     setSearchResults([]);
     setShowSearchResults(false);
     setIsSearchOpen(false);
-    navigate(`/product/${product.product_id}`);
+    router.push(`/product/${product.product_id}`);
   };
 
   // Handle search form submit
   const handleSearchSubmit = (e) => {
     e.preventDefault();
     if (searchQuery.trim()) {
-      navigate(`/shop?search=${encodeURIComponent(searchQuery)}`);
+      router.push(`/shop?search=${encodeURIComponent(searchQuery)}`);
       setSearchQuery('');
       setSearchResults([]);
       setShowSearchResults(false);
@@ -143,9 +146,9 @@ const Hero = () => {
 
   const handleAccountClick = () => {
     if (isAuthenticated) {
-      navigate('/profile');
+      router.push('/profile');
     } else {
-      navigate('/login');
+      router.push('/login');
     }
   };
 

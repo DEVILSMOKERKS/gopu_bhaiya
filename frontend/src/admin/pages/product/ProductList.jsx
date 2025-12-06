@@ -1,5 +1,7 @@
+'use client';
+
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import axios from 'axios';
 import { FaPlus, FaEdit, FaEye, FaTrash, FaSearch, FaDownload } from 'react-icons/fa';
 import './ProductList.css';
@@ -307,7 +309,7 @@ const ProductList = () => {
           >
             <FaDownload /> Export CSV
           </button>
-          <Link to="/admin/products/create" className="productlist-action-btn productlist-add-product-btn">
+          <Link href="/admin/products/create" className="productlist-action-btn productlist-add-product-btn">
             <FaPlus /> Add Product
           </Link>
         </div>

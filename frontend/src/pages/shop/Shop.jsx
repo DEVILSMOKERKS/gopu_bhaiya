@@ -1,5 +1,7 @@
+'use client';
+
 import React, { useState, useEffect } from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useRouter, useSearchParams, usePathname } from 'next/navigation';
 import axios from 'axios';
 import './shop.css';
 // import shopBanner from '../../assets/Images/banner/hero6.jpg';
@@ -11,17 +13,17 @@ const shopBanner = "https://ik.imagekit.io/adsrc2244/mateshwarimoortibhandar/mai
 const shopBannerMobile = "https://ik.imagekit.io/adsrc2244/mateshwarimoortibhandar/main-page/shopBannerMobile.jpg?updatedAt=1761546052823"
 
 const Shop = () => {
-  const navigate = useNavigate();
-  const location = useLocation();
+  const router = useRouter();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
   const { user, token, isAuthenticated } = useUser();
 
   // Get API URL from environment variable
   const API_URL = import.meta.env.VITE_API_URL;
 
   // Get search parameter from URL
-  const searchParams = new URLSearchParams(location.search);
-  const searchQuery = searchParams.get('search');
-  const collectionParam = searchParams.get('collection');
+  const searchQuery = searchParams?.get('search') || null;
+  const collectionParam = searchParams?.get('collection') || null;
   const [appliedFilters, setAppliedFilters] = useState([]);
   const [sortBy, setSortBy] = useState('featured');
   const [selectedSizes, setSelectedSizes] = useState([]);
@@ -303,7 +305,7 @@ const Shop = () => {
 
   // Handle product click
   const handleProductClick = (productId) => {
-    navigate(`/product/${productId}`);
+    router.push(`/product/${productId}`);
   };
 
   // Fetch products on component mount
@@ -453,7 +455,7 @@ const Shop = () => {
         const newCollections = prev.filter(collection => collection !== filterToRemove);
 
         // Update URL based on remaining collections
-        const newSearchParams = new URLSearchParams(location.search);
+        const newSearchParams = new URLSearchParams(searchParams.toString());
         if (newCollections.length === 0) {
           newSearchParams.delete('collection');
         } else {
@@ -479,8 +481,8 @@ const Shop = () => {
           newSearchParams.set('collection', paramValue);
         }
 
-        const newUrl = `${location.pathname}?${newSearchParams.toString()}`;
-        window.history.replaceState({}, '', newUrl);
+        const newUrl = `${pathname}?${newSearchParams.toString()}`;
+        router.replace(newUrl);
 
         return newCollections;
       });
@@ -499,10 +501,10 @@ const Shop = () => {
     setSortBy('featured');
 
     // Clear URL parameters
-    const newSearchParams = new URLSearchParams(location.search);
+    const newSearchParams = new URLSearchParams(searchParams.toString());
     newSearchParams.delete('collection');
-    const newUrl = `${location.pathname}?${newSearchParams.toString()}`;
-    window.history.replaceState({}, '', newUrl);
+    const newUrl = `${pathname}?${newSearchParams.toString()}`;
+    router.replace(newUrl);
   };
 
   const handleSizeToggle = (size) => {
@@ -959,7 +961,7 @@ const Shop = () => {
               <p>Found {filteredProducts.length} products</p>
               <button
                 className="shop-clear-search-btn"
-                onClick={() => navigate('/shop')}
+                onClick={() => router.push('/shop')}
               >
                 Clear Search
               </button>

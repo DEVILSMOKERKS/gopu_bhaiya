@@ -1,13 +1,14 @@
+'use client';
+
 import React, { useState, useEffect } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useRouter } from 'next/navigation';
 import axios from 'axios';
 import { FaPlus, FaTrash, FaUpload, FaSave, FaArrowLeft } from 'react-icons/fa';
 import { validateProduct, validateImageUpload, showValidationErrors } from './validation';
 import './EditProduct.css';
 
-const EditProduct = () => {
-  const navigate = useNavigate();
-  const { productId } = useParams();
+const EditProduct = ({ productId }) => {
+  const router = useRouter();
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
   const [categories, setCategories] = useState([]);
@@ -137,7 +138,7 @@ const EditProduct = () => {
 
       } else {
         alert('Product not found');
-        navigate('/admin/products');
+        router.push('/admin/products');
       }
     } catch (error) {
       console.error('Error fetching product:', error);
@@ -386,7 +387,7 @@ const EditProduct = () => {
 
       if (data.success) {
         alert('Product updated successfully!');
-        navigate('/admin/products');
+        router.push('/admin/products');
       } else {
         alert(data.message || 'Failed to update product');
       }

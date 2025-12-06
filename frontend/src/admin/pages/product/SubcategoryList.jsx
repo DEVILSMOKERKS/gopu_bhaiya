@@ -1,12 +1,14 @@
+'use client';
+
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useRouter } from 'next/navigation';
 import axios from 'axios';
 import { useAdmin } from '../../../context/AdminContext';
 import './SubcategoryList.css';
 
 const SubcategoryList = () => {
   const { token } = useAdmin();
-  const navigate = useNavigate();
+  const router = useRouter();
   const [subcategories, setSubcategories] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
@@ -96,7 +98,7 @@ const SubcategoryList = () => {
             />
           </div>
           <button
-            onClick={() => navigate('/admin/subcategories/create')}
+            onClick={() => router.push('/admin/subcategories/create')}
             className="subcategorylist-add-btn"
           >
             + Add Subcategory
@@ -168,7 +170,7 @@ const SubcategoryList = () => {
                   <td className="subcategorylist-td subcategorylist-actions-cell">
                     <div className="subcategorylist-action-buttons">
                       <button
-                        onClick={() => navigate(`/admin/subcategories/edit/${subcategory.id}`)}
+                        onClick={() => router.push(`/admin/subcategories/edit/${subcategory.id}`)}
                         className="subcategorylist-action-btn subcategorylist-edit-btn"
                         title="Edit"
                       >
