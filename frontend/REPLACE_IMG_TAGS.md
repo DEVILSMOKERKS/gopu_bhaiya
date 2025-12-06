@@ -60,3 +60,4 @@ import logo from '../../assets/img/logo.png';
 - Width/height can be approximate - Next.js will maintain aspect ratio
 
 
+
