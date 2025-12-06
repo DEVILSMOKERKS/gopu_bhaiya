@@ -21,7 +21,7 @@ const EditOffer = ({ offerId }) => {
   });
 
   // Get API URL from environment variable
-  const API_URL = import.meta.env.VITE_API_URL;
+  const API_URL = process.env.NEXT_PUBLIC_API_URL
 
   useEffect(() => {
     fetchOffer();
@@ -34,7 +34,7 @@ const EditOffer = ({ offerId }) => {
 
       if (data.success) {
         const offer = data.data;
-        
+
         setFormData({
           offer_title: offer.offer_title || '',
           offer_description: offer.offer_description || '',
@@ -66,7 +66,7 @@ const EditOffer = ({ offerId }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
+
     // Validate form data
     if (!formData.offer_title || !formData.discount_percent) {
       alert('Offer title and discount percent are required');
@@ -119,7 +119,7 @@ const EditOffer = ({ offerId }) => {
   return (
     <div className="offer-form-container">
       <div className="offer-form-header">
-        <button 
+        <button
           className="back-btn"
           onClick={() => navigate('/admin/offers')}
         >
@@ -132,7 +132,7 @@ const EditOffer = ({ offerId }) => {
       <form onSubmit={handleSubmit} className="offer-form">
         <div className="form-section">
           <h2>Offer Details</h2>
-          
+
           <div className="form-group">
             <label>Offer Title *</label>
             <input

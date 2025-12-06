@@ -31,7 +31,7 @@ const BlogManagement = () => {
   const navigate = useNavigate();
 
   // Get API URL from environment variable
-  const API_URL = import.meta.env.VITE_API_URL;
+  const API_URL = process.env.NEXT_PUBLIC_API_URL
 
   useEffect(() => {
     fetchBlogs();
@@ -60,7 +60,7 @@ const BlogManagement = () => {
         }
       });
       const data = response.data;
-      
+
       if (data.success) {
         setBlogs(data.data);
         setPagination(data.pagination);
@@ -80,14 +80,14 @@ const BlogManagement = () => {
     try {
       const token = typeof window !== 'undefined' ? localStorage.getItem('adminToken') : null;
       const formDataToSend = new FormData();
-      
+
       formDataToSend.append('title', formData.title);
       formDataToSend.append('content', formData.content);
       formDataToSend.append('status', formData.status);
       formDataToSend.append('meta_title', formData.meta_title);
       formDataToSend.append('meta_description', formData.meta_description);
       formDataToSend.append('tags', JSON.stringify(formData.tags));
-      
+
       if (imageFile) {
         formDataToSend.append('featured_image', imageFile);
       }
@@ -97,9 +97,9 @@ const BlogManagement = () => {
           'Authorization': `Bearer ${token}`
         }
       });
-      
+
       const data = response.data;
-      
+
       if (data.success) {
         setShowCreateModal(false);
         resetForm();
@@ -118,14 +118,14 @@ const BlogManagement = () => {
     try {
       const token = typeof window !== 'undefined' ? localStorage.getItem('adminToken') : null;
       const formDataToSend = new FormData();
-      
+
       formDataToSend.append('title', formData.title);
       formDataToSend.append('content', formData.content);
       formDataToSend.append('status', formData.status);
       formDataToSend.append('meta_title', formData.meta_title);
       formDataToSend.append('meta_description', formData.meta_description);
       formDataToSend.append('tags', JSON.stringify(formData.tags));
-      
+
       if (imageFile) {
         formDataToSend.append('featured_image', imageFile);
       }
@@ -135,9 +135,9 @@ const BlogManagement = () => {
           'Authorization': `Bearer ${token}`
         }
       });
-      
+
       const data = response.data;
-      
+
       if (data.success) {
         setShowEditModal(false);
         resetForm();
@@ -163,9 +163,9 @@ const BlogManagement = () => {
           'Authorization': `Bearer ${token}`
         }
       });
-      
+
       const data = response.data;
-      
+
       if (data.success) {
         fetchBlogs();
       } else {
@@ -270,8 +270,8 @@ const BlogManagement = () => {
     <div className="blog-management">
       <div className="blog-management-header">
         <h1>Blog Management</h1>
-        <button 
-          className="create-blog-btn" 
+        <button
+          className="create-blog-btn"
           onClick={() => setShowCreateModal(true)}
         >
           Create New Blog
@@ -326,11 +326,11 @@ const BlogManagement = () => {
               <tr key={blog.blog_id}>
                 <td>
                   <div className="blog-title-cell">
-                                          <img 
-                        src={`${API_URL.replace('/api', '')}${blog.featured_image}`}
-                        alt={blog.title}
-                        className="blog-thumbnail"
-                      />
+                    <img
+                      src={`${API_URL.replace('/api', '')}${blog.featured_image}`}
+                      alt={blog.title}
+                      className="blog-thumbnail"
+                    />
                     <span>{blog.title}</span>
                   </div>
                 </td>
@@ -344,13 +344,13 @@ const BlogManagement = () => {
                 <td>{blog.view_count}</td>
                 <td>
                   <div className="action-buttons">
-                    <button 
+                    <button
                       className="edit-btn"
                       onClick={() => handleEditClick(blog)}
                     >
                       Edit
                     </button>
-                    <button 
+                    <button
                       className="delete-btn"
                       onClick={() => handleDeleteBlog(blog.blog_id)}
                     >
@@ -392,7 +392,7 @@ const BlogManagement = () => {
           <div className="modal">
             <div className="modal-header">
               <h2>Create New Blog</h2>
-              <button 
+              <button
                 className="modal-close"
                 onClick={() => {
                   setShowCreateModal(false);
@@ -408,7 +408,7 @@ const BlogManagement = () => {
                 <input
                   type="text"
                   value={formData.title}
-                  onChange={(e) => setFormData({...formData, title: e.target.value})}
+                  onChange={(e) => setFormData({ ...formData, title: e.target.value })}
                   required
                   className="form-input"
                 />
@@ -418,7 +418,7 @@ const BlogManagement = () => {
                 <label>Content *</label>
                 <textarea
                   value={formData.content}
-                  onChange={(e) => setFormData({...formData, content: e.target.value})}
+                  onChange={(e) => setFormData({ ...formData, content: e.target.value })}
                   required
                   rows={10}
                   className="form-textarea"
@@ -442,7 +442,7 @@ const BlogManagement = () => {
                 <label>Status</label>
                 <select
                   value={formData.status}
-                  onChange={(e) => setFormData({...formData, status: e.target.value})}
+                  onChange={(e) => setFormData({ ...formData, status: e.target.value })}
                   className="form-select"
                 >
                   <option value="draft">Draft</option>
@@ -456,7 +456,7 @@ const BlogManagement = () => {
                 <input
                   type="text"
                   value={formData.meta_title}
-                  onChange={(e) => setFormData({...formData, meta_title: e.target.value})}
+                  onChange={(e) => setFormData({ ...formData, meta_title: e.target.value })}
                   className="form-input"
                 />
               </div>
@@ -465,7 +465,7 @@ const BlogManagement = () => {
                 <label>Meta Description</label>
                 <textarea
                   value={formData.meta_description}
-                  onChange={(e) => setFormData({...formData, meta_description: e.target.value})}
+                  onChange={(e) => setFormData({ ...formData, meta_description: e.target.value })}
                   rows={3}
                   className="form-textarea"
                 />
@@ -491,8 +491,8 @@ const BlogManagement = () => {
                     {formData.tags.map((tag, index) => (
                       <span key={index} className="tag">
                         {tag}
-                        <button 
-                          type="button" 
+                        <button
+                          type="button"
                           onClick={() => removeTag(tag)}
                           className="remove-tag-btn"
                         >
@@ -508,8 +508,8 @@ const BlogManagement = () => {
                 <button type="submit" className="submit-btn">
                   Create Blog
                 </button>
-                <button 
-                  type="button" 
+                <button
+                  type="button"
                   onClick={() => {
                     setShowCreateModal(false);
                     resetForm();
@@ -530,7 +530,7 @@ const BlogManagement = () => {
           <div className="modal">
             <div className="modal-header">
               <h2>Edit Blog</h2>
-              <button 
+              <button
                 className="modal-close"
                 onClick={() => {
                   setShowEditModal(false);
@@ -546,7 +546,7 @@ const BlogManagement = () => {
                 <input
                   type="text"
                   value={formData.title}
-                  onChange={(e) => setFormData({...formData, title: e.target.value})}
+                  onChange={(e) => setFormData({ ...formData, title: e.target.value })}
                   required
                   className="form-input"
                 />
@@ -556,7 +556,7 @@ const BlogManagement = () => {
                 <label>Content *</label>
                 <textarea
                   value={formData.content}
-                  onChange={(e) => setFormData({...formData, content: e.target.value})}
+                  onChange={(e) => setFormData({ ...formData, content: e.target.value })}
                   required
                   rows={10}
                   className="form-textarea"
@@ -580,7 +580,7 @@ const BlogManagement = () => {
                 <label>Status</label>
                 <select
                   value={formData.status}
-                  onChange={(e) => setFormData({...formData, status: e.target.value})}
+                  onChange={(e) => setFormData({ ...formData, status: e.target.value })}
                   className="form-select"
                 >
                   <option value="draft">Draft</option>
@@ -594,7 +594,7 @@ const BlogManagement = () => {
                 <input
                   type="text"
                   value={formData.meta_title}
-                  onChange={(e) => setFormData({...formData, meta_title: e.target.value})}
+                  onChange={(e) => setFormData({ ...formData, meta_title: e.target.value })}
                   className="form-input"
                 />
               </div>
@@ -603,7 +603,7 @@ const BlogManagement = () => {
                 <label>Meta Description</label>
                 <textarea
                   value={formData.meta_description}
-                  onChange={(e) => setFormData({...formData, meta_description: e.target.value})}
+                  onChange={(e) => setFormData({ ...formData, meta_description: e.target.value })}
                   rows={3}
                   className="form-textarea"
                 />
@@ -629,8 +629,8 @@ const BlogManagement = () => {
                     {formData.tags.map((tag, index) => (
                       <span key={index} className="tag">
                         {tag}
-                        <button 
-                          type="button" 
+                        <button
+                          type="button"
                           onClick={() => removeTag(tag)}
                           className="remove-tag-btn"
                         >
@@ -646,8 +646,8 @@ const BlogManagement = () => {
                 <button type="submit" className="submit-btn">
                   Update Blog
                 </button>
-                <button 
-                  type="button" 
+                <button
+                  type="button"
                   onClick={() => {
                     setShowEditModal(false);
                     resetForm();

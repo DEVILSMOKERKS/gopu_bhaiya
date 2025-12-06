@@ -16,7 +16,7 @@ const CategoryList = () => {
   const [deleteLoading, setDeleteLoading] = useState(null);
 
   // Get API URL from environment variable
-  const API_URL = import.meta.env.VITE_API_URL;
+  const API_URL = process.env.NEXT_PUBLIC_API_URL
 
   useEffect(() => {
     fetchCategories();

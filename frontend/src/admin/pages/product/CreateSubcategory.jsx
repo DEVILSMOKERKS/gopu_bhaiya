@@ -22,7 +22,7 @@ const CreateSubcategory = () => {
   const [imagePreview, setImagePreview] = useState('');
 
   // Get API URL from environment variable
-  const API_URL = import.meta.env.VITE_API_URL;
+  const API_URL = process.env.NEXT_PUBLIC_API_URL
 
   // Fetch categories on component mount
   useEffect(() => {
@@ -33,7 +33,7 @@ const CreateSubcategory = () => {
     try {
       const response = await axios.get(`${API_URL}/categories`);
       const result = response.data;
-      
+
       if (response.status === 200) {
         setCategories(result.data);
       } else {
@@ -62,7 +62,7 @@ const CreateSubcategory = () => {
         ...prev,
         image: file
       }));
-      
+
       // Create preview
       const reader = new FileReader();
       reader.onload = (e) => {
@@ -126,7 +126,7 @@ const CreateSubcategory = () => {
       <form onSubmit={handleSubmit} className="createsubcategory-form">
         <div className="createsubcategory-form-section">
           <h2>Basic Information</h2>
-          
+
           <div className="createsubcategory-form-group">
             <label htmlFor="category_id">Parent Category *</label>
             <select
@@ -173,7 +173,7 @@ const CreateSubcategory = () => {
 
         <div className="createsubcategory-form-section">
           <h2>Subcategory Image</h2>
-          
+
           <div className="createsubcategory-form-group">
             <label htmlFor="image">Subcategory Image</label>
             <input

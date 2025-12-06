@@ -39,7 +39,7 @@ const Product = ({ productId: productIdProp }) => {
   // navigate removed - use router.push() instead
 
   // Get API URL from environment variable
-  const API_URL = import.meta.env.VITE_API_URL;
+  const API_URL = process.env.NEXT_PUBLIC_API_URL
 
   // Fetch product data from API
   useEffect(() => {

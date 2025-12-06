@@ -46,11 +46,11 @@ function ThankYouPage() {
         setOrderId(orderIdParam);
         sessionStorage.setItem('orderId', orderIdParam);
       }
-      
+
       // Check if this is a COD order (no paymentId means COD)
       const isCOD = !paymentId;
       setIsCODOrder(isCOD);
-      
+
       // Load additional order details for COD orders
       if (isCOD && orderNum) {
         loadOrderDetails(orderNum);
@@ -89,7 +89,7 @@ function ThankYouPage() {
       const token = localStorage.getItem('token');
       const headers = token ? { Authorization: `Bearer ${token}` } : {};
 
-      const API_URL = process.env.NEXT_PUBLIC_API_URL || process.env.VITE_API_URL;
+      const API_URL = process.env.NEXT_PUBLIC_API_URL;
       const response = await fetch(`${API_URL}/orders/details/${orderNumber}`, {
         headers
       });

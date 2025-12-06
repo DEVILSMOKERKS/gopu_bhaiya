@@ -23,7 +23,7 @@ import './Profile.css';
 const Profile = () => {
   const { user, logout, updateUser, updateProfile, updateProfilePhoto, loading, error, success, clearError, clearSuccess } = useUser();
   const router = useRouter();
-  const API_URL = import.meta.env.VITE_API_URL;
+  const API_URL = process.env.NEXT_PUBLIC_API_URL
 
   const [isEditing, setIsEditing] = useState(false);
   const [isPhotoUploading, setIsPhotoUploading] = useState(false);

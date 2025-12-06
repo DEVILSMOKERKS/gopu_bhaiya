@@ -19,7 +19,7 @@ export const useAdmin = () => {
 // Provider component
 export const AdminProvider = ({ children }) => {
   const router = useRouter();
-  const API_URL = process.env.NEXT_PUBLIC_API_URL || process.env.VITE_API_URL;
+  const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
   const [admin, setAdmin] = useState(null);
   const [token, setToken] = useState(null);

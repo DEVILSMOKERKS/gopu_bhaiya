@@ -18,7 +18,7 @@ export const useUser = () => {
 // Provider component
 export const UserProvider = ({ children }) => {
   const router = useRouter();
-  const API_URL = process.env.NEXT_PUBLIC_API_URL || process.env.VITE_API_URL;
+  const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
   const [user, setUser] = useState(null);
   const [token, setToken] = useState(null);
@@ -38,12 +38,12 @@ export const UserProvider = ({ children }) => {
       if (storedToken && storedUser) {
         try {
           setLoading(true);
-          
+
           // Verify token by fetching user profile
           const response = await axios.get(`${API_URL}/auth/me`, {
             headers: { Authorization: `Bearer ${storedToken}` }
           });
-          
+
           if (response.data.success) {
             setUser(response.data.data.user);
             setToken(storedToken);
@@ -79,7 +79,7 @@ export const UserProvider = ({ children }) => {
   // Update localStorage when user/token changes (client-side only)
   useEffect(() => {
     if (typeof window === 'undefined') return;
-    
+
     if (user && token) {
       localStorage.setItem('user', JSON.stringify(user));
       localStorage.setItem('token', token);
@@ -112,7 +112,7 @@ export const UserProvider = ({ children }) => {
           const profileResponse = await axios.get(`${API_URL}/auth/me`, {
             headers: { Authorization: `Bearer ${response.data.data.token}` }
           });
-          
+
           if (profileResponse.data.success) {
             const completeUserData = { ...profileResponse.data.data.user };
             if (completeUserData.password) delete completeUserData.password;
@@ -183,7 +183,7 @@ export const UserProvider = ({ children }) => {
       setSuccess(null);
 
       const formData = new FormData();
-      
+
       // Add user data
       Object.keys(userData).forEach(key => {
         if (key === 'photo') {
@@ -213,7 +213,7 @@ export const UserProvider = ({ children }) => {
           const profileResponse = await axios.get(`${API_URL}/auth/me`, {
             headers: { Authorization: `Bearer ${response.data.data.token}` }
           });
-          
+
           if (profileResponse.data.success) {
             const completeUserData = { ...profileResponse.data.data.user };
             if (completeUserData.password) delete completeUserData.password;
@@ -257,12 +257,12 @@ export const UserProvider = ({ children }) => {
         localStorage.removeItem('token');
         localStorage.removeItem('user');
       }
-      
+
       setUser(null);
       setToken(null);
       setError(null);
       setSuccess(null);
-      
+
       router.push('/login');
     }
   };
@@ -292,7 +292,7 @@ export const UserProvider = ({ children }) => {
       const response = await axios.get(`${API_URL}/auth/me`, {
         headers: { Authorization: `Bearer ${token}` }
       });
-      
+
       if (response.data.success) {
         updateUser(response.data.data.user);
         return { success: true, data: response.data.data.user };
@@ -353,7 +353,7 @@ export const UserProvider = ({ children }) => {
         `${API_URL}/auth/update-photo`,
         formData,
         {
-          headers: { 
+          headers: {
             Authorization: `Bearer ${token}`,
             'Content-Type': 'multipart/form-data'
           }

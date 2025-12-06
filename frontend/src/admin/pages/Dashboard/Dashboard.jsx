@@ -8,7 +8,7 @@ import { IndianRupee, ShoppingBag, Users, Wallet, Plus, FolderPlus, Layers, Pack
 import "./adminDashboard.css";
 import { useAdmin } from '../../../context/AdminContext';
 
-const API_URL = import.meta.env.VITE_API_URL;
+const API_URL = process.env.NEXT_PUBLIC_API_URL
 
 const Dashboard = () => {
   const router = useRouter();

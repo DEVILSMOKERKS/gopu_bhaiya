@@ -16,7 +16,7 @@ const OfferList = () => {
   const [totalPages, setTotalPages] = useState(1);
 
   // Get API URL from environment variable
-  const API_URL = import.meta.env.VITE_API_URL;
+  const API_URL = process.env.NEXT_PUBLIC_API_URL
 
   useEffect(() => {
     fetchOffers();
@@ -189,7 +189,7 @@ const OfferList = () => {
                         <span className="label">Discount:</span>
                         <span className="value discount">{offer.discount_percent}% OFF</span>
                       </div>
-                      
+
 
 
                       <div className="info-row">
@@ -241,11 +241,11 @@ const OfferList = () => {
               >
                 Previous
               </button>
-              
+
               <span className="page-info">
                 Page {currentPage} of {totalPages}
               </span>
-              
+
               <button
                 className="page-btn"
                 disabled={currentPage === totalPages}

@@ -20,7 +20,7 @@ const MmbWeek = () => {
   const { addToWishlist, isInWishlist, removeFromWishlistByProduct } = useWishlistCart();
 
   // Get API URL from environment variable
-  const API_URL = import.meta.env.VITE_API_URL;
+  const API_URL = process.env.NEXT_PUBLIC_API_URL
 
   // Fetch new arrival products from API
   useEffect(() => {

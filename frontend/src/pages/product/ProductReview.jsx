@@ -22,7 +22,7 @@ const ProductReview = ({ productId, productName }) => {
   const [submitting, setSubmitting] = useState(false);
 
   // Get API URL from environment variable
-  const API_URL = import.meta.env.VITE_API_URL;
+  const API_URL = process.env.NEXT_PUBLIC_API_URL
 
   // Fetch reviews on component mount
   useEffect(() => {

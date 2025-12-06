@@ -164,7 +164,8 @@ const Login = () => {
             setLoading(true);
 
             // Send the authorization code to your backend
-            const result = await axios.post(`${import.meta.env.VITE_API_URL}/auth/google`, {
+            const API_URL = process.env.NEXT_PUBLIC_API_URL
+            const result = await axios.post(`${API_URL}/auth/google`, {
                 code: response.code
             });
 

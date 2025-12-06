@@ -18,7 +18,7 @@ const Footer = () => {
   const [emailError, setEmailError] = useState('');
 
   // Get API URL from environment variable
-  const API_URL = process.env.NEXT_PUBLIC_API_URL || process.env.VITE_API_URL;
+  const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
   const showNotification = (type, message) => {
     setNotification({ show: true, type, message });
@@ -110,7 +110,7 @@ const Footer = () => {
 
           <div className="footer-stay-connected">
             <h3 className="footer-stay-connected-title">Stay Connected With Divinity</h3>
-            
+
             <form onSubmit={handleEmailSubmit} className="footer-email-form">
               <div className="footer-email-input-wrapper">
                 <input

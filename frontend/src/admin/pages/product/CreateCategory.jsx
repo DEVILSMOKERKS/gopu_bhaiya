@@ -19,7 +19,7 @@ const CreateCategory = () => {
   const [imagePreview, setImagePreview] = useState('');
 
   // Get API URL from environment variable
-  const API_URL = import.meta.env.VITE_API_URL;
+  const API_URL = process.env.NEXT_PUBLIC_API_URL
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -36,7 +36,7 @@ const CreateCategory = () => {
         ...prev,
         image: file
       }));
-      
+
       // Create preview
       const reader = new FileReader();
       reader.onload = (e) => {
@@ -89,7 +89,7 @@ const CreateCategory = () => {
       <form onSubmit={handleSubmit} className="createcategory-form">
         <div className="createcategory-form-section">
           <h2>Basic Information</h2>
-          
+
           <div className="createcategory-form-group">
             <label htmlFor="name">Category Name *</label>
             <input
@@ -118,7 +118,7 @@ const CreateCategory = () => {
 
         <div className="createcategory-form-section">
           <h2>Category Image</h2>
-          
+
           <div className="createcategory-form-group">
             <label htmlFor="image">Category Image</label>
             <input

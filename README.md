@@ -105,7 +105,7 @@ RAZORPAY_KEY_SECRET=your_razorpay_secret
 **Frontend** - Create a `.env.local` file in the `frontend` directory:
 ```env
 NEXT_PUBLIC_API_URL=http://localhost:5000/api
-VITE_API_URL=http://localhost:5000/api
+process.env.NEXT_PUBLIC_API_URL=http://localhost:5000/api
 ```
 
 5. Set up the database:

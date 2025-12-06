@@ -11,7 +11,7 @@ const Header = ({ adminUser, onLogout, onToggleMobileSidebar }) => {
   const { token } = useAdmin();
 
   // Get API URL from environment variable
-  const API_URL = import.meta.env.VITE_API_URL;
+  const API_URL = process.env.NEXT_PUBLIC_API_URL
 
   useEffect(() => {
     // Fetch notifications
@@ -21,7 +21,7 @@ const Header = ({ adminUser, onLogout, onToggleMobileSidebar }) => {
   const fetchNotifications = async () => {
     try {
       if (!token) return;
-      
+
       const response = await axios.get(`${API_URL}/admin/notifications`, {
         headers: {
           'Authorization': `Bearer ${token}`
@@ -43,16 +43,16 @@ const Header = ({ adminUser, onLogout, onToggleMobileSidebar }) => {
   const markNotificationAsRead = async (notificationId) => {
     try {
       if (!token) return;
-      
+
       await axios.put(`${API_URL}/admin/notifications/${notificationId}/read`, {}, {
         headers: {
           'Authorization': `Bearer ${token}`
         }
       });
       // Update local state
-      setNotifications(prev => 
-        prev.map(notif => 
-          notif.id === notificationId 
+      setNotifications(prev =>
+        prev.map(notif =>
+          notif.id === notificationId
             ? { ...notif, isRead: true }
             : notif
         )
@@ -65,7 +65,7 @@ const Header = ({ adminUser, onLogout, onToggleMobileSidebar }) => {
   return (
     <header className="admin-header">
       <div className="admin-header-left">
-        <button 
+        <button
           className="admin-sidebar-toggle"
           onClick={onToggleMobileSidebar}
           aria-label="Toggle mobile sidebar"
@@ -99,7 +99,7 @@ const Header = ({ adminUser, onLogout, onToggleMobileSidebar }) => {
       <div className="admin-header-right">
         {/* Notifications */}
         <div className="admin-notifications-container">
-          <button 
+          <button
             className="admin-notifications-btn"
             onClick={() => setShowNotifications(!showNotifications)}
             aria-label="Notifications"
@@ -119,7 +119,7 @@ const Header = ({ adminUser, onLogout, onToggleMobileSidebar }) => {
             <div className="admin-notifications-dropdown">
               <div className="admin-notifications-header">
                 <h3>Notifications</h3>
-                <button 
+                <button
                   className="admin-mark-all-read"
                   onClick={() => {
                     notifications.forEach(n => markNotificationAsRead(n.id));
@@ -135,8 +135,8 @@ const Header = ({ adminUser, onLogout, onToggleMobileSidebar }) => {
                   </div>
                 ) : (
                   notifications.map(notification => (
-                    <div 
-                      key={notification.id} 
+                    <div
+                      key={notification.id}
                       className={`admin-notification-item ${!notification.isRead ? 'unread' : ''}`}
                       onClick={() => markNotificationAsRead(notification.id)}
                     >
@@ -156,7 +156,7 @@ const Header = ({ adminUser, onLogout, onToggleMobileSidebar }) => {
 
         {/* Profile Menu */}
         <div className="admin-profile-container">
-          <button 
+          <button
             className="admin-profile-btn"
             onClick={() => setShowProfileMenu(!showProfileMenu)}
             aria-label="Profile menu"

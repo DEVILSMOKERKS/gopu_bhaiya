@@ -1,3 +1,5 @@
+'use client';
+
 import "./contactus.css";
 import React, { useState } from "react";
 import goldenImg from "../../assets/Images/banner/contactBanner.jpg";
@@ -11,7 +13,7 @@ import axios from 'axios';
 // import PvjMember from "../../components/pvj-member/PvjMember";
 import vectorIcon from "../../assets/img/icons/Vector.png";
 
-const API_URL = import.meta.env.VITE_API_URL;
+const API_URL = process.env.NEXT_PUBLIC_API_URL
 
 const ContactUs = () => {
   const [form, setForm] = useState({
