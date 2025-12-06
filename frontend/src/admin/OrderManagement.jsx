@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import Image from 'next/image';
 import axios from 'axios';
 import './OrderManagement.css';
 
@@ -405,9 +406,12 @@ const OrderManagement = () => {
                   {selectedOrder.items.map((item, index) => (
                     <div key={index} className="item-row">
                       <div className="item-image">
-                        <img
+                        <Image
                           src={item.product_image ? `${API_URL.replace('/api', '')}${item.product_image}` : '/src/assets/img/Bestseller1.jpg'}
                           alt={item.product_name}
+                          width={80}
+                          height={80}
+                          style={{ objectFit: 'cover' }}
                           onError={(e) => {
                             e.target.src = '/src/assets/img/Bestseller1.jpg';
                           }}

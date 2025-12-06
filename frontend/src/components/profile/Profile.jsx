@@ -1,14 +1,15 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import Image from 'next/image';
 import { useUser } from '../../context/UserContext';
 import { useRouter } from 'next/navigation';
-import {
-  HiUser,
-  HiMail,
-  HiPhone,
-  HiCalendar,
-  HiLocationMarker,
+import { 
+  HiUser, 
+  HiMail, 
+  HiPhone, 
+  HiCalendar, 
+  HiLocationMarker, 
   HiCamera,
   HiPencil,
   HiCheck,
@@ -221,7 +222,7 @@ const Profile = () => {
             <div className="user-profile-photo-container">
               <div className="user-profile-photo">
                 {getProfileImage() ? (
-                  <img src={getProfileImage()} alt="Profile" />
+                  <Image src={getProfileImage()} alt="Profile" width={150} height={150} style={{ objectFit: 'cover', borderRadius: '50%' }} />
                 ) : (
                   <div className="user-profile-photo-placeholder">
                     <HiUser />
@@ -242,14 +243,14 @@ const Profile = () => {
               </div>
               {photoFile && (
                 <div className="user-profile-photo-actions">
-                  <button
+                  <button 
                     className="user-profile-btn user-profile-btn-primary"
                     onClick={handlePhotoUpdate}
                     disabled={isPhotoUploading}
                   >
                     {isPhotoUploading ? 'Uploading...' : 'Save Photo'}
                   </button>
-                  <button
+                  <button 
                     className="user-profile-btn user-profile-btn-secondary"
                     onClick={() => {
                       setPhotoFile(null);

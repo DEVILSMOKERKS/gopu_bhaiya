@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 import './who.css';
 // import whoBannner from '../../assets/img/who-banner.png'
 
@@ -28,10 +29,13 @@ const Who = () => {
         {/* Right Section - Framed Image */}
         <div className="who-image-section">
           <div className="who-image-frame">
-            <img
-              src={"https://ik.imagekit.io/adsrc2244/mateshwarimoortibhandar/main-page/who-banner%202.png?updatedAt=1761544773496"}
+            <Image
+              src="https://ik.imagekit.io/adsrc2244/mateshwarimoortibhandar/main-page/who-banner%202.png?updatedAt=1761544773496"
               className="who-main-image"
               alt="Who We Are - Mateshwari Moorti Bhandar"
+              width={600}
+              height={800}
+              style={{ width: '100%', height: 'auto' }}
             />
 
           </div>

@@ -2,6 +2,7 @@
 
 import "./contactus.css";
 import React, { useState } from "react";
+import Image from 'next/image';
 import goldenImg from "../../assets/Images/banner/contactBanner.jpg";
 import customerIcon from "../../assets/img/icons/customer-support.png";
 import lineImg from "../../assets/img/Line 37.png";
@@ -91,7 +92,7 @@ const ContactUs = () => {
           className="contactus-mobile-search-input"
         />
         <button type="submit" className="contactus-mobile-search-btn">
-          <img src={vectorIcon} alt="Search" />
+          <Image src={vectorIcon} alt="Search" width={20} height={20} />
         </button>
       </form>
       {/* Mobile Search Results */}
@@ -110,8 +111,8 @@ const ContactUs = () => {
         </ul>
       )}
 
-      <div className="contactus-banner">
-        <img src={goldenImg} alt="Banner" />
+      <div className="contactus-banner" style={{ position: 'relative', width: '100%', height: '200px' }}>
+        <Image src={goldenImg} alt="Banner" fill style={{ objectFit: 'cover' }} />
         <h2>CONTACT US</h2>
       </div>
       <div className="contactus-content">
@@ -119,7 +120,7 @@ const ContactUs = () => {
         <div className="contactus-left">
           <div className="contactus-help">
             <div className="contactus-help-icon">
-              <img src={customerIcon} alt="Help" />
+              <Image src={customerIcon} alt="Help" width={40} height={40} />
             </div>
             <span className="contactus-help-text">Need Any Help ?</span>
           </div>
@@ -128,17 +129,19 @@ const ContactUs = () => {
             Have a question or custom request? Fill out the form below — we&apos;re
             here to help. Thank you
           </p>
-          <img src={lineImg} alt="" className="contactus-line1" />
+          <Image src={lineImg} alt="" className="contactus-line1" width={200} height={2} style={{ width: '100%', height: 'auto' }} />
           <div className="contactus-contact-block">
             <div className="contactus-contact-label">
               <b>Contact-</b>
             </div>
             <div className="contactus-contact-info">
               <div className="contactus-contact-row">
-                <img
+                <Image
                   src={locationIcon}
                   alt="Location"
                   className="contactus-contact-icon"
+                  width={20}
+                  height={20}
                 />
                 <a
                   href="https://www.google.com/maps/search/2310,+Khajane+walo+ka+Rasta,+Nehru+Tailour+Chouraha,+Chandpole+Bazar,+Jaipur-302001"
@@ -150,10 +153,12 @@ const ContactUs = () => {
                 </a>
               </div>
               <div className="contactus-contact-row">
-                <img
+                <Image
                   src={phoneIcon}
                   alt="Phone"
                   className="contactus-contact-icon"
+                  width={20}
+                  height={20}
                 />
                 <a
                   href="tel:+917791983156"
@@ -178,10 +183,12 @@ const ContactUs = () => {
 
               </div>
               <div className="contactus-contact-row">
-                <img
+                <Image
                   src={emailIcon}
                   alt="Email"
                   className="contactus-contact-icon"
+                  width={20}
+                  height={20}
                 />
                 <a
                   href="mailto:Mateshvariexporter@gmail.com"

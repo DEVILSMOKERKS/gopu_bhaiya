@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { useWishlistCart } from '../../context/wishlistCartContext';
 import './Wishlist.css';
@@ -180,10 +181,13 @@ const Wishlist = () => {
             return (
               <div key={itemId} className="wishlist-card">
                 <div className="wishlist-card-image-container">
-                  <img
+                  <Image
                     src={getCurrentImage(item)}
                     alt={`${product.name || 'Product'} product`}
                     className="wishlist-card-image"
+                    width={300}
+                    height={400}
+                    style={{ objectFit: 'cover' }}
                     onError={(e) => {
                       e.target.src = placeholderImage;
                     }}

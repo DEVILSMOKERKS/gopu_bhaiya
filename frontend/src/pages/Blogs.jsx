@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import Image from 'next/image';
 import { useRouter, useSearchParams } from 'next/navigation';
 import axios from 'axios';
 import './Blogs.css';
@@ -167,10 +168,13 @@ const Blogs = () => {
                 className="blog-card"
                 onClick={() => handleBlogClick(blog.slug)}
               >
-                <img
+                <Image
                   src={blog.featured_image ? `${API_URL.replace('/api', '')}${blog.featured_image}` : 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80'}
                   alt={blog.title}
                   className="blog-image"
+                  width={400}
+                  height={250}
+                  style={{ objectFit: 'cover' }}
                 />
                 <div className="blog-content">
                   <div className="blog-meta">

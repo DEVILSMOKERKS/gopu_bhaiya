@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import { Helmet } from 'react-helmet-async';
+import Image from 'next/image';
 import Link from 'next/link';
 import './Projects.css';
 
@@ -103,7 +104,7 @@ const Projects = () => {
             {filteredProjects.map(project => (
               <div key={project.id} className="project-card">
                 <div className="project-image-wrapper">
-                  <img src={project.image} alt={project.title} className="project-image" />
+                  <Image src={project.image} alt={project.title} className="project-image" fill style={{ objectFit: 'cover' }} />
                   <div className="project-overlay">
                     <span className="project-category">{project.category.replace('-', ' ').toUpperCase()}</span>
                   </div>

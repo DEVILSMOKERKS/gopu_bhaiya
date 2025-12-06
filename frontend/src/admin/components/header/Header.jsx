@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import Image from 'next/image';
 import axios from 'axios';
 import { useAdmin } from '../../../context/AdminContext';
 import './adminHeader.css';
@@ -163,7 +164,7 @@ const Header = ({ adminUser, onLogout, onToggleMobileSidebar }) => {
           >
             <div className="admin-profile-avatar">
               {adminUser?.photo ? (
-                <img src={adminUser.photo} alt={adminUser.name} />
+                <Image src={adminUser.photo} alt={adminUser.name} width={40} height={40} style={{ objectFit: 'cover', borderRadius: '50%' }} />
               ) : (
                 <div className="admin-avatar-placeholder">
                   {adminUser?.name?.charAt(0) || 'A'}
@@ -181,7 +182,7 @@ const Header = ({ adminUser, onLogout, onToggleMobileSidebar }) => {
               <div className="admin-profile-info">
                 <div className="admin-profile-avatar-large">
                   {adminUser?.photo ? (
-                    <img src={adminUser.photo} alt={adminUser.name} />
+                    <Image src={adminUser.photo} alt={adminUser.name} width={80} height={80} style={{ objectFit: 'cover', borderRadius: '50%' }} />
                   ) : (
                     <div className="admin-avatar-placeholder">
                       {adminUser?.name?.charAt(0) || 'A'}

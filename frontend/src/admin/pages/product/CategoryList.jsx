@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import axios from 'axios';
 import { useAdmin } from '../../../context/AdminContext';
@@ -143,10 +144,13 @@ const CategoryList = () => {
                   </td>
                   <td className="categorylist-td categorylist-image-cell">
                     {category.image_url ? (
-                      <img
+                      <Image
                         src={`${API_URL.replace('/api', '')}${category.image_url}`}
                         alt={category.name}
                         className="categorylist-category-image"
+                        width={60}
+                        height={60}
+                        style={{ objectFit: 'cover' }}
                         onError={(e) => {
                           e.target.style.display = 'none';
                           e.target.nextSibling.style.display = 'flex';

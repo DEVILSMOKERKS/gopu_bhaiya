@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useEffect, useRef } from 'react';
+import Image from 'next/image';
 import './TimelineStory.css';
 import Bestseller1 from '../../assets/img/Bestseller1.jpg';
 import Bestseller2 from '../../assets/img/Bestseller2.jpg';
@@ -101,10 +102,13 @@ function TimelineStory() {
                                 <div className="timeline-dot"></div>
                             </div>
                             <div className="timeline-image-wrapper">
-                                <img
+                                <Image
                                     src={item.image}
                                     alt={`Timeline ${item.year}`}
                                     className="timeline-image"
+                                    width={400}
+                                    height={300}
+                                    style={{ objectFit: 'cover' }}
                                 />
                             </div>
                         </div>

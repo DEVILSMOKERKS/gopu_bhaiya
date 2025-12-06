@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 import './WelcomeToTilak.css';
 import fullImg from '../../../assets/Images/fullimg.webp';
 
@@ -7,10 +8,12 @@ const WelcomeToTilak = () => {
     <section className="welcome-tilak-section">
       <div className="welcome-tilak-container">
         <div className="welcome-tilak-image-wrapper">
-          <img 
-            src={fullImg} 
-            alt="Welcome to the World of Tilak" 
+          <Image
+            src={fullImg}
+            alt="Welcome to the World of Tilak"
             className="welcome-tilak-image"
+            fill
+            style={{ objectFit: 'cover' }}
           />
         </div>
       </div>

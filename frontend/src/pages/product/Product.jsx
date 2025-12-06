@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import axios from 'axios';
@@ -602,7 +603,7 @@ const Product = ({ productId: productIdProp }) => {
                   className={`thumbnail ${selectedImage === index ? 'active' : ''}`}
                   onClick={() => setSelectedImage(index)}
                 >
-                  <img src={`${API_URL.replace('/api', '')}${image}`} alt={`Product view ${index + 1}`} loading="lazy" />
+                  <Image src={`${API_URL.replace('/api', '')}${image}`} alt={`Product view ${index + 1}`} width={80} height={80} style={{ objectFit: 'cover' }} loading="lazy" />
                 </div>
               ))}
             </div>
