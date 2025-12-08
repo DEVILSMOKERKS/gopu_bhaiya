@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { Check, Home, User, ShoppingBag, Clock, Truck, Phone, Mail, MapPin, CreditCard, Shield, Gift, Star } from 'lucide-react';
 

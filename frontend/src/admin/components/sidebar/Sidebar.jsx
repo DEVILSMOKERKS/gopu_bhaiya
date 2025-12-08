@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { usePathname, useSearchParams } from "next/navigation";
 import './adminSidebar.css';
 

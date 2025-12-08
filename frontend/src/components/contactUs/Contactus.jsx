@@ -1,7 +1,7 @@
 'use client';
 
 import "./contactus.css";
-import React, { useState } from "react";
+import { useState } from "react";
 import Image from 'next/image';
 import goldenImg from "../../assets/Images/banner/contactBanner.jpg";
 import customerIcon from "../../assets/img/icons/customer-support.png";

@@ -1,15 +1,40 @@
 'use client';
-import React, { createContext, useState, useEffect, useContext } from 'react';
+import { createContext, useState, useEffect, useContext } from 'react';
 import { useRouter } from 'next/navigation';
 import axios from 'axios';
 
 // Create context
 export const UserContext = createContext();
 
-// Custom hook to use user context
+// Default context value for SSR
+const defaultUserValue = {
+  user: null,
+  token: null,
+  isAuthenticated: false,
+  loading: false,
+  error: null,
+  success: null,
+  login: async () => ({ success: false }),
+  signup: async () => ({ success: false }),
+  signupWithPhoto: async () => ({ success: false }),
+  logout: async () => { },
+  updateUser: () => { },
+  updateProfile: async () => ({ success: false }),
+  updateProfilePhoto: async () => ({ success: false }),
+  clearError: () => { },
+  clearSuccess: () => { },
+  getProfile: async () => ({ success: false }),
+  setUser: () => { }
+};
+
+// Custom hook to use user context (SSR-safe)
 export const useUser = () => {
   const context = useContext(UserContext);
+  // Return default values during SSR if context is not available
   if (!context) {
+    if (typeof window === 'undefined') {
+      return defaultUserValue;
+    }
     throw new Error('useUser must be used within a UserProvider');
   }
   return context;

@@ -1,21 +1,19 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  output: 'standalone',
   eslint: {
     ignoreDuringBuilds: true,
   },
+
   typescript: {
     ignoreBuildErrors: true,
   },
+
   experimental: {
     missingSuspenseWithCSRBailout: false,
   },
-  generateBuildId: async () => {
-    return 'build-' + Date.now();
-  },
+
   images: {
-    domains: ['localhost', 'images.unsplash.com'],
     remotePatterns: [
       {
         protocol: 'http',
@@ -25,15 +23,24 @@ const nextConfig = {
       },
       {
         protocol: 'https',
-        hostname: '**',
+        hostname: 'images.unsplash.com',
+        pathname: '/**',
       },
+      {
+        protocol: 'https',
+        hostname: '**', // allow all https domains
+        pathname: '/**',
+      }
     ],
+
     unoptimized: false,
     formats: ['image/avif', 'image/webp'],
   },
+
   env: {
     CUSTOM_KEY: process.env.CUSTOM_KEY,
   },
+
   webpack: (config) => {
     config.resolve.alias = {
       ...config.resolve.alias,
@@ -46,7 +53,6 @@ const nextConfig = {
 
     return config;
   },
-}
+};
 
-module.exports = nextConfig
-
+module.exports = nextConfig;

@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useEffect, useCallback } from 'react';
+import { createContext, useContext, useEffect, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   addToCartAPI,
@@ -29,10 +29,37 @@ const isUserLoggedIn = () => {
 // Create context
 const WishlistCartContext = createContext();
 
-// Custom hook to use the context
+// Default context value for SSR
+const defaultWishlistCartValue = {
+  cart: { items: [], total: 0, count: 0 },
+  wishlist: { items: [], count: 0 },
+  loading: false,
+  error: null,
+  addToCart: async () => { },
+  buyNow: async () => { },
+  updateCartItem: async () => { },
+  removeFromCart: async () => { },
+  addToWishlist: async () => { },
+  removeFromWishlist: async () => { },
+  removeFromWishlistByProduct: async () => { },
+  clearCart: () => { },
+  clearWishlist: () => { },
+  clearError: () => { },
+  syncLocalStorageToAPI: async () => { },
+  isInWishlist: () => false,
+  isInCart: () => false,
+  getCartItemQuantity: () => 0,
+  isUserLoggedIn: () => false
+};
+
+// Custom hook to use the context (SSR-safe)
 export const useWishlistCart = () => {
   const context = useContext(WishlistCartContext);
+  // Return default values during SSR if context is not available
   if (!context) {
+    if (typeof window === 'undefined') {
+      return defaultWishlistCartValue;
+    }
     throw new Error('useWishlistCart must be used within a WishlistCartProvider');
   }
   return context;

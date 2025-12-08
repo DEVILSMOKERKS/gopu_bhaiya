@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import './HeroSection.css';
@@ -115,7 +115,7 @@ const HeroSection = () => {
           <div className="hero-content-overlay">
             <p className="hero-subtitle">Your Ultimate Pooja Room Destination</p>
             <h1 className="hero-title">YOUR SPIRITUAL CONNECTION, MADE</h1>
-          
+
           </div>
         </div>
       </div>
