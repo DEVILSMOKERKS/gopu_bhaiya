@@ -113,15 +113,15 @@ function ThankYouPage() {
     if (user) {
       router.push('/profile');
     } else {
-      navigate('/login');
+      router.push('/login');
     }
   };
 
   const handleOrdersClick = () => {
     if (user) {
-      navigate('/orders');
+      router.push('/orders');
     } else {
-      navigate('/login');
+      router.push('/login');
     }
   };
 

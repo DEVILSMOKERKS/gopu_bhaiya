@@ -37,7 +37,6 @@ const Product = ({ productId: productIdProp }) => {
   const [isZoomModalDragging, setIsZoomModalDragging] = useState(false);
   const [zoomModalDragStart, setZoomModalDragStart] = useState({ x: 0, y: 0 });
   const { addToCart, buyNow, addToWishlist, isInWishlist, removeFromWishlistByProduct, isInCart } = useWishlistCart();
-  // navigate removed - use router.push() instead
 
   // Get API URL from environment variable
   const API_URL = process.env.NEXT_PUBLIC_API_URL
@@ -188,7 +187,7 @@ const Product = ({ productId: productIdProp }) => {
     };
 
     // Use the buyNow function from context
-    buyNow(cartData, navigate);
+    buyNow(cartData, router);
   };
 
   // Zoom control functions
@@ -582,11 +581,11 @@ const Product = ({ productId: productIdProp }) => {
     <div className="product-page">
       {/* Breadcrumbs */}
       <div className="breadcrumbs">
-        <Link to="/">Home</Link>
+        <Link href="/">Home</Link>
         <span>/</span>
-        <Link to="/shop">{product.category_name || 'Category'}</Link>
+        <Link href="/shop">{product.category_name || 'Category'}</Link>
         <span>/</span>
-        <Link to="/shop">{product.subcategory_name || 'Subcategory'}</Link>
+        <Link href="/shop">{product.subcategory_name || 'Subcategory'}</Link>
         <span>/</span>
         <span>{product.name}</span>
       </div>

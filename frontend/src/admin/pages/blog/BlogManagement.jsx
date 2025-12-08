@@ -29,7 +29,6 @@ const BlogManagement = () => {
   const [tagInput, setTagInput] = useState('');
   const [imageFile, setImageFile] = useState(null);
   const [imagePreview, setImagePreview] = useState('');
-  const navigate = useNavigate();
 
   // Get API URL from environment variable
   const API_URL = process.env.NEXT_PUBLIC_API_URL

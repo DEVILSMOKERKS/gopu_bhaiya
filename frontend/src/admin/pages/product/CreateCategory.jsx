@@ -146,7 +146,7 @@ const CreateCategory = () => {
         <div className="createcategory-form-actions">
           <button
             type="button"
-            onClick={() => navigate('/admin/categories')}
+            onClick={() => router.push('/admin/categories')}
             className="createcategory-btn-secondary"
             disabled={loading}
           >

@@ -206,7 +206,7 @@ const EditCategory = ({ id }) => {
         <div className="editcategory-form-actions">
           <button
             type="button"
-            onClick={() => navigate('/admin/categories')}
+            onClick={() => router.push('/admin/categories')}
             className="editcategory-btn-secondary"
             disabled={loading}
           >

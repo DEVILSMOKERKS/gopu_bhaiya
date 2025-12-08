@@ -12,7 +12,6 @@ import { useUser } from '../../context/UserContext';
 import HomeMegaMenu from './HomeMegaMenu';
 import './header.css';
 import logo from '../../assets/img/logo.png'
-import { getApiUrl } from '../../utils/env';
 
 const Header = ({ onAccountClick }) => {
   const pathname = usePathname();
@@ -55,7 +54,7 @@ const Header = ({ onAccountClick }) => {
   }, [isHomePage]);
 
   // Get API URL from environment variable
-  const API_URL = getApiUrl();
+  const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
   // Debounced search function
   const performSearch = async (query) => {
@@ -112,7 +111,7 @@ const Header = ({ onAccountClick }) => {
   const handleSearchSubmit = (e) => {
     e.preventDefault();
     if (searchQuery.trim()) {
-      navigate(`/shop?search=${encodeURIComponent(searchQuery)}`);
+      router.push(`/shop?search=${encodeURIComponent(searchQuery)}`);
       setSearchQuery('');
       setSearchResults([]);
       setShowSearchResults(false);
@@ -178,9 +177,9 @@ const Header = ({ onAccountClick }) => {
 
   const handleAccountClick = () => {
     if (isAuthenticated) {
-      navigate('/profile');
+      router.push('/profile');
     } else {
-      navigate('/login');
+      router.push('/login');
     }
   };
 

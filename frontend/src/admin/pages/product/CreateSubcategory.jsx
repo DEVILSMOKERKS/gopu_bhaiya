@@ -201,7 +201,7 @@ const CreateSubcategory = () => {
         <div className="createsubcategory-form-actions">
           <button
             type="button"
-            onClick={() => navigate('/admin/subcategories')}
+            onClick={() => router.push('/admin/subcategories')}
             className="createsubcategory-btn-secondary"
             disabled={loading}
           >

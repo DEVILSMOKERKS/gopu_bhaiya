@@ -76,7 +76,7 @@ const CreateOffer = () => {
       <div className="offer-form-header">
         <button
           className="back-btn"
-          onClick={() => navigate('/admin/offers')}
+          onClick={() => router.push('/admin/offers')}
         >
           <FaArrowLeft /> Back to Offers
         </button>
@@ -164,7 +164,7 @@ const CreateOffer = () => {
           <button
             type="button"
             className="cancel-btn"
-            onClick={() => navigate('/admin/offers')}
+            onClick={() => router.push('/admin/offers')}
           >
             Cancel
           </button>

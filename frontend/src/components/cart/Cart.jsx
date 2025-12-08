@@ -355,7 +355,7 @@ const Cart = () => {
       <div className="cart-header">
         <Link href="/" className="cart-back-link">Back</Link>
         <h1 className="cart-title">Your Cart</h1>
-        <Link to="/shop" className="cart-continue-shopping">Continue Shopping</Link>
+        <Link href="/shop" className="cart-continue-shopping">Continue Shopping</Link>
       </div>
 
       <div className="cart-container">

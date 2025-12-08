@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Routes, Route, useNavigate } from 'react-router-dom'
+import { useRouter } from 'next/navigation'
 import { useAdmin } from '../context/AdminContext'
 import Header from '../admin/components/header/Header'
 import Sidebar from '../admin/components/sidebar/Sidebar'
@@ -33,7 +33,7 @@ const AdminLayout = ({ children }) => {
   const { admin, isAuthenticated, loading, login, logout } = useAdmin();
   const [showAuthPopup, setShowAuthPopup] = useState(false);
   const [isMobileSidebarOpen, setIsMobileSidebarOpen] = useState(false);
-  const navigate = useNavigate();
+  const router = useRouter();
 
   useEffect(() => {
     if (!isAuthenticated && !loading) {
@@ -45,7 +45,7 @@ const AdminLayout = ({ children }) => {
     const result = await login(credentials);
     if (result.success) {
       setShowAuthPopup(false);
-      navigate('/admin/dashboard');
+      router.push('/admin/dashboard');
     }
     return result;
   };
@@ -53,7 +53,7 @@ const AdminLayout = ({ children }) => {
   const handleLogout = () => {
     logout();
     setShowAuthPopup(true);
-    navigate('/admin');
+    router.push('/admin');
   };
 
   const toggleMobileSidebar = () => {

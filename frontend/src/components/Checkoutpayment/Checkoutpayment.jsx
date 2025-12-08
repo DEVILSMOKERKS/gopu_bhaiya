@@ -161,7 +161,7 @@ const Checkoutpayment = () => {
       <div className="checkoutpayment-container">
         <div className="checkoutpayment-error-message">
           <p>No order data found. Please try again.</p>
-          <button onClick={() => navigate('/cart')}>Go to Cart</button>
+          <button onClick={() => router.push('/cart')}>Go to Cart</button>
         </div>
       </div>
     );

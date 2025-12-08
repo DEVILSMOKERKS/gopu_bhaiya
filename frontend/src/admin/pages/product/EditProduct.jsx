@@ -416,7 +416,7 @@ const EditProduct = ({ productId }) => {
       <div className="editproduct-header">
         <button
           className="editproduct-back-btn"
-          onClick={() => navigate('/admin/products')}
+          onClick={() => router.push('/admin/products')}
         >
           <FaArrowLeft /> Back to Products
         </button>
@@ -780,7 +780,7 @@ const EditProduct = ({ productId }) => {
           <button
             type="button"
             className="editproduct-cancel-btn"
-            onClick={() => navigate('/admin/products')}
+            onClick={() => router.push('/admin/products')}
           >
             Cancel
           </button>

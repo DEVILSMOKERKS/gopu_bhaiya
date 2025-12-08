@@ -86,7 +86,7 @@ const ResetPassword = () => {
           <p>The password reset link is invalid or has expired.</p>
           <button
             className="back-to-login-btn"
-            onClick={() => navigate('/admin')}
+            onClick={() => router.push('/admin')}
           >
             Back to Login
           </button>
@@ -104,7 +104,7 @@ const ResetPassword = () => {
           <p>Your password has been reset successfully. You will be redirected to the login page in a few seconds.</p>
           <button
             className="back-to-login-btn"
-            onClick={() => navigate('/admin')}
+            onClick={() => router.push('/admin')}
           >
             Go to Login
           </button>
@@ -164,7 +164,7 @@ const ResetPassword = () => {
           <button
             type="button"
             className="back-to-login-btn"
-            onClick={() => navigate('/admin')}
+            onClick={() => router.push('/admin')}
           >
             Back to Login
           </button>

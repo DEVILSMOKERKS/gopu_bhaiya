@@ -136,7 +136,7 @@ const MegaMenu = ({ activeCategory }) => {
             <ul className="megamenu-mega-menu-list">
               {currentData.category.map((item, index) => (
                 <li key={index}>
-                  <Link to={item.link} className="megamenu-mega-menu-link">{item.name}</Link>
+                  <Link href={item.link} className="megamenu-mega-menu-link">{item.name}</Link>
                 </li>
               ))}
             </ul>
@@ -147,7 +147,7 @@ const MegaMenu = ({ activeCategory }) => {
             <ul className="megamenu-mega-menu-list">
               {currentData.featured.map((item, index) => (
                 <li key={index}>
-                  <Link to={item.link} className="megamenu-mega-menu-link">{item.name}</Link>
+                  <Link href={item.link} className="megamenu-mega-menu-link">{item.name}</Link>
                 </li>
               ))}
             </ul>
@@ -158,7 +158,7 @@ const MegaMenu = ({ activeCategory }) => {
             <ul className="megamenu-mega-menu-list">
               {currentData.more.map((item, index) => (
                 <li key={index}>
-                  <Link to={item.link} className="megamenu-mega-menu-link">{item.name}</Link>
+                  <Link href={item.link} className="megamenu-mega-menu-link">{item.name}</Link>
                 </li>
               ))}
             </ul>

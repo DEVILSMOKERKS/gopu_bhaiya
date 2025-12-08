@@ -5,48 +5,52 @@ import { Helmet } from 'react-helmet-async';
 import Image from 'next/image';
 import Link from 'next/link';
 import './OurCreations.css';
+import marbleIdols from '../assets/Images/banner/marbleMandir.jpg';
+import templeDesigns from "../assets/Images/banner/mandir.jpg";
+import stoneImage from "../assets/Images/banner/manufacturingImage1.jpg"
+
 
 const OurCreations = () => {
   const creations = [
     {
       id: 1,
       title: 'Marble Idols',
-      image: '/placeholder-creation.jpg',
+      image: marbleIdols,
       description: 'Exquisitely crafted marble idols with intricate details and divine beauty.',
       link: '/shop?category=marble-idols'
     },
     {
       id: 2,
       title: 'Temple Designs',
-      image: '/placeholder-creation.jpg',
+      image: templeDesigns,
       description: 'Custom temple designs blending traditional artistry with modern architecture.',
       link: '/shop?category=temple'
     },
     {
       id: 3,
       title: 'Pooja Room',
-      image: '/placeholder-creation.jpg',
+      image: templeDesigns,
       description: 'Beautifully designed pooja rooms for every home and budget.',
       link: '/shop?category=pooja-room'
     },
     {
       id: 4,
       title: 'Stone Carvings',
-      image: '/placeholder-creation.jpg',
+      image: stoneImage,
       description: 'Hand-carved stone sculptures showcasing ancient craftsmanship.',
       link: '/shop?category=stone-carvings'
     },
     {
       id: 5,
       title: 'Religious Artifacts',
-      image: '/placeholder-creation.jpg',
+      image: marbleIdols,
       description: 'Sacred religious artifacts and decorative pieces for spiritual spaces.',
       link: '/shop?category=artifacts'
     },
     {
       id: 6,
       title: 'Custom Designs',
-      image: '/placeholder-creation.jpg',
+      image: templeDesigns,
       description: 'Bespoke creations tailored to your specific requirements and vision.',
       link: '/contact-us'
     }

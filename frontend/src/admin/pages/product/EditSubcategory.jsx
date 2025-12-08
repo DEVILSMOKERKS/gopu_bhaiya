@@ -244,7 +244,7 @@ const EditSubcategory = ({ id }) => {
         <div className="editsubcategory-form-actions">
           <button
             type="button"
-            onClick={() => navigate('/admin/subcategories')}
+            onClick={() => router.push('/admin/subcategories')}
             className="editsubcategory-btn-secondary"
             disabled={loading}
           >

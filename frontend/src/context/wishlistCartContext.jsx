@@ -77,7 +77,7 @@ export const WishlistCartProvider = ({ children }) => {
   }, [dispatch]);
 
   // Buy Now function - adds to cart and prepares for direct checkout
-  const buyNow = useCallback(async (productData, navigate) => {
+  const buyNow = useCallback(async (productData, router) => {
     const { product_id, color_id, size_id, quantity = 1, product, size_name, color_name, sell_price } = productData;
 
     try {
@@ -92,7 +92,7 @@ export const WishlistCartProvider = ({ children }) => {
       }
 
       // Navigation to checkout should be handled by the component using router
-      // Components should call router.push('/checkout') after buyNow()
+      router.push('/checkout');
     } catch (error) {
       console.error('Error in buy now:', error);
       dispatch(setError(error.message || 'Failed to process buy now'));

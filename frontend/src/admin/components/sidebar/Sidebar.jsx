@@ -242,7 +242,7 @@ const Sidebar = ({ isMobileOpen, onMobileClose }) => {
                       {item.submenu.map((subItem, index) => (
                         <li key={index}>
                           <Link
-                            to={subItem.path}
+                            href={subItem.path}
                             className={`admin-submenu-link ${isSubmenuActive(subItem.path) ? 'active' : ''}`}
                           >
                             {subItem.label}
@@ -253,7 +253,7 @@ const Sidebar = ({ isMobileOpen, onMobileClose }) => {
                   </>
                 ) : (
                   <Link
-                    to={item.path}
+                    href={item.path}
                     className="admin-nav-link"
                   >
                     <span className="admin-nav-icon">{item.icon}</span>

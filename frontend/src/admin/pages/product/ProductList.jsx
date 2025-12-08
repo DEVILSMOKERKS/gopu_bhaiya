@@ -382,14 +382,14 @@ const ProductList = () => {
                 <td className="productlist-td productlist-actions-td">
                   <div className="productlist-action-buttons-small">
                     <Link
-                      to={`/admin/products/view/${product.product_id}`}
+                      href={`/admin/products/view/${product.product_id}`}
                       className="productlist-action-btn-small productlist-view-btn"
                       title="View Product"
                     >
                       <FaEye />
                     </Link>
                     <Link
-                      to={`/admin/products/edit/${product.product_id}`}
+                      href={`/admin/products/edit/${product.product_id}`}
                       className="productlist-action-btn-small productlist-edit-btn"
                       title="Edit Product"
                     >
@@ -415,7 +415,7 @@ const ProductList = () => {
           <div className="productlist-empty-icon">📦</div>
           <h3>No products found</h3>
           <p>Start by adding your first product to the catalog</p>
-          <Link to="/admin/products/create" className="productlist-add-first-product-btn">
+          <Link href="/admin/products/create" className="productlist-add-first-product-btn">
             <FaPlus /> Add Your First Product
           </Link>
         </div>

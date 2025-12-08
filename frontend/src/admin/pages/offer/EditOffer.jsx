@@ -50,7 +50,7 @@ const EditOffer = ({ offerId }) => {
     } catch (error) {
       console.error('Error fetching offer:', error);
       alert('Failed to load offer');
-      navigate('/admin/offers');
+      router.push('/admin/offers');
     } finally {
       setLoading(false);
     }
@@ -121,7 +121,7 @@ const EditOffer = ({ offerId }) => {
       <div className="offer-form-header">
         <button
           className="back-btn"
-          onClick={() => navigate('/admin/offers')}
+          onClick={() => router.push('/admin/offers')}
         >
           <FaArrowLeft /> Back to Offers
         </button>
@@ -209,7 +209,7 @@ const EditOffer = ({ offerId }) => {
           <button
             type="button"
             className="cancel-btn"
-            onClick={() => navigate('/admin/offers')}
+            onClick={() => router.push('/admin/offers')}
           >
             Cancel
           </button>

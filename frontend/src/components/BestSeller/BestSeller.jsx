@@ -143,7 +143,7 @@ const BestSeller = () => {
     };
 
     // Use the buyNow function from context
-    buyNow(cartData, navigate);
+    buyNow(cartData, router);
   };
 
   const getCurrentImage = (product) => {

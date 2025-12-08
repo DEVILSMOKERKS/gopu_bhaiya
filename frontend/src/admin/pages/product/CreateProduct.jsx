@@ -215,7 +215,7 @@ const CreateProduct = () => {
       <div className="createproduct-header">
         <button
           className="createproduct-back-btn"
-          onClick={() => navigate('/admin/products')}
+          onClick={() => router.push('/admin/products')}
         >
           <FaArrowLeft /> Back to Products
         </button>
@@ -542,7 +542,7 @@ const CreateProduct = () => {
           <button
             type="button"
             className="createproduct-cancel-btn"
-            onClick={() => navigate('/admin/products')}
+            onClick={() => router.push('/admin/products')}
           >
             Cancel
           </button>
