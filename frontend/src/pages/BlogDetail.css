@@ -15,7 +15,7 @@
 
 /* Main Content */
 .blog-detail-main {
-  background: white;
+  background: var(--bg-primary);
   border-radius: 15px;
   padding: 3rem;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
@@ -36,7 +36,7 @@
 
 .blog-detail-date,
 .blog-detail-reading-time {
-  color: #666;
+  color: var(--text-tertiary);
   font-weight: 500;
 }
 
@@ -52,7 +52,7 @@
 
 .blog-detail-excerpt {
   font-size: 1.2rem;
-  color: #666;
+  color: var(--text-tertiary);
   line-height: 1.6;
   margin-bottom: 2rem;
   font-style: italic;
@@ -86,7 +86,7 @@
 }
 
 .blog-detail-author-role {
-  color: #666;
+  color: var(--text-tertiary);
   font-size: 0.9rem;
 }
 
@@ -142,7 +142,7 @@
   padding-left: 1.5rem;
   margin: 2rem 0;
   font-style: italic;
-  color: #666;
+  color: var(--text-tertiary);
   background: #f8f9fa;
   padding: 1.5rem;
   border-radius: 0 10px 10px 0;
@@ -151,7 +151,7 @@
 .blog-detail-tags {
   margin-top: 3rem;
   padding-top: 2rem;
-  border-top: 1px solid #eee;
+  border-top: 1px solid var(--border-light);
 }
 
 .blog-detail-tags h3 {
@@ -168,8 +168,8 @@
 }
 
 .blog-detail-tag {
-  background: #e9ecef;
-  color: #495057;
+  background: var(--bg-light);
+  color: var(--text-secondary);
   padding: 0.5rem 1rem;
   border-radius: 20px;
   font-size: 0.9rem;
@@ -184,7 +184,7 @@
 }
 
 .related-blogs {
-  background: white;
+  background: var(--bg-primary);
   border-radius: 15px;
   padding: 2rem;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
@@ -240,7 +240,7 @@
 
 .related-blog-excerpt {
   font-size: 0.9rem;
-  color: #666;
+  color: var(--text-tertiary);
   line-height: 1.5;
   margin-bottom: 0.5rem;
   display: -webkit-box;
@@ -251,7 +251,7 @@
 
 .related-blog-date {
   font-size: 0.8rem;
-  color: #999;
+  color: var(--text-quaternary);
   font-weight: 500;
 }
 
@@ -265,7 +265,7 @@
 
 .back-to-blogs-button {
   background: var(--primary-color);
-  color: white;
+  color: var(--text-white);
   border: none;
   padding: 1rem 2rem;
   border-radius: 25px;
@@ -286,7 +286,7 @@
 .blog-detail-error {
   text-align: center;
   padding: 4rem 2rem;
-  background: white;
+  background: var(--bg-primary);
   border-radius: 15px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
   max-width: 600px;
@@ -300,13 +300,13 @@
 }
 
 .blog-detail-error p {
-  color: #666;
+  color: var(--text-tertiary);
   margin-bottom: 2rem;
 }
 
 /* Loading Skeleton */
 .blog-detail-skeleton {
-  background: white;
+  background: var(--bg-primary);
   border-radius: 15px;
   padding: 3rem;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
@@ -320,7 +320,7 @@
 
 .blog-detail-skeleton-title {
   height: 3rem;
-  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background: linear-gradient(90deg, var(--bg-light) 25%, var(--border-light) 50%, var(--bg-light) 75%);
   background-size: 200% 100%;
   animation: loading 1.5s infinite;
   border-radius: 8px;
@@ -329,7 +329,7 @@
 
 .blog-detail-skeleton-meta {
   height: 1.5rem;
-  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background: linear-gradient(90deg, var(--bg-light) 25%, var(--border-light) 50%, var(--bg-light) 75%);
   background-size: 200% 100%;
   animation: loading 1.5s infinite;
   border-radius: 4px;
@@ -339,7 +339,7 @@
 .blog-detail-skeleton-image {
   width: 100%;
   height: 400px;
-  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background: linear-gradient(90deg, var(--bg-light) 25%, var(--border-light) 50%, var(--bg-light) 75%);
   background-size: 200% 100%;
   animation: loading 1.5s infinite;
   border-radius: 15px;
@@ -352,7 +352,7 @@
 
 .blog-detail-skeleton-paragraph {
   height: 1.2rem;
-  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background: linear-gradient(90deg, var(--bg-light) 25%, var(--border-light) 50%, var(--bg-light) 75%);
   background-size: 200% 100%;
   animation: loading 1.5s infinite;
   border-radius: 4px;
@@ -367,6 +367,7 @@
   0% {
     background-position: 200% 0;
   }
+
   100% {
     background-position: -200% 0;
   }

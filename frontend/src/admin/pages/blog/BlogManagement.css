@@ -36,7 +36,7 @@
 }
 
 .create-blog-btn:hover {
-  background: #5a1624;
+  background: var(--primary-dark);
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(104, 27, 43, 0.4);
 }
@@ -97,8 +97,8 @@
 }
 
 .error-message {
-  background: #f8d7da;
-  color: #721c24;
+  background: var(--bg-secondary);
+  color: var(--accent-error);
   padding: 1rem;
   border-radius: 8px;
   margin-bottom: 1rem;
@@ -183,12 +183,12 @@
 }
 
 .edit-button {
-  background: #007bff;
+  background: var(--primary-color);
   color: var(--text-white);
 }
 
 .edit-button:hover {
-  background: #0056b3;
+  background: var(--primary-dark);
 }
 
 .delete-button {
@@ -197,7 +197,8 @@
 }
 
 .delete-button:hover {
-  background: #c82333;
+  background: var(--accent-error);
+  opacity: 0.9;
 }
 
 /* Pagination */
@@ -360,7 +361,7 @@
 }
 
 .tags-input button:hover {
-  background: #5a1624;
+  background: var(--primary-dark);
 }
 
 .tags-list {
@@ -428,7 +429,7 @@
 }
 
 .submit-button:hover {
-  background: #5a1624;
+  background: var(--primary-dark);
 }
 
 .cancel-button {
@@ -504,13 +505,13 @@
 }
 
 .status-published {
-  background: #d4edda;
-  color: #155724;
+  background: var(--bg-secondary);
+  color: var(--primary-green);
 }
 
 .status-archived {
-  background: #f8d7da;
-  color: #721c24;
+  background: var(--bg-secondary);
+  color: var(--accent-error);
 }
 
 .action-buttons {
@@ -530,12 +531,12 @@
 }
 
 .edit-btn {
-  background: #007bff;
+  background: var(--primary-color);
   color: var(--text-white);
 }
 
 .edit-btn:hover {
-  background: #0056b3;
+  background: var(--primary-dark);
 }
 
 .delete-btn {
@@ -544,7 +545,8 @@
 }
 
 .delete-btn:hover {
-  background: #c82333;
+  background: var(--accent-error);
+  opacity: 0.9;
 }
 
 /* Pagination */

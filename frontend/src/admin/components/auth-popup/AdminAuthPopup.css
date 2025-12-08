@@ -193,7 +193,7 @@
   width: 60px;
   height: 60px;
   background-color: var(--primary-green);
-  color: white;
+  color: var(--text-white);
   border-radius: 50%;
   display: flex;
   align-items: center;

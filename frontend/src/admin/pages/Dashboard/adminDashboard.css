@@ -260,7 +260,7 @@
   top: 100%;
   left: 0;
   right: 0;
-  background: white;
+  background: var(--bg-primary);
   border: 1px solid var(--border-light);
   border-radius: 6px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
@@ -304,7 +304,7 @@
 }
 
 .order-popup {
-  background: white;
+  background: var(--bg-primary);
   border-radius: 12px;
   width: 90%;
   max-width: 600px;

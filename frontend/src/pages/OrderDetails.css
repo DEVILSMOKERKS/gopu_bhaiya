@@ -15,7 +15,7 @@
   align-items: center;
   margin-bottom: 32px;
   padding: 24px;
-  background: white;
+  background: var(--bg-primary);
   border-radius: 16px;
 }
 
@@ -25,7 +25,7 @@
   border: none;
   border-radius: 12px;
   cursor: pointer;
-  color: white;
+  color: var(--text-white);
   transition: all 0.3s ease;
   font-weight: 600;
   font-size: 14px;
@@ -43,7 +43,7 @@
 .order-details-header h1 {
   font-size: 28px;
   font-weight: 700;
-  color: #1a1a1a;
+  color: var(--text-primary);
   margin: 0;
   letter-spacing: -0.5px;
 }
@@ -51,7 +51,7 @@
 .order-status-header .status-badge {
   padding: 10px 20px;
   border-radius: 25px;
-  color: white;
+  color: var(--text-white);
   font-size: 13px;
   font-weight: 700;
   text-transform: uppercase;
@@ -66,16 +66,16 @@
 
 /* Order Summary Section */
 .order-summary-section {
-  background: white;
+  background: var(--bg-primary);
   border-radius: 16px;
   padding: 28px;
-  
+
 }
 
 .order-summary-section h2 {
   font-size: 24px;
   font-weight: 700;
-  color: #1a1a1a;
+  color: var(--text-primary);
   margin-bottom: 0px;
   letter-spacing: -0.3px;
 }
@@ -98,13 +98,13 @@
 
 .summary-item .label {
   font-weight: 600;
-  color: #495057;
+  color: var(--text-secondary);
   font-size: 14px;
 }
 
 .summary-item .value {
   font-weight: 700;
-  color: #1a1a1a;
+  color: var(--text-primary);
   font-size: 15px;
 }
 
@@ -118,8 +118,8 @@
 }
 
 .payment-status.paid {
-  background: #d1e7dd;
-  color: #0f5132;
+  background: var(--bg-secondary);
+  color: var(--primary-green);
 }
 
 .payment-status.pending {
@@ -129,7 +129,7 @@
 
 /* Order Items Section */
 .order-items-section {
-  background: white;
+  background: var(--bg-primary);
   border-radius: 16px;
   padding: 28px;
 }
@@ -137,7 +137,7 @@
 .order-items-section h2 {
   font-size: 24px;
   font-weight: 700;
-  color: #1a1a1a;
+  color: var(--text-primary);
   margin-bottom: 24px;
   letter-spacing: -0.3px;
 }
@@ -185,7 +185,7 @@
 .item-details h3 {
   font-size: 18px;
   font-weight: 700;
-  color: #1a1a1a;
+  color: var(--text-primary);
   margin-bottom: 12px;
   letter-spacing: -0.2px;
 }
@@ -195,11 +195,11 @@
   gap: 12px;
   margin-bottom: 12px;
   font-size: 13px;
-  color: #6c757d;
+  color: var(--text-tertiary);
 }
 
 .item-variants span {
-  background: white;
+  background: var(--bg-primary);
   padding: 6px 12px;
   border-radius: 8px;
   border: 1px solid #dee2e6;
@@ -208,7 +208,7 @@
 
 .item-price {
   font-size: 14px;
-  color: #6c757d;
+  color: var(--text-tertiary);
   margin-bottom: 8px;
   font-weight: 600;
 }
@@ -221,7 +221,7 @@
 
 /* Price Breakdown Section */
 .price-breakdown-section {
-  background: white;
+  background: var(--bg-primary);
   border: 1px solid #e9ecef;
   border-radius: 16px;
   padding: 28px;
@@ -231,7 +231,7 @@
 .price-breakdown-section h2 {
   font-size: 24px;
   font-weight: 700;
-  color: #1a1a1a;
+  color: var(--text-primary);
   margin-bottom: 24px;
   letter-spacing: -0.3px;
 }
@@ -277,7 +277,7 @@
 }
 
 .address-card {
-  background: white;
+  background: var(--bg-primary);
   border: 1px solid #e9ecef;
   border-radius: 16px;
   padding: 24px;
@@ -287,20 +287,20 @@
 .address-card h3 {
   font-size: 20px;
   font-weight: 700;
-  color: #1a1a1a;
+  color: var(--text-primary);
   margin-bottom: 16px;
   letter-spacing: -0.2px;
 }
 
 .address-card p {
-  color: #6c757d;
+  color: var(--text-tertiary);
   line-height: 1.6;
   font-size: 14px;
 }
 
 /* Tracking Section */
 .tracking-section {
-  background: white;
+  background: var(--bg-primary);
   border: 1px solid #e9ecef;
   border-radius: 16px;
   padding: 28px;
@@ -310,7 +310,7 @@
 .tracking-section h2 {
   font-size: 24px;
   font-weight: 700;
-  color: #1a1a1a;
+  color: var(--text-primary);
   margin-bottom: 24px;
   letter-spacing: -0.3px;
 }
@@ -362,12 +362,12 @@
 .tracking-content h4 {
   font-size: 16px;
   font-weight: 700;
-  color: #1a1a1a;
+  color: var(--text-primary);
   margin-bottom: 8px;
 }
 
 .tracking-content p {
-  color: #6c757d;
+  color: var(--text-tertiary);
   margin-bottom: 8px;
   font-size: 14px;
   line-height: 1.5;
@@ -381,7 +381,7 @@
 
 /* Order Actions Section */
 .order-actions-section {
-  background: white;
+  background: var(--bg-primary);
   border: 1px solid #e9ecef;
   border-radius: 16px;
   padding: 28px;
@@ -391,7 +391,7 @@
 .order-actions-section h2 {
   font-size: 24px;
   font-weight: 700;
-  color: #1a1a1a;
+  color: var(--text-primary);
   margin-bottom: 24px;
   letter-spacing: -0.3px;
 }
@@ -417,7 +417,7 @@
 
 .action-btn.cancel {
   background: #dc3545;
-  color: white;
+  color: var(--text-white);
 }
 
 .action-btn.cancel:hover {
@@ -428,7 +428,7 @@
 
 .action-btn.return {
   background: #28a745;
-  color: white;
+  color: var(--text-white);
 }
 
 .action-btn.return:hover {
@@ -439,7 +439,7 @@
 
 .action-btn.secondary {
   background: #6c757d;
-  color: white;
+  color: var(--text-white);
 }
 
 .action-btn.secondary:hover {
@@ -464,7 +464,7 @@
 }
 
 .modal {
-  background: white;
+  background: var(--bg-primary);
   border-radius: 16px;
   padding: 32px;
   max-width: 500px;
@@ -477,13 +477,13 @@
 .modal h3 {
   font-size: 24px;
   font-weight: 700;
-  color: #1a1a1a;
+  color: var(--text-primary);
   margin-bottom: 16px;
   letter-spacing: -0.3px;
 }
 
 .modal p {
-  color: #6c757d;
+  color: var(--text-tertiary);
   margin-bottom: 24px;
   font-size: 14px;
   line-height: 1.6;
@@ -524,7 +524,7 @@
 
 .modal-actions button:first-child {
   background: #6c757d;
-  color: white;
+  color: var(--text-white);
 }
 
 .modal-actions button:first-child:hover {
@@ -534,7 +534,7 @@
 
 .modal-actions button:last-child {
   background: var(--primary-color);
-  color: white;
+  color: var(--text-white);
 }
 
 .modal-actions button:last-child:hover {
@@ -548,7 +548,7 @@
 .error-message {
   text-align: center;
   padding: 10px;
-  background: white;
+  background: var(--bg-primary);
   border-radius: 16px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
 }
@@ -564,8 +564,13 @@
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 .error-message {
@@ -579,7 +584,7 @@
   margin-top: 20px;
   padding: 12px 24px;
   background: #dc3545;
-  color: white;
+  color: var(--text-white);
   border: none;
   border-radius: 12px;
   cursor: pointer;

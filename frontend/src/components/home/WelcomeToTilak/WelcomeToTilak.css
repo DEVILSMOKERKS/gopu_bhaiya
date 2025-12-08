@@ -3,7 +3,7 @@
    ============================================ */
 .welcome-tilak-section {
   padding: 80px 20px;
-  background: #ffffff;
+  background: var(--bg-primary);
 }
 
 .welcome-tilak-container {
@@ -18,7 +18,7 @@
 .welcome-tilak-title {
   font-size: 24px !important;
   font-weight: 500 !important;
-  color: #000000;
+  color: var(--text-primary);
   margin-bottom: 40px;
   font-family: var(--futura-pt-medium, 'Arial', 'Helvetica Neue', 'Helvetica', sans-serif) !important;
   text-transform: uppercase !important;
@@ -78,11 +78,3 @@
     border-radius: 4px;
   }
 }
-
-
-
-
-
-
-
-
