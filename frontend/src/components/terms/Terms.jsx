@@ -162,7 +162,7 @@ const Terms = () => {
         <section className="terms-section">
           <h2>Contests</h2>
           <p>
-            Winners of contests and giveaways are selected at the company's discretion. Prizes/gifts are non-returnable/exchangeable. Any additional facilities are at the company's discretion. Mateshwari Moorti Bhandar reserves the right to change contest terms and conditions without prior intimation. All disputes will be resolved via email at legal@Mateshwari Moorti Bhandarfashion.com.
+            Winners of contests and giveaways are selected at the company&apos;s discretion. Prizes/gifts are non-returnable/exchangeable. Any additional facilities are at the company&apos;s discretion. Mateshwari Moorti Bhandar reserves the right to change contest terms and conditions without prior intimation. All disputes will be resolved via email at legal@Mateshwari Moorti Bhandarfashion.com.
           </p>
         </section>
 

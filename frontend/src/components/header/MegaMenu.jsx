@@ -6,7 +6,6 @@ import Link from 'next/link';
 import './MegaMenu.css';
 import blousesImg from '../../assets/img/Collection/Collection1.jpg'
 import plusSizeImg from '../../assets/img/Collection/Collection2.jpg'
-import Image from 'next/image';
 
 const MegaMenu = ({ activeCategory }) => {
   const menuData = {

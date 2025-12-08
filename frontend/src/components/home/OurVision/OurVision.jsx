@@ -8,7 +8,6 @@ import ourVisionBgDesktop1 from '../../../assets/Images/banner/our-vision-bg-des
 import ourVisionBgDesktop2 from '../../../assets/Images/banner/our-vision-bg-desktop2.png';
 import ourVisionBgMobile from '../../../assets/Images/banner/our-vision-bg-mobile.png';
 import about1 from '../../../assets/img/who-banner.png';
-import Image from 'next/image';
 
 const OurVision = () => {
   const router = useRouter();

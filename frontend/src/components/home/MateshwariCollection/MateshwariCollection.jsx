@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { HiHeart, HiOutlineHeart } from 'react-icons/hi';
 import { useWishlistCart } from '../../../context/wishlistCartContext';
