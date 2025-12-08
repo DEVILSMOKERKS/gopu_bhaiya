@@ -2,7 +2,7 @@
    Dashboard Main Layout
    ===================== */
 .dashboard-container {
-  background: #f6f6f6;
+  background: var(--bg-light);
   min-height: 100vh;
   padding: 24px 0;
 }
@@ -59,7 +59,7 @@
 }
 
 .dashboard-stat-icon-bg-outline {
-  border: 1.5px solid #e9ecef;
+  border: 1.5px solid var(--border-light);
   background: var(--bg-secondary);
   box-sizing: border-box;
 }
@@ -117,7 +117,7 @@
   font-weight: 600;
   margin-bottom: 16px;
   text-align: start;
-  color: var(--black);
+  color: var(--text-primary);
 }
 
 .sales-overview-header {
@@ -129,7 +129,7 @@
 
 .sales-chart-dropdown {
   background: var(--primary-color);
-  color: #fff;
+  color: var(--text-white);
   border-radius: 18px;
   padding: 2px 12px;
   font-size: 10px;
@@ -149,7 +149,7 @@
   writing-mode: vertical-rl;
   transform: rotate(180deg);
   font-size: 14px;
-  color: #222;
+  color: var(--text-secondary);
   margin-right: 8px;
   font-weight: 500;
   height: 180px;
@@ -201,7 +201,7 @@
 .sales-x-axis-label {
   text-align: center;
   font-size: 14px;
-  color: #222;
+  color: var(--text-secondary);
   margin-top: 8px;
   font-weight: 500;
 }
@@ -238,7 +238,7 @@
   align-items: center;
   justify-content: space-between;
   padding: 8px 12px;
-  background: #0E593C;
+  background: var(--primary-green);
   color: white;
   border-radius: 6px;
   cursor: pointer;
@@ -250,7 +250,7 @@
 }
 
 .period-selector:hover {
-  background: #0a4a2f;
+  background: var(--primary-green);
   transform: translateY(-1px);
   box-shadow: 0 2px 4px rgba(14, 89, 60, 0.2);
 }
@@ -261,7 +261,7 @@
   left: 0;
   right: 0;
   background: white;
-  border: 1px solid #e9ecef;
+  border: 1px solid var(--border-light);
   border-radius: 6px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   z-index: 1000;
@@ -272,16 +272,16 @@
   padding: 10px 12px;
   cursor: pointer;
   font-size: 14px;
-  color: #333;
+  color: var(--text-secondary);
   transition: background-color 0.2s ease;
 }
 
 .period-option:hover {
-  background-color: #f8f9fa;
+  background-color: var(--bg-secondary);
 }
 
 .period-option.active {
-  background-color: #0E593C;
+  background-color: var(--primary-green);
   color: white;
 }
 
@@ -318,14 +318,14 @@
   justify-content: space-between;
   align-items: center;
   padding: 20px 24px;
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid var(--border-light);
 }
 
 .order-popup-header h3 {
   margin: 0;
   font-size: 18px;
   font-weight: 600;
-  color: var(--black);
+  color: var(--text-primary);
 }
 
 .order-popup-close {
@@ -333,7 +333,7 @@
   border: none;
   font-size: 24px;
   cursor: pointer;
-  color: #666;
+  color: var(--text-tertiary);
   padding: 0;
   width: 30px;
   height: 30px;
@@ -345,7 +345,7 @@
 }
 
 .order-popup-close:hover {
-  background-color: #f5f5f5;
+  background-color: var(--bg-light);
 }
 
 .order-popup-content {
@@ -360,7 +360,7 @@
   margin: 0 0 16px 0;
   font-size: 16px;
   font-weight: 600;
-  color: var(--black);
+  color: var(--text-primary);
 }
 
 .order-info-grid {
@@ -374,54 +374,54 @@
   justify-content: space-between;
   align-items: center;
   padding: 8px 0;
-  border-bottom: 1px solid #f0f0f0;
+  border-bottom: 1px solid var(--border-light);
 }
 
 .info-label {
   font-weight: 500;
-  color: #666;
+  color: var(--text-tertiary);
   font-size: 14px;
 }
 
 .info-value {
   font-weight: 600;
-  color: var(--black);
+  color: var(--text-primary);
   font-size: 14px;
 }
 
 .info-value.status-paid {
-  color: #23C55E;
+  color: var(--primary-green);
 }
 
 .info-value.status-pending {
-  color: #F59D0C;
+  color: var(--accent-gold);
 }
 
 .info-value.status-failed {
-  color: #F14344;
+  color: var(--accent-error);
 }
 
 .info-value.status-processing {
-  color: #3B82F6;
+  color: var(--primary-color);
 }
 
 .info-value.status-shipped {
-  color: #8B5CF6;
+  color: var(--primary-color);
 }
 
 .info-value.status-delivered {
-  color: #23C55E;
+  color: var(--primary-green);
 }
 
 .info-value.status-cancelled {
-  color: #F14344;
+  color: var(--accent-error);
 }
 
 .order-products-section h4 {
   margin: 0 0 16px 0;
   font-size: 16px;
   font-weight: 600;
-  color: var(--black);
+  color: var(--text-primary);
 }
 
 .order-products-list {
@@ -434,7 +434,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 12px 0;
-  border-bottom: 1px solid #f0f0f0;
+  border-bottom: 1px solid var(--border-light);
 }
 
 .order-product-item:last-child {
@@ -449,13 +449,13 @@
 
 .product-name {
   font-weight: 600;
-  color: var(--black);
+  color: var(--text-primary);
   font-size: 14px;
 }
 
 .product-quantity {
   font-size: 12px;
-  color: #666;
+  color: var(--text-tertiary);
 }
 
 .product-price {
@@ -467,18 +467,18 @@
 
 .price {
   font-size: 12px;
-  color: #666;
+  color: var(--text-tertiary);
 }
 
 .total-price {
   font-weight: 600;
-  color: var(--black);
+  color: var(--text-primary);
   font-size: 14px;
 }
 
 .no-products {
   text-align: center;
-  color: #666;
+  color: var(--text-tertiary);
   font-style: italic;
   padding: 20px;
 }
@@ -492,7 +492,7 @@
 }
 
 .order-id-link:hover {
-  color: #0E593C;
+  color: var(--primary-green);
 }
 
 .payment-status {
@@ -514,24 +514,24 @@
   font-weight: 600;
   margin-bottom: 16px;
   text-align: start;
-  color: var(--black);
+  color: var(--text-primary);
 }
 
 .payment-bar {
   height: 18px;
   border-radius: 8px;
-  background: #e9ecef;
+  background: var(--border-light);
   display: flex;
   overflow: hidden;
   margin-bottom: 12px;
 }
 
 .payment-bar-completed {
-  background: #23C55E;
+  background: var(--primary-green);
 }
 
 .payment-bar-pending {
-  background: #F59D0C;
+  background: var(--accent-gold);
 }
 
 .payment-bar-failed {
@@ -578,11 +578,11 @@
 }
 
 .dot-completed {
-  background: #23C55E;
+  background: var(--primary-green);
 }
 
 .dot-pending {
-  background: #F59D0C;
+  background: var(--accent-gold);
 }
 
 .dot-failed {
@@ -630,7 +630,7 @@
   font-size: 20px;
   font-weight: 600;
   margin-bottom: 16px;
-  color: var(--black);
+  color: var(--text-primary);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -651,15 +651,15 @@
 .orders-table th {
   color: #00000099;
   font-weight: 600;
-  background: #f6f6f6;
+  background: var(--bg-light);
   font-size: 16px;
 }
 
 .orders-table tr {
-  border-bottom: 1px solid #f0f0f0;
+  border-bottom: 1px solid var(--border-light);
   font-size: 14px;
   font-weight: 400;
-  color: var(--black);
+  color: var(--text-primary);
 }
 
 .orders-table tr:last-child {
@@ -767,7 +767,7 @@
 
 .dashboard-viewall-btn:hover {
   background: var(--primary-color);
-  color: #fff;
+  color: var(--text-white);
 }
 
 /* =====================
@@ -786,7 +786,7 @@
   font-size: 20px;
   font-weight: 600;
   margin-bottom: 24px;
-  color: var(--black);
+  color: var(--text-primary);
 }
 
 .quick-actions-grid {
@@ -824,19 +824,19 @@
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  border: 1.5px solid #e9ecef;
+  border: 1.5px solid var(--border-light);
 }
 
 .quick-action-content h3 {
   font-size: 16px;
   font-weight: 600;
-  color: var(--black);
+  color: var(--text-primary);
   margin: 0 0 4px 0;
 }
 
 .quick-action-content p {
   font-size: 14px;
-  color: #666;
+  color: var(--text-tertiary);
   margin: 0;
   line-height: 1.4;
 }
@@ -860,7 +860,7 @@
   font-size: 20px;
   font-weight: 600;
   margin-bottom: 18px;
-  color: var(--black);
+  color: var(--text-primary);
 }
 
 .product-performance-table {
@@ -884,10 +884,10 @@
 }
 
 .product-performance-table tr {
-  border-bottom: 1px solid #f0f0f0;
+  border-bottom: 1px solid var(--border-light);
   font-size: 14px;
   font-weight: 400;
-  color: var(--black);
+  color: var(--text-primary);
 }
 
 .product-performance-table tr:last-child {
@@ -940,7 +940,7 @@
   font-size: 20px;
   font-weight: 500;
   margin-bottom: 18px;
-  color: var(--black);
+  color: var(--text-primary);
 }
 
 .consultations-list,
@@ -968,7 +968,7 @@
 }
 
 .consultation-name {
-  color: #222;
+  color: var(--text-secondary);
 }
 
 .consultation-status {
@@ -976,7 +976,7 @@
   padding: 2px 14px;
   font-size: 13px;
   font-weight: 500;
-  color: #fff;
+  color: var(--text-white);
   background: #a06c74;
 }
 
@@ -1032,7 +1032,7 @@
 }
 
 .support-ticket-title {
-  color: #222;
+  color: var(--text-secondary);
 }
 
 .support-ticket-time {

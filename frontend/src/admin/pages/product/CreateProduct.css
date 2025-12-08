@@ -35,7 +35,7 @@
 
 .createproduct-back-btn:hover {
   background: var(--border-light);
-  border-color: #cbd5e1;
+  border-color: var(--border-light);
   color: var(--text-secondary);
 }
 
@@ -240,7 +240,7 @@
 
 .createproduct-upload-label svg {
   font-size: 2rem;
-  color: #94a3b8;
+  color: var(--text-tertiary);
 }
 
 .createproduct-upload-label span {
@@ -379,7 +379,7 @@
 }
 
 .createproduct-cancel-btn:hover {
-  border-color: #cbd5e1;
+  border-color: var(--border-light);
   color: var(--text-secondary);
   background: var(--bg-secondary);
 }

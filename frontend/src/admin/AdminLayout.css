@@ -1,7 +1,7 @@
 .admin-layout {
   display: flex;
   min-height: 100vh;
-  background-color: #f9fafb;
+  background-color: var(--bg-secondary);
 }
 
 .admin-main-content {
@@ -10,18 +10,20 @@
   flex-direction: column;
   margin-left: 280px;
   transition: margin-left 0.3s ease;
-  min-width: 0; /* Prevents flex item from overflowing */
+  min-width: 0;
+  /* Prevents flex item from overflowing */
 }
 
 .admin-main {
   flex: 1;
   padding: 2rem;
   overflow-y: auto;
-  background-color: white;
+  background-color: var(--bg-primary);
   border-radius: 8px;
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
   margin: 1rem;
-  min-width: 0; /* Prevents content from overflowing */
+  min-width: 0;
+  /* Prevents content from overflowing */
 }
 
 /* Responsive design for mobile */
@@ -29,18 +31,18 @@
   .admin-main-content {
     margin-left: 0;
   }
-  
+
   .admin-main {
     margin: 0.5rem;
     padding: 1rem 0;
   }
-  
+
   .admin-sidebar {
     transform: translateX(-100%);
     position: fixed;
     z-index: 1000;
   }
-  
+
   .admin-sidebar.mobile-open {
     transform: translateX(0);
   }
@@ -51,7 +53,7 @@
   .admin-sidebar {
     transform: translateX(0) !important;
   }
-  
+
   .mobile-sidebar-toggle {
     display: none;
   }
@@ -79,6 +81,6 @@
   display: block;
   width: 100%;
   height: 2px;
-  background-color: #374151;
+  background-color: var(--text-secondary);
   transition: all 0.3s ease;
 }

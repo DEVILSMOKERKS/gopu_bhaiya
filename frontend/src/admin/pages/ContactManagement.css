@@ -16,7 +16,7 @@
 }
 
 .contact-header p {
-  color: #666;
+  color: var(--text-tertiary);
   font-size: 1.1rem;
 }
 
@@ -29,16 +29,16 @@
 }
 
 .stat-card {
-  background: white;
+  background: var(--bg-primary);
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   text-align: center;
-  border: 1px solid #e0e0e0;
+  border: 1px solid var(--border-light);
 }
 
 .stat-card h3 {
-  color: #666;
+  color: var(--text-tertiary);
   margin-bottom: 10px;
   font-size: 1rem;
   font-weight: 500;
@@ -68,7 +68,7 @@
 
 .search-box input {
   padding: 10px 15px;
-  border: 1px solid #ddd;
+  border: 1px solid var(--border-light);
   border-radius: 5px;
   font-size: 14px;
   min-width: 300px;
@@ -77,7 +77,7 @@
 .search-box button {
   padding: 10px 20px;
   background: var(--primary-color);
-  color: white;
+  color: var(--text-white);
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -90,7 +90,7 @@
 
 .status-filter select {
   padding: 10px 15px;
-  border: 1px solid #ddd;
+  border: 1px solid var(--border-light);
   border-radius: 5px;
   font-size: 14px;
   min-width: 150px;
@@ -98,7 +98,7 @@
 
 /* Table Styles */
 .queries-table-container {
-  background: white;
+  background: var(--bg-primary);
   border-radius: 10px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   overflow: hidden;
@@ -141,7 +141,7 @@
 }
 
 .message-preview {
-  color: #666;
+  color: var(--text-tertiary);
   font-size: 0.9rem;
   font-style: italic;
 }
@@ -181,7 +181,8 @@
   gap: 8px;
 }
 
-.btn-view, .btn-delete {
+.btn-view,
+.btn-delete {
   padding: 6px 12px;
   border: none;
   border-radius: 4px;
@@ -192,7 +193,7 @@
 
 .btn-view {
   background: var(--primary-color);
-  color: white;
+  color: var(--text-white);
 }
 
 .btn-view:hover {
@@ -201,7 +202,7 @@
 
 .btn-delete {
   background: #dc3545;
-  color: white;
+  color: var(--text-white);
 }
 
 .btn-delete:hover {
@@ -219,8 +220,8 @@
 
 .pagination button {
   padding: 8px 16px;
-  border: 1px solid #ddd;
-  background: white;
+  border: 1px solid var(--border-light);
+  background: var(--bg-primary);
   border-radius: 5px;
   cursor: pointer;
 }
@@ -235,7 +236,7 @@
 }
 
 .pagination span {
-  color: #666;
+  color: var(--text-tertiary);
   font-weight: 500;
 }
 
@@ -254,7 +255,7 @@
 }
 
 .modal-content {
-  background: white;
+  background: var(--bg-primary);
   border-radius: 10px;
   max-width: 600px;
   width: 90%;
@@ -281,7 +282,7 @@
   border: none;
   font-size: 24px;
   cursor: pointer;
-  color: #666;
+  color: var(--text-tertiary);
   padding: 0;
   width: 30px;
   height: 30px;
@@ -313,7 +314,7 @@
 }
 
 .detail-row span {
-  color: #666;
+  color: var(--text-tertiary);
   flex: 1;
 }
 
@@ -346,14 +347,14 @@
 
 .status-update-form select {
   padding: 10px;
-  border: 1px solid #ddd;
+  border: 1px solid var(--border-light);
   border-radius: 5px;
   font-size: 14px;
 }
 
 .status-update-form textarea {
   padding: 10px;
-  border: 1px solid #ddd;
+  border: 1px solid var(--border-light);
   border-radius: 5px;
   font-size: 14px;
   resize: vertical;
@@ -363,7 +364,7 @@
 .btn-update {
   padding: 12px 24px;
   background: var(--primary-color);
-  color: white;
+  color: var(--text-white);
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -381,7 +382,7 @@
   text-align: center;
   padding: 50px;
   font-size: 1.2rem;
-  color: #666;
+  color: var(--text-tertiary);
 }
 
 .error-message {
@@ -398,44 +399,44 @@
   .contact-management-container {
     padding: 15px;
   }
-  
+
   .filters-section {
     flex-direction: column;
     align-items: stretch;
   }
-  
+
   .search-box form {
     flex-direction: column;
   }
-  
+
   .search-box input {
     min-width: auto;
   }
-  
+
   .queries-table {
     font-size: 0.9rem;
   }
-  
+
   .queries-table th,
   .queries-table td {
     padding: 10px 8px;
   }
-  
+
   .action-buttons {
     flex-direction: column;
     gap: 5px;
   }
-  
+
   .modal-content {
     width: 95%;
     margin: 10px;
   }
-  
+
   .detail-row {
     flex-direction: column;
     gap: 5px;
   }
-  
+
   .detail-row label {
     min-width: auto;
     margin-right: 0;

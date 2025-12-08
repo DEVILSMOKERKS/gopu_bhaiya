@@ -15,14 +15,14 @@
 .admin-users-header h1 {
   font-size: 2.5rem;
   font-weight: 700;
-  color: #1a1a1a;
+  color: var(--text-primary);
   margin-bottom: 10px;
   font-family: 'Crimson Pro', serif;
 }
 
 .admin-users-header p {
   font-size: 1.1rem;
-  color: #666;
+  color: var(--text-tertiary);
 }
 
 /* Analytics Dashboard */
@@ -34,7 +34,7 @@
 }
 
 .analytics-card {
-  background: #fff;
+  background: var(--bg-primary);
   border-radius: 11px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
   padding: 24px;
@@ -59,7 +59,7 @@
   letter-spacing: 0.03em;
   text-align: start;
   margin-bottom: 16px;
-  color: #666;
+  color: var(--text-tertiary);
   text-transform: uppercase;
 }
 
@@ -70,19 +70,19 @@
   font-size: 20px;
   line-height: 1;
   letter-spacing: 0.03em;
-  color: #000000;
+  color: var(--text-primary);
   margin-bottom: 5px;
 }
 
 .analytics-period {
   font-size: 0.8rem;
-  color: #999;
+  color: var(--text-quaternary);
   font-family: 'Open Sans', sans-serif;
 }
 
 /* Filters Section */
 .filters-section {
-  background: #fff;
+  background: var(--bg-primary);
   border-radius: 12px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
   padding: 14px 10px;
@@ -102,7 +102,7 @@
 
 .filter-group label {
   font-weight: 600;
-  color: #1a1a1a;
+  color: var(--text-primary);
   font-size: 14px;
   font-family: 'Open Sans', sans-serif;
 }
@@ -114,7 +114,7 @@
   border-radius: 8px;
   font-size: 14px;
   transition: border-color 0.3s ease;
-  background: #fff;
+  background: var(--bg-primary);
 }
 
 .filter-group select:focus,
@@ -126,7 +126,7 @@
 
 /* Users Grid */
 .users-grid-container {
-  background: #fff;
+  background: var(--bg-primary);
   border-radius: 12px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
   overflow: hidden;
@@ -172,7 +172,7 @@
   align-items: center;
   font-size: 14px;
   font-weight: 400;
-  color: #1a1a1a;
+  color: var(--text-primary);
 }
 
 /* User Info Column */
@@ -216,13 +216,13 @@
 
 .customer-name {
   font-weight: 600;
-  color: #1a1a1a;
+  color: var(--text-primary);
   margin: 0;
   font-size: 14px;
 }
 
 .customer-email {
-  color: #666;
+  color: var(--text-tertiary);
   margin: 0;
   font-size: 12px;
 }
@@ -345,7 +345,7 @@
 .error-message {
   text-align: center;
   padding: 40px 20px;
-  background: #fff;
+  background: var(--bg-primary);
   border-radius: 12px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
   margin: 24px;
@@ -362,8 +362,13 @@
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 .error-message {
@@ -388,7 +393,7 @@
 .no-users-message {
   text-align: center;
   padding: 40px 20px;
-  color: #666;
+  color: var(--text-tertiary);
 }
 
 .no-users-message p {
@@ -410,7 +415,7 @@
   padding: 10px 16px;
   border: 1px solid #e0e0e0;
   background: white;
-  color: #666;
+  color: var(--text-tertiary);
   cursor: pointer;
   border-radius: 8px;
   transition: all 0.2s ease;
@@ -474,7 +479,7 @@
 .modal-header h2 {
   font-size: 18px;
   font-weight: 600;
-  color: #1a1a1a;
+  color: var(--text-primary);
   margin: 0;
   font-family: 'Crimson Pro', serif;
 }
@@ -484,7 +489,7 @@
   border: none;
   font-size: 24px;
   cursor: pointer;
-  color: #666;
+  color: var(--text-tertiary);
   padding: 0;
   width: 30px;
   height: 30px;
@@ -514,7 +519,7 @@
 .user-details-section h3 {
   font-size: 16px;
   font-weight: 600;
-  color: #1a1a1a;
+  color: var(--text-primary);
   margin-bottom: 16px;
   font-family: 'Crimson Pro', serif;
 }
@@ -539,13 +544,13 @@
 
 .summary-item span:first-child {
   font-weight: 500;
-  color: #666;
+  color: var(--text-tertiary);
   font-size: 14px;
 }
 
 .summary-item span:last-child {
   font-weight: 600;
-  color: #1a1a1a;
+  color: var(--text-primary);
   font-size: 14px;
 }
 
@@ -569,14 +574,14 @@
 .detail-item label {
   font-size: 12px;
   font-weight: 600;
-  color: #666;
+  color: var(--text-tertiary);
   text-transform: uppercase;
   letter-spacing: 0.5px;
   font-family: 'Open Sans', sans-serif;
 }
 
 .detail-item span {
-  color: #1a1a1a;
+  color: var(--text-primary);
   font-weight: 500;
   font-size: 14px;
 }
@@ -600,7 +605,7 @@
 
 .status-inactive {
   background: #fef3c7;
-  color: #000000;
+  color: var(--text-primary);
 }
 
 .status-blocked {
@@ -677,7 +682,7 @@
     border-radius: 8px;
     margin-bottom: 16px;
     padding: 16px;
-    background: #fff;
+    background: var(--bg-primary);
   }
 
   .grid-cell {
@@ -693,7 +698,7 @@
   .grid-cell::before {
     content: attr(data-label);
     font-weight: 600;
-    color: #666;
+    color: var(--text-tertiary);
     font-size: 12px;
     text-transform: uppercase;
     letter-spacing: 0.5px;
