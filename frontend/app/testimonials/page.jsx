@@ -2,8 +2,7 @@ import Testimonials from '../../src/pages/Testimonials';
 
 export const dynamic = 'force-dynamic';
 
-const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || 'https://mateshwarimoortibhandar.com';
-
+const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 export const metadata = {
   title: 'Testimonials - Mateshwari Moorti Bhandar',
   description: 'Read what our customers say about Mateshwari Moorti Bhandar and our products. Real reviews from satisfied customers.',

@@ -157,18 +157,18 @@
 
 
 .error-message {
-    background: #fef2f2;
-    border: 1px solid #fecaca;
-    color: #dc2626;
+    background: var(--bg-secondary);
+    border: 1px solid var(--accent-error);
+    color: var(--accent-error);
     padding: 12px 16px;
     border-radius: 8px;
     margin-bottom: 20px;
 }
 
 .success-message {
-    background: #f0fdf4;
-    border: 1px solid #bbf7d0;
-    color: #16a34a;
+    background: var(--bg-secondary);
+    border: 1px solid var(--primary-green);
+    color: var(--primary-green);
     padding: 12px 16px;
     border-radius: 8px;
     margin-bottom: 20px;
@@ -191,7 +191,7 @@
 .search-input {
     width: 100%;
     padding: 10px 16px;
-    border: 1px solid #d1d5db;
+    border: 1px solid var(--border-light);
     border-radius: 8px;
     font-size: 14px;
     transition: border-color 0.2s;
@@ -199,19 +199,19 @@
 
 .search-input:focus {
     outline: none;
-    border-color: #3b82f6;
-    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(182, 129, 38, 0.1);
 }
 
 .subscriber-count {
-    color: #6b7280;
+    color: var(--text-tertiary);
     font-size: 14px;
     font-weight: 500;
 }
 
 /* Table Styles */
 .newsletter-table-container {
-    background: white;
+    background: var(--bg-primary);
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
     overflow: hidden;
     margin-bottom: 20px;
@@ -223,22 +223,22 @@
 }
 
 .newsletter-table th {
-    background: #f9fafb;
+    background: var(--bg-secondary);
     padding: 16px;
     text-align: left;
     font-weight: 600;
-    color: #374151;
+    color: var(--text-secondary);
     border-bottom: 1px solid var(--border-light);
 }
 
 .newsletter-table td {
     padding: 16px;
-    border-bottom: 1px solid #f3f4f6;
-    color: #6b7280;
+    border-bottom: 1px solid var(--border-light);
+    color: var(--text-tertiary);
 }
 
 .newsletter-table tr:hover {
-    background: #f9fafb;
+    background: var(--bg-secondary);
 }
 
 .newsletter-table tr:last-child td {
@@ -253,13 +253,13 @@
 }
 
 .consent-yes {
-    background: #dcfce7;
-    color: #166534;
+    background: var(--bg-secondary);
+    color: var(--primary-green);
 }
 
 .consent-no {
-    background: #fef2f2;
-    color: #dc2626;
+    background: var(--bg-secondary);
+    color: var(--accent-error);
 }
 
 /* No Data State */
@@ -279,7 +279,7 @@
 }
 
 .page-info {
-    color: #6b7280;
+    color: var(--text-tertiary);
     font-size: 14px;
 }
 
@@ -298,7 +298,7 @@
 }
 
 .modal {
-    background: white;
+    background: var(--bg-primary);
     max-width: 500px;
     width: 90%;
     max-height: 90vh;
@@ -324,7 +324,7 @@
     background: none;
     border: none;
     font-size: 24px;
-    color: #6b7280;
+    color: var(--text-tertiary);
     cursor: pointer;
     padding: 0;
     width: 30px;
@@ -335,7 +335,7 @@
 }
 
 .modal-close:hover {
-    color: #374151;
+    color: var(--text-secondary);
 }
 
 .modal-body {
@@ -359,7 +359,7 @@
 }
 
 .newsletter-form-section {
-    background: white;
+    background: var(--bg-primary);
     padding: 30px;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
@@ -378,7 +378,7 @@
 
 .form-group label {
     font-weight: 500;
-    color: #374151;
+    color: var(--text-secondary);
     font-size: 14px;
 }
 
@@ -386,7 +386,7 @@
 .form-textarea,
 .form-select {
     padding: 12px 16px;
-    border: 1px solid #d1d5db;
+    border: 1px solid var(--border-light);
     font-size: 14px;
     transition: border-color 0.2s;
 }
@@ -395,8 +395,8 @@
 .form-textarea:focus,
 .form-select:focus {
     outline: none;
-    border-color: #3b82f6;
-    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(182, 129, 38, 0.1);
 }
 
 .form-textarea {
@@ -410,14 +410,14 @@
 }
 
 .selection-header {
-    background: #f9fafb;
+    background: var(--bg-secondary);
     padding: 12px 16px;
     border-bottom: 1px solid var(--border-light);
     display: flex;
     align-items: center;
     gap: 10px;
     font-weight: 500;
-    color: #374151;
+    color: var(--text-secondary);
 }
 
 .subscriber-list {
@@ -427,7 +427,7 @@
 
 .subscriber-item {
     padding: 12px 16px;
-    border-bottom: 1px solid #f3f4f6;
+    border-bottom: 1px solid var(--border-light);
     display: flex;
     align-items: center;
     gap: 10px;
@@ -438,7 +438,7 @@
 }
 
 .subscriber-item:hover {
-    background: #f9fafb;
+    background: var(--bg-secondary);
 }
 
 .form-actions {
@@ -450,7 +450,7 @@
 
 /* Preview Section */
 .newsletter-preview-section {
-    background: white;
+    background: var(--bg-primary);
     padding: 30px;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
@@ -478,15 +478,15 @@
 .email-content {
     padding: 20px;
     min-height: 200px;
-    background: white;
+    background: var(--bg-primary);
 }
 
 .email-footer {
-    background: #f9fafb;
+    background: var(--bg-secondary);
     padding: 16px;
-    border-top: 1px solid #e5e7eb;
+    border-top: 1px solid var(--border-light);
     font-size: 14px;
-    color: #374151;
+    color: var(--text-secondary);
 }
 
 /* Statistics Styles */
@@ -531,7 +531,7 @@
 }
 
 .statistics-chart {
-    background: white;
+    background: var(--bg-primary);
     padding: 30px;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
@@ -564,7 +564,7 @@
 }
 
 .bar-fill {
-    background: #3b82f6;
+    background: var(--primary-color);
     width: 100%;
     min-height: 4px;
     transition: height 0.3s ease;
@@ -572,13 +572,13 @@
 
 .bar-label {
     font-size: 12px;
-    color: #6b7280;
+    color: var(--text-tertiary);
     font-weight: 500;
 }
 
 .bar-value {
     font-size: 12px;
-    color: #374151;
+    color: var(--text-secondary);
     font-weight: 600;
 }
 
@@ -601,30 +601,31 @@
 }
 
 .btn-primary {
-    background: #3b82f6;
-    color: white;
+    background: var(--primary-color);
+    color: var(--text-white);
 }
 
 .btn-primary:hover:not(:disabled) {
-    background: #2563eb;
+    background: var(--primary-dark);
 }
 
 .btn-secondary {
-    background: #6b7280;
-    color: white;
+    background: var(--text-tertiary);
+    color: var(--text-white);
 }
 
 .btn-secondary:hover:not(:disabled) {
-    background: #4b5563;
+    background: var(--text-secondary);
 }
 
 .btn-danger {
-    background: #dc2626;
-    color: white;
+    background: var(--accent-error);
+    color: var(--text-white);
 }
 
 .btn-danger:hover:not(:disabled) {
-    background: #b91c1c;
+    background: var(--accent-error);
+    opacity: 0.9;
 }
 
 .btn-sm {

@@ -2,7 +2,7 @@ import OurServices from '../../src/pages/OurServices';
 
 export const dynamic = 'force-dynamic';
 
-const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || 'https://mateshwarimoortibhandar.com';
+const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 
 export const metadata = {
   title: 'Our Services - Mateshwari Moorti Bhandar',

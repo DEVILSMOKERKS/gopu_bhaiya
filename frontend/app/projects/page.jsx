@@ -2,8 +2,7 @@ import Projects from '../../src/pages/Projects';
 
 export const dynamic = 'force-dynamic';
 
-const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || 'https://mateshwarimoortibhandar.com';
-
+const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 export const metadata = {
   title: 'Projects - Mateshwari Moorti Bhandar',
   description: 'Explore our completed projects showcasing our craftsmanship and design expertise. See our temple designs, pooja rooms, and custom creations.',
