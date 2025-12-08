@@ -8,6 +8,7 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import './ExploreCollectionCarousel.css';
+import Image from 'next/image';
 
 const ExploreCollectionCarousel = ({ collections }) => {
   const router = useRouter();
@@ -46,7 +47,7 @@ const ExploreCollectionCarousel = ({ collections }) => {
               onClick={() => handleImageClick(collection.category)}
             >
               <div className="explore-collection-carousel-image-container">
-                <img
+                <Image
                   src={collection.image}
                   alt={`${collection.category} collection`}
                   className="explore-collection-carousel-image"

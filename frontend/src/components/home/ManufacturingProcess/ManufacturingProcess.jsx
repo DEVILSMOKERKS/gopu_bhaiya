@@ -8,6 +8,7 @@ import manufacturingImage2 from '../../../assets/Images/banner/manufacturingImag
 import manufacturingImage3 from '../../../assets/Images/banner/manufacturingImage3.jpg';
 import manufacturingImage4 from '../../../assets/Images/banner/manufacturingImage4.jpg';
 import manufacturingImage5 from '../../../assets/Images/banner/manufacturingImage1.jpg';
+import Image from 'next/image';
 
 const ManufacturingProcess = () => {
   const processImages = [
@@ -82,7 +83,7 @@ const ManufacturingProcess = () => {
         >
           {desktopImages.map((image, index) => (
             <div key={index} className="manufacturing-process-card">
-              <img
+              <Image
                 src={image.src}
                 alt={image.alt}
                 className="manufacturing-process-image"
@@ -95,7 +96,7 @@ const ManufacturingProcess = () => {
         <div className="manufacturing-process-grid-mobile">
           {mobileImages.map((image, index) => (
             <div key={mobileStartIndex + index} className="manufacturing-process-card">
-              <img
+              <Image
                 src={image.src}
                 alt={image.alt}
                 className="manufacturing-process-image"

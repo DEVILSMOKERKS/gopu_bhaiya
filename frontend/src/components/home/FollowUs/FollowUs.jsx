@@ -6,6 +6,7 @@ import Follow2 from '../../../assets/Images/follow/follow2.jpg';
 import Follow3 from '../../../assets/Images/follow/follow3.jpg';
 import Follow4 from '../../../assets/Images/follow/follow4.jpg';
 import Follow5 from '../../../assets/Images/follow/follow5.jpg';
+import Image from 'next/image';
 
 const FollowUs = () => {
   const followImages = [
@@ -23,7 +24,7 @@ const FollowUs = () => {
         <div className="follow-us-grid">
           {/* Large left image for desktop */}
           <div className="follow-us-main-image">
-            <img
+            <Image
               src={Follow1}
               alt="Marble Temple Design"
               className="follow-us-image"
@@ -34,7 +35,7 @@ const FollowUs = () => {
           <div className="follow-us-grid-right">
             {followImages.map((image) => (
               <div key={image.id} className="follow-us-image-card">
-                <img
+                <Image
                   src={image.src}
                   alt={image.alt}
                   className="follow-us-image"

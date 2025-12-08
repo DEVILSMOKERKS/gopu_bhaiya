@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import axios from 'axios';
+import Image from 'next/image';
 import { useAdmin } from '../../../context/AdminContext';
 import './EditCategory.css';
 
@@ -172,7 +173,7 @@ const EditCategory = ({ id }) => {
             {currentImage && !imagePreview && (
               <div className="editcategory-image-preview">
                 <p>Current Image:</p>
-                <img
+                <Image
                   src={`${API_URL.replace('/api', '')}${currentImage}`}
                   alt="Current category"
                   onError={(e) => {
@@ -190,7 +191,7 @@ const EditCategory = ({ id }) => {
             {imagePreview && (
               <div className="editcategory-image-preview">
                 <p>New Image Preview:</p>
-                <img src={imagePreview} alt="Preview" />
+                <Image src={imagePreview} alt="Preview" />
               </div>
             )}
           </div>

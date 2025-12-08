@@ -6,6 +6,7 @@ import { HiHeart, HiOutlineHeart } from 'react-icons/hi';
 import { useWishlistCart } from '../../../context/wishlistCartContext';
 import { sampleProducts } from '../../../data/productsData';
 import './DirectFromMakersHands.css';
+import Image from 'next/image';
 
 const DirectFromMakersHands = () => {
     const [products, setProducts] = useState([]);
@@ -196,7 +197,7 @@ const DirectFromMakersHands = () => {
                                 onClick={(e) => handleProductClick(product.product_id, e)}
                             >
                                 <div className="direct-makers-hands-image-wrapper">
-                                    <img
+                                    <Image
                                         src={getProductImage(product)}
                                         alt={product.name}
                                         className="direct-makers-hands-image"
@@ -232,7 +233,7 @@ const DirectFromMakersHands = () => {
                             onClick={() => handleProductClick(product.product_id)}
                         >
                             <div className="direct-makers-hands-image-wrapper">
-                                <img
+                                <Image
                                     src={getProductImage(product)}
                                     alt={product.name}
                                     className="direct-makers-hands-image"

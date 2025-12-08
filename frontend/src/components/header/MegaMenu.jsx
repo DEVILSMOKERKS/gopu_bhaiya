@@ -5,6 +5,7 @@ import Link from 'next/link'
 import './MegaMenu.css'
 import blousesImg from '../../assets/img/Collection/Collection1.jpg'
 import plusSizeImg from '../../assets/img/Collection/Collection2.jpg'
+import Image from 'next/image';
 
 const MegaMenu = ({ activeCategory }) => {
   const menuData = {
@@ -167,7 +168,7 @@ const MegaMenu = ({ activeCategory }) => {
         <div className="megamenu-mega-menu-images">
           {currentData.images.map((image, index) => (
             <div key={index} className="megamenu-mega-menu-image-container">
-              <img
+              <Image
                 src={image.src}
                 alt={image.alt}
                 className="megamenu-mega-menu-image"

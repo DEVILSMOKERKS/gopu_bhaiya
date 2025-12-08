@@ -6,6 +6,7 @@ import PricingPanel from '../PricingPanel/PricingPanel';
 // Import local images
 import mandirImg from '../../../assets/Images/banner/mandir.jpg';
 import marbleMandirImg from '../../../assets/Images/banner/marbleMandir.jpg';
+import Image from 'next/image';
 
 const PoojaRoomBudget = () => {
   const [isPricingPanelOpen, setIsPricingPanelOpen] = useState(false);
@@ -70,7 +71,7 @@ const PoojaRoomBudget = () => {
             {poojaRooms.map((room) => (
               <div key={room.id} className="pooja-room-budget-card">
                 <div className="pooja-room-budget-image-wrapper">
-                  <img
+                  <Image
                     src={room.image}
                     alt={room.size}
                     className="pooja-room-budget-image"

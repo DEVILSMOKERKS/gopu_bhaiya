@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import axios from 'axios';
+import Image from 'next/image';
 import { FaPlus, FaTrash, FaUpload, FaSave, FaArrowLeft } from 'react-icons/fa';
 import { validateProduct, validateImageUpload, showValidationErrors } from './validation';
 import './EditProduct.css';
@@ -563,7 +564,7 @@ const EditProduct = ({ productId }) => {
                         <div className="editproduct-preview-grid">
                           {color.existingImages.map((imageUrl, imageIndex) => (
                             <div key={`existing-${imageIndex}`} className="editproduct-image-preview">
-                              <img
+                              <Image
                                 src={`${API_URL.replace('/api', '')}${imageUrl}`}
                                 alt={`Existing ${imageIndex + 1}`}
                                 onError={(e) => {
@@ -590,7 +591,7 @@ const EditProduct = ({ productId }) => {
                         <div className="editproduct-preview-grid">
                           {color.previewUrls.map((url, imageIndex) => (
                             <div key={`new-${imageIndex}`} className="editproduct-image-preview">
-                              <img
+                              <Image
                                 src={url}
                                 alt={`New ${imageIndex + 1}`}
                                 onError={(e) => {

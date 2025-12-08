@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import './HowToOrder.css';
 // Import background image - using one of the existing images as placeholder
 import backgroundImg from '../../../assets/Images/banner/marbleMandir.jpg';
+import Image from 'next/image';
 
 const HowToOrder = () => {
   const [formData, setFormData] = useState({
@@ -39,7 +40,7 @@ const HowToOrder = () => {
   return (
     <section className="how-to-order">
       <div className="how-to-order-background">
-        <img 
+        <Image 
           src={backgroundImg} 
           alt="Luxurious interior with marble temple" 
           className="how-to-order-bg-image"

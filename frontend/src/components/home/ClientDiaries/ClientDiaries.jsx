@@ -7,6 +7,7 @@ import Collection1 from '../../../assets/img/Collection/Collection1.jpg';
 import Collection2 from '../../../assets/img/Collection/Collection2.jpg';
 import Collection3 from '../../../assets/img/Collection/Collection3.jpg';
 import Collection4 from '../../../assets/img/Collection/Collection4.jpg';
+import Image from 'next/image';
 
 const ClientDiaries = () => {
   const scrollRef = useRef(null);
@@ -96,7 +97,7 @@ const ClientDiaries = () => {
           <div className="client-diaries-grid">
             {duplicatedImages.map((client, index) => (
               <div key={`${client.id}-${index}`} className={`client-diaries-card ${client.size}`}>
-                <img
+                <Image
                   src={client.image}
                   alt={`Client ${client.id}`}
                   className="client-diaries-image"

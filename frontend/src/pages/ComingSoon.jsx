@@ -47,11 +47,6 @@ const ComingSoon = () => {
         {/* Header Section */}
         <div className="header-section">
           <div className="logo-container">
-            {/* <div className="logo-circle">
-              <h1 className="brand-name">
-                <img src={logo} alt="" />
-              </h1>
-            </div> */}
             <div className="brand-info">
               <h2 className="brand-title">Mateshwari Moorti Bhandar</h2>
               <div className="brand-tagline">Premium Fashion & Lifestyle</div>

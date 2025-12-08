@@ -612,19 +612,21 @@ const Product = ({ productId: productIdProp }) => {
                 className="main-image-wrapper"
                 onClick={handleImageClick}
                 style={{
-                  cursor: 'zoom-in'
+                  cursor: 'zoom-in',
+                  position: 'relative',
+                  width: '100%',
+                  height: '100%'
                 }}
               >
-                <img
+                <Image
                   src={productImages.length > 0 ? `${API_URL.replace('/api', '')}${productImages[selectedImage]}` : '/src/assets/img/Bestseller1.jpg'}
                   alt={product.name}
-                  loading="lazy"
+                  fill
                   style={{
-                    width: '100%',
-                    height: '100%',
                     objectFit: 'cover',
                     transition: 'transform 0.3s ease'
                   }}
+                  loading="lazy"
                 />
                 <div className="zoom-hint">
                   <span>Click to zoom</span>
@@ -769,10 +771,12 @@ const Product = ({ productId: productIdProp }) => {
                     onClick={() => handleColorSelect(index)}
                   >
                     <div className="color-image-container">
-                      <img
+                      <Image
                         src={color.images && color.images.length > 0 ? `${API_URL.replace('/api', '')}${color.images[0]}` : '/src/assets/img/Bestseller1.jpg'}
                         alt={color.color_name}
                         className="color-image"
+                        fill
+                        style={{ objectFit: 'cover' }}
                         loading="lazy"
                       />
                     </div>
@@ -969,7 +973,7 @@ const Product = ({ productId: productIdProp }) => {
       {/* Size Chart Modal */}
       {showSizeChart && (
         <div className="size-chart-modal-overlay" onClick={closeSizeChart}>
-          <img
+          <Image
             src="/src/assets/img/size chart.jpg"
             alt="Size Chart"
             className="size-chart-image"
@@ -987,7 +991,7 @@ const Product = ({ productId: productIdProp }) => {
           <div className="zoom-modal-content">
             <button className="zoom-close-btn" onClick={closeZoomModal}>×</button>
             <div className="zoom-modal-image-container">
-              <img
+              <Image
                 src={productImages.length > 0 ? `${API_URL.replace('/api', '')}${productImages[selectedImage]}` : '/src/assets/img/Bestseller1.jpg'}
                 alt={product.name}
                 className="zoom-modal-image"

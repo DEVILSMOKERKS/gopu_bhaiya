@@ -7,6 +7,7 @@ import Collection1 from '../../assets/Images/collection/collection1.jpg'
 import Collection2 from '../../assets/Images/collection/collection4.jpg'
 import Collection4 from '../../assets/Images/collection/collection2.jpg'
 import Collection3 from '../../assets/Images/collection/collection3.jpg'
+import Image from 'next/image';
 
 const Collection = () => {
   const router = useRouter();
@@ -20,7 +21,7 @@ const Collection = () => {
 
       <div className="collection-grid">
         <div className="collection-item" onClick={handleCollectionClick}>
-          <img
+          <Image
             src={Collection1}
             alt="Navy Blue Dress"
             className="collection-image"
@@ -28,7 +29,7 @@ const Collection = () => {
         </div>
 
         <div className="collection-item" onClick={handleCollectionClick}>
-          <img
+          <Image
             src={Collection2}
             alt="Blue Floral Dress"
             className="collection-image"
@@ -36,7 +37,7 @@ const Collection = () => {
         </div>
 
         <div className="collection-item" onClick={handleCollectionClick}>
-          <img
+          <Image
             src={Collection3}
             alt="White Embroidered Dress"
             className="collection-image"
@@ -44,7 +45,7 @@ const Collection = () => {
         </div>
 
         <div className="collection-item" onClick={handleCollectionClick}>
-          <img
+          <Image
             src={Collection4}
             alt="Green Pattern Dress"
             className="collection-image"

@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 import axios from 'axios';
 import { useWishlistCart } from '../../context/wishlistCartContext';
 import './mmbweek.css';
+import Image from 'next/image';
 import BestSeller1 from '../../assets/img/Bestseller1.jpg'
 import BestSeller2 from '../../assets/img/Bestseller2.jpg'
 import BestSeller3 from '../../assets/img/Bestseller3.jpg'
@@ -206,7 +207,7 @@ const SaanzWeek = () => {
               onClick={() => handleProductClick(item.id)}
             >
               <div className="mmbweek-card-image-container">
-                <img
+                <Image
                   src={getCurrentImage(item)}
                   alt={`${item.day} outfit`}
                   className="mmbweek-card-image"

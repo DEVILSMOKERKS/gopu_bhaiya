@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import axios from 'axios';
@@ -92,7 +93,7 @@ const HomeBlog = () => {
     <section className="homeblog">
       <div className="homeblog-header">
         <h2 className="homeblog-title">Our Blogs</h2>
-        <Link to="/blogs" className="homeblog-view-all">
+        <Link href="/blogs" className="homeblog-view-all">
           View All
         </Link>
       </div>
@@ -104,7 +105,7 @@ const HomeBlog = () => {
             className="homeblog-card"
             onClick={() => handleCardClick(post.slug)}
           >
-            <img
+            <Image
               src={`${API_URL.replace('/api', '')}${post.featured_image}`}
               alt={post.title}
               className="homeblog-image"

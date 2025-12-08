@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from 'react';
+import Image from 'next/image';
 import './clientdiaries.css';
 import Collection1 from '../../assets/img/Collection/Collection1.jpg';
 import Collection2 from '../../assets/img/Collection/Collection2.jpg';
@@ -162,8 +163,8 @@ const Clientdiaries = () => {
         <div className="clientdiaries-client-grid">
           {clientImages.map((image) => (
             <div key={image.id} className={`clientdiaries-client-image-card ${image.size}`}>
-              <img 
-                src={image.src} 
+              <Image
+                src={image.src}
                 alt={image.alt}
                 className="clientdiaries-client-image"
                 loading="lazy"
@@ -173,7 +174,7 @@ const Clientdiaries = () => {
           ))}
         </div>
       </div>
-      
+
       <div className="clientdiaries-carousel-header">
         <div className="clientdiaries-carousel-title-wrapper">
           <span className="clientdiaries-carousel-title-line"></span>

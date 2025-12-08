@@ -1,6 +1,7 @@
 import React from 'react';
 import './SpotLight.css';
 import spotlightImage from '../../assets/Images/banner/spotLight.jpg';
+import Image from 'next/image';
 
 const SpotLight = () => {
   return (
@@ -8,8 +9,8 @@ const SpotLight = () => {
       <div className="spotlight-container">
         <h2 className="spotlight-title">Spotlight On</h2>
         <div className="spotlight-banner-container">
-          <img 
-            src={spotlightImage} 
+          <Image
+            src={spotlightImage}
             alt="Spotlight Collection"
             className="spotlight-banner-image"
           />

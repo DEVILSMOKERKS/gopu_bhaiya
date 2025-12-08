@@ -183,7 +183,7 @@ const Blogs = () => {
                   <h3 className="blog-title">{blog.title}</h3>
                   <div className="blog-author">
                     {blog.author_photo ? (
-                      <img
+                      <Image
                         src={blog.author_photo}
                         alt={blog.author_name}
                         className="blog-author-photo"

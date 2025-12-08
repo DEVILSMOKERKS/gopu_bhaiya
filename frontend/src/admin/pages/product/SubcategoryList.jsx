@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import axios from 'axios';
+import Image from 'next/image';
 import { useAdmin } from '../../../context/AdminContext';
 import './SubcategoryList.css';
 
@@ -152,7 +153,7 @@ const SubcategoryList = () => {
                   </td>
                   <td className="subcategorylist-td subcategorylist-image-cell">
                     {subcategory.image_url ? (
-                      <img
+                      <Image
                         src={`${API_URL.replace('/api', '')}${subcategory.image_url}`}
                         alt={subcategory.name}
                         className="subcategorylist-subcategory-image"

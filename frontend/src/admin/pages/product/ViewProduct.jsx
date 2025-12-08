@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import axios from 'axios';
+import Image from 'next/image';
 import { FaArrowLeft, FaEdit, FaTrash, FaEye } from 'react-icons/fa';
 import './ViewProduct.css';
 
@@ -161,7 +162,7 @@ const ViewProduct = ({ productId }) => {
           <div className="viewproduct-product-images">
             <div className="viewproduct-main-image">
               {getCurrentImages().length > 0 ? (
-                <img
+                <Image
                   src={`${API_URL.replace('/api', '')}${getCurrentImages()[selectedImage]}`}
                   alt={product.name}
                   onError={(e) => {
@@ -184,7 +185,7 @@ const ViewProduct = ({ productId }) => {
                     className={`viewproduct-thumbnail ${selectedImage === index ? 'active' : ''}`}
                     onClick={() => setSelectedImage(index)}
                   >
-                    <img
+                    <Image
                       src={`${API_URL.replace('/api', '')}${image}`}
                       alt={`${product.name} ${index + 1}`}
                       onError={(e) => {

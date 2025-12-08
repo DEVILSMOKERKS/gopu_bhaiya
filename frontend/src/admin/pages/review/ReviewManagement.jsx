@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './ReviewManagement.css';
+import Image from 'next/image';
 
 const ReviewManagement = () => {
   const [reviews, setReviews] = useState([]);
@@ -222,7 +223,7 @@ const ReviewManagement = () => {
                 </td>
                 <td>
                   <div className="user-info">
-                    <img
+                    <Image
                       src={review.user_photo ? `${API_URL.replace('/api', '')}${review.user_photo}` : '/src/assets/img/default-avatar.png'}
                       alt={review.user_name}
                       className="user-avatar"
@@ -245,7 +246,7 @@ const ReviewManagement = () => {
                       <p className="review-text">{review.review_text}</p>
                     )}
                     {review.review_image && (
-                      <img
+                      <Image
                         src={`${API_URL.replace('/api', '')}${review.review_image}`}
                         alt="Review"
                         className="review-thumbnail"

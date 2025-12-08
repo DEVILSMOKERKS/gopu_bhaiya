@@ -984,7 +984,7 @@ const Shop = () => {
                 onClick={() => handleProductClick(product.product_id)}
               >
                 <div className="shop-product-image-container">
-                  <img src={getCurrentImage(product)} alt={product.name} className="shop-product-image" />
+                  <Image src={getCurrentImage(product)} alt={product.name} className="shop-product-image" />
                   {isNewProduct(product.created_at) && <span className="shop-new-tag">New</span>}
                   <button
                     className={`shop-heart-btn ${isInWishlist(product.product_id) ? 'shop-heart-btn-active' : ''}`}
@@ -1032,7 +1032,7 @@ const Shop = () => {
 
           {/* Banner */}
           <div className="shop-mid-banner">
-            <img
+            <Image
               src={shopBanner}
               alt="Shop Banner"
               className="shop-mid-banner-img"
@@ -1049,7 +1049,7 @@ const Shop = () => {
                 onClick={() => handleProductClick(product.product_id)}
               >
                 <div className="shop-product-image-container">
-                  <img src={getCurrentImage(product)} alt={product.name} className="shop-product-image" />
+                  <Image src={getCurrentImage(product)} alt={product.name} className="shop-product-image" />
                   {isNewProduct(product.created_at) && <span className="shop-new-tag">New</span>}
                   <button
                     className={`shop-heart-btn ${isInWishlist(product.product_id) ? 'shop-heart-btn-active' : ''}`}
@@ -1105,7 +1105,7 @@ const Shop = () => {
                   onClick={() => handleProductClick(product.product_id)}
                 >
                   <div className="shop-product-image-container">
-                    <img src={getCurrentImage(product)} alt={product.name} className="shop-product-image" />
+                    <Image src={getCurrentImage(product)} alt={product.name} className="shop-product-image" />
                     {isNewProduct(product.created_at) && <span className="shop-new-tag">New</span>}
                     <button
                       className={`shop-heart-btn ${isInWishlist(product.product_id) ? 'shop-heart-btn-active' : ''}`}

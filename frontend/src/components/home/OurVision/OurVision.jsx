@@ -7,6 +7,7 @@ import ourVisionBgDesktop1 from '../../../assets/Images/banner/our-vision-bg-des
 import ourVisionBgDesktop2 from '../../../assets/Images/banner/our-vision-bg-desktop2.png';
 import ourVisionBgMobile from '../../../assets/Images/banner/our-vision-bg-mobile.png';
 import about1 from '../../../assets/img/who-banner.png';
+import Image from 'next/image';
 
 const OurVision = () => {
   const router = useRouter();
@@ -62,7 +63,7 @@ const OurVision = () => {
           <div className="our-vision-image-section">
             <div className="our-vision-image-wrapper">
               {about1 ? (
-                <img
+                <Image
                   className="our-vision-main-image"
                   src={about1}
                   alt="Our Vision"

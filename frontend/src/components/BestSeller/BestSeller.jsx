@@ -8,6 +8,7 @@ import './BestSeller.css';
 import BestSeller1 from '../../assets/img/Bestseller1.jpg'
 import BestSeller2 from '../../assets/img/Bestseller2.jpg'
 import BestSeller3 from '../../assets/img/Bestseller3.jpg'
+import Image from 'next/image';
 
 const BestSeller = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -238,7 +239,7 @@ const BestSeller = () => {
               onClick={() => handleProductClick(item.id)}
             >
               <div className="bestseller-card-image-container">
-                <img
+                <Image
                   src={getCurrentImage(item)}
                   alt={`${item.name} product`}
                   className="bestseller-card-image"

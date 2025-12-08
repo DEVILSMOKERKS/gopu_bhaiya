@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import axios from 'axios';
+import Image from 'next/image';
 import { FaPlus, FaEdit, FaEye, FaTrash, FaSearch, FaDownload } from 'react-icons/fa';
 import './ProductList.css';
 
@@ -344,7 +345,7 @@ const ProductList = () => {
                 </td>
                 <td className="productlist-td productlist-product-td">
                   <div className="productlist-product-info">
-                    <img
+                    <Image
                       src={getDefaultImage(product)}
                       alt={product.name}
                       className="productlist-product-image"

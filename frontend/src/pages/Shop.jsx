@@ -1,6 +1,7 @@
 // import React, { useState } from 'react';
 // import { Heart, Plus } from 'lucide-react';
 // import bannerImg from '../assets/img/shopp.jpg';
+// import Image from 'next/image';
 // import './Shop.css';
 
 
@@ -100,7 +101,7 @@
 
 //             {/* banner */}
 //             <div className="shop-bannerContainer">
-//                 <img src={bannerImg} alt="banner-img" width='100%' height='100%' className="shop-banner" />
+//                 <Image src={bannerImg} alt="banner-img" width='100%' height='100%' className="shop-banner" />
 //             </div>
 
 //             <div className="shop-filterAndProductContainer">
@@ -138,7 +139,7 @@
 //                         {products.map((product) => (
 //                             <div key={product.id} className="shop-productCard">
 //                                 <div className="shop-imageContainer">
-//                                     <img
+//                                     <Image
 //                                         src={product.image}
 //                                         alt={product.title}
 //                                         className="shop-productImage"

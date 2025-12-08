@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import axios from 'axios';
+import Image from 'next/image';
 import { FaPlus, FaTrash, FaUpload, FaSave, FaArrowLeft } from 'react-icons/fa';
 import { validateProduct, validateImageUpload, showValidationErrors } from './validation';
 import './CreateProduct.css';
@@ -361,7 +362,7 @@ const CreateProduct = () => {
                         <div className="createproduct-preview-grid">
                           {color.previewUrls.map((url, imageIndex) => (
                             <div key={imageIndex} className="createproduct-image-preview">
-                              <img src={url} alt={`Preview ${imageIndex + 1}`} />
+                              <Image src={url} alt={`Preview ${imageIndex + 1}`} width={150} height={150} style={{ objectFit: 'cover' }} />
                               <button
                                 type="button"
                                 className="createproduct-remove-image-btn"

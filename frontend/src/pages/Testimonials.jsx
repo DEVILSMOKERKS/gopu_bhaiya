@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import { Helmet } from 'react-helmet-async';
+import Image from 'next/image';
 import './Testimonials.css';
 import { FaStar, FaQuoteLeft } from 'react-icons/fa';
 
@@ -119,7 +120,7 @@ const Testimonials = () => {
               <div key={testimonial.id} className="testimonial-card">
                 <div className="testimonial-header">
                   <div className="testimonial-avatar">
-                    <img src={testimonial.image} alt={testimonial.name} />
+                    <Image src={testimonial.image} alt={testimonial.name} width={60} height={60} style={{ objectFit: 'cover' }} />
                   </div>
                   <div className="testimonial-info">
                     <h3 className="testimonial-name">{testimonial.name}</h3>

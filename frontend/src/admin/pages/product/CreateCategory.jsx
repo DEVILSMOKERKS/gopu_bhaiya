@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import axios from 'axios';
+import Image from 'next/image';
 import { useAdmin } from '../../../context/AdminContext';
 import './CreateCategory.css';
 
@@ -130,7 +131,7 @@ const CreateCategory = () => {
             />
             {imagePreview && (
               <div className="createcategory-image-preview">
-                <img src={imagePreview} alt="Preview" />
+                <Image src={imagePreview} alt="Preview" width={60} height={60} style={{ objectFit: 'cover' }} />
               </div>
             )}
           </div>

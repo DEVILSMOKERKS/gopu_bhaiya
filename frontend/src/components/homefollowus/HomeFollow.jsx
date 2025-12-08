@@ -4,6 +4,7 @@ import homefollowus1 from '../../assets/Images/follow/follow1.jpg'
 import homefollowus2 from '../../assets/Images/follow/follow2.jpg'
 import homefollowus3 from '../../assets/Images/follow/follow3.jpg'
 import homefollowus4 from '../../assets/Images/follow/follow4.jpg'
+import Image from 'next/image';
 
 
 const HomeFollow = () => {
@@ -15,7 +16,7 @@ const HomeFollow = () => {
             <div className="homefollowus-container">
                 <div className="homefollowus-main-image">
                     <a href={instagramUrl} target="_blank" rel="noopener noreferrer" className="instagram-link">
-                        <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Fashion Model in White Ethnic Kurta" />
+                        <Image src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Fashion Model in White Ethnic Kurta" />
                         <div className="instagram-overlay">
                             <div className="instagram-icon">
                                 <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -28,7 +29,7 @@ const HomeFollow = () => {
                 <div className="homefollowus-sub-grid">
                     <div className="homefollowus-sub-image">
                         <a href={instagramUrl} target="_blank" rel="noopener noreferrer" className="instagram-link">
-                            <img src={homefollowus1} alt="Model in Light Patterned Top" />
+                            <Image src={homefollowus1} alt="Model in Light Patterned Top" />
                             <div className="instagram-overlay">
                                 <div className="instagram-icon">
                                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -40,7 +41,7 @@ const HomeFollow = () => {
                     </div>
                     <div className="homefollowus-sub-image">
                         <a href={instagramUrl} target="_blank" rel="noopener noreferrer" className="instagram-link">
-                            <img src={homefollowus2} alt="Model in Pink Ethnic Outfit" />
+                            <Image src={homefollowus2} alt="Model in Pink Ethnic Outfit" />
                             <div className="instagram-overlay">
                                 <div className="instagram-icon">
                                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -52,7 +53,7 @@ const HomeFollow = () => {
                     </div>
                     <div className="homefollowus-sub-image">
                         <a href={instagramUrl} target="_blank" rel="noopener noreferrer" className="instagram-link">
-                            <img src={homefollowus3} alt="Patterned Fabrics on Hangers" />
+                            <Image src={homefollowus3} alt="Patterned Fabrics on Hangers" />
                             <div className="instagram-overlay">
                                 <div className="instagram-icon">
                                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -64,7 +65,7 @@ const HomeFollow = () => {
                     </div>
                     <div className="homefollowus-sub-image">
                         <a href={instagramUrl} target="_blank" rel="noopener noreferrer" className="instagram-link">
-                            <img src={homefollowus4} alt="Model by Water with Traditional Buildings" />
+                            <Image src={homefollowus4} alt="Model by Water with Traditional Buildings" />
                             <div className="instagram-overlay">
                                 <div className="instagram-icon">
                                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">

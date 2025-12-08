@@ -130,11 +130,13 @@ const BlogDetail = ({ slug }) => {
           </header>
 
           {blog.featured_image && (
-            <div className="blog-detail-image-container">
-              <img
+            <div className="blog-detail-image-container" style={{ position: 'relative', width: '100%', height: '400px' }}>
+              <Image
                 src={`${API_URL.replace('/api', '')}${blog.featured_image}`}
                 alt={blog.title}
                 className="blog-detail-image"
+                fill
+                style={{ objectFit: 'cover' }}
               />
             </div>
           )}
@@ -169,7 +171,7 @@ const BlogDetail = ({ slug }) => {
                     className="related-blog-card"
                     onClick={() => handleRelatedBlogClick(relatedBlog.slug)}
                   >
-                    <img
+                    <Image
                       src={`${API_URL.replace('/api', '')}${relatedBlog.featured_image}`}
                       alt={relatedBlog.title}
                       className="related-blog-image"
@@ -188,7 +190,7 @@ const BlogDetail = ({ slug }) => {
       </div>
 
       <div className="blog-detail-footer">
-        <button onClick={() => navigate('/blogs')} className="back-to-blogs-button">
+        <button onClick={() => router.push('/blogs')} className="back-to-blogs-button">
           ← Back to All Blogs
         </button>
       </div>

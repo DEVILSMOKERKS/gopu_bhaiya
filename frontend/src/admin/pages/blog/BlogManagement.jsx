@@ -438,7 +438,7 @@ const BlogManagement = () => {
                   className="form-input"
                 />
                 {imagePreview && (
-                  <img src={imagePreview} alt="Preview" className="image-preview" />
+                  <Image src={imagePreview} alt="Preview" className="image-preview" width={60} height={60} style={{ objectFit: 'cover' }} />
                 )}
               </div>
 
@@ -576,7 +576,7 @@ const BlogManagement = () => {
                   className="form-input"
                 />
                 {imagePreview && (
-                  <img src={imagePreview} alt="Preview" className="image-preview" />
+                  <Image src={imagePreview} alt="Preview" className="image-preview" width={60} height={60} style={{ objectFit: 'cover' }} />
                 )}
               </div>
 

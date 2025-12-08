@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './UserManagement.css';
+import Image from 'next/image';
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL
 
@@ -268,7 +269,7 @@ const UserManagement = () => {
             <div className="grid-cell user-info" data-label="User">
               <div className="user-avatar">
                 {user.photo ? (
-                  <img src={user.photo} alt={user.name} />
+                  <Image src={user.photo} alt={user.name} />
                 ) : (
                   <div className="user-avatar-placeholder">
                     {user.name.charAt(0).toUpperCase()}
