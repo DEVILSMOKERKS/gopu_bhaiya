@@ -306,11 +306,16 @@ const ProductReview = ({ productId, productName }) => {
               <p className="user-review-text">{userReview.review_text}</p>
             )}
             {userReview.review_image && (
-              <Image
-                src={`${API_URL.replace('/api', '')}${userReview.review_image}`}
-                alt="Review"
-                className="user-review-image"
-              />
+              <div style={{ position: 'relative', maxWidth: '120px', maxHeight: '120px', width: 'auto', height: 'auto', borderRadius: '4px' }}>
+                <Image
+                  src={`${API_URL.replace('/api', '')}${userReview.review_image}`}
+                  alt="Review"
+                  className="user-review-image"
+                  width={120}
+                  height={120}
+                  style={{ objectFit: 'cover', borderRadius: '4px' }}
+                />
+              </div>
             )}
             {userReview.status === 'rejected' && (
               <div className="review-status">
@@ -347,11 +352,16 @@ const ProductReview = ({ productId, productName }) => {
                 <p className="review-text">{review.review_text}</p>
               )}
               {review.review_image && (
-                <Image
-                  src={`${API_URL.replace('/api', '')}${review.review_image}`}
-                  alt="Review"
-                  className="review-image"
-                />
+                <div style={{ position: 'relative', maxWidth: '120px', maxHeight: '120px', width: 'auto', height: 'auto', borderRadius: '4px' }}>
+                  <Image
+                    src={`${API_URL.replace('/api', '')}${review.review_image}`}
+                    alt="Review"
+                    className="review-image"
+                    width={120}
+                    height={120}
+                    style={{ objectFit: 'cover', borderRadius: '4px' }}
+                  />
+                </div>
               )}
               <div className="review-actions">
                 <button

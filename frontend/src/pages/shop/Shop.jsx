@@ -983,8 +983,8 @@ const Shop = () => {
                 className="shop-product-card"
                 onClick={() => handleProductClick(product.product_id)}
               >
-                <div className="shop-product-image-container">
-                  <Image src={getCurrentImage(product)} alt={product.name} className="shop-product-image" />
+                <div className="shop-product-image-container" style={{ position: 'relative', width: '100%', height: '300px', overflow: 'hidden' }}>
+                  <Image src={getCurrentImage(product)} alt={product.name} className="shop-product-image" fill style={{ objectFit: 'cover' }} />
                   {isNewProduct(product.created_at) && <span className="shop-new-tag">New</span>}
                   <button
                     className={`shop-heart-btn ${isInWishlist(product.product_id) ? 'shop-heart-btn-active' : ''}`}
@@ -1048,8 +1048,8 @@ const Shop = () => {
                 className="shop-product-card"
                 onClick={() => handleProductClick(product.product_id)}
               >
-                <div className="shop-product-image-container">
-                  <Image src={getCurrentImage(product)} alt={product.name} className="shop-product-image" />
+                <div className="shop-product-image-container" style={{ position: 'relative', width: '100%', height: '300px', overflow: 'hidden' }}>
+                  <Image src={getCurrentImage(product)} alt={product.name} className="shop-product-image" fill style={{ objectFit: 'cover' }} />
                   {isNewProduct(product.created_at) && <span className="shop-new-tag">New</span>}
                   <button
                     className={`shop-heart-btn ${isInWishlist(product.product_id) ? 'shop-heart-btn-active' : ''}`}
@@ -1104,8 +1104,8 @@ const Shop = () => {
                   className="shop-product-card"
                   onClick={() => handleProductClick(product.product_id)}
                 >
-                  <div className="shop-product-image-container">
-                    <Image src={getCurrentImage(product)} alt={product.name} className="shop-product-image" />
+                  <div className="shop-product-image-container" style={{ position: 'relative', width: '100%', height: '300px', overflow: 'hidden' }}>
+                    <Image src={getCurrentImage(product)} alt={product.name} className="shop-product-image" fill style={{ objectFit: 'cover', transition: 'transform 0.3s ease' }} />
                     {isNewProduct(product.created_at) && <span className="shop-new-tag">New</span>}
                     <button
                       className={`shop-heart-btn ${isInWishlist(product.product_id) ? 'shop-heart-btn-active' : ''}`}

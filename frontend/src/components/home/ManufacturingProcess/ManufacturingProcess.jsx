@@ -82,11 +82,13 @@ const ManufacturingProcess = () => {
           ref={desktopScrollRef}
         >
           {desktopImages.map((image, index) => (
-            <div key={index} className="manufacturing-process-card">
+            <div key={index} className="manufacturing-process-card" style={{ position: 'relative', borderRadius: '12px', overflow: 'hidden', background: '#ffffff', transition: 'transform var(--transition-normal)' }}>
               <Image
                 src={image.src}
                 alt={image.alt}
                 className="manufacturing-process-image"
+                fill
+                style={{ objectFit: 'cover', display: 'block', borderRadius: '12px' }}
               />
             </div>
           ))}

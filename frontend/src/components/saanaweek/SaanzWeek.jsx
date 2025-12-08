@@ -206,11 +206,13 @@ const SaanzWeek = () => {
               className={`mmbweek-card ${index === currentIndex ? 'mmbweek-active' : ''}`}
               onClick={() => handleProductClick(item.id)}
             >
-              <div className="mmbweek-card-image-container">
+              <div className="mmbweek-card-image-container" style={{ position: 'relative', width: '100%', height: '320px', overflow: 'hidden' }}>
                 <Image
                   src={getCurrentImage(item)}
                   alt={`${item.day} outfit`}
                   className="mmbweek-card-image"
+                  fill
+                  style={{ objectFit: 'cover', transition: 'transform 0.3s ease' }}
                 />
                 <button
                   className={`mmbweek-heart-btn ${isInWishlist(item.id) ? 'mmbweek-heart-btn-active' : ''}`}

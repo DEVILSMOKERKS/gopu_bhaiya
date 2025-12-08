@@ -196,11 +196,13 @@ const DirectFromMakersHands = () => {
                                 className="direct-makers-hands-card"
                                 onClick={(e) => handleProductClick(product.product_id, e)}
                             >
-                                <div className="direct-makers-hands-image-wrapper">
+                                <div className="direct-makers-hands-image-wrapper" style={{ position: 'relative', width: '100%', paddingTop: '130%', overflow: 'hidden', background: '#f5f5f5' }}>
                                     <Image
                                         src={getProductImage(product)}
                                         alt={product.name}
                                         className="direct-makers-hands-image"
+                                        fill
+                                        style={{ objectFit: 'cover' }}
                                     />
                                     <button
                                         className="direct-makers-hands-wishlist-btn"

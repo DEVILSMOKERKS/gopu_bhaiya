@@ -157,6 +157,9 @@ const SubcategoryList = () => {
                         src={`${API_URL.replace('/api', '')}${subcategory.image_url}`}
                         alt={subcategory.name}
                         className="subcategorylist-subcategory-image"
+                        width={50}
+                        height={50}
+                        style={{ objectFit: 'cover', borderRadius: '6px', border: '1px solid #e9ecef' }}
                         onError={(e) => {
                           e.target.style.display = 'none';
                           e.target.nextSibling.style.display = 'flex';

@@ -1,8 +1,9 @@
 'use client';
 
-import React from 'react'
-import Link from 'next/link'
-import './MegaMenu.css'
+import React from 'react';
+import Image from 'next/image';
+import Link from 'next/link';
+import './MegaMenu.css';
 import blousesImg from '../../assets/img/Collection/Collection1.jpg'
 import plusSizeImg from '../../assets/img/Collection/Collection2.jpg'
 import Image from 'next/image';
@@ -167,12 +168,16 @@ const MegaMenu = ({ activeCategory }) => {
         {/* Right side - Product images */}
         <div className="megamenu-mega-menu-images">
           {currentData.images.map((image, index) => (
-            <div key={index} className="megamenu-mega-menu-image-container">
-              <Image
-                src={image.src}
-                alt={image.alt}
-                className="megamenu-mega-menu-image"
-              />
+            <div key={index} className="megamenu-mega-menu-image-container" style={{ textAlign: 'center' }}>
+              <div style={{ position: 'relative', width: '180px', height: '240px', margin: '0 auto 8px' }}>
+                <Image
+                  src={image.src}
+                  alt={image.alt}
+                  className="megamenu-mega-menu-image"
+                  fill
+                  style={{ objectFit: 'cover' }}
+                />
+              </div>
               <p className="megamenu-mega-menu-image-title">{image.title}</p>
             </div>
           ))}

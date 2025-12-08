@@ -590,10 +590,13 @@ const EditProduct = ({ productId }) => {
                         <h5>New Images ({color.previewUrls.length})</h5>
                         <div className="editproduct-preview-grid">
                           {color.previewUrls.map((url, imageIndex) => (
-                            <div key={`new-${imageIndex}`} className="editproduct-image-preview">
+                            <div key={`new-${imageIndex}`} className="editproduct-image-preview" style={{ position: 'relative', borderRadius: '8px', overflow: 'hidden', boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)' }}>
                               <Image
                                 src={url}
                                 alt={`New ${imageIndex + 1}`}
+                                width={150}
+                                height={150}
+                                style={{ objectFit: 'cover', width: '100%', height: '150px' }}
                                 onError={(e) => {
                                   e.target.src = '/placeholder-product.jpg';
                                 }}

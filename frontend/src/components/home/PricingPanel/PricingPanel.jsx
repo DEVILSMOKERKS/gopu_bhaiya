@@ -12,7 +12,7 @@ const PricingPanel = ({ isOpen, onClose }) => {
     <>
       {/* Backdrop */}
       <div className="pricing-panel-backdrop" onClick={onClose}></div>
-      
+
       {/* Slide-in Panel */}
       <div className={`pricing-panel ${isOpen ? 'open' : ''}`}>
         {/* Close Button */}
@@ -39,11 +39,13 @@ const PricingPanel = ({ isOpen, onClose }) => {
           <div className="pricing-panel-images">
             {/* Left Image - Small Pooja Room */}
             <div className="pricing-panel-image-left">
-              <div className="pricing-image-wrapper">
-                <Image 
-                  src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=800&q=90&auto=format&fit=crop" 
-                  alt="Small Pooja Room upto 50 Sqft" 
+              <div className="pricing-image-wrapper" style={{ position: 'relative', width: '100%', aspectRatio: '2 / 3', minHeight: '600px', overflow: 'hidden', borderRadius: '4px', background: '#f5f5f5' }}>
+                <Image
+                  src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=800&q=90&auto=format&fit=crop"
+                  alt="Small Pooja Room upto 50 Sqft"
                   className="pricing-image"
+                  fill
+                  style={{ objectFit: 'cover' }}
                 />
                 {/* Price Overlay - Top Left */}
                 <div className="pricing-overlay-top">
@@ -58,11 +60,13 @@ const PricingPanel = ({ isOpen, onClose }) => {
 
             {/* Right Image - Elaborate Pooja Room */}
             <div className="pricing-panel-image-right">
-              <div className="pricing-image-wrapper">
-                <Image 
-                  src={marbleMandirImg || "https://images.unsplash.com/photo-1600607687644-c7171b42498b?w=1200&q=90&auto=format&fit=crop"} 
-                  alt="Elaborate Pooja Room with Peacock Motif" 
+              <div className="pricing-image-wrapper" style={{ position: 'relative', width: '100%', aspectRatio: '4 / 3', minHeight: '600px', overflow: 'hidden', borderRadius: '4px', background: '#f5f5f5' }}>
+                <Image
+                  src={marbleMandirImg || "https://images.unsplash.com/photo-1600607687644-c7171b42498b?w=1200&q=90&auto=format&fit=crop"}
+                  alt="Elaborate Pooja Room with Peacock Motif"
                   className="pricing-image"
+                  fill
+                  style={{ objectFit: 'cover' }}
                 />
               </div>
             </div>

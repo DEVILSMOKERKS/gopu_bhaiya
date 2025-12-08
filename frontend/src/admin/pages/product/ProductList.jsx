@@ -349,6 +349,9 @@ const ProductList = () => {
                       src={getDefaultImage(product)}
                       alt={product.name}
                       className="productlist-product-image"
+                      width={60}
+                      height={60}
+                      style={{ objectFit: 'cover', borderRadius: '8px', border: '2px solid #e2e8f0' }}
                       onError={(e) => {
                         e.target.src = '/placeholder-product.jpg';
                       }}

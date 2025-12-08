@@ -46,11 +46,13 @@ const ExploreCollectionCarousel = ({ collections }) => {
               className="explore-collection-carousel-card"
               onClick={() => handleImageClick(collection.category)}
             >
-              <div className="explore-collection-carousel-image-container">
+              <div className="explore-collection-carousel-image-container" style={{ position: 'relative', width: '100%', height: '100%', overflow: 'hidden', borderRadius: '12px' }}>
                 <Image
                   src={collection.image}
                   alt={`${collection.category} collection`}
                   className="explore-collection-carousel-image"
+                  fill
+                  style={{ objectFit: 'cover', transition: 'transform 0.3s ease' }}
                 />
               </div>
             </div>

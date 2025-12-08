@@ -229,7 +229,7 @@ const EditSubcategory = ({ id }) => {
             {imagePreview && (
               <div className="editsubcategory-image-preview">
                 <p>New Image Preview:</p>
-                <Image src={imagePreview} alt="Preview" />
+                <Image src={imagePreview} alt="Preview" width={200} height={200} style={{ objectFit: 'cover', borderRadius: '8px', maxWidth: '200px', maxHeight: '200px' }} />
               </div>
             )}
           </div>

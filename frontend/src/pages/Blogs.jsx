@@ -187,6 +187,9 @@ const Blogs = () => {
                         src={blog.author_photo}
                         alt={blog.author_name}
                         className="blog-author-photo"
+                        width={35}
+                        height={35}
+                        style={{ objectFit: 'cover', borderRadius: '50%' }}
                       />
                     ) : (
                       <div className="blog-author-icon">

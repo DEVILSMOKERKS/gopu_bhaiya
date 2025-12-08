@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useRef, useEffect } from 'react';
+import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import axios from 'axios';
 import './AlsoLike.css';
@@ -196,11 +197,13 @@ const AlsoLike = ({ productId }) => {
               className={`alsolike-card ${index === currentIndex ? 'alsolike-active' : ''}`}
               onClick={() => handleProductClick(item.id)}
             >
-              <div className="alsolike-card-image-container">
-                <img
+              <div className="alsolike-card-image-container" style={{ position: 'relative', width: '100%', height: '400px', overflow: 'hidden' }}>
+                <Image
                   src={getCurrentImage(item)}
                   alt={`${item.name} product`}
                   className="alsolike-card-image"
+                  fill
+                  style={{ objectFit: 'cover' }}
                 />
                 <button
                   className="alsolike-heart-btn"

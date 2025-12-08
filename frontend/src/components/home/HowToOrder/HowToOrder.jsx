@@ -1,10 +1,11 @@
 'use client';
 
 import React, { useState } from 'react';
+import Image from 'next/image';
 import './HowToOrder.css';
 // Import background image - using one of the existing images as placeholder
 import backgroundImg from '../../../assets/Images/banner/marbleMandir.jpg';
-import Image from 'next/image';
+
 
 const HowToOrder = () => {
   const [formData, setFormData] = useState({
@@ -39,11 +40,13 @@ const HowToOrder = () => {
 
   return (
     <section className="how-to-order">
-      <div className="how-to-order-background">
+      <div className="how-to-order-background" style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', zIndex: 0 }}>
         <Image 
           src={backgroundImg} 
           alt="Luxurious interior with marble temple" 
           className="how-to-order-bg-image"
+          fill
+          style={{ objectFit: 'cover', objectPosition: 'center' }}
         />
         <div className="how-to-order-overlay"></div>
       </div>

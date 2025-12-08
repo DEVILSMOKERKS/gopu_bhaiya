@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import axios from 'axios';
 import './OurBlogs.css';
@@ -74,12 +75,14 @@ const OurBlogs = () => {
                 className="our-blogs-card"
                 onClick={() => handleBlogClick(blog.slug)}
               >
-                <div className="our-blogs-image-wrapper">
+                <div className="our-blogs-image-wrapper" style={{ position: 'relative', width: '100%', paddingTop: '60%', overflow: 'hidden', background: '#f5f5f5' }}>
                   {getBlogImage(blog) ? (
-                    <img
+                    <Image
                       src={getBlogImage(blog)}
                       alt={blog.title}
                       className="our-blogs-image"
+                      fill
+                      style={{ objectFit: 'cover', transition: 'transform 0.3s ease' }}
                     />
                   ) : (
                     <div className="our-blogs-placeholder">

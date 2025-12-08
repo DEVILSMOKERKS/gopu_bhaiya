@@ -105,11 +105,15 @@ const HomeBlog = () => {
             className="homeblog-card"
             onClick={() => handleCardClick(post.slug)}
           >
-            <Image
-              src={`${API_URL.replace('/api', '')}${post.featured_image}`}
-              alt={post.title}
-              className="homeblog-image"
-            />
+            <div className="homeblog-image-wrapper" style={{ position: 'relative', width: '100%', paddingTop: '60%', overflow: 'hidden', background: '#f5f5f5' }}>
+              <Image
+                src={`${API_URL.replace('/api', '')}${post.featured_image}`}
+                alt={post.title}
+                className="homeblog-image"
+                fill
+                style={{ objectFit: 'cover' }}
+              />
+            </div>
             <div className="homeblog-content">
               <div className="homeblog-meta">
                 <span className="homeblog-date">{formatDate(post.created_at)}</span>

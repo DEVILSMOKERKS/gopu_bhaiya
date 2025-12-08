@@ -238,11 +238,13 @@ const BestSeller = () => {
               className={`bestseller-card ${index === currentIndex ? 'bestseller-active' : ''}`}
               onClick={() => handleProductClick(item.id)}
             >
-              <div className="bestseller-card-image-container">
+              <div className="bestseller-card-image-container" style={{ position: 'relative', width: '100%', height: '350px', overflow: 'hidden' }}>
                 <Image
                   src={getCurrentImage(item)}
                   alt={`${item.name} product`}
                   className="bestseller-card-image"
+                  fill
+                  style={{ objectFit: 'cover' }}
                   loading="lazy"
                 />
                 <button

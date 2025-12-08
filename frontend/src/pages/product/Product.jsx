@@ -770,7 +770,7 @@ const Product = ({ productId: productIdProp }) => {
                     className={`color-option ${selectedColor === index ? 'selected' : ''}`}
                     onClick={() => handleColorSelect(index)}
                   >
-                    <div className="color-image-container">
+                    <div className="color-image-container" style={{ position: 'relative', width: '60px', height: '60px', borderRadius: '8px', overflow: 'hidden', border: '1px solid #ddd' }}>
                       <Image
                         src={color.images && color.images.length > 0 ? `${API_URL.replace('/api', '')}${color.images[0]}` : '/src/assets/img/Bestseller1.jpg'}
                         alt={color.color_name}
@@ -973,15 +973,18 @@ const Product = ({ productId: productIdProp }) => {
       {/* Size Chart Modal */}
       {showSizeChart && (
         <div className="size-chart-modal-overlay" onClick={closeSizeChart}>
-          <Image
-            src="/src/assets/img/size chart.jpg"
-            alt="Size Chart"
-            className="size-chart-image"
-            onClick={(e) => e.stopPropagation()}
-            onError={(e) => {
-              e.target.src = '/src/assets/img/Bestseller1.jpg';
-            }}
-          />
+          <div style={{ position: 'relative', width: '90vw', maxWidth: '800px', height: '90vh', margin: 'auto' }} onClick={(e) => e.stopPropagation()}>
+            <Image
+              src="/src/assets/img/size chart.jpg"
+              alt="Size Chart"
+              className="size-chart-image"
+              fill
+              style={{ objectFit: 'contain', borderRadius: '12px' }}
+              onError={(e) => {
+                e.target.src = '/src/assets/img/Bestseller1.jpg';
+              }}
+            />
+          </div>
         </div>
       )}
 
@@ -990,17 +993,16 @@ const Product = ({ productId: productIdProp }) => {
         <div className="zoom-modal-overlay" onClick={closeZoomModal}>
           <div className="zoom-modal-content">
             <button className="zoom-close-btn" onClick={closeZoomModal}>×</button>
-            <div className="zoom-modal-image-container">
+            <div className="zoom-modal-image-container" style={{ position: 'relative', width: '100%', height: '100%', display: 'flex', alignItems: 'center' }}>
               <Image
                 src={productImages.length > 0 ? `${API_URL.replace('/api', '')}${productImages[selectedImage]}` : '/src/assets/img/Bestseller1.jpg'}
                 alt={product.name}
                 className="zoom-modal-image"
-                onClick={handleZoomModalTap}
-                onMouseDown={handleZoomModalMouseDown}
-                onTouchStart={handleZoomModalTouchStart}
-                onTouchMove={handleZoomModalTouchMove}
-                onTouchEnd={handleZoomModalTouchEnd}
+                fill
                 style={{
+                  objectFit: 'contain',
+                  borderRadius: '8px',
+                  boxShadow: '0 10px 30px rgba(0, 0, 0, 0.5)',
                   transform: `scale(${zoomModalScale}) translate(${zoomModalPosition.x}px, ${zoomModalPosition.y}px)`,
                   transformOrigin: 'center',
                   transition: isZoomModalDragging ? 'none' : 'transform 0.3s ease',

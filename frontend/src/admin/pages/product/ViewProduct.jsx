@@ -160,11 +160,13 @@ const ViewProduct = ({ productId }) => {
       <div className="viewproduct-product-details">
         <div className="viewproduct-product-main">
           <div className="viewproduct-product-images">
-            <div className="viewproduct-main-image">
+            <div className="viewproduct-main-image" style={{ position: 'relative', width: '100%', height: '350px', borderRadius: '12px', overflow: 'hidden', background: '#f8fafc' }}>
               {getCurrentImages().length > 0 ? (
                 <Image
                   src={`${API_URL.replace('/api', '')}${getCurrentImages()[selectedImage]}`}
                   alt={product.name}
+                  fill
+                  style={{ objectFit: 'cover' }}
                   onError={(e) => {
                     e.target.src = '/placeholder-product.jpg';
                   }}
@@ -185,13 +187,17 @@ const ViewProduct = ({ productId }) => {
                     className={`viewproduct-thumbnail ${selectedImage === index ? 'active' : ''}`}
                     onClick={() => setSelectedImage(index)}
                   >
-                    <Image
-                      src={`${API_URL.replace('/api', '')}${image}`}
-                      alt={`${product.name} ${index + 1}`}
-                      onError={(e) => {
-                        e.target.src = '/placeholder-product.jpg';
-                      }}
-                    />
+                    <div style={{ position: 'relative', width: '70px', height: '70px', border: '2px solid #e2e8f0', borderRadius: '8px', overflow: 'hidden' }}>
+                      <Image
+                        src={`${API_URL.replace('/api', '')}${image}`}
+                        alt={`${product.name} ${index + 1}`}
+                        fill
+                        style={{ objectFit: 'cover' }}
+                        onError={(e) => {
+                          e.target.src = '/placeholder-product.jpg';
+                        }}
+                      />
+                    </div>
                   </button>
                 ))}
               </div>

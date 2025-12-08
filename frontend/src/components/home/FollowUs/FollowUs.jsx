@@ -23,22 +23,26 @@ const FollowUs = () => {
 
         <div className="follow-us-grid">
           {/* Large left image for desktop */}
-          <div className="follow-us-main-image">
+          <div className="follow-us-main-image" style={{ position: 'relative', overflow: 'hidden', aspectRatio: '1 / 1' }}>
             <Image
               src={Follow1}
               alt="Marble Temple Design"
               className="follow-us-image"
+              fill
+              style={{ objectFit: 'cover' }}
             />
           </div>
 
           {/* 2x2 Grid for right side (desktop) / bottom (mobile) */}
           <div className="follow-us-grid-right">
             {followImages.map((image) => (
-              <div key={image.id} className="follow-us-image-card">
+              <div key={image.id} className="follow-us-image-card" style={{ position: 'relative', overflow: 'hidden', aspectRatio: '1 / 1' }}>
                 <Image
                   src={image.src}
                   alt={image.alt}
                   className="follow-us-image"
+                  fill
+                  style={{ objectFit: 'cover' }}
                 />
               </div>
             ))}

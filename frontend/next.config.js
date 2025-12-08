@@ -5,7 +5,7 @@ const nextConfig = {
     ignoreDuringBuilds: false,
   },
   images: {
-    domains: ['localhost'],
+    domains: ['localhost','images.unsplash.com'],
     remotePatterns: [
       {
         protocol: 'http',

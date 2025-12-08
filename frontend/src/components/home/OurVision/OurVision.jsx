@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import './OurVision.css';
 import ourVisionBgDesktop1 from '../../../assets/Images/banner/our-vision-bg-desktop1.png';
@@ -61,12 +62,14 @@ const OurVision = () => {
 
           {/* Right Section - Images */}
           <div className="our-vision-image-section">
-            <div className="our-vision-image-wrapper">
+            <div className="our-vision-image-wrapper" style={{ position: 'relative', width: '100%', maxWidth: '600px', height: '450px' }}>
               {about1 ? (
                 <Image
                   className="our-vision-main-image"
                   src={about1}
                   alt="Our Vision"
+                  fill
+                  style={{ objectFit: 'cover', filter: 'drop-shadow(0 0 3px var(--primary-color))' }}
                 />
               ) : (
                 <div className="our-vision-image-placeholder our-vision-main-image">

@@ -171,11 +171,15 @@ const BlogDetail = ({ slug }) => {
                     className="related-blog-card"
                     onClick={() => handleRelatedBlogClick(relatedBlog.slug)}
                   >
-                    <Image
-                      src={`${API_URL.replace('/api', '')}${relatedBlog.featured_image}`}
-                      alt={relatedBlog.title}
-                      className="related-blog-image"
-                    />
+                    <div style={{ position: 'relative', width: '100%', height: '150px', overflow: 'hidden' }}>
+                      <Image
+                        src={`${API_URL.replace('/api', '')}${relatedBlog.featured_image}`}
+                        alt={relatedBlog.title}
+                        className="related-blog-image"
+                        fill
+                        style={{ objectFit: 'cover' }}
+                      />
+                    </div>
                     <div className="related-blog-content">
                       <h4 className="related-blog-title">{relatedBlog.title}</h4>
 

@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import './ExploreCollection.css';
 import ExploreCollectionCarousel from './ExploreCollectionCarousel';
@@ -67,11 +68,13 @@ const ExploreCollection = () => {
                 className="explore-collection-card"
                 onClick={() => handleImageClick(collection.category)}
               >
-                <div className="explore-collection-image-container">
+                <div className="explore-collection-image-container" style={{ position: 'relative', width: '100%', height: '100%' }}>
                   <Image
                     src={collection.image}
                     alt={`${collection.category} collection`}
                     className="explore-collection-image"
+                    fill
+                    style={{ objectFit: 'contain' }}
                   />
                 </div>
               </div>

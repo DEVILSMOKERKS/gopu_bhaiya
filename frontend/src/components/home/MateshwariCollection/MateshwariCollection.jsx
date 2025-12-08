@@ -103,11 +103,13 @@ const MateshwariCollection = () => {
               className="mateshwari-collection-card"
               onClick={() => handleProductClick(product.product_id)}
             >
-              <div className="mateshwari-collection-image-wrapper">
-                <img
+              <div className="mateshwari-collection-image-wrapper" style={{ position: 'relative', width: '100%', paddingTop: '130%', overflow: 'hidden', background: '#f5f5f5' }}>
+                <Image
                   src={getProductImage(product)}
                   alt={product.name}
                   className="mateshwari-collection-image"
+                  fill
+                  style={{ objectFit: 'cover' }}
                 />
                 <button
                   className="mateshwari-collection-wishlist-btn"
@@ -134,11 +136,13 @@ const MateshwariCollection = () => {
               className="mateshwari-collection-card"
               onClick={() => handleProductClick(product.product_id)}
             >
-              <div className="mateshwari-collection-image-wrapper">
-                <img
+              <div className="mateshwari-collection-image-wrapper" style={{ position: 'relative', width: '100%', paddingTop: '130%', overflow: 'hidden', background: '#f5f5f5' }}>
+                <Image
                   src={getProductImage(product)}
                   alt={product.name}
                   className="mateshwari-collection-image"
+                  fill
+                  style={{ objectFit: 'cover' }}
                 />
                 <button
                   className="mateshwari-collection-wishlist-btn"

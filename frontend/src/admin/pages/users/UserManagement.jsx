@@ -267,9 +267,9 @@ const UserManagement = () => {
         {users.map((user) => (
           <div key={user.id} className="grid-row">
             <div className="grid-cell user-info" data-label="User">
-              <div className="user-avatar">
+              <div className="user-avatar" style={{ width: '40px', height: '40px', borderRadius: '50%', overflow: 'hidden', flexShrink: 0 }}>
                 {user.photo ? (
-                  <Image src={user.photo} alt={user.name} />
+                  <Image src={user.photo} alt={user.name} width={40} height={40} style={{ objectFit: 'cover' }} />
                 ) : (
                   <div className="user-avatar-placeholder">
                     {user.name.charAt(0).toUpperCase()}

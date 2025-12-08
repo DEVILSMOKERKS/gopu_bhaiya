@@ -1,10 +1,10 @@
-import React from 'react'
-import './homefollowus.css'
-import homefollowus1 from '../../assets/Images/follow/follow1.jpg'
-import homefollowus2 from '../../assets/Images/follow/follow2.jpg'
-import homefollowus3 from '../../assets/Images/follow/follow3.jpg'
-import homefollowus4 from '../../assets/Images/follow/follow4.jpg'
+import React from 'react';
 import Image from 'next/image';
+import './homefollowus.css';
+import homefollowus1 from '../../assets/Images/follow/follow1.jpg';
+import homefollowus2 from '../../assets/Images/follow/follow2.jpg';
+import homefollowus3 from '../../assets/Images/follow/follow3.jpg';
+import homefollowus4 from '../../assets/Images/follow/follow4.jpg';
 
 
 const HomeFollow = () => {
@@ -14,9 +14,9 @@ const HomeFollow = () => {
         <div className="homefollowus">
             <h2 className="homefollowus-title">Follow Us @Mateshwari Moorti Bhandar</h2>
             <div className="homefollowus-container">
-                <div className="homefollowus-main-image">
-                    <a href={instagramUrl} target="_blank" rel="noopener noreferrer" className="instagram-link">
-                        <Image src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Fashion Model in White Ethnic Kurta" />
+                <div className="homefollowus-main-image" style={{ height: '400px', overflow: 'hidden', position: 'relative' }}>
+                    <a href={instagramUrl} target="_blank" rel="noopener noreferrer" className="instagram-link" style={{ position: 'relative', display: 'block', overflow: 'hidden', height: '100%' }}>
+                        <Image src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Fashion Model in White Ethnic Kurta" fill style={{ objectFit: 'cover' }} />
                         <div className="instagram-overlay">
                             <div className="instagram-icon">
                                 <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -27,9 +27,21 @@ const HomeFollow = () => {
                     </a>
                 </div>
                 <div className="homefollowus-sub-grid">
-                    <div className="homefollowus-sub-image">
-                        <a href={instagramUrl} target="_blank" rel="noopener noreferrer" className="instagram-link">
-                            <Image src={homefollowus1} alt="Model in Light Patterned Top" />
+                    <div className="homefollowus-sub-image" style={{ height: '300px', overflow: 'hidden', position: 'relative' }}>
+                        <a href={instagramUrl} target="_blank" rel="noopener noreferrer" className="instagram-link" style={{ position: 'relative', display: 'block', overflow: 'hidden', height: '100%' }}>
+                            <Image src={homefollowus1} alt="Model in Light Patterned Top" fill style={{ objectFit: 'cover' }} />
+                            <div className="instagram-overlay">
+                                <div className="instagram-icon">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 5.008 0 3.319.014 3.727.072 5.008.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 5.008.072 3.319 0 3.727-.014 5.008-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-5.008 0-3.319-.014-3.727-.072-5.008-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-5.008-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" fill="white" />
+                                    </svg>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div className="homefollowus-sub-image" style={{ height: '300px', overflow: 'hidden', position: 'relative' }}>
+                        <a href={instagramUrl} target="_blank" rel="noopener noreferrer" className="instagram-link" style={{ position: 'relative', display: 'block', overflow: 'hidden', height: '100%' }}>
+                            <Image src={homefollowus2} alt="Model in Pink Ethnic Outfit" fill style={{ objectFit: 'cover', display: 'block', transition: 'transform 0.3s ease' }} />
                             <div className="instagram-overlay">
                                 <div className="instagram-icon">
                                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -41,7 +53,7 @@ const HomeFollow = () => {
                     </div>
                     <div className="homefollowus-sub-image">
                         <a href={instagramUrl} target="_blank" rel="noopener noreferrer" className="instagram-link">
-                            <Image src={homefollowus2} alt="Model in Pink Ethnic Outfit" />
+                            <Image src={homefollowus3} alt="Patterned Fabrics on Hangers" fill style={{ objectFit: 'cover' }} />
                             <div className="instagram-overlay">
                                 <div className="instagram-icon">
                                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -53,19 +65,7 @@ const HomeFollow = () => {
                     </div>
                     <div className="homefollowus-sub-image">
                         <a href={instagramUrl} target="_blank" rel="noopener noreferrer" className="instagram-link">
-                            <Image src={homefollowus3} alt="Patterned Fabrics on Hangers" />
-                            <div className="instagram-overlay">
-                                <div className="instagram-icon">
-                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 5.008 0 3.319.014 3.727.072 5.008.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 5.008.072 3.319 0 3.727-.014 5.008-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-5.008 0-3.319-.014-3.727-.072-5.008-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-5.008-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" fill="white" />
-                                    </svg>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div className="homefollowus-sub-image">
-                        <a href={instagramUrl} target="_blank" rel="noopener noreferrer" className="instagram-link">
-                            <Image src={homefollowus4} alt="Model by Water with Traditional Buildings" />
+                            <Image src={homefollowus4} alt="Model by Water with Traditional Buildings" fill style={{ objectFit: 'cover' }} />
                             <div className="instagram-overlay">
                                 <div className="instagram-icon">
                                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
