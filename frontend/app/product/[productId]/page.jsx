@@ -1,6 +1,8 @@
 import Product from '../../../src/pages/product/Product';
 
 export const dynamic = 'force-dynamic';
+export const dynamicParams = true;
+export const revalidate = 0;
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL;
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;

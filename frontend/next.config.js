@@ -8,6 +8,12 @@ const nextConfig = {
   typescript: {
     ignoreBuildErrors: true,
   },
+  experimental: {
+    missingSuspenseWithCSRBailout: false,
+  },
+  generateBuildId: async () => {
+    return 'build-' + Date.now();
+  },
   images: {
     domains: ['localhost', 'images.unsplash.com'],
     remotePatterns: [
