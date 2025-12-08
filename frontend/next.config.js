@@ -11,7 +11,6 @@ const nextConfig = {
 
   experimental: {
     missingSuspenseWithCSRBailout: false,
-    turbo: false,
   },
 
   images: {

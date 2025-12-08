@@ -586,11 +586,11 @@
 }
 
 .dot-failed {
-  background: #F14344;
+  background: var(--accent-error);
 }
 
 .dot-refunded {
-  background: #3C82F4;
+  background: var(--primary-color);
 }
 
 .legend-item {
@@ -599,7 +599,7 @@
   align-items: flex-start;
   min-width: 80px;
   font-size: 14px;
-  color: #555;
+  color: var(--text-tertiary);
 }
 
 .legend-label {
@@ -649,7 +649,7 @@
 }
 
 .orders-table th {
-  color: #00000099;
+  color: var(--text-tertiary);
   font-weight: 600;
   background: var(--bg-light);
   font-size: 16px;
@@ -977,7 +977,7 @@
   font-size: 13px;
   font-weight: 500;
   color: var(--text-white);
-  background: #a06c74;
+  background: var(--primary-color);
 }
 
 .consultation-status-scheduled {
@@ -1009,7 +1009,7 @@
 
 .consultation-dot {
   margin: 0 8px;
-  color: #888;
+  color: var(--text-tertiary);
   font-size: 18px;
   vertical-align: middle;
 }
@@ -1036,7 +1036,7 @@
 }
 
 .support-ticket-time {
-  color: #b3b3b3;
+  color: var(--text-quaternary);
   font-size: 13px;
   font-weight: 500;
 }
@@ -1074,18 +1074,18 @@
 }
 
 .support-ticket-priority-high {
-  background: #fdeaea;
-  color: #e74c3c;
+  background: var(--bg-secondary);
+  color: var(--accent-error);
 }
 
 .support-ticket-priority-medium {
-  background: #fff7e0;
-  color: #f7b731;
+  background: var(--creamy-color);
+  color: var(--accent-gold);
 }
 
 .support-ticket-priority-low {
-  background: #eaf1fd;
-  color: #3C82F4;
+  background: var(--bg-secondary);
+  color: var(--primary-color);
 }
 
 .support-ticket-status {

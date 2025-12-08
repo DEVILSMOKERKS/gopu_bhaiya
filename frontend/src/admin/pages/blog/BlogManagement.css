@@ -1,6 +1,6 @@
 .blog-management {
   padding: 2rem;
-  background: #f8f9fa;
+  background: var(--bg-secondary);
   min-height: 100vh;
 }
 
@@ -102,14 +102,14 @@
   padding: 1rem;
   border-radius: 8px;
   margin-bottom: 1rem;
-  border: 1px solid #f5c6cb;
+  border: 1px solid var(--accent-error);
 }
 
 .loading-spinner {
   text-align: center;
   padding: 3rem;
   font-size: 1.2rem;
-  color: #666;
+  color: var(--text-tertiary);
 }
 
 .blogs-table-container {
@@ -125,34 +125,34 @@
 }
 
 .blogs-table th {
-  background: #f8f9fa;
+  background: var(--bg-secondary);
   padding: 1rem;
   text-align: left;
   font-weight: 600;
-  color: #333;
-  border-bottom: 2px solid #e0e0e0;
+  color: var(--text-secondary);
+  border-bottom: 2px solid var(--border-light);
 }
 
 .blogs-table td {
   padding: 1rem;
-  border-bottom: 1px solid #e0e0e0;
+  border-bottom: 1px solid var(--border-light);
   vertical-align: top;
 }
 
 .blogs-table tr:hover {
-  background: #f8f9fa;
+  background: var(--bg-secondary);
 }
 
 .blog-title-cell h4 {
   font-size: 1.1rem;
   font-weight: 600;
-  color: #333;
+  color: var(--text-secondary);
   margin: 0 0 0.5rem 0;
 }
 
 .blog-excerpt {
   font-size: 0.9rem;
-  color: #666;
+  color: var(--text-tertiary);
   margin: 0;
   line-height: 1.4;
 }
@@ -192,7 +192,7 @@
 }
 
 .delete-button {
-  background: #dc3545;
+  background: var(--accent-error);
   color: var(--text-white);
 }
 
@@ -207,7 +207,7 @@
   align-items: center;
   gap: 0.5rem;
   padding: 2rem;
-  background: #f8f9fa;
+  background: var(--bg-secondary);
 }
 
 .pagination-button {
@@ -215,7 +215,7 @@
   background: var(--bg-primary);
   border: 2px solid var(--border-light);
   border-radius: 6px;
-  color: #666;
+  color: var(--text-tertiary);
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -263,13 +263,13 @@
   justify-content: space-between;
   align-items: center;
   padding: 2rem 2rem 1rem;
-  border-bottom: 1px solid #e0e0e0;
+  border-bottom: 1px solid var(--border-light);
 }
 
 .modal-header h2 {
   font-size: 1.5rem;
   font-weight: 600;
-  color: #333;
+  color: var(--text-secondary);
   margin: 0;
 }
 
@@ -277,7 +277,7 @@
   background: none;
   border: none;
   font-size: 2rem;
-  color: #666;
+  color: var(--text-tertiary);
   cursor: pointer;
   padding: 0;
   width: 30px;
@@ -290,7 +290,7 @@
 }
 
 .close-button:hover {
-  background: #f0f0f0;
+  background: var(--bg-light);
 }
 
 /* Form Styles */
@@ -305,7 +305,7 @@
 .form-group label {
   display: block;
   font-weight: 600;
-  color: #333;
+  color: var(--text-secondary);
   margin-bottom: 0.5rem;
 }
 
@@ -370,8 +370,8 @@
 }
 
 .tag {
-  background: #e9ecef;
-  color: #495057;
+  background: var(--bg-light);
+  color: var(--text-secondary);
   padding: 0.5rem 0.75rem;
   border-radius: 20px;
   font-size: 0.9rem;
@@ -383,7 +383,7 @@
 .tag button {
   background: none;
   border: none;
-  color: #666;
+  color: var(--text-tertiary);
   cursor: pointer;
   font-size: 1.2rem;
   padding: 0;
@@ -397,7 +397,7 @@
 }
 
 .tag button:hover {
-  background: #dc3545;
+  background: var(--accent-error);
   color: var(--text-white);
 }
 
@@ -408,7 +408,7 @@
   justify-content: flex-end;
   margin-top: 2rem;
   padding-top: 1rem;
-  border-top: 1px solid #e0e0e0;
+  border-top: 1px solid var(--border-light);
 }
 
 .submit-button,
@@ -432,12 +432,12 @@
 }
 
 .cancel-button {
-  background: #6c757d;
+  background: var(--text-tertiary);
   color: var(--text-white);
 }
 
 .cancel-button:hover {
-  background: #545b62;
+  background: var(--text-secondary);
 }
 
 /* Image Preview */
@@ -463,17 +463,17 @@
 }
 
 .blog-management-table th {
-  background: #f8f9fa;
+  background: var(--bg-secondary);
   padding: 1rem;
   text-align: left;
   font-weight: 600;
-  color: #333;
-  border-bottom: 2px solid #e0e0e0;
+  color: var(--text-secondary);
+  border-bottom: 2px solid var(--border-light);
 }
 
 .blog-management-table td {
   padding: 1rem;
-  border-bottom: 1px solid #e0e0e0;
+  border-bottom: 1px solid var(--border-light);
   vertical-align: middle;
 }
 
@@ -499,8 +499,8 @@
 }
 
 .status-draft {
-  background: #fff3cd;
-  color: #856404;
+  background: var(--creamy-color);
+  color: var(--text-primary);
 }
 
 .status-published {
@@ -539,7 +539,7 @@
 }
 
 .delete-btn {
-  background: #dc3545;
+  background: var(--accent-error);
   color: var(--text-white);
 }
 
@@ -576,14 +576,14 @@
 }
 
 .pagination-btn:disabled {
-  border-color: #ccc;
-  color: #ccc;
+  border-color: var(--border-light);
+  color: var(--text-quaternary);
   cursor: not-allowed;
 }
 
 .pagination-info {
   font-weight: 600;
-  color: #333;
+  color: var(--text-secondary);
 }
 
 /* Loading Skeleton */
@@ -598,14 +598,14 @@
   display: flex;
   align-items: center;
   padding: 1rem;
-  border-bottom: 1px solid #e0e0e0;
+  border-bottom: 1px solid var(--border-light);
   gap: 1rem;
 }
 
 .blog-skeleton-title {
   flex: 1;
   height: 20px;
-  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background: linear-gradient(90deg, var(--bg-light) 25%, var(--border-light) 50%, var(--bg-light) 75%);
   background-size: 200% 100%;
   animation: loading 1.5s infinite;
   border-radius: 4px;
@@ -614,7 +614,7 @@
 .blog-skeleton-status {
   width: 80px;
   height: 20px;
-  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background: linear-gradient(90deg, var(--bg-light) 25%, var(--border-light) 50%, var(--bg-light) 75%);
   background-size: 200% 100%;
   animation: loading 1.5s infinite;
   border-radius: 4px;
@@ -623,7 +623,7 @@
 .blog-skeleton-date {
   width: 100px;
   height: 20px;
-  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background: linear-gradient(90deg, var(--bg-light) 25%, var(--border-light) 50%, var(--bg-light) 75%);
   background-size: 200% 100%;
   animation: loading 1.5s infinite;
   border-radius: 4px;
@@ -632,7 +632,7 @@
 .blog-skeleton-actions {
   width: 120px;
   height: 20px;
-  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background: linear-gradient(90deg, var(--bg-light) 25%, var(--border-light) 50%, var(--bg-light) 75%);
   background-size: 200% 100%;
   animation: loading 1.5s infinite;
   border-radius: 4px;

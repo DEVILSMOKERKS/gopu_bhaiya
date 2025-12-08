@@ -1,5 +1,3 @@
-'use client';
-
 import Home from '../src/pages/Home';
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;

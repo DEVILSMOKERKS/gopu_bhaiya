@@ -296,7 +296,7 @@
 }
 
 .pagination-btn {
-  background-color: #8B0000;
+  background-color: var(--primary-color);
   color: var(--text-white);
   border: none;
   padding: 8px 16px;
@@ -307,11 +307,11 @@
 }
 
 .pagination-btn:hover:not(:disabled) {
-  background-color: #6b0000;
+  background-color: var(--primary-dark);
 }
 
 .pagination-btn:disabled {
-  background-color: #ccc;
+  background-color: var(--border-light);
   cursor: not-allowed;
 }
 

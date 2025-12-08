@@ -162,7 +162,7 @@
 }
 
 .skeleton-section {
-  border: 1px solid #e0e0e0;
+  border: 1px solid var(--border-light);
   border-radius: 8px;
   padding: 20px;
 }
@@ -201,8 +201,8 @@
 .product-loading-spinner {
   width: 50px;
   height: 50px;
-  border: 4px solid #f3f3f3;
-  border-top: 4px solid #956213;
+  border: 4px solid var(--border-light);
+  border-top: 4px solid var(--primary-dark);
   border-radius: 50%;
   animation: spin 1s linear infinite, pulse 2s ease-in-out infinite;
   margin: 2rem auto;
@@ -244,7 +244,7 @@
 .loading-dot {
   width: 8px;
   height: 8px;
-  background: #8B0000;
+  background: var(--primary-color);
   border-radius: 50%;
   animation: bounce 1.4s ease-in-out infinite both;
 }
@@ -316,13 +316,13 @@
 }
 
 .product-error h2 {
-  color: #e74c3c;
+  color: var(--accent-error);
   font-size: 1.5rem;
   margin: 0 0 1rem 0;
 }
 
 .product-error p {
-  color: #666;
+  color: var(--text-tertiary);
   font-size: 1rem;
   margin: 0;
 }
@@ -331,7 +331,7 @@
 .breadcrumbs {
   margin-bottom: 30px;
   font-size: 10px;
-  color: #666;
+  color: var(--text-tertiary);
 }
 
 .breadcrumbs span,
@@ -340,7 +340,7 @@
 }
 
 .breadcrumbs a {
-  color: #666;
+  color: var(--text-tertiary);
   text-decoration: none;
   cursor: pointer;
   transition: color 0.3s ease;
@@ -355,7 +355,7 @@
 }
 
 .breadcrumbs span:not(:last-child):hover {
-  color: #333;
+  color: var(--text-secondary);
 }
 
 /* Main Container */
@@ -468,24 +468,24 @@
 }
 
 .zoom-btn:hover:not(:disabled) {
-  background: #6b0000;
+  background: var(--primary-dark);
   transform: scale(1.05);
 }
 
 .zoom-btn:disabled {
-  background: #ccc;
+  background: var(--border-light);
   cursor: not-allowed;
   opacity: 0.6;
 }
 
 .zoom-level {
   font-size: 11px;
-  color: #333;
+  color: var(--text-secondary);
   font-weight: 600;
   display: flex;
   align-items: center;
   padding: 6px 10px;
-  background: #f8f9fa;
+  background: var(--bg-secondary);
   border-radius: 4px;
   min-width: 45px;
   justify-content: center;
@@ -558,7 +558,7 @@
 /* Clean Zoom Controls */
 .zoom-controls {
   background: rgba(255, 255, 255, 0.9);
-  border: 1px solid #e0e0e0;
+  border: 1px solid var(--border-light);
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
@@ -572,7 +572,7 @@
 }
 
 .zoom-btn:hover:not(:disabled) {
-  background: #6b0000;
+  background: var(--primary-dark);
   transform: translateY(-1px);
 }
 
@@ -581,14 +581,14 @@
 }
 
 .zoom-btn:disabled {
-  background: #ccc;
+  background: var(--border-light);
   cursor: not-allowed;
   opacity: 0.6;
 }
 
 .zoom-level {
-  background: #f8f9fa;
-  color: #333;
+  background: var(--bg-secondary);
+  color: var(--text-secondary);
   font-weight: 500;
 }
 
@@ -600,7 +600,7 @@
 }
 
 .accordion-section {
-  border: 1px solid #e0e0e0;
+  border: 1px solid var(--border-light);
   border-radius: 4px;
   overflow: hidden;
   background-color: #f7f7f7;
@@ -618,13 +618,13 @@
 }
 
 .accordion-header:hover {
-  background-color: #f0f0f0;
+  background-color: var(--bg-light);
 }
 
 .accordion-icon {
   font-size: 18px;
   font-weight: bold;
-  color: #666;
+  color: var(--text-tertiary);
 }
 
 .accordion-content {
@@ -636,14 +636,14 @@
   margin: 0 0 10px 0;
   font-size: 14px;
   font-weight: 600;
-  color: #333;
+  color: var(--text-secondary);
 }
 
 .accordion-content p {
   margin: 0 0 15px 0;
   font-size: 14px;
   line-height: 1.5;
-  color: #666;
+  color: var(--text-tertiary);
 }
 
 .accordion-content div:last-child p {
@@ -662,7 +662,7 @@
 .product-title {
   font-size: 24px;
   font-weight: 600;
-  color: #333;
+  color: var(--text-secondary);
   margin: 0;
   line-height: 1.2;
 }
@@ -671,7 +671,7 @@
 .product-description {
   font-size: 16px;
   line-height: 1.6;
-  color: #666;
+  color: var(--text-tertiary);
   margin: 0;
 }
 
@@ -685,7 +685,7 @@
   flex-direction: column;
   gap: 12px;
   padding: 16px 0;
-  border-bottom: 1px solid #f0f0f0;
+  border-bottom: 1px solid var(--border-light);
   margin-bottom: 8px;
 }
 
@@ -729,15 +729,15 @@
 .actual-price {
   font-size: 18px;
   font-weight: 500;
-  color: #999;
+  color: var(--text-quaternary);
   text-decoration: line-through;
   line-height: 1.2;
 }
 
 .price-label {
   font-size: 11px;
-  color: #666;
-  background: #f8f9fa;
+  color: var(--text-tertiary);
+  background: var(--bg-secondary);
   padding: 3px 8px;
   border-radius: 4px;
   font-weight: 600;
@@ -747,7 +747,7 @@
 }
 
 .discount-badge {
-  background: #8B0000;
+  background: var(--primary-color);
   color: white;
   font-size: 11px;
   font-weight: 700;
@@ -762,10 +762,10 @@
   font-size: 14px;
   color: #28a745;
   font-weight: 600;
-  background: #f8fff9;
+  background: var(--bg-secondary);
   padding: 8px 12px;
   border-radius: 6px;
-  border-left: 3px solid #28a745;
+  border-left: 3px solid var(--primary-green);
   margin-top: 8px;
   display: inline-block;
 }
@@ -774,7 +774,7 @@
 .color-section h3 {
   font-size: 16px;
   font-weight: 600;
-  color: #333;
+  color: var(--text-secondary);
   margin: 0 0 15px 0;
 }
 
@@ -799,7 +799,7 @@
 
 .color-option:hover {
   border-color: #ddd;
-  background-color: #f8f8f8;
+  background-color: var(--bg-secondary);
 }
 
 .color-option.selected {
@@ -812,7 +812,7 @@
   height: 60px;
   border-radius: 8px;
   overflow: hidden;
-  border: 1px solid #ddd;
+  border: 1px solid var(--border-light);
 }
 
 .color-image {
@@ -824,7 +824,7 @@
 .color-name {
   font-size: 12px;
   font-weight: 500;
-  color: #333;
+  color: var(--text-secondary);
   text-align: center;
   line-height: 1.2;
 }
@@ -845,7 +845,7 @@
 .size-header label {
   font-size: 16px;
   font-weight: 600;
-  color: #333;
+  color: var(--text-secondary);
 }
 
 .size-guide {
@@ -876,7 +876,7 @@
   justify-content: center;
   min-width: 80px;
   padding: 12px 8px;
-  border: 2px solid #ddd;
+  border: 2px solid var(--border-light);
   border-radius: 8px;
   background-color: white;
   cursor: pointer;
@@ -886,7 +886,7 @@
 
 .size-option:hover {
   border-color: var(--primary-color);
-  background-color: #f8f8f8;
+  background-color: var(--bg-secondary);
 }
 
 .size-option.selected {
@@ -907,7 +907,7 @@
 
 .size-price {
   font-size: 12px;
-  color: #666;
+  color: var(--text-tertiary);
   font-weight: 500;
 }
 
@@ -926,7 +926,7 @@
 }
 
 .add-to-cart-btn:hover {
-  background-color: #6B0000;
+  background-color: var(--primary-dark);
 }
 
 /* Go to Cart Button */
@@ -944,7 +944,7 @@
 }
 
 .go-to-cart-btn:hover {
-  background-color: #6B0000;
+  background-color: var(--primary-dark);
 }
 
 /* Buy Now Button */
@@ -963,7 +963,7 @@
 }
 
 .buy-now-btn:hover {
-  background-color: #6B0000;
+  background-color: var(--primary-dark);
 }
 
 /* Additional Links */
@@ -978,7 +978,7 @@
   align-items: center;
   gap: 8px;
   font-size: 14px;
-  color: #666;
+  color: var(--text-tertiary);
   text-decoration: none;
   transition: color 0.3s ease;
 }
@@ -1046,14 +1046,14 @@
 .material-section h3 {
   font-size: 18px;
   font-weight: 600;
-  color: #333;
+  color: var(--text-secondary);
   margin: 0 0 15px 0;
 }
 
 .material-section p {
   font-size: 14px;
   line-height: 1.6;
-  color: #2b2929;
+  color: var(--text-primary);
   margin: 0 0 20px 0;
 }
 
@@ -1065,12 +1065,12 @@
 
 .feature-tag {
   background-color: white;
-  color: #333;
+  color: var(--text-secondary);
   padding: 8px 15px;
   border-radius: 20px;
   font-size: 12px;
   font-weight: 500;
-  border: 1px solid #ddd;
+  border: 1px solid var(--border-light);
 }
 
 /* Responsive Design */
@@ -1399,7 +1399,7 @@
   border-radius: 50%;
   font-size: 24px;
   font-weight: bold;
-  color: #333;
+  color: var(--text-secondary);
   cursor: pointer;
   display: flex;
   align-items: center;
