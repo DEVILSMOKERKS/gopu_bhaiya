@@ -1,7 +1,6 @@
 'use client';
 
 import React from 'react';
-import { Helmet } from 'react-helmet-async';
 import Image from 'next/image';
 import Link from 'next/link';
 import './OurCreations.css';
@@ -57,48 +56,41 @@ const OurCreations = () => {
   ];
 
   return (
-    <>
-      <Helmet>
-        <title>Our Creations - Mateshwari Exports</title>
-        <meta name="description" content="Explore our beautiful creations including marble idols, temple designs, and custom artworks." />
-      </Helmet>
+    <div className="our-creations-page">
+      <div className="creations-header">
+        <h1 className="creations-title h2style">Our Creations</h1>
+        <p className="creations-subtitle">
+          Discover our exquisite collection of handcrafted spiritual and artistic creations
+        </p>
+      </div>
 
-      <div className="our-creations-page">
-        <div className="creations-header">
-          <h1 className="creations-title h2style">Our Creations</h1>
-          <p className="creations-subtitle">
-            Discover our exquisite collection of handcrafted spiritual and artistic creations
-          </p>
+      <div className="creations-container">
+        <div className="creations-grid">
+          {creations.map(creation => (
+            <Link key={creation.id} href={creation.link} className="creation-card">
+              <div className="creation-image-wrapper">
+                <Image src={creation.image} alt={creation.title} className="creation-image" fill style={{ objectFit: 'cover' }} />
+                <div className="creation-overlay">
+                  <span className="creation-view-text">View Collection</span>
+                </div>
+              </div>
+              <div className="creation-content">
+                <h3 className="creation-card-title">{creation.title}</h3>
+                <p className="creation-description">{creation.description}</p>
+              </div>
+            </Link>
+          ))}
         </div>
 
-        <div className="creations-container">
-          <div className="creations-grid">
-            {creations.map(creation => (
-              <Link key={creation.id} href={creation.link} className="creation-card">
-                <div className="creation-image-wrapper">
-                  <Image src={creation.image} alt={creation.title} className="creation-image" fill style={{ objectFit: 'cover' }} />
-                  <div className="creation-overlay">
-                    <span className="creation-view-text">View Collection</span>
-                  </div>
-                </div>
-                <div className="creation-content">
-                  <h3 className="creation-card-title">{creation.title}</h3>
-                  <p className="creation-description">{creation.description}</p>
-                </div>
-              </Link>
-            ))}
-          </div>
-
-          <div className="creations-cta">
-            <h2 className="cta-title">Interested in Custom Creations?</h2>
-            <p className="cta-text">We specialize in creating unique pieces tailored to your vision</p>
-            <Link href="/book-appointment" className="cta-button">
-              Book a Consultation
-            </Link>
-          </div>
+        <div className="creations-cta">
+          <h2 className="cta-title">Interested in Custom Creations?</h2>
+          <p className="cta-text">We specialize in creating unique pieces tailored to your vision</p>
+          <Link href="/book-appointment" className="cta-button">
+            Book a Consultation
+          </Link>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

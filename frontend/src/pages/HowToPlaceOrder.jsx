@@ -1,7 +1,6 @@
 'use client';
 
 import React from 'react';
-import { Helmet } from 'react-helmet-async';
 import Link from 'next/link';
 import './HowToPlaceOrder.css';
 
@@ -85,95 +84,88 @@ const HowToPlaceOrder = () => {
   ];
 
   return (
-    <>
-      <Helmet>
-        <title>How to Place Order - Mateshwari Moorti Bhandar</title>
-        <meta name="description" content="Learn how to place an order for our products or book a custom creation consultation." />
-      </Helmet>
-
-      <div className="how-to-place-order-page">
-        <div className="how-to-order-header">
-          <h1 className="how-to-order-title h2style">How It Works</h1>
-          <p className="how-to-order-subtitle">
-            Simple steps to order our products or create custom designs
-          </p>
-        </div>
-
-        <div className="how-to-order-container">
-          {/* Standard Order Process */}
-          <section className="order-process-section">
-            <h2 className="section-title">Standard Order Process</h2>
-            <p className="section-description">
-              Follow these simple steps to order from our ready-made collection
-            </p>
-
-            <div className="steps-grid">
-              {steps.map((step, index) => (
-                <div key={step.id} className="step-card">
-                  <div className="step-number">{index + 1}</div>
-                  <div className="step-icon">{step.icon}</div>
-                  <h3 className="step-title">{step.title}</h3>
-                  <p className="step-description">{step.description}</p>
-                </div>
-              ))}
-            </div>
-
-            <div className="cta-section">
-              <Link href="/shop" className="cta-button-primary">
-                Start Shopping Now
-              </Link>
-            </div>
-          </section>
-
-          {/* Custom Order Process */}
-          <section className="order-process-section custom-order-section">
-            <h2 className="section-title">Custom Order Process</h2>
-            <p className="section-description">
-              For bespoke creations tailored to your specific requirements
-            </p>
-
-            <div className="steps-grid">
-              {customOrderSteps.map((step, index) => (
-                <div key={step.id} className="step-card">
-                  <div className="step-number">{index + 1}</div>
-                  <div className="step-icon">{step.icon}</div>
-                  <h3 className="step-title">{step.title}</h3>
-                  <p className="step-description">{step.description}</p>
-                </div>
-              ))}
-            </div>
-
-            <div className="cta-section">
-              <Link href="/book-appointment" className="cta-button-primary">
-                Book a Consultation
-              </Link>
-            </div>
-          </section>
-
-          {/* Additional Information */}
-          <section className="additional-info-section">
-            <h2 className="section-title">Need Help?</h2>
-            <div className="info-cards">
-              <div className="info-card">
-                <h3>📞 Contact Us</h3>
-                <p>Call us at +91 77919 83156 for immediate assistance</p>
-                <Link href="/contact-us" className="info-link">Contact Page →</Link>
-              </div>
-              <div className="info-card">
-                <h3>💬 Live Chat</h3>
-                <p>Chat with our support team for quick answers</p>
-                <Link href="/contact-us" className="info-link">Start Chat →</Link>
-              </div>
-              <div className="info-card">
-                <h3>📧 Email Support</h3>
-                <p>Email us at Mateshvariexporter@gmail.com</p>
-                <a href="mailto:Mateshvariexporter@gmail.com" className="info-link">Send Email →</a>
-              </div>
-            </div>
-          </section>
-        </div>
+    <div className="how-to-place-order-page">
+      <div className="how-to-order-header">
+        <h1 className="how-to-order-title h2style">How It Works</h1>
+        <p className="how-to-order-subtitle">
+          Simple steps to order our products or create custom designs
+        </p>
       </div>
-    </>
+
+      <div className="how-to-order-container">
+        {/* Standard Order Process */}
+        <section className="order-process-section">
+          <h2 className="section-title">Standard Order Process</h2>
+          <p className="section-description">
+            Follow these simple steps to order from our ready-made collection
+          </p>
+
+          <div className="steps-grid">
+            {steps.map((step, index) => (
+              <div key={step.id} className="step-card">
+                <div className="step-number">{index + 1}</div>
+                <div className="step-icon">{step.icon}</div>
+                <h3 className="step-title">{step.title}</h3>
+                <p className="step-description">{step.description}</p>
+              </div>
+            ))}
+          </div>
+
+          <div className="cta-section">
+            <Link href="/shop" className="cta-button-primary">
+              Start Shopping Now
+            </Link>
+          </div>
+        </section>
+
+        {/* Custom Order Process */}
+        <section className="order-process-section custom-order-section">
+          <h2 className="section-title">Custom Order Process</h2>
+          <p className="section-description">
+            For bespoke creations tailored to your specific requirements
+          </p>
+
+          <div className="steps-grid">
+            {customOrderSteps.map((step, index) => (
+              <div key={step.id} className="step-card">
+                <div className="step-number">{index + 1}</div>
+                <div className="step-icon">{step.icon}</div>
+                <h3 className="step-title">{step.title}</h3>
+                <p className="step-description">{step.description}</p>
+              </div>
+            ))}
+          </div>
+
+          <div className="cta-section">
+            <Link href="/book-appointment" className="cta-button-primary">
+              Book a Consultation
+            </Link>
+          </div>
+        </section>
+
+        {/* Additional Information */}
+        <section className="additional-info-section">
+          <h2 className="section-title">Need Help?</h2>
+          <div className="info-cards">
+            <div className="info-card">
+              <h3>📞 Contact Us</h3>
+              <p>Call us at +91 77919 83156 for immediate assistance</p>
+              <Link href="/contact-us" className="info-link">Contact Page →</Link>
+            </div>
+            <div className="info-card">
+              <h3>💬 Live Chat</h3>
+              <p>Chat with our support team for quick answers</p>
+              <Link href="/contact-us" className="info-link">Start Chat →</Link>
+            </div>
+            <div className="info-card">
+              <h3>📧 Email Support</h3>
+              <p>Email us at Mateshvariexporter@gmail.com</p>
+              <a href="mailto:Mateshvariexporter@gmail.com" className="info-link">Send Email →</a>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
   );
 };
 
