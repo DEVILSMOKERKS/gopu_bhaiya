@@ -57,7 +57,7 @@ export default function RootLayout({ children }) {
           />
         </noscript>
         <Provider store={store}>
-          <HelmetProvider>
+          <HelmetProvider context={{}}>
             <NotificationProvider>
               <UserProvider>
                 <WishlistCartProvider>
