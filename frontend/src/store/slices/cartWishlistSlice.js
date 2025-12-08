@@ -1,9 +1,8 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
-import { getApiUrl } from '../../utils/env';
 
 // API base URL - Next.js compatible
-const API_BASE_URL = getApiUrl();
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL;
 
 // Helper function to get auth token (SSR safe)
 const getAuthToken = () => {

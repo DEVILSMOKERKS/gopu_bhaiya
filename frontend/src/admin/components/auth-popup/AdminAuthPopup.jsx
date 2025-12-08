@@ -52,7 +52,7 @@ const AdminAuthPopup = ({ isOpen, onClose, onLogin }) => {
         alert(data.message || 'Failed to send reset email');
       }
     } catch (error) {
-      alert('Network error. Please try again.');
+      alert(error?.response?.data?.message || 'Failed to send reset email');
     } finally {
       setResetLoading(false);
     }
