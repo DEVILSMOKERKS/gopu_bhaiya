@@ -137,13 +137,13 @@ const ViewProduct = ({ productId }) => {
       <div className="viewproduct-header">
         <button
           className="viewproduct-back-btn"
-          onClick={() => navigate('/admin/products')}
+          onClick={() => router.push('/admin/products')}
         >
           <FaArrowLeft /> Back to Products
         </button>
         <div className="viewproduct-header-actions">
           <Link
-            to={`/admin/products/edit/${product.product_id}`}
+            href={`/admin/products/edit/${product.product_id}`}
             className="viewproduct-edit-btn"
           >
             <FaEdit /> Edit Product

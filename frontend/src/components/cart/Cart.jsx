@@ -282,7 +282,6 @@ const Cart = () => {
       sessionStorage.setItem('checkoutData', JSON.stringify(checkoutData));
     }
 
-    // Navigate to checkout
     router.push('/checkout');
   };
 

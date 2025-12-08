@@ -100,7 +100,6 @@ const Checkoutpayment = () => {
                 sessionStorage.removeItem('checkoutData');
               }
 
-              // Navigate to success page
               router.push('/paymentsuccessful', {
                 state: {
                   orderNumber: orderData.orderNumber,

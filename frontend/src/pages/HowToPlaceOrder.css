@@ -1,6 +1,6 @@
 .how-to-place-order-page {
   min-height: 100vh;
-  padding: 2rem 1rem;
+  padding: 120px 1rem 2rem 1rem;
   background: linear-gradient(to bottom, #f8f9fa, #ffffff);
   position: relative;
   z-index: 1;
@@ -9,7 +9,7 @@
 .how-to-place-order-page .how-to-order-header {
   text-align: center;
   margin-bottom: 3rem;
-  padding: 2rem 0;
+  padding: 1rem 0;
 }
 
 .how-to-place-order-page .how-to-order-title {

@@ -5,6 +5,7 @@ import { Helmet } from 'react-helmet-async';
 import Image from 'next/image';
 import './Testimonials.css';
 import { FaStar, FaQuoteLeft } from 'react-icons/fa';
+import placeholderAvatar from '../assets/Images/placeholder-avatar.webp';
 
 const Testimonials = () => {
   const [activeFilter, setActiveFilter] = useState('all');
@@ -15,7 +16,7 @@ const Testimonials = () => {
       name: 'Rajesh Kumar',
       location: 'Mumbai, Maharashtra',
       rating: 5,
-      image: '/placeholder-avatar.jpg',
+      image: placeholderAvatar,
       category: 'temple',
       text: 'The custom temple design exceeded our expectations. The craftsmanship and attention to detail are outstanding. Our family is truly blessed to have such a beautiful pooja room.',
       date: '2024-01-15'
@@ -25,7 +26,7 @@ const Testimonials = () => {
       name: 'Priya Sharma',
       location: 'Delhi, NCR',
       rating: 5,
-      image: '/placeholder-avatar.jpg',
+      image: placeholderAvatar,
       category: 'idols',
       text: 'The marble idols we purchased are absolutely stunning. The quality is exceptional and they arrived well-packaged. Highly recommend Mateshwari Exports!',
       date: '2024-02-20'
@@ -35,7 +36,7 @@ const Testimonials = () => {
       name: 'Vikram Singh',
       location: 'Jaipur, Rajasthan',
       rating: 5,
-      image: '/placeholder-avatar.jpg',
+      image: placeholderAvatar,
       category: 'pooja-room',
       text: 'Professional service from start to finish. They helped us design our dream pooja room within our budget. The team was responsive and the final result is beautiful.',
       date: '2024-03-10'
@@ -45,7 +46,7 @@ const Testimonials = () => {
       name: 'Anita Patel',
       location: 'Ahmedabad, Gujarat',
       rating: 5,
-      image: '/placeholder-avatar.jpg',
+      image: placeholderAvatar,
       category: 'temple',
       text: 'We ordered a custom temple and the entire process was smooth. The design team understood our vision perfectly and delivered exactly what we wanted.',
       date: '2024-03-25'
@@ -55,7 +56,7 @@ const Testimonials = () => {
       name: 'Suresh Reddy',
       location: 'Bangalore, Karnataka',
       rating: 5,
-      image: '/placeholder-avatar.jpg',
+      image: placeholderAvatar,
       category: 'idols',
       text: 'Excellent quality marble idols at reasonable prices. The customer service is top-notch and delivery was prompt. Will definitely order again!',
       date: '2024-04-05'
@@ -65,7 +66,7 @@ const Testimonials = () => {
       name: 'Meera Joshi',
       location: 'Pune, Maharashtra',
       rating: 5,
-      image: '/placeholder-avatar.jpg',
+      image: placeholderAvatar,
       category: 'pooja-room',
       text: 'Our pooja room looks amazing! The attention to detail in the carvings is incredible. Thank you for making our home more spiritual and beautiful.',
       date: '2024-04-18'

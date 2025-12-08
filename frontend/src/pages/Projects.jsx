@@ -5,6 +5,7 @@ import { Helmet } from 'react-helmet-async';
 import Image from 'next/image';
 import Link from 'next/link';
 import './Projects.css';
+import placeholderProject from '../assets/Images/placeholder-project.webp';
 
 const Projects = () => {
   const [activeFilter, setActiveFilter] = useState('all');
@@ -14,7 +15,7 @@ const Projects = () => {
       id: 1,
       title: 'Grand Temple Design',
       category: 'temple',
-      image: '/placeholder-project.jpg',
+      image: placeholderProject,
       location: 'Jaipur, Rajasthan',
       year: '2024',
       description: 'A magnificent temple design featuring intricate carvings and modern architectural elements.'
@@ -23,7 +24,7 @@ const Projects = () => {
       id: 2,
       title: 'Luxury Pooja Room',
       category: 'pooja-room',
-      image: '/placeholder-project.jpg',
+      image: placeholderProject,
       location: 'Mumbai, Maharashtra',
       year: '2024',
       description: 'A luxurious pooja room with premium materials and elegant design.'
@@ -32,7 +33,7 @@ const Projects = () => {
       id: 3,
       title: 'Traditional Home Temple',
       category: 'temple',
-      image: '/placeholder-project.jpg',
+      image: placeholderProject,
       location: 'Delhi, NCR',
       year: '2023',
       description: 'A traditional temple design blending classic aesthetics with contemporary functionality.'
@@ -41,7 +42,7 @@ const Projects = () => {
       id: 4,
       title: 'Compact Pooja Corner',
       category: 'pooja-room',
-      image: '/placeholder-project.jpg',
+      image: placeholderProject,
       location: 'Bangalore, Karnataka',
       year: '2024',
       description: 'A space-efficient pooja corner perfect for modern apartments.'
@@ -50,7 +51,7 @@ const Projects = () => {
       id: 5,
       title: 'Marble Temple Complex',
       category: 'temple',
-      image: '/placeholder-project.jpg',
+      image: placeholderProject,
       location: 'Ahmedabad, Gujarat',
       year: '2023',
       description: 'An expansive marble temple complex with multiple shrines and ceremonial spaces.'
@@ -59,7 +60,7 @@ const Projects = () => {
       id: 6,
       title: 'Premium Pooja Room',
       category: 'pooja-room',
-      image: '/placeholder-project.jpg',
+      image: placeholderProject,
       location: 'Pune, Maharashtra',
       year: '2024',
       description: 'A premium pooja room featuring gold accents and sophisticated design elements.'

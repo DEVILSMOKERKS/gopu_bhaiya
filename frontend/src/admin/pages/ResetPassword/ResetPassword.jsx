@@ -70,6 +70,7 @@ const ResetPassword = () => {
         setError(data.message || 'Failed to reset password');
       }
     } catch (error) {
+      console.error('Reset password error:', error);
       setError('Network error. Please try again.');
     } finally {
       setLoading(false);

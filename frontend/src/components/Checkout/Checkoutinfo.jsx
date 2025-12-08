@@ -531,7 +531,6 @@ const Checkoutinfo = () => {
             }));
             sessionStorage.removeItem('checkoutData');
           }
-          // Navigate to success page
           router.push('/thankyou');
         }
       } else {
@@ -556,8 +555,6 @@ const Checkoutinfo = () => {
               cartItems: cartItems
             }));
           }
-
-          // Navigate to payment page
           router.push('/checkout/payment');
         }
       }
