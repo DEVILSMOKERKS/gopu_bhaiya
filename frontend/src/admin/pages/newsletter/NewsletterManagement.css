@@ -549,7 +549,7 @@
 
 .growth-chart {
     display: flex;
-    align-items: end;
+    align-items: flex-end;
     gap: 10px;
     height: 200px;
     padding: 20px 0;

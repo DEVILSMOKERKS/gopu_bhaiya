@@ -9,7 +9,6 @@ import exploreCollection1 from '../../assets/Images/explorecollection/explore1.p
 import exploreCollection2 from '../../assets/Images/explorecollection/explore2.png';
 import exploreCollection3 from '../../assets/Images/explorecollection/explore3.png';
 import exploreCollection4 from '../../assets/Images/explorecollection/explore4.png';
-import Image from 'next/image';
 
 const ExploreCollection = () => {
   const router = useRouter();
