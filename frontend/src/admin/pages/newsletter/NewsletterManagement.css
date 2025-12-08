@@ -43,11 +43,11 @@
     align-items: center;
     margin-bottom: 30px;
     padding-bottom: 20px;
-    border-bottom: 1px solid #e5e7eb;
+    border-bottom: 1px solid var(--border-light);
 }
 
 .newsletter-management-header h1 {
-    color: #1f2937;
+    color: var(--text-primary);
     font-size: 28px;
     font-weight: 600;
     margin: 0;
@@ -228,7 +228,7 @@
     text-align: left;
     font-weight: 600;
     color: #374151;
-    border-bottom: 1px solid #e5e7eb;
+    border-bottom: 1px solid var(--border-light);
 }
 
 .newsletter-table td {
@@ -310,12 +310,12 @@
     justify-content: space-between;
     align-items: center;
     padding: 20px;
-    border-bottom: 1px solid #e5e7eb;
+    border-bottom: 1px solid var(--border-light);
 }
 
 .modal-header h3 {
     margin: 0;
-    color: #1f2937;
+    color: var(--text-primary);
     font-size: 18px;
     font-weight: 600;
 }
@@ -412,7 +412,7 @@
 .selection-header {
     background: #f9fafb;
     padding: 12px 16px;
-    border-bottom: 1px solid #e5e7eb;
+    border-bottom: 1px solid var(--border-light);
     display: flex;
     align-items: center;
     gap: 10px;
@@ -457,7 +457,7 @@
 
 .newsletter-preview-section h3 {
     margin: 0 0 20px 0;
-    color: #1f2937;
+    color: var(--text-primary);
     font-size: 18px;
     font-weight: 600;
 }
@@ -470,7 +470,7 @@
 .email-header {
     background: #f9fafb;
     padding: 16px;
-    border-bottom: 1px solid #e5e7eb;
+    border-bottom: 1px solid var(--border-light);
     font-size: 14px;
     color: #374151;
 }
@@ -525,7 +525,7 @@
 
 .stat-number {
     margin: 0;
-    color: #1f2937;
+    color: var(--text-primary);
     font-size: 24px;
     font-weight: 600;
 }
@@ -538,7 +538,7 @@
 
 .statistics-chart h3 {
     margin: 0 0 20px 0;
-    color: #1f2937;
+    color: var(--text-primary);
     font-size: 18px;
     font-weight: 600;
 }
@@ -549,7 +549,7 @@
 
 .growth-chart {
     display: flex;
-    align-items: end;
+    align-items: flex-end;
     gap: 10px;
     height: 200px;
     padding: 20px 0;

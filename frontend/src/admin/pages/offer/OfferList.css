@@ -10,21 +10,21 @@
   align-items: center;
   margin-bottom: 2rem;
   padding: 1.5rem;
-  background: white;
+  background: var(--bg-primary);
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .header-left h1 {
   margin: 0;
-  color: #333;
+  color: var(--text-secondary);
   font-size: 2rem;
   font-weight: 600;
 }
 
 .header-left p {
   margin: 0.5rem 0 0 0;
-  color: #6c757d;
+  color: var(--text-tertiary);
   font-size: 1rem;
 }
 
@@ -34,7 +34,7 @@
   gap: 0.5rem;
   padding: 0.75rem 1.5rem;
   background: #007bff;
-  color: white;
+  color: var(--text-white);
   border: none;
   border-radius: 6px;
   font-size: 0.95rem;
@@ -44,7 +44,7 @@
 }
 
 .add-btn:hover {
-  background: #0056b3;
+  background: var(--primary-dark);
 }
 
 .filters-section {
@@ -52,7 +52,7 @@
   gap: 1rem;
   margin-bottom: 2rem;
   padding: 1rem;
-  background: white;
+  background: var(--bg-primary);
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
@@ -71,14 +71,14 @@
 
 .search-box svg,
 .filter-box svg {
-  color: #6c757d;
+  color: var(--text-tertiary);
   font-size: 1rem;
 }
 
 .search-box input {
   width: 100%;
   padding: 0.75rem 0.75rem 0.75rem 2.5rem;
-  border: 1px solid #ced4da;
+  border: 1px solid var(--border-light);
   border-radius: 6px;
   font-size: 0.95rem;
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
@@ -93,10 +93,10 @@
 .filter-box select {
   width: 100%;
   padding: 0.75rem 0.75rem 0.75rem 2.5rem;
-  border: 1px solid #ced4da;
+  border: 1px solid var(--border-light);
   border-radius: 6px;
   font-size: 0.95rem;
-  background: white;
+  background: var(--bg-primary);
   cursor: pointer;
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
@@ -115,7 +115,7 @@
 }
 
 .offer-card {
-  background: white;
+  background: var(--bg-primary);
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   overflow: hidden;
@@ -133,7 +133,7 @@
   align-items: center;
   padding: 1.5rem;
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
+  color: var(--text-white);
 }
 
 .offer-header h3 {
@@ -157,7 +157,7 @@
   border-radius: 4px;
   cursor: pointer;
   transition: background-color 0.3s ease;
-  color: white;
+  color: var(--text-white);
   font-size: 0.9rem;
 }
 
@@ -201,13 +201,13 @@
 
 .label {
   font-weight: 500;
-  color: #6c757d;
+  color: var(--text-tertiary);
   font-size: 0.9rem;
 }
 
 .value {
   font-weight: 600;
-  color: #333;
+  color: var(--text-secondary);
   font-size: 0.9rem;
 }
 
@@ -241,7 +241,7 @@
 
 .offer-description p {
   margin: 0;
-  color: #6c757d;
+  color: var(--text-tertiary);
   font-size: 0.9rem;
   line-height: 1.5;
 }
@@ -256,7 +256,7 @@
 }
 
 .offer-footer small {
-  color: #6c757d;
+  color: var(--text-tertiary);
   font-size: 0.8rem;
 }
 
@@ -264,14 +264,14 @@
   grid-column: 1 / -1;
   text-align: center;
   padding: 3rem;
-  background: white;
+  background: var(--bg-primary);
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .no-offers p {
   margin: 0 0 1.5rem 0;
-  color: #6c757d;
+  color: var(--text-tertiary);
   font-size: 1.1rem;
 }
 
@@ -285,8 +285,8 @@
 
 .page-btn {
   padding: 0.5rem 1rem;
-  background: white;
-  border: 1px solid #ced4da;
+  background: var(--bg-primary);
+  border: 1px solid var(--border-light);
   border-radius: 6px;
   color: #007bff;
   cursor: pointer;
@@ -296,19 +296,19 @@
 
 .page-btn:hover:not(:disabled) {
   background: #007bff;
-  color: white;
+  color: var(--text-white);
   border-color: #007bff;
 }
 
 .page-btn:disabled {
   background: #f8f9fa;
-  color: #6c757d;
+  color: var(--text-tertiary);
   cursor: not-allowed;
   border-color: #e9ecef;
 }
 
 .page-info {
-  color: #6c757d;
+  color: var(--text-tertiary);
   font-size: 0.9rem;
   font-weight: 500;
 }
@@ -319,7 +319,7 @@
   align-items: center;
   justify-content: center;
   padding: 3rem;
-  color: #6c757d;
+  color: var(--text-tertiary);
 }
 
 .spinner {
@@ -333,8 +333,13 @@
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 /* Status Badge Styles */
@@ -414,6 +419,7 @@
     opacity: 0;
     transform: translateY(20px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);

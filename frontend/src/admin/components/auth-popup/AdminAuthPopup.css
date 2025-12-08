@@ -12,7 +12,7 @@
 }
 
 .admin-form-popup {
-  background: white;
+  background: var(--bg-primary);
   border-radius: 12px;
   padding: 2rem;
   width: 100%;
@@ -30,7 +30,7 @@
 
 .admin-form-header h2 {
   margin: 0;
-  color: #1f2937;
+  color: var(--text-primary);
   font-size: 1.5rem;
   font-weight: 600;
 }
@@ -40,7 +40,7 @@
   border: none;
   font-size: 1.5rem;
   cursor: pointer;
-  color: #6b7280;
+  color: var(--text-tertiary);
   padding: 0;
   width: 30px;
   height: 30px;
@@ -52,8 +52,8 @@
 }
 
 .admin-form-close-btn:hover {
-  background-color: #f3f4f6;
-  color: #374151;
+  background-color: var(--bg-secondary);
+  color: var(--text-secondary);
 }
 
 .admin-form-form {
@@ -70,13 +70,13 @@
 
 .admin-form-group label {
   font-weight: 500;
-  color: #374151;
+  color: var(--text-secondary);
   font-size: 0.875rem;
 }
 
 .admin-form-group input {
   padding: 0.75rem;
-  border: 1px solid #d1d5db;
+  border: 1px solid var(--border-light);
   border-radius: 8px;
   font-size: 1rem;
   transition: border-color 0.2s, box-shadow 0.2s;
@@ -86,14 +86,14 @@
 
 .admin-form-group input:focus {
   outline: none;
-  border-color: #3b82f6;
+  border-color: var(--primary-color);
   box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
 }
 
 .admin-form-error-message {
   background-color: #fef2f2;
   border: 1px solid #fecaca;
-  color: #dc2626;
+  color: var(--accent-error);
   padding: 0.75rem;
   border-radius: 8px;
   font-size: 0.875rem;
@@ -148,7 +148,7 @@
   margin-top: 1.5rem;
   padding-top: 1rem;
   border-top: 1px solid #e5e7eb;
-  color: #6b7280;
+  color: var(--text-tertiary);
   font-size: 0.875rem;
 }
 
@@ -160,7 +160,7 @@
 }
 
 .admin-form-reset-instructions {
-  color: #6b7280;
+  color: var(--text-tertiary);
   font-size: 0.875rem;
   line-height: 1.5;
   margin: 0;
@@ -168,8 +168,8 @@
 
 .admin-form-back-to-login-btn {
   background: none;
-  border: 1px solid #d1d5db;
-  color: #374151;
+  border: 1px solid var(--border-light);
+  color: var(--text-secondary);
   padding: 0.75rem;
   border-radius: 8px;
   font-size: 1rem;
@@ -204,21 +204,21 @@
 }
 
 .admin-form-reset-sent-container h3 {
-  color: #1f2937;
+  color: var(--text-primary);
   margin: 0 0 0.5rem 0;
   font-size: 1.25rem;
   font-weight: 600;
 }
 
 .admin-form-reset-sent-container p {
-  color: #6b7280;
+  color: var(--text-tertiary);
   font-size: 0.875rem;
   line-height: 1.5;
   margin: 0 0 1.5rem 0;
 }
 
 .admin-form-reset-sent-container strong {
-  color: #374151;
+  color: var(--text-secondary);
   font-weight: 600;
 }
 
@@ -251,11 +251,11 @@
 }
 
 .admin-form-toggle-password-visibility:hover {
-  color: #374151;
+  color: var(--text-secondary);
 }
 
 .admin-form-eye-icon {
   font-size: 1.2rem;
-  color: #6b7280;
+  color: var(--text-tertiary);
   transition: color 0.2s;
 }

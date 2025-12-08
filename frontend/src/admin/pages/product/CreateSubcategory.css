@@ -2,7 +2,7 @@
 
 .createsubcategory-container {
   padding: 2rem;
-  background: #f8fafc;
+  background: var(--bg-secondary);
   min-height: 100vh;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
@@ -18,14 +18,14 @@
 
 .createsubcategory-header h1 {
   margin: 0 0 0.5rem 0;
-  color: #1e293b;
+  color: var(--text-primary);
   font-size: 2rem;
   font-weight: 700;
 }
 
 .createsubcategory-header p {
   margin: 0;
-  color: #64748b;
+  color: var(--text-tertiary);
   font-size: 1rem;
 }
 
@@ -38,7 +38,7 @@
 
 .createsubcategory-form-section {
   padding: 2rem;
-  border-bottom: 1px solid #e2e8f0;
+  border-bottom: 1px solid var(--border-light);
 }
 
 .createsubcategory-form-section:last-child {
@@ -47,7 +47,7 @@
 
 .createsubcategory-form-section h2 {
   margin: 0 0 1.5rem 0;
-  color: #1e293b;
+  color: var(--text-primary);
   font-size: 1.5rem;
   font-weight: 600;
   display: flex;
@@ -72,7 +72,7 @@
   margin-bottom: 0.5rem;
   font-size: 0.875rem;
   font-weight: 600;
-  color: #374151;
+  color: var(--text-secondary);
 }
 
 .createsubcategory-form-group input,
@@ -80,7 +80,7 @@
 .createsubcategory-form-group textarea {
   width: 100%;
   padding: 0.75rem;
-  border: 2px solid #e2e8f0;
+  border: 2px solid var(--border-light);
   border-radius: 8px;
   font-size: 0.875rem;
   transition: all 0.3s ease;
@@ -107,15 +107,15 @@
 
 .createsubcategory-form-group input[type="file"] {
   padding: 0.5rem;
-  border: 2px dashed #cbd5e1;
-  background: #f8fafc;
+  border: 2px dashed var(--border-light);
+  background: var(--bg-secondary);
   cursor: pointer;
   transition: all 0.3s ease;
 }
 
 .createsubcategory-form-group input[type="file"]:hover {
   border-color: var(--primary-color);
-  background: #f1f5f9;
+  background: var(--bg-secondary);
 }
 
 /* Image Preview */
@@ -130,7 +130,7 @@
   width: auto;
   height: auto;
   border-radius: 8px;
-  border: 2px solid #e2e8f0;
+  border: 2px solid var(--border-light);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   object-fit: contain;
 }
@@ -138,7 +138,7 @@
 /* Error Message */
 .createsubcategory-error-message {
   background: #fef2f2;
-  color: #dc2626;
+  color: var(--accent-error);
   padding: 1rem;
   border-radius: 8px;
   border: 1px solid #fecaca;
@@ -152,15 +152,15 @@
   justify-content: flex-end;
   gap: 1rem;
   padding: 2rem;
-  background: #f8fafc;
-  border-top: 1px solid #e2e8f0;
+  background: var(--bg-secondary);
+  border-top: 1px solid var(--border-light);
 }
 
 .createsubcategory-btn-secondary {
   padding: 0.75rem 1.5rem;
-  border: 2px solid #e2e8f0;
+  border: 2px solid var(--border-light);
   background: white;
-  color: #64748b;
+  color: var(--text-tertiary);
   border-radius: 8px;
   cursor: pointer;
   font-weight: 600;
@@ -168,15 +168,15 @@
 }
 
 .createsubcategory-btn-secondary:hover {
-  border-color: #cbd5e1;
-  color: #374151;
-  background: #f1f5f9;
+  border-color: var(--border-light);
+  color: var(--text-secondary);
+  background: var(--bg-secondary);
 }
 
 .createsubcategory-btn-primary {
   padding: 0.75rem 1.5rem;
   background: var(--primary-color);
-  color: white;
+  color: var(--text-white);
   border: none;
   border-radius: 8px;
   cursor: pointer;
@@ -201,7 +201,7 @@
 .createsubcategory-loading {
   text-align: center;
   padding: 3rem;
-  color: #666;
+  color: var(--text-tertiary);
   font-size: 16px;
 }
 
@@ -210,28 +210,28 @@
   .createsubcategory-container {
     padding: 1rem;
   }
-  
+
   .createsubcategory-header {
     padding: 1.5rem;
   }
-  
+
   .createsubcategory-header h1 {
     font-size: 1.5rem;
   }
-  
+
   .createsubcategory-form-section {
     padding: 1.5rem;
   }
-  
+
   .createsubcategory-form-section h2 {
     font-size: 1.25rem;
   }
-  
+
   .createsubcategory-form-actions {
     flex-direction: column;
     padding: 1.5rem;
   }
-  
+
   .createsubcategory-btn-primary,
   .createsubcategory-btn-secondary {
     width: 100%;
@@ -243,15 +243,15 @@
   .createsubcategory-header h1 {
     font-size: 1.25rem;
   }
-  
+
   .createsubcategory-form-section {
     padding: 1rem;
   }
-  
+
   .createsubcategory-form-section h2 {
     font-size: 1.125rem;
   }
-  
+
   .createsubcategory-image-preview img {
     max-width: 150px;
     max-height: 150px;
