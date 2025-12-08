@@ -1,6 +1,12 @@
-// Note: In Next.js, routing is file-based, so Routes/Route from react-router-dom are not used.
-// This file is kept for backward compatibility but routing is handled by Next.js app directory.
-// AdminLayout is exported from its own file: src/admin/components/AdminLayout.jsx
+import React, { useState, useEffect } from 'react'
+import { useRouter } from 'next/navigation'
+import { Routes, Route } from 'react-router-dom'
+import { useAdmin } from '../context/AdminContext'
+import Header from '../admin/components/header/Header'
+import Sidebar from '../admin/components/sidebar/Sidebar'
+import AdminAuthPopup from '../admin/components/auth-popup/AdminAuthPopup'
+import Dashboard from "../admin/pages/Dashboard/Dashboard"
+import ResetPassword from "../admin/pages/ResetPassword/ResetPassword"
 
 import AdminLayout from '../admin/components/AdminLayout';
 
