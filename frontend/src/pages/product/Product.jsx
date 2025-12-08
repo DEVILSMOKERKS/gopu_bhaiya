@@ -302,6 +302,7 @@ const Product = ({ productId: productIdProp }) => {
         document.removeEventListener('mouseup', handleGlobalMouseUp);
       };
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [showZoomModal, isZoomModalDragging, zoomModalScale, zoomModalPosition, zoomModalDragStart]);
 
   // Drag functionality

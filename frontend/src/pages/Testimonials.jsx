@@ -1,7 +1,6 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Helmet } from 'react-helmet-async';
 import Image from 'next/image';
 import './Testimonials.css';
 import { FaStar, FaQuoteLeft } from 'react-icons/fa';
@@ -89,62 +88,55 @@ const Testimonials = () => {
   };
 
   return (
-    <>
-      <Helmet>
-        <title>Testimonials - Mateshwari Exports</title>
-        <meta name="description" content="Read what our customers say about Mateshwari Exports and our products." />
-      </Helmet>
+    <div className="testimonials-page">
+      <div className="testimonials-header">
+        <h1 className="testimonials-title h2style">Testimonials</h1>
+        <p className="testimonials-subtitle">
+          Hear from our satisfied customers about their experience with Mateshwari Exports
+        </p>
+      </div>
 
-      <div className="testimonials-page">
-        <div className="testimonials-header">
-          <h1 className="testimonials-title h2style">Testimonials</h1>
-          <p className="testimonials-subtitle">
-            Hear from our satisfied customers about their experience with Mateshwari Exports
-          </p>
+      <div className="testimonials-container">
+        <div className="testimonials-filters">
+          {categories.map(category => (
+            <button
+              key={category}
+              className={`filter-btn ${activeFilter === category ? 'active' : ''}`}
+              onClick={() => setActiveFilter(category)}
+            >
+              {category === 'all' ? 'All' : category.replace('-', ' ').toUpperCase()}
+            </button>
+          ))}
         </div>
 
-        <div className="testimonials-container">
-          <div className="testimonials-filters">
-            {categories.map(category => (
-              <button
-                key={category}
-                className={`filter-btn ${activeFilter === category ? 'active' : ''}`}
-                onClick={() => setActiveFilter(category)}
-              >
-                {category === 'all' ? 'All' : category.replace('-', ' ').toUpperCase()}
-              </button>
-            ))}
-          </div>
-
-          <div className="testimonials-grid">
-            {filteredTestimonials.map(testimonial => (
-              <div key={testimonial.id} className="testimonial-card">
-                <div className="testimonial-header">
-                  <div className="testimonial-avatar">
-                    <Image src={testimonial.image} alt={testimonial.name} width={60} height={60} style={{ objectFit: 'cover' }} />
-                  </div>
-                  <div className="testimonial-info">
-                    <h3 className="testimonial-name">{testimonial.name}</h3>
-                    <p className="testimonial-location">{testimonial.location}</p>
-                    <div className="testimonial-rating">
-                      {renderStars(testimonial.rating)}
-                    </div>
-                  </div>
+        <div className="testimonials-grid">
+          {filteredTestimonials.map(testimonial => (
+            <div key={testimonial.id} className="testimonial-card">
+              <div className="testimonial-header">
+                <div className="testimonial-avatar">
+                  <Image src={testimonial.image} alt={testimonial.name} width={60} height={60} style={{ objectFit: 'cover' }} />
                 </div>
-                <div className="testimonial-content">
-                  <FaQuoteLeft className="quote-icon" />
-                  <p className="testimonial-text">{testimonial.text}</p>
-                </div>
-                <div className="testimonial-footer">
-                  <span className="testimonial-date">{new Date(testimonial.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
-                  <span className="testimonial-category">{testimonial.category.replace('-', ' ').toUpperCase()}</span>
+                <div className="testimonial-info">
+                  <h3 className="testimonial-name">{testimonial.name}</h3>
+                  <p className="testimonial-location">{testimonial.location}</p>
+                  <div className="testimonial-rating">
+                    {renderStars(testimonial.rating)}
+                  </div>
                 </div>
               </div>
-            ))}
-          </div>
+              <div className="testimonial-content">
+                <FaQuoteLeft className="quote-icon" />
+                <p className="testimonial-text">{testimonial.text}</p>
+              </div>
+              <div className="testimonial-footer">
+                <span className="testimonial-date">{new Date(testimonial.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
+                <span className="testimonial-category">{testimonial.category.replace('-', ' ').toUpperCase()}</span>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

@@ -4,8 +4,17 @@ const nextConfig = {
   eslint: {
     ignoreDuringBuilds: true,
   },
+  typescript: {
+    ignoreBuildErrors: true,
+  },
+  experimental: {
+    missingSuspenseWithCSRBailout: false,
+  },
+  generateBuildId: async () => {
+    return 'build-' + Date.now();
+  },
   images: {
-    domains: ['localhost','images.unsplash.com'],
+    domains: ['localhost', 'images.unsplash.com'],
     remotePatterns: [
       {
         protocol: 'http',

@@ -1,7 +1,6 @@
 'use client';
 
 import { Provider } from 'react-redux';
-import { HelmetProvider } from 'react-helmet-async';
 import Image from 'next/image';
 import { store } from '../src/store/store';
 import { UserProvider } from '../src/context/UserContext';
@@ -57,17 +56,15 @@ export default function RootLayout({ children }) {
           />
         </noscript>
         <Provider store={store}>
-          <HelmetProvider>
-            <NotificationProvider>
-              <UserProvider>
-                <WishlistCartProvider>
-                  <LayoutClient>
-                    {children}
-                  </LayoutClient>
-                </WishlistCartProvider>
-              </UserProvider>
-            </NotificationProvider>
-          </HelmetProvider>
+          <NotificationProvider>
+            <UserProvider>
+              <WishlistCartProvider>
+                <LayoutClient>
+                  {children}
+                </LayoutClient>
+              </WishlistCartProvider>
+            </UserProvider>
+          </NotificationProvider>
         </Provider>
       </body>
     </html>

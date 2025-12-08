@@ -1,7 +1,6 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Helmet } from 'react-helmet-async';
 import Image from 'next/image';
 import Link from 'next/link';
 import './Projects.css';
@@ -74,59 +73,52 @@ const Projects = () => {
     : projects.filter(p => p.category === activeFilter);
 
   return (
-    <>
-      <Helmet>
-        <title>Projects - Mateshwari Exports</title>
-        <meta name="description" content="Explore our completed projects showcasing our craftsmanship and design expertise." />
-      </Helmet>
+    <div className="projects-page">
+      <div className="projects-header">
+        <h1 className="projects-title h2style">Projects</h1>
+        <p className="projects-subtitle">
+          Explore our completed projects showcasing excellence in design and craftsmanship
+        </p>
+      </div>
 
-      <div className="projects-page">
-        <div className="projects-header">
-          <h1 className="projects-title h2style">Projects</h1>
-          <p className="projects-subtitle">
-            Explore our completed projects showcasing excellence in design and craftsmanship
-          </p>
+      <div className="projects-container">
+        <div className="projects-filters">
+          {categories.map(category => (
+            <button
+              key={category}
+              className={`filter-btn ${activeFilter === category ? 'active' : ''}`}
+              onClick={() => setActiveFilter(category)}
+            >
+              {category === 'all' ? 'All Projects' : category.replace('-', ' ').toUpperCase()}
+            </button>
+          ))}
         </div>
 
-        <div className="projects-container">
-          <div className="projects-filters">
-            {categories.map(category => (
-              <button
-                key={category}
-                className={`filter-btn ${activeFilter === category ? 'active' : ''}`}
-                onClick={() => setActiveFilter(category)}
-              >
-                {category === 'all' ? 'All Projects' : category.replace('-', ' ').toUpperCase()}
-              </button>
-            ))}
-          </div>
-
-          <div className="projects-grid">
-            {filteredProjects.map(project => (
-              <div key={project.id} className="project-card">
-                <div className="project-image-wrapper">
-                  <Image src={project.image} alt={project.title} className="project-image" fill style={{ objectFit: 'cover' }} />
-                  <div className="project-overlay">
-                    <span className="project-category">{project.category.replace('-', ' ').toUpperCase()}</span>
-                  </div>
-                </div>
-                <div className="project-content">
-                  <h3 className="project-title">{project.title}</h3>
-                  <p className="project-description">{project.description}</p>
-                  <div className="project-meta">
-                    <span className="project-location">📍 {project.location}</span>
-                    <span className="project-year">{project.year}</span>
-                  </div>
-                  <Link href={`/project/${project.id}`} className="project-view-btn">
-                    View Details
-                  </Link>
+        <div className="projects-grid">
+          {filteredProjects.map(project => (
+            <div key={project.id} className="project-card">
+              <div className="project-image-wrapper">
+                <Image src={project.image} alt={project.title} className="project-image" fill style={{ objectFit: 'cover' }} />
+                <div className="project-overlay">
+                  <span className="project-category">{project.category.replace('-', ' ').toUpperCase()}</span>
                 </div>
               </div>
-            ))}
-          </div>
+              <div className="project-content">
+                <h3 className="project-title">{project.title}</h3>
+                <p className="project-description">{project.description}</p>
+                <div className="project-meta">
+                  <span className="project-location">📍 {project.location}</span>
+                  <span className="project-year">{project.year}</span>
+                </div>
+                <Link href={`/project/${project.id}`} className="project-view-btn">
+                  View Details
+                </Link>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

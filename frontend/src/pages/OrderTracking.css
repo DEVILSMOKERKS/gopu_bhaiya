@@ -52,7 +52,7 @@
 .tracking-form {
   display: flex;
   gap: 24px;
-  align-items: end;
+  align-items: flex-end;
   flex-wrap: wrap;
 }
 
@@ -554,6 +554,7 @@
     opacity: 0;
     transform: translateY(20px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -566,6 +567,7 @@
 
 /* Print Styles */
 @media print {
+
   .tracking-form-section,
   .help-section {
     display: none;

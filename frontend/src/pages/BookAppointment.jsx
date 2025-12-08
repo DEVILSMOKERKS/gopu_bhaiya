@@ -1,7 +1,6 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Helmet } from 'react-helmet-async';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import './BookAppointment.css';
 
@@ -158,131 +157,124 @@ const BookAppointment = () => {
   };
 
   return (
-    <>
-      <Helmet>
-        <title>Book Appointment - Mateshwari Exports</title>
-        <meta name="description" content="Book an appointment with Mateshwari Exports to discuss your spiritual and artistic needs." />
-      </Helmet>
+    <div className="book-appointment-page">
+      <div className="book-appointment-container">
+        <h1 className="book-appointment-title">BOOK AN APPOINTMENT NOW</h1>
 
-      <div className="book-appointment-page">
-        <div className="book-appointment-container">
-          <h1 className="book-appointment-title">BOOK AN APPOINTMENT NOW</h1>
+        <form onSubmit={handleSubmit} className="appointment-form">
+          {/* Personal Information Fields */}
+          <div className="form-row">
+            <div className="form-group">
+              <label htmlFor="name">Full Name *</label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                value={formData.name}
+                onChange={handleChange}
+                required
+              />
+            </div>
+            <div className="form-group">
+              <label htmlFor="contactNumber">Contact Number *</label>
+              <input
+                type="tel"
+                id="contactNumber"
+                name="contactNumber"
+                value={formData.contactNumber}
+                onChange={handleChange}
+                required
+              />
+            </div>
+            <div className="form-group">
+              <label htmlFor="city">City *</label>
+              <input
+                type="text"
+                id="city"
+                name="city"
+                value={formData.city}
+                onChange={handleChange}
+                required
+              />
+            </div>
+          </div>
 
-          <form onSubmit={handleSubmit} className="appointment-form">
-            {/* Personal Information Fields */}
-            <div className="form-row">
-              <div className="form-group">
-                <label htmlFor="name">Full Name *</label>
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  value={formData.name}
-                  onChange={handleChange}
-                  required
-                />
+          {/* Appointment Type Selection */}
+          <div className="appointment-type-section">
+            <div className="appointment-type-grid">
+              {appointmentTypes.map((type) => (
+                <div
+                  key={type.id}
+                  className={`appointment-type-card ${formData.appointmentType === type.id ? 'selected' : ''}`}
+                  onClick={() => handleAppointmentTypeChange(type.id)}
+                >
+                  <div className="appointment-type-radio">
+                    <div className={`radio-circle ${formData.appointmentType === type.id ? 'filled' : ''}`}></div>
+                    <div className="appointment-type-icon">{type.icon}</div>
+                  </div>
+                  <div className="appointment-type-content">
+                    <h3 className="appointment-type-title">{type.title}</h3>
+                    <p className="appointment-type-duration">{type.duration}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Date and Time Selection */}
+          <div className="datetime-section">
+            {/* Calendar Section */}
+            <div className="calendar-section">
+              <div className="calendar-header">
+                <span className="select-date-label">SELECT DATE:</span>
               </div>
-              <div className="form-group">
-                <label htmlFor="contactNumber">Contact Number *</label>
-                <input
-                  type="tel"
-                  id="contactNumber"
-                  name="contactNumber"
-                  value={formData.contactNumber}
-                  onChange={handleChange}
-                  required
-                />
-              </div>
-              <div className="form-group">
-                <label htmlFor="city">City *</label>
-                <input
-                  type="text"
-                  id="city"
-                  name="city"
-                  value={formData.city}
-                  onChange={handleChange}
-                  required
-                />
+              <div className="calendar-container">
+                <div className="calendar-month-header">
+                  <button type="button" className="calendar-nav-btn" onClick={handlePreviousMonth}>
+                    <FaChevronLeft />
+                  </button>
+                  <span className="calendar-month-year">
+                    {monthNames[currentMonth]} {currentYear}
+                  </span>
+                  <button type="button" className="calendar-nav-btn" onClick={handleNextMonth}>
+                    <FaChevronRight />
+                  </button>
+                </div>
+                <div className="calendar-weekdays">
+                  {daysOfWeek.map((day) => (
+                    <div key={day} className="calendar-weekday">{day}</div>
+                  ))}
+                </div>
+                <div className="calendar-days">
+                  {renderCalendar()}
+                </div>
               </div>
             </div>
 
-            {/* Appointment Type Selection */}
-            <div className="appointment-type-section">
-              <div className="appointment-type-grid">
-                {appointmentTypes.map((type) => (
-                  <div
-                    key={type.id}
-                    className={`appointment-type-card ${formData.appointmentType === type.id ? 'selected' : ''}`}
-                    onClick={() => handleAppointmentTypeChange(type.id)}
+            {/* Time Slots Section */}
+            <div className="time-slots-section">
+              <div className="time-slots-grid">
+                {timeSlots.map((time) => (
+                  <button
+                    key={time}
+                    type="button"
+                    className={`time-slot-btn ${formData.selectedTime === time ? 'selected' : ''}`}
+                    onClick={() => handleTimeSelect(time)}
                   >
-                    <div className="appointment-type-radio">
-                      <div className={`radio-circle ${formData.appointmentType === type.id ? 'filled' : ''}`}></div>
-                      <div className="appointment-type-icon">{type.icon}</div>
-                    </div>
-                    <div className="appointment-type-content">
-                      <h3 className="appointment-type-title">{type.title}</h3>
-                      <p className="appointment-type-duration">{type.duration}</p>
-                    </div>
-                  </div>
+                    {time}
+                  </button>
                 ))}
               </div>
             </div>
+          </div>
 
-            {/* Date and Time Selection */}
-            <div className="datetime-section">
-              {/* Calendar Section */}
-              <div className="calendar-section">
-                <div className="calendar-header">
-                  <span className="select-date-label">SELECT DATE:</span>
-                </div>
-                <div className="calendar-container">
-                  <div className="calendar-month-header">
-                    <button type="button" className="calendar-nav-btn" onClick={handlePreviousMonth}>
-                      <FaChevronLeft />
-                    </button>
-                    <span className="calendar-month-year">
-                      {monthNames[currentMonth]} {currentYear}
-                    </span>
-                    <button type="button" className="calendar-nav-btn" onClick={handleNextMonth}>
-                      <FaChevronRight />
-                    </button>
-                  </div>
-                  <div className="calendar-weekdays">
-                    {daysOfWeek.map((day) => (
-                      <div key={day} className="calendar-weekday">{day}</div>
-                    ))}
-                  </div>
-                  <div className="calendar-days">
-                    {renderCalendar()}
-                  </div>
-                </div>
-              </div>
-
-              {/* Time Slots Section */}
-              <div className="time-slots-section">
-                <div className="time-slots-grid">
-                  {timeSlots.map((time) => (
-                    <button
-                      key={time}
-                      type="button"
-                      className={`time-slot-btn ${formData.selectedTime === time ? 'selected' : ''}`}
-                      onClick={() => handleTimeSelect(time)}
-                    >
-                      {time}
-                    </button>
-                  ))}
-                </div>
-              </div>
-            </div>
-
-            {/* Submit Button */}
-            <button type="submit" className="book-appointment-btn">
-              Book Appointment
-            </button>
-          </form>
-        </div>
+          {/* Submit Button */}
+          <button type="submit" className="book-appointment-btn">
+            Book Appointment
+          </button>
+        </form>
       </div>
-    </>
+    </div>
   );
 };
 

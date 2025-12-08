@@ -1,7 +1,6 @@
 'use client';
 
 import React from 'react';
-import { Helmet } from 'react-helmet-async';
 import Link from 'next/link';
 import './OurServices.css';
 
@@ -52,58 +51,51 @@ const OurServices = () => {
   ];
 
   return (
-    <>
-      <Helmet>
-        <title>Our Services - Mateshwari Exports</title>
-        <meta name="description" content="Comprehensive services for temple design, pooja rooms, marble idols, and more." />
-      </Helmet>
+    <div className="our-services-page">
+      <div className="services-header">
+        <h1 className="services-title h2style">Our Services</h1>
+        <p className="services-subtitle">
+          Comprehensive solutions for all your spiritual and artistic needs
+        </p>
+      </div>
 
-      <div className="our-services-page">
-        <div className="services-header">
-          <h1 className="services-title h2style">Our Services</h1>
-          <p className="services-subtitle">
-            Comprehensive solutions for all your spiritual and artistic needs
-          </p>
+      <div className="services-container">
+        <div className="services-grid">
+          {services.map(service => (
+            <div key={service.id} className="service-card">
+              <div className="service-icon">{service.icon}</div>
+              <h3 className="service-card-title">{service.title}</h3>
+              <p className="service-description">{service.description}</p>
+              <ul className="service-features">
+                {service.features.map((feature, index) => (
+                  <li key={index}>{feature}</li>
+                ))}
+              </ul>
+              <Link href="/book-appointment" className="service-cta-btn">
+                Learn More
+              </Link>
+            </div>
+          ))}
         </div>
 
-        <div className="services-container">
-          <div className="services-grid">
-            {services.map(service => (
-              <div key={service.id} className="service-card">
-                <div className="service-icon">{service.icon}</div>
-                <h3 className="service-card-title">{service.title}</h3>
-                <p className="service-description">{service.description}</p>
-                <ul className="service-features">
-                  {service.features.map((feature, index) => (
-                    <li key={index}>{feature}</li>
-                  ))}
-                </ul>
-                <Link href="/book-appointment" className="service-cta-btn">
-                  Learn More
-                </Link>
-              </div>
-            ))}
-          </div>
-
-          <div className="services-cta-section">
-            <div className="cta-content">
-              <h2 className="cta-heading">Ready to Start Your Project?</h2>
-              <p className="cta-description">
-                Contact us today to discuss your requirements and get a personalized quote
-              </p>
-              <div className="cta-buttons">
-                <Link href="/book-appointment" className="cta-primary-btn">
-                  Book Appointment
-                </Link>
-                <Link href="/contact-us" className="cta-secondary-btn">
-                  Contact Us
-                </Link>
-              </div>
+        <div className="services-cta-section">
+          <div className="cta-content">
+            <h2 className="cta-heading">Ready to Start Your Project?</h2>
+            <p className="cta-description">
+              Contact us today to discuss your requirements and get a personalized quote
+            </p>
+            <div className="cta-buttons">
+              <Link href="/book-appointment" className="cta-primary-btn">
+                Book Appointment
+              </Link>
+              <Link href="/contact-us" className="cta-secondary-btn">
+                Contact Us
+              </Link>
             </div>
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

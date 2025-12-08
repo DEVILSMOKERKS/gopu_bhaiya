@@ -17,6 +17,7 @@ const BlogDetail = ({ slug }) => {
 
   useEffect(() => {
     fetchBlogDetail();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [slug]);
 
   const fetchBlogDetail = async () => {

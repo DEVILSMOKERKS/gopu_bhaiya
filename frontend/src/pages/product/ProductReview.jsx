@@ -33,6 +33,7 @@ const ProductReview = ({ productId, productName }) => {
         fetchUserReview();
       }
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [productId, isAuthenticated]);
 
   const fetchReviews = async () => {

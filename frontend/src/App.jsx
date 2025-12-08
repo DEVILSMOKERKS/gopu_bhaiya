@@ -1,6 +1,5 @@
 import React, { useState, useEffect, Suspense, lazy } from "react";
 import { BrowserRouter, useLocation } from "react-router-dom";
-import { HelmetProvider } from 'react-helmet-async';
 import { Provider } from 'react-redux';
 import { store } from './store/store';
 import { UserProvider } from './context/UserContext';
@@ -91,11 +90,9 @@ const AppContent = () => {
 const App = () => {
   return (
     <Provider store={store}>
-      <HelmetProvider>
-        <BrowserRouter>
-          <AppContent />
-        </BrowserRouter>
-      </HelmetProvider>
+      <BrowserRouter>
+        <AppContent />
+      </BrowserRouter>
     </Provider>
   );
 };
