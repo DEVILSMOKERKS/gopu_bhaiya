@@ -2,7 +2,8 @@
 .hero {
   position: relative;
   width: 100%;
-  height: 500px; /* Default height for desktop */
+  height: 500px;
+  /* Default height for desktop */
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -45,7 +46,8 @@
 @media (max-width: 768px) {
   .hero {
     height: 0;
-    padding-bottom: 125%; /* Aspect Ratio: 4:5 image height is 125% of its width (5/4 * 100). ADJUST THIS. */
+    padding-bottom: 125%;
+    /* Aspect Ratio: 4:5 image height is 125% of its width (5/4 * 100). ADJUST THIS. */
     overflow: hidden;
     gap: 10px;
   }
@@ -111,7 +113,7 @@
 .hero-text-section {
   flex: 1;
   max-width: 500px;
-  color: white;
+  color: var(--text-white);
   z-index: 2;
 }
 
@@ -123,7 +125,7 @@
 }
 
 .hero-sale-text {
-  color: #B68126;
+  color: var(--primary-color);
   font-weight: 800;
 }
 
@@ -148,7 +150,7 @@
 .hero-current-price {
   font-size: 2.5rem;
   font-weight: bold;
-  color: #B68126;
+  color: var(--primary-color);
 }
 
 .hero-original-price {
@@ -160,7 +162,7 @@
 
 .hero-offer {
   font-size: 1rem;
-  color: #B68126;
+  color: var(--primary-color);
   font-weight: 500;
   margin-bottom: 2rem;
 }
@@ -213,12 +215,12 @@
 }
 
 .hero-dot.active {
-  background: white;
+  background: var(--bg-primary);
   transform: scale(1.2);
 }
 
 .hero-dot:hover {
-  background: white;
+  background: var(--bg-primary);
 } */
 
 /* Hero Search Container */
@@ -267,7 +269,7 @@
 .hero-search-icon {
   width: 20px;
   height: 20px;
-  color: #666;
+  color: var(--text-tertiary);
   margin-right: 0.5rem;
   flex-shrink: 0;
 }
@@ -278,13 +280,13 @@
   outline: none;
   background: transparent;
   font-size: 1rem;
-  color: #333;
+  color: var(--text-secondary);
   padding: 0.5rem 0;
   width: 100%;
 }
 
 .hero-search-input::placeholder {
-  color: #999;
+  color: var(--text-quaternary);
 }
 
 .hero-clear-search-btn {
@@ -307,14 +309,14 @@
 .hero-clear-icon {
   width: 16px;
   height: 16px;
-  color: #666;
+  color: var(--text-tertiary);
 }
 
 /* Hero Search Results */
 .hero-search-results {
   max-height: 400px;
   overflow-y: auto;
-  background: white;
+  background: var(--bg-primary);
   border-radius: 0 0 12px 12px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 }
@@ -324,7 +326,7 @@
   align-items: center;
   justify-content: center;
   padding: 2rem;
-  color: #666;
+  color: var(--text-tertiary);
   gap: 0.5rem;
 }
 
@@ -361,7 +363,7 @@
 }
 
 .hero-search-result-item:hover {
-  background-color: #f8f9fa;
+  background-color: var(--bg-secondary);
 }
 
 .hero-search-result-item:last-child {
@@ -391,7 +393,7 @@
 .hero-search-result-title {
   font-size: 0.9rem;
   font-weight: 600;
-  color: #333;
+  color: var(--text-secondary);
   margin: 0 0 0.25rem 0;
   white-space: nowrap;
   overflow: hidden;
@@ -400,7 +402,7 @@
 
 .hero-search-result-category {
   font-size: 0.75rem;
-  color: #666;
+  color: var(--text-tertiary);
   margin: 0 0 0.25rem 0;
   white-space: nowrap;
   overflow: hidden;
@@ -410,7 +412,7 @@
 .hero-search-result-price {
   font-size: 0.8rem;
   font-weight: 600;
-  color: #956213;
+  color: var(--primary-dark);
   margin: 0;
 }
 
@@ -423,7 +425,7 @@
 .hero-search-view-all-btn {
   background: none;
   border: none;
-  color: #956213;
+  color: var(--primary-dark);
   font-size: 0.85rem;
   font-weight: 600;
   cursor: pointer;
@@ -439,7 +441,7 @@
 .hero-search-no-results {
   padding: 2rem;
   text-align: center;
-  color: #666;
+  color: var(--text-tertiary);
   font-size: 0.9rem;
 }
 

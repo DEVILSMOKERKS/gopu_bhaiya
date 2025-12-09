@@ -21,7 +21,7 @@
 .about-banner-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.5);
+  background: var(--overlay-dark);
   z-index: 1;
 }
 
@@ -36,7 +36,7 @@
 }
 
 .about-banner-title {
-  color: #fff;
+  color: var(--text-white);
   font-size: 2.5rem;
   font-weight: 700;
   letter-spacing: 0.2em;
@@ -103,7 +103,7 @@
 .about-who-we-are-title {
   font-size: 2.5rem;
   font-weight: 700;
-  color: #000000;
+  color: var(--text-primary);
   margin: 0;
   font-family: var(--font-family);
   line-height: 1.2;
@@ -112,7 +112,7 @@
 .about-who-we-are-subtitle {
   font-size: 1.5rem;
   font-weight: 700;
-  color: #000000;
+  color: var(--text-primary);
   margin: 0;
   font-family: var(--font-family);
   line-height: 1.3;
@@ -121,14 +121,14 @@
 .about-who-we-are-description {
   font-size: 1rem;
   line-height: 1.6;
-  color: #333333;
+  color: var(--text-secondary);
   margin: 0;
   font-family: var(--font-family);
 }
 
 .about-who-we-are-cta-button {
   background: var(--primary-green);
-  color: #ffffff;
+  color: var(--text-white);
   border: none;
   padding: 14px 32px;
   font-size: 1rem;
@@ -146,7 +146,7 @@
 .about-who-we-are-cta-button:hover {
   background: var(--primary-dark);
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  box-shadow: var(--shadow-dropdown);
 }
 
 .about-who-we-are-cta-button:active {
@@ -190,7 +190,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #999999;
+  color: var(--text-quaternary);
   font-size: 0.9rem;
   font-family: var(--font-family);
 }
@@ -206,7 +206,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow-sm);
   border: 3px solid #fff;
 }
 
@@ -215,7 +215,7 @@
 }
 
 .about-logo-text {
-  color: #fff;
+  color: var(--text-white);
   font-family: var(--font-family);
   font-weight: bold;
   font-size: 1rem;
@@ -244,7 +244,7 @@
   position: relative;
   background: var(--primary-brown);
   padding: 4rem 2rem;
-  color: #fff;
+  color: var(--text-white);
   overflow: hidden;
   width: 100%;
   box-sizing: border-box;
@@ -287,7 +287,7 @@
   font-size: 1.8rem;
   font-weight: 700;
   margin: 0;
-  color: #ffffff;
+  color: var(--text-white);
   font-family: var(--font-family);
   text-transform: uppercase;
   letter-spacing: 1px;
@@ -298,7 +298,7 @@
 .vision-text {
   font-size: 1rem;
   line-height: 1.6;
-  color: #ffffff;
+  color: var(--text-white);
   margin: 0;
   font-family: var(--font-family);
   text-align: left;
@@ -330,7 +330,7 @@
 .craftsmanship-main-title {
   font-size: 2.5rem;
   font-weight: bold;
-  color: #000;
+  color: var(--text-primary);
   margin: 0 0 0.5rem 0;
   font-family: var(--font-family);
   letter-spacing: 0.5px;
@@ -338,7 +338,7 @@
 }
 
 .craftsmanship-subtitle {
-  color: #000;
+  color: var(--text-primary);
   font-size: 1.1rem;
   font-weight: 400;
   font-family: var(--font-family);
@@ -427,7 +427,7 @@
 }
 
 .craftsmanship-card-icon {
-  color: #666;
+  color: var(--text-tertiary);
   font-size: 2rem;
   width: 100%;
   height: 100%;
@@ -439,13 +439,13 @@
 .craftsmanship-card-title {
   font-size: 1.5rem;
   font-weight: bold;
-  color: #000;
+  color: var(--text-primary);
   margin-bottom: 1rem;
   font-family: var(--font-family);
 }
 
 .craftsmanship-card-description {
-  color: #000;
+  color: var(--text-primary);
   font-size: 1rem;
   font-weight: 400;
   font-family: var(--font-family);
@@ -470,7 +470,7 @@
   background-size: cover;
   background-position: top center;
   padding: 4rem 0;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: var(--overlay-dark);
   background-blend-mode: multiply;
 }
 
@@ -520,7 +520,7 @@
 }
 
 .different-text-area {
-  color: #fff;
+  color: var(--text-white);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -545,7 +545,7 @@
 .different-main-title {
   font-size: 2rem;
   font-weight: bold;
-  color: #fff;
+  color: var(--text-white);
   margin: 0 1.5rem;
   font-family: "Cinzel", serif;
   letter-spacing: 1px;
@@ -581,7 +581,7 @@
 .different-check-svg {
   width: 20px;
   height: 20px;
-  color: #fff;
+  color: var(--text-white);
   stroke-width: 3;
 }
 
@@ -590,7 +590,7 @@
 }
 
 .different-feature-title {
-  color: #fff;
+  color: var(--text-white);
   font-size: 24px;
   font-weight: 600;
   margin-bottom: 0.25rem;
@@ -649,7 +649,7 @@
 .crafting-temples-title {
   font-size: 1.5rem;
   font-weight: bold;
-  color: #000;
+  color: var(--text-primary);
   margin: 0 0 0.5rem 0;
   font-family: var(--font-family);
 }
@@ -657,14 +657,14 @@
 .crafting-temples-subtitle {
   font-size: 1rem;
   font-weight: bold;
-  color: #000;
+  color: var(--text-primary);
   margin: 0 0 0.7rem 0;
   font-family: var(--font-family);
 }
 
 .crafting-temples-intro {
   font-size: 0.9rem;
-  color: #333;
+  color: var(--text-secondary);
   margin: 0 0 0.5rem 0;
   font-family: var(--font-family);
 }
@@ -684,14 +684,14 @@
 .crafting-temples-feature-title {
   font-size: 0.9rem;
   font-weight: bold;
-  color: #000;
+  color: var(--text-primary);
   margin: 0;
   font-family: var(--font-family);
 }
 
 .crafting-temples-feature-desc {
   font-size: 0.9rem;
-  color: #333;
+  color: var(--text-secondary);
   margin: 0;
   font-family: var(--font-family);
 }
@@ -708,7 +708,7 @@
 .different-main-title {
   font-size: 2rem;
   font-weight: bold;
-  color: #fff;
+  color: var(--text-white);
   margin: 0 1.5rem;
   font-family: var(--font-family);
   letter-spacing: 1px;
@@ -761,7 +761,7 @@
 .about-different-title {
   font-size: 2rem;
   font-weight: bold;
-  color: #fff;
+  color: var(--text-white);
   margin: 0 1.5rem;
   font-family: var(--font-family);
   letter-spacing: 1px;
@@ -826,7 +826,7 @@
 .journey-carousel-subtitle {
   font-size: 0.9rem;
   font-weight: 500;
-  color: #666;
+  color: var(--text-tertiary);
   margin: 0 0 0.5rem 0;
   text-transform: uppercase;
   letter-spacing: 1px;
@@ -835,7 +835,7 @@
 .journey-carousel-title {
   font-size: 2rem;
   font-weight: 700;
-  color: #000;
+  color: var(--text-primary);
   font-family: var(--font-family);
   text-align: center;
   margin: 0 0 1rem 0;
@@ -881,7 +881,7 @@
   background: var(--bg-primary);
   border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow-md);
   margin: 0 auto;
   max-width: 100%;
 }
@@ -915,7 +915,7 @@
 
 .journey-carousel-desc {
   font-size: 0.95rem;
-  color: #333;
+  color: var(--text-secondary);
   font-family: var(--font-family);
   line-height: 1.6;
   margin: 0;
@@ -957,7 +957,7 @@
   width: 10px;
   height: 10px;
   border-radius: 50%;
-  background: #999;
+  background: var(--text-quaternary);
   transition: all 0.3s ease;
   cursor: pointer;
 }

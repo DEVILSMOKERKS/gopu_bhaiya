@@ -25,8 +25,7 @@ const Product = ({ productId: productIdProp }) => {
   const [isDragging, setIsDragging] = useState(false);
   const [dragStart, setDragStart] = useState({ x: 0, y: 0 });
   const [expandedSections, setExpandedSections] = useState({
-    fitting: false,
-    fabricCare: true,
+    productDetail: false,
     productDetail: false,
     shippingReturn: true
   });
@@ -637,48 +636,6 @@ const Product = ({ productId: productIdProp }) => {
 
           {/* Accordion Sections */}
           <div className="accordion-sections">
-            {/* Fitting Section */}
-            <div className="accordion-section">
-              <div
-                className="accordion-header"
-                onClick={() => toggleSection('fitting')}
-              >
-                <span>Fitting</span>
-                <span className="accordion-icon">
-                  {expandedSections.fitting ? '-' : '+'}
-                </span>
-              </div>
-              {expandedSections.fitting && (
-                <div className="accordion-content">
-                  <p>{product.fitting_info || 'Fitting information will be displayed here.'}</p>
-                </div>
-              )}
-            </div>
-
-            {/* Fabric & Care Section */}
-            <div className="accordion-section">
-              <div
-                className="accordion-header"
-                onClick={() => toggleSection('fabricCare')}
-              >
-                <span>Fabric & Care</span>
-                <span className="accordion-icon">
-                  {expandedSections.fabricCare ? '-' : '+'}
-                </span>
-              </div>
-              {expandedSections.fabricCare && (
-                <div className="accordion-content">
-                  <div className="fabric-info">
-                    <h4>Fabric</h4>
-                    <p>{product.fabric_info || 'Fabric information will be displayed here.'}</p>
-                  </div>
-                  <div className="care-info">
-                    <h4>Care</h4>
-                    <p>{product.care_info || 'Care information will be displayed here.'}</p>
-                  </div>
-                </div>
-              )}
-            </div>
 
             {/* Product Detail Section */}
             <div className="accordion-section">
@@ -864,12 +821,12 @@ const Product = ({ productId: productIdProp }) => {
           <div className="material-section">
             <h3>Product Information</h3>
             <p>
-              {product.fabric_info || 'This material is our signature high-quality fabric that provides comfort and style.'}
+              {product.product_detail || 'Premium quality marble statue with exquisite craftsmanship and attention to detail.'}
             </p>
             <div className="feature-tags">
               <span className="feature-tag">Premium Quality</span>
-              <span className="feature-tag">Comfortable</span>
-              <span className="feature-tag">Stylish</span>
+              <span className="feature-tag">Handcrafted</span>
+              <span className="feature-tag">Durable</span>
             </div>
           </div>
         </div>
@@ -877,48 +834,6 @@ const Product = ({ productId: productIdProp }) => {
 
       {/* Accordion Sections for Mobile */}
       <div className="accordion-sections-mobile">
-        {/* Fitting Section */}
-        <div className="accordion-section">
-          <div
-            className="accordion-header"
-            onClick={() => toggleSection('fitting')}
-          >
-            <span>Fitting</span>
-            <span className="accordion-icon">
-              {expandedSections.fitting ? '-' : '+'}
-            </span>
-          </div>
-          {expandedSections.fitting && (
-            <div className="accordion-content">
-              <p>{product.fitting_info || 'Fitting information will be displayed here.'}</p>
-            </div>
-          )}
-        </div>
-
-        {/* Fabric & Care Section */}
-        <div className="accordion-section">
-          <div
-            className="accordion-header"
-            onClick={() => toggleSection('fabricCare')}
-          >
-            <span>Fabric & Care</span>
-            <span className="accordion-icon">
-              {expandedSections.fabricCare ? '-' : '+'}
-            </span>
-          </div>
-          {expandedSections.fabricCare && (
-            <div className="accordion-content">
-              <div className="fabric-info">
-                <h4>Fabric</h4>
-                <p>{product.fabric_info || 'Fabric information will be displayed here.'}</p>
-              </div>
-              <div className="care-info">
-                <h4>Care</h4>
-                <p>{product.care_info || 'Care information will be displayed here.'}</p>
-              </div>
-            </div>
-          )}
-        </div>
 
         {/* Product Detail Section */}
         <div className="accordion-section">

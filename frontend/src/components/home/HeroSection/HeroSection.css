@@ -162,7 +162,7 @@
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background: rgba(0, 0, 0, 0.5);
+  background: var(--overlay-dark);
   border: 1px solid rgba(0, 0, 0, 0.2);
   color: var(--text-white);
   width: 50px;
@@ -178,7 +178,7 @@
 }
 
 .hero-slider-nav:hover {
-  background: rgba(182, 129, 38, 0.3);
+  background: var(--primary-color);
   border-color: var(--primary-color);
   color: var(--primary-color);
   transform: translateY(-50%) scale(1.1);

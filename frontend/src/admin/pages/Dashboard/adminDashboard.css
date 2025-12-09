@@ -19,7 +19,7 @@
 .dashboard-card {
   background: var(--bg-primary);
   border-radius: 11px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  box-shadow: var(--shadow-xxs);
   padding: 32px 28px 28px 28px;
   flex: 1;
   min-width: 200px;
@@ -31,7 +31,7 @@
 .dashboard-card-modern {
   padding: 16px;
   border-radius: 11px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  box-shadow: var(--shadow-xxxs);
   background: var(--bg-primary);
   min-width: 200px;
   display: flex;
@@ -109,7 +109,7 @@
   border-radius: 12px;
   flex: 2;
   padding: 12px 24px 16px 24px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+  box-shadow: var(--shadow-xs);
 }
 
 .sales-overview-title {
@@ -252,7 +252,7 @@
 .period-selector:hover {
   background: var(--primary-green);
   transform: translateY(-1px);
-  box-shadow: 0 2px 4px rgba(14, 89, 60, 0.2);
+  box-shadow: var(--shadow-green);
 }
 
 .period-dropdown {
@@ -263,7 +263,7 @@
   background: var(--bg-primary);
   border: 1px solid var(--border-light);
   border-radius: 6px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  box-shadow: var(--shadow-dropdown);
   z-index: 1000;
   margin-top: 4px;
 }
@@ -296,7 +296,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.5);
+  background: var(--overlay-dark);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -310,7 +310,7 @@
   max-width: 600px;
   max-height: 80vh;
   overflow-y: auto;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  box-shadow: var(--shadow-popup);
 }
 
 .order-popup-header {
@@ -500,7 +500,7 @@
   border-radius: 12px;
   flex: 1;
   padding: 18px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+  box-shadow: var(--shadow-xs);
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -622,7 +622,7 @@
 .recent-orders-section {
   background: var(--bg-primary);
   border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+  box-shadow: var(--shadow-xs);
   padding: 24px;
 }
 
@@ -681,7 +681,7 @@
   display: inline-block;
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow-sm);
 }
 
 .status-completed {
@@ -776,7 +776,7 @@
 .dashboard-quick-actions {
   background: var(--bg-primary);
   border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+  box-shadow: var(--shadow-xs);
   padding: 24px;
   width: 100%;
   margin: 0 0 24px 0;
@@ -811,7 +811,7 @@
 
 .quick-action-btn:hover {
   border-color: var(--primary-color);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow-md);
   transform: translateY(-2px);
 }
 
@@ -847,7 +847,7 @@
 .dashboard-product-performance {
   background: var(--bg-primary);
   border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+  box-shadow: var(--shadow-xs);
   padding: 24px;
   width: 100%;
   margin: 0 0 24px 0;
@@ -878,7 +878,7 @@
 .product-performance-table th {
   color: var(--text-tertiary);
   font-weight: 600;
-  /* background: #f6f6f6; */
+  /* background: var(--bg-light); */
   font-size: 16px;
   border-bottom: 1.5px solid var(--border-light);
 }
@@ -926,7 +926,7 @@
 .dashboard-support-tickets {
   background: var(--bg-primary);
   border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+  box-shadow: var(--shadow-xs);
   padding: 24px;
   flex: 1;
   min-width: 320px;

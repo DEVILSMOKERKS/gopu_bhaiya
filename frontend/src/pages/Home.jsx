@@ -7,7 +7,6 @@ import ManufacturingProcess from '../components/home/ManufacturingProcess/Manufa
 import CustomTempleProjects from '../components/home/CustomTempleProjects/CustomTempleProjects';
 import PoojaRoomBudget from '../components/home/PoojaRoomBudget/PoojaRoomBudget';
 import HowToOrder from '../components/home/HowToOrder/HowToOrder';
-import WelcomeToTilak from '../components/home/WelcomeToTilak/WelcomeToTilak';
 import TrustedClients from '../components/home/TrustedClients/TrustedClients';
 import ClientDiaries from '../components/home/ClientDiaries/ClientDiaries';
 import FollowUs from '../components/home/FollowUs/FollowUs';
@@ -18,10 +17,9 @@ const Home = () => {
     <>
       <HeroSection />
       <DreamTempleSteps />
-     
+
       <PoojaRoomBudget />
       <HowToOrder />
-      <WelcomeToTilak />
       <TrustedClients />
       <CustomTempleProjects />
 

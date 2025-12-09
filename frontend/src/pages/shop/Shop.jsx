@@ -30,7 +30,6 @@ const Shop = () => {
   const [selectedSizes, setSelectedSizes] = useState([]);
   const [selectedColors, setSelectedColors] = useState([]);
   const [selectedCollections, setSelectedCollections] = useState([]);
-  const [selectedFabrics, setSelectedFabrics] = useState([]);
 
   // Product color selection state
   const [selectedProductColors, setSelectedProductColors] = useState({});
@@ -46,8 +45,7 @@ const Shop = () => {
     sortBy: true,  // Keep first section (Sort By) open
     size: false,   // Close size section
     color: false,  // Close color section
-    collection: false,  // Close collection section
-    fabric: false  // Close fabric section
+    collection: false  // Close collection section
   });
 
   // API state
@@ -145,17 +143,6 @@ const Shop = () => {
       });
     }
 
-    // Apply fabric filter
-    if (selectedFabrics.length > 0) {
-      filtered = filtered.filter(product => {
-        if (!product.fabric_info) return false;
-        return selectedFabrics.some(fabric => {
-          const productFabric = String(product.fabric_info || '').trim().toLowerCase();
-          const selectedFabric = String(fabric || '').trim().toLowerCase();
-          return productFabric.includes(selectedFabric);
-        });
-      });
-    }
 
     // Apply sorting
     switch (sortBy) {
@@ -183,8 +170,7 @@ const Shop = () => {
     const filters = [
       ...selectedSizes,
       ...selectedColors,
-      ...selectedCollections,
-      ...selectedFabrics
+      ...selectedCollections
     ];
     setAppliedFilters(filters);
   };
@@ -318,7 +304,7 @@ const Shop = () => {
   useEffect(() => {
     applyFilters();
     updateAppliedFilters();
-  }, [selectedSizes, selectedColors, selectedCollections, selectedFabrics, sortBy, products]);
+  }, [selectedSizes, selectedColors, selectedCollections, sortBy, products]);
 
   // Handle collection parameter from URL
   useEffect(() => {
@@ -393,19 +379,6 @@ const Shop = () => {
     return Array.from(sizes).sort();
   };
 
-  const getUniqueFabrics = () => {
-    const fabrics = new Set();
-    products.forEach(product => {
-      if (product.fabric_info && typeof product.fabric_info === 'string') {
-        // Trim whitespace and normalize the fabric name
-        const trimmedFabric = product.fabric_info.trim();
-        if (trimmedFabric) {
-          fabrics.add(trimmedFabric);
-        }
-      }
-    });
-    return Array.from(fabrics).sort();
-  };
 
   const getUniqueCategories = () => {
     const categories = new Set();
@@ -488,9 +461,6 @@ const Shop = () => {
         return newCollections;
       });
     }
-    if (getUniqueFabrics().includes(filterToRemove)) {
-      setSelectedFabrics(prev => prev.filter(fabric => fabric.trim() !== filterToRemove.trim()));
-    }
   };
 
   const clearAllFilters = () => {
@@ -498,7 +468,6 @@ const Shop = () => {
     setSelectedSizes([]);
     setSelectedColors([]);
     setSelectedCollections([]);
-    setSelectedFabrics([]);
     setSortBy('featured');
 
     // Clear URL parameters
@@ -570,15 +539,6 @@ const Shop = () => {
     });
   };
 
-  const handleFabricToggle = (fabric) => {
-    setSelectedFabrics(prev => {
-      const trimmedFabric = fabric.trim();
-      const newFabrics = prev.includes(trimmedFabric)
-        ? prev.filter(f => f.trim() !== trimmedFabric)
-        : [...prev, trimmedFabric];
-      return newFabrics;
-    });
-  };
 
   // Handle product color selection
   const handleProductColorSelect = (productId, colorIndex) => {
@@ -922,34 +882,6 @@ const Shop = () => {
               )}
             </div>
 
-            {/* Fabric */}
-            <div className="shop-filter-section">
-              <div
-                className="shop-filter-header"
-                onClick={() => toggleSection('fabric')}
-              >
-                <h4>Fabric</h4>
-                <span className="shop-toggle-icon">
-                  {expandedSections.fabric ? '–' : '+'}
-                </span>
-              </div>
-              {expandedSections.fabric && (
-                <div className="shop-filter-content">
-                  <div className="shop-checkbox-group">
-                    {getUniqueFabrics().map((fabric) => (
-                      <label key={fabric} className="shop-checkbox-label">
-                        <input
-                          type="checkbox"
-                          checked={selectedFabrics.includes(fabric)}
-                          onChange={() => handleFabricToggle(fabric)}
-                        />
-                        <span className="shop-checkbox-text">{fabric}</span>
-                      </label>
-                    ))}
-                  </div>
-                </div>
-              )}
-            </div>
           </div>
         </div>
 
@@ -1327,34 +1259,6 @@ const Shop = () => {
                 )}
               </div>
 
-              {/* Fabric */}
-              <div className="shop-mobile-filter-section">
-                <div
-                  className="shop-mobile-filter-header-btn"
-                  onClick={() => toggleSection('fabric')}
-                >
-                  <span>Fabric</span>
-                  <span className="shop-mobile-toggle-icon">
-                    {expandedSections.fabric ? '–' : '+'}
-                  </span>
-                </div>
-                {expandedSections.fabric && (
-                  <div className="shop-mobile-filter-options">
-                    <div className="shop-checkbox-group">
-                      {getUniqueFabrics().map((fabric) => (
-                        <label key={fabric} className="shop-checkbox-label">
-                          <input
-                            type="checkbox"
-                            checked={selectedFabrics.includes(fabric)}
-                            onChange={() => handleFabricToggle(fabric)}
-                          />
-                          <span className="shop-checkbox-text">{fabric}</span>
-                        </label>
-                      ))}
-                    </div>
-                  </div>
-                )}
-              </div>
             </div>
 
             <div className="shop-mobile-filter-actions">

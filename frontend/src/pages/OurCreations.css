@@ -40,7 +40,7 @@
   background: var(--bg-primary);
   border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  box-shadow: var(--shadow-xs);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   text-decoration: none;
   color: inherit;
@@ -49,7 +49,7 @@
 
 .our-creations-page .creation-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+  box-shadow: var(--shadow-lg);
 }
 
 .our-creations-page .creation-image-wrapper {
@@ -76,7 +76,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.5);
+  background: var(--overlay-dark);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -124,7 +124,7 @@
   padding: 60px 20px;
   background: var(--bg-primary);
   border-radius: 12px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  box-shadow: var(--shadow-xs);
 }
 
 .our-creations-page .cta-title {
@@ -158,7 +158,7 @@
 .our-creations-page .cta-button:hover {
   background: var(--primary-dark);
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(182, 129, 38, 0.3);
+  box-shadow: var(--shadow-green);
 }
 
 @media (max-width: 768px) {

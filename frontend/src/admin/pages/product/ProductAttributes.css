@@ -1,0 +1,347 @@
+.productattributes-container {
+  padding: 20px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.productattributes-header {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.productattributes-back-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  background: #6c757d;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background 0.3s;
+}
+
+.productattributes-back-btn:hover {
+  background: #5a6268;
+}
+
+.productattributes-header h1 {
+  margin: 0;
+  color: #333;
+  font-size: 28px;
+}
+
+.productattributes-content {
+  display: grid;
+  grid-template-columns: 350px 1fr;
+  gap: 30px;
+}
+
+.productattributes-product-section {
+  background: white;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  height: fit-content;
+  position: sticky;
+  top: 20px;
+}
+
+.productattributes-product-section h2 {
+  margin: 0 0 15px 0;
+  color: #333;
+  font-size: 20px;
+}
+
+.productattributes-search {
+  position: relative;
+  margin-bottom: 15px;
+}
+
+.productattributes-search svg {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #999;
+}
+
+.productattributes-search input {
+  width: 100%;
+  padding: 10px 10px 10px 35px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.productattributes-product-list {
+  max-height: 600px;
+  overflow-y: auto;
+}
+
+.productattributes-product-item {
+  padding: 15px;
+  border: 2px solid #e0e0e0;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.productattributes-product-item:hover {
+  border-color: #007bff;
+  background: #f8f9fa;
+}
+
+.productattributes-product-item.active {
+  border-color: #007bff;
+  background: #e7f3ff;
+}
+
+.productattributes-product-info h3 {
+  margin: 0 0 5px 0;
+  font-size: 16px;
+  color: #333;
+}
+
+.productattributes-sku {
+  margin: 0;
+  font-size: 12px;
+  color: #666;
+}
+
+.productattributes-attributes-section {
+  background: white;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.productattributes-attributes-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-bottom: 2px solid #e0e0e0;
+}
+
+.productattributes-attributes-header h2 {
+  margin: 0;
+  color: #333;
+  font-size: 22px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.productattributes-sku-badge {
+  font-size: 14px;
+  color: #666;
+  font-weight: normal;
+}
+
+.productattributes-add-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  background: #28a745;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background 0.3s;
+}
+
+.productattributes-add-btn:hover:not(:disabled) {
+  background: #218838;
+}
+
+.productattributes-add-btn:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+.productattributes-empty {
+  text-align: center;
+  padding: 40px;
+  color: #999;
+}
+
+.productattributes-attributes-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.productattributes-attribute-item {
+  border: 1px solid #e0e0e0;
+  border-radius: 5px;
+  padding: 15px;
+  background: #f8f9fa;
+}
+
+.productattributes-attribute-view {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.productattributes-attribute-content {
+  flex: 1;
+}
+
+.productattributes-attribute-name {
+  font-size: 16px;
+  color: #333;
+  margin-bottom: 5px;
+}
+
+.productattributes-attribute-value {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 5px;
+}
+
+.productattributes-attribute-order {
+  font-size: 12px;
+  color: #999;
+}
+
+.productattributes-attribute-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.productattributes-edit-btn,
+.productattributes-delete-btn {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 8px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 13px;
+  transition: all 0.3s;
+}
+
+.productattributes-edit-btn {
+  background: #ffc107;
+  color: #333;
+}
+
+.productattributes-edit-btn:hover:not(:disabled) {
+  background: #e0a800;
+}
+
+.productattributes-delete-btn {
+  background: #dc3545;
+  color: white;
+}
+
+.productattributes-delete-btn:hover:not(:disabled) {
+  background: #c82333;
+}
+
+.productattributes-edit-btn:disabled,
+.productattributes-delete-btn:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+.productattributes-attribute-edit {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.productattributes-attribute-edit-fields {
+  display: grid;
+  grid-template-columns: 1fr 1fr 100px;
+  gap: 15px;
+}
+
+.productattributes-form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.productattributes-form-group label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #333;
+}
+
+.productattributes-form-group input {
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.productattributes-attribute-actions {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+}
+
+.productattributes-save-btn,
+.productattributes-cancel-btn {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 8px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.3s;
+}
+
+.productattributes-save-btn {
+  background: #28a745;
+  color: white;
+}
+
+.productattributes-save-btn:hover {
+  background: #218838;
+}
+
+.productattributes-cancel-btn {
+  background: #6c757d;
+  color: white;
+}
+
+.productattributes-cancel-btn:hover {
+  background: #5a6268;
+}
+
+.productattributes-loading {
+  text-align: center;
+  padding: 40px;
+  font-size: 18px;
+  color: #666;
+}
+
+@media (max-width: 1024px) {
+  .productattributes-content {
+    grid-template-columns: 1fr;
+  }
+
+  .productattributes-product-section {
+    position: static;
+  }
+
+  .productattributes-attribute-edit-fields {
+    grid-template-columns: 1fr;
+  }
+}
+

@@ -6,17 +6,28 @@ const createProduct = async (req, res) => {
   try {
     const {
       name,
+      sku,
       category_id,
       subcategory_id,
+      slug,
+      meta_title,
+      meta_description,
+      featured_image,
+      video_url,
+      tags,
+      is_featured,
+      is_new,
+      is_bestseller,
+      is_customizable,
+      min_order_quantity,
+      lead_time_days,
       description,
-      fitting_info,
-      fabric_info,
-      care_info,
       product_detail,
       shipping_info,
       return_policy,
       colors,
-      sizes
+      sizes,
+      attributes
     } = req.body;
 
     // Validate required fields
@@ -46,23 +57,37 @@ const createProduct = async (req, res) => {
     await connection.beginTransaction();
 
     try {
+      // Generate slug from name if not provided
+      let productSlug = slug;
+      if (!productSlug && name) {
+        productSlug = name.toLowerCase()
+          .replace(/[^a-z0-9]+/g, '-')
+          .replace(/(^-|-$)/g, '');
+      }
+
       // Insert product
       const [productResult] = await connection.execute(
-        `INSERT INTO products (name, category_id, subcategory_id, description, 
-         fitting_info, fabric_info, care_info, product_detail, shipping_info, return_policy) 
-         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
-        [name, category_id || null, subcategory_id || null, description || null,
-         fitting_info || null, fabric_info || null, care_info || null, 
-         product_detail || null, shipping_info || null, return_policy || null]
+        `INSERT INTO products (sku, name, slug, category_id, subcategory_id, meta_title, meta_description, 
+         featured_image, video_url, tags, is_featured, is_new, is_bestseller, is_customizable, 
+         min_order_quantity, lead_time_days, description, product_detail, shipping_info, return_policy) 
+         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+        [
+          sku || null, name, productSlug || null, category_id || null, subcategory_id || null,
+          meta_title || null, meta_description || null, featured_image || null, video_url || null,
+          tags || null, is_featured ? 1 : 0, is_new ? 1 : 0, is_bestseller ? 1 : 0,
+          is_customizable ? 1 : 0, min_order_quantity || 1, lead_time_days || null,
+          description || null, product_detail || null, shipping_info || null, return_policy || null
+        ]
       );
 
       const productId = productResult.insertId;
 
       // Insert colors
-      for (const color of colorsArray) {
+      for (let i = 0; i < colorsArray.length; i++) {
+        const color = colorsArray[i];
         const [colorResult] = await connection.execute(
-          'INSERT INTO product_colors (product_id, color_name, color_code) VALUES (?, ?, ?)',
-          [productId, color.name, color.code || null]
+          'INSERT INTO product_colors (product_id, color_name, color_code, sort_order) VALUES (?, ?, ?, ?)',
+          [productId, color.name, color.code || null, i]
         );
 
         const colorId = colorResult.insertId;
@@ -70,14 +95,15 @@ const createProduct = async (req, res) => {
         // Handle images for this color
         if (req.files && color.images) {
           const colorImages = Array.isArray(color.images) ? color.images : [color.images];
-          
+
           for (let i = 0; i < colorImages.length; i++) {
             const imageIndex = parseInt(colorImages[i]);
             if (req.files[imageIndex]) {
               const imageUrl = `/products/${req.files[imageIndex].filename}`;
+              const altText = color.alt_text || `${color.name} - ${name}`;
               await connection.execute(
-                'INSERT INTO product_images (color_id, image_url, is_default) VALUES (?, ?, ?)',
-                [colorId, imageUrl, i === 0] // First image is default
+                'INSERT INTO product_images (color_id, image_url, alt_text, sort_order, is_default) VALUES (?, ?, ?, ?, ?)',
+                [colorId, imageUrl, altText, i, i === 0] // First image is default
               );
             } else {
             }
@@ -87,15 +113,23 @@ const createProduct = async (req, res) => {
         }
       }
 
-      // Insert sizes with prices
+      // Insert sizes with prices and dimensions
       for (const size of sizesArray) {
         await connection.execute(
-          `INSERT INTO product_sizes (product_id, size, actual_price, sell_price, offer_percent, stock) 
-           VALUES (?, ?, ?, ?, ?, ?)`,
-          [productId, size.size, size.actual_price, size.sell_price, 
-           size.offer_percent || 0, size.stock || 0]
+          `INSERT INTO product_sizes (product_id, size, height, width, depth, weight, dimensions_unit, weight_unit, 
+           actual_price, sell_price, offer_percent, stock) 
+           VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+          [
+            productId, size.size || 'Standard',
+            size.height || null, size.width || null, size.depth || null,
+            size.weight || null, size.dimensions_unit || 'cm', size.weight_unit || 'kg',
+            size.actual_price, size.sell_price,
+            size.offer_percent || 0, size.stock || 0
+          ]
         );
       }
+
+      // Attributes are now managed separately via product-attributes API
 
       await connection.commit();
       connection.release();
@@ -157,8 +191,8 @@ const getAllProducts = async (req, res) => {
     }
 
     if (search) {
-      whereConditions.push('(p.name LIKE ? OR p.description LIKE ? OR c.name LIKE ? OR sc.name LIKE ?)');
-      params.push(`%${search}%`, `%${search}%`, `%${search}%`, `%${search}%`);
+      whereConditions.push('(p.name LIKE ? OR p.description LIKE ? OR p.sku LIKE ? OR p.tags LIKE ? OR c.name LIKE ? OR sc.name LIKE ?)');
+      params.push(`%${search}%`, `%${search}%`, `%${search}%`, `%${search}%`, `%${search}%`, `%${search}%`);
     }
 
     if (min_price) {
@@ -190,11 +224,22 @@ const getAllProducts = async (req, res) => {
     const [products] = await db.execute(
       `SELECT DISTINCT 
          p.product_id,
+         p.sku,
          p.name,
+         p.slug,
+         p.meta_title,
+         p.meta_description,
+         p.featured_image,
+         p.video_url,
+         p.tags,
+         p.is_featured,
+         p.is_new,
+         p.is_bestseller,
+         p.is_customizable,
+         p.min_order_quantity,
+         p.lead_time_days,
+         p.view_count,
          p.description,
-         p.fitting_info,
-         p.fabric_info,
-         p.care_info,
          p.product_detail,
          p.shipping_info,
          p.return_policy,
@@ -299,25 +344,42 @@ const getProductById = async (req, res) => {
          pc.color_id,
          pc.color_name,
          pc.color_code,
-         GROUP_CONCAT(pi.image_url) as images
+         pc.sort_order,
+         GROUP_CONCAT(pi.image_url ORDER BY pi.sort_order) as images,
+         GROUP_CONCAT(pi.alt_text ORDER BY pi.sort_order) as alt_texts
        FROM product_colors pc
        LEFT JOIN product_images pi ON pc.color_id = pi.color_id
        WHERE pc.product_id = ?
-       GROUP BY pc.color_id`,
+       GROUP BY pc.color_id
+       ORDER BY pc.sort_order`,
       [product_id]
     );
 
-    product.colors = colors.map(color => ({
-      ...color,
-      images: color.images ? color.images.split(',') : []
-    }));
+    product.colors = colors.map(color => {
+      const images = color.images ? color.images.split(',') : [];
+      const altTexts = color.alt_texts ? color.alt_texts.split(',') : [];
+      return {
+        ...color,
+        images: images.map((img, idx) => ({
+          url: img,
+          alt_text: altTexts[idx] || ''
+        }))
+      };
+    });
 
     // Get sizes
     const [sizes] = await db.execute(
-      'SELECT * FROM product_sizes WHERE product_id = ?',
+      'SELECT * FROM product_sizes WHERE product_id = ? ORDER BY size',
       [product_id]
     );
     product.sizes = sizes;
+
+    // Get attributes
+    const [attributes] = await db.execute(
+      'SELECT * FROM product_attributes WHERE product_id = ? ORDER BY sort_order',
+      [product_id]
+    );
+    product.attributes = attributes;
 
     res.json({
       success: true,
@@ -340,18 +402,29 @@ const updateProduct = async (req, res) => {
     const { product_id } = req.params;
     const {
       name,
+      sku,
       category_id,
       subcategory_id,
+      slug,
+      meta_title,
+      meta_description,
+      featured_image,
+      video_url,
+      tags,
+      is_featured,
+      is_new,
+      is_bestseller,
+      is_customizable,
+      min_order_quantity,
+      lead_time_days,
       description,
-      fitting_info,
-      fabric_info,
-      care_info,
       product_detail,
       shipping_info,
       return_policy,
       status,
       colors,
-      sizes
+      sizes,
+      attributes
     } = req.body;
 
     // Check if product exists
@@ -385,28 +458,44 @@ const updateProduct = async (req, res) => {
     await connection.beginTransaction();
 
     try {
+      // Generate slug from name if not provided
+      let productSlug = slug;
+      if (!productSlug && name) {
+        productSlug = name.toLowerCase()
+          .replace(/[^a-z0-9]+/g, '-')
+          .replace(/(^-|-$)/g, '');
+      }
+
       // Update product
       await connection.execute(
         `UPDATE products SET 
-         name = ?, category_id = ?, subcategory_id = ?, description = ?,
-         fitting_info = ?, fabric_info = ?, care_info = ?, product_detail = ?,
+         sku = ?, name = ?, slug = ?, category_id = ?, subcategory_id = ?, 
+         meta_title = ?, meta_description = ?, featured_image = ?, video_url = ?, tags = ?,
+         is_featured = ?, is_new = ?, is_bestseller = ?, is_customizable = ?,
+         min_order_quantity = ?, lead_time_days = ?, description = ?, product_detail = ?,
          shipping_info = ?, return_policy = ?, status = ?, updated_at = CURRENT_TIMESTAMP
          WHERE product_id = ?`,
-        [name, category_id || null, subcategory_id || null, description || null,
-         fitting_info || null, fabric_info || null, care_info || null,
-         product_detail || null, shipping_info || null, return_policy || null,
-         status || 'active', product_id]
+        [
+          sku || null, name, productSlug || null, category_id || null, subcategory_id || null,
+          meta_title || null, meta_description || null, featured_image || null, video_url || null,
+          tags || null, is_featured ? 1 : 0, is_new ? 1 : 0, is_bestseller ? 1 : 0,
+          is_customizable ? 1 : 0, min_order_quantity || 1, lead_time_days || null,
+          description || null, product_detail || null, shipping_info || null,
+          return_policy || null, status || 'active', product_id
+        ]
       );
 
       // Delete existing colors and sizes (this will cascade delete images)
+      // Attributes are managed separately via product-attributes API
       await connection.execute('DELETE FROM product_colors WHERE product_id = ?', [product_id]);
       await connection.execute('DELETE FROM product_sizes WHERE product_id = ?', [product_id]);
 
       // Handle colors and images
-      for (const color of colorsArray) {
+      for (let i = 0; i < colorsArray.length; i++) {
+        const color = colorsArray[i];
         const [colorResult] = await connection.execute(
-          'INSERT INTO product_colors (product_id, color_name, color_code) VALUES (?, ?, ?)',
-          [product_id, color.name, color.code || null]
+          'INSERT INTO product_colors (product_id, color_name, color_code, sort_order) VALUES (?, ?, ?, ?)',
+          [product_id, color.name, color.code || null, i]
         );
 
         const colorId = colorResult.insertId;
@@ -414,14 +503,15 @@ const updateProduct = async (req, res) => {
         // Handle new uploaded images for this color
         if (req.files && color.images) {
           const colorImages = Array.isArray(color.images) ? color.images : [color.images];
-          
+
           for (let i = 0; i < colorImages.length; i++) {
             const imageIndex = parseInt(colorImages[i]);
             if (req.files[imageIndex]) {
               const imageUrl = `/products/${req.files[imageIndex].filename}`;
+              const altText = color.alt_text || `${color.name} - ${name}`;
               await connection.execute(
-                'INSERT INTO product_images (color_id, image_url, is_default) VALUES (?, ?, ?)',
-                [colorId, imageUrl, i === 0]
+                'INSERT INTO product_images (color_id, image_url, alt_text, sort_order, is_default) VALUES (?, ?, ?, ?, ?)',
+                [colorId, imageUrl, altText, i, i === 0]
               );
             }
           }
@@ -429,24 +519,50 @@ const updateProduct = async (req, res) => {
 
         // Handle existing images for this color (if any)
         if (color.existingImages && Array.isArray(color.existingImages)) {
+          const startIndex = color.images ? color.images.length : 0;
           for (let i = 0; i < color.existingImages.length; i++) {
             const existingImageUrl = color.existingImages[i];
+            const altText = color.alt_text || `${color.name} - ${name}`;
             await connection.execute(
-              'INSERT INTO product_images (color_id, image_url, is_default) VALUES (?, ?, ?)',
-              [colorId, existingImageUrl, i === 0 && (!color.images || color.images.length === 0)]
+              'INSERT INTO product_images (color_id, image_url, alt_text, sort_order, is_default) VALUES (?, ?, ?, ?, ?)',
+              [colorId, existingImageUrl, altText, startIndex + i, startIndex === 0 && i === 0 && (!color.images || color.images.length === 0)]
             );
           }
         }
       }
 
-      // Insert new sizes
+      // Insert new sizes with dimensions
       for (const size of sizesArray) {
         await connection.execute(
-          `INSERT INTO product_sizes (product_id, size, actual_price, sell_price, offer_percent, stock) 
-           VALUES (?, ?, ?, ?, ?, ?)`,
-          [product_id, size.size, size.actual_price, size.sell_price,
-           size.offer_percent || 0, size.stock || 0]
+          `INSERT INTO product_sizes (product_id, size, height, width, depth, weight, dimensions_unit, weight_unit, 
+           actual_price, sell_price, offer_percent, stock) 
+           VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+          [
+            product_id, size.size || 'Standard',
+            size.height || null, size.width || null, size.depth || null,
+            size.weight || null, size.dimensions_unit || 'cm', size.weight_unit || 'kg',
+            size.actual_price, size.sell_price,
+            size.offer_percent || 0, size.stock || 0
+          ]
         );
+      }
+
+      // Insert product attributes if provided
+      if (attributes) {
+        let attributesArray = [];
+        try {
+          attributesArray = JSON.parse(attributes);
+        } catch (parseError) {
+          console.error('Invalid JSON format for attributes');
+        }
+
+        for (let i = 0; i < attributesArray.length; i++) {
+          const attr = attributesArray[i];
+          await connection.execute(
+            'INSERT INTO product_attributes (product_id, attribute_name, attribute_value, sort_order) VALUES (?, ?, ?, ?)',
+            [product_id, attr.name, attr.value, i]
+          );
+        }
       }
 
       await connection.commit();
@@ -520,7 +636,21 @@ const getProductsByCategory = async (req, res) => {
     const [products] = await db.execute(
       `SELECT 
          p.product_id,
+         p.sku,
          p.name,
+         p.slug,
+         p.meta_title,
+         p.meta_description,
+         p.featured_image,
+         p.video_url,
+         p.tags,
+         p.is_featured,
+         p.is_new,
+         p.is_bestseller,
+         p.is_customizable,
+         p.min_order_quantity,
+         p.lead_time_days,
+         p.view_count,
          p.description,
          p.status,
          p.created_at,
@@ -566,7 +696,21 @@ const getProductsBySubcategory = async (req, res) => {
     const [products] = await db.execute(
       `SELECT 
          p.product_id,
+         p.sku,
          p.name,
+         p.slug,
+         p.meta_title,
+         p.meta_description,
+         p.featured_image,
+         p.video_url,
+         p.tags,
+         p.is_featured,
+         p.is_new,
+         p.is_bestseller,
+         p.is_customizable,
+         p.min_order_quantity,
+         p.lead_time_days,
+         p.view_count,
          p.description,
          p.status,
          p.created_at,
@@ -621,11 +765,22 @@ const getBestsellerProducts = async (req, res) => {
     // Use string concatenation for LIMIT to avoid parameter binding issues
     const query = `SELECT 
          p.product_id,
+         p.sku,
          p.name,
+         p.slug,
+         p.meta_title,
+         p.meta_description,
+         p.featured_image,
+         p.video_url,
+         p.tags,
+         p.is_featured,
+         p.is_new,
+         p.is_bestseller,
+         p.is_customizable,
+         p.min_order_quantity,
+         p.lead_time_days,
+         p.view_count,
          p.description,
-         p.fitting_info,
-         p.fabric_info,
-         p.care_info,
          p.product_detail,
          p.shipping_info,
          p.return_policy,
@@ -643,11 +798,11 @@ const getBestsellerProducts = async (req, res) => {
        LEFT JOIN categories c ON p.category_id = c.id
        LEFT JOIN subcategories sc ON p.subcategory_id = sc.id
        LEFT JOIN product_sizes ps ON p.product_id = ps.product_id
-       WHERE p.status = 'active'
+       WHERE p.status = 'active' AND p.is_bestseller = 1
        GROUP BY p.product_id
        ORDER BY p.created_at DESC, avg_offer_percent DESC
        LIMIT ${Number(limitNum)}`;
-    
+
     const [products] = await db.execute(query);
 
     // Get colors and images for each product
@@ -657,25 +812,42 @@ const getBestsellerProducts = async (req, res) => {
            pc.color_id,
            pc.color_name,
            pc.color_code,
-           GROUP_CONCAT(pi.image_url) as images
+           pc.sort_order,
+           GROUP_CONCAT(pi.image_url ORDER BY pi.sort_order) as images,
+           GROUP_CONCAT(pi.alt_text ORDER BY pi.sort_order) as alt_texts
          FROM product_colors pc
          LEFT JOIN product_images pi ON pc.color_id = pi.color_id
          WHERE pc.product_id = ?
-         GROUP BY pc.color_id`,
+         GROUP BY pc.color_id
+         ORDER BY pc.sort_order`,
         [product.product_id]
       );
 
-      product.colors = colors.map(color => ({
-        ...color,
-        images: color.images ? color.images.split(',') : []
-      }));
+      product.colors = colors.map(color => {
+        const images = color.images ? color.images.split(',') : [];
+        const altTexts = color.alt_texts ? color.alt_texts.split(',') : [];
+        return {
+          ...color,
+          images: images.map((img, idx) => ({
+            url: img,
+            alt_text: altTexts[idx] || ''
+          }))
+        };
+      });
 
       // Get sizes
       const [sizes] = await db.execute(
-        'SELECT * FROM product_sizes WHERE product_id = ?',
+        'SELECT * FROM product_sizes WHERE product_id = ? ORDER BY size',
         [product.product_id]
       );
       product.sizes = sizes;
+
+      // Get attributes
+      const [attributes] = await db.execute(
+        'SELECT * FROM product_attributes WHERE product_id = ? ORDER BY sort_order',
+        [product.product_id]
+      );
+      product.attributes = attributes;
     }
 
     res.json({
@@ -728,11 +900,22 @@ const getNewArrivalProducts = async (req, res) => {
     // Use string concatenation for LIMIT to avoid parameter binding issues
     const query = `SELECT 
          p.product_id,
+         p.sku,
          p.name,
+         p.slug,
+         p.meta_title,
+         p.meta_description,
+         p.featured_image,
+         p.video_url,
+         p.tags,
+         p.is_featured,
+         p.is_new,
+         p.is_bestseller,
+         p.is_customizable,
+         p.min_order_quantity,
+         p.lead_time_days,
+         p.view_count,
          p.description,
-         p.fitting_info,
-         p.fabric_info,
-         p.care_info,
          p.product_detail,
          p.shipping_info,
          p.return_policy,
@@ -751,11 +934,11 @@ const getNewArrivalProducts = async (req, res) => {
        LEFT JOIN subcategories sc ON p.subcategory_id = sc.id
        LEFT JOIN product_sizes ps ON p.product_id = ps.product_id
        WHERE p.status = 'active' 
-         AND p.created_at >= DATE_SUB(CURRENT_DATE, INTERVAL ? DAY)
+         AND (p.is_new = 1 OR p.created_at >= DATE_SUB(CURRENT_DATE, INTERVAL ? DAY))
        GROUP BY p.product_id
        ORDER BY p.created_at DESC
        LIMIT ${Number(limitNum)}`;
-    
+
     const [products] = await db.execute(query, [Number(daysNum)]);
 
     // Get colors and images for each product
@@ -765,25 +948,42 @@ const getNewArrivalProducts = async (req, res) => {
            pc.color_id,
            pc.color_name,
            pc.color_code,
-           GROUP_CONCAT(pi.image_url) as images
+           pc.sort_order,
+           GROUP_CONCAT(pi.image_url ORDER BY pi.sort_order) as images,
+           GROUP_CONCAT(pi.alt_text ORDER BY pi.sort_order) as alt_texts
          FROM product_colors pc
          LEFT JOIN product_images pi ON pc.color_id = pi.color_id
          WHERE pc.product_id = ?
-         GROUP BY pc.color_id`,
+         GROUP BY pc.color_id
+         ORDER BY pc.sort_order`,
         [product.product_id]
       );
 
-      product.colors = colors.map(color => ({
-        ...color,
-        images: color.images ? color.images.split(',') : []
-      }));
+      product.colors = colors.map(color => {
+        const images = color.images ? color.images.split(',') : [];
+        const altTexts = color.alt_texts ? color.alt_texts.split(',') : [];
+        return {
+          ...color,
+          images: images.map((img, idx) => ({
+            url: img,
+            alt_text: altTexts[idx] || ''
+          }))
+        };
+      });
 
       // Get sizes
       const [sizes] = await db.execute(
-        'SELECT * FROM product_sizes WHERE product_id = ?',
+        'SELECT * FROM product_sizes WHERE product_id = ? ORDER BY size',
         [product.product_id]
       );
       product.sizes = sizes;
+
+      // Get attributes
+      const [attributes] = await db.execute(
+        'SELECT * FROM product_attributes WHERE product_id = ? ORDER BY sort_order',
+        [product.product_id]
+      );
+      product.attributes = attributes;
     }
 
     res.json({
@@ -853,11 +1053,22 @@ const getAlsoLikeProducts = async (req, res) => {
     // Use string concatenation for LIMIT to avoid parameter binding issues
     const query = `SELECT 
          p.product_id,
+         p.sku,
          p.name,
+         p.slug,
+         p.meta_title,
+         p.meta_description,
+         p.featured_image,
+         p.video_url,
+         p.tags,
+         p.is_featured,
+         p.is_new,
+         p.is_bestseller,
+         p.is_customizable,
+         p.min_order_quantity,
+         p.lead_time_days,
+         p.view_count,
          p.description,
-         p.fitting_info,
-         p.fabric_info,
-         p.care_info,
          p.product_detail,
          p.shipping_info,
          p.return_policy,
@@ -884,7 +1095,7 @@ const getAlsoLikeProducts = async (req, res) => {
        GROUP BY p.product_id
        ORDER BY p.created_at DESC
        LIMIT ${Number(limitNum)}`;
-    
+
     const [products] = await db.execute(query, [product_id, category_id, subcategory_id, category_id, subcategory_id]);
 
     // Get colors and images for each product
@@ -894,25 +1105,42 @@ const getAlsoLikeProducts = async (req, res) => {
            pc.color_id,
            pc.color_name,
            pc.color_code,
-           GROUP_CONCAT(pi.image_url) as images
+           pc.sort_order,
+           GROUP_CONCAT(pi.image_url ORDER BY pi.sort_order) as images,
+           GROUP_CONCAT(pi.alt_text ORDER BY pi.sort_order) as alt_texts
          FROM product_colors pc
          LEFT JOIN product_images pi ON pc.color_id = pi.color_id
          WHERE pc.product_id = ?
-         GROUP BY pc.color_id`,
+         GROUP BY pc.color_id
+         ORDER BY pc.sort_order`,
         [product.product_id]
       );
 
-      product.colors = colors.map(color => ({
-        ...color,
-        images: color.images ? color.images.split(',') : []
-      }));
+      product.colors = colors.map(color => {
+        const images = color.images ? color.images.split(',') : [];
+        const altTexts = color.alt_texts ? color.alt_texts.split(',') : [];
+        return {
+          ...color,
+          images: images.map((img, idx) => ({
+            url: img,
+            alt_text: altTexts[idx] || ''
+          }))
+        };
+      });
 
       // Get sizes
       const [sizes] = await db.execute(
-        'SELECT * FROM product_sizes WHERE product_id = ?',
+        'SELECT * FROM product_sizes WHERE product_id = ? ORDER BY size',
         [product.product_id]
       );
       product.sizes = sizes;
+
+      // Get attributes
+      const [attributes] = await db.execute(
+        'SELECT * FROM product_attributes WHERE product_id = ? ORDER BY sort_order',
+        [product.product_id]
+      );
+      product.attributes = attributes;
     }
 
     res.json({

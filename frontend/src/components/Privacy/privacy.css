@@ -1,276 +1,275 @@
 /* Privacy Policy Page Styles */
 .privacy-policy-container {
-    min-height: 100vh;
-    background: linear-gradient(135deg, #ffffff 0%, #ffffff 100%);
-    /* padding: 20px 0; */
-    font-family: var(--font-body);
-    margin-top: 100px;
-  }
-  
-  .privacy-policy-content {
-    max-width: 97%;
-    margin: auto;
-    background: white;
-    border-radius: 12px;
-    /* box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1); */
-    overflow: hidden;
-    position: relative;
-  }
-  
-  .privacy-policy-content::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 4px;
-    background: linear-gradient(90deg, #c5a97e 0%, #c5a97e 50%, #f5f2e1 100%);
-  }
-  
-  /* Header Styles */
-  .privacy-header {
-    background: #ffffff;
-    color: var(--primary-color);
-    padding: 40px 50px;
-    text-align: center;
-    position: relative;
-  }
-  
-  .privacy-header h1 {
-    font-size: 2.5rem;
-    font-family: var(--font-primary);
-    font-weight: 300;
-    margin: 0 0 10px 0;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-  }
-  
-  .privacy-header::after {
-    font-size: 2rem;
-    position: absolute;
-    top: 20px;
-    right: 30px;
-    opacity: 0.3;
+  min-height: 100vh;
+  background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-primary) 100%);
+  /* padding: 20px 0; */
+  font-family: var(--font-body);
+  margin-top: 100px;
+}
+
+.privacy-policy-content {
+  max-width: 97%;
+  margin: auto;
+  background: white;
+  border-radius: 12px;
+  /* box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1); */
+  overflow: hidden;
+  position: relative;
+}
+
+.privacy-policy-content::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--primary-color) 0%, var(--primary-color) 50%, var(--creamy-color) 100%);
+}
+
+/* Header Styles */
+.privacy-header {
+  background: var(--bg-primary);
+  color: var(--primary-color);
+  padding: 40px 50px;
+  text-align: center;
+  position: relative;
+}
+
+.privacy-header h1 {
+  font-size: 2.5rem;
+  font-family: var(--font-primary);
+  font-weight: 300;
+  margin: 0 0 10px 0;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.privacy-header::after {
+  font-size: 2rem;
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  opacity: 0.3;
+}
+
+
+.privacy-last-updated {
+  font-size: 0.9rem;
+  opacity: 0.8;
+  margin: 0;
+  font-style: italic;
+}
+
+/* Section Styles */
+.privacy-policy-section {
+  padding: 0px 50px;
+  border-bottom: 1px solid var(--border-light);
+  transition: background-color 0.3s ease;
+}
+
+/* .privacy-policy-section:hover {
+    background-color: var(--bg-light);
+  } */
+
+.privacy-policy-section:last-of-type {
+  border-bottom: none;
+}
+
+.privacy-policy-section h2 {
+  color: var(--text-primary);
+  font-family: var(--font-primary);
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 0 0 20px 0;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--primary-color);
+  position: relative;
+}
+
+.privacy-policy-section h2::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 50px;
+  height: 2px;
+  background: var(--primary-color);
+}
+
+.privacy-policy-section h3 {
+  color: var(--text-primary);
+  font-size: 1.2rem;
+  font-weight: 500;
+  margin: 25px 0 15px 0;
+}
+
+.privacy-policy-section p {
+  color: var(--text-tertiary);
+  line-height: 1.7;
+  margin: 0 0 15px 0;
+  font-size: 1rem;
+}
+
+.privacy-policy-section strong {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+/* Contact Information Styles */
+.privacy-contact-info {
+  background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--border-light) 100%);
+  padding: 25px;
+  border-radius: 8px;
+  margin: 20px 0;
+  border-left: 4px solid var(--accent-gold);
+}
+
+.privacy-contact-info p {
+  margin: 10px 0;
+  display: flex;
+  align-items: left;
+  gap: 10px;
+}
+
+.privacy-contact-info strong {
+  min-width: 120px;
+  color: var(--text-primary);
+}
+
+/* Footer Styles */
+.privacy-footer {
+  background: var(--primary-color);
+  color: white;
+  padding: 30px 50px;
+  text-align: left;
+  position: relative;
+}
+
+.privacy-footer::before {
+  content: '✨';
+  font-size: 1.5rem;
+  position: absolute;
+  top: 15px;
+  left: 30px;
+  opacity: 0.3;
+}
+
+.privacy-footer p {
+  margin: 5px 0;
+  color: var(--text-light);
+}
+
+.privacy-footer p:first-child {
+  font-size: 1.1rem;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .privacy-policy-container {
+    padding: 10px;
   }
 
-  
-  .privacy-last-updated {
-    font-size: 0.9rem;
-    opacity: 0.8;
-    margin: 0;
-    font-style: italic;
-  }
-  
-  /* Section Styles */
-  .privacy-policy-section {
-    padding: 0px 50px;
-    border-bottom: 1px solid #f1f3f4;
-    transition: background-color 0.3s ease;
-  }
-  
-  /* .privacy-policy-section:hover {
-    background-color: #fafbfc;
-  } */
-  
-  .privacy-policy-section:last-of-type {
-    border-bottom: none;
-  }
-  
-  .privacy-policy-section h2 {
-    color: #000000;
-    font-family: var(--font-primary);
-    font-size: 1.5rem;
-    font-weight: 600;
-    margin: 0 0 20px 0;
-    padding-bottom: 10px;
-    border-bottom: 1px solid #c5a97e;
-    position: relative;
-  }
-  
-  .privacy-policy-section h2::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: -2px;
-    width: 50px;
-    height: 2px;
-    background: var(--primary-color);
-  }
-  
-  .privacy-policy-section h3 {
-    color: #000000;
-    font-size: 1.2rem;
-    font-weight: 500;
-    margin: 25px 0 15px 0;
-  }
-  
-  .privacy-policy-section p {
-    color: #555;
-    line-height: 1.7;
-    margin: 0 0 15px 0;
-    font-size: 1rem;
-  }
-  
-  .privacy-policy-section strong {
-    color: #2c3e50;
-    font-weight: 600;
-  }
-  
-  /* Contact Information Styles */
-  .privacy-contact-info {
-    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-    padding: 25px;
+  .privacy-policy-content {
     border-radius: 8px;
-    margin: 20px 0;
-    border-left: 4px solid #d4af37;
   }
-  
+
+  .privacy-header {
+    padding: 30px 25px;
+  }
+
+  .privacy-header h1 {
+    font-size: 2rem;
+  }
+
+  .privacy-policy-section {
+    padding: 25px 25px;
+  }
+
+  .privacy-policy-section h2 {
+    font-size: 1.3rem;
+  }
+
+  .privacy-contact-info {
+    padding: 20px;
+  }
+
   .privacy-contact-info p {
-    margin: 10px 0;
-    display: flex;
-    align-items: left;
-    gap: 10px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
   }
-  
+
   .privacy-contact-info strong {
-    min-width: 120px;
-    color: #2c3e50;
+    min-width: auto;
   }
-  
-  /* Footer Styles */
+
   .privacy-footer {
-    background: var(--primary-color);
-    color: white;
-    padding: 30px 50px;
-    text-align: left;
-    position: relative;
+    padding: 25px 25px;
   }
-  
-  .privacy-footer::before {
-    content: '✨';
-    font-size: 1.5rem;
-    position: absolute;
-    top: 15px;
-    left: 30px;
-    opacity: 0.3;
+}
+
+@media (max-width: 480px) {
+  .privacy-header h1 {
+    font-size: 1.8rem;
   }
-  
-  .privacy-footer p {
-    margin: 5px 0;
-    color: #ecf0f1;
+
+  .privacy-policy-section {
+    padding: 20px 20px;
   }
-  
-  .privacy-footer p:first-child {
+
+  .privacy-policy-section h2 {
+    font-size: 1.2rem;
+  }
+
+  .privacy-policy-section h3 {
     font-size: 1.1rem;
-    font-weight: 500;
-    margin-bottom: 10px;
   }
-  
-  /* Responsive Design */
-  @media (max-width: 768px) {
-    .privacy-policy-container {
-      padding: 10px;
-    }
-    
-    .privacy-policy-content {
-      border-radius: 8px;
-    }
-    
-    .privacy-header {
-      padding: 30px 25px;
-    }
-    
-    .privacy-header h1 {
-      font-size: 2rem;
-    }
-    
-    .privacy-policy-section {
-      padding: 25px 25px;
-    }
-    
-    .privacy-policy-section h2 {
-      font-size: 1.3rem;
-    }
-    
-    .privacy-contact-info {
-      padding: 20px;
-    }
-    
-    .privacy-contact-info p {
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 5px;
-    }
-    
-    .privacy-contact-info strong {
-      min-width: auto;
-    }
-    
-    .privacy-footer {
-      padding: 25px 25px;
-    }
+}
+
+/* Print Styles */
+@media print {
+  .privacy-policy-container {
+    background: white;
+    padding: 0;
   }
-  
-  @media (max-width: 480px) {
-    .privacy-header h1 {
-      font-size: 1.8rem;
-    }
-    
-    .privacy-policy-section {
-      padding: 20px 20px;
-    }
-    
-    .privacy-policy-section h2 {
-      font-size: 1.2rem;
-    }
-    
-    .privacy-policy-section h3 {
-      font-size: 1.1rem;
-    }
+
+  .privacy-policy-content {
+    box-shadow: none;
+    border: 1px solid var(--border-light);
   }
-  
-  /* Print Styles */
-  @media print {
-    .privacy-policy-container {
-      background: white;
-      padding: 0;
-    }
-    
-    .privacy-policy-content {
-      box-shadow: none;
-      border: 1px solid #ddd;
-    }
-    
-    .privacy-header,
-    .privacy-footer {
-      background: white !important;
-      color: black !important;
-    }
-    
-    /* .privacy-policy-section:hover {
+
+  .privacy-header,
+  .privacy-footer {
+    background: white !important;
+    color: black !important;
+  }
+
+  /* .privacy-policy-section:hover {
       background-color: white;
     } */
+}
+
+/* Accessibility Improvements */
+@media (prefers-reduced-motion: reduce) {
+  .privacy-policy-section {
+    transition: none;
   }
-  
-  /* Accessibility Improvements */
-  @media (prefers-reduced-motion: reduce) {
-    .privacy-policy-section {
-      transition: none;
-    }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .privacy-policy-section h2 {
+    border-bottom-color: var(--text-primary);
   }
-  
-  /* High contrast mode support */
-  @media (prefers-contrast: high) {
-    .privacy-policy-section h2 {
-      border-bottom-color: #000;
-    }
-    
-    .privacy-policy-section h2::before {
-      background: #000;
-    }
-    
-    .privacy-contact-info {
-      border-left-color: #000;
-    }
+
+  .privacy-policy-section h2::before {
+    background: var(--bg-dark);
   }
-  
+
+  .privacy-contact-info {
+    border-left-color: var(--text-primary);
+  }
+}

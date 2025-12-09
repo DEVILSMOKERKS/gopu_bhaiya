@@ -1,13 +1,11 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import './TrustedClients.css';
 
 const TrustedClients = () => {
   const scrollRef = useRef(null);
-  const [isInteracting, setIsInteracting] = useState(false);
-  const intervalRef = useRef(null);
-  const scrollAmountRef = useRef(0);
+  const animationFrameRef = useRef(null);
 
   const clientLogos = Array.from({ length: 8 }, (_, i) => ({
     id: i + 1,
@@ -18,52 +16,44 @@ const TrustedClients = () => {
     const scrollContainer = scrollRef.current;
     if (!scrollContainer) return;
 
-    const scrollSpeed = 1; // Adjust speed here
+    const scrollSpeed = 0.5; // Adjust speed here
+    let scrollPosition = 0;
+    let lastTimestamp = performance.now();
 
-    const autoScroll = () => {
-      // Stop scrolling when user is interacting
-      if (isInteracting) return;
+    const autoScroll = (timestamp) => {
+      // Calculate delta time for consistent speed
+      const deltaTime = timestamp - lastTimestamp;
+      lastTimestamp = timestamp;
 
-      scrollAmountRef.current += scrollSpeed;
-      scrollContainer.scrollLeft = scrollAmountRef.current;
+      // Normalize to ~16ms for 60fps
+      const normalizedDelta = deltaTime || 16;
+      const scrollIncrement = (scrollSpeed * normalizedDelta) / 16;
 
-      // Reset scroll when reaching the end
-      const maxScroll = scrollContainer.scrollWidth - scrollContainer.clientWidth;
-      if (scrollAmountRef.current >= maxScroll) {
-        scrollAmountRef.current = 0;
-        scrollContainer.scrollLeft = 0;
+      scrollPosition += scrollIncrement;
+      scrollContainer.scrollLeft = scrollPosition;
+
+      // Get the width of one set of logos
+      const logosContainer = scrollContainer.querySelector('.trusted-clients-logos');
+      const singleSetWidth = logosContainer ? logosContainer.scrollWidth / 2 : 0;
+
+      // Reset scroll position seamlessly when reaching the end of first set
+      // This creates infinite scroll effect
+      if (scrollPosition >= singleSetWidth) {
+        scrollPosition = scrollPosition - singleSetWidth;
+        scrollContainer.scrollLeft = scrollPosition;
       }
+
+      animationFrameRef.current = requestAnimationFrame(autoScroll);
     };
 
-    intervalRef.current = setInterval(autoScroll, 20);
+    animationFrameRef.current = requestAnimationFrame(autoScroll);
 
     return () => {
-      if (intervalRef.current) {
-        clearInterval(intervalRef.current);
+      if (animationFrameRef.current) {
+        cancelAnimationFrame(animationFrameRef.current);
       }
     };
-  }, [isInteracting]);
-
-  // Handle scroll events to pause auto-scroll when user scrolls
-  const handleScroll = () => {
-    const scrollContainer = scrollRef.current;
-    if (scrollContainer) {
-      scrollAmountRef.current = scrollContainer.scrollLeft;
-      setIsInteracting(true);
-      // Resume auto-scroll after 2 seconds of no interaction
-      setTimeout(() => {
-        setIsInteracting(false);
-      }, 2000);
-    }
-  };
-
-  const handleMouseEnter = () => {
-    setIsInteracting(true);
-  };
-
-  const handleMouseLeave = () => {
-    setIsInteracting(false);
-  };
+  }, []);
 
   return (
     <section className="trusted-clients">
@@ -72,9 +62,6 @@ const TrustedClients = () => {
         <div
           className="trusted-clients-scroll-wrapper"
           ref={scrollRef}
-          onScroll={handleScroll}
-          onMouseEnter={handleMouseEnter}
-          onMouseLeave={handleMouseLeave}
         >
           <div className="trusted-clients-logos">
             {clientLogos.map((client) => (
@@ -82,7 +69,7 @@ const TrustedClients = () => {
                 <span className="trusted-clients-logo-text">Brand Logo</span>
               </div>
             ))}
-            {/* Duplicate for seamless loop */}
+            {/* Duplicate for seamless infinite loop */}
             {clientLogos.map((client) => (
               <div key={`duplicate-${client.id}`} className="trusted-clients-logo-card">
                 <span className="trusted-clients-logo-text">Brand Logo</span>

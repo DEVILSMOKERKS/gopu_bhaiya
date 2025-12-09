@@ -90,6 +90,15 @@
   --shadow-md: 0 4px 15px rgba(0, 0, 0, 0.1);
   --shadow-lg: 0 8px 25px rgba(0, 0, 0, 0.15);
   --shadow-xl: 0 20px 60px rgba(0, 0, 0, 0.3);
+  --shadow-xs: 0 2px 8px rgba(0, 0, 0, 0.03);
+  --shadow-xxs: 0 2px 8px rgba(0, 0, 0, 0.04);
+  --shadow-xxxs: 0 2px 8px rgba(0, 0, 0, 0.06);
+  --shadow-dropdown: 0 4px 12px rgba(0, 0, 0, 0.15);
+  --shadow-popup: 0 10px 30px rgba(0, 0, 0, 0.3);
+  --shadow-green: 0 2px 4px rgba(14, 89, 60, 0.2);
+
+  /* Overlay Colors */
+  --overlay-dark: rgba(0, 0, 0, 0.5);
 
   /* Transitions */
   --transition-fast: 0.2s ease;

@@ -23,12 +23,13 @@
 }
 
 .trusted-clients-scroll-wrapper {
-  overflow-x: auto;
+  overflow-x: hidden;
   overflow-y: hidden;
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
   -ms-overflow-style: none;
   width: 100%;
+  will-change: scroll-position;
 }
 
 .trusted-clients-scroll-wrapper::-webkit-scrollbar {
@@ -41,6 +42,7 @@
   gap: 30px;
   width: max-content;
   padding: 0;
+  will-change: transform;
 }
 
 .trusted-clients-logo-card {

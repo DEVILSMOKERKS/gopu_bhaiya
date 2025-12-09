@@ -13,17 +13,17 @@
   justify-content: center;
 }
 
-/* Desktop Background */
+/* Desktop Background - Now handled via inline styles */
 @media (min-width: 969px) {
   .custom-temple-projects {
-    background-image: var(--desktop-bg);
+    /* Background image set via inline styles for Next.js compatibility */
   }
 }
 
-/* Mobile Background */
+/* Mobile Background - Now handled via inline styles */
 @media (max-width: 968px) {
   .custom-temple-projects {
-    background-image: var(--mobile-bg);
+    /* Background image set via inline styles for Next.js compatibility */
     padding: 80px 15px;
     min-height: 400px;
   }

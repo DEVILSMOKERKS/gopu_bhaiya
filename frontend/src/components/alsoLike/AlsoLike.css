@@ -17,21 +17,21 @@
 .alsolike-title {
   font-size: 32px;
   font-weight: 500;
-  color: #2a2a2a;
+  color: var(--text-primary);
   margin: 0;
   letter-spacing: -0.02em;
 }
 
 .alsolike-view-all {
   font-size: 1rem;
-  color: #666;
+  color: var(--text-tertiary);
   text-decoration: none;
   font-weight: 500;
   transition: color 0.3s ease;
 }
 
 .alsolike-view-all:hover {
-  color: #333;
+  color: var(--text-secondary);
 }
 
 /* Loading State */
@@ -47,20 +47,25 @@
 .alsolike-loading-spinner {
   width: 40px;
   height: 40px;
-  border: 3px solid #f3f3f3;
-  border-top: 3px solid #333;
+  border: 3px solid var(--bg-light);
+  border-top: 3px solid var(--text-secondary);
   border-radius: 50%;
   animation: spin 1s linear infinite;
   margin-bottom: 1rem;
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 .alsolike-loading p {
-  color: #666;
+  color: var(--text-tertiary);
   font-size: 1rem;
   margin: 0;
 }
@@ -75,7 +80,7 @@
 }
 
 .alsolike-error p {
-  color: #e74c3c;
+  color: var(--accent-error);
   font-size: 1rem;
   margin: 0;
   background: rgba(231, 76, 60, 0.1);
@@ -95,19 +100,19 @@
 }
 
 .alsolike-no-products-icon {
-  color: #ccc;
+  color: var(--text-light);
   margin-bottom: 1.5rem;
 }
 
 .alsolike-no-products h3 {
   font-size: 1.5rem;
   font-weight: 600;
-  color: #666;
+  color: var(--text-tertiary);
   margin: 0 0 0.5rem 0;
 }
 
 .alsolike-no-products p {
-  color: #999;
+  color: var(--text-quaternary);
   font-size: 1rem;
   margin: 0;
   line-height: 1.5;
@@ -138,7 +143,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #333;
+  color: var(--text-secondary);
   transition: all 0.3s ease;
   z-index: 10;
 }
@@ -232,14 +237,14 @@
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  color: #666;
+  color: var(--text-tertiary);
   transition: all 0.3s ease;
   z-index: 5;
 }
 
 .alsolike-heart-btn:hover {
   background: rgba(255, 255, 255, 1);
-  color: #ff4757;
+  color: var(--accent-red);
   transform: scale(1.1);
 }
 
@@ -255,11 +260,12 @@
 .alsolike-product-name {
   font-size: 1.25rem;
   font-weight: 700;
-  color: #1a1a1a;
+  color: var(--text-primary);
   margin: 0 0 0.5rem 0;
   line-height: 1.2;
   display: -webkit-box;
-  -webkit-line-clamp: 2;   /* sirf 2 line tak text dikhayega */
+  -webkit-line-clamp: 2;
+  /* sirf 2 line tak text dikhayega */
   line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
@@ -268,11 +274,12 @@
 
 .alsolike-product-description {
   font-size: 1rem;
-  color: #666;
+  color: var(--text-tertiary);
   margin: 0 0 1rem 0;
   line-height: 1.4;
   display: -webkit-box;
-  -webkit-line-clamp: 3;   /* sirf 2 line tak text dikhayega */
+  -webkit-line-clamp: 3;
+  /* sirf 2 line tak text dikhayega */
   line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
@@ -289,7 +296,7 @@
 .alsolike-price {
   font-size: 1.1rem;
   font-weight: 600;
-  color: #1a1a1a;
+  color: var(--text-primary);
 }
 
 .alsolike-color-swatches {
@@ -312,7 +319,7 @@
 }
 
 .alsolike-color-swatch-active {
-  border: 3px solid #333;
+  border: 3px solid var(--text-secondary);
   transform: scale(1.1);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
@@ -322,15 +329,15 @@
   .alsolike-container {
     padding: 1.5rem 1rem;
   }
-  
+
   .alsolike-title {
     font-size: 2rem;
   }
-  
+
   .alsolike-card {
     flex: 0 0 300px;
   }
-  
+
   .alsolike-card-image-container {
     height: 350px;
   }
@@ -340,52 +347,52 @@
   .alsolike-container {
     padding: 1rem 0.5rem;
   }
-  
+
   .alsolike-title {
     font-size: 1.75rem;
   }
-  
+
   .alsolike-view-all {
     font-size: 0.9rem;
   }
-  
+
   .alsolike-carousel-wrapper {
     gap: 0.5rem;
   }
-  
+
   .alsolike-nav-btn {
     width: 40px;
     height: 40px;
   }
-  
+
   .alsolike-prev-btn {
     left: -20px;
   }
-  
+
   .alsolike-next-btn {
     right: -20px;
   }
-  
+
   .alsolike-carousel {
     gap: 1rem;
   }
-  
+
   .alsolike-card {
     flex: 0 0 280px;
   }
-  
+
   .alsolike-card-image-container {
     height: 320px;
   }
-  
+
   .alsolike-card-content {
     padding: 1rem;
   }
-  
+
   .alsolike-product-name {
     font-size: 14px;
   }
-  
+
   .alsolike-product-description {
     font-size: 0.9rem;
   }
@@ -395,28 +402,28 @@
   .alsolike-title {
     font-size: 1.5rem;
   }
-  
+
   .alsolike-nav-btn {
     width: 36px;
     height: 36px;
   }
-  
+
   .alsolike-prev-btn {
     left: -18px;
   }
-  
+
   .alsolike-next-btn {
     right: -18px;
   }
-  
+
   .alsolike-card {
     flex: 0 0 250px;
   }
-  
+
   .alsolike-card-image-container {
     height: 280px;
   }
-  
+
   .alsolike-heart-btn {
     width: 32px;
     height: 32px;
@@ -429,6 +436,7 @@
     opacity: 0;
     transform: translateY(20px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -443,13 +451,13 @@
 .alsolike-nav-btn:focus,
 .alsolike-heart-btn:focus,
 .alsolike-color-swatch:focus {
-  outline: 2px solid #007bff;
+  outline: 2px solid var(--primary-color);
   outline-offset: 2px;
 }
 
 /* Loading state */
 .alsolike-card-image {
-  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background: linear-gradient(90deg, var(--bg-light) 25%, var(--border-light) 50%, var(--bg-light) 75%);
   background-size: 200% 100%;
   animation: loading 1.5s infinite;
 }
@@ -458,6 +466,7 @@
   0% {
     background-position: 200% 0;
   }
+
   100% {
     background-position: -200% 0;
   }
@@ -468,15 +477,15 @@
   .alsolike-card:hover {
     transform: none;
   }
-  
+
   .alsolike-nav-btn:hover {
     transform: translateY(-50%);
   }
-  
+
   .alsolike-heart-btn:hover {
     transform: none;
   }
-  
+
   .alsolike-color-swatch:hover {
     transform: none;
   }

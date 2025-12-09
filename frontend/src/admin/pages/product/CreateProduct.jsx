@@ -16,12 +16,22 @@ const CreateProduct = () => {
 
   const [formData, setFormData] = useState({
     name: '',
+    sku: '',
     category_id: '',
     subcategory_id: '',
+    slug: '',
+    meta_title: '',
+    meta_description: '',
+    featured_image: '',
+    video_url: '',
+    tags: '',
+    is_featured: false,
+    is_new: false,
+    is_bestseller: false,
+    is_customizable: false,
+    min_order_quantity: 1,
+    lead_time_days: '',
     description: '',
-    fitting_info: '',
-    fabric_info: '',
-    care_info: '',
     product_detail: '',
     shipping_info: '',
     return_policy: '',
@@ -33,8 +43,9 @@ const CreateProduct = () => {
   ]);
 
   const [sizes, setSizes] = useState([
-    { size: 'S', actual_price: '', sell_price: '', offer_percent: 0, stock: 0 }
+    { size: 'Standard', actual_price: '', sell_price: '', offer_percent: 0, stock: 0, height: '', width: '', depth: '', weight: '', dimensions_unit: 'cm', weight_unit: 'kg' }
   ]);
+
 
   // Get API URL from environment variable
   const API_URL = process.env.NEXT_PUBLIC_API_URL
@@ -132,9 +143,20 @@ const CreateProduct = () => {
 
   const updateSize = (index, field, value) => {
     setSizes(prev => prev.map((size, i) =>
-      i === index ? { ...size, [field]: value } : color
+      i === index ? { ...size, [field]: value } : size
     ));
   };
+
+
+  // Auto-generate slug from name
+  useEffect(() => {
+    if (formData.name && !formData.slug) {
+      const slug = formData.name.toLowerCase()
+        .replace(/[^a-z0-9]+/g, '-')
+        .replace(/(^-|-$)/g, '');
+      setFormData(prev => ({ ...prev, slug }));
+    }
+  }, [formData.name]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -186,6 +208,8 @@ const CreateProduct = () => {
 
       // Add sizes
       formDataToSend.append('sizes', JSON.stringify(sizes));
+
+      // Attributes are managed separately via Product Attributes management page
 
       const token = typeof window !== 'undefined' ? localStorage.getItem('adminToken') : null;
       const response = await axios.post(`${API_URL}/products`, formDataToSend, {
@@ -239,6 +263,29 @@ const CreateProduct = () => {
                   placeholder="Enter product name"
                   required
                 />
+              </div>
+
+              <div className="createproduct-form-group">
+                <label>SKU</label>
+                <input
+                  type="text"
+                  name="sku"
+                  value={formData.sku}
+                  onChange={handleInputChange}
+                  placeholder="Product SKU/Code"
+                />
+              </div>
+
+              <div className="createproduct-form-group">
+                <label>Slug (URL)</label>
+                <input
+                  type="text"
+                  name="slug"
+                  value={formData.slug}
+                  onChange={handleInputChange}
+                  placeholder="product-url-slug"
+                />
+                <small>Auto-generated from name if left empty</small>
               </div>
 
               <div className="createproduct-form-group">
@@ -296,6 +343,142 @@ const CreateProduct = () => {
                 placeholder="Enter product description"
                 rows="4"
               />
+            </div>
+          </div>
+
+          {/* SEO & Marketing */}
+          <div className="createproduct-form-section">
+            <h2>SEO & Marketing</h2>
+            <div className="createproduct-form-grid">
+              <div className="createproduct-form-group">
+                <label>Meta Title</label>
+                <input
+                  type="text"
+                  name="meta_title"
+                  value={formData.meta_title}
+                  onChange={handleInputChange}
+                  placeholder="SEO meta title"
+                />
+              </div>
+
+              <div className="createproduct-form-group">
+                <label>Meta Description</label>
+                <textarea
+                  name="meta_description"
+                  value={formData.meta_description}
+                  onChange={handleInputChange}
+                  placeholder="SEO meta description"
+                  rows="2"
+                />
+              </div>
+
+              <div className="createproduct-form-group">
+                <label>Featured Image URL</label>
+                <input
+                  type="text"
+                  name="featured_image"
+                  value={formData.featured_image}
+                  onChange={handleInputChange}
+                  placeholder="https://..."
+                />
+              </div>
+
+              <div className="createproduct-form-group">
+                <label>Video URL</label>
+                <input
+                  type="text"
+                  name="video_url"
+                  value={formData.video_url}
+                  onChange={handleInputChange}
+                  placeholder="https://youtube.com/..."
+                />
+              </div>
+
+              <div className="createproduct-form-group">
+                <label>Tags (comma separated)</label>
+                <input
+                  type="text"
+                  name="tags"
+                  value={formData.tags}
+                  onChange={handleInputChange}
+                  placeholder="marble, statue, temple"
+                />
+              </div>
+            </div>
+
+            <div className="createproduct-form-grid">
+              <div className="createproduct-form-group">
+                <label>
+                  <input
+                    type="checkbox"
+                    name="is_featured"
+                    checked={formData.is_featured}
+                    onChange={(e) => setFormData(prev => ({ ...prev, is_featured: e.target.checked }))}
+                  />
+                  Featured Product
+                </label>
+              </div>
+
+              <div className="createproduct-form-group">
+                <label>
+                  <input
+                    type="checkbox"
+                    name="is_new"
+                    checked={formData.is_new}
+                    onChange={(e) => setFormData(prev => ({ ...prev, is_new: e.target.checked }))}
+                  />
+                  New Product
+                </label>
+              </div>
+
+              <div className="createproduct-form-group">
+                <label>
+                  <input
+                    type="checkbox"
+                    name="is_bestseller"
+                    checked={formData.is_bestseller}
+                    onChange={(e) => setFormData(prev => ({ ...prev, is_bestseller: e.target.checked }))}
+                  />
+                  Bestseller
+                </label>
+              </div>
+
+              <div className="createproduct-form-group">
+                <label>
+                  <input
+                    type="checkbox"
+                    name="is_customizable"
+                    checked={formData.is_customizable}
+                    onChange={(e) => setFormData(prev => ({ ...prev, is_customizable: e.target.checked }))}
+                  />
+                  Customizable
+                </label>
+              </div>
+            </div>
+
+            <div className="createproduct-form-grid">
+              <div className="createproduct-form-group">
+                <label>Min Order Quantity</label>
+                <input
+                  type="number"
+                  name="min_order_quantity"
+                  value={formData.min_order_quantity}
+                  onChange={handleInputChange}
+                  min="1"
+                />
+              </div>
+
+              <div className="createproduct-form-group">
+                <label>Lead Time (Days)</label>
+                <input
+                  type="number"
+                  name="lead_time_days"
+                  value={formData.lead_time_days}
+                  onChange={handleInputChange}
+                  placeholder="7-15"
+                  min="0"
+                />
+              </div>
             </div>
           </div>
 
@@ -412,7 +595,51 @@ const CreateProduct = () => {
                       type="text"
                       value={size.size}
                       onChange={(e) => updateSize(sizeIndex, 'size', e.target.value)}
-                      placeholder="e.g., S, M, L, XL"
+                      placeholder="e.g., Standard, Small, Large"
+                    />
+                  </div>
+                  <div className="createproduct-form-group">
+                    <label>Height (cm)</label>
+                    <input
+                      type="number"
+                      value={size.height}
+                      onChange={(e) => updateSize(sizeIndex, 'height', e.target.value)}
+                      placeholder="0"
+                      min="0"
+                      step="0.01"
+                    />
+                  </div>
+                  <div className="createproduct-form-group">
+                    <label>Width (cm)</label>
+                    <input
+                      type="number"
+                      value={size.width}
+                      onChange={(e) => updateSize(sizeIndex, 'width', e.target.value)}
+                      placeholder="0"
+                      min="0"
+                      step="0.01"
+                    />
+                  </div>
+                  <div className="createproduct-form-group">
+                    <label>Depth (cm)</label>
+                    <input
+                      type="number"
+                      value={size.depth}
+                      onChange={(e) => updateSize(sizeIndex, 'depth', e.target.value)}
+                      placeholder="0"
+                      min="0"
+                      step="0.01"
+                    />
+                  </div>
+                  <div className="createproduct-form-group">
+                    <label>Weight (kg)</label>
+                    <input
+                      type="number"
+                      value={size.weight}
+                      onChange={(e) => updateSize(sizeIndex, 'weight', e.target.value)}
+                      placeholder="0"
+                      min="0"
+                      step="0.01"
                     />
                   </div>
                   <div className="createproduct-form-group">
@@ -475,36 +702,6 @@ const CreateProduct = () => {
             <h2>Additional Information</h2>
             <div className="createproduct-form-grid">
               <div className="createproduct-form-group">
-                <label>Fitting Information</label>
-                <textarea
-                  name="fitting_info"
-                  value={formData.fitting_info}
-                  onChange={handleInputChange}
-                  placeholder="Fitting details..."
-                  rows="3"
-                />
-              </div>
-              <div className="createproduct-form-group">
-                <label>Fabric Information</label>
-                <textarea
-                  name="fabric_info"
-                  value={formData.fabric_info}
-                  onChange={handleInputChange}
-                  placeholder="Fabric details..."
-                  rows="3"
-                />
-              </div>
-              <div className="createproduct-form-group">
-                <label>Care Instructions</label>
-                <textarea
-                  name="care_info"
-                  value={formData.care_info}
-                  onChange={handleInputChange}
-                  placeholder="Care instructions..."
-                  rows="3"
-                />
-              </div>
-              <div className="createproduct-form-group">
                 <label>Product Details</label>
                 <textarea
                   name="product_detail"
@@ -535,6 +732,15 @@ const CreateProduct = () => {
                 />
               </div>
             </div>
+          </div>
+
+          {/* Product Attributes - Managed separately */}
+          <div className="createproduct-form-section">
+            <h2>Product Attributes</h2>
+            <p className="createproduct-info-text">
+              Product attributes can be managed separately after creating the product.
+              Go to Product Attributes management page to add/edit attributes.
+            </p>
           </div>
         </div>
 

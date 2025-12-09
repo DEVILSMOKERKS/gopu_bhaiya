@@ -2,7 +2,7 @@
   width: 100%;
   max-width: 97%;
   margin: 0 auto;
-  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--border-light) 100%);
 }
 
 .video-container {
@@ -13,7 +13,7 @@
   border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-  background: #000;
+  background: var(--bg-dark);
   /* iOS and Linux compatibility */
   -webkit-transform: translateZ(0);
   transform: translateZ(0);
@@ -31,7 +31,7 @@
   -moz-playsinline: true;
   -ms-playsinline: true;
   object-fit: cover;
-  background: #000;
+  background: var(--bg-dark);
 }
 
 .video-overlay {
@@ -60,7 +60,7 @@
 }
 
 .promotional-text h2 {
-  color: #ffffff;
+  color: var(--text-white);
   font-size: 1.5rem;
   font-weight: 600;
   font-family: 'Playfair Display', serif;
@@ -105,7 +105,7 @@
   justify-content: center;
   cursor: pointer;
   transition: all 0.3s ease;
-  color: #ffffff;
+  color: var(--text-white);
 }
 
 .play-pause-btn:hover {
@@ -136,7 +136,7 @@
 
 .progress-fill {
   height: 100%;
-  background: linear-gradient(90deg, #ff6b6b 0%, #ff8e8e 100%);
+  background: linear-gradient(90deg, var(--accent-red) 0%, var(--accent-red) 100%);
   border-radius: 2px;
   transition: width 0.1s ease;
 }
@@ -147,7 +147,7 @@
   transform: translate(-50%, -50%);
   width: 12px;
   height: 12px;
-  background: #ffffff;
+  background: var(--bg-primary);
   border-radius: 50%;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
   opacity: 0;
@@ -159,7 +159,7 @@
 }
 
 .time-display {
-  color: #ffffff;
+  color: var(--text-white);
   font-size: 0.875rem;
   font-weight: 500;
   min-width: 80px;
@@ -178,7 +178,7 @@
 .control-btn {
   background: transparent;
   border: 1px solid rgba(255, 255, 255, 0.2);
-  color: #ffffff;
+  color: var(--text-white);
   width: 32px;
   height: 32px;
   display: flex;
@@ -259,7 +259,7 @@
   appearance: none;
   width: 14px;
   height: 14px;
-  background: #ffffff;
+  background: var(--bg-primary);
   border-radius: 50%;
   cursor: pointer;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
@@ -274,7 +274,7 @@
 .volume-slider::-moz-range-thumb {
   width: 14px;
   height: 14px;
-  background: #ffffff;
+  background: var(--bg-primary);
   border-radius: 50%;
   cursor: pointer;
   border: none;
@@ -326,7 +326,7 @@
 .back-btn {
   background: transparent;
   border: none;
-  color: #ffffff;
+  color: var(--text-white);
   width: 24px;
   height: 24px;
   display: flex;
@@ -343,7 +343,7 @@
 }
 
 .settings-title {
-  color: #ffffff;
+  color: var(--text-white);
   font-size: 1rem;
   font-weight: 500;
   flex: 1;
@@ -364,7 +364,7 @@
   width: 100%;
   background: transparent;
   border: none;
-  color: #ffffff;
+  color: var(--text-white);
   padding: 0.75rem 1rem;
   font-size: 0.875rem;
   cursor: pointer;
@@ -384,7 +384,7 @@
 
 .check-icon {
   margin-right: 0.75rem;
-  color: #ffffff;
+  color: var(--text-white);
 }
 
 .quality-option span {
@@ -501,7 +501,7 @@
   width: 40px;
   height: 40px;
   border: 3px solid rgba(255, 255, 255, 0.3);
-  border-top: 3px solid #ffffff;
+  border-top: 3px solid var(--bg-primary);
   border-radius: 50%;
   animation: spin 1s linear infinite;
   z-index: 5;
@@ -521,7 +521,7 @@
 .play-pause-btn:focus,
 .control-btn:focus,
 .speed-option:focus {
-  outline: 2px solid #ffffff;
+  outline: 2px solid var(--bg-primary);
   outline-offset: 2px;
 }
 
@@ -532,22 +532,22 @@
   }
 
   .play-pause-btn {
-    border-color: #ffffff;
+    border-color: var(--bg-primary);
   }
 
   .progress-fill {
-    background: #ffffff;
+    background: var(--bg-primary);
   }
 
   .progress-handle {
-    background: #ffffff;
+    background: var(--bg-primary);
   }
 }
 
 /* Keyboard navigation improvements */
 .control-btn:focus-visible,
 .play-pause-btn:focus-visible {
-  outline: 2px solid #ffffff;
+  outline: 2px solid var(--bg-primary);
   outline-offset: 2px;
 }
 
@@ -563,7 +563,7 @@
   width: 16px;
   height: 16px;
   border-radius: 50%;
-  background: #ffffff;
+  background: var(--bg-primary);
   cursor: pointer;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
@@ -572,7 +572,7 @@
   width: 16px;
   height: 16px;
   border-radius: 50%;
-  background: #ffffff;
+  background: var(--bg-primary);
   cursor: pointer;
   border: none;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
@@ -590,7 +590,7 @@
 .unmute-button {
   background: rgba(0, 0, 0, 0.8);
   border: 2px solid rgba(255, 255, 255, 0.3);
-  color: #ffffff;
+  color: var(--text-white);
   padding: 0.5rem 1rem;
   font-size: 0.875rem;
   font-weight: 500;
@@ -614,6 +614,6 @@
 }
 
 .unmute-button:focus {
-  outline: 2px solid #ffffff;
+  outline: 2px solid var(--bg-primary);
   outline-offset: 2px;
 }

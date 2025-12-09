@@ -1,6 +1,6 @@
 /* Admin Order Management Styles */
 .admin-orders-container {
-  background: #f6f6f6;
+  background: var(--bg-light);
   min-height: 100vh;
   padding: 24px 0;
   font-family: var(--font-family);
@@ -140,11 +140,11 @@
 }
 
 .orders-table th {
-  background: #f6f6f6;
+  background: var(--bg-light);
   padding: 15px 12px;
   text-align: left;
   font-weight: 600;
-  color: #00000099;
+  color: var(--text-tertiary);
   border-bottom: 1.5px solid #f0f0f0;
   font-size: 16px;
   font-family: 'Open Sans', sans-serif;
@@ -162,7 +162,7 @@
 }
 
 .orders-table tr:hover {
-  background: #f8f9fa;
+  background: var(--bg-secondary);
 }
 
 .orders-table tr:last-child td {
@@ -211,7 +211,7 @@
 
 .payment-status.paid {
   background: #10b981;
-  color: #ffffff;
+  color: var(--text-white);
 }
 
 .payment-status.pending {
@@ -239,7 +239,7 @@
 
 .view-btn {
   background: var(--primary-color);
-  color: white;
+  color: var(--text-white);
 }
 
 .view-btn:hover {
@@ -249,7 +249,7 @@
 
 .update-btn {
   background: var(--primary-color);
-  color: white;
+  color: var(--text-white);
 }
 
 .update-btn:hover {
@@ -270,7 +270,7 @@
 .pagination-btn {
   padding: 10px 16px;
   border: 1px solid #e0e0e0;
-  background: white;
+  background: var(--bg-primary);
   color: var(--text-tertiary);
   cursor: pointer;
   border-radius: 8px;
@@ -281,14 +281,14 @@
 
 .pagination-btn:hover:not(:disabled) {
   background: var(--primary-color);
-  color: white;
+  color: var(--text-white);
   border-color: var(--primary-color);
   transform: translateY(-1px);
 }
 
 .pagination-btn.active {
   background: var(--primary-color);
-  color: white;
+  color: var(--text-white);
   border-color: var(--primary-color);
 }
 
@@ -313,7 +313,7 @@
 }
 
 .order-modal {
-  background: white;
+  background: var(--bg-primary);
   border-radius: 12px;
   max-width: 800px;
   width: 100%;
@@ -328,7 +328,7 @@
   align-items: center;
   padding: 20px 24px;
   border-bottom: 1px solid #eee;
-  background: #f8f9fa;
+  background: var(--bg-secondary);
   border-radius: 12px 12px 0 0;
 }
 
@@ -357,8 +357,8 @@
 }
 
 .close-btn:hover {
-  background: #f5f5f5;
-  color: #333;
+  background: var(--bg-light);
+  color: var(--text-secondary);
 }
 
 .modal-content {
@@ -523,7 +523,7 @@
   top: 0;
   bottom: 0;
   width: 2px;
-  background: #e0e0e0;
+  background: var(--border-light);
 }
 
 .tracking-item {
@@ -548,7 +548,7 @@
 }
 
 .tracking-content {
-  background: #f8f9fa;
+  background: var(--bg-secondary);
   border-radius: 8px;
   padding: 15px;
   border-left: 4px solid var(--primary-color);
@@ -616,7 +616,7 @@
   margin-top: 15px;
   padding: 8px 16px;
   background: #dc3545;
-  color: white;
+  color: var(--text-white);
   border: none;
   border-radius: 6px;
   cursor: pointer;

@@ -1,6 +1,7 @@
 const multer = require('multer');
 const path = require("path");
 const fs = require("fs");
+const sharp = require('sharp');
 
 // ✅ Allowed folders only (must match exactly)
 const allowedFolders = ["blogs", "profile", "products", "categories", "subcategories", "reviews"];
@@ -42,31 +43,53 @@ const upload = {
       fs.mkdirSync(uploadDir, { recursive: true });
     }
 
-    const storage = multer.diskStorage({
-      destination: (req, file, cb) => {
-        cb(null, uploadDir);
-      },
-      filename: (req, file, cb) => {
-        const originalName = file.originalname;
-        const targetPath = path.join(uploadDir, originalName);
+    const storage = multer.memoryStorage();
 
-        // ❌ Reject if file with same name exists
-        if (fs.existsSync(targetPath)) {
-          cb(new Error(`Image already exists: ${originalName}`));
+    const multerMiddleware = multer({ 
+      storage: storage,
+      fileFilter: (req, file, cb) => {
+        const allowedTypes = ['image/jpeg', 'image/jpg', 'image/png', 'image/webp'];
+        if (allowedTypes.includes(file.mimetype)) {
+          cb(null, true);
         } else {
-          cb(null, originalName);
+          cb(new Error('Only image files are allowed (JPEG, PNG, WebP)'));
         }
       }
-    });
-
-    const multerMiddleware = multer({ storage }).single(fieldName);
+    }).single(fieldName);
 
     return [addCorsHeaders, (req, res, next) => {
-      multerMiddleware(req, res, (err) => {
+      multerMiddleware(req, res, async (err) => {
         if (err) {
           return res.status(409).json({ error: err.message });
         }
-        next();
+
+        if (req.file) {
+          try {
+            const originalName = req.file.originalname;
+            const nameWithoutExt = path.parse(originalName).name;
+            const ext = path.parse(originalName).ext.toLowerCase();
+            const timestamp = Date.now();
+            const filename = `${nameWithoutExt}-${timestamp}${ext}`;
+            const filePath = path.join(uploadDir, filename);
+
+            if (fs.existsSync(filePath)) {
+              return res.status(409).json({ error: `Image already exists: ${filename}` });
+            }
+
+            await sharp(req.file.buffer)
+              .toFormat(ext === '.jpg' || ext === '.jpeg' ? 'jpeg' : ext === '.png' ? 'png' : 'webp')
+              .toFile(filePath);
+
+            req.file.filename = filename;
+            req.file.path = filePath;
+            next();
+          } catch (sharpError) {
+            console.error('Sharp processing error:', sharpError);
+            return res.status(500).json({ error: 'Error processing image' });
+          }
+        } else {
+          next();
+        }
       });
     }];
   },
@@ -86,27 +109,61 @@ const upload = {
     if (!fs.existsSync(uploadDir)) {
       fs.mkdirSync(uploadDir, { recursive: true });
     }
-    const storage = multer.diskStorage({
-      destination: (req, file, cb) => {
-        cb(null, uploadDir);
-      },
-      filename: (req, file, cb) => {
-        const originalName = file.originalname;
-        const targetPath = path.join(uploadDir, originalName);
-        if (fs.existsSync(targetPath)) {
-          cb(new Error(`Image already exists: ${originalName}`));
+    const storage = multer.memoryStorage();
+
+    const multerMiddleware = multer({ 
+      storage: storage,
+      fileFilter: (req, file, cb) => {
+        const allowedTypes = ['image/jpeg', 'image/jpg', 'image/png', 'image/webp'];
+        if (allowedTypes.includes(file.mimetype)) {
+          cb(null, true);
         } else {
-          cb(null, originalName);
+          cb(new Error('Only image files are allowed (JPEG, PNG, WebP)'));
         }
       }
-    });
-    const multerMiddleware = multer({ storage }).array(fieldName, maxCount);
+    }).array(fieldName, maxCount);
+
     return [addCorsHeaders, (req, res, next) => {
-      multerMiddleware(req, res, (err) => {
+      multerMiddleware(req, res, async (err) => {
         if (err) {
           return res.status(409).json({ error: err.message });
         }
-        next();
+
+        if (req.files && req.files.length > 0) {
+          try {
+            const processedFiles = [];
+            for (const file of req.files) {
+              const originalName = file.originalname;
+              const nameWithoutExt = path.parse(originalName).name;
+              const ext = path.parse(originalName).ext.toLowerCase();
+              const timestamp = Date.now();
+              const randomStr = Math.random().toString(36).substring(2, 8);
+              const filename = `${nameWithoutExt}-${timestamp}-${randomStr}${ext}`;
+              const filePath = path.join(uploadDir, filename);
+
+              if (fs.existsSync(filePath)) {
+                continue;
+              }
+
+              await sharp(file.buffer)
+                .toFormat(ext === '.jpg' || ext === '.jpeg' ? 'jpeg' : ext === '.png' ? 'png' : 'webp')
+                .toFile(filePath);
+
+              processedFiles.push({
+                ...file,
+                filename: filename,
+                path: filePath
+              });
+            }
+            req.files = processedFiles;
+            next();
+          } catch (sharpError) {
+            console.error('Sharp processing error:', sharpError);
+            return res.status(500).json({ error: 'Error processing images' });
+          }
+        } else {
+          next();
+        }
       });
     }];
   }

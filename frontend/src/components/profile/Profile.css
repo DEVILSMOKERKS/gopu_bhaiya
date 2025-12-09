@@ -12,9 +12,9 @@
   text-align: center;
   margin-bottom: 1rem;
   padding: 2rem;
-  background: white;
+  background: var(--bg-primary);
   border-radius: 20px;
- 
+
 }
 
 .user-profile-header h1 {
@@ -30,7 +30,7 @@
 
 .user-profile-header p {
   font-size: 1.1rem;
-  color: #718096;
+  color: var(--text-tertiary);
   margin: 0;
 }
 
@@ -41,7 +41,7 @@
   gap: 1rem;
   margin-bottom: 2rem;
   padding: 1rem;
-  background: white;
+  background: var(--bg-primary);
   border-radius: 15px;
   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
 }
@@ -55,18 +55,18 @@
   cursor: pointer;
   transition: all 0.3s ease;
   font-weight: 500;
-  color: #718096;
+  color: var(--text-tertiary);
 }
 
 .user-profile-navigation .user-profile-nav-item:hover {
-  background: #f7fafc;
-  color: #4a5568;
+  background: var(--bg-secondary);
+  color: var(--text-secondary);
   transform: translateY(-2px);
 }
 
 .user-profile-navigation .user-profile-nav-item.active {
   background: var(--primary-color);
-  color: white;
+  color: var(--text-white);
   box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
 }
 
@@ -89,12 +89,12 @@
 
 .user-profile-message-success {
   background: var(--primary-color);
-  color: white;
+  color: var(--text-white);
 }
 
 .user-profile-message-error {
-  background: linear-gradient(135deg, #f56565 0%, #e53e3e 100%);
-  color: white;
+  background: linear-gradient(135deg, var(--accent-red) 0%, var(--accent-error) 100%);
+  color: var(--text-white);
   box-shadow: 0 4px 15px rgba(245, 101, 101, 0.3);
 }
 
@@ -103,6 +103,7 @@
     opacity: 0;
     transform: translateY(-10px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -156,7 +157,7 @@
   align-items: center;
   justify-content: center;
   background: var(--primary-color);
-  color: white;
+  color: var(--text-white);
   font-size: 4rem;
 }
 
@@ -180,7 +181,7 @@
 }
 
 .user-profile-photo-upload-btn {
-  background: white;
+  background: var(--bg-primary);
   border: none;
   border-radius: 50%;
   width: 50px;
@@ -207,7 +208,7 @@
 
 /* Profile Info Section */
 .user-profile-info-section {
-  background: white;
+  background: var(--bg-primary);
   padding: 2rem;
   border-radius: 20px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
@@ -219,13 +220,13 @@
   align-items: center;
   margin-bottom: 2rem;
   padding-bottom: 1rem;
-  border-bottom: 2px solid #f7fafc;
+  border-bottom: 2px solid var(--bg-secondary);
 }
 
 .user-profile-info-header h2 {
   font-size: 1.8rem;
   font-weight: 600;
-  color: #2d3748;
+  color: var(--text-primary);
   margin: 0;
 }
 
@@ -243,9 +244,9 @@
 
 .user-profile-info-field {
   padding: 1.5rem;
-  background: #f7fafc;
+  background: var(--bg-secondary);
   border-radius: 12px;
-  border: 1px solid #e2e8f0;
+  border: 1px solid var(--border-light);
   transition: all 0.3s ease;
 }
 
@@ -261,7 +262,7 @@
   gap: 0.5rem;
   margin-bottom: 0.75rem;
   font-weight: 600;
-  color: #4a5568;
+  color: var(--text-secondary);
   font-size: 0.9rem;
   text-transform: uppercase;
   letter-spacing: 0.5px;
@@ -276,8 +277,8 @@
   display: flex;
   align-items: center;
   gap: 0.25rem;
-  background: linear-gradient(135deg, #48bb78 0%, #38a169 100%);
-  color: white;
+  background: linear-gradient(135deg, var(--primary-green) 0%, var(--primary-green) 100%);
+  color: var(--text-white);
   padding: 0.25rem 0.5rem;
   border-radius: 20px;
   font-size: 0.75rem;
@@ -287,7 +288,7 @@
 
 .user-profile-field-value {
   font-size: 1.1rem;
-  color: #2d3748;
+  color: var(--text-primary);
   font-weight: 500;
 }
 
@@ -324,29 +325,29 @@
 }
 
 .user-profile-status-badge.active {
-  background: linear-gradient(135deg, #48bb78 0%, #38a169 100%);
-  color: white;
+  background: linear-gradient(135deg, var(--primary-green) 0%, var(--primary-green) 100%);
+  color: var(--text-white);
 }
 
 .user-profile-status-badge.inactive {
-  background: linear-gradient(135deg, #ed8936 0%, #dd6b20 100%);
-  color: white;
+  background: linear-gradient(135deg, var(--accent-orange) 0%, var(--accent-orange) 100%);
+  color: var(--text-white);
 }
 
 .user-profile-status-badge.blocked {
-  background: linear-gradient(135deg, #f56565 0%, #e53e3e 100%);
-  color: white;
+  background: linear-gradient(135deg, var(--accent-red) 0%, var(--accent-error) 100%);
+  color: var(--text-white);
 }
 
 /* Form Inputs */
 .user-profile-info-field input {
   width: 100%;
   padding: 0.75rem 1rem;
-  border: 2px solid #e2e8f0;
+  border: 2px solid var(--border-light);
   border-radius: 8px;
   font-size: 1rem;
   transition: all 0.3s ease;
-  background: white;
+  background: var(--bg-primary);
 }
 
 .user-profile-info-field input:focus {
@@ -356,7 +357,7 @@
 }
 
 .user-profile-info-field input::placeholder {
-  color: #a0aec0;
+  color: var(--text-tertiary);
 }
 
 /* Buttons */
@@ -378,7 +379,7 @@
 
 .user-profile-btn-primary {
   background: var(--primary-color);
-  color: white;
+  color: var(--text-white);
   box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
 }
 
@@ -388,8 +389,8 @@
 }
 
 .user-profile-btn-secondary {
-  background: linear-gradient(135deg, #718096 0%, #4a5568 100%);
-  color: white;
+  background: linear-gradient(135deg, var(--text-tertiary) 0%, var(--text-secondary) 100%);
+  color: var(--text-white);
   box-shadow: 0 4px 15px rgba(113, 128, 150, 0.3);
 }
 
@@ -406,20 +407,20 @@
 
 .user-profile-btn-outline:hover {
   background: var(--primary-color);
-  color: white;
+  color: var(--text-white);
   transform: translateY(-2px);
 }
 
 .user-profile-btn-danger {
   background: var(--primary-color);
-  color: white;
+  color: var(--text-white);
   box-shadow: 0 4px 15px rgba(245, 101, 101, 0.3);
   width: max-content;
 }
 
 .user-profile-btn-danger:hover {
   transform: translateY(-2px);
-  
+
 }
 
 .user-profile-btn:disabled {
@@ -430,7 +431,7 @@
 
 /* Profile Actions Section */
 .user-profile-actions-section {
-  background: white;
+  background: var(--bg-primary);
   padding: 2rem;
   border-radius: 20px;
   grid-column: 1 / -1;
@@ -439,7 +440,7 @@
 .user-profile-actions-section h3 {
   font-size: 1.5rem;
   font-weight: 600;
-  color: #2d3748;
+  color: var(--text-primary);
   margin-bottom: 1.5rem;
 }
 
@@ -462,20 +463,25 @@
 .user-profile-loading-spinner {
   width: 50px;
   height: 50px;
-  border: 4px solid #e2e8f0;
+  border: 4px solid var(--border-light);
   border-top: 4px solid var(--primary-color);
   border-radius: 50%;
   animation: spin 1s linear infinite;
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 .user-profile-loading p {
   font-size: 1.1rem;
-  color: #718096;
+  color: var(--text-tertiary);
   margin: 0;
 }
 
@@ -490,50 +496,50 @@
   .user-profile-container {
     padding: 1rem;
   }
-  
+
   .user-profile-header {
     padding: 1.5rem;
   }
-  
+
   .user-profile-header h1 {
     font-size: 18px;
   }
-  
+
   .user-profile-header p {
     font-size: 12px;
   }
-  
+
   .user-profile-info-header h2 {
     font-size: 14px;
   }
-  
+
   .user-profile-actions-section h3 {
     font-size: 14px;
   }
-  
+
   .user-profile-info-header {
     flex-direction: column;
     gap: 1rem;
     align-items: flex-start;
   }
-  
+
   .user-profile-actions {
     width: 100%;
     justify-content: center;
   }
-  
+
   .user-profile-info-grid {
     grid-template-columns: 1fr;
   }
-  
+
   .user-profile-address-row {
     grid-template-columns: 1fr;
   }
-  
+
   .user-profile-action-buttons {
     flex-direction: column;
   }
-  
+
   .user-profile-btn {
     width: 100%;
     justify-content: center;
@@ -545,19 +551,19 @@
     width: 150px;
     height: 150px;
   }
-  
+
   .user-profile-photo-placeholder {
     font-size: 3rem;
   }
-  
+
   .user-profile-info-field {
     padding: 1rem;
   }
-  
+
   .user-profile-field-label {
     font-size: 0.8rem;
   }
-  
+
   .user-profile-field-value {
     font-size: 1rem;
   }

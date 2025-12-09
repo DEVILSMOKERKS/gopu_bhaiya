@@ -15,7 +15,7 @@
 .mmbweek-title {
   font-size: 32px;
   font-weight: 600;
-  color: #2a2a2a;
+  color: var(--text-primary);
   margin: 0 0 0.5rem 0;
   letter-spacing: 2px;
   font-family: var(--font-family);
@@ -24,7 +24,7 @@
 
 .mmbweek-subtitle {
   font-size: 1.1rem;
-  color: #666;
+  color: var(--text-tertiary);
   margin: 0;
   font-weight: 400;
 }
@@ -42,8 +42,8 @@
 .mmbweek-loading-spinner {
   width: 40px;
   height: 40px;
-  border: 3px solid #f3f3f3;
-  border-top: 3px solid #333;
+  border: 3px solid var(--bg-light);
+  border-top: 3px solid var(--text-secondary);
   border-radius: 50%;
   animation: spin 1s linear infinite;
   margin-bottom: 1rem;
@@ -60,7 +60,7 @@
 }
 
 .mmbweek-loading p {
-  color: #666;
+  color: var(--text-tertiary);
   font-size: 1rem;
   margin: 0;
 }
@@ -75,7 +75,7 @@
 }
 
 .mmbweek-error p {
-  color: #e74c3c;
+  color: var(--accent-error);
   font-size: 1rem;
   margin: 0;
   background: rgba(231, 76, 60, 0.1);
@@ -95,19 +95,19 @@
 }
 
 .mmbweek-no-products-icon {
-  color: #ccc;
+  color: var(--text-light);
   margin-bottom: 1.5rem;
 }
 
 .mmbweek-no-products h3 {
   font-size: 1.5rem;
   font-weight: 600;
-  color: #666;
+  color: var(--text-tertiary);
   margin: 0 0 0.5rem 0;
 }
 
 .mmbweek-no-products p {
-  color: #999;
+  color: var(--text-quaternary);
   font-size: 1rem;
   margin: 0;
   line-height: 1.5;
@@ -138,7 +138,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #333;
+  color: var(--text-secondary);
   transition: all 0.3s ease;
   z-index: 10;
 }
@@ -233,14 +233,14 @@
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  color: #666;
+  color: var(--text-tertiary);
   transition: all 0.3s ease;
   z-index: 5;
 }
 
 .mmbweek-heart-btn:hover {
   background: rgba(255, 255, 255, 1);
-  color: #ff4757;
+  color: var(--accent-red);
   transform: scale(1.1);
 }
 
@@ -249,12 +249,12 @@
 }
 
 .mmbweek-heart-btn-active {
-  color: #ff4757;
+  color: var(--accent-red);
   background: rgba(255, 255, 255, 1);
 }
 
 .mmbweek-heart-btn-active:hover {
-  color: #ff4757;
+  color: var(--accent-red);
   transform: scale(1.1);
 }
 
@@ -266,14 +266,14 @@
 .mmbweek-day {
   font-size: 1.1rem;
   font-weight: 600;
-  color: #1a1a1a;
+  color: var(--text-primary);
   margin: 0 0 0.5rem 0;
   text-align: start;
 }
 
 .mmbweek-description {
   font-size: 0.9rem;
-  color: #666;
+  color: var(--text-tertiary);
   margin: 0 0 0.5rem 0;
   text-align: start;
   line-height: 1.4;
@@ -295,7 +295,7 @@
 .mmbweek-price {
   font-size: 1rem;
   font-weight: 600;
-  color: #2a2a2a;
+  color: var(--text-primary);
 }
 
 .mmbweek-color-swatches {
@@ -318,7 +318,7 @@
 }
 
 .mmbweek-color-swatch-active {
-  border: 3px solid #333;
+  border: 3px solid var(--text-secondary);
   transform: scale(1.1);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
@@ -456,7 +456,7 @@
 
 /* Loading state */
 .mmbweek-card-image {
-  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background: linear-gradient(90deg, var(--bg-light) 25%, var(--border-light) 50%, var(--bg-light) 75%);
   background-size: 200% 100%;
   animation: loading 1.5s infinite;
 }
@@ -485,4 +485,3 @@
     transform: none;
   }
 }
-

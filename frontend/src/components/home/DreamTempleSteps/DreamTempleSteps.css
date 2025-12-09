@@ -68,14 +68,14 @@
   justify-content: center;
   position: relative;
   margin-bottom: 20px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow-md);
   transition: all var(--transition-normal);
   overflow: hidden;
 }
 
 .dream-temple-step-circle:hover {
   transform: scale(1.05);
-  box-shadow: 0 6px 20px rgba(182, 129, 38, 0.3);
+  box-shadow: var(--shadow-green);
   border-color: var(--primary-dark);
 }
 
@@ -141,7 +141,7 @@
   color: var(--primary-color);
   font-size: 2rem;
   font-weight: 700;
-  background: rgba(182, 129, 38, 0.1);
+  background: var(--creamy-color);
   border-radius: 50%;
   font-family: var(--font-family);
 }

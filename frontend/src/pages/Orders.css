@@ -4,7 +4,7 @@
   margin: 0 auto;
   padding: 24px;
   font-family: var(--font-family);
-  background: #f8f9fa;
+  background: var(--bg-secondary);
   min-height: 100vh;
   margin-top: 100px;
 }
@@ -12,20 +12,20 @@
 .user-orders-header {
   text-align: center;
   padding: 32px;
-  background: white;
+  background: var(--bg-primary);
 }
 
 .user-orders-header h1 {
   font-size: 28px;
   font-weight: 700;
-  color: #1a1a1a;
+  color: var(--text-primary);
   margin-bottom: 12px;
   letter-spacing: -0.5px;
 }
 
 .user-orders-header p {
   font-size: 16px;
-  color: #6c757d;
+  color: var(--text-tertiary);
   font-weight: 500;
 }
 
@@ -37,14 +37,14 @@
   margin-bottom: 20px;
   flex-wrap: wrap;
   padding: 24px;
-  background: white;
+  background: var(--bg-primary);
 }
 
 .user-orders-status-filter button {
   padding: 12px 24px;
-  border: 2px solid #e9ecef;
-  background: white;
-  color: #6c757d;
+  border: 2px solid var(--border-light);
+  background: var(--bg-primary);
+  color: var(--text-tertiary);
   border-radius: 25px;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -63,7 +63,7 @@
 .user-orders-status-filter button.active {
   background: var(--primary-color);
   border-color: var(--primary-color);
-  color: white;
+  color: var(--text-white);
   box-shadow: 0 6px 20px rgba(0, 123, 255, 0.3);
 }
 
@@ -75,7 +75,7 @@
 }
 
 .user-orders-order-card {
-  background: white;
+  background: var(--bg-primary);
   border-radius: 16px;
   padding: 28px;
   cursor: pointer;
@@ -98,13 +98,13 @@
 .user-orders-order-info h3 {
   font-size: 20px;
   font-weight: 700;
-  color: #1a1a1a;
+  color: var(--text-primary);
   margin-bottom: 8px;
   letter-spacing: -0.3px;
 }
 
 .user-orders-order-date {
-  color: #6c757d;
+  color: var(--text-tertiary);
   font-size: 14px;
   font-weight: 500;
 }
@@ -112,7 +112,7 @@
 .user-orders-status-badge {
   padding: 8px 16px;
   border-radius: 25px;
-  color: white;
+  color: var(--text-white);
   font-size: 12px;
   font-weight: 700;
   text-transform: uppercase;
@@ -134,13 +134,13 @@
 
 .user-orders-order-summary p {
   margin: 8px 0;
-  color: #6c757d;
+  color: var(--text-tertiary);
   font-size: 14px;
   font-weight: 500;
 }
 
 .user-orders-order-summary strong {
-  color: #1a1a1a;
+  color: var(--text-primary);
   font-weight: 700;
 }
 
@@ -155,13 +155,13 @@
 }
 
 .user-orders-payment-status.paid {
-  background: #d1e7dd;
-  color: #0f5132;
+  background: var(--bg-secondary);
+  color: var(--primary-green);
 }
 
 .user-orders-payment-status.pending {
-  background: #fff3cd;
-  color: #664d03;
+  background: var(--creamy-color);
+  color: var(--accent-gold);
 }
 
 .user-orders-order-actions {
@@ -187,33 +187,33 @@
 
 .user-orders-view-details-btn {
   background: var(--primary-color);
-  color: white;
+  color: var(--text-white);
 }
 
 .user-orders-view-details-btn:hover {
-  background: #0056b3;
+  background: var(--primary-color-blue);
   transform: translateY(-2px);
   box-shadow: 0 6px 20px rgba(0, 123, 255, 0.3);
 }
 
 .user-orders-cancel-btn {
-  background: #dc3545;
-  color: white;
+  background: var(--accent-error);
+  color: var(--text-white);
 }
 
 .user-orders-cancel-btn:hover {
-  background: #c82333;
+  background: var(--accent-error);
   transform: translateY(-2px);
   box-shadow: 0 6px 20px rgba(220, 53, 69, 0.3);
 }
 
 .user-orders-return-btn {
-  background: #28a745;
-  color: white;
+  background: var(--primary-green);
+  color: var(--text-white);
 }
 
 .user-orders-return-btn:hover {
-  background: #218838;
+  background: var(--primary-green);
   transform: translateY(-2px);
   box-shadow: 0 6px 20px rgba(40, 167, 69, 0.3);
 }
@@ -222,10 +222,10 @@
 .user-orders-no-orders {
   text-align: center;
   padding: 80px 24px;
-  background: white;
+  background: var(--bg-primary);
   border-radius: 16px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-  border: 1px solid #e9ecef;
+  border: 1px solid var(--border-light);
 }
 
 .user-orders-no-orders-icon {
@@ -236,14 +236,14 @@
 
 .user-orders-no-orders h3 {
   font-size: 24px;
-  color: #1a1a1a;
+  color: var(--text-primary);
   margin-bottom: 12px;
   font-weight: 700;
   letter-spacing: -0.3px;
 }
 
 .user-orders-no-orders p {
-  color: #6c757d;
+  color: var(--text-tertiary);
   margin-bottom: 32px;
   font-size: 16px;
   font-weight: 500;
@@ -252,7 +252,7 @@
 .user-orders-no-orders button {
   padding: 14px 28px;
   background: var(--primary-color);
-  color: white;
+  color: var(--text-white);
   border: none;
   border-radius: 12px;
   cursor: pointer;
@@ -264,7 +264,7 @@
 }
 
 .user-orders-no-orders button:hover {
-  background: #0056b3;
+  background: var(--primary-color-blue);
   transform: translateY(-2px);
   box-shadow: 0 6px 20px rgba(0, 123, 255, 0.3);
 }
@@ -273,16 +273,16 @@
 .user-orders-loading-spinner {
   text-align: center;
   padding: 80px 24px;
-  background: white;
+  background: var(--bg-primary);
   border-radius: 16px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-  border: 1px solid #e9ecef;
+  border: 1px solid var(--border-light);
 }
 
 .user-orders-spinner {
   width: 48px;
   height: 48px;
-  border: 4px solid #e9ecef;
+  border: 4px solid var(--border-light);
   border-top: 4px solid var(--primary-color);
   border-radius: 50%;
   animation: spin 1s linear infinite;
@@ -290,26 +290,31 @@
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 /* Error Message */
 .user-orders-error-message {
   text-align: center;
   padding: 10px;
-  background: #f8d7da;
-  border: 1px solid #f5c6cb;
+  background: var(--bg-secondary);
+  border: 1px solid var(--accent-error);
   border-radius: 16px;
-  color: #721c24;
+  color: var(--accent-error);
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
 }
 
 .user-orders-error-message button {
   margin-top: 20px;
   padding: 12px 24px;
-  background: #dc3545;
-  color: white;
+  background: var(--accent-error);
+  color: var(--text-white);
   border: none;
   border-radius: 12px;
   cursor: pointer;
@@ -328,17 +333,17 @@
   margin-top: 40px;
   flex-wrap: wrap;
   padding: 24px;
-  background: white;
+  background: var(--bg-primary);
   border-radius: 16px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-  border: 1px solid #e9ecef;
+  border: 1px solid var(--border-light);
 }
 
 .user-orders-pagination-btn {
   padding: 10px 16px;
-  border: 2px solid #e9ecef;
-  background: white;
-  color: #6c757d;
+  border: 2px solid var(--border-light);
+  background: var(--bg-primary);
+  color: var(--text-tertiary);
   cursor: pointer;
   border-radius: 12px;
   transition: all 0.3s ease;
@@ -349,7 +354,7 @@
 
 .user-orders-pagination-btn:hover:not(:disabled) {
   background: var(--primary-color);
-  color: white;
+  color: var(--text-white);
   border-color: var(--primary-color);
   transform: translateY(-2px);
   box-shadow: 0 6px 20px rgba(0, 123, 255, 0.3);
@@ -357,7 +362,7 @@
 
 .user-orders-pagination-btn.active {
   background: var(--primary-color);
-  color: white;
+  color: var(--text-white);
   border-color: var(--primary-color);
   box-shadow: 0 4px 12px rgba(0, 123, 255, 0.3);
 }

@@ -336,26 +336,6 @@ const ViewProduct = ({ productId }) => {
           <div className="viewproduct-detail-section">
             <h3>Additional Information</h3>
             <div className="viewproduct-info-grid">
-              {product.fitting_info && (
-                <div className="viewproduct-info-item">
-                  <h4>Fitting Information</h4>
-                  <p>{product.fitting_info}</p>
-                </div>
-              )}
-
-              {product.fabric_info && (
-                <div className="viewproduct-info-item">
-                  <h4>Fabric Information</h4>
-                  <p>{product.fabric_info}</p>
-                </div>
-              )}
-
-              {product.care_info && (
-                <div className="viewproduct-info-item">
-                  <h4>Care Instructions</h4>
-                  <p>{product.care_info}</p>
-                </div>
-              )}
 
               {product.product_detail && (
                 <div className="viewproduct-info-item">

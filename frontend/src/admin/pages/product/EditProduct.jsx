@@ -17,12 +17,22 @@ const EditProduct = ({ productId }) => {
 
   const [formData, setFormData] = useState({
     name: '',
+    sku: '',
     category_id: '',
     subcategory_id: '',
+    slug: '',
+    meta_title: '',
+    meta_description: '',
+    featured_image: '',
+    video_url: '',
+    tags: '',
+    is_featured: false,
+    is_new: false,
+    is_bestseller: false,
+    is_customizable: false,
+    min_order_quantity: 1,
+    lead_time_days: '',
     description: '',
-    fitting_info: '',
-    fabric_info: '',
-    care_info: '',
     product_detail: '',
     shipping_info: '',
     return_policy: '',
@@ -34,8 +44,9 @@ const EditProduct = ({ productId }) => {
   ]);
 
   const [sizes, setSizes] = useState([
-    { size: 'S', actual_price: '', sell_price: '', offer_percent: 0, stock: 0 }
+    { size: 'Standard', actual_price: '', sell_price: '', offer_percent: 0, stock: 0, height: '', width: '', depth: '', weight: '', dimensions_unit: 'cm', weight_unit: 'kg' }
   ]);
+
 
   // Get API URL from environment variable
   const API_URL = process.env.NEXT_PUBLIC_API_URL
@@ -88,12 +99,22 @@ const EditProduct = ({ productId }) => {
         // Set basic form data
         setFormData({
           name: product.name || '',
+          sku: product.sku || '',
           category_id: product.category_id || '',
           subcategory_id: product.subcategory_id || '',
+          slug: product.slug || '',
+          meta_title: product.meta_title || '',
+          meta_description: product.meta_description || '',
+          featured_image: product.featured_image || '',
+          video_url: product.video_url || '',
+          tags: product.tags || '',
+          is_featured: product.is_featured || false,
+          is_new: product.is_new || false,
+          is_bestseller: product.is_bestseller || false,
+          is_customizable: product.is_customizable || false,
+          min_order_quantity: product.min_order_quantity || 1,
+          lead_time_days: product.lead_time_days || '',
           description: product.description || '',
-          fitting_info: product.fitting_info || '',
-          fabric_info: product.fabric_info || '',
-          care_info: product.care_info || '',
           product_detail: product.product_detail || '',
           shipping_info: product.shipping_info || '',
           return_policy: product.return_policy || '',
@@ -129,13 +150,21 @@ const EditProduct = ({ productId }) => {
         // Set sizes
         if (product.sizes && product.sizes.length > 0) {
           setSizes(product.sizes.map(size => ({
-            size: size.size || '',
+            size: size.size || 'Standard',
+            height: size.height || '',
+            width: size.width || '',
+            depth: size.depth || '',
+            weight: size.weight || '',
+            dimensions_unit: size.dimensions_unit || 'cm',
+            weight_unit: size.weight_unit || 'kg',
             actual_price: size.actual_price || '',
             sell_price: size.sell_price || '',
             offer_percent: size.offer_percent || 0,
             stock: size.stock || 0
           })));
         }
+
+        // Attributes are managed separately via Product Attributes management page
 
       } else {
         alert('Product not found');
@@ -220,6 +249,7 @@ const EditProduct = ({ productId }) => {
       i === index ? { ...size, [field]: value } : size
     ));
   };
+
 
   // Custom validation for edit mode that only validates new uploaded images
   const validateImageUploadForEdit = (colors) => {
@@ -377,6 +407,8 @@ const EditProduct = ({ productId }) => {
       // Add sizes
       formDataToSend.append('sizes', JSON.stringify(sizes));
 
+      // Attributes are managed separately via Product Attributes management page
+
       const token = typeof window !== 'undefined' ? localStorage.getItem('adminToken') : null;
       const response = await axios.put(`${API_URL}/products/${productId}`, formDataToSend, {
         headers: {
@@ -443,6 +475,28 @@ const EditProduct = ({ productId }) => {
               </div>
 
               <div className="editproduct-form-group">
+                <label>SKU</label>
+                <input
+                  type="text"
+                  name="sku"
+                  value={formData.sku}
+                  onChange={handleInputChange}
+                  placeholder="Product SKU/Code"
+                />
+              </div>
+
+              <div className="editproduct-form-group">
+                <label>Slug (URL)</label>
+                <input
+                  type="text"
+                  name="slug"
+                  value={formData.slug}
+                  onChange={handleInputChange}
+                  placeholder="product-url-slug"
+                />
+              </div>
+
+              <div className="editproduct-form-group">
                 <label>Category</label>
                 <select
                   name="category_id"
@@ -497,6 +551,142 @@ const EditProduct = ({ productId }) => {
                 placeholder="Enter product description"
                 rows="4"
               />
+            </div>
+          </div>
+
+          {/* SEO & Marketing */}
+          <div className="editproduct-form-section">
+            <h2>SEO & Marketing</h2>
+            <div className="editproduct-form-grid">
+              <div className="editproduct-form-group">
+                <label>Meta Title</label>
+                <input
+                  type="text"
+                  name="meta_title"
+                  value={formData.meta_title}
+                  onChange={handleInputChange}
+                  placeholder="SEO meta title"
+                />
+              </div>
+
+              <div className="editproduct-form-group">
+                <label>Meta Description</label>
+                <textarea
+                  name="meta_description"
+                  value={formData.meta_description}
+                  onChange={handleInputChange}
+                  placeholder="SEO meta description"
+                  rows="2"
+                />
+              </div>
+
+              <div className="editproduct-form-group">
+                <label>Featured Image URL</label>
+                <input
+                  type="text"
+                  name="featured_image"
+                  value={formData.featured_image}
+                  onChange={handleInputChange}
+                  placeholder="https://..."
+                />
+              </div>
+
+              <div className="editproduct-form-group">
+                <label>Video URL</label>
+                <input
+                  type="text"
+                  name="video_url"
+                  value={formData.video_url}
+                  onChange={handleInputChange}
+                  placeholder="https://youtube.com/..."
+                />
+              </div>
+
+              <div className="editproduct-form-group">
+                <label>Tags (comma separated)</label>
+                <input
+                  type="text"
+                  name="tags"
+                  value={formData.tags}
+                  onChange={handleInputChange}
+                  placeholder="marble, statue, temple"
+                />
+              </div>
+            </div>
+
+            <div className="editproduct-form-grid">
+              <div className="editproduct-form-group">
+                <label>
+                  <input
+                    type="checkbox"
+                    name="is_featured"
+                    checked={formData.is_featured}
+                    onChange={(e) => setFormData(prev => ({ ...prev, is_featured: e.target.checked }))}
+                  />
+                  Featured Product
+                </label>
+              </div>
+
+              <div className="editproduct-form-group">
+                <label>
+                  <input
+                    type="checkbox"
+                    name="is_new"
+                    checked={formData.is_new}
+                    onChange={(e) => setFormData(prev => ({ ...prev, is_new: e.target.checked }))}
+                  />
+                  New Product
+                </label>
+              </div>
+
+              <div className="editproduct-form-group">
+                <label>
+                  <input
+                    type="checkbox"
+                    name="is_bestseller"
+                    checked={formData.is_bestseller}
+                    onChange={(e) => setFormData(prev => ({ ...prev, is_bestseller: e.target.checked }))}
+                  />
+                  Bestseller
+                </label>
+              </div>
+
+              <div className="editproduct-form-group">
+                <label>
+                  <input
+                    type="checkbox"
+                    name="is_customizable"
+                    checked={formData.is_customizable}
+                    onChange={(e) => setFormData(prev => ({ ...prev, is_customizable: e.target.checked }))}
+                  />
+                  Customizable
+                </label>
+              </div>
+            </div>
+
+            <div className="editproduct-form-grid">
+              <div className="editproduct-form-group">
+                <label>Min Order Quantity</label>
+                <input
+                  type="number"
+                  name="min_order_quantity"
+                  value={formData.min_order_quantity}
+                  onChange={handleInputChange}
+                  min="1"
+                />
+              </div>
+
+              <div className="editproduct-form-group">
+                <label>Lead Time (Days)</label>
+                <input
+                  type="number"
+                  name="lead_time_days"
+                  value={formData.lead_time_days}
+                  onChange={handleInputChange}
+                  placeholder="7-15"
+                  min="0"
+                />
+              </div>
             </div>
           </div>
 
@@ -650,7 +840,51 @@ const EditProduct = ({ productId }) => {
                       type="text"
                       value={size.size}
                       onChange={(e) => updateSize(sizeIndex, 'size', e.target.value)}
-                      placeholder="e.g., S, M, L, XL"
+                      placeholder="e.g., Standard, Small, Large"
+                    />
+                  </div>
+                  <div className="editproduct-form-group">
+                    <label>Height (cm)</label>
+                    <input
+                      type="number"
+                      value={size.height}
+                      onChange={(e) => updateSize(sizeIndex, 'height', e.target.value)}
+                      placeholder="0"
+                      min="0"
+                      step="0.01"
+                    />
+                  </div>
+                  <div className="editproduct-form-group">
+                    <label>Width (cm)</label>
+                    <input
+                      type="number"
+                      value={size.width}
+                      onChange={(e) => updateSize(sizeIndex, 'width', e.target.value)}
+                      placeholder="0"
+                      min="0"
+                      step="0.01"
+                    />
+                  </div>
+                  <div className="editproduct-form-group">
+                    <label>Depth (cm)</label>
+                    <input
+                      type="number"
+                      value={size.depth}
+                      onChange={(e) => updateSize(sizeIndex, 'depth', e.target.value)}
+                      placeholder="0"
+                      min="0"
+                      step="0.01"
+                    />
+                  </div>
+                  <div className="editproduct-form-group">
+                    <label>Weight (kg)</label>
+                    <input
+                      type="number"
+                      value={size.weight}
+                      onChange={(e) => updateSize(sizeIndex, 'weight', e.target.value)}
+                      placeholder="0"
+                      min="0"
+                      step="0.01"
                     />
                   </div>
                   <div className="editproduct-form-group">
@@ -713,36 +947,6 @@ const EditProduct = ({ productId }) => {
             <h2>Additional Information</h2>
             <div className="editproduct-form-grid">
               <div className="editproduct-form-group">
-                <label>Fitting Information</label>
-                <textarea
-                  name="fitting_info"
-                  value={formData.fitting_info}
-                  onChange={handleInputChange}
-                  placeholder="Fitting details..."
-                  rows="3"
-                />
-              </div>
-              <div className="editproduct-form-group">
-                <label>Fabric Information</label>
-                <textarea
-                  name="fabric_info"
-                  value={formData.fabric_info}
-                  onChange={handleInputChange}
-                  placeholder="Fabric details..."
-                  rows="3"
-                />
-              </div>
-              <div className="editproduct-form-group">
-                <label>Care Instructions</label>
-                <textarea
-                  name="care_info"
-                  value={formData.care_info}
-                  onChange={handleInputChange}
-                  placeholder="Care instructions..."
-                  rows="3"
-                />
-              </div>
-              <div className="editproduct-form-group">
                 <label>Product Details</label>
                 <textarea
                   name="product_detail"
@@ -773,6 +977,15 @@ const EditProduct = ({ productId }) => {
                 />
               </div>
             </div>
+          </div>
+
+          {/* Product Attributes - Managed separately */}
+          <div className="editproduct-form-section">
+            <h2>Product Attributes</h2>
+            <p className="editproduct-info-text">
+              Product attributes can be managed separately.
+              Go to Product Attributes management page to add/edit attributes for this product.
+            </p>
           </div>
         </div>
 

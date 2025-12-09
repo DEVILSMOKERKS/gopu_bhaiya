@@ -437,7 +437,7 @@
   background: rgba(255, 255, 255, 0.95);
   padding: 10px 12px;
   border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  box-shadow: var(--shadow-dropdown);
   backdrop-filter: blur(8px);
   border: 1px solid rgba(255, 255, 255, 0.2);
   transition: all 0.3s ease;
@@ -464,7 +464,7 @@
   align-items: center;
   justify-content: center;
   transition: all 0.3s ease;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow-sm);
 }
 
 .zoom-btn:hover:not(:disabled) {
@@ -560,7 +560,7 @@
   background: rgba(255, 255, 255, 0.9);
   border: 1px solid var(--border-light);
   border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow-sm);
 }
 
 .zoom-btn {
@@ -1409,7 +1409,7 @@
 }
 
 .zoom-close-btn:hover {
-  background: white;
+  background: var(--bg-primary);
   transform: scale(1.1);
 }
 
@@ -1418,7 +1418,7 @@
   max-height: 100%;
   object-fit: contain;
   border-radius: 8px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  box-shadow: var(--shadow-popup);
   user-select: none;
   pointer-events: auto;
   transition: transform 0.3s ease;

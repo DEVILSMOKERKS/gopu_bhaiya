@@ -72,13 +72,13 @@
   background: var(--bg-primary);
   border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  box-shadow: var(--shadow-xs);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .projects-page .project-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+  box-shadow: var(--shadow-lg);
 }
 
 .projects-page .project-image-wrapper {
@@ -107,7 +107,7 @@
   position: absolute;
   top: 15px;
   right: 15px;
-  background: rgba(182, 129, 38, 0.9);
+  background: var(--primary-color);
   padding: 6px 12px;
   border-radius: 4px;
   z-index: 2;

@@ -2,7 +2,7 @@
    FOOTER BASE STYLES
    ============================================ */
 .footer {
-  background-color: #000000;
+  background-color: var(--bg-dark);
   color: var(--text-white);
   font-family: var(--font-family);
   position: relative;
@@ -307,12 +307,12 @@
 
 .footer-notification.success {
   background: linear-gradient(135deg, #4CAF50, #45a049);
-  color: white;
+  color: var(--text-white);
 }
 
 .footer-notification.error {
   background: linear-gradient(135deg, #f44336, #d32f2f);
-  color: white;
+  color: var(--text-white);
 }
 
 .notification-content {
@@ -343,7 +343,7 @@
 .notification-close {
   background: none;
   border: none;
-  color: white;
+  color: var(--text-white);
   cursor: pointer;
   padding: 4px;
   border-radius: 4px;
