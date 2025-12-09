@@ -57,7 +57,7 @@
   width: 80px;
   height: 80px;
   margin-bottom: 20px;
-  color: #ffffff;
+  color: var(--text-white);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -72,7 +72,7 @@
 .makers-hands-feature-title {
   font-size: 1.1rem;
   font-weight: 600;
-  color: #ffffff;
+  color: var(--text-white);
   margin: 0;
   line-height: 1.4;
   font-family: var(--font-family);

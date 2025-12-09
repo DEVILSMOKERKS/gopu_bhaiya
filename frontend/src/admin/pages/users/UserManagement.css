@@ -199,7 +199,7 @@
 .user-avatar-placeholder {
   width: 100%;
   height: 100%;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
   color: var(--text-white);
   display: flex;
   align-items: center;
@@ -235,12 +235,12 @@
 }
 
 .user-phone {
-  color: #6b7280;
+  color: var(--text-tertiary);
   word-break: break-all;
 }
 
 .user-date {
-  color: #6b7280;
+  color: var(--text-tertiary);
   font-size: 12px;
   white-space: nowrap;
 }
@@ -270,9 +270,9 @@
 }
 
 .status-select.status-inactive {
-  background-color: #fef3c7;
-  border-color: #f59e0b;
-  color: #92400e;
+  background-color: var(--creamy-color);
+  border-color: var(--accent-orange);
+  color: var(--primary-dark);
 }
 
 .status-select.status-blocked {
@@ -291,7 +291,7 @@
   top: 100%;
   left: 0;
   font-size: 10px;
-  color: #6b7280;
+  color: var(--text-tertiary);
   margin-top: 4px;
 }
 
@@ -336,7 +336,7 @@
 }
 
 .delete-btn:hover {
-  background: #dc2626;
+  background: var(--accent-error);
   transform: translateY(-1px);
 }
 
@@ -471,7 +471,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 20px 24px;
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid var(--border-light);
   background: var(--bg-secondary);
   border-radius: 12px 12px 0 0;
 }

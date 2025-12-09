@@ -18,7 +18,7 @@
 }
 
 .paymentsuccessful-title {
-    color: #4CAF50;
+    color: var(--primary-green);
     font-size: 2.5rem;
     font-weight: bold;
     margin-bottom: 30px;
@@ -30,7 +30,7 @@
 }
 
 .paymentsuccessful-message p {
-    color: #666;
+    color: var(--text-tertiary);
     font-size: 1rem;
     line-height: 1.5;
     margin: 10px 0;
@@ -41,7 +41,7 @@
 }
 
 .paymentsuccessful-contact p {
-    color: #666;
+    color: var(--text-tertiary);
     font-size: 1rem;
     line-height: 1.5;
     margin: 8px 0;
@@ -49,13 +49,13 @@
 
 .paymentsuccessful-phone {
     font-weight: bold;
-    color: #333;
+    color: var(--text-secondary);
     font-size: 1.1rem;
 }
 
 .paymentsuccessful-email {
     font-weight: bold;
-    color: #333;
+    color: var(--text-secondary);
     font-size: 1.1rem;
 }
 
@@ -64,10 +64,8 @@
     .paymentsuccessful-title {
         font-size: 2rem;
     }
-    
+
     .paymentsuccessful-content {
         padding: 0 20px;
     }
 }
-
-

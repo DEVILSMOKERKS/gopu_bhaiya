@@ -6,7 +6,7 @@
   background: white;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   z-index: 1001;
-  border-top: 1px solid #e5e5e5;
+  border-top: 1px solid var(--border-light);
   opacity: 0;
   visibility: hidden;
   transform: translateY(-10px);
@@ -42,7 +42,7 @@
 .megamenu-mega-menu-heading {
   font-size: 16px;
   font-weight: 600;
-  color: #333;
+  color: var(--text-secondary);
   margin-bottom: 20px;
   text-transform: uppercase;
   letter-spacing: 0.5px;
@@ -59,7 +59,7 @@
 }
 
 .megamenu-mega-menu-link {
-  color: #666;
+  color: var(--text-tertiary);
   text-decoration: none;
   font-size: 14px;
   transition: color 0.2s ease;
@@ -68,7 +68,7 @@
 }
 
 .megamenu-mega-menu-link:hover {
-  color: #333;
+  color: var(--text-secondary);
   text-decoration: underline;
 }
 
@@ -97,7 +97,7 @@
 .megamenu-mega-menu-image-title {
   font-size: 14px;
   font-weight: 500;
-  color: #333;
+  color: var(--text-secondary);
   margin: 0;
   text-align: center;
 }
@@ -108,18 +108,18 @@
     flex-direction: column;
     padding: 20px;
   }
-  
+
   .megamenu-mega-menu-content {
     flex-direction: column;
     gap: 30px;
   }
-  
+
   .megamenu-mega-menu-images {
     flex-direction: row;
     justify-content: center;
     gap: 15px;
   }
-  
+
   .megamenu-mega-menu-image {
     width: 140px;
     height: 180px;

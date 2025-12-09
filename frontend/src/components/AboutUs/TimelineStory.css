@@ -45,7 +45,7 @@
     top: 0;
     bottom: 0;
     width: 2px;
-    background: linear-gradient(to bottom, #d4a574, #d4a574 0%, #d4a574 var(--scroll-progress, 0%), #e0e0e0 var(--scroll-progress, 0%), #e0e0e0 100%);
+    background: linear-gradient(to bottom, var(--primary-color), var(--primary-color) 0%, var(--primary-color) var(--scroll-progress, 0%), var(--border-light) var(--scroll-progress, 0%), var(--border-light) 100%);
     transform: translateX(-50%);
 }
 

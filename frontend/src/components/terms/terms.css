@@ -349,7 +349,7 @@
 
   .terms-header,
   .terms-footer {
-    background: #f8f9fa !important;
+    background: var(--bg-secondary) !important;
     color: var(--text-primary) !important;
   }
 
@@ -363,7 +363,7 @@
   }
 
   .terms-important-notes {
-    background: #f8f9fa !important;
+    background: var(--bg-secondary) !important;
     border-left: 4px solid var(--text-tertiary);
   }
 }

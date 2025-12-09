@@ -53,7 +53,7 @@
   position: relative;
   width: 100%;
   padding: 80px 20px;
-  background: #f8f8f8;
+  background: var(--bg-secondary);
   overflow: hidden;
 }
 
@@ -185,7 +185,7 @@
   width: 100%;
   height: 100%;
   min-height: 300px;
-  background: #f0f0f0;
+  background: var(--bg-light);
   border-radius: 12px;
   display: flex;
   align-items: center;
@@ -201,13 +201,13 @@
   left: 1rem;
   width: 64px;
   height: 64px;
-  background: #92400e;
+  background: var(--primary-dark);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   box-shadow: var(--shadow-sm);
-  border: 3px solid #fff;
+  border: 3px solid var(--text-white);
 }
 
 .about-logo-content {
@@ -225,7 +225,7 @@
 .about-logo-line {
   width: 28px;
   height: 2px;
-  background: #fcd34d;
+  background: var(--accent-gold);
   margin: 0.25rem auto 0 auto;
   border-radius: 1px;
 }
@@ -233,7 +233,7 @@
 .about-title-line {
   height: 2px;
   width: 48px;
-  background: linear-gradient(to left, var(--primary-color), #fff);
+  background: linear-gradient(to left, var(--primary-color), var(--bg-primary));
   border-radius: 2px;
   margin-left: 12px;
   margin-top: 0;
@@ -400,7 +400,7 @@
 }
 
 .craftsmanship-card {
-  background: #f0f8f0;
+  background: var(--bg-secondary);
   padding: 2.5rem 2rem;
   border-radius: 12px;
   text-align: center;
@@ -598,7 +598,7 @@
 }
 
 .different-feature-description {
-  color: #e5e7eb;
+  color: var(--text-light);
   font-size: 1rem;
   font-family: "Crimson Pro", serif;
   line-height: 1.7;
@@ -735,7 +735,7 @@
 .craftsmanship-title-line-left {
   flex: 1;
   height: 2px;
-  background: linear-gradient(to right, #9a0e0d, #fff);
+  background: linear-gradient(to right, var(--primary-dark), var(--bg-primary));
   min-width: 60px;
   max-width: 120px;
 }
@@ -743,7 +743,7 @@
 .craftsmanship-title-line-right {
   flex: 1;
   height: 2px;
-  background: linear-gradient(to left, #9a0e0d, #fff);
+  background: linear-gradient(to left, var(--primary-dark), var(--bg-primary));
   min-width: 60px;
   max-width: 120px;
 }
@@ -781,7 +781,7 @@
 .about-different-title-line-left {
   flex: 1;
   height: 2px;
-  background: linear-gradient(to right, #9a0e0d, #fff);
+  background: linear-gradient(to right, var(--primary-dark), var(--bg-primary));
   min-width: 60px;
   max-width: 120px;
 }
@@ -789,7 +789,7 @@
 .about-different-title-line-right {
   flex: 1;
   height: 2px;
-  background: linear-gradient(to left, #9a0e0d, #fff);
+  background: linear-gradient(to left, var(--primary-dark), var(--bg-primary));
   min-width: 60px;
   max-width: 120px;
 }
@@ -813,7 +813,7 @@
 .journey-carousel-mobile {
   display: none;
   width: 100%;
-  background: #e8d5b7;
+  background: var(--creamy-color);
   padding: 3rem 1.5rem;
   margin-top: 2rem;
 }
@@ -844,7 +844,7 @@
 
 .journey-carousel-description {
   font-size: 1rem;
-  color: #555;
+  color: var(--text-tertiary);
   line-height: 1.6;
   margin: 0;
   max-width: 600px;
@@ -965,7 +965,7 @@
 .journey-dot.active {
   width: 12px;
   height: 12px;
-  background: #ccc;
+  background: var(--text-light);
   box-shadow: 0 0 0 2px rgba(204, 204, 204, 0.3);
 }
 

@@ -232,7 +232,7 @@
 
 .direct-makers-hands-empty-message {
     font-size: 1rem;
-    color: #999999;
+    color: var(--text-quaternary);
     margin: 0;
     max-width: 500px;
     line-height: 1.6;
@@ -278,7 +278,7 @@
     height: 10px;
     border-radius: 50%;
     border: none;
-    background: #d0d0d0;
+    background: var(--text-light);
     cursor: pointer;
     transition: all var(--transition-normal);
     padding: 0;
@@ -291,7 +291,7 @@
 }
 
 .direct-makers-hands-dot:hover {
-    background: #666666;
+    background: var(--text-tertiary);
 }
 
 /* ============================================

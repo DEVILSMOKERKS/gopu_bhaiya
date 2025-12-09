@@ -149,12 +149,12 @@
 
 .return-policy-card.return-eligible {
   border-color: var(--primary-green);
-  background: linear-gradient(135deg, #f8fff9 0%, #e8f5e8 100%);
+  background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-secondary) 100%);
 }
 
 .return-policy-card.return-not-eligible {
   border-color: var(--accent-error);
-  background: linear-gradient(135deg, #fff8f8 0%, #ffe8e8 100%);
+  background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-secondary) 100%);
 }
 
 .return-policy-header {
@@ -302,7 +302,7 @@
   gap: 1rem;
   margin-bottom: 1rem;
   padding-bottom: 1rem;
-  border-bottom: 1px solid #e9ecef;
+  border-bottom: 1px solid var(--border-light);
 }
 
 .return-timeline-item:last-child {
@@ -532,7 +532,7 @@
 }
 
 .return-contact-time {
-  color: #6c757d !important;
+  color: var(--text-tertiary) !important;
   font-size: 0.9rem;
   font-weight: normal !important;
 }

@@ -2,7 +2,7 @@
   max-width: 95%;
   margin: 0 auto;
   padding: 20px;
-  background-color: #f8f8f8;
+  background-color: var(--bg-secondary);
   font-family: var(--font-family);
 }
 

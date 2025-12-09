@@ -197,7 +197,7 @@
 }
 
 .productlist-table-row {
-  border-bottom: 1px solid #f1f5f9;
+  border-bottom: 1px solid var(--border-light);
   transition: background-color 0.2s ease;
 }
 
@@ -296,13 +296,13 @@
 }
 
 .productlist-status-badge.active {
-  background: #dcfce7;
-  color: #166534;
+  background: var(--bg-secondary);
+  color: var(--primary-green);
 }
 
 .productlist-status-badge.inactive {
-  background: #fef2f2;
-  color: #dc2626;
+  background: var(--bg-secondary);
+  color: var(--accent-error);
 }
 
 /* Actions Column */
@@ -327,42 +327,42 @@
 }
 
 .productlist-view-btn {
-  background: #3b82f6;
+  background: var(--primary-color-blue);
   color: var(--text-white);
 }
 
 .productlist-view-btn:hover {
-  background: #2563eb;
+  background: var(--primary-color-blue);
   transform: scale(1.1);
 }
 
 .productlist-edit-btn {
-  background: #f59e0b;
+  background: var(--accent-orange);
   color: var(--text-white);
 }
 
 .productlist-edit-btn:hover {
-  background: #d97706;
+  background: var(--accent-orange);
   transform: scale(1.1);
 }
 
 .productlist-delete-btn {
-  background: #ef4444;
+  background: var(--accent-red);
   color: var(--text-white);
 }
 
 .productlist-delete-btn:hover {
-  background: #dc2626;
+  background: var(--accent-error);
   transform: scale(1.1);
 }
 
 /* Error Message */
 .productlist-error-message {
-  background: #fef2f2;
-  color: #dc2626;
+  background: var(--bg-secondary);
+  color: var(--accent-error);
   padding: 1rem;
   border-radius: 8px;
-  border: 1px solid #fecaca;
+  border: 1px solid var(--accent-error);
   margin-bottom: 1rem;
   font-size: 0.875rem;
 }
@@ -406,7 +406,7 @@
 }
 
 .productlist-add-first-product-btn:hover {
-  background: #5a67d8;
+  background: var(--primary-color);
   transform: translateY(-1px);
 }
 
@@ -484,7 +484,7 @@
 .productlist-spinner {
   width: 40px;
   height: 40px;
-  border: 4px solid #f3f4f6;
+  border: 4px solid var(--bg-light);
   border-top: 4px solid var(--primary-color);
   border-radius: 50%;
   animation: spin 1s linear infinite;

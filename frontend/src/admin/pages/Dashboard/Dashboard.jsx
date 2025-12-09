@@ -265,7 +265,7 @@ const Dashboard = () => {
             onClick={() => router.push('/admin/products/create')}
           >
             <div className="quick-action-icon">
-              <Plus size={24} stroke="var(--primary-color)" />
+              <Plus size={18} stroke="var(--primary-color)" />
             </div>
             <div className="quick-action-content">
               <h3>Add Product</h3>
@@ -278,7 +278,7 @@ const Dashboard = () => {
             onClick={() => router.push('/admin/categories/create')}
           >
             <div className="quick-action-icon">
-              <FolderPlus size={24} stroke="var(--primary-color)" />
+              <FolderPlus size={18} stroke="var(--primary-color)" />
             </div>
             <div className="quick-action-content">
               <h3>Add Category</h3>
@@ -291,7 +291,7 @@ const Dashboard = () => {
             onClick={() => router.push('/admin/subcategories/create')}
           >
             <div className="quick-action-icon">
-              <Layers size={24} stroke="var(--primary-color)" />
+              <Layers size={18} stroke="var(--primary-color)" />
             </div>
             <div className="quick-action-content">
               <h3>Add Sub Category</h3>
@@ -304,7 +304,7 @@ const Dashboard = () => {
             onClick={() => router.push('/admin/orders')}
           >
             <div className="quick-action-icon">
-              <Package size={24} stroke="var(--primary-color)" />
+              <Package size={18} stroke="var(--primary-color)" />
             </div>
             <div className="quick-action-content">
               <h3>Orders</h3>

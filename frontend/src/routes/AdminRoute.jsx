@@ -18,6 +18,7 @@ import ProductList from "../admin/pages/product/ProductList"
 import CreateProduct from "../admin/pages/product/CreateProduct"
 import EditProduct from "../admin/pages/product/EditProduct"
 import ViewProduct from "../admin/pages/product/ViewProduct"
+import ProductAttributes from "../admin/pages/product/ProductAttributes"
 import { OfferList, CreateOffer, EditOffer } from "../admin/pages/offer"
 import OrderManagement from "../admin/OrderManagement"
 import { ReviewManagement } from "../admin/pages/review"
@@ -248,6 +249,11 @@ const AdminRoute = () => {
       <Route path="/admin/products/view/:productId" element={
         <AdminLayout>
           <ViewProduct />
+        </AdminLayout>
+      } />
+      <Route path="/admin/product-attributes" element={
+        <AdminLayout>
+          <ProductAttributes />
         </AdminLayout>
       } />
 

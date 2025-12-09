@@ -38,6 +38,10 @@ const Sidebar = ({ isMobileOpen, onMobileClose }) => {
         {
           label: 'Add Product',
           path: '/admin/products/create'
+        },
+        {
+          label: 'Product Attributes',
+          path: '/admin/product-attributes'
         }
       ]
     },

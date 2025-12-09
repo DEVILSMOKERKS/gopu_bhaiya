@@ -12,12 +12,12 @@
 .contact-header h1 {
   color: var(--primary-color);
   margin-bottom: 10px;
-  font-size: 2.5rem;
+  font-size: 1.75rem;
 }
 
 .contact-header p {
   color: var(--text-tertiary);
-  font-size: 1.1rem;
+  font-size: 0.95rem;
 }
 
 /* Statistics Cards */
@@ -40,13 +40,13 @@
 .stat-card h3 {
   color: var(--text-tertiary);
   margin-bottom: 10px;
-  font-size: 1rem;
+  font-size: 0.875rem;
   font-weight: 500;
 }
 
 .stat-number {
   color: var(--primary-color);
-  font-size: 2rem;
+  font-size: 1.5rem;
   font-weight: bold;
   margin: 0;
 }
@@ -67,33 +67,33 @@
 }
 
 .search-box input {
-  padding: 10px 15px;
+  padding: 8px 12px;
   border: 1px solid var(--border-light);
   border-radius: 5px;
-  font-size: 14px;
-  min-width: 300px;
+  font-size: 0.875rem;
+  min-width: 250px;
 }
 
 .search-box button {
-  padding: 10px 20px;
+  padding: 8px 16px;
   background: var(--primary-color);
   color: var(--text-white);
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  font-size: 14px;
+  font-size: 0.875rem;
 }
 
 .search-box button:hover {
-  background: #0056b3;
+  background: var(--primary-color-blue);
 }
 
 .status-filter select {
-  padding: 10px 15px;
+  padding: 8px 12px;
   border: 1px solid var(--border-light);
   border-radius: 5px;
-  font-size: 14px;
-  min-width: 150px;
+  font-size: 0.875rem;
+  min-width: 140px;
 }
 
 /* Table Styles */
@@ -112,17 +112,19 @@
 
 .queries-table th {
   background: var(--bg-secondary);
-  padding: 15px;
+  padding: 12px;
   text-align: left;
   font-weight: 600;
   color: var(--text-secondary);
-  border-bottom: 1px solid #e0e0e0;
+  border-bottom: 1px solid var(--border-light);
+  font-size: 0.875rem;
 }
 
 .queries-table td {
-  padding: 15px;
-  border-bottom: 1px solid #f0f0f0;
+  padding: 12px;
+  border-bottom: 1px solid var(--bg-light);
   vertical-align: top;
+  font-size: 0.875rem;
 }
 
 .queries-table tr:hover {
@@ -157,22 +159,22 @@
 
 .status-pending {
   background: var(--creamy-color);
-  color: #856404;
+  color: var(--primary-dark);
 }
 
 .status-progress {
-  background: #cce5ff;
-  color: #004085;
+  background: var(--bg-secondary);
+  color: var(--primary-color-blue);
 }
 
 .status-resolved {
-  background: #d4edda;
-  color: #155724;
+  background: var(--bg-secondary);
+  color: var(--primary-green);
 }
 
 .status-closed {
-  background: #f8d7da;
-  color: #721c24;
+  background: var(--bg-secondary);
+  color: var(--accent-error);
 }
 
 /* Action Buttons */
@@ -197,16 +199,16 @@
 }
 
 .btn-view:hover {
-  background: #0056b3;
+  background: var(--primary-color-blue);
 }
 
 .btn-delete {
-  background: #dc3545;
+  background: var(--accent-error);
   color: var(--text-white);
 }
 
 .btn-delete:hover {
-  background: #c82333;
+  background: var(--accent-error);
 }
 
 /* Pagination */
@@ -269,12 +271,13 @@
   justify-content: space-between;
   align-items: center;
   padding: 20px;
-  border-bottom: 1px solid #e0e0e0;
+  border-bottom: 1px solid var(--border-light);
 }
 
 .modal-header h2 {
   margin: 0;
   color: var(--primary-color);
+  font-size: 1.25rem;
 }
 
 .close-btn {
@@ -311,11 +314,13 @@
   color: var(--text-secondary);
   min-width: 120px;
   margin-right: 15px;
+  font-size: 0.875rem;
 }
 
 .detail-row span {
   color: var(--text-tertiary);
   flex: 1;
+  font-size: 0.875rem;
 }
 
 .message-content {
@@ -330,13 +335,14 @@
 /* Status Update Section */
 .status-update-section {
   padding: 20px;
-  border-top: 1px solid #e0e0e0;
+  border-top: 1px solid var(--border-light);
   background: var(--bg-secondary);
 }
 
 .status-update-section h3 {
   margin: 0 0 15px 0;
   color: var(--text-secondary);
+  font-size: 1rem;
 }
 
 .status-update-form {
@@ -346,35 +352,35 @@
 }
 
 .status-update-form select {
-  padding: 10px;
+  padding: 8px 12px;
   border: 1px solid var(--border-light);
   border-radius: 5px;
-  font-size: 14px;
+  font-size: 0.875rem;
 }
 
 .status-update-form textarea {
-  padding: 10px;
+  padding: 8px 12px;
   border: 1px solid var(--border-light);
   border-radius: 5px;
-  font-size: 14px;
+  font-size: 0.875rem;
   resize: vertical;
   min-height: 80px;
 }
 
 .btn-update {
-  padding: 12px 24px;
+  padding: 10px 20px;
   background: var(--primary-color);
   color: var(--text-white);
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  font-size: 14px;
+  font-size: 0.875rem;
   font-weight: 500;
   align-self: flex-start;
 }
 
 .btn-update:hover {
-  background: #0056b3;
+  background: var(--primary-color-blue);
 }
 
 /* Loading and Error States */
@@ -386,8 +392,8 @@
 }
 
 .error-message {
-  background: #f8d7da;
-  color: #721c24;
+  background: var(--bg-secondary);
+  color: var(--accent-error);
   padding: 15px;
   border-radius: 5px;
   margin-top: 20px;
@@ -395,9 +401,39 @@
 }
 
 /* Responsive Design */
-@media (max-width: 768px) {
+@media (max-width: 1200px) {
+  .contact-header h1 {
+    font-size: 1.5rem;
+  }
+
+  .stat-number {
+    font-size: 1.25rem;
+  }
+}
+
+@media (max-width: 968px) {
   .contact-management-container {
     padding: 15px;
+  }
+
+  .contact-header h1 {
+    font-size: 1.375rem;
+  }
+
+  .contact-header p {
+    font-size: 0.875rem;
+  }
+
+  .stat-card {
+    padding: 15px;
+  }
+
+  .stat-card h3 {
+    font-size: 0.8rem;
+  }
+
+  .stat-number {
+    font-size: 1.125rem;
   }
 
   .filters-section {
@@ -411,15 +447,22 @@
 
   .search-box input {
     min-width: auto;
+    font-size: 0.8rem;
   }
 
-  .queries-table {
-    font-size: 0.9rem;
+  .search-box button {
+    font-size: 0.8rem;
+  }
+
+  .status-filter select {
+    min-width: auto;
+    font-size: 0.8rem;
   }
 
   .queries-table th,
   .queries-table td {
     padding: 10px 8px;
+    font-size: 0.8rem;
   }
 
   .action-buttons {
@@ -427,9 +470,19 @@
     gap: 5px;
   }
 
+  .btn-view,
+  .btn-delete {
+    font-size: 0.75rem;
+    padding: 5px 10px;
+  }
+
   .modal-content {
     width: 95%;
     margin: 10px;
+  }
+
+  .modal-header h2 {
+    font-size: 1.125rem;
   }
 
   .detail-row {
@@ -440,5 +493,110 @@
   .detail-row label {
     min-width: auto;
     margin-right: 0;
+    font-size: 0.8rem;
+  }
+
+  .detail-row span {
+    font-size: 0.8rem;
+  }
+
+  .status-update-section h3 {
+    font-size: 0.9rem;
+  }
+
+  .status-update-form select,
+  .status-update-form textarea {
+    font-size: 0.8rem;
+  }
+
+  .btn-update {
+    font-size: 0.8rem;
+    padding: 8px 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .contact-management-container {
+    padding: 12px;
+  }
+
+  .contact-header {
+    margin-bottom: 20px;
+  }
+
+  .contact-header h1 {
+    font-size: 1.25rem;
+    margin-bottom: 8px;
+  }
+
+  .contact-header p {
+    font-size: 0.8rem;
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+
+  .stat-card {
+    padding: 12px;
+  }
+
+  .stat-card h3 {
+    font-size: 0.75rem;
+    margin-bottom: 8px;
+  }
+
+  .stat-number {
+    font-size: 1rem;
+  }
+
+  .queries-table {
+    font-size: 0.75rem;
+  }
+
+  .queries-table th,
+  .queries-table td {
+    padding: 8px 6px;
+    font-size: 0.75rem;
+  }
+
+  .pagination {
+    gap: 10px;
+  }
+
+  .pagination button {
+    padding: 6px 12px;
+    font-size: 0.8rem;
+  }
+
+  .pagination span {
+    font-size: 0.8rem;
+  }
+
+  .modal-content {
+    width: 98%;
+    margin: 5px;
+  }
+
+  .modal-header {
+    padding: 15px;
+  }
+
+  .modal-header h2 {
+    font-size: 1rem;
+  }
+
+  .query-details {
+    padding: 15px;
+  }
+
+  .detail-row {
+    margin-bottom: 12px;
+  }
+
+  .status-update-section {
+    padding: 15px;
   }
 }

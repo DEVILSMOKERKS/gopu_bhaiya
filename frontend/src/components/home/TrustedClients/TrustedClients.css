@@ -18,7 +18,7 @@
   font-weight: 700;
   text-align: center;
   margin-bottom: 40px;
-  color: #ffffff;
+  color: var(--text-white);
   font-family: var(--font-family);
 }
 

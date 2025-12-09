@@ -81,7 +81,7 @@
 }
 
 .shop-filterOptionContent {
-  background-color: #f8f9fa;
+  background-color: var(--bg-secondary);
   border-left: 3px solid var(--primary-dark);
 }
 
@@ -178,7 +178,7 @@
 }
 
 .shop-wishlistButton:hover {
-  background-color: #f8f9fa;
+  background-color: var(--bg-secondary);
   transform: scale(1.1);
 }
 
