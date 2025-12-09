@@ -5,6 +5,36 @@ const db = require('../config/db');
 const { hashPassword, comparePassword } = require('../utils/bcryptUtil');
 const { sendEmail } = require('../utils/emailSender');
 
+// Email template colors - matching index.css variables
+const EMAIL_COLORS = {
+  // Primary Colors
+  primary: '#B68126',
+  primaryDark: '#956213',
+  primaryGreen: '#128737',
+
+  // Text Colors
+  textPrimary: '#1a1a2e',
+  textSecondary: '#333',
+  textTertiary: '#666',
+  textQuaternary: '#999',
+  textWhite: '#ffffff',
+
+  // Background Colors
+  bgPrimary: '#ffffff',
+  bgSecondary: '#f8f9fa',
+  bgLight: '#f5f5f5',
+  bgDark: '#1a1a2e',
+
+  // Accent Colors
+  accentGold: '#B68126',
+  accentError: '#e74c3c',
+  accentRed: '#ff4757',
+
+  // Border Colors
+  borderLight: '#ccc',
+  borderMedium: '#e5e7eb',
+};
+
 // Helper function to generate JWT token
 const generateToken = (user) => {
   const jwtSecret = process.env.JWT_SECRET || 'your_super_secret_jwt_key_here_make_it_long_and_random_123456789';
@@ -689,23 +719,23 @@ const forgotPassword = async (req, res) => {
     const emailHtml = `
       <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
         <div style="text-align: center; margin-bottom: 30px;">
-          <h1 style="color: #9a0e0d; margin: 0;">Mateshwari Moorti Bhandar</h1>
-          <p style="color: #666; margin: 5px 0;">Handcrafted Marble Idols & Temples</p>
+          <h1 style="color: ${EMAIL_COLORS.primaryDark}; margin: 0;">Mateshwari Moorti Bhandar</h1>
+          <p style="color: ${EMAIL_COLORS.textTertiary}; margin: 5px 0;">Handcrafted Marble Idols & Temples</p>
         </div>
         
-        <div style="background: #f8f9fa; padding: 30px; border-radius: 10px; margin-bottom: 20px;">
-          <h2 style="color: #333; margin-top: 0;">Password Reset Request</h2>
-          <p style="color: #666; line-height: 1.6; margin-bottom: 20px;">
+        <div style="background: ${EMAIL_COLORS.bgSecondary}; padding: 30px; border-radius: 10px; margin-bottom: 20px;">
+          <h2 style="color: ${EMAIL_COLORS.textSecondary}; margin-top: 0;">Password Reset Request</h2>
+          <p style="color: ${EMAIL_COLORS.textTertiary}; line-height: 1.6; margin-bottom: 20px;">
             Hello ${user.name},
           </p>
-          <p style="color: #666; line-height: 1.6; margin-bottom: 20px;">
+          <p style="color: ${EMAIL_COLORS.textTertiary}; line-height: 1.6; margin-bottom: 20px;">
             We received a request to reset your password for your Mateshwari Moorti Bhandar account. If you made this request, click the button below to reset your password:
           </p>
           
           <div style="text-align: center; margin: 30px 0;">
             <a href="${resetLink}" 
-               style="background: linear-gradient(135deg, #9a0e0d, #764ba2); 
-                      color: white; 
+               style="background: linear-gradient(135deg, ${EMAIL_COLORS.primaryDark}, ${EMAIL_COLORS.primaryDark}); 
+                      color: ${EMAIL_COLORS.textWhite}; 
                       padding: 15px 30px; 
                       text-decoration: none; 
                       border-radius: 8px; 
@@ -715,19 +745,19 @@ const forgotPassword = async (req, res) => {
             </a>
           </div>
           
-          <p style="color: #666; line-height: 1.6; margin-bottom: 20px;">
+          <p style="color: ${EMAIL_COLORS.textTertiary}; line-height: 1.6; margin-bottom: 20px;">
             If the button doesn't work, you can copy and paste this link into your browser:
           </p>
-          <p style="color: #9a0e0d; word-break: break-all; background: #f0f0f0; padding: 10px; border-radius: 5px;">
+          <p style="color: ${EMAIL_COLORS.primaryDark}; word-break: break-all; background: ${EMAIL_COLORS.bgLight}; padding: 10px; border-radius: 5px;">
             ${resetLink}
           </p>
           
-          <p style="color: #666; line-height: 1.6; margin-bottom: 0;">
+          <p style="color: ${EMAIL_COLORS.textTertiary}; line-height: 1.6; margin-bottom: 0;">
             This link will expire in 1 hour for security reasons.
           </p>
         </div>
         
-        <div style="text-align: center; color: #999; font-size: 14px;">
+        <div style="text-align: center; color: ${EMAIL_COLORS.textQuaternary}; font-size: 14px;">
           <p>If you didn't request this password reset, please ignore this email.</p>
           <p>© 2024 Mateshwari Moorti Bhandar. All rights reserved.</p>
         </div>
