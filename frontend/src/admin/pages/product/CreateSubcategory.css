@@ -137,11 +137,11 @@
 
 /* Error Message */
 .createsubcategory-error-message {
-  background: #fef2f2;
+  background: var(--bg-secondary);
   color: var(--accent-error);
   padding: 1rem;
   border-radius: 8px;
-  border: 1px solid #fecaca;
+  border: 1px solid var(--accent-error);
   margin: 0 2rem 1rem 2rem;
   font-size: 0.875rem;
 }

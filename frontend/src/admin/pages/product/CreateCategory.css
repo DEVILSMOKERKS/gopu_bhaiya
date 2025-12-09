@@ -131,7 +131,7 @@
 
 /* Error Message */
 .createcategory-error-message {
-  background: #fef2f2;
+  background: var(--bg-secondary);
   color: var(--accent-error);
   padding: 1rem;
   border-radius: 8px;

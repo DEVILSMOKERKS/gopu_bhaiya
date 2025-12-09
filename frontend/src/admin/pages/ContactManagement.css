@@ -85,7 +85,7 @@
 }
 
 .search-box button:hover {
-  background: #0056b3;
+  background: var(--primary-color-blue);
 }
 
 .status-filter select {
@@ -116,12 +116,12 @@
   text-align: left;
   font-weight: 600;
   color: var(--text-secondary);
-  border-bottom: 1px solid #e0e0e0;
+  border-bottom: 1px solid var(--border-light);
 }
 
 .queries-table td {
   padding: 15px;
-  border-bottom: 1px solid #f0f0f0;
+  border-bottom: 1px solid var(--bg-light);
   vertical-align: top;
 }
 
@@ -157,22 +157,22 @@
 
 .status-pending {
   background: var(--creamy-color);
-  color: #856404;
+  color: var(--primary-dark);
 }
 
 .status-progress {
-  background: #cce5ff;
-  color: #004085;
+  background: var(--bg-secondary);
+  color: var(--primary-color-blue);
 }
 
 .status-resolved {
-  background: #d4edda;
-  color: #155724;
+  background: var(--bg-secondary);
+  color: var(--primary-green);
 }
 
 .status-closed {
-  background: #f8d7da;
-  color: #721c24;
+  background: var(--bg-secondary);
+  color: var(--accent-error);
 }
 
 /* Action Buttons */
@@ -197,16 +197,16 @@
 }
 
 .btn-view:hover {
-  background: #0056b3;
+  background: var(--primary-color-blue);
 }
 
 .btn-delete {
-  background: #dc3545;
+  background: var(--accent-error);
   color: var(--text-white);
 }
 
 .btn-delete:hover {
-  background: #c82333;
+  background: var(--accent-error);
 }
 
 /* Pagination */
@@ -269,7 +269,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 20px;
-  border-bottom: 1px solid #e0e0e0;
+  border-bottom: 1px solid var(--border-light);
 }
 
 .modal-header h2 {
@@ -330,7 +330,7 @@
 /* Status Update Section */
 .status-update-section {
   padding: 20px;
-  border-top: 1px solid #e0e0e0;
+  border-top: 1px solid var(--border-light);
   background: var(--bg-secondary);
 }
 
@@ -374,7 +374,7 @@
 }
 
 .btn-update:hover {
-  background: #0056b3;
+  background: var(--primary-color-blue);
 }
 
 /* Loading and Error States */
@@ -386,8 +386,8 @@
 }
 
 .error-message {
-  background: #f8d7da;
-  color: #721c24;
+  background: var(--bg-secondary);
+  color: var(--accent-error);
   padding: 15px;
   border-radius: 5px;
   margin-top: 20px;

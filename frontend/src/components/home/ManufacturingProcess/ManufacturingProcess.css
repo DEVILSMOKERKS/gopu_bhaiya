@@ -3,7 +3,7 @@
    ============================================ */
 .manufacturing-process {
   padding: 80px 20px;
-  background: #ffffff;
+  background: var(--bg-primary);
 }
 
 .manufacturing-process-container {
@@ -16,7 +16,7 @@
   font-weight: 700;
   text-align: left;
   margin-bottom: 40px;
-  color: #000000;
+  color: var(--text-primary);
   font-family: var(--font-family);
 }
 
@@ -56,7 +56,7 @@
   position: relative;
   border-radius: 12px;
   overflow: hidden;
-  background: #ffffff;
+  background: var(--bg-primary);
   transition: transform var(--transition-normal);
   aspect-ratio: 2 / 3;
   /* Vertical rectangle ratio */
@@ -106,7 +106,7 @@
   height: 10px;
   border-radius: 50%;
   border: none;
-  background: #d0d0d0;
+  background: var(--text-light);
   cursor: pointer;
   transition: all var(--transition-normal);
   padding: 0;
@@ -120,7 +120,7 @@
 }
 
 .manufacturing-process-dot:hover:not(.active) {
-  background: #666666;
+  background: var(--text-tertiary);
 }
 
 /* ============================================

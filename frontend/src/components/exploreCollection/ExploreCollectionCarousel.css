@@ -93,7 +93,7 @@
 }
 
 .explore-collection-swiper-button.swiper-button-disabled {
-  background: #ccc;
+  background: var(--text-light);
   cursor: not-allowed;
   opacity: 0.5;
 }
@@ -116,7 +116,7 @@
   width: 12px;
   height: 12px;
   border-radius: 50%;
-  background: #ddd;
+  background: var(--border-light);
   cursor: pointer;
   transition: all 0.3s ease;
   opacity: 0.7;
@@ -139,24 +139,24 @@
   .explore-collection-carousel-wrapper {
     max-width: auto;
   }
-  
+
   .explore-collection-swiper {
     height: 100%;
   }
-  
+
   .explore-collection-swiper-button {
     width: 35px;
     height: 35px;
   }
-  
+
   .explore-collection-swiper-button-prev {
     left: -37px;
   }
-  
+
   .explore-collection-swiper-button-next {
     right: -37px;
   }
-  
+
   .explore-collection-swiper-bullet {
     width: 10px;
     height: 10px;
@@ -167,20 +167,20 @@
   .explore-collection-carousel-wrapper {
     max-width: 280px;
   }
-  
+
   .explore-collection-swiper {
     height: 280px;
   }
-  
+
   .explore-collection-swiper-button {
     width: 35px;
     height: 35px;
   }
-  
+
   .explore-collection-swiper-button-prev {
     left: -10px;
   }
-  
+
   .explore-collection-swiper-button-next {
     right: -10px;
   }
