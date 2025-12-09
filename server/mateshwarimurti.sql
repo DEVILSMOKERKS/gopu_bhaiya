@@ -109,6 +109,28 @@ CREATE TABLE
   ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_general_ci;
 
 CREATE TABLE
+  `expert_consultations` (
+    `id` int (11) NOT NULL,
+    `full_name` varchar(100) NOT NULL,
+    `email` varchar(100) NOT NULL,
+    `phone` varchar(20) DEFAULT NULL,
+    `city` varchar(100) NOT NULL,
+    `about_yourself` enum ('homeowner', 'designer') NOT NULL,
+    `status` enum (
+      'pending',
+      'contacted',
+      'in_progress',
+      'completed',
+      'closed'
+    ) DEFAULT 'pending',
+    `admin_notes` text DEFAULT NULL,
+    `contacted_by` int (11) DEFAULT NULL,
+    `contacted_at` timestamp NULL DEFAULT NULL,
+    `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+    `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_general_ci;
+
+CREATE TABLE
   `coupons` (
     `coupon_id` int (11) NOT NULL,
     `code` varchar(50) NOT NULL,
@@ -394,6 +416,11 @@ ADD UNIQUE KEY `slug` (`slug`);
 ALTER TABLE `contact_queries` ADD PRIMARY KEY (`id`),
 ADD KEY `resolved_by` (`resolved_by`);
 
+ALTER TABLE `expert_consultations` ADD PRIMARY KEY (`id`),
+ADD KEY `contacted_by` (`contacted_by`),
+ADD KEY `status` (`status`),
+ADD KEY `created_at` (`created_at`);
+
 ALTER TABLE `coupons` ADD PRIMARY KEY (`coupon_id`),
 ADD UNIQUE KEY `code` (`code`);
 
@@ -478,6 +505,8 @@ ALTER TABLE `categories` MODIFY `id` int (11) NOT NULL AUTO_INCREMENT;
 
 ALTER TABLE `contact_queries` MODIFY `id` int (11) NOT NULL AUTO_INCREMENT;
 
+ALTER TABLE `expert_consultations` MODIFY `id` int (11) NOT NULL AUTO_INCREMENT;
+
 ALTER TABLE `coupons` MODIFY `coupon_id` int (11) NOT NULL AUTO_INCREMENT;
 
 ALTER TABLE `coupon_usage` MODIFY `usage_id` int (11) NOT NULL AUTO_INCREMENT;
@@ -525,6 +554,8 @@ ADD CONSTRAINT `cart_ibfk_3` FOREIGN KEY (`color_id`) REFERENCES `product_colors
 ADD CONSTRAINT `cart_ibfk_4` FOREIGN KEY (`size_id`) REFERENCES `product_sizes` (`size_id`) ON DELETE SET NULL;
 
 ALTER TABLE `contact_queries` ADD CONSTRAINT `contact_queries_ibfk_1` FOREIGN KEY (`resolved_by`) REFERENCES `admins` (`id`) ON DELETE SET NULL;
+
+ALTER TABLE `expert_consultations` ADD CONSTRAINT `expert_consultations_ibfk_1` FOREIGN KEY (`contacted_by`) REFERENCES `admins` (`id`) ON DELETE SET NULL;
 
 ALTER TABLE `coupon_usage` ADD CONSTRAINT `coupon_usage_ibfk_1` FOREIGN KEY (`coupon_id`) REFERENCES `coupons` (`coupon_id`) ON DELETE CASCADE,
 ADD CONSTRAINT `coupon_usage_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE,

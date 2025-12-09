@@ -3,7 +3,7 @@
    ============================================ */
 .direct-makers-hands {
     padding: 80px 20px;
-    background: #ffffff;
+    background: var(--bg-primary);
 }
 
 .direct-makers-hands-container {
@@ -23,14 +23,14 @@
     font-weight: 700;
     text-align: left;
     margin: 0;
-    color: #000000;
+    color: var(--text-primary);
     font-family: var(--font-family);
 }
 
 .direct-makers-hands-view-all {
     background: transparent;
     border: none;
-    color: #000000;
+    color: var(--text-primary);
     font-size: 1rem;
     font-weight: 600;
     cursor: pointer;
@@ -108,7 +108,7 @@
     width: 100%;
     padding-top: 130%;
     overflow: hidden;
-    background: #f5f5f5;
+    background: var(--bg-light);
     border-radius: 8px;
     margin-bottom: 15px;
 }
@@ -151,28 +151,28 @@
 
 .direct-makers-hands-wishlist-icon {
     font-size: 1.5rem;
-    color: #000000;
+    color: var(--text-primary);
     stroke-width: 2;
     transition: color var(--transition-normal);
 }
 
 .direct-makers-hands-wishlist-icon.filled {
-    color: #ff0000;
-    fill: #ff0000;
+    color: var(--accent-error);
+    fill: var(--accent-error);
 }
 
 .direct-makers-hands-card-title {
     font-size: 1.1rem;
     font-weight: 700;
     text-align: left;
-    color: #000000;
+    color: var(--text-primary);
     margin: 0 0 8px 0;
     font-family: var(--font-family);
 }
 
 .direct-makers-hands-card-description {
     font-size: 0.9rem;
-    color: #666666;
+    color: var(--text-tertiary);
     text-align: left;
     margin: 0 0 10px 0;
     font-family: var(--font-family);
@@ -182,7 +182,7 @@
 .direct-makers-hands-card-price {
     font-size: 1.2rem;
     font-weight: 700;
-    color: #000000;
+    color: var(--text-primary);
     text-align: left;
     margin: 0;
     font-family: var(--font-family);
@@ -192,7 +192,7 @@
     text-align: center;
     padding: 60px 20px;
     font-size: 1.2rem;
-    color: #666666;
+    color: var(--text-tertiary);
 }
 
 /* ============================================
@@ -211,7 +211,7 @@
     width: 120px;
     height: 120px;
     margin-bottom: 30px;
-    color: #d0d0d0;
+    color: var(--text-light);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -225,7 +225,7 @@
 .direct-makers-hands-empty-title {
     font-size: 1.5rem;
     font-weight: 600;
-    color: #666666;
+    color: var(--text-tertiary);
     margin: 0 0 15px 0;
     font-family: var(--font-family);
 }
