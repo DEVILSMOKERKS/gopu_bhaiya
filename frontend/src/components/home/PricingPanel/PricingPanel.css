@@ -75,7 +75,7 @@
 .pricing-panel-header {
   margin-bottom: 40px;
   padding-bottom: 30px;
-  border-bottom: 1px solid #e8e8e8;
+  border-bottom: 1px solid var(--border-light);
 }
 
 .pricing-panel-main-title {
@@ -129,7 +129,7 @@
 .pricing-hero-overlay-price {
   font-size: 20px;
   font-weight: 600;
-  color: #ffffff;
+  color: var(--text-white);
   margin-bottom: 6px;
   font-family: 'Arial', 'Helvetica', sans-serif;
 }
@@ -137,7 +137,7 @@
 .pricing-hero-overlay-size {
   font-size: 13px;
   font-weight: 400;
-  color: #ffffff;
+  color: var(--text-white);
   font-family: 'Arial', 'Helvetica', sans-serif;
   text-transform: uppercase;
   letter-spacing: 0.5px;
@@ -147,7 +147,7 @@
 .pricing-philosophy-section {
   margin-bottom: 50px;
   padding-bottom: 40px;
-  border-bottom: 1px solid #e8e8e8;
+  border-bottom: 1px solid var(--border-light);
 }
 
 .pricing-section-title {
@@ -185,7 +185,7 @@
 .pricing-scope-section {
   margin-bottom: 50px;
   padding-bottom: 40px;
-  border-bottom: 1px solid #e8e8e8;
+  border-bottom: 1px solid var(--border-light);
 }
 
 .pricing-cards-grid {
@@ -199,7 +199,7 @@
   background: var(--bg-primary);
   padding: 25px 20px;
   border-radius: 4px;
-  border: 1px solid #e8e8e8;
+  border: 1px solid var(--border-light);
   text-align: center;
 }
 
@@ -231,7 +231,7 @@
 .pricing-factors-section {
   margin-bottom: 50px;
   padding-bottom: 40px;
-  border-bottom: 1px solid #e8e8e8;
+  border-bottom: 1px solid var(--border-light);
 }
 
 .pricing-factors-grid {
@@ -245,7 +245,7 @@
   background: var(--bg-primary);
   padding: 25px 20px;
   border-radius: 4px;
-  border: 1px solid #e8e8e8;
+  border: 1px solid var(--border-light);
   position: relative;
   padding-left: 70px;
 }
@@ -256,8 +256,8 @@
   top: 25px;
   width: 35px;
   height: 35px;
-  background: #d4af37;
-  color: #ffffff;
+  background: var(--accent-gold);
+  color: var(--text-white);
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -271,7 +271,7 @@
 .pricing-why-choose-section {
   margin-bottom: 50px;
   padding-bottom: 40px;
-  border-bottom: 1px solid #e8e8e8;
+  border-bottom: 1px solid var(--border-light);
 }
 
 .pricing-why-choose-grid {
@@ -285,7 +285,7 @@
   background: var(--bg-primary);
   padding: 25px 20px;
   border-radius: 4px;
-  border: 1px solid #e8e8e8;
+  border: 1px solid var(--border-light);
   text-align: center;
 }
 
@@ -293,7 +293,7 @@
 .pricing-tiers-section {
   margin-bottom: 50px;
   padding-bottom: 40px;
-  border-bottom: 1px solid #e8e8e8;
+  border-bottom: 1px solid var(--border-light);
 }
 
 .pricing-tiers-list {
@@ -316,7 +316,7 @@
   content: '•';
   position: absolute;
   left: 0;
-  color: #d4af37;
+  color: var(--accent-gold);
   font-size: 20px;
   line-height: 1;
 }
@@ -331,7 +331,7 @@
 .pricing-process-section {
   margin-bottom: 50px;
   padding-bottom: 40px;
-  border-bottom: 1px solid #e8e8e8;
+  border-bottom: 1px solid var(--border-light);
 }
 
 .pricing-process-steps {
@@ -351,7 +351,7 @@
 
 .pricing-process-arrow {
   font-size: 28px;
-  color: #d4af37;
+  color: var(--accent-gold);
   margin: 0 15px;
   flex-shrink: 0;
 }
@@ -369,8 +369,8 @@
 .pricing-process-number {
   width: 35px;
   height: 35px;
-  background: #d4af37;
-  color: #ffffff;
+  background: var(--accent-gold);
+  color: var(--text-white);
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -402,7 +402,7 @@
 .pricing-faq-section {
   margin-bottom: 50px;
   padding-bottom: 40px;
-  border-bottom: 1px solid #e8e8e8;
+  border-bottom: 1px solid var(--border-light);
 }
 
 .pricing-faq-list {
@@ -411,7 +411,7 @@
 
 .pricing-faq-item {
   margin-bottom: 12px;
-  border: 1px solid #e8e8e8;
+  border: 1px solid var(--border-light);
   border-radius: 4px;
   overflow: hidden;
   background: var(--bg-primary);
@@ -487,7 +487,7 @@
 .pricing-cta-title {
   font-size: 28px;
   font-weight: 600;
-  color: #ffffff;
+  color: var(--text-white);
   margin-bottom: 14px;
   font-family: 'Arial', 'Helvetica', sans-serif;
   text-transform: uppercase;
@@ -503,8 +503,8 @@
 }
 
 .pricing-cta-button {
-  background: #d4af37;
-  color: #ffffff;
+  background: var(--accent-gold);
+  color: var(--text-white);
   border: none;
   padding: 14px 36px;
   font-size: 15px;
@@ -518,7 +518,7 @@
 }
 
 .pricing-cta-button:hover {
-  background: #c19d2e;
+  background: var(--accent-gold);
 }
 
 /* ============================================

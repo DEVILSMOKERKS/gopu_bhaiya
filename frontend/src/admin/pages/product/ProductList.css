@@ -352,7 +352,7 @@
 }
 
 .productlist-delete-btn:hover {
-  background: #dc2626;
+  background: var(--accent-error);
   transform: scale(1.1);
 }
 

@@ -55,6 +55,7 @@ const CreateProduct = () => {
 
   useEffect(() => {
     fetchCategories();
+    fetchAttributeNames();
   }, []);
 
   useEffect(() => {
@@ -64,6 +65,12 @@ const CreateProduct = () => {
       setSubcategories([]);
     }
   }, [formData.category_id]);
+
+  useEffect(() => {
+    if (availableAttributeNames.length > 0) {
+      fetchAllAttributeValues();
+    }
+  }, [availableAttributeNames]);
 
   const fetchCategories = async () => {
     try {
@@ -87,6 +94,59 @@ const CreateProduct = () => {
     } catch (error) {
       console.error('Error fetching subcategories:', error);
     }
+  };
+
+  const fetchAttributeNames = async () => {
+    try {
+      const response = await axios.get(`${API_URL}/product-attributes/names`);
+      if (response.data.success) {
+        setAvailableAttributeNames(response.data.data);
+      }
+    } catch (error) {
+      console.error('Error fetching attribute names:', error);
+    }
+  };
+
+  const fetchAttributeValues = async (attributeName) => {
+    try {
+      const response = await axios.get(`${API_URL}/product-attributes/values/${encodeURIComponent(attributeName)}`);
+      if (response.data.success) {
+        setAttributeValuesMap(prev => ({
+          ...prev,
+          [attributeName]: response.data.data
+        }));
+      }
+    } catch (error) {
+      console.error('Error fetching attribute values:', error);
+    }
+  };
+
+  const fetchAllAttributeValues = async () => {
+    for (const name of availableAttributeNames) {
+      await fetchAttributeValues(name);
+    }
+  };
+
+  const addAttribute = () => {
+    setSelectedAttributes(prev => [...prev, { name: '', value: '' }]);
+  };
+
+  const removeAttribute = (index) => {
+    setSelectedAttributes(prev => prev.filter((_, i) => i !== index));
+  };
+
+  const updateAttribute = (index, field, value) => {
+    setSelectedAttributes(prev => prev.map((attr, i) => {
+      if (i === index) {
+        const updated = { ...attr, [field]: value };
+        // If name changed, reset value
+        if (field === 'name') {
+          updated.value = '';
+        }
+        return updated;
+      }
+      return attr;
+    }));
   };
 
   const handleInputChange = (e) => {

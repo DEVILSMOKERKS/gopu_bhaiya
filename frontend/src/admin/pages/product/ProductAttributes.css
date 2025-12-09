@@ -361,12 +361,12 @@
 }
 
 .productattributes-edit-btn {
-  background: #ffc107;
+  background: var(--accent-gold);
   color: var(--text-secondary);
 }
 
 .productattributes-edit-btn:hover:not(:disabled) {
-  background: #e0a800;
+  background: var(--accent-gold);
 }
 
 .productattributes-delete-btn {
