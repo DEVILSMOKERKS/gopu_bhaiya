@@ -149,3 +149,4 @@ export default async function ProductPage({ params }) {
   const { productId } = await params;
   return <Product productId={productId} />;
 }
+
