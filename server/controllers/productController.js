@@ -558,10 +558,12 @@ const updateProduct = async (req, res) => {
 
         for (let i = 0; i < attributesArray.length; i++) {
           const attr = attributesArray[i];
-          await connection.execute(
-            'INSERT INTO product_attributes (product_id, attribute_name, attribute_value, sort_order) VALUES (?, ?, ?, ?)',
-            [product_id, attr.name, attr.value, i]
-          );
+          if (attr.name && attr.value) {
+            await connection.execute(
+              'INSERT INTO product_attributes (product_id, attribute_name, attribute_value, sort_order) VALUES (?, ?, ?, ?)',
+              [product_id, attr.name, attr.value, i]
+            );
+          }
         }
       }
 

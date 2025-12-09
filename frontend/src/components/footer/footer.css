@@ -112,7 +112,7 @@
 }
 
 .footer-email-input.error {
-  border-color: #ff6b6b;
+  border-color: var(--accent-red);
 }
 
 .footer-email-submit-btn {
@@ -140,7 +140,7 @@
 }
 
 .footer-email-error {
-  color: #ff6b6b;
+  color: var(--accent-red);
   font-size: 0.75rem;
   margin-top: 0.5rem;
 }
@@ -306,12 +306,12 @@
 }
 
 .footer-notification.success {
-  background: linear-gradient(135deg, #4CAF50, #45a049);
+  background: linear-gradient(135deg, var(--primary-green), var(--primary-green));
   color: var(--text-white);
 }
 
 .footer-notification.error {
-  background: linear-gradient(135deg, #f44336, #d32f2f);
+  background: linear-gradient(135deg, var(--accent-error), var(--accent-error));
   color: var(--text-white);
 }
 
@@ -362,6 +362,7 @@
     transform: translateX(100%);
     opacity: 0;
   }
+
   to {
     transform: translateX(0);
     opacity: 1;

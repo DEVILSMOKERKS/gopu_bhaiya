@@ -46,6 +46,9 @@ const CreateProduct = () => {
     { size: 'Standard', actual_price: '', sell_price: '', offer_percent: 0, stock: 0, height: '', width: '', depth: '', weight: '', dimensions_unit: 'cm', weight_unit: 'kg' }
   ]);
 
+  const [selectedAttributes, setSelectedAttributes] = useState([]);
+  const [availableAttributeNames, setAvailableAttributeNames] = useState([]);
+  const [attributeValuesMap, setAttributeValuesMap] = useState({});
 
   // Get API URL from environment variable
   const API_URL = process.env.NEXT_PUBLIC_API_URL
@@ -209,7 +212,11 @@ const CreateProduct = () => {
       // Add sizes
       formDataToSend.append('sizes', JSON.stringify(sizes));
 
-      // Attributes are managed separately via Product Attributes management page
+      // Add attributes
+      const attributesToSend = selectedAttributes.filter(attr => attr.name && attr.value);
+      if (attributesToSend.length > 0) {
+        formDataToSend.append('attributes', JSON.stringify(attributesToSend));
+      }
 
       const token = typeof window !== 'undefined' ? localStorage.getItem('adminToken') : null;
       const response = await axios.post(`${API_URL}/products`, formDataToSend, {
@@ -734,13 +741,69 @@ const CreateProduct = () => {
             </div>
           </div>
 
-          {/* Product Attributes - Managed separately */}
+          {/* Product Attributes */}
           <div className="createproduct-form-section">
-            <h2>Product Attributes</h2>
-            <p className="createproduct-info-text">
-              Product attributes can be managed separately after creating the product.
-              Go to Product Attributes management page to add/edit attributes.
-            </p>
+            <div className="createproduct-section-header">
+              <h2>Product Attributes</h2>
+              <button
+                type="button"
+                className="createproduct-add-btn"
+                onClick={addAttribute}
+              >
+                <FaPlus /> Add Attribute
+              </button>
+            </div>
+            {selectedAttributes.map((attr, attrIndex) => (
+              <div key={attrIndex} className="createproduct-attribute-item">
+                <div className="createproduct-attribute-header">
+                  <h3>Attribute {attrIndex + 1}</h3>
+                  <button
+                    type="button"
+                    className="createproduct-remove-btn"
+                    onClick={() => removeAttribute(attrIndex)}
+                  >
+                    <FaTrash />
+                  </button>
+                </div>
+                <div className="createproduct-attribute-inputs">
+                  <div className="createproduct-form-group">
+                    <label>Attribute Name</label>
+                    <select
+                      value={attr.name}
+                      onChange={(e) => {
+                        updateAttribute(attrIndex, 'name', e.target.value);
+                        if (e.target.value) {
+                          fetchAttributeValues(e.target.value);
+                        }
+                      }}
+                    >
+                      <option value="">Select Attribute Name</option>
+                      {availableAttributeNames.map(name => (
+                        <option key={name} value={name}>{name}</option>
+                      ))}
+                    </select>
+                  </div>
+                  <div className="createproduct-form-group">
+                    <label>Attribute Value</label>
+                    <select
+                      value={attr.value}
+                      onChange={(e) => updateAttribute(attrIndex, 'value', e.target.value)}
+                      disabled={!attr.name}
+                    >
+                      <option value="">Select Value</option>
+                      {attr.name && attributeValuesMap[attr.name]?.map(value => (
+                        <option key={value} value={value}>{value}</option>
+                      ))}
+                    </select>
+                  </div>
+                </div>
+              </div>
+            ))}
+            {selectedAttributes.length === 0 && (
+              <p className="createproduct-info-text">
+                Click "Add Attribute" to assign attributes to this product.
+              </p>
+            )}
           </div>
         </div>
 

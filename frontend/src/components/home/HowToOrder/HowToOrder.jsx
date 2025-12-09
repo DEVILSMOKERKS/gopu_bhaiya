@@ -2,10 +2,12 @@
 
 import { useState } from 'react';
 import Image from 'next/image';
+import axios from 'axios';
 import './HowToOrder.css';
 // Import background image - using one of the existing images as placeholder
 import backgroundImg from '../../../assets/Images/banner/marbleMandir.jpg';
 
+const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
 const HowToOrder = () => {
   const [formData, setFormData] = useState({
@@ -15,6 +17,8 @@ const HowToOrder = () => {
     city: '',
     aboutYourself: ''
   });
+  const [submitting, setSubmitting] = useState(false);
+  const [submitMessage, setSubmitMessage] = useState({ type: '', text: '' });
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -31,11 +35,52 @@ const HowToOrder = () => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Handle form submission here
-    console.log('Form submitted:', formData);
-    // You can add API call here
+    setSubmitting(true);
+    setSubmitMessage({ type: '', text: '' });
+
+    try {
+      const response = await axios.post(`${API_URL}/expert-consultation`, {
+        fullName: formData.fullName,
+        email: formData.email,
+        phone: formData.phone || null,
+        city: formData.city,
+        aboutYourself: formData.aboutYourself
+      });
+
+      if (response.data.success) {
+        setSubmitMessage({
+          type: 'success',
+          text: response.data.message || 'Your consultation request has been submitted successfully!'
+        });
+        // Reset form
+        setFormData({
+          fullName: '',
+          email: '',
+          phone: '',
+          city: '',
+          aboutYourself: ''
+        });
+        // Clear message after 5 seconds
+        setTimeout(() => {
+          setSubmitMessage({ type: '', text: '' });
+        }, 5000);
+      } else {
+        setSubmitMessage({
+          type: 'error',
+          text: response.data.message || 'Something went wrong. Please try again.'
+        });
+      }
+    } catch (error) {
+      console.error('Error submitting consultation:', error);
+      setSubmitMessage({
+        type: 'error',
+        text: error.response?.data?.message || error.message || 'Failed to submit request. Please try again later.'
+      });
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
@@ -178,9 +223,20 @@ const HowToOrder = () => {
                 </div>
               </div>
 
+              {/* Submit Message */}
+              {submitMessage.text && (
+                <div className={`how-to-order-message ${submitMessage.type === 'success' ? 'success' : 'error'}`}>
+                  {submitMessage.text}
+                </div>
+              )}
+
               {/* Submit Button */}
-              <button type="submit" className="how-to-order-submit-btn">
-                NEXT
+              <button 
+                type="submit" 
+                className="how-to-order-submit-btn"
+                disabled={submitting}
+              >
+                {submitting ? 'SUBMITTING...' : 'SUBMIT'}
               </button>
             </form>
           </div>

@@ -567,7 +567,7 @@
 
 .cart-applied-discount {
   font-size: 12px;
-  color: #90EE90;
+  color: var(--primary-green);
   font-weight: 500;
 }
 
@@ -593,7 +593,7 @@
   border-radius: 6px;
   padding: 8px 12px;
   font-size: 12px;
-  color: #ffcccc;
+  color: var(--accent-red);
   text-align: center;
 }
 
@@ -751,11 +751,11 @@
   .cart-quantity-selector {
     display: flex;
     align-items: center;
-    background-color: #e8f5e8;
+    background-color: var(--bg-secondary);
     border-radius: 25px;
     padding: 6px 12px;
     gap: 12px;
-    border: 1px solid #d4edda;
+    border: 1px solid var(--primary-green);
   }
 
   .cart-quantity-btn {
@@ -763,7 +763,7 @@
     height: 32px;
     border: none;
     background-color: var(--bg-primary);
-    color: #8b4513;
+    color: var(--primary-dark);
     font-size: 18px;
     font-weight: 600;
     border-radius: 50%;
@@ -776,14 +776,14 @@
   }
 
   .cart-quantity-btn:hover {
-    background-color: #f0f0f0;
+    background-color: var(--bg-light);
     transform: scale(1.05);
   }
 
   .cart-quantity-value {
     font-size: 16px;
     font-weight: 600;
-    color: #8b4513;
+    color: var(--primary-dark);
     min-width: 24px;
     text-align: center;
   }

@@ -1,5 +1,82 @@
 const db = require('../config/db');
 
+// Get All Unique Attribute Names
+const getAllAttributeNames = async (req, res) => {
+    try {
+        const [attributes] = await db.execute(
+            'SELECT DISTINCT attribute_name FROM product_attributes ORDER BY attribute_name'
+        );
+
+        res.json({
+            success: true,
+            data: attributes.map(attr => attr.attribute_name)
+        });
+
+    } catch (error) {
+        console.error('Get attribute names error:', error);
+        res.status(500).json({
+            success: false,
+            message: 'Error fetching attribute names',
+            error: error.message
+        });
+    }
+};
+
+// Get All Values for an Attribute Name
+const getAttributeValues = async (req, res) => {
+    try {
+        const { attribute_name } = req.params;
+
+        const [values] = await db.execute(
+            'SELECT DISTINCT attribute_value FROM product_attributes WHERE attribute_name = ? ORDER BY attribute_value',
+            [attribute_name]
+        );
+
+        res.json({
+            success: true,
+            data: values.map(val => val.attribute_value)
+        });
+
+    } catch (error) {
+        console.error('Get attribute values error:', error);
+        res.status(500).json({
+            success: false,
+            message: 'Error fetching attribute values',
+            error: error.message
+        });
+    }
+};
+
+// Get All Attributes Grouped by Name
+const getAllAttributesGrouped = async (req, res) => {
+    try {
+        const [attributes] = await db.execute(
+            'SELECT attribute_name, attribute_value FROM product_attributes GROUP BY attribute_name, attribute_value ORDER BY attribute_name, attribute_value'
+        );
+
+        const grouped = {};
+        attributes.forEach(attr => {
+            if (!grouped[attr.attribute_name]) {
+                grouped[attr.attribute_name] = [];
+            }
+            grouped[attr.attribute_name].push(attr.attribute_value);
+        });
+
+        res.json({
+            success: true,
+            data: grouped
+        });
+
+    } catch (error) {
+        console.error('Get grouped attributes error:', error);
+        res.status(500).json({
+            success: false,
+            message: 'Error fetching grouped attributes',
+            error: error.message
+        });
+    }
+};
+
 // Get All Attributes for a Product
 const getProductAttributes = async (req, res) => {
     try {
@@ -376,6 +453,9 @@ const deleteProductAttributes = async (req, res) => {
 };
 
 module.exports = {
+    getAllAttributeNames,
+    getAttributeValues,
+    getAllAttributesGrouped,
     getProductAttributes,
     getAttributeById,
     createAttribute,

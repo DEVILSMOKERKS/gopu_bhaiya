@@ -157,7 +157,7 @@
   font-size: 1.5rem;
   text-decoration: line-through;
   opacity: 0.7;
-  color: #ccc;
+  color: var(--text-light);
 }
 
 .hero-offer {
@@ -184,7 +184,7 @@
   height: 20px;
   border-radius: 50%;
   object-fit: cover;
-  border: 2px solid #fff;
+  border: 2px solid var(--text-white);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   transition: transform 0.2s ease;
 }
@@ -333,8 +333,8 @@
 .hero-search-spinner {
   width: 20px;
   height: 20px;
-  border: 2px solid #f3f3f3;
-  border-top: 2px solid #956213;
+  border: 2px solid var(--bg-light);
+  border-top: 2px solid var(--primary-dark);
   border-radius: 50%;
   animation: hero-spin 1s linear infinite;
 }
@@ -359,7 +359,7 @@
   padding: 0.75rem 1rem;
   cursor: pointer;
   transition: background-color 0.2s ease;
-  border-bottom: 1px solid #f5f5f5;
+  border-bottom: 1px solid var(--bg-light);
 }
 
 .hero-search-result-item:hover {
@@ -418,7 +418,7 @@
 
 .hero-search-view-all {
   padding: 1rem;
-  border-top: 1px solid #f5f5f5;
+  border-top: 1px solid var(--bg-light);
   text-align: center;
 }
 

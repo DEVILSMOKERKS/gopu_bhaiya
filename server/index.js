@@ -21,6 +21,7 @@ const orderRoutes = require('./routes/order.route');
 const reviewRoutes = require('./routes/review.route');
 const blogRoutes = require('./routes/blog.route');
 const contactRoutes = require('./routes/contact.route');
+const expertConsultationRoutes = require('./routes/expertConsultation.route');
 const newsletterRoutes = require('./routes/newsletter.route');
 const PORT = process.env.PORT || 5000;
 
@@ -86,6 +87,7 @@ app.use('/api/orders', orderRoutes);
 app.use('/api/reviews', reviewRoutes);
 app.use('/api', blogRoutes);
 app.use('/api', contactRoutes);
+app.use('/api', expertConsultationRoutes);
 app.use('/api/newsletter', newsletterRoutes);
 
 // Health check endpoint

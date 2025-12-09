@@ -3,6 +3,15 @@ const router = express.Router();
 const productAttributeController = require('../controllers/productAttributeController');
 const authenticateToken = require('../middleware/auth');
 
+// Get all unique attribute names (Public)
+router.get('/names', productAttributeController.getAllAttributeNames);
+
+// Get all values for an attribute name (Public)
+router.get('/values/:attribute_name', productAttributeController.getAttributeValues);
+
+// Get all attributes grouped by name (Public)
+router.get('/grouped', productAttributeController.getAllAttributesGrouped);
+
 // Get all attributes for a product (Public)
 router.get('/product/:product_id', productAttributeController.getProductAttributes);
 

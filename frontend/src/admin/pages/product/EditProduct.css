@@ -430,6 +430,61 @@
   }
 }
 
+/* Section Header */
+.editproduct-section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.editproduct-section-header h2 {
+  margin: 0;
+}
+
+/* Attribute Styles */
+.editproduct-attribute-item {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-light);
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.editproduct-attribute-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.editproduct-attribute-header h3 {
+  margin: 0;
+  font-size: 1.1rem;
+  color: var(--text-primary);
+}
+
+.editproduct-attribute-inputs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.editproduct-attribute-inputs select {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid var(--border-light);
+  border-radius: 6px;
+  font-size: 0.95rem;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+.editproduct-attribute-inputs select:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
 /* Loading State */
 .editproduct-loading {
   text-align: center;
