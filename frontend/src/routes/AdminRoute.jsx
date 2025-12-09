@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import { Routes, Route } from 'react-router-dom'
 import { useAdmin } from '../context/AdminContext'

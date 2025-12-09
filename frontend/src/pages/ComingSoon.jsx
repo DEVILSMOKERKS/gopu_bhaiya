@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import './ComingSoon.css'
 import logo from '../assets/img/logo.png'
 

@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import './ManufacturingProcess.css';
 // Import manufacturing process images
 import manufacturingImage1 from '../../../assets/Images/banner/manufacturingImage1.jpg';

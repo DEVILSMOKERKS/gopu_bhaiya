@@ -1,4 +1,4 @@
-import React, { useState, useEffect, Suspense, lazy } from "react";
+import { useState, useEffect, Suspense, lazy } from "react";
 import { BrowserRouter, useLocation } from "react-router-dom";
 import { Provider } from 'react-redux';
 import { store } from './store/store';

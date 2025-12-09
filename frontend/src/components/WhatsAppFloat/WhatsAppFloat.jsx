@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { MessageCircle, X, Phone } from 'lucide-react';
 import './WhatsAppFloat.css';
 

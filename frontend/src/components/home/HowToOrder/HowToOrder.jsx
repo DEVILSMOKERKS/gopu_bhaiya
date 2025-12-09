@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import { useState } from 'react';
 import Image from 'next/image';
 import './HowToOrder.css';
 // Import background image - using one of the existing images as placeholder
@@ -41,16 +41,16 @@ const HowToOrder = () => {
   return (
     <section className="how-to-order">
       <div className="how-to-order-background" style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', zIndex: 0 }}>
-        <Image 
-          src={backgroundImg} 
-          alt="Luxurious interior with marble temple" 
+        <Image
+          src={backgroundImg}
+          alt="Luxurious interior with marble temple"
           className="how-to-order-bg-image"
           fill
           style={{ objectFit: 'cover', objectPosition: 'center' }}
         />
         <div className="how-to-order-overlay"></div>
       </div>
-      
+
       <div className="how-to-order-container">
         <div className="how-to-order-content">
           {/* Left Side - Title */}

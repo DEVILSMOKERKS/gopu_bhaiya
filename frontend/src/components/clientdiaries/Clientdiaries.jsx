@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import Image from 'next/image';
 import './clientdiaries.css';
 import Collection1 from '../../assets/img/Collection/Collection1.jpg';
