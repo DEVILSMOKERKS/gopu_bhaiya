@@ -1,24 +1,24 @@
 .our-creations-page {
   padding-top: 100px;
   min-height: 100vh;
-  background: #f8f9fa;
+  background: var(--bg-secondary);
 }
 
 .our-creations-page .creations-header {
   text-align: center;
   padding: 60px 20px 40px;
-  background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+  background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
 }
 
 .our-creations-page .creations-title {
   font-size: 24px !important;
   margin-bottom: 15px;
-  color: #000000;
+  color: var(--text-primary);
 }
 
 .our-creations-page .creations-subtitle {
   font-size: 18px;
-  color: #2e2e2e;
+  color: var(--text-secondary);
   max-width: 600px;
   margin: 0 auto;
 }
@@ -37,7 +37,7 @@
 }
 
 .our-creations-page .creation-card {
-  background: #ffffff;
+  background: var(--bg-primary);
   border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
@@ -57,7 +57,7 @@
   width: 100% !important;
   height: 300px !important;
   overflow: hidden;
-  background: #f0f0f0;
+  background: var(--bg-light);
 }
 
 .our-creations-page .creation-image {
@@ -93,7 +93,7 @@
 }
 
 .our-creations-page .creation-view-text {
-  color: #ffffff;
+  color: var(--text-white);
   font-size: 16px;
   font-weight: 600;
   font-family: var(--futura-pt-medium, 'Arial', 'Helvetica', sans-serif);
@@ -108,13 +108,13 @@
 .our-creations-page .creation-card-title {
   font-size: 20px;
   margin-bottom: 12px;
-  color: #000000;
+  color: var(--text-primary);
   font-family: var(--futura-pt-medium, 'Arial', 'Helvetica', sans-serif);
 }
 
 .our-creations-page .creation-description {
   font-size: 14px;
-  color: #666;
+  color: var(--text-tertiary);
   line-height: 1.6;
   margin: 0;
 }
@@ -122,7 +122,7 @@
 .our-creations-page .creations-cta {
   text-align: center;
   padding: 60px 20px;
-  background: #ffffff;
+  background: var(--bg-primary);
   border-radius: 12px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
 }
@@ -130,21 +130,21 @@
 .our-creations-page .cta-title {
   font-size: 24px;
   margin-bottom: 15px;
-  color: #000000;
+  color: var(--text-primary);
   font-family: var(--futura-pt-medium, 'Arial', 'Helvetica', sans-serif);
 }
 
 .our-creations-page .cta-text {
   font-size: 16px;
-  color: #666;
+  color: var(--text-tertiary);
   margin-bottom: 30px;
 }
 
 .our-creations-page .cta-button {
   display: inline-block;
   padding: 16px 40px;
-  background: #B68126;
-  color: #ffffff;
+  background: var(--primary-color);
+  color: var(--text-white);
   text-decoration: none;
   border-radius: 8px;
   font-size: 16px;
@@ -156,7 +156,7 @@
 }
 
 .our-creations-page .cta-button:hover {
-  background: #956213;
+  background: var(--primary-dark);
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(182, 129, 38, 0.3);
 }

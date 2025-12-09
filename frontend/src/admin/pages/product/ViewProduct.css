@@ -527,12 +527,12 @@
 }
 
 .viewproduct-status-badge.active {
-  background: #dcfce7;
+  background: var(--bg-secondary);
   color: var(--primary-green);
 }
 
 .viewproduct-status-badge.inactive {
-  background: #fef2f2;
+  background: var(--bg-secondary);
   color: var(--accent-error);
 }
 

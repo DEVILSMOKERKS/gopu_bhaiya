@@ -4,7 +4,7 @@
   margin: 0 auto;
   padding: 20px;
   font-family: var(--font-family);
-  background-color: white;
+  background-color: var(--bg-primary);
   margin-top: 100px;
 }
 
@@ -45,7 +45,7 @@
 .skeleton-thumbnail {
   width: 80px;
   height: 80px;
-  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background: linear-gradient(90deg, var(--bg-light) 25%, var(--border-light) 50%, var(--bg-light) 75%);
   background-size: 200% 100%;
   animation: shimmer 2s infinite;
   border-radius: 8px;
@@ -54,7 +54,7 @@
 .skeleton-main-image {
   flex: 1;
   height: 500px;
-  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background: linear-gradient(90deg, var(--bg-light) 25%, var(--border-light) 50%, var(--bg-light) 75%);
   background-size: 200% 100%;
   animation: shimmer 2s infinite;
   border-radius: 12px;
@@ -70,7 +70,7 @@
 .skeleton-breadcrumb {
   height: 16px;
   width: 300px;
-  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background: linear-gradient(90deg, var(--bg-light) 25%, var(--border-light) 50%, var(--bg-light) 75%);
   background-size: 200% 100%;
   animation: shimmer 2s infinite;
   border-radius: 4px;
@@ -79,7 +79,7 @@
 .skeleton-title {
   height: 32px;
   width: 80%;
-  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background: linear-gradient(90deg, var(--bg-light) 25%, var(--border-light) 50%, var(--bg-light) 75%);
   background-size: 200% 100%;
   animation: shimmer 2s infinite;
   border-radius: 6px;
@@ -88,7 +88,7 @@
 .skeleton-price {
   height: 28px;
   width: 120px;
-  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background: linear-gradient(90deg, var(--bg-light) 25%, var(--border-light) 50%, var(--bg-light) 75%);
   background-size: 200% 100%;
   animation: shimmer 2s infinite;
   border-radius: 6px;
@@ -97,7 +97,7 @@
 .skeleton-description {
   height: 60px;
   width: 100%;
-  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background: linear-gradient(90deg, var(--bg-light) 25%, var(--border-light) 50%, var(--bg-light) 75%);
   background-size: 200% 100%;
   animation: shimmer 2s infinite;
   border-radius: 6px;
@@ -113,7 +113,7 @@
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background: linear-gradient(90deg, var(--bg-light) 25%, var(--border-light) 50%, var(--bg-light) 75%);
   background-size: 200% 100%;
   animation: shimmer 2s infinite;
 }
@@ -127,7 +127,7 @@
 .skeleton-size {
   width: 50px;
   height: 40px;
-  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background: linear-gradient(90deg, var(--bg-light) 25%, var(--border-light) 50%, var(--bg-light) 75%);
   background-size: 200% 100%;
   animation: shimmer 2s infinite;
   border-radius: 6px;
@@ -141,7 +141,7 @@
 
 .skeleton-button {
   height: 50px;
-  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background: linear-gradient(90deg, var(--bg-light) 25%, var(--border-light) 50%, var(--bg-light) 75%);
   background-size: 200% 100%;
   animation: shimmer 2s infinite;
   border-radius: 8px;
@@ -162,7 +162,7 @@
 }
 
 .skeleton-section {
-  border: 1px solid #e0e0e0;
+  border: 1px solid var(--border-light);
   border-radius: 8px;
   padding: 20px;
 }
@@ -170,7 +170,7 @@
 .skeleton-section-header {
   height: 20px;
   width: 150px;
-  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background: linear-gradient(90deg, var(--bg-light) 25%, var(--border-light) 50%, var(--bg-light) 75%);
   background-size: 200% 100%;
   animation: shimmer 2s infinite;
   border-radius: 4px;
@@ -180,7 +180,7 @@
 .skeleton-section-content {
   height: 80px;
   width: 100%;
-  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background: linear-gradient(90deg, var(--bg-light) 25%, var(--border-light) 50%, var(--bg-light) 75%);
   background-size: 200% 100%;
   animation: shimmer 2s infinite;
   border-radius: 4px;
@@ -201,8 +201,8 @@
 .product-loading-spinner {
   width: 50px;
   height: 50px;
-  border: 4px solid #f3f3f3;
-  border-top: 4px solid #956213;
+  border: 4px solid var(--border-light);
+  border-top: 4px solid var(--primary-dark);
   border-radius: 50%;
   animation: spin 1s linear infinite, pulse 2s ease-in-out infinite;
   margin: 2rem auto;
@@ -244,7 +244,7 @@
 .loading-dot {
   width: 8px;
   height: 8px;
-  background: #8B0000;
+  background: var(--primary-color);
   border-radius: 50%;
   animation: bounce 1.4s ease-in-out infinite both;
 }
@@ -316,13 +316,13 @@
 }
 
 .product-error h2 {
-  color: #e74c3c;
+  color: var(--accent-error);
   font-size: 1.5rem;
   margin: 0 0 1rem 0;
 }
 
 .product-error p {
-  color: #666;
+  color: var(--text-tertiary);
   font-size: 1rem;
   margin: 0;
 }
@@ -331,7 +331,7 @@
 .breadcrumbs {
   margin-bottom: 30px;
   font-size: 10px;
-  color: #666;
+  color: var(--text-tertiary);
 }
 
 .breadcrumbs span,
@@ -340,14 +340,14 @@
 }
 
 .breadcrumbs a {
-  color: #666;
+  color: var(--text-tertiary);
   text-decoration: none;
   cursor: pointer;
   transition: color 0.3s ease;
 }
 
 .breadcrumbs a:hover {
-  color: #8B0000;
+  color: var(--primary-color);
 }
 
 .breadcrumbs span:not(:last-child) {
@@ -355,7 +355,7 @@
 }
 
 .breadcrumbs span:not(:last-child):hover {
-  color: #333;
+  color: var(--text-secondary);
 }
 
 /* Main Container */
@@ -396,7 +396,7 @@
 }
 
 .thumbnail.active {
-  border-color: #8B0000;
+  border-color: var(--primary-color);
 }
 
 .thumbnail img {
@@ -454,8 +454,8 @@
   width: 36px;
   height: 36px;
   border: none;
-  background: #8b0000;
-  color: white;
+  background: var(--primary-color);
+  color: var(--text-white);
   border-radius: 6px;
   cursor: pointer;
   font-size: 16px;
@@ -468,28 +468,28 @@
 }
 
 .zoom-btn:hover:not(:disabled) {
-  background: #6b0000;
+  background: var(--primary-dark);
   transform: scale(1.05);
 }
 
 .zoom-btn:disabled {
-  background: #ccc;
+  background: var(--border-light);
   cursor: not-allowed;
   opacity: 0.6;
 }
 
 .zoom-level {
   font-size: 11px;
-  color: #333;
+  color: var(--text-secondary);
   font-weight: 600;
   display: flex;
   align-items: center;
   padding: 6px 10px;
-  background: #f8f9fa;
+  background: var(--bg-secondary);
   border-radius: 4px;
   min-width: 45px;
   justify-content: center;
-  border: 1px solid #e9ecef;
+  border: 1px solid var(--border-light);
   letter-spacing: 0.5px;
 }
 
@@ -558,21 +558,21 @@
 /* Clean Zoom Controls */
 .zoom-controls {
   background: rgba(255, 255, 255, 0.9);
-  border: 1px solid #e0e0e0;
+  border: 1px solid var(--border-light);
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .zoom-btn {
-  background: #8b0000;
-  color: white;
+  background: var(--primary-color);
+  color: var(--text-white);
   border: none;
   border-radius: 4px;
   transition: all 0.2s ease;
 }
 
 .zoom-btn:hover:not(:disabled) {
-  background: #6b0000;
+  background: var(--primary-dark);
   transform: translateY(-1px);
 }
 
@@ -581,14 +581,14 @@
 }
 
 .zoom-btn:disabled {
-  background: #ccc;
+  background: var(--border-light);
   cursor: not-allowed;
   opacity: 0.6;
 }
 
 .zoom-level {
-  background: #f8f9fa;
-  color: #333;
+  background: var(--bg-secondary);
+  color: var(--text-secondary);
   font-weight: 500;
 }
 
@@ -600,10 +600,10 @@
 }
 
 .accordion-section {
-  border: 1px solid #e0e0e0;
+  border: 1px solid var(--border-light);
   border-radius: 4px;
   overflow: hidden;
-  background-color: #f7f7f7;
+  background-color: var(--bg-light);
 }
 
 .accordion-header {
@@ -618,32 +618,32 @@
 }
 
 .accordion-header:hover {
-  background-color: #f0f0f0;
+  background-color: var(--bg-light);
 }
 
 .accordion-icon {
   font-size: 18px;
   font-weight: bold;
-  color: #666;
+  color: var(--text-tertiary);
 }
 
 .accordion-content {
   padding: 20px;
-  border-top: 1px solid #e0e0e0;
+  border-top: 1px solid var(--border-light);
 }
 
 .accordion-content h4 {
   margin: 0 0 10px 0;
   font-size: 14px;
   font-weight: 600;
-  color: #333;
+  color: var(--text-secondary);
 }
 
 .accordion-content p {
   margin: 0 0 15px 0;
   font-size: 14px;
   line-height: 1.5;
-  color: #666;
+  color: var(--text-tertiary);
 }
 
 .accordion-content div:last-child p {
@@ -662,7 +662,7 @@
 .product-title {
   font-size: 24px;
   font-weight: 600;
-  color: #333;
+  color: var(--text-secondary);
   margin: 0;
   line-height: 1.2;
 }
@@ -671,7 +671,7 @@
 .product-description {
   font-size: 16px;
   line-height: 1.6;
-  color: #666;
+  color: var(--text-tertiary);
   margin: 0;
 }
 
@@ -685,7 +685,7 @@
   flex-direction: column;
   gap: 12px;
   padding: 16px 0;
-  border-bottom: 1px solid #f0f0f0;
+  border-bottom: 1px solid var(--border-light);
   margin-bottom: 8px;
 }
 
@@ -715,7 +715,7 @@
 .selling-price {
   font-size: 32px;
   font-weight: 700;
-  color: #8B0000;
+  color: var(--primary-color);
   line-height: 1.1;
   letter-spacing: -0.5px;
 }
@@ -729,26 +729,26 @@
 .actual-price {
   font-size: 18px;
   font-weight: 500;
-  color: #999;
+  color: var(--text-quaternary);
   text-decoration: line-through;
   line-height: 1.2;
 }
 
 .price-label {
   font-size: 11px;
-  color: #666;
-  background: #f8f9fa;
+  color: var(--text-tertiary);
+  background: var(--bg-secondary);
   padding: 3px 8px;
   border-radius: 4px;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  border: 1px solid #e9ecef;
+  border: 1px solid var(--border-light);
 }
 
 .discount-badge {
-  background: #8B0000;
-  color: white;
+  background: var(--primary-color);
+  color: var(--text-white);
   font-size: 11px;
   font-weight: 700;
   padding: 6px 12px;
@@ -760,12 +760,12 @@
 
 .savings-info {
   font-size: 14px;
-  color: #28a745;
+  color: var(--primary-green);
   font-weight: 600;
-  background: #f8fff9;
+  background: var(--bg-secondary);
   padding: 8px 12px;
   border-radius: 6px;
-  border-left: 3px solid #28a745;
+  border-left: 3px solid var(--primary-green);
   margin-top: 8px;
   display: inline-block;
 }
@@ -774,7 +774,7 @@
 .color-section h3 {
   font-size: 16px;
   font-weight: 600;
-  color: #333;
+  color: var(--text-secondary);
   margin: 0 0 15px 0;
 }
 
@@ -798,13 +798,13 @@
 }
 
 .color-option:hover {
-  border-color: #ddd;
-  background-color: #f8f8f8;
+  border-color: var(--border-light);
+  background-color: var(--bg-secondary);
 }
 
 .color-option.selected {
-  border-color: #8B0000;
-  background-color: #fff5f5;
+  border-color: var(--primary-color);
+  background-color: var(--bg-secondary);
 }
 
 .color-image-container {
@@ -812,7 +812,7 @@
   height: 60px;
   border-radius: 8px;
   overflow: hidden;
-  border: 1px solid #ddd;
+  border: 1px solid var(--border-light);
 }
 
 .color-image {
@@ -824,7 +824,7 @@
 .color-name {
   font-size: 12px;
   font-weight: 500;
-  color: #333;
+  color: var(--text-secondary);
   text-align: center;
   line-height: 1.2;
 }
@@ -845,12 +845,12 @@
 .size-header label {
   font-size: 16px;
   font-weight: 600;
-  color: #333;
+  color: var(--text-secondary);
 }
 
 .size-guide {
   font-size: 14px;
-  color: #8B0000;
+  color: var(--primary-color);
   text-decoration: none;
   background: none;
   border: none;
@@ -876,9 +876,9 @@
   justify-content: center;
   min-width: 80px;
   padding: 12px 8px;
-  border: 2px solid #ddd;
+  border: 2px solid var(--border-light);
   border-radius: 8px;
-  background-color: white;
+  background-color: var(--bg-primary);
   cursor: pointer;
   transition: all 0.3s ease;
   text-align: center;
@@ -886,17 +886,17 @@
 
 .size-option:hover {
   border-color: var(--primary-color);
-  background-color: #f8f8f8;
+  background-color: var(--bg-secondary);
 }
 
 .size-option.selected {
   border-color: var(--primary-color);
   background-color: var(--primary-color);
-  color: white;
+  color: var(--text-white);
 }
 
 .size-option.selected .size-price {
-  color: #FFF;
+  color: var(--text-white);
 }
 
 .size-value {
@@ -907,14 +907,14 @@
 
 .size-price {
   font-size: 12px;
-  color: #666;
+  color: var(--text-tertiary);
   font-weight: 500;
 }
 
 /* Add to Cart Button */
 .add-to-cart-btn {
   background-color: var(--primary-color);
-  color: white;
+  color: var(--text-white);
   border: none;
   padding: 15px 30px;
   font-size: 16px;
@@ -926,13 +926,13 @@
 }
 
 .add-to-cart-btn:hover {
-  background-color: #6B0000;
+  background-color: var(--primary-dark);
 }
 
 /* Go to Cart Button */
 .go-to-cart-btn {
   background-color: var(--primary-color);
-  color: white;
+  color: var(--text-white);
   border: none;
   padding: 15px 30px;
   font-size: 16px;
@@ -944,13 +944,13 @@
 }
 
 .go-to-cart-btn:hover {
-  background-color: #6B0000;
+  background-color: var(--primary-dark);
 }
 
 /* Buy Now Button */
 .buy-now-btn {
-  background-color: #8B0000;
-  color: white;
+  background-color: var(--primary-color);
+  color: var(--text-white);
   border: none;
   padding: 15px 30px;
   font-size: 16px;
@@ -963,7 +963,7 @@
 }
 
 .buy-now-btn:hover {
-  background-color: #6B0000;
+  background-color: var(--primary-dark);
 }
 
 /* Additional Links */
@@ -978,20 +978,20 @@
   align-items: center;
   gap: 8px;
   font-size: 14px;
-  color: #666;
+  color: var(--text-tertiary);
   text-decoration: none;
   transition: color 0.3s ease;
 }
 
 .additional-links a:hover {
-  color: #8B0000;
+  color: var(--primary-color);
 }
 
 .wishlist-btn {
   display: flex;
   align-items: center;
   gap: 8px;
-  color: #8B0000;
+  color: var(--primary-color);
   text-decoration: none;
   font-size: 14px;
   transition: color 0.3s ease;
@@ -1002,11 +1002,11 @@
 }
 
 .wishlist-btn:hover {
-  color: #ff4757;
+  color: var(--accent-red);
 }
 
 .wishlist-btn.in-wishlist {
-  color: #ff4757;
+  color: var(--accent-red);
 }
 
 .wishlist-btn.in-wishlist .icon {
@@ -1037,7 +1037,7 @@
 
 /* Material Section */
 .material-section {
-  background-color: #f7f7f7;
+  background-color: var(--bg-light);
   padding: 25px;
   border-radius: 4px;
   margin-top: 30px;
@@ -1046,14 +1046,14 @@
 .material-section h3 {
   font-size: 18px;
   font-weight: 600;
-  color: #333;
+  color: var(--text-secondary);
   margin: 0 0 15px 0;
 }
 
 .material-section p {
   font-size: 14px;
   line-height: 1.6;
-  color: #2b2929;
+  color: var(--text-primary);
   margin: 0 0 20px 0;
 }
 
@@ -1064,13 +1064,13 @@
 }
 
 .feature-tag {
-  background-color: white;
-  color: #333;
+  background-color: var(--bg-primary);
+  color: var(--text-secondary);
   padding: 8px 15px;
   border-radius: 20px;
   font-size: 12px;
   font-weight: 500;
-  border: 1px solid #ddd;
+  border: 1px solid var(--border-light);
 }
 
 /* Responsive Design */
@@ -1399,7 +1399,7 @@
   border-radius: 50%;
   font-size: 24px;
   font-weight: bold;
-  color: #333;
+  color: var(--text-secondary);
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -1430,7 +1430,7 @@
   left: 50%;
   transform: translateX(-50%);
   background: rgba(0, 0, 0, 0.8);
-  color: white;
+  color: var(--text-white);
   padding: 12px 20px;
   border-radius: 25px;
   font-size: 14px;
@@ -1448,7 +1448,7 @@
   left: 50%;
   transform: translateX(-50%);
   background: rgba(0, 0, 0, 0.7);
-  color: white;
+  color: var(--text-white);
   padding: 8px 16px;
   border-radius: 20px;
   font-size: 14px;
@@ -1476,7 +1476,7 @@
     height: 40px;
     font-size: 20px;
     background: rgba(0, 0, 0, 0.7);
-    color: white;
+    color: var(--text-white);
   }
 
   .zoom-modal-image {

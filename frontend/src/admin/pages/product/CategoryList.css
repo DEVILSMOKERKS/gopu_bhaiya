@@ -77,11 +77,11 @@
 
 /* Error Message */
 .categorylist-error {
-  background: #fef2f2;
+  background: var(--bg-secondary);
   color: var(--accent-error);
   padding: 12px 16px;
   border-radius: 6px;
-  border: 1px solid #fecaca;
+  border: 1px solid var(--accent-error);
   margin-bottom: 1rem;
   font-size: 14px;
 }
@@ -246,7 +246,7 @@
 
 .categorylist-delete-btn:hover {
   border-color: var(--accent-error);
-  background: #fef2f2;
+  background: var(--bg-secondary);
 }
 
 .categorylist-action-btn:disabled {

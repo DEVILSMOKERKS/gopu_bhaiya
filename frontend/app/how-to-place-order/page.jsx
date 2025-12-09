@@ -2,7 +2,7 @@ import HowToPlaceOrder from '../../src/pages/HowToPlaceOrder';
 
 export const dynamic = 'force-dynamic';
 
-const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || 'https://mateshwarimoortibhandar.com';
+const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 
 export const metadata = {
   title: 'How to Place Order - Mateshwari Moorti Bhandar',

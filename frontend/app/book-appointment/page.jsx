@@ -2,7 +2,7 @@ import BookAppointment from '../../src/pages/BookAppointment';
 
 export const dynamic = 'force-dynamic';
 
-const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || 'https://mateshwarimoortibhandar.com';
+const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 
 export const metadata = {
   title: 'Book Appointment - Mateshwari Moorti Bhandar',

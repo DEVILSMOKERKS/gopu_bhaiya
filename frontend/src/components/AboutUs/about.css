@@ -1,7 +1,7 @@
 /* About Page Styles */
 
 .about-container {
-  background: #fff;
+  background: var(--bg-primary);
   min-height: 100vh;
 }
 
@@ -313,7 +313,7 @@
 }
 
 .craftsmanship-wrapper {
-  background: #fff;
+  background: var(--bg-primary);
   padding: 4rem 2rem;
 }
 
@@ -393,7 +393,7 @@
   }
 
   .different-image-frame {
-    background: #fff;
+    background: var(--bg-primary);
     padding: 8px;
     border-radius: 12px;
   }
@@ -418,7 +418,7 @@
 .craftsmanship-card-icon-bg {
   width: 80px;
   height: 80px;
-  background: #fff;
+  background: var(--bg-primary);
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -462,7 +462,7 @@
 }
 
 .different-wrapper {
-  background: #fff;
+  background: var(--bg-primary);
 }
 
 .different-main-section {
@@ -606,7 +606,7 @@
 
 /* Crafting Temples Section */
 .crafting-temples-section {
-  background: #fff;
+  background: var(--bg-primary);
   padding: 4rem 2rem;
 }
 
@@ -878,7 +878,7 @@
 }
 
 .journey-carousel-card {
-  background: #fff;
+  background: var(--bg-primary);
   border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
@@ -902,7 +902,7 @@
 .journey-carousel-content {
   padding: 1.5rem;
   text-align: center;
-  background: #fff;
+  background: var(--bg-primary);
 }
 
 .journey-carousel-year {
@@ -1224,7 +1224,7 @@
   }
 
   .different-image-frame {
-    background: #fff;
+    background: var(--bg-primary);
     padding: 8px;
     border-radius: 12px;
   }

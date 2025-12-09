@@ -34,7 +34,7 @@
 .contactus-help-heading {
   font-size: 2rem;
   font-weight: bold;
-  color: #000;
+  color: var(--text-primary);
   font-family: var(--font-family);
   margin: 0;
 }
@@ -52,8 +52,8 @@
 
 .contactus-left {
   flex: 1;
-  background: #fff;
-  border: 1px solid #c5a97e;
+  background: var(--bg-primary);
+  border: 1px solid var(--primary-color);
   border-radius: 8px;
   padding: 20px;
   display: flex;
@@ -74,8 +74,8 @@
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background: #712a3d;
-  border: 2px solid #c5a97e;
+  background: var(--primary-dark);
+  border: 2px solid var(--primary-color);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -91,7 +91,7 @@
 .contactus-help-text {
   font-size: 15px;
   font-weight: 600;
-  color: #222;
+  color: var(--text-secondary);
   font-family: var(--font-family);
 }
 
@@ -105,7 +105,8 @@
 }
 
 .contactus-desc {
-  color: #000000cc;
+  color: var(--text-primary);
+  opacity: 0.8;
   font-size: 16px;
   font-weight: 400;
   line-height: 24px;
@@ -206,7 +207,7 @@
 }
 
 .contactus-form label {
-  color: #ffffff;
+  color: var(--text-white);
   font-size: 18px;
   font-weight: 600;
   /* margin-bottom: 4px; */
@@ -219,13 +220,13 @@
 .contactus-form-textarea {
   padding: 8px 12px 2px 3px;
   border: none;
-  border-bottom: 1px solid #ffffff;
+  border-bottom: 1px solid var(--text-white);
   border-radius: 0;
   margin-bottom: 10px;
   font-size: 15px;
   outline: none;
   background: transparent;
-  color: #ffffff;
+  color: var(--text-white);
   font-family: var(--font-family);
   resize: vertical;
 }
@@ -237,15 +238,15 @@
 
 .contactus-form input::placeholder,
 .contactus-form-textarea::placeholder {
-  color: #c5a97e;
+  color: var(--primary-color);
   font-size: 13px;
 }
 
 .contactus-submit-btn {
   margin-top: 20px;
   padding: 10px 24px;
-  background: #c5a97e;
-  color: #000;
+  background: var(--primary-color);
+  color: var(--text-primary);
   border: none;
   border-radius: 4px;
   font-size: 18px;
@@ -262,7 +263,7 @@
 
 .contactus-submit-btn:hover {
   background: #b8966a;
-  color: #000;
+  color: var(--text-primary);
 }
 
 .contactus-submit-btn:disabled {

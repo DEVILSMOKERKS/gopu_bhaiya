@@ -1,24 +1,24 @@
 .projects-page {
   padding-top: 100px;
   min-height: 100vh;
-  background: #f8f9fa;
+  background: var(--bg-secondary);
 }
 
 .projects-page .projects-header {
   text-align: center;
   padding: 60px 20px 40px;
-  background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+  background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
 }
 
 .projects-page .projects-title {
   font-size: 24px !important;
   margin-bottom: 15px;
-  color: #000000;
+  color: var(--text-primary);
 }
 
 .projects-page .projects-subtitle {
   font-size: 18px;
-  color: #2e2e2e;
+  color: var(--text-secondary);
   max-width: 600px;
   margin: 0 auto;
 }
@@ -39,8 +39,8 @@
 
 .projects-page .filter-btn {
   padding: 10px 24px;
-  background: #ffffff;
-  border: 1px solid #ddd;
+  background: var(--bg-primary);
+  border: 1px solid var(--border-light);
   border-radius: 25px;
   font-size: 14px;
   font-weight: 600;
@@ -52,14 +52,14 @@
 }
 
 .projects-page .filter-btn:hover {
-  border-color: #B68126;
-  color: #B68126;
+  border-color: var(--primary-color);
+  color: var(--primary-color);
 }
 
 .projects-page .filter-btn.active {
-  background: #B68126;
-  color: #ffffff;
-  border-color: #B68126;
+  background: var(--primary-color);
+  color: var(--text-white);
+  border-color: var(--primary-color);
 }
 
 .projects-page .projects-grid {
@@ -69,7 +69,7 @@
 }
 
 .projects-page .project-card {
-  background: #ffffff;
+  background: var(--bg-primary);
   border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
@@ -86,7 +86,7 @@
   width: 100% !important;
   height: 300px !important;
   overflow: hidden;
-  background: #f0f0f0;
+  background: var(--bg-light);
 }
 
 .projects-page .project-image {
@@ -115,7 +115,7 @@
 
 .projects-page .project-category {
   font-size: 12px;
-  color: #ffffff;
+  color: var(--text-white);
   font-weight: 600;
   font-family: var(--futura-pt-medium, 'Arial', 'Helvetica', sans-serif);
 }
@@ -127,13 +127,13 @@
 .projects-page .project-title {
   font-size: 20px;
   margin-bottom: 12px;
-  color: #000000;
+  color: var(--text-primary);
   font-family: var(--futura-pt-medium, 'Arial', 'Helvetica', sans-serif);
 }
 
 .projects-page .project-description {
   font-size: 14px;
-  color: #666;
+  color: var(--text-tertiary);
   line-height: 1.6;
   margin-bottom: 15px;
 }
@@ -144,25 +144,25 @@
   align-items: center;
   margin-bottom: 20px;
   padding-top: 15px;
-  border-top: 1px solid #f0f0f0;
+  border-top: 1px solid var(--border-light);
 }
 
 .projects-page .project-location {
   font-size: 13px;
-  color: #666;
+  color: var(--text-tertiary);
 }
 
 .projects-page .project-year {
   font-size: 13px;
   font-weight: 600;
-  color: #B68126;
+  color: var(--primary-color);
 }
 
 .projects-page .project-view-btn {
   display: inline-block;
   padding: 10px 24px;
-  background: #B68126;
-  color: #ffffff;
+  background: var(--primary-color);
+  color: var(--text-white);
   text-decoration: none;
   border-radius: 6px;
   font-size: 14px;
@@ -174,7 +174,7 @@
 }
 
 .projects-page .project-view-btn:hover {
-  background: #956213;
+  background: var(--primary-dark);
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(182, 129, 38, 0.3);
 }

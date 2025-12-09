@@ -1,6 +1,6 @@
 .dream-temple-steps {
   padding: 80px 20px;
-  background: #ffffff;
+  background: var(--bg-primary);
   position: relative;
 }
 
@@ -14,14 +14,14 @@
   font-weight: 700;
   text-align: center;
   margin-bottom: 15px;
-  color: #000000;
+  color: var(--text-primary);
   font-family: var(--font-family);
 }
 
 .dream-temple-subtitle {
   font-size: 1.1rem;
   text-align: center;
-  color: #666666;
+  color: var(--text-tertiary);
   margin-bottom: 60px;
   font-family: var(--font-family);
 }
@@ -61,8 +61,8 @@
   width: 120px;
   height: 120px;
   border-radius: 50%;
-  background: #ffffff;
-  border: 2px solid #B68126;
+  background: var(--bg-primary);
+  border: 2px solid var(--primary-color);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -76,7 +76,7 @@
 .dream-temple-step-circle:hover {
   transform: scale(1.05);
   box-shadow: 0 6px 20px rgba(182, 129, 38, 0.3);
-  border-color: #956213;
+  border-color: var(--primary-dark);
 }
 
 .dream-temple-step-illustration {
@@ -100,7 +100,7 @@
   font-size: 13.6px;
   font-weight: 400;
   text-align: center;
-  color: #000000;
+  color: var(--text-primary);
   margin: 0;
   line-height: 1.4;
   max-width: 220px;
@@ -138,7 +138,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #B68126;
+  color: var(--primary-color);
   font-size: 2rem;
   font-weight: 700;
   background: rgba(182, 129, 38, 0.1);

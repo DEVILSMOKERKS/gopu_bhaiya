@@ -4,7 +4,7 @@
   margin: 0 auto;
   padding: 24px;
   font-family: var(--font-family);
-  background: #f8f9fa;
+  background: var(--bg-secondary);
   min-height: 100vh;
   margin-top: 100px;
 }
@@ -15,7 +15,7 @@
   align-items: center;
   margin-bottom: 32px;
   padding: 24px;
-  background: white;
+  background: var(--bg-primary);
   border-radius: 16px;
 }
 
@@ -25,7 +25,7 @@
   border: none;
   border-radius: 12px;
   cursor: pointer;
-  color: white;
+  color: var(--text-white);
   transition: all 0.3s ease;
   font-weight: 600;
   font-size: 14px;
@@ -35,7 +35,7 @@
 }
 
 .back-btn:hover {
-  background: #0056b3;
+  background: var(--primary-dark);
   transform: translateY(-2px);
   box-shadow: 0 6px 20px rgba(0, 123, 255, 0.3);
 }
@@ -43,7 +43,7 @@
 .order-details-header h1 {
   font-size: 28px;
   font-weight: 700;
-  color: #1a1a1a;
+  color: var(--text-primary);
   margin: 0;
   letter-spacing: -0.5px;
 }
@@ -51,7 +51,7 @@
 .order-status-header .status-badge {
   padding: 10px 20px;
   border-radius: 25px;
-  color: white;
+  color: var(--text-white);
   font-size: 13px;
   font-weight: 700;
   text-transform: uppercase;
@@ -66,16 +66,16 @@
 
 /* Order Summary Section */
 .order-summary-section {
-  background: white;
+  background: var(--bg-primary);
   border-radius: 16px;
   padding: 28px;
-  
+
 }
 
 .order-summary-section h2 {
   font-size: 24px;
   font-weight: 700;
-  color: #1a1a1a;
+  color: var(--text-primary);
   margin-bottom: 0px;
   letter-spacing: -0.3px;
 }
@@ -91,20 +91,20 @@
   justify-content: space-between;
   align-items: center;
   padding: 16px 20px;
-  background: #f8f9fa;
+  background: var(--bg-secondary);
   border-radius: 12px;
-  border: 1px solid #e9ecef;
+  border: 1px solid var(--border-light);
 }
 
 .summary-item .label {
   font-weight: 600;
-  color: #495057;
+  color: var(--text-secondary);
   font-size: 14px;
 }
 
 .summary-item .value {
   font-weight: 700;
-  color: #1a1a1a;
+  color: var(--text-primary);
   font-size: 15px;
 }
 
@@ -118,18 +118,18 @@
 }
 
 .payment-status.paid {
-  background: #d1e7dd;
-  color: #0f5132;
+  background: var(--bg-secondary);
+  color: var(--primary-green);
 }
 
 .payment-status.pending {
-  background: #fff3cd;
-  color: #664d03;
+  background: var(--creamy-color);
+  color: var(--text-primary);
 }
 
 /* Order Items Section */
 .order-items-section {
-  background: white;
+  background: var(--bg-primary);
   border-radius: 16px;
   padding: 28px;
 }
@@ -137,7 +137,7 @@
 .order-items-section h2 {
   font-size: 24px;
   font-weight: 700;
-  color: #1a1a1a;
+  color: var(--text-primary);
   margin-bottom: 24px;
   letter-spacing: -0.3px;
 }
@@ -152,9 +152,9 @@
   display: flex;
   gap: 20px;
   padding: 24px;
-  border: 1px solid #e9ecef;
+  border: 1px solid var(--border-light);
   border-radius: 12px;
-  background: #f8f9fa;
+  background: var(--bg-secondary);
   transition: all 0.3s ease;
 }
 
@@ -169,7 +169,7 @@
   flex-shrink: 0;
   border-radius: 12px;
   overflow: hidden;
-  border: 2px solid #e9ecef;
+  border: 2px solid var(--border-light);
 }
 
 .item-image img {
@@ -185,7 +185,7 @@
 .item-details h3 {
   font-size: 18px;
   font-weight: 700;
-  color: #1a1a1a;
+  color: var(--text-primary);
   margin-bottom: 12px;
   letter-spacing: -0.2px;
 }
@@ -195,20 +195,20 @@
   gap: 12px;
   margin-bottom: 12px;
   font-size: 13px;
-  color: #6c757d;
+  color: var(--text-tertiary);
 }
 
 .item-variants span {
-  background: white;
+  background: var(--bg-primary);
   padding: 6px 12px;
   border-radius: 8px;
-  border: 1px solid #dee2e6;
+  border: 1px solid var(--border-light);
   font-weight: 600;
 }
 
 .item-price {
   font-size: 14px;
-  color: #6c757d;
+  color: var(--text-tertiary);
   margin-bottom: 8px;
   font-weight: 600;
 }
@@ -221,8 +221,8 @@
 
 /* Price Breakdown Section */
 .price-breakdown-section {
-  background: white;
-  border: 1px solid #e9ecef;
+  background: var(--bg-primary);
+  border: 1px solid var(--border-light);
   border-radius: 16px;
   padding: 28px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
@@ -231,7 +231,7 @@
 .price-breakdown-section h2 {
   font-size: 24px;
   font-weight: 700;
-  color: #1a1a1a;
+  color: var(--text-primary);
   margin-bottom: 24px;
   letter-spacing: -0.3px;
 }
@@ -256,7 +256,7 @@
 }
 
 .price-row.discount {
-  color: #28a745;
+  color: var(--primary-green);
   font-weight: 600;
 }
 
@@ -264,7 +264,7 @@
   font-weight: 700;
   font-size: 20px;
   color: var(--primary-color);
-  border-top: 2px solid #e9ecef;
+  border-top: 2px solid var(--border-light);
   padding-top: 16px;
   margin-top: 12px;
 }
@@ -277,8 +277,8 @@
 }
 
 .address-card {
-  background: white;
-  border: 1px solid #e9ecef;
+  background: var(--bg-primary);
+  border: 1px solid var(--border-light);
   border-radius: 16px;
   padding: 24px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
@@ -287,21 +287,21 @@
 .address-card h3 {
   font-size: 20px;
   font-weight: 700;
-  color: #1a1a1a;
+  color: var(--text-primary);
   margin-bottom: 16px;
   letter-spacing: -0.2px;
 }
 
 .address-card p {
-  color: #6c757d;
+  color: var(--text-tertiary);
   line-height: 1.6;
   font-size: 14px;
 }
 
 /* Tracking Section */
 .tracking-section {
-  background: white;
-  border: 1px solid #e9ecef;
+  background: var(--bg-primary);
+  border: 1px solid var(--border-light);
   border-radius: 16px;
   padding: 28px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
@@ -310,7 +310,7 @@
 .tracking-section h2 {
   font-size: 24px;
   font-weight: 700;
-  color: #1a1a1a;
+  color: var(--text-primary);
   margin-bottom: 24px;
   letter-spacing: -0.3px;
 }
@@ -353,7 +353,7 @@
 }
 
 .tracking-content {
-  background: #f8f9fa;
+  background: var(--bg-secondary);
   border-radius: 12px;
   padding: 20px;
   border-left: 4px solid var(--primary-color);
@@ -362,12 +362,12 @@
 .tracking-content h4 {
   font-size: 16px;
   font-weight: 700;
-  color: #1a1a1a;
+  color: var(--text-primary);
   margin-bottom: 8px;
 }
 
 .tracking-content p {
-  color: #6c757d;
+  color: var(--text-tertiary);
   margin-bottom: 8px;
   font-size: 14px;
   line-height: 1.5;
@@ -375,14 +375,14 @@
 
 .tracking-date {
   font-size: 12px;
-  color: #adb5bd;
+  color: var(--text-quaternary);
   font-weight: 600;
 }
 
 /* Order Actions Section */
 .order-actions-section {
-  background: white;
-  border: 1px solid #e9ecef;
+  background: var(--bg-primary);
+  border: 1px solid var(--border-light);
   border-radius: 16px;
   padding: 28px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
@@ -391,7 +391,7 @@
 .order-actions-section h2 {
   font-size: 24px;
   font-weight: 700;
-  color: #1a1a1a;
+  color: var(--text-primary);
   margin-bottom: 24px;
   letter-spacing: -0.3px;
 }
@@ -416,34 +416,36 @@
 }
 
 .action-btn.cancel {
-  background: #dc3545;
-  color: white;
+  background: var(--accent-error);
+  color: var(--text-white);
 }
 
 .action-btn.cancel:hover {
-  background: #c82333;
+  background: var(--accent-error);
+  opacity: 0.9;
   transform: translateY(-2px);
   box-shadow: 0 6px 20px rgba(220, 53, 69, 0.3);
 }
 
 .action-btn.return {
-  background: #28a745;
-  color: white;
+  background: var(--primary-green);
+  color: var(--text-white);
 }
 
 .action-btn.return:hover {
-  background: #218838;
+  background: var(--primary-green);
+  opacity: 0.9;
   transform: translateY(-2px);
   box-shadow: 0 6px 20px rgba(40, 167, 69, 0.3);
 }
 
 .action-btn.secondary {
-  background: #6c757d;
-  color: white;
+  background: var(--text-tertiary);
+  color: var(--text-white);
 }
 
 .action-btn.secondary:hover {
-  background: #5a6268;
+  background: var(--text-secondary);
   transform: translateY(-2px);
   box-shadow: 0 6px 20px rgba(108, 117, 125, 0.3);
 }
@@ -464,7 +466,7 @@
 }
 
 .modal {
-  background: white;
+  background: var(--bg-primary);
   border-radius: 16px;
   padding: 32px;
   max-width: 500px;
@@ -477,13 +479,13 @@
 .modal h3 {
   font-size: 24px;
   font-weight: 700;
-  color: #1a1a1a;
+  color: var(--text-primary);
   margin-bottom: 16px;
   letter-spacing: -0.3px;
 }
 
 .modal p {
-  color: #6c757d;
+  color: var(--text-tertiary);
   margin-bottom: 24px;
   font-size: 14px;
   line-height: 1.6;
@@ -492,7 +494,7 @@
 .modal textarea {
   width: 100%;
   padding: 16px;
-  border: 2px solid #e9ecef;
+  border: 2px solid var(--border-light);
   border-radius: 12px;
   resize: vertical;
   font-family: inherit;
@@ -523,22 +525,22 @@
 }
 
 .modal-actions button:first-child {
-  background: #6c757d;
-  color: white;
+  background: var(--text-tertiary);
+  color: var(--text-white);
 }
 
 .modal-actions button:first-child:hover {
-  background: #5a6268;
+  background: var(--text-secondary);
   transform: translateY(-2px);
 }
 
 .modal-actions button:last-child {
   background: var(--primary-color);
-  color: white;
+  color: var(--text-white);
 }
 
 .modal-actions button:last-child:hover {
-  background: #0056b3;
+  background: var(--primary-dark);
   transform: translateY(-2px);
   box-shadow: 0 6px 20px rgba(0, 123, 255, 0.3);
 }
@@ -548,7 +550,7 @@
 .error-message {
   text-align: center;
   padding: 10px;
-  background: white;
+  background: var(--bg-primary);
   border-radius: 16px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
 }
@@ -556,7 +558,7 @@
 .spinner {
   width: 48px;
   height: 48px;
-  border: 4px solid #e9ecef;
+  border: 4px solid var(--border-light);
   border-top: 4px solid var(--primary-color);
   border-radius: 50%;
   animation: spin 1s linear infinite;
@@ -564,22 +566,27 @@
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 .error-message {
-  background: #f8d7da;
-  border: 1px solid #f5c6cb;
+  background: var(--bg-secondary);
+  border: 1px solid var(--accent-error);
   border-radius: 12px;
-  color: #721c24;
+  color: var(--accent-error);
 }
 
 .error-message button {
   margin-top: 20px;
   padding: 12px 24px;
-  background: #dc3545;
-  color: white;
+  background: var(--accent-error);
+  color: var(--text-white);
   border: none;
   border-radius: 12px;
   cursor: pointer;

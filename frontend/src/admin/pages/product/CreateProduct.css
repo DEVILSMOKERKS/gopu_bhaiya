@@ -179,8 +179,8 @@
   width: 32px;
   height: 32px;
   border-radius: 50%;
-  background: #fef2f2;
-  border: 1px solid #fecaca;
+  background: var(--bg-secondary);
+  border: 1px solid var(--accent-error);
   color: var(--accent-error);
   cursor: pointer;
   display: flex;
@@ -415,7 +415,7 @@
   width: 16px;
   height: 16px;
   border: 2px solid transparent;
-  border-top: 2px solid white;
+  border-top: 2px solid var(--bg-primary);
   border-radius: 50%;
   animation: spin 1s linear infinite;
 }

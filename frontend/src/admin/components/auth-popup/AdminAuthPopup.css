@@ -91,8 +91,8 @@
 }
 
 .admin-form-error-message {
-  background-color: #fef2f2;
-  border: 1px solid #fecaca;
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--accent-error);
   color: var(--accent-error);
   padding: 0.75rem;
   border-radius: 8px;
@@ -101,8 +101,8 @@
 
 .admin-form-login-btn,
 .admin-form-reset-btn {
-  background-color: #3b82f6;
-  color: white;
+  background-color: var(--primary-color);
+  color: var(--text-white);
   border: none;
   padding: 0.75rem;
   border-radius: 8px;
@@ -115,12 +115,12 @@
 
 .admin-form-login-btn:hover,
 .admin-form-reset-btn:hover {
-  background-color: #2563eb;
+  background-color: var(--primary-dark);
 }
 
 .admin-form-login-btn:disabled,
 .admin-form-reset-btn:disabled {
-  background-color: #9ca3af;
+  background-color: var(--text-tertiary);
   cursor: not-allowed;
 }
 
@@ -132,7 +132,7 @@
 .admin-form-forgot-password-btn {
   background: none;
   border: none;
-  color: #3b82f6;
+  color: var(--primary-color);
   font-size: 0.875rem;
   cursor: pointer;
   text-decoration: underline;
@@ -140,14 +140,14 @@
 }
 
 .admin-form-forgot-password-btn:hover {
-  color: #2563eb;
+  color: var(--primary-dark);
 }
 
 .admin-form-footer {
   text-align: center;
   margin-top: 1.5rem;
   padding-top: 1rem;
-  border-top: 1px solid #e5e7eb;
+  border-top: 1px solid var(--border-light);
   color: var(--text-tertiary);
   font-size: 0.875rem;
 }
@@ -180,8 +180,8 @@
 }
 
 .admin-form-back-to-login-btn:hover {
-  background-color: #f9fafb;
-  border-color: #9ca3af;
+  background-color: var(--bg-secondary);
+  border-color: var(--text-tertiary);
 }
 
 .admin-form-reset-sent-container {
@@ -192,8 +192,8 @@
 .admin-form-success-icon {
   width: 60px;
   height: 60px;
-  background-color: #10b981;
-  color: white;
+  background-color: var(--primary-green);
+  color: var(--text-white);
   border-radius: 50%;
   display: flex;
   align-items: center;
