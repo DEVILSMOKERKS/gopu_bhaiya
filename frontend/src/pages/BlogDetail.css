@@ -1,6 +1,6 @@
 .blog-detail-page {
   min-height: 100vh;
-  background: #f8f9fa;
+  background: var(--bg-secondary);
   padding: 2rem 0;
 }
 
@@ -45,7 +45,7 @@
 .blog-detail-title {
   font-size: 2.5rem;
   font-weight: 700;
-  color: #333;
+  color: var(--text-secondary);
   margin: 0 0 1.5rem 0;
   line-height: 1.3;
 }
@@ -63,7 +63,7 @@
   align-items: center;
   gap: 1rem;
   padding: 1.5rem;
-  background: #f8f9fa;
+  background: var(--bg-secondary);
   border-radius: 10px;
 }
 
@@ -81,7 +81,7 @@
 
 .blog-detail-author-name {
   font-weight: 600;
-  color: #333;
+  color: var(--text-secondary);
   font-size: 1.1rem;
 }
 
@@ -105,7 +105,7 @@
 .blog-detail-content {
   font-size: 1.1rem;
   line-height: 1.8;
-  color: #333;
+  color: var(--text-secondary);
   margin: 2rem 0;
 }
 
@@ -119,7 +119,7 @@
 .blog-detail-content h3 {
   font-size: 1.5rem;
   font-weight: 600;
-  color: #333;
+  color: var(--text-secondary);
   margin: 1.5rem 0 1rem 0;
 }
 
@@ -143,7 +143,7 @@
   margin: 2rem 0;
   font-style: italic;
   color: var(--text-tertiary);
-  background: #f8f9fa;
+  background: var(--bg-secondary);
   padding: 1.5rem;
   border-radius: 0 10px 10px 0;
 }
@@ -157,7 +157,7 @@
 .blog-detail-tags h3 {
   font-size: 1.2rem;
   font-weight: 600;
-  color: #333;
+  color: var(--text-secondary);
   margin-bottom: 1rem;
 }
 
@@ -193,7 +193,7 @@
 .related-blogs h3 {
   font-size: 1.5rem;
   font-weight: 600;
-  color: #333;
+  color: var(--text-secondary);
   margin-bottom: 1.5rem;
 }
 
@@ -229,7 +229,7 @@
 .related-blog-title {
   font-size: 1rem;
   font-weight: 600;
-  color: #333;
+  color: var(--text-secondary);
   margin: 0 0 0.5rem 0;
   line-height: 1.4;
   display: -webkit-box;
@@ -277,7 +277,7 @@
 }
 
 .back-to-blogs-button:hover {
-  background: #5a1624;
+  background: var(--primary-dark);
   transform: translateY(-2px);
   box-shadow: 0 8px 25px rgba(104, 27, 43, 0.4);
 }
@@ -295,7 +295,7 @@
 
 .blog-detail-error h2 {
   font-size: 2rem;
-  color: #333;
+  color: var(--text-secondary);
   margin-bottom: 1rem;
 }
 

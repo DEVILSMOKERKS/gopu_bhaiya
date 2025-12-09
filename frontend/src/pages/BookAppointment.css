@@ -6,7 +6,7 @@
 .book-appointment-page {
   padding-top: 140px;
   min-height: 100vh;
-  background: #ffffff;
+  background: var(--bg-primary);
   padding-bottom: 60px;
 }
 
@@ -60,18 +60,18 @@
 
 .form-group input {
   padding: 12px 16px;
-  border: 1px solid #d0d0d0;
+  border: 1px solid var(--border-light);
   border-radius: 4px;
   font-size: 15px;
   font-family: var(--futura-pt-light, 'Arial', 'Helvetica', sans-serif);
   transition: border-color 0.3s ease;
-  background: #ffffff;
+  background: var(--bg-primary);
   color: var(--text-primary);
 }
 
 .form-group input:focus {
   outline: none;
-  border-color: #B68126;
+  border-color: var(--primary-color);
 }
 
 .form-group input::placeholder {
@@ -97,20 +97,20 @@
   align-items: flex-start;
   gap: 16px;
   padding: 20px;
-  border: 1px solid #d0d0d0;
+  border: 1px solid var(--border-light);
   border-radius: 4px;
   cursor: pointer;
   transition: all 0.3s ease;
-  background: #ffffff;
+  background: var(--bg-primary);
 }
 
 .appointment-type-card:hover {
-  border-color: #B68126;
+  border-color: var(--primary-color);
 }
 
 .appointment-type-card.selected {
-  border-color: #B68126;
-  background: #fafafa;
+  border-color: var(--primary-color);
+  background: var(--bg-secondary);
 }
 
 .appointment-type-radio {
@@ -123,15 +123,15 @@
 .radio-circle {
   width: 20px;
   height: 20px;
-  border: 2px solid #d0d0d0;
+  border: 2px solid var(--border-light);
   border-radius: 50%;
   position: relative;
   transition: all 0.3s ease;
 }
 
 .radio-circle.filled {
-  border-color: #B68126;
-  background: #B68126;
+  border-color: var(--primary-color);
+  background: var(--primary-color);
 }
 
 .radio-circle.filled::after {
@@ -142,12 +142,12 @@
   transform: translate(-50%, -50%);
   width: 8px;
   height: 8px;
-  background: #ffffff;
+  background: var(--bg-primary);
   border-radius: 50%;
 }
 
 .appointment-type-icon {
-  color: #666666;
+  color: var(--text-tertiary);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -155,7 +155,7 @@
 }
 
 .appointment-type-card.selected .appointment-type-icon {
-  color: #B68126;
+  color: var(--primary-color);
 }
 
 .appointment-type-content {
@@ -172,7 +172,7 @@
 
 .appointment-type-duration {
   font-size: 13px;
-  color: #666666;
+  color: var(--text-tertiary);
   margin: 0;
   font-family: var(--futura-pt-light, 'Arial', 'Helvetica', sans-serif);
 }
@@ -208,10 +208,10 @@
 }
 
 .calendar-container {
-  border: 1px solid #e0e0e0;
+  border: 1px solid var(--border-light);
   border-radius: 4px;
   padding: 20px;
-  background: #ffffff;
+  background: var(--bg-primary);
 }
 
 .calendar-month-header {
@@ -225,7 +225,7 @@
   background: none;
   border: none;
   cursor: pointer;
-  color: #666666;
+  color: var(--text-tertiary);
   font-size: 14px;
   padding: 6px;
   display: flex;
@@ -235,7 +235,7 @@
 }
 
 .calendar-nav-btn:hover {
-  color: #B68126;
+  color: var(--primary-color);
 }
 
 .calendar-month-year {
@@ -256,7 +256,7 @@
   text-align: center;
   font-size: 12px;
   font-weight: 500;
-  color: #666666;
+  color: var(--text-tertiary);
   padding: 8px 4px;
   font-family: var(--futura-pt-medium, 'Arial', 'Helvetica', sans-serif);
 }
@@ -281,17 +281,17 @@
 }
 
 .calendar-day:hover:not(.empty):not(.past) {
-  background: #f5f5f5;
+  background: var(--bg-light);
 }
 
 .calendar-day.selected {
-  background: #B68126;
+  background: var(--primary-color);
   color: #ffffff;
   font-weight: 500;
 }
 
 .calendar-day.past {
-  color: #cccccc;
+  color: var(--text-quaternary);
   cursor: not-allowed;
 }
 
@@ -317,9 +317,9 @@
 
 .time-slot-btn {
   padding: 12px 16px;
-  border: 1px solid #d0d0d0;
+  border: 1px solid var(--border-light);
   border-radius: 4px;
-  background: #ffffff;
+  background: var(--bg-primary);
   color: var(--text-primary);
   font-size: 14px;
   font-family: var(--futura-pt-light, 'Arial', 'Helvetica', sans-serif);
@@ -329,14 +329,14 @@
 }
 
 .time-slot-btn:hover {
-  border-color: #B68126;
-  background: #fafafa;
+  border-color: var(--primary-color);
+  background: var(--bg-secondary);
 }
 
 .time-slot-btn.selected {
-  background: #B68126;
+  background: var(--primary-color);
   color: #ffffff;
-  border-color: #B68126;
+  border-color: var(--primary-color);
 }
 
 /* ============================================
@@ -345,7 +345,7 @@
 
 .book-appointment-btn {
   padding: 16px 32px;
-  background: #B68126;
+  background: var(--primary-color);
   color: #ffffff;
   border: none;
   border-radius: 4px;
@@ -362,7 +362,7 @@
 }
 
 .book-appointment-btn:hover {
-  background: #956213;
+  background: var(--primary-dark);
   transform: translateY(-1px);
   box-shadow: 0 4px 12px rgba(182, 129, 38, 0.3);
 }
