@@ -2,6 +2,7 @@
 
 import React from 'react';
 import HeroSection from '../components/home/HeroSection/HeroSection';
+import WelcomeToTilak from '../components/home/WelcomeToTilak/WelcomeToTilak';
 import DreamTempleSteps from '../components/home/DreamTempleSteps/DreamTempleSteps';
 import ManufacturingProcess from '../components/home/ManufacturingProcess/ManufacturingProcess';
 import CustomTempleProjects from '../components/home/CustomTempleProjects/CustomTempleProjects';
@@ -17,6 +18,7 @@ const Home = () => {
     <>
       <HeroSection />
       <DreamTempleSteps />
+      <WelcomeToTilak />
 
       <PoojaRoomBudget />
       <HowToOrder />
