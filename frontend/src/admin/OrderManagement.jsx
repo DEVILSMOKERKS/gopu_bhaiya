@@ -5,7 +5,7 @@ import Image from 'next/image';
 import axios from 'axios';
 import './OrderManagement.css';
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL
+const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
 const OrderManagement = () => {
   const [orders, setOrders] = useState([]);
@@ -100,8 +100,11 @@ const OrderManagement = () => {
       });
 
       if (response.data.success) {
-        alert('Order status updated successfully');
+        // Refresh orders and analytics after update
         fetchOrders();
+        fetchAnalytics();
+        alert('Order status updated successfully');
+        
         if (selectedOrder && selectedOrder.order.order_id === orderId) {
           fetchOrderDetails(orderId);
         }

@@ -51,7 +51,7 @@ const CreateProduct = () => {
   const [attributeValuesMap, setAttributeValuesMap] = useState({});
 
   // Get API URL from environment variable
-  const API_URL = process.env.NEXT_PUBLIC_API_URL
+  const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
   useEffect(() => {
     fetchCategories();

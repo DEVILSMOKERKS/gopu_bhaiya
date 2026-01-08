@@ -138,7 +138,7 @@ npm run dev
 ```
 
 The application will be available at:
-- **Frontend**: `http://localhost:3000` (Next.js default port)
+- **Frontend**: `http://localhost:3000` (Next.js dev server)
 - **Backend API**: `http://localhost:5000`
 
 ## API Endpoints

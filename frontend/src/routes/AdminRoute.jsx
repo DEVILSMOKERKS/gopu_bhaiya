@@ -27,6 +27,8 @@ import { UserManagement } from "../admin/pages/users"
 import NewsletterSubscribers from "../admin/pages/newsletter/NewsletterSubscribers"
 import NewsletterSend from "../admin/pages/newsletter/NewsletterSend"
 import NewsletterStatistics from "../admin/pages/newsletter/NewsletterStatistics"
+import ContactManagement from "../admin/pages/ContactManagement"
+import ExpertConsultationManagement from "../admin/pages/ExpertConsultationManagement"
 import '../admin/components/header/adminHeader.css'
 import '../admin/components/sidebar/adminSidebar.css'
 import '../admin/AdminLayout.css'
@@ -316,6 +318,20 @@ const AdminRoute = () => {
       <Route path="/admin/newsletter/statistics" element={
         <AdminLayout>
           <NewsletterStatistics />
+        </AdminLayout>
+      } />
+
+      {/* Contact Management Routes */}
+      <Route path="/admin/contact-queries" element={
+        <AdminLayout>
+          <ContactManagement />
+        </AdminLayout>
+      } />
+
+      {/* Expert Consultation Management Routes */}
+      <Route path="/admin/expert-consultations" element={
+        <AdminLayout>
+          <ExpertConsultationManagement />
         </AdminLayout>
       } />
     </Routes>

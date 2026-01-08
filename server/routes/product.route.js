@@ -15,14 +15,9 @@ router.get('/subcategory/:subcategory_id', productController.getProductsBySubcat
 
 // Protected routes (admin authentication required)
 router.post('/',
-    // authenticateToken,
-    // upload.array('images', 10, '/products'),
-    // productController.createProduct,
-    (req, res, next) => {
-        return res.json({
-            success: true,
-        })
-    },
+    authenticateToken,
+    upload.array('images', 10, '/products'),
+    productController.createProduct
 );
 router.put('/:product_id', authenticateToken, upload.array('images', 10, '/products'), productController.updateProduct);
 router.delete('/:product_id', authenticateToken, productController.deleteProduct);

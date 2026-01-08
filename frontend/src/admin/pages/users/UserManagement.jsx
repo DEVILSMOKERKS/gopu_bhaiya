@@ -77,9 +77,8 @@ const UserManagement = () => {
       );
 
       if (response.data.success) {
-        setUsers(users.map(user =>
-          user.id === userId ? { ...user, status: newStatus } : user
-        ));
+        // Refresh the user list to get updated data
+        fetchUsers();
       }
     } catch (error) {
       console.error('Error updating user status:', error);
@@ -104,8 +103,8 @@ const UserManagement = () => {
       });
 
       if (response.data.success) {
-        setUsers(users.filter(user => user.id !== userId));
-        setTotalUsers(prev => prev - 1);
+        // Refresh the user list to get updated data
+        fetchUsers();
       }
     } catch (error) {
       console.error('Error deleting user:', error);

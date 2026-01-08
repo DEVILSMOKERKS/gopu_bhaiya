@@ -20,7 +20,7 @@ const CreateCategory = () => {
   const [imagePreview, setImagePreview] = useState('');
 
   // Get API URL from environment variable
-  const API_URL = process.env.NEXT_PUBLIC_API_URL
+  const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;

@@ -1,29 +1,32 @@
 .how-to-place-order-page {
   min-height: 100vh;
-  padding: 120px 1rem 2rem 1rem;
-  background: linear-gradient(to bottom, var(--bg-secondary), var(--bg-primary));
+  padding: 120px 1rem 4rem 1rem;
+  background: #fafafa;
   position: relative;
   z-index: 1;
 }
 
 .how-to-place-order-page .how-to-order-header {
   text-align: center;
-  margin-bottom: 3rem;
-  padding: 1rem 0;
+  margin-bottom: 4rem;
+  padding: 2rem 0;
 }
 
 .how-to-place-order-page .how-to-order-title {
-  font-size: 2.5rem;
-  font-weight: 700;
-  color: var(--text-primary);
+  font-size: 3rem;
+  font-weight: 300;
+  color: #1a1a1a;
   margin-bottom: 1rem;
+  letter-spacing: -0.02em;
 }
 
 .how-to-place-order-page .how-to-order-subtitle {
-  font-size: 1.2rem;
-  color: var(--text-tertiary);
+  font-size: 1.125rem;
+  color: #666;
   max-width: 600px;
   margin: 0 auto;
+  font-weight: 400;
+  line-height: 1.6;
 }
 
 .how-to-place-order-page .how-to-order-container {
@@ -32,167 +35,212 @@
 }
 
 .how-to-place-order-page .order-process-section {
-  margin-bottom: 4rem;
-  padding: 2rem;
-  background: var(--bg-primary);
-  border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 6rem;
+  padding: 0;
+  background: transparent;
+  border-radius: 0;
+  box-shadow: none;
 }
 
 .how-to-place-order-page .custom-order-section {
-  background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-light) 100%);
+  background: transparent;
 }
 
 .how-to-place-order-page .section-title {
-  font-size: 2rem;
-  font-weight: 600;
-  color: var(--text-primary);
-  margin-bottom: 0.5rem;
+  font-size: 1.75rem;
+  font-weight: 300;
+  color: #1a1a1a;
+  margin-bottom: 0.75rem;
   text-align: center;
+  letter-spacing: -0.01em;
 }
 
 .how-to-place-order-page .section-description {
-  font-size: 1.1rem;
-  color: var(--text-tertiary);
+  font-size: 1rem;
+  color: #666;
   text-align: center;
-  margin-bottom: 2rem;
+  margin-bottom: 3rem;
+  font-weight: 400;
+  line-height: 1.6;
 }
 
 .how-to-place-order-page .steps-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 2rem;
-  margin-bottom: 2rem;
+  margin-bottom: 3rem;
 }
 
 .how-to-place-order-page .step-card {
-  background: var(--bg-primary);
-  padding: 2rem;
-  border-radius: 12px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  background: #ffffff;
+  padding: 2.5rem 2rem;
+  border-radius: 8px;
+  border: 1px solid #e5e5e5;
   text-align: center;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: all 0.3s ease;
   position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .how-to-place-order-page .step-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+  transform: translateY(-4px);
+  border-color: #d0d0d0;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
 }
 
 .how-to-place-order-page .step-number {
   position: absolute;
-  top: -15px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 40px;
-  height: 40px;
-  background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
-  color: var(--text-white);
+  top: -16px;
+  left: 24px;
+  width: 32px;
+  height: 32px;
+  background: #1a1a1a;
+  color: #ffffff;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-weight: 700;
-  font-size: 1.2rem;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  font-weight: 500;
+  font-size: 0.875rem;
+  border: 2px solid #ffffff;
+}
+
+.how-to-place-order-page .step-icon-wrapper {
+  width: 56px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0.5rem 0 1.5rem 0;
+  background: #f5f5f5;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.how-to-place-order-page .step-card:hover .step-icon-wrapper {
+  background: #1a1a1a;
 }
 
 .how-to-place-order-page .step-icon {
-  font-size: 3rem;
-  margin: 1rem 0;
+  color: #1a1a1a;
+  transition: all 0.3s ease;
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+}
+
+.how-to-place-order-page .step-card:hover .step-icon {
+  color: #ffffff;
 }
 
 .how-to-place-order-page .step-title {
-  font-size: 1.3rem;
-  font-weight: 600;
-  color: var(--text-primary);
-  margin-bottom: 1rem;
+  font-size: 1.125rem;
+  font-weight: 500;
+  color: #1a1a1a;
+  margin-bottom: 0.75rem;
+  letter-spacing: -0.01em;
 }
 
 .how-to-place-order-page .step-description {
-  font-size: 1rem;
-  color: var(--text-tertiary);
+  font-size: 0.9375rem;
+  color: #666;
   line-height: 1.6;
+  font-weight: 400;
 }
 
 .how-to-place-order-page .cta-section {
   text-align: center;
-  margin-top: 2rem;
+  margin-top: 3rem;
 }
 
 .how-to-place-order-page .cta-button-primary {
   display: inline-block;
-  padding: 1rem 2.5rem;
-  background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
-  color: var(--text-white);
+  padding: 0.875rem 2rem;
+  background: #1a1a1a;
+  color: #ffffff;
   text-decoration: none;
-  border-radius: 8px;
-  font-weight: 600;
-  font-size: 1.1rem;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+  border-radius: 4px;
+  font-weight: 500;
+  font-size: 0.9375rem;
+  transition: all 0.3s ease;
+  border: 1px solid #1a1a1a;
+  letter-spacing: 0.02em;
 }
 
 .how-to-place-order-page .cta-button-primary:hover {
+  background: #ffffff;
+  color: #1a1a1a;
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .how-to-place-order-page .additional-info-section {
-  margin-top: 4rem;
-  padding: 2rem;
-  background: var(--bg-primary);
-  border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  margin-top: 6rem;
+  padding: 3rem 2rem;
+  background: #ffffff;
+  border-radius: 8px;
+  border: 1px solid #e5e5e5;
 }
 
 .how-to-place-order-page .info-cards {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 2rem;
   margin-top: 2rem;
 }
 
 .how-to-place-order-page .info-card {
-  background: var(--bg-secondary);
+  background: #fafafa;
   padding: 2rem;
-  border-radius: 12px;
+  border-radius: 8px;
   text-align: center;
-  transition: transform 0.3s ease;
+  transition: all 0.3s ease;
+  border: 1px solid #e5e5e5;
 }
 
 .how-to-place-order-page .info-card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-2px);
+  border-color: #d0d0d0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
 }
 
 .how-to-place-order-page .info-card h3 {
-  font-size: 1.3rem;
-  font-weight: 600;
-  color: var(--text-primary);
-  margin-bottom: 1rem;
+  font-size: 1.125rem;
+  font-weight: 500;
+  color: #1a1a1a;
+  margin-bottom: 0.75rem;
+  letter-spacing: -0.01em;
 }
 
 .how-to-place-order-page .info-card p {
-  font-size: 1rem;
-  color: var(--text-tertiary);
+  font-size: 0.9375rem;
+  color: #666;
   margin-bottom: 1rem;
   line-height: 1.6;
+  font-weight: 400;
 }
 
 .how-to-place-order-page .info-link {
   display: inline-block;
-  color: var(--primary-color);
+  color: #1a1a1a;
   text-decoration: none;
-  font-weight: 600;
-  transition: color 0.3s ease;
+  font-weight: 500;
+  font-size: 0.875rem;
+  transition: all 0.3s ease;
+  letter-spacing: 0.02em;
 }
 
 .how-to-place-order-page .info-link:hover {
-  color: var(--primary-dark);
+  color: #666;
 }
 
 @media (max-width: 768px) {
+  .how-to-place-order-page {
+    padding: 100px 1rem 3rem 1rem;
+  }
+
   .how-to-place-order-page .how-to-order-title {
     font-size: 2rem;
   }
@@ -207,10 +255,40 @@
   }
 
   .how-to-place-order-page .step-card {
-    padding: 1.5rem;
+    padding: 2rem 1.5rem;
   }
 
   .how-to-place-order-page .info-cards {
     grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .how-to-place-order-page .additional-info-section {
+    padding: 2rem 1.5rem;
+  }
+
+  .how-to-place-order-page .section-title {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .how-to-place-order-page .how-to-order-title {
+    font-size: 1.75rem;
+  }
+
+  .how-to-place-order-page .step-card {
+    padding: 1.75rem 1.25rem;
+  }
+
+  .how-to-place-order-page .step-icon-wrapper {
+    width: 48px;
+    height: 48px;
+    margin-bottom: 1.25rem;
+  }
+
+  .how-to-place-order-page .step-icon {
+    width: 20px;
+    height: 20px;
   }
 }

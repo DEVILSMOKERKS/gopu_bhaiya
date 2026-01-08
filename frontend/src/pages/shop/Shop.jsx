@@ -20,7 +20,7 @@ const Shop = () => {
   const { user, token, isAuthenticated } = useUser();
 
   // Get API URL from environment variable
-  const API_URL = process.env.NEXT_PUBLIC_API_URL
+  const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
   // Get search parameter from URL
   const searchQuery = searchParams?.get('search') || null;
@@ -963,13 +963,14 @@ const Shop = () => {
           </div>
 
           {/* Banner */}
-          <div className="shop-mid-banner">
+          <div className="shop-mid-banner" style={{ position: 'relative', width: '100%', height: '300px' }}>
             <Image
               src={shopBanner}
               alt="Shop Banner"
               className="shop-mid-banner-img"
+              fill
+              style={{ objectFit: 'cover' }}
             />
-
           </div>
 
           {/* 6 products below banner (by default) */}
