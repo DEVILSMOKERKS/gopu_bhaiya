@@ -150,3 +150,4 @@ export default async function ProductPage({ params }) {
   return <Product productId={productId} />;
 }
 
+
