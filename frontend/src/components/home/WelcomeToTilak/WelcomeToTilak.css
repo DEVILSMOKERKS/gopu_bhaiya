@@ -1,0 +1,142 @@
+.welcome-tilak-section {
+  width: 100%;
+  padding: 4rem 0;
+  background: var(--bg-primary);
+}
+
+.welcome-tilak-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.welcome-tilak-title {
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 3rem;
+  font-family: var(--font-heading);
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+}
+
+.welcome-tilak-video-wrapper {
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.welcome-tilak-video {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 8px;
+}
+
+/* Video Controls */
+.welcome-tilak-controls {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  gap: 12px;
+  z-index: 10;
+}
+
+.welcome-tilak-control-btn {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.7);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  color: var(--text-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  padding: 0;
+  outline: none;
+}
+
+.welcome-tilak-control-btn:hover {
+  background: rgba(0, 0, 0, 0.9);
+  border-color: rgba(255, 255, 255, 0.5);
+  transform: scale(1.1);
+}
+
+.welcome-tilak-control-btn:active {
+  transform: scale(0.95);
+}
+
+.welcome-tilak-control-btn:focus-visible {
+  outline: 2px solid var(--text-white);
+  outline-offset: 2px;
+}
+
+.welcome-tilak-control-btn svg {
+  width: 24px;
+  height: 24px;
+  display: block;
+}
+
+/* Responsive Design */
+@media (max-width: 968px) {
+  .welcome-tilak-section {
+    padding: 3rem 0;
+  }
+
+  .welcome-tilak-container {
+    padding: 0 1.5rem;
+  }
+
+  .welcome-tilak-title {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .welcome-tilak-section {
+    padding: 2rem 0;
+  }
+
+  .welcome-tilak-container {
+    padding: 0 1rem;
+  }
+
+  .welcome-tilak-title {
+    font-size: 1.75rem;
+    margin-bottom: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .welcome-tilak-section {
+    padding: 1.5rem 0;
+  }
+
+  .welcome-tilak-title {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .welcome-tilak-controls {
+    bottom: 15px;
+    right: 15px;
+    gap: 10px;
+  }
+
+  .welcome-tilak-control-btn {
+    width: 42px;
+    height: 42px;
+  }
+
+  .welcome-tilak-control-btn svg {
+    width: 20px;
+    height: 20px;
+  }
+}
+
