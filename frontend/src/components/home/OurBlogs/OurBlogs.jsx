@@ -10,7 +10,7 @@ const OurBlogs = () => {
   const [blogs, setBlogs] = useState([]);
   const [loading, setLoading] = useState(true);
   const router = useRouter();
-  const API_URL = process.env.NEXT_PUBLIC_API_URL;
+  const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api';
 
   useEffect(() => {
     fetchBlogs();
@@ -30,10 +30,11 @@ const OurBlogs = () => {
   };
 
   const getBlogImage = (blog) => {
-    if (blog.image) {
-      return `${API_URL.replace('/api', '')}${blog.image}`;
+    const img = blog.featured_image || blog.image;
+    if (img) {
+      const base = API_URL ? API_URL.replace('/api', '') : '';
+      return `${base}${img}`;
     }
-    // Return empty string for dummy blogs to show placeholder
     return '';
   };
 

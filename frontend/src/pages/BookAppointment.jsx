@@ -2,17 +2,23 @@
 
 import { useState } from 'react';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
+import axios from 'axios';
 import './BookAppointment.css';
+
+const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api';
 
 const BookAppointment = () => {
   const [formData, setFormData] = useState({
     name: '',
+    email: '',
     contactNumber: '',
     city: '',
     appointmentType: 'store-tour',
     selectedDate: null,
     selectedTime: ''
   });
+  const [submitting, setSubmitting] = useState(false);
+  const [submitMessage, setSubmitMessage] = useState({ type: '', text: '' });
 
   const [currentMonth, setCurrentMonth] = useState(new Date().getMonth());
   const [currentYear, setCurrentYear] = useState(new Date().getFullYear());
@@ -138,22 +144,50 @@ const BookAppointment = () => {
     return days;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (!formData.selectedDate || !formData.selectedTime) {
-      alert('Please select both date and time');
+      setSubmitMessage({ type: 'error', text: 'Please select both date and time.' });
       return;
     }
-    console.log('Appointment booked:', formData);
-    alert('Appointment request submitted! We will contact you soon.');
-    setFormData({
-      name: '',
-      contactNumber: '',
-      city: '',
-      appointmentType: 'store-tour',
-      selectedDate: null,
-      selectedTime: ''
-    });
+    setSubmitting(true);
+    setSubmitMessage({ type: '', text: '' });
+    try {
+      const response = await axios.post(`${API_URL}/book-appointment`, {
+        name: formData.name,
+        email: formData.email || undefined,
+        contactNumber: formData.contactNumber,
+        city: formData.city,
+        appointmentType: formData.appointmentType,
+        selectedDate: formData.selectedDate,
+        selectedTime: formData.selectedTime
+      });
+      if (response.data.success) {
+        setSubmitMessage({
+          type: 'success',
+          text: response.data.message || 'Your appointment request has been submitted. We will contact you soon.'
+        });
+        setFormData({
+          name: '',
+          email: '',
+          contactNumber: '',
+          city: '',
+          appointmentType: 'store-tour',
+          selectedDate: null,
+          selectedTime: ''
+        });
+        setTimeout(() => setSubmitMessage({ type: '', text: '' }), 6000);
+      } else {
+        setSubmitMessage({ type: 'error', text: response.data.message || 'Something went wrong. Please try again.' });
+      }
+    } catch (err) {
+      setSubmitMessage({
+        type: 'error',
+        text: err.response?.data?.message || err.message || 'Failed to submit appointment. Please try again later.'
+      });
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
@@ -173,6 +207,17 @@ const BookAppointment = () => {
                 value={formData.name}
                 onChange={handleChange}
                 required
+              />
+            </div>
+            <div className="form-group">
+              <label htmlFor="email">Email</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+                placeholder="For appointment confirmation"
               />
             </div>
             <div className="form-group">
@@ -268,9 +313,16 @@ const BookAppointment = () => {
             </div>
           </div>
 
+          {/* Submit Message */}
+          {submitMessage.text && (
+            <div className={`book-appointment-message ${submitMessage.type === 'success' ? 'success' : 'error'}`}>
+              {submitMessage.text}
+            </div>
+          )}
+
           {/* Submit Button */}
-          <button type="submit" className="book-appointment-btn">
-            Book Appointment
+          <button type="submit" className="book-appointment-btn" disabled={submitting}>
+            {submitting ? 'Submitting...' : 'Book Appointment'}
           </button>
         </form>
       </div>

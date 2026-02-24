@@ -1,4 +1,6 @@
 const mysql = require('mysql2/promise');
+// Ensure env vars are loaded for scripts that import db directly (e.g. create-admin.js)
+require('dotenv').config();
 
 const pool = mysql.createPool({
   host: process.env.DB_HOST,

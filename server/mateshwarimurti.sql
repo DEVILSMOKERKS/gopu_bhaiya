@@ -390,6 +390,17 @@ CREATE TABLE
     `created_at` timestamp NOT NULL DEFAULT current_timestamp()
   ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_general_ci;
 
+  CREATE TABLE `expert_inquiries` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `product_name` varchar(255) NOT NULL,
+  `quantity` int(11) NOT NULL,
+  `status` enum('pending', 'contacted', 'resolved') DEFAULT 'pending',
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
 ALTER TABLE `admins` ADD PRIMARY KEY (`id`),
 ADD UNIQUE KEY `email` (`email`);
 

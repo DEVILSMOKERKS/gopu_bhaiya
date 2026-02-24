@@ -573,9 +573,37 @@ const Product = ({ productId: productIdProp }) => {
     );
   }
 
-  // Get current color data
-  const currentColor = product.colors && product.colors[selectedColor] ? product.colors[selectedColor] : null;
-  const productImages = currentColor && currentColor.images ? currentColor.images : [];
+  // Get current color data and normalize image paths
+  const currentColor =
+    product.colors && product.colors[selectedColor] ? product.colors[selectedColor] : null;
+
+  const getImageRelativePath = (image) => {
+    if (!image) return '';
+
+    if (typeof image === 'string') {
+      return image.startsWith('/') ? image : `/${image}`;
+    }
+
+    if (typeof image === 'object') {
+      const candidate =
+        image.url ||
+        image.image_url ||
+        image.path ||
+        image.src ||
+        '';
+
+      if (!candidate) return '';
+      return candidate.startsWith('/') ? candidate : `/${candidate}`;
+    }
+
+    return '';
+  };
+
+  const productImages = currentColor && currentColor.images
+    ? currentColor.images
+        .map(getImageRelativePath)
+        .filter(Boolean)
+    : [];
 
   return (
     <div className="product-page">
@@ -729,7 +757,11 @@ const Product = ({ productId: productIdProp }) => {
                   >
                     <div className="color-image-container" style={{ position: 'relative', width: '60px', height: '60px', borderRadius: '8px', overflow: 'hidden', border: '1px solid #ddd' }}>
                       <Image
-                        src={color.images && color.images.length > 0 ? `${API_URL.replace('/api', '')}${color.images[0]}` : '/src/assets/img/Bestseller1.jpg'}
+                        src={
+                          color.images && color.images.length > 0
+                            ? `${API_URL.replace('/api', '')}${getImageRelativePath(color.images[0])}`
+                            : '/src/assets/img/Bestseller1.jpg'
+                        }
                         alt={color.color_name}
                         className="color-image"
                         fill

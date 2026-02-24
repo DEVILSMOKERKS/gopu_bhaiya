@@ -22,7 +22,15 @@ const EditCategory = ({ id }) => {
   const [error, setError] = useState('');
 
   // Get API URL from environment variable
-  const API_URL = process.env.NEXT_PUBLIC_API_URL
+  const API_URL = process.env.NEXT_PUBLIC_API_URL;
+
+  // Normalize image path (backend may return backslashes on Windows)
+  const getImageSrc = (path) => {
+    if (!path) return '';
+    const normalized = path.replace(/\\/g, '/');
+    const base = API_URL ? API_URL.replace('/api', '') : '';
+    return base ? `${base}${normalized.startsWith('/') ? normalized : '/' + normalized}` : normalized;
+  };
 
   useEffect(() => {
     fetchCategory();
@@ -174,8 +182,11 @@ const EditCategory = ({ id }) => {
               <div className="editcategory-image-preview">
                 <p>Current Image:</p>
                 <Image
-                  src={`${API_URL.replace('/api', '')}${currentImage}`}
+                  src={getImageSrc(currentImage)}
                   alt="Current category"
+                  width={200}
+                  height={200}
+                  style={{ objectFit: 'cover' }}
                   onError={(e) => {
                     e.target.style.display = 'none';
                     e.target.nextSibling.style.display = 'flex';
@@ -191,7 +202,7 @@ const EditCategory = ({ id }) => {
             {imagePreview && (
               <div className="editcategory-image-preview">
                 <p>New Image Preview:</p>
-                <Image src={imagePreview} alt="Preview" />
+                <Image src={imagePreview} alt="Preview" width={200} height={200} style={{ objectFit: 'cover' }} />
               </div>
             )}
           </div>

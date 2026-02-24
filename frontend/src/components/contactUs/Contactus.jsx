@@ -14,7 +14,8 @@ import axios from 'axios';
 // import PvjMember from "../../components/pvj-member/PvjMember";
 import vectorIcon from "../../assets/img/icons/Vector.png";
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL
+// API base URL: Next.js env or fallback for local dev (server on port 5000)
+const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api';
 
 const ContactUs = () => {
   const [form, setForm] = useState({
@@ -28,16 +29,21 @@ const ContactUs = () => {
   const [results, setResults] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
-
   const [submitting, setSubmitting] = useState(false);
+  const [submitSuccess, setSubmitSuccess] = useState(false);
+  const [submitError, setSubmitError] = useState("");
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
+    setSubmitError("");
+    setSubmitSuccess(false);
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setSubmitting(true);
+    setSubmitError("");
+    setSubmitSuccess(false);
     try {
       const res = await axios.post(`${API_URL}/contact-us`, {
         name: form.name,
@@ -49,12 +55,15 @@ const ContactUs = () => {
       const data = res.data;
       if (data.success) {
         setForm({ name: '', email: '', phone: '', subject: '', message: '' });
-        alert('Thank you for contacting us! We will get back to you soon.');
+        setSubmitSuccess(true);
+        setSubmitError("");
       } else {
-        alert(data.message || 'Something went wrong');
+        setSubmitError(data.message || 'Something went wrong');
       }
     } catch (err) {
-      alert(err.response?.data?.message || err.message || 'Network error. Please try again.');
+      const errMsg = err.response?.data?.message || err.message || 'Network error. Please try again.';
+      setSubmitError(errMsg);
+      setSubmitSuccess(false);
     }
     setSubmitting(false);
   };
@@ -246,16 +255,22 @@ const ContactUs = () => {
               required
             />
             <label htmlFor="contact-message">Message*</label>
-            <input
+            <textarea
               id="contact-message"
               name="message"
               value={form.message}
               onChange={handleChange}
               placeholder="Type your message here..."
               required
-              rows="4"
-
+              rows={4}
+              className="contactus-message-textarea"
             />
+            {submitSuccess && (
+              <p className="contactus-form-success">Thank you for contacting us! We will get back to you soon.</p>
+            )}
+            {submitError && (
+              <p className="contactus-form-error">{submitError}</p>
+            )}
             <button type="submit" className="contactus-submit-btn" disabled={submitting}>
               {submitting ? 'Submitting...' : 'Submit'}
             </button>

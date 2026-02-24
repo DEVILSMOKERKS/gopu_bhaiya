@@ -166,6 +166,14 @@
   user-select: none;
 }
 
+.footer-consent-required {
+  display: inline-block;
+  margin-top: 4px;
+  font-size: 0.7rem;
+  color: rgba(255, 255, 255, 0.7);
+  font-style: italic;
+}
+
 /* Social Icons */
 .footer-social-icons {
   display: flex;

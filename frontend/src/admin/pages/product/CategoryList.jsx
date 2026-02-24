@@ -17,7 +17,15 @@ const CategoryList = () => {
   const [deleteLoading, setDeleteLoading] = useState(null);
 
   // Get API URL from environment variable
-  const API_URL = process.env.NEXT_PUBLIC_API_URL
+  const API_URL = process.env.NEXT_PUBLIC_API_URL;
+
+  // Normalize image path (backend may return backslashes on Windows)
+  const getImageSrc = (path) => {
+    if (!path) return '';
+    const normalized = path.replace(/\\/g, '/');
+    const base = API_URL ? API_URL.replace('/api', '') : '';
+    return base ? `${base}${normalized.startsWith('/') ? normalized : '/' + normalized}` : normalized;
+  };
 
   useEffect(() => {
     fetchCategories();
@@ -145,7 +153,7 @@ const CategoryList = () => {
                   <td className="categorylist-td categorylist-image-cell">
                     {category.image_url ? (
                       <Image
-                        src={`${API_URL.replace('/api', '')}${category.image_url}`}
+                        src={getImageSrc(category.image_url)}
                         alt={category.name}
                         className="categorylist-category-image"
                         width={60}

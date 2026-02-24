@@ -78,6 +78,25 @@
   color: var(--text-quaternary);
 }
 
+.book-appointment-message {
+  padding: 12px 16px;
+  border-radius: 4px;
+  font-size: 14px;
+  font-family: var(--futura-pt-light, 'Arial', 'Helvetica', sans-serif);
+}
+
+.book-appointment-message.success {
+  background: #d1fae5;
+  color: #065f46;
+  border: 1px solid #10b981;
+}
+
+.book-appointment-message.error {
+  background: #fee2e2;
+  color: #991b1b;
+  border: 1px solid #ef4444;
+}
+
 /* ============================================
    APPOINTMENT TYPE SELECTION
    ============================================ */

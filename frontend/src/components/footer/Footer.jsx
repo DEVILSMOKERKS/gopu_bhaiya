@@ -27,27 +27,35 @@ const Footer = () => {
     }, 5000);
   };
 
-  // Email validation function
+  // Email validation function (trim so spaces don't block submit)
   const validateEmail = (email) => {
+    const trimmed = (email || '').trim();
+    if (!trimmed) return false;
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailRegex.test(email);
+    return emailRegex.test(trimmed);
   };
 
-  // Handle email input change with validation
+  // Update email on change; only clear error when value becomes valid (don't show error while typing)
   const handleEmailChange = (e) => {
     const value = e.target.value;
     setEmail(value);
+    if (validateEmail(value)) {
+      setEmailError('');
+    }
+  };
 
-    if (value && !validateEmail(value)) {
+  // Validate on blur so we don't show "invalid" until user leaves the field
+  const handleEmailBlur = () => {
+    if (email && !validateEmail(email)) {
       setEmailError('Please enter a valid email address');
     } else {
       setEmailError('');
     }
   };
 
-  // Check if form is valid
+  // Check if form is valid (email + consent checkbox required)
   const isFormValid = () => {
-    return email && validateEmail(email) && consent && !isLoading;
+    return email.trim() && validateEmail(email) && consent && !isLoading;
   };
 
   const handleEmailSubmit = async (e) => {
@@ -114,11 +122,14 @@ const Footer = () => {
             <form onSubmit={handleEmailSubmit} className="footer-email-form">
               <div className="footer-email-input-wrapper">
                 <input
-                  type="email"
+                  type="text"
+                  inputMode="email"
+                  autoComplete="email"
                   className={`footer-email-input ${emailError ? 'error' : ''}`}
                   placeholder="Enter Your Email Address"
                   value={email}
                   onChange={handleEmailChange}
+                  onBlur={handleEmailBlur}
                   required
                 />
                 <button
@@ -144,9 +155,10 @@ const Footer = () => {
                 id="footer-consent"
                 checked={consent}
                 onChange={(e) => setConsent(e.target.checked)}
+                aria-label="Accept terms to subscribe"
               />
               <label htmlFor="footer-consent">
-                By Submitting Your Email, You Agree To Receive Advertising Emails From Mateshwari Exports.
+                By Submitting Your Email, You Agree To Receive Advertising Emails From Mateshwari Exports. <span className="footer-consent-required">(Check to enable Subscribe)</span>
               </label>
             </div>
 

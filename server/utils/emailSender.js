@@ -1,5 +1,3 @@
-const nodemailer = require('nodemailer');
-
 // Email template colors - matching index.css variables
 const EMAIL_COLORS = {
   // Primary Colors
@@ -36,19 +34,10 @@ const EMAIL_COLORS = {
   gradientBlue: '#667eea',
 };
 
-// Create transporter configuration
-const createTransporter = () => {
-  // For development, you can use Gmail or other email services
-  // For production, use services like SendGrid, AWS SES, etc.
+// Use shared email service (SMTP host config + rate limit)
+const { getTransporter, sendMail: sendMailViaService, sendOTP } = require('./emailService');
 
-  return nodemailer.createTransport({
-    service: 'gmail', // or 'outlook', 'yahoo', etc.
-    auth: {
-      user: process.env.EMAIL_USER || 'your-email@gmail.com',
-      pass: process.env.EMAIL_PASSWORD || 'your-app-password'
-    }
-  });
-};
+const createTransporter = () => getTransporter();
 
 // Email templates
 const emailTemplates = {
@@ -565,6 +554,200 @@ const emailTemplates = {
     `
   }),
 
+  consultationConfirmation: (data) => ({
+    subject: 'Talk to Our Expert – Request Received | Mateshwari Moorti Bhandar',
+    html: `
+      <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
+        <div style="background: linear-gradient(135deg, ${EMAIL_COLORS.primary} 0%, ${EMAIL_COLORS.primaryDark} 100%); padding: 30px; text-align: center; border-radius: 10px 10px 0 0;">
+          <h1 style="color: ${EMAIL_COLORS.textWhite}; margin: 0; font-size: 24px;">Talk to Our Expert</h1>
+          <p style="color: ${EMAIL_COLORS.textWhite}; margin: 10px 0 0 0; opacity: 0.9;">Request received</p>
+        </div>
+        <div style="background: ${EMAIL_COLORS.bgPrimary}; padding: 30px; border-radius: 0 0 10px 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+          <h2 style="color: ${EMAIL_COLORS.textPrimary}; margin: 0 0 20px 0;">Hello ${data.name},</h2>
+          <p style="color: ${EMAIL_COLORS.textTertiary}; line-height: 1.6; margin: 0 0 20px 0;">
+            Thank you for reaching out! We have received your expert consultation request and our team will get back to you within 24–48 hours.
+          </p>
+          <div style="background: ${EMAIL_COLORS.bgSecondary}; padding: 20px; border-radius: 8px; margin: 20px 0; border-left: 4px solid ${EMAIL_COLORS.primary};">
+            <h3 style="color: ${EMAIL_COLORS.textPrimary}; margin: 0 0 10px 0;">Your details</h3>
+            <p style="color: ${EMAIL_COLORS.textTertiary}; margin: 5px 0;"><strong>City:</strong> ${data.city}</p>
+            <p style="color: ${EMAIL_COLORS.textTertiary}; margin: 5px 0;"><strong>You are:</strong> ${data.aboutYourself === 'homeowner' ? 'Homeowner (pooja unit/room)' : 'Interior designer/consultant'}</p>
+          </div>
+          <p style="color: ${EMAIL_COLORS.textTertiary}; line-height: 1.6; margin: 0 0 20px 0;">
+            Need immediate help? Call us at +91 77919 83156 | +91 88242 92890 | +91 97845 03338 or email Mateshvariexporter@gmail.com
+          </p>
+          <hr style="border: none; border-top: 1px solid ${EMAIL_COLORS.borderMedium}; margin: 30px 0;" />
+          <p style="color: ${EMAIL_COLORS.textQuaternary}; font-size: 12px; margin: 0; text-align: center;">Mateshwari Moorti Bhandar</p>
+        </div>
+      </div>
+    `,
+    text: `
+      Talk to Our Expert – Request Received
+
+      Hello ${data.name},
+
+      Thank you for reaching out! We have received your expert consultation request and our team will get back to you within 24–48 hours.
+
+      Your details: City: ${data.city}, You are: ${data.aboutYourself === 'homeowner' ? 'Homeowner' : 'Interior designer/consultant'}
+
+      Need immediate help? Call +91 77919 83156 | +91 88242 92890 | +91 97845 03338 or email Mateshvariexporter@gmail.com
+
+      Mateshwari Moorti Bhandar
+    `
+  }),
+
+  consultationNotification: (data) => ({
+    subject: `New Expert Consultation Request – ${data.name} (#${data.consultationId})`,
+    html: `
+      <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
+        <div style="background: linear-gradient(135deg, ${EMAIL_COLORS.accentError} 0%, ${EMAIL_COLORS.accentError} 100%); padding: 30px; text-align: center; border-radius: 10px 10px 0 0;">
+          <h1 style="color: ${EMAIL_COLORS.textWhite}; margin: 0; font-size: 24px;">New Expert Consultation</h1>
+          <p style="color: ${EMAIL_COLORS.textWhite}; margin: 10px 0 0 0; opacity: 0.9;">Talk to Our Expert – action required</p>
+        </div>
+        <div style="background: ${EMAIL_COLORS.bgPrimary}; padding: 30px; border-radius: 0 0 10px 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+          <h2 style="color: ${EMAIL_COLORS.textPrimary}; margin: 0 0 20px 0;">New consultation request</h2>
+          <div style="background: ${EMAIL_COLORS.bgSecondary}; padding: 20px; border-radius: 8px; margin: 20px 0; border-left: 4px solid ${EMAIL_COLORS.accentError};">
+            <h3 style="color: ${EMAIL_COLORS.textPrimary}; margin: 0 0 10px 0;">Details</h3>
+            <p style="color: ${EMAIL_COLORS.textTertiary}; margin: 5px 0;"><strong>ID:</strong> #${data.consultationId}</p>
+            <p style="color: ${EMAIL_COLORS.textTertiary}; margin: 5px 0;"><strong>Name:</strong> ${data.name}</p>
+            <p style="color: ${EMAIL_COLORS.textTertiary}; margin: 5px 0;"><strong>Email:</strong> ${data.email}</p>
+            <p style="color: ${EMAIL_COLORS.textTertiary}; margin: 5px 0;"><strong>Phone:</strong> ${data.phone}</p>
+            <p style="color: ${EMAIL_COLORS.textTertiary}; margin: 5px 0;"><strong>City:</strong> ${data.city}</p>
+            <p style="color: ${EMAIL_COLORS.textTertiary}; margin: 5px 0;"><strong>About:</strong> ${data.aboutYourself === 'homeowner' ? 'Homeowner (pooja unit/room)' : 'Interior designer/consultant'}</p>
+          </div>
+          <div style="text-align: center; margin: 30px 0;">
+            <a href="${process.env.ADMIN_PANEL_URL || ''}/admin/expert-consultations" style="background: ${EMAIL_COLORS.accentError}; color: ${EMAIL_COLORS.textWhite}; padding: 12px 30px; text-decoration: none; border-radius: 8px; display: inline-block; font-weight: 500;">View in Admin</a>
+          </div>
+          <hr style="border: none; border-top: 1px solid ${EMAIL_COLORS.borderMedium}; margin: 30px 0;" />
+          <p style="color: ${EMAIL_COLORS.textQuaternary}; font-size: 12px; margin: 0; text-align: center;">Mateshwari Moorti Bhandar Admin</p>
+        </div>
+      </div>
+    `,
+    text: `
+      New Expert Consultation – ${data.name} (#${data.consultationId})
+
+      Name: ${data.name}
+      Email: ${data.email}
+      Phone: ${data.phone}
+      City: ${data.city}
+      About: ${data.aboutYourself === 'homeowner' ? 'Homeowner' : 'Interior designer/consultant'}
+
+      View in Admin: ${process.env.ADMIN_PANEL_URL || ''}/admin/expert-consultations
+    `
+  }),
+
+  consultationStatusUpdate: (data) => ({
+    subject: 'Your Expert Consultation Status Updated | Mateshwari Moorti Bhandar',
+    html: `
+      <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
+        <div style="background: linear-gradient(135deg, ${EMAIL_COLORS.primaryGreen} 0%, ${EMAIL_COLORS.primaryGreen} 100%); padding: 30px; text-align: center; border-radius: 10px 10px 0 0;">
+          <h1 style="color: ${EMAIL_COLORS.textWhite}; margin: 0; font-size: 24px;">Consultation Status Update</h1>
+        </div>
+        <div style="background: ${EMAIL_COLORS.bgPrimary}; padding: 30px; border-radius: 0 0 10px 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+          <h2 style="color: ${EMAIL_COLORS.textPrimary}; margin: 0 0 20px 0;">Hello ${data.name},</h2>
+          <p style="color: ${EMAIL_COLORS.textTertiary}; line-height: 1.6; margin: 0 0 20px 0;">Your expert consultation request status has been updated.</p>
+          <div style="background: ${EMAIL_COLORS.bgSecondary}; padding: 20px; border-radius: 8px; margin: 20px 0;">
+            <p style="color: ${EMAIL_COLORS.textTertiary}; margin: 5px 0;"><strong>Previous:</strong> ${(data.oldStatus || '').replace('_', ' ')}</p>
+            <p style="color: ${EMAIL_COLORS.textTertiary}; margin: 5px 0;"><strong>New:</strong> ${(data.newStatus || '').replace('_', ' ')}</p>
+            ${data.adminNotes ? `<p style="color: ${EMAIL_COLORS.textTertiary}; margin: 10px 0 0 0;"><strong>Note:</strong> ${data.adminNotes}</p>` : ''}
+          </div>
+          <hr style="border: none; border-top: 1px solid ${EMAIL_COLORS.borderMedium}; margin: 30px 0;" />
+          <p style="color: ${EMAIL_COLORS.textQuaternary}; font-size: 12px; margin: 0; text-align: center;">Mateshwari Moorti Bhandar</p>
+        </div>
+      </div>
+    `,
+    text: `
+      Consultation Status Update
+
+      Hello ${data.name},
+
+      Your expert consultation status: ${data.oldStatus} → ${data.newStatus}
+      ${data.adminNotes ? `Note: ${data.adminNotes}` : ''}
+
+      Mateshwari Moorti Bhandar
+    `
+  }),
+
+  appointmentConfirmation: (data) => ({
+    subject: 'Appointment Request Received | Mateshwari Moorti Bhandar',
+    html: `
+      <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
+        <div style="background: linear-gradient(135deg, ${EMAIL_COLORS.primary} 0%, ${EMAIL_COLORS.primaryDark} 100%); padding: 30px; text-align: center; border-radius: 10px 10px 0 0;">
+          <h1 style="color: ${EMAIL_COLORS.textWhite}; margin: 0; font-size: 24px;">Appointment Request Received</h1>
+          <p style="color: ${EMAIL_COLORS.textWhite}; margin: 10px 0 0 0; opacity: 0.9;">Mateshwari Moorti Bhandar</p>
+        </div>
+        <div style="background: ${EMAIL_COLORS.bgPrimary}; padding: 30px; border-radius: 0 0 10px 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+          <h2 style="color: ${EMAIL_COLORS.textPrimary}; margin: 0 0 20px 0;">Hello ${data.name},</h2>
+          <p style="color: ${EMAIL_COLORS.textTertiary}; line-height: 1.6; margin: 0 0 20px 0;">We have received your appointment request. Our team will contact you shortly to confirm.</p>
+          <div style="background: ${EMAIL_COLORS.bgSecondary}; padding: 20px; border-radius: 8px; margin: 20px 0; border-left: 4px solid ${EMAIL_COLORS.primary};">
+            <h3 style="color: ${EMAIL_COLORS.textPrimary}; margin: 0 0 10px 0;">Your appointment details</h3>
+            <p style="color: ${EMAIL_COLORS.textTertiary}; margin: 5px 0;"><strong>Full Name:</strong> ${data.name}</p>
+            <p style="color: ${EMAIL_COLORS.textTertiary}; margin: 5px 0;"><strong>Contact:</strong> ${data.contactNumber}</p>
+            <p style="color: ${EMAIL_COLORS.textTertiary}; margin: 5px 0;"><strong>City:</strong> ${data.city}</p>
+            <p style="color: ${EMAIL_COLORS.textTertiary}; margin: 5px 0;"><strong>Type:</strong> ${data.appointmentTypeLabel || data.appointmentType}</p>
+            <p style="color: ${EMAIL_COLORS.textTertiary}; margin: 5px 0;"><strong>Date:</strong> ${data.selectedDate}</p>
+            <p style="color: ${EMAIL_COLORS.textTertiary}; margin: 5px 0;"><strong>Time:</strong> ${data.selectedTime}</p>
+          </div>
+          <p style="color: ${EMAIL_COLORS.textTertiary}; line-height: 1.6; margin: 0 0 20px 0;">If you need to change or cancel, call us at +91 77919 83156 | +91 88242 92890 | +91 97845 03338 or email Mateshvariexporter@gmail.com</p>
+          <hr style="border: none; border-top: 1px solid ${EMAIL_COLORS.borderMedium}; margin: 30px 0;" />
+          <p style="color: ${EMAIL_COLORS.textQuaternary}; font-size: 12px; margin: 0; text-align: center;">Mateshwari Moorti Bhandar</p>
+        </div>
+      </div>
+    `,
+    text: `
+      Appointment Request Received
+
+      Hello ${data.name},
+
+      We have received your appointment request. Our team will contact you shortly to confirm.
+
+      Your details: ${data.name}, ${data.contactNumber}, ${data.city}
+      Type: ${data.appointmentTypeLabel || data.appointmentType}
+      Date: ${data.selectedDate} at ${data.selectedTime}
+
+      Contact: +91 77919 83156 | +91 88242 92890 | +91 97845 03338 | Mateshvariexporter@gmail.com
+      Mateshwari Moorti Bhandar
+    `
+  }),
+
+  appointmentNotification: (data) => ({
+    subject: `New Appointment Request – ${data.name} | ${data.selectedDate} ${data.selectedTime}`,
+    html: `
+      <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
+        <div style="background: linear-gradient(135deg, ${EMAIL_COLORS.accentError} 0%, ${EMAIL_COLORS.accentError} 100%); padding: 30px; text-align: center; border-radius: 10px 10px 0 0;">
+          <h1 style="color: ${EMAIL_COLORS.textWhite}; margin: 0; font-size: 24px;">New Appointment Request</h1>
+          <p style="color: ${EMAIL_COLORS.textWhite}; margin: 10px 0 0 0; opacity: 0.9;">Book Appointment – action required</p>
+        </div>
+        <div style="background: ${EMAIL_COLORS.bgPrimary}; padding: 30px; border-radius: 0 0 10px 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+          <h2 style="color: ${EMAIL_COLORS.textPrimary}; margin: 0 0 20px 0;">Appointment details</h2>
+          <div style="background: ${EMAIL_COLORS.bgSecondary}; padding: 20px; border-radius: 8px; margin: 20px 0; border-left: 4px solid ${EMAIL_COLORS.accentError};">
+            <p style="color: ${EMAIL_COLORS.textTertiary}; margin: 5px 0;"><strong>Full Name:</strong> ${data.name}</p>
+            <p style="color: ${EMAIL_COLORS.textTertiary}; margin: 5px 0;"><strong>Email:</strong> ${data.email || 'Not provided'}</p>
+            <p style="color: ${EMAIL_COLORS.textTertiary}; margin: 5px 0;"><strong>Contact Number:</strong> ${data.contactNumber}</p>
+            <p style="color: ${EMAIL_COLORS.textTertiary}; margin: 5px 0;"><strong>City:</strong> ${data.city}</p>
+            <p style="color: ${EMAIL_COLORS.textTertiary}; margin: 5px 0;"><strong>Appointment Type:</strong> ${data.appointmentTypeLabel || data.appointmentType}</p>
+            <p style="color: ${EMAIL_COLORS.textTertiary}; margin: 5px 0;"><strong>Date:</strong> ${data.selectedDate}</p>
+            <p style="color: ${EMAIL_COLORS.textTertiary}; margin: 5px 0;"><strong>Time:</strong> ${data.selectedTime}</p>
+          </div>
+          <hr style="border: none; border-top: 1px solid ${EMAIL_COLORS.borderMedium}; margin: 30px 0;" />
+          <p style="color: ${EMAIL_COLORS.textQuaternary}; font-size: 12px; margin: 0; text-align: center;">Mateshwari Moorti Bhandar Admin</p>
+        </div>
+      </div>
+    `,
+    text: `
+      New Appointment Request – ${data.name}
+
+      Full Name: ${data.name}
+      Email: ${data.email || 'Not provided'}
+      Contact: ${data.contactNumber}
+      City: ${data.city}
+      Type: ${data.appointmentTypeLabel || data.appointmentType}
+      Date: ${data.selectedDate}
+      Time: ${data.selectedTime}
+
+      Mateshwari Moorti Bhandar Admin
+    `
+  }),
+
   newsletterWelcome: (data) => ({
     subject: 'Welcome to Mateshwari Moorti Bhandar Newsletter! 🎉',
     html: `
@@ -716,23 +899,21 @@ const emailTemplates = {
   })
 };
 
-// Send email function
+// Send email function (uses rate-limited emailService.sendMail)
 const sendEmail = async (to, template, data = {}) => {
   try {
-
-    const transporter = createTransporter();
-
-    // Get email template
     const emailTemplate = emailTemplates[template];
     if (!emailTemplate) {
       throw new Error(`Email template '${template}' not found`);
     }
 
-    // Generate email content
     let emailContent;
     if (template === 'orderConfirmation' || template === 'orderShipped' ||
       template === 'contactConfirmation' || template === 'contactNotification' ||
-      template === 'contactStatusUpdate' || template === 'newsletterWelcome' ||
+      template === 'contactStatusUpdate' || template === 'consultationConfirmation' ||
+      template === 'consultationNotification' || template === 'consultationStatusUpdate' ||
+      template === 'appointmentConfirmation' || template === 'appointmentNotification' ||
+      template === 'newsletterWelcome' ||
       template === 'newsletterSubscription' || template === 'newsletter') {
       emailContent = emailTemplate(data);
     } else {
@@ -741,31 +922,20 @@ const sendEmail = async (to, template, data = {}) => {
         : emailTemplate;
     }
 
-    // Email options
-    const mailOptions = {
-      from: process.env.EMAIL_USER || 'Mateshvariexporter@gmail.com',
-      to: to,
+    const result = await sendMailViaService({
+      to,
       subject: emailContent.subject,
       html: emailContent.html,
-      text: emailContent.text
-    };
+      text: emailContent.text,
+    });
 
-    // Send email
-    const info = await transporter.sendMail(mailOptions);
-
-    return {
-      success: true,
-      messageId: info.messageId,
-      message: 'Email sent successfully'
-    };
-
+    if (result.success) {
+      return { success: true, messageId: result.messageId, message: 'Email sent successfully' };
+    }
+    return { success: false, error: result.error, message: 'Failed to send email' };
   } catch (error) {
     console.error('❌ Email sending failed:', error);
-    return {
-      success: false,
-      error: error.message,
-      message: 'Failed to send email'
-    };
+    return { success: false, error: error.message, message: 'Failed to send email' };
   }
 };
 
@@ -798,5 +968,6 @@ module.exports = {
   sendWelcomeEmail,
   sendOrderConfirmationEmail,
   sendOrderShippedEmail,
+  sendOTP,
   emailTemplates
 }; 

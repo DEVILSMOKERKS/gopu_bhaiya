@@ -10,6 +10,7 @@ import axios from 'axios';
 import { useWishlistCart } from '../../context/wishlistCartContext';
 import { useUser } from '../../context/UserContext';
 import HomeMegaMenu from './HomeMegaMenu';
+import ExpertPopup from './ExpertPopup';
 import './header.css';
 import logo from '../../assets/img/logo.png'
 
@@ -26,6 +27,7 @@ const Header = ({ onAccountClick }) => {
   const [showSearchResults, setShowSearchResults] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isHomeMegaMenuOpen, setIsHomeMegaMenuOpen] = useState(false);
+  const [isExpertPopupOpen, setIsExpertPopupOpen] = useState(false);
   const { cart, wishlist } = useWishlistCart();
   const { user, isAuthenticated } = useUser();
   const searchTimeoutRef = useRef(null);
@@ -57,31 +59,70 @@ const Header = ({ onAccountClick }) => {
   const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
   // Debounced search function
+  // const performSearch = async (query) => {
+  //   if (!query.trim()) {
+  //     setSearchResults([]);
+  //     setShowSearchResults(false);
+  //     return;
+  //   }
+
+  //   try {
+  //     setIsSearching(true);
+  //     const response = await axios.get(`${API_URL}/products?search=${encodeURIComponent(query)}&limit=8`);
+
+  //     if (response.data.success) {
+  //       setSearchResults(response.data.data);
+  //       setShowSearchResults(true);
+  //     } else {
+  //       setSearchResults([]);
+  //     }
+  //   } catch (error) {
+  //     console.error('Search error:', error);
+  //     setSearchResults([]);
+  //   } finally {
+  //     setIsSearching(false);
+  //   }
+  // };
+
   const performSearch = async (query) => {
     if (!query.trim()) {
       setSearchResults([]);
       setShowSearchResults(false);
       return;
     }
-
+  
     try {
       setIsSearching(true);
-      const response = await axios.get(`${API_URL}/products?search=${encodeURIComponent(query)}&limit=8`);
-
-      if (response.data.success) {
-        setSearchResults(response.data.data);
-        setShowSearchResults(true);
-      } else {
-        setSearchResults([]);
-      }
+  
+      const response = await axios.get(
+        `${API_URL}/products`,
+        {
+          params: {
+            search: query,
+            limit: 8,
+          },
+          headers: {
+            "Cache-Control": "no-cache",
+          },
+        }
+      );
+      console.log("✅ API response:", response.data);
+  
+      // ✅ Do NOT check response.data.success
+      const products = response.data?.data || [];
+  
+      setSearchResults(products);
+      setShowSearchResults(true);
+  
     } catch (error) {
-      console.error('Search error:', error);
+      console.error("Search error:", error.response?.data || error.message);
       setSearchResults([]);
+      setShowSearchResults(false);
     } finally {
       setIsSearching(false);
     }
   };
-
+  
   // Handle search input change with debouncing
   const handleSearchInputChange = (e) => {
     const query = e.target.value;
@@ -185,10 +226,46 @@ const Header = ({ onAccountClick }) => {
 
   // Get product image
   const getProductImage = (product) => {
-    if (product.colors && product.colors.length > 0 && product.colors[0].images && product.colors[0].images.length > 0) {
-      return `${API_URL.replace('/api', '')}${product.colors[0].images[0]}`;
+    if (!product.colors || product.colors.length === 0) {
+      return '/placeholder-product.jpg';
     }
-    return '/placeholder-product.jpg';
+
+    const firstColor = product.colors[0];
+    const firstImage = firstColor.images && firstColor.images.length > 0 ? firstColor.images[0] : null;
+
+    if (!firstImage) {
+      return '/placeholder-product.jpg';
+    }
+
+    // Handle both string paths and object-based images
+    let relativePath = '';
+    if (typeof firstImage === 'string') {
+      relativePath = firstImage;
+    } else if (typeof firstImage === 'object' && firstImage !== null) {
+      relativePath =
+        firstImage.image_url ||
+        firstImage.url ||
+        firstImage.path ||
+        firstImage.src ||
+        '';
+    }
+
+    if (!relativePath) {
+      return '/placeholder-product.jpg';
+    }
+
+    // If already absolute URL, return as is
+    if (relativePath.startsWith('http://') || relativePath.startsWith('https://')) {
+      return relativePath;
+    }
+
+    // Ensure leading slash for relative paths
+    if (!relativePath.startsWith('/')) {
+      relativePath = `/${relativePath}`;
+    }
+
+    const baseUrl = API_URL ? API_URL.replace('/api', '') : '';
+    return `${baseUrl}${relativePath}`;
   };
 
   return (
@@ -233,7 +310,11 @@ const Header = ({ onAccountClick }) => {
                         </div>
                       ))}
                     </div>
-                  ) : null}
+                  ) : (
+                    <div className="header-search-no-results">
+                      No products found
+                    </div>
+                  )}
                 </div>
               )}
             </div>
@@ -244,7 +325,11 @@ const Header = ({ onAccountClick }) => {
             </Link>
           </div>
           <div className="header-top-right">
-            <button className="header-bulk-order-btn">
+            <button
+              className="header-bulk-order-btn"
+              type="button"
+              onClick={() => setIsExpertPopupOpen(true)}
+            >
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
                 <polyline points="14 2 14 8 20 8"></polyline>
@@ -252,7 +337,7 @@ const Header = ({ onAccountClick }) => {
                 <line x1="16" y1="17" x2="8" y2="17"></line>
                 <polyline points="10 9 9 9 8 9"></polyline>
               </svg>
-              BULK ORDER
+              ASK EXPERTS
             </button>
           </div>
         </div>
@@ -284,7 +369,7 @@ const Header = ({ onAccountClick }) => {
               />
             </li>
             <li>
-              <Link href="/projects" className={`header-nav-link-home ${pathname === '/projects' ? 'active' : ''}`}>PROJECTS</Link>
+              <Link href="/projects" className={`header-nav-link-home ${pathname === '/projects' ? 'active' : ''}`}>PRODUCTS</Link>
             </li>
             <li>
               <Link href="/our-creations" className={`header-nav-link-home ${pathname === '/our-creations' ? 'active' : ''}`}>OUR CREATIONS</Link>
@@ -399,6 +484,12 @@ const Header = ({ onAccountClick }) => {
           </nav>
         </div>
       </header>
+
+      <ExpertPopup
+        isOpen={isExpertPopupOpen}
+        onClose={() => setIsExpertPopupOpen(false)}
+        API_URL={API_URL}
+      />
     </>
   );
 };

@@ -14,8 +14,7 @@ const HomeBlog = () => {
   const [error, setError] = useState(null);
   const router = useRouter();
 
-  // Get API URL from environment variable
-  const API_URL = process.env.NEXT_PUBLIC_API_URL
+  const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api';
 
   useEffect(() => {
     fetchBlogPosts();

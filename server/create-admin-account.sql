@@ -9,10 +9,10 @@ USE mateshwarimurti;
 INSERT INTO admins (name, email, password, is_verified) 
 VALUES (
   'Admin', 
-  'admin@123', 
-  '$2b$12$LOwKwCwP9d.zbD3V18ocPuMHxGVomSSBJWzFEkf296fFYJn1.j3PO', 
+  'sarthakpandey1210@gmail.com', 
+  'sarthak@123', 
   1
 );
 
 -- Verify the admin was created
-SELECT id, name, email, is_verified, created_at FROM admins WHERE email = 'admin@123';
+SELECT id, name, email, is_verified, created_at FROM admins WHERE email = 'admin@gmail.com';

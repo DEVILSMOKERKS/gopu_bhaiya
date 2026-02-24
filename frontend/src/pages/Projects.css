@@ -152,10 +152,24 @@
   color: var(--text-tertiary);
 }
 
-.projects-page .project-year {
+.projects-page .project-year,
+.projects-page .project-price {
   font-size: 13px;
   font-weight: 600;
   color: var(--primary-color);
+}
+
+.projects-page .projects-loading,
+.projects-page .projects-error,
+.projects-page .projects-empty {
+  text-align: center;
+  padding: 60px 20px;
+  font-size: 16px;
+  color: var(--text-secondary);
+}
+
+.projects-page .projects-error {
+  color: var(--error-color, #c00);
 }
 
 .projects-page .project-view-btn {

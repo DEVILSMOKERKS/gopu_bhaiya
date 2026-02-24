@@ -30,8 +30,7 @@ const BlogManagement = () => {
   const [imageFile, setImageFile] = useState(null);
   const [imagePreview, setImagePreview] = useState('');
 
-  // Get API URL from environment variable
-  const API_URL = process.env.NEXT_PUBLIC_API_URL;
+  const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api';
 
   useEffect(() => {
     fetchBlogs();
@@ -326,14 +325,18 @@ const BlogManagement = () => {
               <tr key={blog.blog_id}>
                 <td>
                   <div className="blog-title-cell">
-                    <Image
-                      src={`${API_URL.replace('/api', '')}${blog.featured_image}`}
-                      alt={blog.title}
-                      className="blog-thumbnail"
-                      width={60}
-                      height={60}
-                      style={{ objectFit: 'cover' }}
-                    />
+                    {blog.featured_image ? (
+                      <Image
+                        src={`${(API_URL || '').replace('/api', '')}${blog.featured_image}`}
+                        alt={blog.title}
+                        className="blog-thumbnail"
+                        width={60}
+                        height={60}
+                        style={{ objectFit: 'cover' }}
+                      />
+                    ) : (
+                      <div className="blog-thumbnail-placeholder" style={{ width: 60, height: 60, background: '#eee', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 10 }}>No image</div>
+                    )}
                     <span>{blog.title}</span>
                   </div>
                 </td>

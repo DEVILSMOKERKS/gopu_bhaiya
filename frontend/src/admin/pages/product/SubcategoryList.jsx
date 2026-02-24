@@ -17,7 +17,15 @@ const SubcategoryList = () => {
   const [deleteLoading, setDeleteLoading] = useState(null);
 
   // Get API URL from environment variable
-  const API_URL = process.env.NEXT_PUBLIC_API_URL
+  const API_URL = process.env.NEXT_PUBLIC_API_URL;
+
+  // Normalize image path (backend may return backslashes on Windows)
+  const getImageSrc = (path) => {
+    if (!path) return '';
+    const normalized = path.replace(/\\/g, '/');
+    const base = API_URL ? API_URL.replace('/api', '') : '';
+    return base ? `${base}${normalized.startsWith('/') ? normalized : '/' + normalized}` : normalized;
+  };
 
   useEffect(() => {
     fetchSubcategories();
@@ -154,7 +162,7 @@ const SubcategoryList = () => {
                   <td className="subcategorylist-td subcategorylist-image-cell">
                     {subcategory.image_url ? (
                       <Image
-                        src={`${API_URL.replace('/api', '')}${subcategory.image_url}`}
+                        src={getImageSrc(subcategory.image_url)}
                         alt={subcategory.name}
                         className="subcategorylist-subcategory-image"
                         width={50}

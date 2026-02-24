@@ -7,6 +7,7 @@ const dotenv = require('dotenv');
 dotenv.config();
 
 // Import routes
+const expertInquiryRoutes = require('./routes/expertInquiry.route');
 const authRoutes = require('./routes/auth.route');
 const adminRoutes = require('./routes/admin.route');
 const categoryRoutes = require('./routes/category.route');
@@ -23,6 +24,7 @@ const blogRoutes = require('./routes/blog.route');
 const contactRoutes = require('./routes/contact.route');
 const expertConsultationRoutes = require('./routes/expertConsultation.route');
 const newsletterRoutes = require('./routes/newsletter.route');
+const bookAppointmentRoutes = require('./routes/bookAppointment.route');
 const PORT = process.env.PORT || 5000;
 
 const app = express();
@@ -89,6 +91,8 @@ app.use('/api', blogRoutes);
 app.use('/api', contactRoutes);
 app.use('/api', expertConsultationRoutes);
 app.use('/api/newsletter', newsletterRoutes);
+app.use('/api', expertInquiryRoutes);
+app.use('/api', bookAppointmentRoutes);
 
 // Health check endpoint
 app.get('/api/health', (req, res) => {
