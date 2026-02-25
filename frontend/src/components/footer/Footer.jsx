@@ -7,7 +7,7 @@ import { FaInstagram, FaFacebook, FaYoutube, FaCheck, FaTimes, FaEnvelope, FaPho
 import Link from 'next/link';
 import axios from 'axios';
 import WhatsAppFloat from '../WhatsAppFloat/WhatsAppFloat';
-import logo from '../../assets/img/logo.png';
+import logo from '../../assets/Images/img/logo.jpg';
 
 
 const Footer = () => {

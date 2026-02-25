@@ -1,8 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
 
 * {
-  padding: 0;
-  margin: 0;
+  padding: 1px;
+  margin: 2px;
   box-sizing: border-box;
   font-family: var(--__futura_pt_light_ef3a57, 'Arial', 'Helvetica Neue', 'Helvetica', sans-serif), var(--__futura_pt_light_Fallback_ef3a57, 'Arial', 'Helvetica Neue', 'Helvetica', sans-serif), 'Arial', 'Helvetica Neue', 'Helvetica', sans-serif;
 }

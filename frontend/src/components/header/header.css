@@ -63,7 +63,7 @@
 .status-msg.success { color: green; }
 .status-msg.error { color: red; }
 
-
+/* 
 .header-transparent {
   background: rgba(0, 0, 0, 0.5) !important;
   backdrop-filter: blur(10px);
@@ -97,7 +97,7 @@
   color: var(--text-primary) !important;
   border: 1px solid var(--border-light);
   background: var(--bg-primary);
-}
+} */
 
 /* ============================================
    HEADER SCROLLED STATE (White Background)

@@ -1,11 +1,11 @@
 import React from 'react';
 import './FollowUs.css';
 // Import follow images
-import Follow1 from '../../../assets/Images/follow/follow1.jpg';
-import Follow2 from '../../../assets/Images/follow/follow2.jpg';
-import Follow3 from '../../../assets/Images/follow/follow3.jpg';
-import Follow4 from '../../../assets/Images/follow/follow4.jpg';
-import Follow5 from '../../../assets/Images/follow/follow5.jpg';
+import Follow1 from '../../../assets/Images/insta/img5.jpeg';
+import Follow2 from '../../../assets/Images/insta/img4.jpeg';
+import Follow3 from '../../../assets/Images/insta/img3.jpeg';
+import Follow4 from '../../../assets/Images/insta/img2.jpeg';
+import Follow5 from '../../../assets/Images/insta/img.jpeg';
 import Image from 'next/image';
 
 const FollowUs = () => {
@@ -19,7 +19,7 @@ const FollowUs = () => {
   return (
     <section className="follow-us">
       <div className="follow-us-container">
-        <h2 className="follow-us-title">Follow Us @MATESHWARI EXPORTS</h2>
+        <h2 className="follow-us-title">Follow Us @MATESHWARI Moorti Bhandar</h2>
 
         <div className="follow-us-grid">
           {/* Large left image for desktop */}

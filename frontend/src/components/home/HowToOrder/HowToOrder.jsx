@@ -5,7 +5,7 @@ import Image from 'next/image';
 import axios from 'axios';
 import './HowToOrder.css';
 // Import background image - using one of the existing images as placeholder
-import backgroundImg from '../../../assets/Images/banner/marbleMandir.jpg';
+import backgroundImg from '../../../assets/Images/insta/img3.jpeg';
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL;
 

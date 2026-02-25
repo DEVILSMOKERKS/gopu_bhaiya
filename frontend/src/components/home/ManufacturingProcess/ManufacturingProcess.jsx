@@ -3,10 +3,10 @@
 import { useState, useRef, useEffect } from 'react';
 import './ManufacturingProcess.css';
 // Import manufacturing process images
-import manufacturingImage1 from '../../../assets/Images/banner/manufacturingImage1.jpg';
-import manufacturingImage2 from '../../../assets/Images/banner/manufacturingImage2.jpg';
-import manufacturingImage3 from '../../../assets/Images/banner/manufacturingImage3.jpg';
-import manufacturingImage4 from '../../../assets/Images/banner/manufacturingImage4.jpg';
+import manufacturingImage1 from '../../../assets/Images/manufacture/img1.jpeg';
+import manufacturingImage2 from '../../../assets/Images/manufacture/img2.jpeg';
+import manufacturingImage3 from '../../../assets/Images/manufacture/img3.jpeg';
+import manufacturingImage4 from '../../../assets/Images/manufacture/img4.jpeg';
 import manufacturingImage5 from '../../../assets/Images/banner/manufacturingImage1.jpg';
 import Image from 'next/image';
 

@@ -12,7 +12,7 @@ import { useUser } from '../../context/UserContext';
 import HomeMegaMenu from './HomeMegaMenu';
 import ExpertPopup from './ExpertPopup';
 import './header.css';
-import logo from '../../assets/img/logo.png'
+import logo from '../../assets/Images/img/logo.jpg'
 
 const Header = ({ onAccountClick }) => {
   const pathname = usePathname();

@@ -4,53 +4,54 @@ import { useState } from 'react';
 import Image from 'next/image';
 import './PoojaRoomBudget.css';
 import PricingPanel from '../PricingPanel/PricingPanel';
-// Import local images
-import mandirImg from '../../../assets/Images/banner/mandir.jpg';
-import marbleMandirImg from '../../../assets/Images/banner/marbleMandir.jpg';
+
+// 1. Apni saari local images yahan import karein
+import mandirImg from '../../../assets/Images/insta/img4.jpeg';
+import marbleMandirImg from '../../../assets/Images/insta/img3.jpeg';
+import ganesh from '../../../assets/Images/insta/img.jpeg';
+import ganesh2 from '../../../assets/Images/insta/img5.jpeg';
+
+// Agar aur images hain toh unhe bhi import karein, e.g.:
+// import smallMandirImg from '../../../assets/Images/banner/smallMandir.jpg';
 
 const PoojaRoomBudget = () => {
   const [isPricingPanelOpen, setIsPricingPanelOpen] = useState(false);
 
+  // 2. Array mein seedha imported variable ka naam likhein
   const poojaRooms = [
     {
       id: 1,
       size: 'Small Pooja Rooms upto 50 Sqft',
       price: 'INR 12L',
-      // Traditional pooja room with white ornate carvings, warm lighting
-      image: 'https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=800&q=90&auto=format&fit=crop'
+      image: mandirImg, // Local image use ho rahi hai
     },
     {
       id: 2,
       size: 'Medium Pooja Rooms upto 80 Sqft',
       price: 'INR 20L',
-      // Modern white and gold pooja room with peacock motif
-      image: marbleMandirImg || 'https://images.unsplash.com/photo-1600607687644-c7171b42498b?w=800&q=90&auto=format&fit=crop'
+      image: marbleMandirImg, 
     },
     {
       id: 3,
       size: 'Large Pooja Rooms Upto 120sqft',
       price: 'INR 25.75L',
-      // Grand pooja room with dark wooden doors, white altar, gold accents, chandelier
-      image: mandirImg || 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&q=90&auto=format&fit=crop'
+      image: ganesh, 
     },
     {
       id: 4,
       size: 'Grand Pooja Rooms 150sqft',
       price: 'INR 35L',
-      // Most elaborate design with multiple arched sections, fluted columns, white and gold
-      image: 'https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?w=800&q=90&auto=format&fit=crop'
+      image: ganesh2, // Yahan apni 4th image ka variable daal dein
     }
   ];
 
   const handleUnderstandPricing = () => {
     setIsPricingPanelOpen(true);
-    // Prevent body scroll when panel is open
     document.body.style.overflow = 'hidden';
   };
 
   const handleClosePricingPanel = () => {
     setIsPricingPanelOpen(false);
-    // Restore body scroll
     document.body.style.overflow = 'unset';
   };
 
@@ -58,31 +59,33 @@ const PoojaRoomBudget = () => {
     <>
       <section className="pooja-room-budget">
         <div className="pooja-room-budget-container">
-          {/* Header Section */}
           <div className="pooja-room-budget-header">
             <h2 className="pooja-room-budget-title">POOJA ROOM FOR EVERY BUDGET</h2>
             <p className="pooja-room-budget-subtitle">
-              Discover the perfect pooja room for your home with our curated categories, offering timeless designs at prices that fit every budget.
+              Discover the perfect pooja room for your home with our curated categories.
             </p>
           </div>
 
-          {/* Pooja Room Grid */}
           <div className="pooja-room-budget-grid">
             {poojaRooms.map((room) => (
               <div key={room.id} className="pooja-room-budget-card">
-                <div className="pooja-room-budget-image-wrapper" style={{ position: 'relative', width: '100%', paddingTop: '130%', overflow: 'hidden', background: '#f5f5f5' }}>
+                <div className="pooja-room-budget-image-wrapper" 
+                     style={{ position: 'relative', width: '100%', paddingTop: '130%', overflow: 'hidden', background: '#f5f5f5' }}>
+                  
+                  {/* Next.js Image component handles local imports automatically */}
                   <Image
                     src={room.image}
                     alt={room.size}
                     className="pooja-room-budget-image"
                     fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
                     style={{ objectFit: 'cover' }}
+                    placeholder="blur" // Local images ke liye blur effect auto milta hai
                   />
-                  {/* Price Overlay - Top Left */}
+
                   <div className="pooja-room-budget-price-overlay">
                     <span className="pooja-room-budget-price">Starting at {room.price}</span>
                   </div>
-                  {/* Size Overlay - Bottom Left */}
                   <div className="pooja-room-budget-size-overlay">
                     <span className="pooja-room-budget-size">{room.size}</span>
                   </div>
@@ -91,26 +94,17 @@ const PoojaRoomBudget = () => {
             ))}
           </div>
 
-          {/* CTA Button */}
           <div className="pooja-room-budget-cta">
-            <button
-              className="pooja-room-budget-button"
-              onClick={handleUnderstandPricing}
-            >
+            <button className="pooja-room-budget-button" onClick={handleUnderstandPricing}>
               Understand Pricing
             </button>
           </div>
         </div>
       </section>
 
-      {/* Pricing Panel */}
-      <PricingPanel
-        isOpen={isPricingPanelOpen}
-        onClose={handleClosePricingPanel}
-      />
+      <PricingPanel isOpen={isPricingPanelOpen} onClose={handleClosePricingPanel} />
     </>
   );
 };
 
 export default PoojaRoomBudget;
-
