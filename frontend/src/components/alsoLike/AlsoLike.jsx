@@ -31,19 +31,28 @@ const AlsoLike = ({ productId }) => {
 
         if (response.data.success) {
           // Transform API data to match the existing UI structure
+          const getImageUrl = (img) => {
+            if (!img) return '';
+            if (typeof img === 'string') return img;
+            return img?.url || img?.image_url || img?.path || img?.src || '';
+          };
           const transformedData = response.data.data.map((product, index) => ({
             id: product.product_id,
             name: product.name,
             description: product.description || 'Premium Quality Product',
             price: `₹${(product.min_price || 0).toLocaleString()}`,
             colors: product.colors && product.colors.length > 0
-              ? product.colors.map((color, colorIndex) => ({
-                color: color.color_code || '#000000',
-                name: color.color_name || 'Default',
-                image: color.images && color.images.length > 0
-                  ? `${API_URL.replace('/api', '')}${color.images[0]}`
-                  : [BestSeller1, BestSeller2, BestSeller3][colorIndex % 3]
-              }))
+              ? product.colors.map((color, colorIndex) => {
+                const firstImage = color.images && color.images.length > 0 ? color.images[0] : null;
+                const imagePath = getImageUrl(firstImage);
+                return {
+                  color: color.color_code || '#000000',
+                  name: color.color_name || 'Default',
+                  image: imagePath
+                    ? `${API_URL.replace('/api', '')}${imagePath.startsWith('/') ? imagePath : '/' + imagePath}`
+                    : [BestSeller1, BestSeller2, BestSeller3][colorIndex % 3]
+                };
+              })
               : [
                 {
                   color: '#000000',
