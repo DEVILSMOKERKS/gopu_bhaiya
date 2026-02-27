@@ -122,18 +122,18 @@ const ManufacturingProcess = () => {
         )}
 
         {/* Mobile Pagination Dots */}
-        {mobileTotalPages > 1 && (
-          <div className="manufacturing-process-pagination manufacturing-process-pagination-mobile">
-            {Array.from({ length: mobileTotalPages }).map((_, index) => (
-              <button
-                key={index}
-                className={`manufacturing-process-dot ${mobileCurrentPage === index ? 'active' : ''}`}
-                onClick={() => handleMobileDotClick(index)}
-                aria-label={`Go to page ${index + 1}`}
-              />
-            ))}
-          </div>
-        )}
+        {/* {mobileTotalPages > 1 && (
+          // <div className="manufacturing-process-pagination manufacturing-process-pagination-mobile">
+          //   {Array.from({ length: mobileTotalPages }).map((_, index) => (
+          //     <button
+          //       key={index}
+          //       className={`manufacturing-process-dot ${mobileCurrentPage === index ? 'active' : ''}`}
+          //       onClick={() => handleMobileDotClick(index)}
+          //       aria-label={`Go to page ${index + 1}`}
+          //     />
+          //   ))}
+          // </div>
+        )} */}
       </div>
     </section>
   );

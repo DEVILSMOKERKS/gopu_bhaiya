@@ -1,23 +1,39 @@
 /* ============================================
-   MANUFACTURES IN MOTION SECTION
+   MANUFACTURES IN MOTION SECTION - ENHANCED
    ============================================ */
 .manufacturing-process {
-  padding: 80px 20px;
+  padding: 100px 20px; /* Thoda space badhaya premium feel ke liye */
   background: var(--bg-primary);
+  position: relative;
+  overflow: hidden;
 }
 
 .manufacturing-process-container {
   max-width: 1400px;
   margin: 0 auto;
+  perspective: 1000px; /* 3D depth ke liye */
 }
 
 .manufacturing-process-title {
-  font-size: 2.5rem;
-  font-weight: 700;
+  font-size: 3rem; /* Thoda bada aur bold */
+  font-weight: 800;
   text-align: left;
-  margin-bottom: 40px;
+  margin-bottom: 50px;
   color: var(--text-primary);
   font-family: var(--font-family);
+  letter-spacing: -1px;
+  position: relative;
+}
+
+/* Title ke niche luxury line */
+.manufacturing-process-title::after {
+  content: '';
+  display: block;
+  width: 80px;
+  height: 4px;
+  background: var(--primary-brown, #b68126);
+  margin-top: 15px;
+  border-radius: 2px;
 }
 
 /* ============================================
@@ -26,45 +42,42 @@
 .manufacturing-process-grid-desktop {
   display: flex;
   flex-direction: row;
-  gap: 20px;
+  gap: 25px; /* Gap perfect kiya */
   overflow-x: auto;
   overflow-y: hidden;
   -webkit-overflow-scrolling: touch;
   scroll-snap-type: x mandatory;
   scrollbar-width: none;
-  /* Firefox */
-  -ms-overflow-style: none;
-  /* IE and Edge */
   scroll-behavior: smooth;
-  padding-bottom: 10px;
+  padding: 20px 10px; /* Shadow katne na paye isliye padding */
   margin-bottom: 30px;
 }
 
 .manufacturing-process-grid-desktop::-webkit-scrollbar {
   display: none;
-  /* Chrome, Safari, Opera */
 }
 
 .manufacturing-process-grid-desktop .manufacturing-process-card {
-  flex: 0 0 calc(25% - 15px);
-  /* 4 cards per view with gap */
-  min-width: calc(25% - 15px);
+  flex: 0 0 calc(25% - 20px);
+  min-width: calc(25% - 20px);
   scroll-snap-align: start;
 }
 
 .manufacturing-process-card {
   position: relative;
-  border-radius: 12px;
+  border-radius: 20px; /* Zyada smooth corners */
   overflow: hidden;
-  background: var(--bg-primary);
-  transition: transform var(--transition-normal);
+  background: #000; /* Black base for image contrast */
+  transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
   aspect-ratio: 2 / 3;
-  /* Vertical rectangle ratio */
-  min-height: 500px;
+  min-height: 550px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
 }
 
+/* Hover par card lift aur glow */
 .manufacturing-process-card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-15px) scale(1.02);
+  box-shadow: 0 20px 50px rgba(182, 129, 38, 0.2);
 }
 
 .manufacturing-process-image {
@@ -72,7 +85,24 @@
   height: 100%;
   object-fit: cover;
   display: block;
-  border-radius: 12px;
+  border-radius: 20px;
+  transition: transform 1.2s cubic-bezier(0.165, 0.84, 0.44, 1), filter 0.5s ease;
+  filter: brightness(0.9);
+}
+
+.manufacturing-process-card:hover .manufacturing-process-image {
+  transform: scale(1.1);
+  filter: brightness(1.1);
+}
+
+/* Glassmorphism Overlay (Optional but looks killer) */
+.manufacturing-process-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, transparent 60%, rgba(0,0,0,0.8));
+  opacity: 0.7;
+  transition: 0.5s;
 }
 
 /* ============================================
@@ -83,44 +113,33 @@
 }
 
 /* ============================================
-   PAGINATION DOTS
+   PAGINATION DOTS - LUXURY STYLE
    ============================================ */
 .manufacturing-process-pagination {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 8px;
-  margin-top: 30px;
-}
-
-.manufacturing-process-pagination-desktop {
-  display: flex;
-}
-
-.manufacturing-process-pagination-mobile {
-  display: none;
+  gap: 12px;
+  margin-top: 40px;
 }
 
 .manufacturing-process-dot {
-  width: 10px;
-  height: 10px;
+  width: 12px;
+  height: 12px;
   border-radius: 50%;
-  border: none;
-  background: var(--text-light);
+  border: 1px solid var(--primary-brown, #b68126);
+  background: transparent;
   cursor: pointer;
-  transition: all var(--transition-normal);
+  transition: all 0.4s ease;
   padding: 0;
 }
 
 .manufacturing-process-dot.active {
-  width: 40px;
-  height: 10px;
+  width: 45px;
+  height: 12px;
   border-radius: 20px;
-  background: var(--primary-brown);
-}
-
-.manufacturing-process-dot:hover:not(.active) {
-  background: var(--text-tertiary);
+  background: var(--primary-brown, #b68126);
+  box-shadow: 0 0 15px rgba(182, 129, 38, 0.5);
 }
 
 /* ============================================
@@ -128,90 +147,41 @@
    ============================================ */
 @media (max-width: 968px) {
   .manufacturing-process {
-    padding: 60px 15px;
+    padding: 80px 15px;
   }
 
   .manufacturing-process-title {
-    font-size: 1.5rem;
+    font-size: 2rem;
     text-align: center;
-    margin-bottom: 30px;
   }
 
-  /* Hide desktop grid */
-  .manufacturing-process-grid-desktop {
-    display: none;
-  }
-
-  /* Show mobile grid */
   .manufacturing-process-grid-mobile {
     display: flex;
-    flex-direction: row;
     gap: 15px;
-    overflow-x: auto;
-    overflow-y: hidden;
-    -webkit-overflow-scrolling: touch;
-    scroll-snap-type: x mandatory;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-    scroll-behavior: smooth;
-    padding-bottom: 10px;
-    margin-bottom: 30px;
-  }
-
-  .manufacturing-process-grid-mobile::-webkit-scrollbar {
-    display: none;
+    padding: 10px;
   }
 
   .manufacturing-process-grid-mobile .manufacturing-process-card {
-    flex: 0 0 calc(50% - 7.5px);
-    min-width: calc(50% - 7.5px);
-    scroll-snap-align: start;
+    flex: 0 0 calc(60% - 15px); /* Peek effect: agli image thodi dikhegi */
+    min-width: calc(60% - 15px);
   }
 
   .manufacturing-process-card {
-    border-radius: 12px;
-    aspect-ratio: 2 / 3;
-    min-height: 400px;
-  }
-
-  .manufacturing-process-image {
-    border-radius: 12px;
-  }
-
-  /* Hide desktop pagination, show mobile */
-  .manufacturing-process-pagination-desktop {
-    display: none;
-  }
-
-  .manufacturing-process-pagination-mobile {
-    display: flex;
+    min-height: 450px;
   }
 }
 
 @media (max-width: 480px) {
-  .manufacturing-process {
-    padding: 40px 10px;
-  }
-
   .manufacturing-process-title {
-    font-size: 1.2rem;
-    margin-bottom: 20px;
-  }
-
-  .manufacturing-process-grid-mobile {
-    gap: 10px;
+    font-size: 1.6rem;
   }
 
   .manufacturing-process-grid-mobile .manufacturing-process-card {
-    flex: 0 0 calc(50% - 5px);
-    min-width: calc(50% - 5px);
+    flex: 0 0 calc(85% - 10px); /* Mobile pe image focus bada */
+    min-width: calc(85% - 10px);
   }
 
   .manufacturing-process-card {
-    min-height: 350px;
-  }
-
-  .manufacturing-process-pagination {
-    margin-top: 20px;
+    min-height: 400px;
   }
 }
