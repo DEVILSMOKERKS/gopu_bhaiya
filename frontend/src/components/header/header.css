@@ -279,7 +279,7 @@ body::before {
   object-fit: contain;
   border-radius: 50%;
   filter: drop-shadow(0 8px 20px rgba(196, 154, 108, 0.4));
-  animation: divineFloat 6s ease-in-out infinite;
+  /* animation: divineFloat 6s ease-in-out infinite; */
   border: 3px solid transparent;
   background: linear-gradient(var(--divine-white), var(--divine-white)) padding-box,
               linear-gradient(45deg, var(--ganesh-gold), var(--saffron-sacred), var(--kumkum-red)) border-box;
