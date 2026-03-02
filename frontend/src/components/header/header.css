@@ -1,5 +1,76 @@
 /* ============================================
-   HEADER BASE STYLES
+   MAHAGANAPATI THEME - Supreme Divine Experience
+   ============================================ */
+
+:root {
+  /* Sacred Colors - Enhanced with Deeper Meanings */
+  --ganesh-gold: #c49a6c;           /* Divine Golden - Ganesh Ji ka Tej */
+  --ganesh-gold-dark: #b3864d;       /* Deep Gold */
+  --ganesh-gold-light: #e5c9a8;      /* Soft Golden Glow */
+  
+  --kumkum-red: #d44f4f;             /* Sacred Vermilion - Tilak */
+  --kumkum-dark: #b32d2d;             /* Deep Red */
+  
+  --saffron-sacred: #ff9933;         /* Bhagwa Dhwaj */
+  --saffron-light: #ffe0b3;           /* Soft Saffron */
+  
+  --modak-brown: #8b4513;             /* Sacred Brown - Modak */
+  --modak-light: #d2b48c;              /* Tan - Prasad */
+  
+  --divine-cream: #fff9f0;             /* Pure Cream - Prasad */
+  --divine-white: #ffffff;              /* Purity */
+  --divine-dark: #2c1810;                /* Deep Brown - Sacred Wood */
+  
+  --text-deep: #4a2c1a;                 /* Deep Brown Text */
+  --text-soft: #6b4f3a;                   /* Soft Brown Text */
+  
+  --border-golden: #e5c9a8;              /* Golden Border */
+  
+  /* Social Media Brand Colors - With Divine Touch */
+  --instagram-gradient: linear-gradient(45deg, #f09433, #d62976, #962fbf, #4f5bd5);
+  --facebook-blue: #1877f2;
+  --youtube-red: #ff0000;
+  
+  /* Enhanced Gradients */
+  --gradient-golden: linear-gradient(135deg, #c49a6c, #e5c9a8, #c49a6c);
+  --gradient-saffron: linear-gradient(135deg, #ff9933, #ffd700);
+  --gradient-divine: linear-gradient(45deg, #c49a6c, #ff9933, #d44f4f, #c49a6c);
+  --gradient-om: linear-gradient(135deg, #fff9f0, #fce9d8);
+  --gradient-cream: linear-gradient(135deg, #fff9f0, #fff2e0);
+  
+  /* Shadows - More Divine */
+  --shadow-divine: 0 10px 30px rgba(196, 154, 108, 0.25);
+  --shadow-strong: 0 15px 40px rgba(196, 154, 108, 0.35);
+  --shadow-soft: 0 5px 20px rgba(196, 154, 108, 0.15);
+  --shadow-inner: inset 0 2px 10px rgba(196, 154, 108, 0.1);
+  
+  /* Animations */
+  --transition-divine: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ============================================
+   DIVINE BACKGROUND EFFECTS
+   ============================================ */
+
+/* Sacred Particles */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  background: 
+    radial-gradient(circle at 10% 20%, rgba(196, 154, 108, 0.03) 0%, transparent 30%),
+    radial-gradient(circle at 90% 50%, rgba(255, 153, 51, 0.03) 0%, transparent 40%),
+    radial-gradient(circle at 30% 80%, rgba(212, 79, 79, 0.03) 0%, transparent 30%);
+  z-index: -1;
+  animation: divineParticles 15s ease-in-out infinite;
+}
+
+/* ============================================
+   HEADER - MAHADIVYA PRESENCE
    ============================================ */
 .header {
   position: fixed;
@@ -7,157 +78,95 @@
   left: 0;
   right: 0;
   z-index: 1000;
-  transition: background-color 0.3s ease, box-shadow 0.3s ease;
-  background: var(--bg-primary) !important;
-  color: var(--text-primary);
+  background: var(--divine-cream) !important;
+  border-bottom: 3px solid var(--ganesh-gold);
+  box-shadow: var(--shadow-divine);
+  transition: var(--transition-divine);
 }
 
-.expert-popup-overlay {
-  position: fixed;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background: rgba(0,0,0,0.6);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 9999;
+/* Sacred Scroll State */
+.header-scrolled {
+  background: rgba(255, 249, 240, 0.98) !important;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 8px 30px rgba(196, 154, 108, 0.4);
+  border-bottom-color: var(--kumkum-red);
 }
 
-.expert-popup-content {
-  background: white;
-  padding: 30px;
-  border-radius: 8px;
-  width: 90%;
-  max-width: 450px;
-  position: relative;
-}
-
-.expert-popup-close {
+/* Animated Sacred Border */
+.header::after {
+  content: '';
   position: absolute;
-  top: 15px; right: 15px;
-  background: none; border: none;
-  font-size: 24px; cursor: pointer;
+  bottom: -3px;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, 
+    var(--ganesh-gold), 
+    var(--saffron-sacred), 
+    var(--kumkum-red), 
+    var(--ganesh-gold), 
+    var(--saffron-sacred), 
+    var(--kumkum-red)
+  );
+  background-size: 300% 100%;
+  animation: borderGlow 6s linear infinite;
+  opacity: 0.7;
 }
 
-.form-group { margin-bottom: 15px; }
-.form-group label { display: block; margin-bottom: 5px; font-weight: bold; font-size: 14px; }
-.form-group input {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
+/* Floating OM Symbols */
+.header .om-symbols {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  pointer-events: none;
+  display: flex;
+  justify-content: space-around;
+  font-size: 24px;
+  color: var(--ganesh-gold);
+  opacity: 0.15;
+  animation: floatOM 20s linear infinite;
 }
-
-.submit-btn {
-  width: 100%;
-  padding: 12px;
-  background: #b18b5e; /* Match your brand color */
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-weight: bold;
-}
-
-.status-msg { margin-top: 10px; text-align: center; font-size: 14px; }
-.status-msg.success { color: green; }
-.status-msg.error { color: red; }
-
-/* 
-.header-transparent {
-  background: rgba(0, 0, 0, 0.5) !important;
-  backdrop-filter: blur(10px);
-  box-shadow: none;
-  color: var(--text-primary);
-}
-
-.header-transparent .header-nav-bar-home {
-  background: transparent;
-}
-
-.header-transparent .header-nav-link-home {
-  color: var(--text-white) !important;
-}
-
-.header-transparent .header-search-input-home {
-  color: var(--text-primary) !important;
-  border: 1px solid var(--border-light);
-  background: var(--bg-primary);
-}
-
-.header-transparent .header-search-input-home::placeholder {
-  color: rgba(0, 0, 0, 0.6) !important;
-}
-
-.header-transparent .header-search-icon-home {
-  color: var(--text-primary) !important;
-}
-
-.header-transparent .header-bulk-order-btn {
-  color: var(--text-primary) !important;
-  border: 1px solid var(--border-light);
-  background: var(--bg-primary);
-} */
 
 /* ============================================
-   HEADER SCROLLED STATE (White Background)
+   TOP BAR - SWARGIYA DESIGN
    ============================================ */
-.header-scrolled {
-  background: var(--bg-primary) !important;
-  color: var(--text-primary);
-  box-shadow: var(--shadow-sm);
-}
-
-.header-scrolled .header-search-input-home {
-  border: 1px solid var(--border-light);
-  color: var(--text-primary) !important;
-  background: var(--bg-primary);
-}
-
-.header-scrolled .header-search-input-home::placeholder {
-  color: rgba(0, 0, 0, 0.6) !important;
-}
-
-.header-scrolled .header-search-icon-home {
-  color: var(--text-primary) !important;
-}
-
-.header-scrolled .header-bulk-order-btn {
-  border: 1px solid var(--border-light);
-  color: var(--text-primary) !important;
-}
-
-.header-scrolled .header-bulk-order-btn:hover {
-  background: rgba(0, 0, 0, 0.05);
-  color: var(--text-primary) !important;
-}
-
-.header-scrolled .header-nav-link-home {
-  color: var(--text-primary) !important;
-}
-
-.header-scrolled .header-nav-link-home:hover {
-  color: var(--primary-color) !important;
-}
-
-.header-scrolled .header-nav-link-home.active {
-  color: var(--primary-color) !important;
-}
-
-.header-scrolled .header-nav-bar-home {
-  border-bottom: 1px solid var(--border-light);
-}
-
-
 .header-top-bar {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 1rem 2rem;
-  max-width: 1400px;
+  padding: 1rem 3rem;
+  max-width: 1800px;
   margin: 0 auto;
+  position: relative;
 }
 
+/* Divine Corner Decorations */
+.header-top-bar::before,
+.header-top-bar::after {
+  content: '🕉️';
+  position: absolute;
+  font-size: 20px;
+  color: var(--ganesh-gold);
+  opacity: 0.2;
+  animation: rotate 10s linear infinite;
+}
+
+.header-top-bar::before {
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.header-top-bar::after {
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* ============================================
+   LEFT SECTION - SACRED SEARCH
+   ============================================ */
 .header-top-left {
   flex: 1;
   display: flex;
@@ -166,75 +175,88 @@
 
 .header-search-bar-home {
   position: relative;
-  width: 300px;
+  width: 380px;
 }
 
+/* Search Form with Divine Glow */
 .header-search-form-home {
   display: flex;
   align-items: center;
   position: relative;
 }
 
-.header-search-no-results {
-  padding: 1.5rem;
-  text-align: center;
-  font-style: italic;
-  color:white
-}
-
-
 .header-search-icon-home {
   position: absolute;
-  left: 12px;
-  color: var(--text-primary);
-  /* Default to black for non-home pages */
-  width: 18px;
-  height: 18px;
-  z-index: 1;
+  left: 16px;
+  color: var(--ganesh-gold);
+  width: 20px;
+  height: 20px;
+  z-index: 2;
+  animation: gentlePulse 3s ease-in-out infinite;
 }
 
 .header-search-input-home {
   width: 100%;
-  padding: 10px 12px 10px 40px;
-  background: transparent;
-  border: 1px solid var(--border-light);
-  border-radius: 25px;
-  color: var(--text-primary);
-  /* Default to black for non-home pages */
-  font-size: 0.9rem;
+  padding: 14px 16px 14px 48px;
+  background: var(--divine-white);
+  border: 2px solid var(--border-golden);
+  border-radius: 50px;
+  color: var(--text-deep);
+  font-size: 0.95rem;
   outline: none;
-  transition: all var(--transition-normal);
+  transition: var(--transition-divine);
+  box-shadow: 0 4px 15px rgba(196, 154, 108, 0.15);
 }
 
 .header-search-input-home::placeholder {
-  color: rgba(0, 0, 0, 0.6);
-  /* Default to dark for non-home pages */
+  color: var(--text-soft);
+  font-style: italic;
+  font-size: 0.9rem;
+  letter-spacing: 0.3px;
 }
 
 .header-search-input-home:focus {
-  border-color: var(--primary-color);
-  background: var(--bg-light);
+  border-color: var(--ganesh-gold);
+  box-shadow: 0 0 0 4px rgba(196, 154, 108, 0.2), 0 8px 25px rgba(196, 154, 108, 0.25);
+  transform: translateY(-2px);
 }
 
-.header-search-results-home {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  right: 0;
-  background: var(--bg-dark-secondary);
-  border-radius: 8px;
-  margin-top: 8px;
-  max-height: 400px;
-  overflow-y: auto;
-  box-shadow: var(--shadow-popup);
-  z-index: 1000;
-}
-
+/* ============================================
+   CENTER - GANESH JI KA TEJ
+   ============================================ */
 .header-top-center {
   flex: 1;
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
+}
+
+/* Multiple Divine Auras */
+.header-top-center::before {
+  content: '';
+  position: absolute;
+  width: 160px;
+  height: 160px;
+  background: radial-gradient(circle, 
+    rgba(196, 154, 108, 0.25) 0%,
+    rgba(255, 153, 51, 0.15) 30%,
+    rgba(212, 79, 79, 0.1) 60%,
+    transparent 80%
+  );
+  border-radius: 50%;
+  animation: divineAura 4s ease-in-out infinite;
+}
+
+.header-top-center::after {
+  content: '🕉️🌺🕉️';
+  position: absolute;
+  top: -15px;
+  font-size: 18px;
+  color: var(--ganesh-gold);
+  opacity: 0.3;
+  white-space: nowrap;
+  animation: floatText 5s ease-in-out infinite;
 }
 
 .header-logo-link {
@@ -242,54 +264,335 @@
   align-items: center;
   justify-content: center;
   text-decoration: none;
+  position: relative;
+  z-index: 3;
+  transition: var(--transition-divine);
+}
+
+.header-logo-link:hover {
+  transform: scale(1.08) rotate(2deg);
 }
 
 .header-logo-img {
-  height: 60px;
+  height: 80px;
   width: auto;
   object-fit: contain;
+  border-radius: 50%;
+  filter: drop-shadow(0 8px 20px rgba(196, 154, 108, 0.4));
+  animation: divineFloat 6s ease-in-out infinite;
+  border: 3px solid transparent;
+  background: linear-gradient(var(--divine-white), var(--divine-white)) padding-box,
+              linear-gradient(45deg, var(--ganesh-gold), var(--saffron-sacred), var(--kumkum-red)) border-box;
 }
 
+/* ============================================
+   RIGHT SECTION - ASK EXPERTS + SOCIAL ICONS
+   ============================================ */
 .header-top-right {
   flex: 1;
   display: flex;
   justify-content: flex-end;
   align-items: center;
+  gap: 20px;
 }
 
+/* Social Icons Container */
+.header-social-icons {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-right: 10px;
+  position: relative;
+}
+
+/* Divine Decorations for Social Icons */
+.header-social-icons::before {
+  content: '🌸';
+  position: absolute;
+  left: -20px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 14px;
+  color: var(--ganesh-gold);
+  opacity: 0.5;
+  animation: gentlePulse 2s ease-in-out infinite;
+}
+
+.header-social-icons::after {
+  content: '🌸';
+  position: absolute;
+  right: -20px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 14px;
+  color: var(--ganesh-gold);
+  opacity: 0.5;
+  animation: gentlePulse 2s ease-in-out infinite reverse;
+}
+
+/* Social Icon Links */
+.header-social-icon-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: var(--divine-white);
+  color: var(--text-deep);
+  transition: var(--transition-divine);
+  position: relative;
+  overflow: hidden;
+  border: 2px solid var(--border-golden);
+  box-shadow: 0 4px 12px rgba(196, 154, 108, 0.2);
+  text-decoration: none;
+}
+
+/* Individual Social Icon Hover Effects */
+.header-social-icon-link.instagram:hover {
+  background: var(--instagram-gradient);
+  border-color: transparent;
+  color: white;
+  transform: translateY(-5px) scale(1.1);
+  box-shadow: 0 10px 25px rgba(225, 48, 108, 0.4);
+}
+
+.header-social-icon-link.facebook:hover {
+  background: var(--facebook-blue);
+  border-color: transparent;
+  color: white;
+  transform: translateY(-5px) scale(1.1);
+  box-shadow: 0 10px 25px rgba(24, 119, 242, 0.4);
+}
+
+.header-social-icon-link.youtube:hover {
+  background: var(--youtube-red);
+  border-color: transparent;
+  color: white;
+  transform: translateY(-5px) scale(1.1);
+  box-shadow: 0 10px 25px rgba(255, 0, 0, 0.4);
+}
+
+/* Divine Elements on Social Icons */
+.header-social-icon-link::before {
+  content: '🕉️';
+  position: absolute;
+  top: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 10px;
+  opacity: 0;
+  transition: top 0.3s ease;
+  color: var(--ganesh-gold);
+}
+
+.header-social-icon-link:hover::before {
+  top: 2px;
+  opacity: 1;
+  color: white;
+  font-size: 8px;
+}
+
+.header-social-icon-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 0;
+  background: rgba(255, 255, 255, 0.2);
+  transition: height 0.3s ease;
+}
+
+.header-social-icon-link:hover::after {
+  height: 100%;
+}
+
+.header-social-icon {
+  width: 20px;
+  height: 20px;
+  transition: var(--transition-divine);
+  position: relative;
+  z-index: 2;
+}
+
+.header-social-icon-link:hover .header-social-icon {
+  transform: scale(1.2) rotate(5deg);
+}
+
+/* ASK EXPERTS Button */
 .header-bulk-order-btn {
   display: flex;
   align-items: center;
-  gap: 8px;
-  padding: 10px 20px;
-  background: transparent;
-  border: 1px solid var(--border-light);
-  border-radius: 25px;
-  color: var(--text-primary);
-  font-size: 0.85rem;
-  font-weight: 600;
+  gap: 12px;
+  padding: 14px 32px;
+  background: linear-gradient(135deg, var(--ganesh-gold), var(--saffron-sacred), var(--kumkum-red));
+  background-size: 300% 300%;
+  border: none;
+  border-radius: 60px;
+  color: var(--text-deep);
+  font-size: 1rem;
+  font-weight: 800;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
+  letter-spacing: 2px;
   cursor: pointer;
-  transition: all var(--transition-normal);
+  transition: var(--transition-divine);
+  box-shadow: 0 8px 25px rgba(196, 154, 108, 0.4);
+  position: relative;
+  overflow: hidden;
+  animation: gradientShift 5s ease infinite;
+}
+
+/* Multiple Divine Elements for Button */
+.header-bulk-order-btn .om-left {
+  position: absolute;
+  left: -30px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 18px;
+  opacity: 0;
+  transition: var(--transition-divine);
+}
+
+.header-bulk-order-btn .om-right {
+  position: absolute;
+  right: -30px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 18px;
+  opacity: 0;
+  transition: var(--transition-divine);
+}
+
+.header-bulk-order-btn .flower-top {
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 14px;
+  opacity: 0;
+  transition: var(--transition-divine);
+}
+
+.header-bulk-order-btn .flower-bottom {
+  position: absolute;
+  bottom: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 14px;
+  opacity: 0;
+  transition: var(--transition-divine);
 }
 
 .header-bulk-order-btn:hover {
-  background: rgba(0, 0, 0, 0.05);
-  border-color: var(--primary-color);
-  color: var(--text-primary) !important;
+  background: linear-gradient(135deg, var(--kumkum-red), var(--saffron-sacred), var(--ganesh-gold));
+  background-size: 300% 300%;
+  transform: translateY(-4px) scale(1.03);
+  box-shadow: 0 15px 35px rgba(196, 154, 108, 0.5);
+  padding: 14px 42px;
+  letter-spacing: 3px;
+}
+
+.header-bulk-order-btn:hover .om-left {
+  left: 15px;
+  opacity: 1;
+  animation: rotate 3s linear infinite;
+}
+
+.header-bulk-order-btn:hover .om-right {
+  right: 15px;
+  opacity: 1;
+  animation: rotate 3s linear infinite reverse;
+}
+
+.header-bulk-order-btn:hover .flower-top {
+  top: 5px;
+  opacity: 1;
+  animation: float 2s ease-in-out infinite;
+}
+
+.header-bulk-order-btn:hover .flower-bottom {
+  bottom: 5px;
+  opacity: 1;
+  animation: float 2s ease-in-out infinite reverse;
 }
 
 .header-bulk-order-btn svg {
-  width: 16px;
-  height: 16px;
+  width: 20px;
+  height: 20px;
+  transition: var(--transition-divine);
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
 }
 
-/* Navigation Bar - All Pages */
+.header-bulk-order-btn:hover svg {
+  transform: rotate(360deg) scale(1.2);
+}
+
+/* ============================================
+   NAVIGATION BAR - MAHAMANDIR STYLE
+   ============================================ */
 .header-nav-bar-home {
   display: flex;
   justify-content: center;
-  padding: 1rem 2rem;
+  padding: 0.8rem 3rem;
+  background: var(--gradient-om);
+  border-top: 2px solid var(--border-golden);
+  border-bottom: 2px solid var(--border-golden);
+  position: relative;
+  box-shadow: inset 0 2px 10px rgba(196, 154, 108, 0.15);
+}
+
+/* Temple Top Design */
+.header-nav-bar-home .temple-top {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+}
+
+.header-nav-bar-home .temple-top span {
+  width: 22px;
+  height: 22px;
+  background: var(--ganesh-gold);
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+  animation: templeGlow 2.5s ease-in-out infinite;
+}
+
+.header-nav-bar-home .temple-top span:nth-child(2) {
+  width: 32px;
+  height: 26px;
+  background: var(--saffron-sacred);
+}
+
+.header-nav-bar-home .temple-top span:nth-child(3) {
+  background: var(--kumkum-red);
+}
+
+/* Sacred Flags */
+.header-nav-bar-home::before {
+  content: '🚩🚩🚩';
+  position: absolute;
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 20px;
+  color: var(--ganesh-gold);
+  opacity: 0.3;
+  animation: wave 3s ease-in-out infinite;
+}
+
+.header-nav-bar-home::after {
+  content: '🚩🚩🚩';
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 20px;
+  color: var(--ganesh-gold);
+  opacity: 0.3;
+  animation: wave 3s ease-in-out infinite reverse;
 }
 
 .header-nav-links-home {
@@ -297,7 +600,7 @@
   list-style: none;
   margin: 0;
   padding: 0;
-  gap: 2.5rem;
+  gap: 3rem;
   align-items: center;
 }
 
@@ -305,395 +608,196 @@
   position: relative;
 }
 
+/* Main Navigation Links */
 .header-nav-link-home {
-  color: var(--text-primary);
-  /* Default to black for non-home pages */
+  color: var(--text-deep);
   text-decoration: none;
-  font-size: 0.85rem;
-  font-weight: 500;
+  font-size: 0.95rem;
+  font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 1px;
-  transition: all var(--transition-normal);
+  letter-spacing: 1.2px;
+  transition: var(--transition-divine);
   position: relative;
-  padding: 0.5rem 0;
+  padding: 0.6rem 0;
+  display: inline-block;
 }
 
+/* Multiple Divine Effects */
+.header-nav-link-home::before {
+  content: '🕉️';
+  position: absolute;
+  top: -25px;
+  left: 50%;
+  transform: translateX(-50%) scale(0);
+  font-size: 14px;
+  opacity: 0;
+  transition: var(--transition-divine);
+  color: var(--ganesh-gold);
+}
+
+.header-nav-link-home::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--ganesh-gold), var(--saffron-sacred), var(--kumkum-red));
+  transition: width 0.4s ease;
+  border-radius: 3px;
+}
+
+/* Hover Effects */
 .header-nav-link-home:hover {
-  color: var(--primary-color) !important;
+  color: var(--ganesh-gold);
+  transform: translateY(-3px);
+  text-shadow: 0 5px 15px rgba(196, 154, 108, 0.3);
 }
 
+.header-nav-link-home:hover::before {
+  content: '🕉️🌺🕉️';
+  top: -30px;
+  transform: translateX(-50%) scale(1);
+  opacity: 1;
+  animation: sparkle 1.5s ease-in-out infinite;
+  white-space: nowrap;
+}
+
+.header-nav-link-home:hover::after {
+  width: 100%;
+}
+
+/* Active State - Mahatilak */
 .header-nav-link-home.active {
-  color: var(--primary-color) !important;
+  color: var(--kumkum-red);
+  font-weight: 800;
+  text-shadow: 0 0 10px rgba(212, 79, 79, 0.3);
+}
+
+.header-nav-link-home.active::before {
+  content: '🔴🌺🔴';
+  top: -30px;
+  transform: translateX(-50%) scale(1);
+  font-size: 12px;
+  opacity: 1;
+  animation: tilakGlow 2s ease-in-out infinite;
+  white-space: nowrap;
 }
 
 .header-nav-link-home.active::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 0;
   width: 100%;
-  height: 2px;
-  background: var(--primary-color);
+  height: 4px;
+  background: linear-gradient(90deg, var(--kumkum-red), var(--saffron-sacred), var(--ganesh-gold));
+  box-shadow: 0 0 10px var(--kumkum-red);
 }
 
 /* ============================================
-   OTHER PAGES HEADER (No longer needed - unified structure)
+   SEARCH RESULTS - PRASAD DISPLAY
    ============================================ */
-
-.header-container-other {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 1rem 2rem;
-  max-width: 1400px;
-  margin: 0 auto;
-  border-bottom: 1px solid var(--border-light);
-}
-
-.header-mobile-menu-toggle {
-  display: none;
-}
-
-.header-hamburger-btn {
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 0.5rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all var(--transition-normal);
-}
-
-.header-hamburger-icon {
-  width: 24px;
-  height: 24px;
-  color: var(--text-white);
-  transition: all var(--transition-normal);
-}
-
-.header-hamburger-btn:hover .header-hamburger-icon {
-  color: var(--primary-color);
-  transform: scale(1.1);
-}
-
-.header-close-icon {
-  transform: rotate(180deg);
-}
-
-.header-brand-section-other {
-  display: flex;
-  align-items: center;
-}
-
-.header-logo-img-other {
-  height: 50px;
-  width: auto;
-  object-fit: contain;
-}
-
-.header-navigation-other {
-  flex: 1;
-  display: flex;
-  justify-content: center;
-}
-
-.header-nav-links-other {
-  display: flex;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  gap: 2.5rem;
-  align-items: center;
-}
-
-.header-nav-link-other {
-  color: var(--text-white);
-  text-decoration: none;
-  font-size: 0.85rem;
-  font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  transition: all var(--transition-normal);
-  position: relative;
-  padding: 0.5rem 0;
-}
-
-.header-nav-link-other:hover {
-  color: var(--primary-color);
-}
-
-.header-nav-link-other.active {
-  color: var(--primary-color);
-}
-
-.header-nav-link-other.active::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 2px;
-  background: var(--primary-color);
-}
-
-.header-right-section-other {
-  display: flex;
-  gap: 1rem;
-  align-items: center;
-}
-
-.header-search-icon-other {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 40px;
-  height: 40px;
-  border: 1px solid var(--border-light);
-  border-radius: 50%;
-  color: var(--text-white);
-  cursor: pointer;
-  transition: all var(--transition-normal);
-}
-
-.header-search-icon-other:hover {
-  border-color: var(--primary-color);
-  color: var(--primary-color);
-  transform: scale(1.1);
-}
-
-.header-search-icon {
-  width: 20px;
-  height: 20px;
-}
-
-.header-bulk-order-btn-other {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 10px 20px;
-  background: transparent;
-  border: 1px solid var(--border-light);
-  border-radius: 0;
-  color: var(--text-white);
-  font-size: 0.85rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  cursor: pointer;
-  transition: all var(--transition-normal);
-}
-
-.header-bulk-order-btn-other:hover {
-  background: var(--bg-secondary);
-  border-color: var(--primary-color);
-}
-
-.header-bulk-order-btn-other svg {
-  width: 16px;
-  height: 16px;
-}
-
-/* Search Bar for Other Pages */
-.header-search-bar-other {
+.header-search-results-home {
   position: absolute;
   top: 100%;
   left: 0;
   right: 0;
-  background: var(--bg-dark-secondary);
-  padding: 1rem 2rem;
-  border-bottom: 1px solid var(--border-light);
+  background: var(--divine-white);
+  border-radius: 24px;
+  margin-top: 12px;
+  max-height: 450px;
+  overflow-y: auto;
+  box-shadow: var(--shadow-strong);
   z-index: 1000;
+  border: 2px solid var(--border-golden);
+  padding: 1rem;
 }
 
-.header-search-form-other {
-  display: flex;
-  align-items: center;
-  position: relative;
-  max-width: 600px;
-  margin: 0 auto;
+/* Sacred Scrollbar */
+.header-search-results-home::-webkit-scrollbar {
+  width: 8px;
 }
 
-.header-search-icon-other-input {
-  position: absolute;
-  left: 12px;
-  color: var(--text-white);
-  width: 20px;
-  height: 20px;
-  z-index: 1;
+.header-search-results-home::-webkit-scrollbar-track {
+  background: var(--divine-cream);
+  border-radius: 10px;
 }
 
-.header-search-input-other {
-  width: 100%;
-  padding: 12px 12px 12px 45px;
-  background: var(--bg-light);
-  border: 1px solid var(--border-light);
-  border-radius: 25px;
-  color: var(--text-white);
-  font-size: 0.9rem;
-  outline: none;
-  transition: all var(--transition-normal);
+.header-search-results-home::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, var(--ganesh-gold), var(--saffron-sacred));
+  border-radius: 10px;
+  border: 2px solid var(--divine-cream);
 }
 
-.header-search-input-other::placeholder {
-  color: var(--text-tertiary);
+.header-search-results-home::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, var(--kumkum-red), var(--ganesh-gold));
 }
 
-.header-search-input-other:focus {
-  border-color: var(--primary-color);
-  background: var(--bg-secondary);
+.header-search-no-results {
+  padding: 2.5rem;
+  text-align: center;
+  color: var(--text-soft);
+  font-style: italic;
+  background: var(--divine-cream);
+  border-radius: 20px;
+  font-size: 1.1rem;
 }
 
-.header-search-results-other {
-  position: absolute;
-  top: 100%;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 100%;
-  max-width: 600px;
-  background: var(--bg-dark-secondary);
-  border-radius: 8px;
-  margin-top: 8px;
-  max-height: 400px;
-  overflow-y: auto;
-  box-shadow: var(--shadow-popup);
-  z-index: 1001;
-}
-
-/* ============================================
-   MOBILE RESPONSIVE
-   ============================================ */
-.header-mobile-home {
-  display: none;
-}
-
-/* Mobile Menu */
-.header-mobile-menu-backdrop {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.7);
-  z-index: 999;
-  opacity: 0;
-  visibility: hidden;
-  transition: all var(--transition-normal);
-}
-
-.header-mobile-menu-backdrop.open {
-  opacity: 1;
-  visibility: visible;
-}
-
-/* Mobile menu backdrop for home page */
-.header-home .header-mobile-menu-backdrop {
-  z-index: 999;
-}
-
-.header-mobile-nav-menu {
-  position: fixed;
-  top: 0;
-  left: -100%;
-  width: 280px;
-  height: 100vh;
-  background: var(--bg-dark);
-  z-index: 1001;
-  transition: left var(--transition-normal);
-  overflow-y: auto;
-}
-
-.header-mobile-nav-menu.open {
-  left: 0;
-}
-
-.header-mobile-menu-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1.5rem;
-  border-bottom: 1px solid var(--border-light);
-}
-
-.header-mobile-logo img {
-  height: 40px;
-  width: auto;
-}
-
-.header-mobile-close-btn {
-  background: none;
-  border: none;
-  color: var(--text-white);
-  cursor: pointer;
-  padding: 0.5rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.header-mobile-close-icon {
-  width: 24px;
-  height: 24px;
-}
-
-.header-mobile-navigation {
-  padding: 1rem 0;
-}
-
-.header-mobile-nav-links {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-.header-mobile-nav-links li {
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-}
-
-.header-mobile-nav-link {
-  display: block;
-  padding: 1rem 1.5rem;
-  color: var(--text-white);
-  text-decoration: none;
-  font-size: 0.9rem;
-  font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  transition: all var(--transition-normal);
-}
-
-.header-mobile-nav-link:hover,
-.header-mobile-nav-link.active {
-  background: rgba(182, 129, 38, 0.1);
-  color: var(--primary-color);
-  padding-left: 2rem;
-}
-
-/* Search Results */
 .header-search-results-list {
-  padding: 0.5rem 0;
+  padding: 0.5rem;
 }
 
 .header-search-result-item {
   display: flex;
-  gap: 1rem;
-  padding: 1rem;
+  gap: 1.2rem;
+  padding: 1.2rem;
   cursor: pointer;
-  transition: background var(--transition-normal);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  transition: var(--transition-divine);
+  border-bottom: 1px solid var(--border-golden);
+  border-radius: 18px;
+  margin-bottom: 5px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Divine Glow on Hover */
+.header-search-result-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(196, 154, 108, 0.15), transparent);
+  transition: left 0.5s ease;
+}
+
+.header-search-result-item:hover::before {
+  left: 100%;
 }
 
 .header-search-result-item:hover {
-  /* background: var(--bg-light); */
+  background: var(--divine-cream);
+  transform: translateX(8px) scale(1.02);
+  box-shadow: 0 8px 20px rgba(196, 154, 108, 0.2);
+  border-color: var(--ganesh-gold);
+}
+
+.header-search-result-item:last-child {
+  border-bottom: none;
 }
 
 .header-search-result-image {
-  width: 60px;
-  height: 60px;
-  border-radius: 4px;
+  width: 80px;
+  height: 80px;
+  border-radius: 18px;
   overflow: hidden;
   flex-shrink: 0;
+  border: 3px solid var(--border-golden);
+  box-shadow: 0 5px 15px rgba(196, 154, 108, 0.3);
+  transition: var(--transition-divine);
+}
+
+.header-search-result-item:hover .header-search-result-image {
+  transform: scale(1.05);
+  border-color: var(--ganesh-gold);
 }
 
 .header-search-result-image img {
@@ -706,162 +810,1078 @@
   flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 0.25rem;
+  gap: 0.4rem;
 }
 
 .header-search-result-title {
-  color: var(--text-white);
-  font-size: 0.9rem;
-  font-weight: 500;
+  color: var(--text-deep);
+  font-size: 1.1rem;
+  font-weight: 700;
   margin: 0;
+  transition: var(--transition-divine);
+}
+
+.header-search-result-item:hover .header-search-result-title {
+  color: var(--ganesh-gold);
 }
 
 .header-search-result-price {
-  color: var(--primary-color);
-  font-size: 0.85rem;
-  font-weight: 600;
+  color: var(--ganesh-gold);
+  font-size: 1.2rem;
+  font-weight: 800;
   margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.header-search-result-price::before {
+  content: '💰✨';
+  font-size: 1rem;
+  animation: sparkle 2s ease-in-out infinite;
 }
 
 .header-search-loading {
-  padding: 2rem;
+  padding: 2.5rem;
   text-align: center;
-  color: var(--text-white);
+  color: var(--ganesh-gold);
+  font-weight: 600;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.header-search-loading::after {
+  content: '🕉️';
+  animation: spin 1.5s linear infinite;
+  display: inline-block;
+  font-size: 1.3rem;
 }
 
 /* ============================================
-   RESPONSIVE DESIGN
+   EXPERT POPUP - GANESH JI KA DARBAR
    ============================================ */
-@media (max-width: 968px) {
+.expert-popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(44, 24, 16, 0.85);
+  backdrop-filter: blur(8px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  animation: fadeIn 0.4s ease;
+}
 
-  /* Hide desktop elements on mobile */
+.expert-popup-content {
+  background: var(--gradient-cream);
+  padding: 40px;
+  border-radius: 50px;
+  width: 90%;
+  max-width: 500px;
+  position: relative;
+  border: 4px solid var(--ganesh-gold);
+  box-shadow: var(--shadow-strong), 0 0 0 10px rgba(196, 154, 108, 0.2);
+  animation: popupEntrance 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Divine Border Design */
+.expert-popup-content::before {
+  content: '🕉️🌺🕉️🌺🕉️';
+  position: absolute;
+  top: -22px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 26px;
+  background: var(--gradient-cream);
+  padding: 0 25px;
+  color: var(--ganesh-gold);
+  white-space: nowrap;
+  animation: borderFloat 3s ease-in-out infinite;
+  border-radius: 50px;
+}
+
+.expert-popup-content::after {
+  content: '';
+  position: absolute;
+  bottom: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  height: 4px;
+  background: linear-gradient(90deg, 
+    transparent, 
+    var(--ganesh-gold), 
+    var(--saffron-sacred), 
+    var(--kumkum-red), 
+    var(--ganesh-gold), 
+    transparent
+  );
+  border-radius: 4px;
+  animation: borderWidth 3s ease-in-out infinite;
+}
+
+.expert-popup-close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: var(--divine-white);
+  border: 3px solid var(--ganesh-gold);
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  font-size: 26px;
+  cursor: pointer;
+  color: var(--ganesh-gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition-divine);
+  z-index: 2;
+  font-weight: bold;
+}
+
+.expert-popup-close:hover {
+  background: var(--ganesh-gold);
+  color: var(--divine-white);
+  transform: rotate(180deg) scale(1.1);
+  box-shadow: 0 0 25px var(--ganesh-gold);
+  border-color: var(--divine-white);
+}
+
+/* Form Elements - Sacred Design */
+.form-group {
+  margin-bottom: 25px;
+  position: relative;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: 700;
+  font-size: 16px;
+  color: var(--text-deep);
+  letter-spacing: 0.5px;
+}
+
+.form-group label::before {
+  content: '🌸';
+  margin-right: 8px;
+  font-size: 14px;
+  color: var(--ganesh-gold);
+  animation: gentlePulse 2s ease-in-out infinite;
+}
+
+.form-group label::after {
+  content: '🌸';
+  margin-left: 8px;
+  font-size: 14px;
+  color: var(--ganesh-gold);
+  animation: gentlePulse 2s ease-in-out infinite reverse;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 16px 22px;
+  border: 3px solid var(--border-golden);
+  border-radius: 60px;
+  font-size: 16px;
+  transition: var(--transition-divine);
+  outline: none;
+  background: var(--divine-white);
+  box-shadow: var(--shadow-inner);
+  color: var(--text-deep);
+}
+
+.form-group input:focus {
+  border-color: var(--ganesh-gold);
+  box-shadow: 0 0 0 5px rgba(196, 154, 108, 0.2), var(--shadow-inner);
+  transform: scale(1.02) translateY(-2px);
+}
+
+.form-group input:hover {
+  box-shadow: 0 8px 20px rgba(196, 154, 108, 0.2);
+  border-color: var(--saffron-sacred);
+}
+
+.form-group input::placeholder {
+  color: var(--text-soft);
+  font-style: italic;
+}
+
+.submit-btn {
+  width: 100%;
+  padding: 18px;
+  background: linear-gradient(135deg, var(--ganesh-gold), var(--saffron-sacred), var(--kumkum-red));
+  background-size: 300% 300%;
+  color: var(--text-deep);
+  border: none;
+  border-radius: 60px;
+  font-size: 18px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  cursor: pointer;
+  transition: var(--transition-divine);
+  box-shadow: 0 10px 30px rgba(196, 154, 108, 0.4);
+  position: relative;
+  overflow: hidden;
+  animation: gradientShift 5s ease infinite;
+}
+
+.submit-btn::before {
+  content: '🕉️';
+  position: absolute;
+  left: -30px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 20px;
+  transition: left 0.4s ease;
+}
+
+.submit-btn::after {
+  content: '🕉️';
+  position: absolute;
+  right: -30px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 20px;
+  transition: right 0.4s ease;
+}
+
+.submit-btn:hover {
+  background: linear-gradient(135deg, var(--kumkum-red), var(--saffron-sacred), var(--ganesh-gold));
+  background-size: 300% 300%;
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(196, 154, 108, 0.5);
+  letter-spacing: 3px;
+}
+
+.submit-btn:hover::before {
+  left: 30px;
+  animation: rotate 2s linear infinite;
+}
+
+.submit-btn:hover::after {
+  right: 30px;
+  animation: rotate 2s linear infinite reverse;
+}
+
+.status-msg {
+  margin-top: 20px;
+  text-align: center;
+  font-size: 15px;
+  padding: 12px;
+  border-radius: 60px;
+  font-weight: 600;
+  animation: slideUp 0.3s ease;
+}
+
+.status-msg.success {
+  background: #e3f2e9;
+  color: #2e7d5e;
+  border: 2px solid #a5d6a7;
+  box-shadow: 0 4px 15px rgba(46, 125, 94, 0.2);
+}
+
+.status-msg.success::before {
+  content: '✨ ';
+  font-size: 16px;
+}
+
+.status-msg.error {
+  background: #ffebee;
+  color: #c62828;
+  border: 2px solid #ef9a9a;
+  box-shadow: 0 4px 15px rgba(198, 40, 40, 0.2);
+}
+
+.status-msg.error::before {
+  content: '⚠️ ';
+  font-size: 16px;
+}
+
+/* ============================================
+   MOBILE HEADER - PORTABLE TEMPLE
+   ============================================ */
+.header-mobile-home {
+  display: none;
+}
+
+@media (max-width: 968px) {
   .header-top-bar,
   .header-nav-bar-home,
   .header-container-other {
     display: none;
   }
 
-  /* Show mobile header for all pages */
   .header-mobile-home {
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 1rem 1.5rem;
-    border-bottom: 1px solid var(--border-light);
+    background: var(--gradient-cream);
+    border-bottom: 3px solid var(--ganesh-gold);
+    position: relative;
+    box-shadow: var(--shadow-divine);
+  }
+
+  /* Mobile Temple Design */
+  .header-mobile-home::before {
+    content: '🚩🚩🚩';
+    position: absolute;
+    top: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 18px;
+    color: var(--ganesh-gold);
+    opacity: 0.5;
+    animation: wave 2s ease-in-out infinite;
+  }
+
+  .header-mobile-home::after {
+    content: '';
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, 
+      transparent, 
+      var(--saffron-sacred), 
+      var(--ganesh-gold), 
+      var(--kumkum-red), 
+      var(--saffron-sacred), 
+      transparent
+    );
+    animation: borderGlow 3s linear infinite;
   }
 
   .header-mobile-hamburger {
-    background: none;
-    border: none;
+    background: var(--divine-white);
+    border: 3px solid var(--ganesh-gold);
+    border-radius: 20px;
+    padding: 0.7rem;
     cursor: pointer;
-    padding: 0.5rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    color: var(--ganesh-gold);
+    transition: var(--transition-divine);
+    box-shadow: 0 5px 15px rgba(196, 154, 108, 0.3);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .header-mobile-hamburger::before {
+    content: '🕉️';
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 12px;
+    transition: top 0.3s ease;
+    color: var(--ganesh-gold);
+  }
+
+  .header-mobile-hamburger:hover {
+    background: var(--ganesh-gold);
+    color: var(--divine-white);
+    transform: scale(1.1) rotate(5deg);
+    box-shadow: 0 8px 25px rgba(196, 154, 108, 0.5);
+    border-color: var(--divine-white);
+  }
+
+  .header-mobile-hamburger:hover::before {
+    top: 5px;
+    color: var(--divine-white);
   }
 
   .header-mobile-hamburger-icon {
     width: 24px;
     height: 24px;
-    color: var(--icon-color);
   }
 
   .header-mobile-logo-link {
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
+  }
+
+  .header-mobile-logo-link::before {
+    content: '';
+    position: absolute;
+    width: 70px;
+    height: 70px;
+    background: radial-gradient(circle, rgba(196, 154, 108, 0.2) 0%, transparent 70%);
+    border-radius: 50%;
+    animation: divinePulse 2s ease-in-out infinite;
   }
 
   .header-mobile-logo-img {
-    height: 40px;
+    height: 50px;
     width: auto;
+    filter: drop-shadow(0 5px 15px rgba(196, 154, 108, 0.4));
+    animation: mobileFloat 3s ease-in-out infinite;
+    border-radius: 50%;
+    position: relative;
+    z-index: 2;
   }
 
   .header-mobile-social-icons {
     display: flex;
-    gap: 0.75rem;
+    gap: 0.5rem;
     align-items: center;
+    padding: 0;
+    border: none;
+    margin: 0;
   }
 
   .header-mobile-social-icon-link {
-    color: var(--var-color);
+    color: var(--text-deep);
     text-decoration: none;
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 32px;
-    height: 32px;
-    border: 1px solid var(--border-light);
+    width: 40px;
+    height: 40px;
+    border: 2px solid var(--border-golden);
     border-radius: 50%;
-    transition: all var(--transition-normal);
+    transition: var(--transition-divine);
+    background: var(--divine-white);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .header-mobile-social-icon-link::before {
+    content: '🕉️';
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 10px;
+    opacity: 0;
+    transition: top 0.3s ease;
   }
 
   .header-mobile-social-icon-link:hover {
-    border-color: var(--primary-color);
-    color: var(--primary-color);
+    border-color: var(--ganesh-gold);
+    color: var(--ganesh-gold);
+    transform: translateY(-5px) scale(1.1);
+    box-shadow: 0 8px 20px rgba(196, 154, 108, 0.3);
+    background: var(--gradient-cream);
+  }
+
+  .header-mobile-social-icon-link:hover::before {
+    top: 2px;
+    opacity: 1;
   }
 
   .header-mobile-social-icon {
-    width: 16px;
-    height: 16px;
+    width: 18px;
+    height: 18px;
+    transition: var(--transition-divine);
+  }
+
+  .header-mobile-social-icon-link:hover .header-mobile-social-icon {
+    transform: scale(1.2) rotate(5deg);
   }
 
   .header-search-bar-home {
     width: 100%;
-    max-width: 250px;
+    max-width: 280px;
+  }
+}
+
+/* ============================================
+   MOBILE MENU - DIVINE SLIDER
+   ============================================ */
+.header-mobile-menu-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(44, 24, 16, 0.8);
+  backdrop-filter: blur(5px);
+  z-index: 999;
+  opacity: 0;
+  visibility: hidden;
+  transition: var(--transition-divine);
+}
+
+.header-mobile-menu-backdrop.open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.header-mobile-nav-menu {
+  position: fixed;
+  top: 0;
+  left: -320px;
+  width: 300px;
+  height: 100vh;
+  background: var(--gradient-cream);
+  z-index: 1001;
+  transition: left 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow-y: auto;
+  border-right: 4px solid var(--ganesh-gold);
+  box-shadow: var(--shadow-strong);
+}
+
+.header-mobile-nav-menu.open {
+  left: 0;
+}
+
+/* Sacred Corner Design */
+.header-mobile-nav-menu::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 70px;
+  height: 70px;
+  background: linear-gradient(135deg, transparent 50%, var(--ganesh-gold) 50%);
+  opacity: 0.15;
+}
+
+.header-mobile-nav-menu::after {
+  content: '🕉️🌺🕉️';
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 20px;
+  color: var(--ganesh-gold);
+  opacity: 0.2;
+  white-space: nowrap;
+  animation: float 3s ease-in-out infinite;
+}
+
+.header-mobile-menu-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem 1.5rem;
+  background: linear-gradient(135deg, var(--ganesh-gold), var(--saffron-sacred));
+  border-bottom: 3px solid var(--kumkum-red);
+  position: relative;
+}
+
+.header-mobile-menu-header::after {
+  content: '🚩🚩🚩';
+  position: absolute;
+  bottom: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--divine-white);
+  padding: 5px 20px;
+  border-radius: 30px;
+  color: var(--ganesh-gold);
+  font-size: 14px;
+  border: 2px solid var(--ganesh-gold);
+  white-space: nowrap;
+  animation: wave 2s ease-in-out infinite;
+}
+
+.header-mobile-logo img {
+  height: 45px;
+  width: auto;
+  filter: drop-shadow(0 4px 10px rgba(0,0,0,0.2));
+  border-radius: 10px;
+}
+
+.header-mobile-close-btn {
+  background: var(--divine-white);
+  border: 2px solid var(--divine-white);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  color: var(--ganesh-gold);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition-divine);
+  font-size: 22px;
+}
+
+.header-mobile-close-btn:hover {
+  background: var(--kumkum-red);
+  color: var(--divine-white);
+  transform: rotate(180deg) scale(1.1);
+  border-color: var(--kumkum-red);
+  box-shadow: 0 0 20px var(--kumkum-red);
+}
+
+.header-mobile-close-icon {
+  width: 22px;
+  height: 22px;
+}
+
+/* Mobile Navigation */
+.header-mobile-navigation {
+  padding: 1.5rem 0;
+}
+
+.header-mobile-nav-links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.header-mobile-nav-links li {
+  border-bottom: 1px solid var(--border-golden);
+  position: relative;
+  margin: 0 1rem;
+  overflow: hidden;
+}
+
+.header-mobile-nav-links li::before {
+  content: '🌺';
+  position: absolute;
+  left: -20px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 14px;
+  color: var(--ganesh-gold);
+  opacity: 0.5;
+  transition: left 0.3s ease;
+}
+
+.header-mobile-nav-links li:hover::before {
+  left: 10px;
+  opacity: 1;
+}
+
+.header-mobile-nav-link {
+  display: block;
+  padding: 1.2rem 1.5rem 1.2rem 2.5rem;
+  color: var(--text-deep);
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  transition: var(--transition-divine);
+  position: relative;
+}
+
+.header-mobile-nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--ganesh-gold), var(--saffron-sacred));
+  transition: width 0.3s ease;
+}
+
+.header-mobile-nav-link:hover {
+  background: var(--divine-cream);
+  color: var(--ganesh-gold);
+  padding-left: 3.5rem;
+  transform: translateX(5px);
+}
+
+.header-mobile-nav-link:hover::after {
+  width: 100%;
+}
+
+.header-mobile-nav-link.active {
+  background: linear-gradient(90deg, var(--divine-cream), transparent);
+  color: var(--kumkum-red);
+  font-weight: 800;
+  border-left: 4px solid var(--kumkum-red);
+}
+
+.header-mobile-nav-link.active::before {
+  content: '🔴';
+  position: absolute;
+  left: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 12px;
+  animation: tilakGlow 1.5s ease-in-out infinite;
+}
+
+/* ============================================
+   RESPONSIVE FINE-TUNING
+   ============================================ */
+@media (max-width: 1200px) {
+  .header-nav-links-home {
+    gap: 2.2rem;
+  }
+  
+  .header-nav-link-home {
+    font-size: 0.9rem;
+  }
+  
+  .header-search-bar-home {
+    width: 320px;
+  }
+  
+  .header-top-right {
+    gap: 15px;
+  }
+  
+  .header-social-icons {
+    gap: 8px;
+  }
+  
+  .header-social-icon-link {
+    width: 38px;
+    height: 38px;
   }
 }
 
 @media (max-width: 768px) {
-
-  .header-nav-links-home,
-  .header-nav-links-other {
-    gap: 1.5rem;
-  }
-
-  .header-nav-link-home,
-  .header-nav-link-other {
-    font-size: 0.75rem;
-  }
-
-  .header-top-bar {
-    padding: 1rem 1.5rem;
-  }
-
   .header-nav-bar-home {
-    padding: 0.75rem 1.5rem;
+    padding: 0.7rem 1.5rem;
   }
+  
+  .header-nav-links-home {
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .header-nav-link-home {
+    font-size: 0.8rem;
+  }
+  
+  .header-nav-bar-home::before,
+  .header-nav-bar-home::after {
+    font-size: 16px;
+  }
+}
 
-  .header-container-other {
-    padding: 1rem 1.5rem;
+@media (max-width: 576px) {
+  .header-mobile-home {
+    padding: 0.75rem 1rem;
+  }
+  
+  .header-mobile-logo-img {
+    height: 40px;
+  }
+  
+  .header-mobile-social-icon-link {
+    width: 35px;
+    height: 35px;
+  }
+  
+  .expert-popup-content {
+    padding: 30px 20px;
+  }
+  
+  .submit-btn {
+    font-size: 16px;
+    padding: 15px;
+  }
+  
+  .form-group input {
+    padding: 14px 18px;
   }
 }
 
 @media (max-width: 480px) {
-  .header-top-bar {
-    padding: 0.75rem 1rem;
+  .header-mobile-home {
+    padding: 0.7rem 0.8rem;
   }
+  
+  .header-mobile-logo-img {
+    height: 35px;
+  }
+  
+  .header-mobile-hamburger {
+    padding: 0.6rem;
+  }
+  
+  .header-mobile-social-icon-link {
+    width: 32px;
+    height: 32px;
+  }
+  
+  .header-mobile-social-icon {
+    width: 14px;
+    height: 14px;
+  }
+}
 
-  .header-search-bar-home {
-    max-width: 200px;
-  }
+/* ============================================
+   ULTIMATE ANIMATIONS - DIVINE MOVEMENTS
+   ============================================ */
 
-  .header-logo-img {
-    height: 50px;
+@keyframes divinePulse {
+  0%, 100% {
+    opacity: 0.2;
+    transform: scale(1);
   }
+  50% {
+    opacity: 0.4;
+    transform: scale(1.2);
+  }
+}
 
-  .header-bulk-order-btn {
-    padding: 8px 16px;
-    font-size: 0.75rem;
-  }
+@keyframes borderGlow {
+  0% { background-position: 0% 0; }
+  100% { background-position: 300% 0; }
+}
 
-  .header-nav-links-home {
-    gap: 1rem;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
+@keyframes floatOM {
+  0% { transform: translateY(0) rotate(0deg); }
+  33% { transform: translateY(-10px) rotate(5deg); }
+  66% { transform: translateY(5px) rotate(-5deg); }
+  100% { transform: translateY(0) rotate(0deg); }
+}
 
-  .header-nav-link-home {
-    font-size: 0.7rem;
+@keyframes divineAura {
+  0%, 100% { 
+    transform: scale(1); 
+    opacity: 0.25;
   }
+  50% { 
+    transform: scale(1.3); 
+    opacity: 0.4;
+  }
+}
+
+@keyframes divineFloat {
+  0%, 100% { 
+    transform: translateY(0) rotate(0deg); 
+    filter: drop-shadow(0 8px 20px rgba(196,154,108,0.4));
+  }
+  33% { 
+    transform: translateY(-8px) rotate(2deg); 
+    filter: drop-shadow(0 15px 30px rgba(196,154,108,0.6));
+  }
+  66% { 
+    transform: translateY(8px) rotate(-2deg); 
+    filter: drop-shadow(0 5px 15px rgba(196,154,108,0.3));
+  }
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes rotate {
+  from { transform: translateY(-50%) rotate(0deg); }
+  to { transform: translateY(-50%) rotate(360deg); }
+}
+
+@keyframes sparkle {
+  0%, 100% { 
+    opacity: 1; 
+    transform: scale(1); 
+  }
+  50% { 
+    opacity: 0.7; 
+    transform: scale(1.2); 
+    filter: drop-shadow(0 0 5px gold);
+  }
+}
+
+@keyframes tilakGlow {
+  0%, 100% { 
+    filter: drop-shadow(0 0 5px var(--kumkum-red));
+  }
+  50% { 
+    filter: drop-shadow(0 0 15px var(--kumkum-red)) drop-shadow(0 0 30px var(--saffron-sacred));
+  }
+}
+
+@keyframes wave {
+  0%, 100% { 
+    transform: translateY(-50%) scale(1); 
+  }
+  50% { 
+    transform: translateY(-50%) scale(1.1) translateX(5px); 
+  }
+}
+
+@keyframes templeGlow {
+  0%, 100% { opacity: 0.3; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.1); }
+}
+
+@keyframes popupEntrance {
+  0% { 
+    opacity: 0; 
+    transform: scale(0.7) translateY(60px); 
+  }
+  100% { 
+    opacity: 1; 
+    transform: scale(1) translateY(0); 
+  }
+}
+
+@keyframes mobileFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes floatText {
+  0%, 100% { transform: translateY(0) translateX(-50%); }
+  50% { transform: translateY(-5px) translateX(-50%); }
+}
+
+@keyframes gentlePulse {
+  0%, 100% { opacity: 0.7; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.1); }
+}
+
+@keyframes slideUp {
+  from { 
+    opacity: 0; 
+    transform: translateY(10px); 
+  }
+  to { 
+    opacity: 1; 
+    transform: translateY(0); 
+  }
+}
+
+@keyframes borderFloat {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50% { transform: translateX(-50%) translateY(-5px); }
+}
+
+@keyframes borderWidth {
+  0%, 100% { width: 80%; opacity: 0.7; }
+  50% { width: 90%; opacity: 1; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+/* ============================================
+   DIVINE PARTICLES BACKGROUND
+   ============================================ */
+@keyframes divineParticles {
+  0%, 100% { 
+    background-position: 0% 0%, 100% 0%, 0% 100%;
+  }
+  50% { 
+    background-position: 100% 100%, 0% 100%, 100% 0%;
+  }
+}
+
+/* ============================================
+   SCROLLBAR - DIVINE DESIGN
+   ============================================ */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--divine-cream);
+  border-left: 1px solid var(--border-golden);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, var(--ganesh-gold), var(--saffron-sacred));
+  border-radius: 50px;
+  border: 3px solid var(--divine-cream);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, var(--kumkum-red), var(--ganesh-gold));
+}
+
+/* ============================================
+   PRINT STYLES
+   ============================================ */
+@media print {
+  .header {
+    position: static;
+    background: white !important;
+    border: 2px solid var(--ganesh-gold);
+    box-shadow: none;
+  }
+  
+  .header-bulk-order-btn,
+  .header-search-bar-home,
+  .header-mobile-hamburger,
+  .header-mobile-social-icons,
+  .expert-popup-overlay {
+    display: none !important;
+  }
+  
+  .header::before,
+  .header::after,
+  .header-nav-bar-home::before,
+  .header-nav-bar-home::after {
+    display: none !important;
+  }
+}
+
+/* ============================================
+   ADDITIONAL DIVINE TOUCHES
+   ============================================ */
+
+/* Floating Sacred Symbols */
+.divine-floaters {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.divine-floaters span {
+  position: absolute;
+  color: rgba(196, 154, 108, 0.05);
+  font-size: 40px;
+  animation: floatSymbol 20s linear infinite;
+}
+
+@keyframes floatSymbol {
+  0% {
+    transform: translateY(100vh) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.1;
+  }
+  90% {
+    opacity: 0.1;
+  }
+  100% {
+    transform: translateY(-100px) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* Focus visible accessibility */
+*:focus-visible {
+  outline: 3px solid var(--ganesh-gold);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Selection color */
+::selection {
+  background: var(--ganesh-gold);
+  color: var(--divine-white);
+}
+
+::-moz-selection {
+  background: var(--ganesh-gold);
+  color: var(--divine-white);
 }

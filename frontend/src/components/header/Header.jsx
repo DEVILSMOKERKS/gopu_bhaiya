@@ -59,31 +59,6 @@ const Header = ({ onAccountClick }) => {
   const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
   // Debounced search function
-  // const performSearch = async (query) => {
-  //   if (!query.trim()) {
-  //     setSearchResults([]);
-  //     setShowSearchResults(false);
-  //     return;
-  //   }
-
-  //   try {
-  //     setIsSearching(true);
-  //     const response = await axios.get(`${API_URL}/products?search=${encodeURIComponent(query)}&limit=8`);
-
-  //     if (response.data.success) {
-  //       setSearchResults(response.data.data);
-  //       setShowSearchResults(true);
-  //     } else {
-  //       setSearchResults([]);
-  //     }
-  //   } catch (error) {
-  //     console.error('Search error:', error);
-  //     setSearchResults([]);
-  //   } finally {
-  //     setIsSearching(false);
-  //   }
-  // };
-
   const performSearch = async (query) => {
     if (!query.trim()) {
       setSearchResults([]);
@@ -108,7 +83,6 @@ const Header = ({ onAccountClick }) => {
       );
       console.log("✅ API response:", response.data);
   
-      // ✅ Do NOT check response.data.success
       const products = response.data?.data || [];
   
       setSearchResults(products);
@@ -182,14 +156,6 @@ const Header = ({ onAccountClick }) => {
       }
     };
   }, []);
-
-  // const handleMouseEnter = (category) => {
-  //   setActiveMegaMenu(category);
-  // };
-
-  // const handleMouseLeave = () => {
-  //   setActiveMegaMenu(null);
-  // };
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
@@ -271,8 +237,17 @@ const Header = ({ onAccountClick }) => {
   return (
     <>
       <header className={`header ${isScrolled ? 'header-scrolled' : 'header-transparent'}`}>
+        {/* Floating Divine Symbols - Add these if you want extra effect */}
+        <div className="om-symbols">
+          <span>🕉️</span>
+          <span>🌺</span>
+          <span>🕉️</span>
+          <span>🌺</span>
+          <span>🕉️</span>
+        </div>
+
         {/* Unified Header Structure for All Pages */}
-        {/* Top Bar - Search, Logo, BULK ORDER */}
+        {/* Top Bar - Search, Logo, Social Icons + BULK ORDER */}
         <div className="header-top-bar">
           <div className="header-top-left">
             <div className="header-search-bar-home" ref={searchContainerRef}>
@@ -280,7 +255,7 @@ const Header = ({ onAccountClick }) => {
                 <HiSearch className="header-search-icon-home" />
                 <input
                   type="text"
-                  placeholder="Search"
+                  placeholder="Search products..."
                   value={searchQuery}
                   onChange={handleSearchInputChange}
                   className="header-search-input-home"
@@ -289,7 +264,7 @@ const Header = ({ onAccountClick }) => {
               {showSearchResults && (
                 <div className="header-search-results-home">
                   {isSearching ? (
-                    <div className="header-search-loading">Searching...</div>
+                    <div className="header-search-loading">Searching... <span>🕉️</span></div>
                   ) : searchResults.length > 0 ? (
                     <div className="header-search-results-list">
                       {searchResults.map((product) => (
@@ -299,7 +274,15 @@ const Header = ({ onAccountClick }) => {
                           onClick={() => handleSearchResultClick(product)}
                         >
                           <div className="header-search-result-image">
-                            <Image src={getProductImage(product)} alt={product.name} width={100} height={100} />
+                            <Image 
+                              src={getProductImage(product)} 
+                              alt={product.name} 
+                              width={100} 
+                              height={100}
+                              onError={(e) => {
+                                e.target.src = '/placeholder-product.jpg';
+                              }}
+                            />
                           </div>
                           <div className="header-search-result-content">
                             <h4 className="header-search-result-title">{product.name}</h4>
@@ -312,24 +295,67 @@ const Header = ({ onAccountClick }) => {
                     </div>
                   ) : (
                     <div className="header-search-no-results">
-                      No products found
+                      🌺 No products found 🌺
                     </div>
                   )}
                 </div>
               )}
             </div>
           </div>
+
           <div className="header-top-center">
             <Link href="/" className="header-logo-link">
-              <Image src={logo} alt="Mateshwari Exports" className="header-logo-img" width={150} height={50} priority />
+              <Image 
+                src={logo} 
+                alt="Mateshwari Exports" 
+                className="header-logo-img" 
+                width={150} 
+                height={50} 
+                priority 
+              />
             </Link>
           </div>
+
           <div className="header-top-right">
+            {/* Social Icons - Added here as requested */}
+            <div className="header-social-icons">
+              <a
+                href="https://www.instagram.com/mateshwari_exports/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="header-social-icon-link instagram"
+                aria-label="Follow us on Instagram"
+              >
+                <FaInstagram className="header-social-icon" />
+              </a>
+              <a
+                href="https://www.facebook.com/mateshwariexports/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="header-social-icon-link facebook"
+                aria-label="Follow us on Facebook"
+              >
+                <FaFacebook className="header-social-icon" />
+              </a>
+              <a
+                href="https://www.youtube.com/@MateshwariExports"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="header-social-icon-link youtube"
+                aria-label="Subscribe to our YouTube channel"
+              >
+                <FaYoutube className="header-social-icon" />
+              </a>
+            </div>
+
+            {/* ASK EXPERTS Button */}
             <button
               className="header-bulk-order-btn"
               type="button"
               onClick={() => setIsExpertPopupOpen(true)}
             >
+              <span className="om-left">🕉️</span>
+              <span className="flower-top">🌺</span>
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
                 <polyline points="14 2 14 8 20 8"></polyline>
@@ -338,11 +364,21 @@ const Header = ({ onAccountClick }) => {
                 <polyline points="10 9 9 9 8 9"></polyline>
               </svg>
               ASK EXPERTS
+              <span className="flower-bottom">🌺</span>
+              <span className="om-right">🕉️</span>
             </button>
           </div>
         </div>
+
         {/* Navigation Bar - Same for All Pages */}
         <nav className="header-nav-bar-home">
+          {/* Temple Top Decoration */}
+          <div className="temple-top">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+
           <ul className="header-nav-links-home">
             <li
               className="header-nav-item-home"
@@ -401,15 +437,25 @@ const Header = ({ onAccountClick }) => {
           >
             <HiMenu className="header-mobile-hamburger-icon" />
           </button>
+          
           <Link href="/" className="header-mobile-logo-link">
-            <Image src={logo} alt="Mateshwari Exports" className="header-mobile-logo-img" width={150} height={50} priority />
+            <Image 
+              src={logo} 
+              alt="Mateshwari Exports" 
+              className="header-mobile-logo-img" 
+              width={150} 
+              height={50} 
+              priority 
+            />
           </Link>
+          
           <div className="header-mobile-social-icons">
             <a
               href="https://www.instagram.com/mateshwari_exports/"
               target="_blank"
               rel="noopener noreferrer"
               className="header-mobile-social-icon-link"
+              aria-label="Follow us on Instagram"
             >
               <FaInstagram className="header-mobile-social-icon" />
             </a>
@@ -418,14 +464,16 @@ const Header = ({ onAccountClick }) => {
               target="_blank"
               rel="noopener noreferrer"
               className="header-mobile-social-icon-link"
+              aria-label="Follow us on Facebook"
             >
               <FaFacebook className="header-mobile-social-icon" />
             </a>
             <a
-              href="https://www.youtube.com"
+              href="https://www.youtube.com/@MateshwariExports"
               target="_blank"
               rel="noopener noreferrer"
               className="header-mobile-social-icon-link"
+              aria-label="Subscribe to our YouTube channel"
             >
               <FaYoutube className="header-mobile-social-icon" />
             </a>
@@ -439,10 +487,17 @@ const Header = ({ onAccountClick }) => {
             onClick={closeMobileMenu}
           ></div>
         )}
+        
         <div className={`header-mobile-nav-menu ${isMobileMenuOpen ? 'open' : ''}`}>
           <div className="header-mobile-menu-header">
             <div className="header-mobile-logo">
-              <Image src={logo} alt="Mateshwari Exports" width={150} height={50} priority />
+              <Image 
+                src={logo} 
+                alt="Mateshwari Exports" 
+                width={150} 
+                height={50} 
+                priority 
+              />
             </div>
             <button
               className="header-mobile-close-btn"
@@ -452,6 +507,7 @@ const Header = ({ onAccountClick }) => {
               <HiX className="header-mobile-close-icon" />
             </button>
           </div>
+          
           <nav className="header-mobile-navigation">
             <ul className="header-mobile-nav-links">
               <li>
@@ -460,7 +516,7 @@ const Header = ({ onAccountClick }) => {
                 </Link>
               </li>
               <li>
-                <Link href="/projects" className={`header-mobile-nav-link ${pathname === '/projects' ? 'active' : ''}`} onClick={closeMobileMenu}>PROJECTS</Link>
+                <Link href="/projects" className={`header-mobile-nav-link ${pathname === '/projects' ? 'active' : ''}`} onClick={closeMobileMenu}>PRODUCTS</Link>
               </li>
               <li>
                 <Link href="/our-creations" className={`header-mobile-nav-link ${pathname === '/our-creations' ? 'active' : ''}`} onClick={closeMobileMenu}>OUR CREATIONS</Link>
