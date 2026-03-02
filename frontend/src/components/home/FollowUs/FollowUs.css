@@ -1,157 +1,550 @@
 /* ============================================
-   FOLLOW US SECTION
+   FOLLOW US SECTION - ROYAL HERITAGE THEME
    ============================================ */
-.follow-us {
-  padding: 60px 20px;
-  background: var(--bg-primary);
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Poppins:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --saffron: #FF9933;
+  --saffron-dark: #e68a00;
+  --maroon: #800020;
+  --maroon-dark: #5a0017;
+  --gold: #FFD700;
+  --gold-deep: #D4AF37;
+  --gold-royal: #F0B300;
+  --cream: #FFF8E7;
+  --ivory: #FFFFF0;
+  --sand: #F5E6D3;
+  --brown-deep: #3D2314;
+  --emerald: #0B4F2E;
+  --emerald-light: #1B6B3F;
+  --shadow-royal: 0 20px 40px -10px rgba(128, 0, 32, 0.25);
+  --shadow-golden: 0 25px 45px -12px rgba(218, 165, 32, 0.35);
+  --border-pattern: repeating-linear-gradient(45deg, rgba(255,215,0,0.1) 0px, rgba(255,215,0,0.1) 10px, transparent 10px, transparent 20px);
 }
 
+.follow-us {
+  padding: 100px 30px;
+  background: linear-gradient(165deg, #1a0f0a 0%, #2c1810 100%);
+  position: relative;
+  overflow: hidden;
+  border-top: 4px solid var(--gold);
+  border-bottom: 4px solid var(--gold);
+}
+
+/* Royal Mandala Pattern Background */
+.follow-us::before {
+  content: "𑁍";
+  position: absolute;
+  top: -50px;
+  right: -50px;
+  font-size: 400px;
+  color: rgba(255, 215, 0, 0.03);
+  transform: rotate(15deg);
+  font-family: serif;
+  pointer-events: none;
+  text-shadow: 0 0 30px rgba(255, 193, 7, 0.1);
+}
+
+.follow-us::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" opacity="0.03"><path d="M20,20 L80,20 L80,80 L20,80 Z" fill="none" stroke="%23D4AF37" stroke-width="1"/><circle cx="50" cy="50" r="15" fill="none" stroke="%23D4AF37" stroke-width="1"/></svg>');
+  background-size: 100px 100px;
+  pointer-events: none;
+}
+
+/* Intricate Border Design */
 .follow-us-container {
   max-width: 1400px;
   margin: 0 auto;
+  position: relative;
+  z-index: 5;
+  background: rgba(44, 24, 16, 0.7);
+  backdrop-filter: blur(10px);
+  padding: 50px 50px 60px;
+  border-radius: 60px 60px 30px 30px;
+  border: 2px solid var(--gold);
+  box-shadow: 0 30px 50px rgba(0,0,0,0.6), inset 0 0 30px rgba(255,215,0,0.2);
 }
 
+/* Royal Title with Temple Arch Design */
 .follow-us-title {
-  font-size: 2rem;
-  font-weight: 700;
-  color: var(--text-primary);
-  margin-bottom: 40px;
-  font-family: var(--font-family);
+  font-size: 3.2rem;
+  font-weight: 900;
+  color: var(--gold);
+  margin-bottom: 60px;
+  font-family: 'Playfair Display', 'Times New Roman', serif;
+  position: relative;
+  display: inline-block;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-shadow: 4px 4px 0 var(--maroon), 8px 8px 10px rgba(0,0,0,0.5);
+  background: linear-gradient(180deg, #FFE5B4 0%, #FFD700 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  padding: 0 30px;
 }
 
+/* Temple Arch Effect */
+.follow-us-title::before {
+  content: "🔱";
+  position: absolute;
+  left: -30px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 2rem;
+  color: var(--gold);
+  text-shadow: 2px 2px 0 var(--maroon);
+  -webkit-text-fill-color: initial;
+}
+
+.follow-us-title::after {
+  content: "🔱";
+  position: absolute;
+  right: -30px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 2rem;
+  color: var(--gold);
+  text-shadow: 2px 2px 0 var(--maroon);
+  -webkit-text-fill-color: initial;
+}
+
+/* Decorative Bottom Line */
+.follow-us-title span {
+  display: block;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, transparent, var(--gold), var(--maroon), var(--gold), transparent);
+  margin-top: 15px;
+  position: relative;
+}
+
+/* Main Grid Layout */
 .follow-us-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 30px;
+  gap: 35px;
+  position: relative;
 }
 
+/* Left Main Image - Royal Frame */
 .follow-us-main-image {
   position: relative;
   overflow: hidden;
   aspect-ratio: 1 / 1;
+  border-radius: 30px 30px 50px 30px;
+  box-shadow: var(--shadow-royal), 0 0 0 4px var(--gold), 0 0 0 8px var(--maroon);
+  transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  border: 2px solid var(--cream);
 }
 
+.follow-us-main-image:hover {
+  transform: scale(1.02) translateY(-10px);
+  box-shadow: var(--shadow-golden), 0 0 0 6px var(--gold), 0 0 0 12px var(--maroon);
+}
+
+/* Corner Decorative Elements */
+.follow-us-main-image::before {
+  content: "❈";
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  font-size: 2.5rem;
+  color: var(--gold);
+  z-index: 20;
+  text-shadow: 2px 2px 0 var(--maroon);
+  opacity: 0.8;
+  font-weight: bold;
+}
+
+.follow-us-main-image::after {
+  content: "❈";
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  font-size: 2.5rem;
+  color: var(--gold);
+  z-index: 20;
+  text-shadow: 2px 2px 0 var(--maroon);
+  opacity: 0.8;
+  font-weight: bold;
+}
+
+/* Right Grid - 2x2 with Royal Touch */
 .follow-us-grid-right {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 0;
+  gap: 25px;
 }
 
+/* Image Cards - Royal Jewels */
 .follow-us-image-card {
   position: relative;
   overflow: hidden;
   aspect-ratio: 1 / 1;
+  border-radius: 20px 20px 35px 20px;
+  box-shadow: 0 15px 30px -5px rgba(0,0,0,0.6), 0 0 0 3px var(--gold), 0 0 0 6px var(--maroon);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  border: 1px solid var(--cream);
 }
 
+.follow-us-image-card:hover {
+  transform: scale(1.05) translateY(-8px);
+  box-shadow: 0 25px 40px -5px rgba(255,215,0,0.4), 0 0 0 4px var(--gold), 0 0 0 8px var(--maroon);
+  z-index: 10;
+}
+
+/* Image Zoom Effect */
 .follow-us-image {
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
+  transition: transform 0.8s ease;
+  filter: brightness(0.95) contrast(1.1);
 }
 
+.follow-us-image-card:hover .follow-us-image,
+.follow-us-main-image:hover .follow-us-image {
+  transform: scale(1.15);
+  filter: brightness(1.05) contrast(1.15);
+}
+
+/* Sacred "Om" Overlay */
 .follow-us-overlay {
   position: absolute;
-  top: 20px;
-  left: 20px;
-  z-index: 2;
+  top: 15px;
+  left: 15px;
+  z-index: 25;
+  background: linear-gradient(135deg, var(--maroon) 0%, #a52a2a 100%);
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 3px solid var(--gold);
+  box-shadow: 0 4px 15px rgba(255,215,0,0.5);
+  animation: glowPulse 2s infinite;
+}
+
+@keyframes glowPulse {
+  0% { box-shadow: 0 0 5px var(--gold); }
+  50% { box-shadow: 0 0 20px var(--gold); }
+  100% { box-shadow: 0 0 5px var(--gold); }
 }
 
 .follow-us-overlay-text {
-  color: rgba(255, 255, 255, 0.9);
-  font-size: 1.2rem;
-  font-weight: 500;
-  font-family: var(--font-family);
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  color: var(--gold);
+  font-size: 2rem;
+  font-weight: 900;
+  font-family: 'Times New Roman', serif;
+  text-shadow: 1px 1px 2px var(--maroon);
   margin: 0;
+  line-height: 1;
+  transform: rotate(0deg);
 }
 
+/* Main Logo Banner - Royal Throne Design */
 .follow-us-logo {
   position: absolute;
-  bottom: 20px;
+  bottom: 40px;
   left: 50%;
   transform: translateX(-50%);
   text-align: center;
-  background: rgba(18, 135, 55, 0.9);
-  padding: 12px 24px;
-  border-radius: 8px;
-  z-index: 2;
+  background: linear-gradient(165deg, var(--maroon) 0%, #b22222 50%, var(--maroon) 100%);
+  padding: 20px 35px;
+  border-radius: 60px 60px 30px 30px;
+  z-index: 30;
+  box-shadow: 0 15px 30px rgba(0,0,0,0.6), 0 0 0 3px var(--gold), inset 0 0 20px rgba(255,215,0,0.3);
+  width: 85%;
+  backdrop-filter: blur(5px);
+  border: 2px solid var(--cream);
+  transition: all 0.4s ease;
+}
+
+.follow-us-main-image:hover .follow-us-logo {
+  transform: translateX(-50%) scale(1.03);
+  background: linear-gradient(165deg, var(--maroon-dark) 0%, var(--maroon) 50%, var(--maroon-dark) 100%);
+  box-shadow: 0 20px 35px rgba(0,0,0,0.7), 0 0 0 4px var(--gold), 0 0 30px var(--gold);
 }
 
 .follow-us-logo-text {
-  color: var(--text-white);
-  font-size: 1rem;
-  font-weight: 600;
-  font-family: var(--font-family);
-  margin: 0 0 4px 0;
+  color: var(--gold);
+  font-size: 1.4rem;
+  font-weight: 800;
+  font-family: 'Playfair Display', serif;
+  margin: 0 0 8px 0;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-shadow: 2px 2px 0 var(--maroon-dark);
+}
+
+.follow-us-logo-text i {
+  margin-right: 12px;
+  color: var(--gold);
+  font-size: 1.6rem;
 }
 
 .follow-us-contact {
-  color: var(--text-white);
-  font-size: 0.9rem;
-  font-family: var(--font-family);
+  color: var(--cream);
+  font-size: 1.1rem;
+  font-family: 'Poppins', sans-serif;
   margin: 0;
+  font-weight: 400;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  text-shadow: 1px 1px 2px var(--maroon-dark);
 }
 
+.follow-us-contact i {
+  color: var(--gold);
+  font-size: 1.1rem;
+}
+
+/* Small Logo Banner - Mini Royal Design */
 .follow-us-logo-small {
   position: absolute;
   bottom: 15px;
   left: 50%;
   transform: translateX(-50%);
   text-align: center;
-  background: rgba(18, 135, 55, 0.9);
-  padding: 8px 16px;
-  border-radius: 6px;
-  z-index: 2;
+  background: linear-gradient(165deg, var(--maroon) 0%, #b22222 100%);
+  backdrop-filter: blur(4px);
+  padding: 12px 10px;
+  border-radius: 30px 30px 15px 15px;
+  z-index: 25;
   width: 90%;
+  border: 2px solid var(--gold);
+  transition: all 0.4s ease;
+  box-shadow: 0 8px 18px rgba(0,0,0,0.5), inset 0 0 10px rgba(255,215,0,0.2);
+}
+
+.follow-us-image-card:hover .follow-us-logo-small {
+  background: linear-gradient(165deg, var(--maroon-dark) 0%, var(--maroon) 100%);
+  width: 92%;
+  box-shadow: 0 12px 25px rgba(0,0,0,0.6), 0 0 0 2px var(--gold), 0 0 15px var(--gold);
+  border-color: var(--cream);
 }
 
 .follow-us-logo-text-small {
-  color: var(--text-white);
-  font-size: 0.75rem;
-  font-weight: 600;
-  font-family: var(--font-family);
-  margin: 0 0 2px 0;
+  color: var(--gold);
+  font-size: 0.95rem;
+  font-weight: 700;
+  font-family: 'Playfair Display', serif;
+  margin: 0 0 5px 0;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  text-shadow: 1px 1px 0 var(--maroon-dark);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.follow-us-logo-text-small i {
+  margin-right: 6px;
+  font-size: 0.85rem;
+  color: var(--gold);
 }
 
 .follow-us-contact-small {
-  color: var(--text-white);
-  font-size: 0.7rem;
-  font-family: var(--font-family);
+  color: var(--cream);
+  font-size: 0.75rem;
+  font-family: 'Poppins', sans-serif;
   margin: 0;
+  font-weight: 300;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+
+.follow-us-contact-small i {
+  color: var(--gold);
+  font-size: 0.7rem;
+}
+
+/* Traditional Temple Bell Corner Decor */
+.follow-us-image-card::after {
+  content: "🔔";
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  color: var(--gold);
+  font-size: 1.4rem;
+  text-shadow: 2px 2px 0 var(--maroon);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  z-index: 20;
+  filter: drop-shadow(0 2px 5px rgba(0,0,0,0.5));
+  transform: rotate(-5deg);
+}
+
+.follow-us-image-card:hover::after {
+  opacity: 1;
+  animation: bellRing 0.5s ease;
+}
+
+@keyframes bellRing {
+  0%, 100% { transform: rotate(-5deg); }
+  25% { transform: rotate(5deg); }
+  50% { transform: rotate(-8deg); }
+  75% { transform: rotate(4deg); }
+}
+
+/* Marble Texture Overlay */
+.follow-us-image-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(145deg, rgba(255,255,255,0.1) 0%, rgba(212,175,55,0.1) 50%, transparent 100%);
+  z-index: 3;
+  pointer-events: none;
+}
+
+/* Royal Stamp Effect */
+.follow-us-main-image .royal-stamp {
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  width: 60px;
+  height: 60px;
+  background: var(--gold);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  color: var(--maroon);
+  border: 3px solid var(--cream);
+  box-shadow: 0 0 0 3px var(--gold);
+  z-index: 25;
+  opacity: 0.9;
+  transform: rotate(10deg);
+  font-weight: 900;
 }
 
 /* ============================================
-   RESPONSIVE DESIGN
+   RESPONSIVE DESIGN - ROYAL ADAPTATION
    ============================================ */
+
+/* Royal Tablet Landscape */
+@media (max-width: 1200px) {
+  .follow-us-container {
+    padding: 40px 30px 50px;
+  }
+  
+  .follow-us-title {
+    font-size: 2.8rem;
+  }
+  
+  .follow-us-logo-text {
+    font-size: 1.2rem;
+  }
+  
+  .follow-us-contact {
+    font-size: 1rem;
+  }
+}
+
+/* Royal Tablet Portrait */
 @media (max-width: 968px) {
   .follow-us {
-    padding: 50px 15px;
+    padding: 70px 20px;
+  }
+  
+  .follow-us-container {
+    padding: 35px 25px 45px;
   }
 
   .follow-us-title {
-    font-size: 1.8rem;
-    margin-bottom: 30px;
+    font-size: 2.4rem;
+    margin-bottom: 45px;
   }
 
   .follow-us-grid {
-    grid-template-columns: 1fr 1fr;
     gap: 25px;
   }
 
   .follow-us-grid-right {
-    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+  
+  .follow-us-logo {
+    padding: 16px 25px;
+    width: 90%;
+  }
+  
+  .follow-us-logo-text {
+    font-size: 1.1rem;
+  }
+  
+  .follow-us-logo-text-small {
+    font-size: 0.85rem;
   }
 }
 
+/* Royal Mobile Landscape */
+@media (max-width: 680px) {
+  .follow-us {
+    padding: 50px 15px;
+  }
+  
+  .follow-us-container {
+    padding: 25px 20px 35px;
+    border-radius: 40px 40px 20px 20px;
+  }
+  
+  .follow-us-title {
+    font-size: 2rem;
+    margin-bottom: 35px;
+    padding: 0 20px;
+  }
+  
+  .follow-us-title::before,
+  .follow-us-title::after {
+    font-size: 1.5rem;
+  }
+  
+  .follow-us-title::before {
+    left: -15px;
+  }
+  
+  .follow-us-title::after {
+    right: -15px;
+  }
+}
+
+/* Royal Mobile - Stacked Layout */
 @media (max-width: 480px) {
   .follow-us {
-    padding: 40px 10px;
+    padding: 40px 12px;
+  }
+  
+  .follow-us-container {
+    padding: 20px 15px 30px;
+    border-radius: 30px 30px 15px 15px;
   }
 
   .follow-us-title {
-    font-size: 1.5rem;
-    margin-bottom: 25px;
+    font-size: 1.6rem;
+    margin-bottom: 30px;
+    letter-spacing: 1px;
   }
 
   .follow-us-grid {
@@ -161,10 +554,141 @@
 
   .follow-us-main-image {
     order: 1;
+    border-width: 3px;
   }
 
   .follow-us-grid-right {
     order: 2;
     grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
   }
+  
+  .follow-us-main-image::before,
+  .follow-us-main-image::after {
+    font-size: 1.8rem;
+  }
+  
+  .follow-us-logo {
+    padding: 12px 20px;
+    width: 92%;
+    bottom: 20px;
+  }
+  
+  .follow-us-logo-text {
+    font-size: 0.95rem;
+    margin-bottom: 5px;
+  }
+  
+  .follow-us-logo-text i {
+    font-size: 1.2rem;
+    margin-right: 8px;
+  }
+  
+  .follow-us-contact {
+    font-size: 0.8rem;
+    gap: 8px;
+  }
+  
+  .follow-us-contact i {
+    font-size: 0.8rem;
+  }
+  
+  .follow-us-logo-small {
+    padding: 8px 6px;
+  }
+  
+  .follow-us-logo-text-small {
+    font-size: 0.7rem;
+    margin-bottom: 3px;
+  }
+  
+  .follow-us-contact-small {
+    font-size: 0.6rem;
+  }
+  
+  .follow-us-overlay {
+    width: 45px;
+    height: 45px;
+    top: 12px;
+    left: 12px;
+  }
+  
+  .follow-us-overlay-text {
+    font-size: 1.6rem;
+  }
+  
+  .follow-us-image-card::after {
+    font-size: 1.2rem;
+  }
+}
+
+/* Very Small Royal Devices */
+@media (max-width: 360px) {
+  .follow-us-title {
+    font-size: 1.3rem;
+  }
+  
+  .follow-us-title::before,
+  .follow-us-title::after {
+    font-size: 1.2rem;
+  }
+  
+  .follow-us-logo-text-small {
+    font-size: 0.6rem;
+  }
+  
+  .follow-us-contact-small {
+    font-size: 0.55rem;
+  }
+  
+  .follow-us-logo-small {
+    padding: 6px 4px;
+  }
+}
+
+/* Royal Entrance Animation */
+@keyframes royalReveal {
+  0% {
+    opacity: 0;
+    transform: scale(0.9) translateY(30px);
+    filter: blur(5px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+    filter: blur(0);
+  }
+}
+
+.follow-us-image-card,
+.follow-us-main-image {
+  animation: royalReveal 0.8s cubic-bezier(0.215, 0.610, 0.355, 1) forwards;
+}
+
+.follow-us-image-card:nth-child(1) { animation-delay: 0.1s; }
+.follow-us-image-card:nth-child(2) { animation-delay: 0.2s; }
+.follow-us-image-card:nth-child(3) { animation-delay: 0.3s; }
+.follow-us-image-card:nth-child(4) { animation-delay: 0.4s; }
+
+/* Divine Aura Effect on Hover */
+.follow-us-image-card:hover {
+  animation: divineGlow 2s infinite;
+}
+
+@keyframes divineGlow {
+  0%, 100% { filter: drop-shadow(0 0 10px var(--gold)); }
+  50% { filter: drop-shadow(0 0 25px var(--gold)) drop-shadow(0 0 40px var(--saffron)); }
+}
+
+/* Sacred Text Symbol */
+.sacred-symbol {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  font-size: 1.8rem;
+  color: rgba(255, 215, 0, 0.4);
+  z-index: 15;
+  font-family: serif;
+  transform: rotate(10deg);
+  pointer-events: none;
 }

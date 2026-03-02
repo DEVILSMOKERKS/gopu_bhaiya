@@ -13,7 +13,7 @@ const FollowUs = () => {
     { id: 2, src: Follow2, alt: 'Saraswati Murti' },
     { id: 3, src: Follow3, alt: 'Ganesha Murti' },
     { id: 4, src: Follow4, alt: 'Marble Home Temple' },
-    { id: 5, src: Follow5, alt: 'Marble Home Temple' }
+    { id: 5, src: Follow5, alt: 'Marble Home Temple' }  
   ];
 
   return (

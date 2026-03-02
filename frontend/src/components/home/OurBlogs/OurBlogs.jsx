@@ -76,18 +76,21 @@ const OurBlogs = () => {
                 className="our-blogs-card"
                 onClick={() => handleBlogClick(blog.slug)}
               >
-                <div className="our-blogs-image-wrapper" style={{ position: 'relative', width: '100%', paddingTop: '60%', overflow: 'hidden', background: '#f5f5f5' }}>
+                <div className="our-blogs-image-wrapper">
                   {getBlogImage(blog) ? (
                     <Image
                       src={getBlogImage(blog)}
                       alt={blog.title}
                       className="our-blogs-image"
                       fill
-                      style={{ objectFit: 'cover', transition: 'transform 0.3s ease' }}
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 400px"
                     />
                   ) : (
                     <div className="our-blogs-placeholder">
-                      {blog.title}
+                      <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M19 3H5C3.9 3 3 3.9 3 5V19C3 20.1 3.9 21 5 21H19C20.1 21 21 20.1 21 19V5C21 3.9 20.1 3 19 3ZM19 19H5V5H19V19ZM17 12H7V10H17V12ZM15 16H7V14H15V16ZM17 8H7V6H17V8Z" fill="#B68126" fillOpacity="0.5"/>
+                      </svg>
+                      <span>{blog.title}</span>
                     </div>
                   )}
                 </div>
@@ -126,4 +129,3 @@ const OurBlogs = () => {
 };
 
 export default OurBlogs;
-

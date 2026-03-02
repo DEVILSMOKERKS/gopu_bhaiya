@@ -47,7 +47,7 @@ const PoojaRoomBudget = () => {
             <p className="pooja-room-budget-subtitle">
               Discover the perfect pooja room for your home with our curated categories.
             </p>
-          </div>
+          </div>  
 
           <Swiper
             modules={[Pagination, Navigation, Autoplay]}
