@@ -12,9 +12,9 @@ const HomeMegaMenu = ({ isOpen, onMouseLeave }) => {
       link: '/about-us'
     },
     {
-      id: 'projects',
-      title: 'Projects',
-      link: '/projects'
+      id: 'products',
+      title: 'Products',
+      link: '/products'
     },
     {
       id: 'our-creations',

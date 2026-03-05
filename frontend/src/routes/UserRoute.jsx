@@ -116,7 +116,7 @@ const UserRoute = ({
         {/* New Page Routes */}
         <Route path='/book-appointment' element={<BookAppointment />} />
         <Route path='/testimonials' element={<Testimonials />} />
-        <Route path='/projects' element={<Projects />} />
+        <Route path='/products' element={<Projects />} />
         <Route path='/our-creations' element={<OurCreations />} />
         <Route path='/our-services' element={<OurServices />} />
       </Routes>

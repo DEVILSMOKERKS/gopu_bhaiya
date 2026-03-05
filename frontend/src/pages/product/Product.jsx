@@ -10,7 +10,7 @@ import './product.css';
 import AlsoLike from '../../components/alsoLike/AlsoLike';
 import ProductReview from './ProductReview';
 
-const Product = ({ productId: productIdProp }) => {
+const Product = ({ productId: productIdProp, categorySlug, productSlug }) => {
   const router = useRouter();
   const productId = productIdProp;
   const [selectedImage, setSelectedImage] = useState(0);
@@ -40,22 +40,25 @@ const Product = ({ productId: productIdProp }) => {
   // Get API URL from environment variable
   const API_URL = process.env.NEXT_PUBLIC_API_URL
 
-  // Fetch product data from API
+  // Fetch product data from API (by id or by categorySlug + productSlug)
   useEffect(() => {
     const fetchProduct = async () => {
       try {
         setLoading(true);
-        const response = await axios.get(`${API_URL}/products/${productId}`);
+        const url =
+          categorySlug && productSlug
+            ? `${API_URL}/products/${categorySlug}/${productSlug}`
+            : `${API_URL}/products/${productId}`;
+        const response = await axios.get(url);
 
         if (response.data.success) {
           setProduct(response.data.data);
-          // Set first color as selected by default
-          if (response.data.data.colors && response.data.data.colors.length > 0) {
+          const data = response.data.data;
+          if (data.colors && data.colors.length > 0) {
             setSelectedColor(0);
           }
-          // Set first size as selected by default
-          if (response.data.data.sizes && response.data.data.sizes.length > 0) {
-            setSelectedSize(response.data.data.sizes[0].size);
+          if (data.sizes && data.sizes.length > 0) {
+            setSelectedSize(data.sizes[0].size);
           }
         } else {
           setError('Product not found');
@@ -68,10 +71,10 @@ const Product = ({ productId: productIdProp }) => {
       }
     };
 
-    if (productId) {
+    if ((categorySlug && productSlug) || productId) {
       fetchProduct();
     }
-  }, [productId, API_URL]);
+  }, [productId, categorySlug, productSlug, API_URL]);
 
   // Facebook Pixel ViewContent tracking
   useEffect(() => {
@@ -611,9 +614,7 @@ const Product = ({ productId: productIdProp }) => {
       <div className="breadcrumbs">
         <Link href="/">Home</Link>
         <span>/</span>
-        <Link href="/shop">{product.category_name || 'Category'}</Link>
-        <span>/</span>
-        <Link href="/shop">{product.subcategory_name || 'Subcategory'}</Link>
+        <Link href={product.category_slug ? `/products/${product.category_slug}` : '/products'}>{product.category_name || 'Category'}</Link>
         <span>/</span>
         <span>{product.name}</span>
       </div>

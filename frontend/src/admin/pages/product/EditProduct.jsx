@@ -823,14 +823,18 @@ const EditProduct = ({ productId }) => {
                       <div className="editproduct-image-previews">
                         <h5>Existing Images ({color.existingImages.length})</h5>
                         <div className="editproduct-preview-grid">
-                          {color.existingImages.map((imageUrl, imageIndex) => (
+                          {color.existingImages.map((imageUrl, imageIndex) => {
+                            const raw = typeof imageUrl === 'string' ? imageUrl : (imageUrl?.url ?? imageUrl?.image_url ?? '');
+                            const src = raw ? `${API_URL.replace('/api', '')}${raw.startsWith('/') ? '' : '/'}${raw}` : '';
+                            if (!src) return null;
+                            return (
                             <div key={`existing-${imageIndex}`} className="editproduct-image-preview">
                               <Image
-                                src={`${API_URL.replace('/api', '')}${imageUrl}`}
+                                src={src}
                                 alt={`Existing ${imageIndex + 1}`}
-                                onError={(e) => {
-                                  e.target.src = '/placeholder-product.jpg';
-                                }}
+                                width={150}
+                                height={150}
+                                style={{ objectFit: 'cover', width: '100%', height: '150px' }}
                               />
                               <button
                                 type="button"
@@ -840,7 +844,8 @@ const EditProduct = ({ productId }) => {
                                 <FaTrash />
                               </button>
                             </div>
-                          ))}
+                          );
+                          })}
                         </div>
                       </div>
                     )}

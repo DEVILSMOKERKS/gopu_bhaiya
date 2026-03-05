@@ -162,6 +162,7 @@ const getAllProducts = async (req, res) => {
       page = 1,
       limit = 10,
       category_id,
+      category: categorySlugOrId,
       subcategory_id,
       status,
       search,
@@ -175,9 +176,24 @@ const getAllProducts = async (req, res) => {
     let whereConditions = [];
     let params = [];
 
-    if (category_id) {
+    // Support category by id (category_id) or by slug/name (category=radha-krishna)
+    let resolvedCategoryId = category_id;
+    if (resolvedCategoryId == null && categorySlugOrId != null) {
+      const slugOrId = String(categorySlugOrId).trim();
+      const numericId = parseInt(slugOrId, 10);
+      if (!Number.isNaN(numericId)) {
+        resolvedCategoryId = numericId;
+      } else {
+        const [catRows] = await db.execute(
+          'SELECT id FROM categories WHERE slug = ? OR LOWER(REPLACE(name, " ", "-")) = LOWER(?) LIMIT 1',
+          [slugOrId, slugOrId.replace(/-/g, ' ')]
+        );
+        if (catRows.length > 0) resolvedCategoryId = catRows[0].id;
+      }
+    }
+    if (resolvedCategoryId != null) {
       whereConditions.push('p.category_id = ?');
-      params.push(category_id);
+      params.push(resolvedCategoryId);
     }
 
     if (subcategory_id) {
@@ -227,6 +243,8 @@ const getAllProducts = async (req, res) => {
          p.sku,
          p.name,
          p.slug,
+         p.category_id,
+         p.subcategory_id,
          p.meta_title,
          p.meta_description,
          p.featured_image,
@@ -247,6 +265,7 @@ const getAllProducts = async (req, res) => {
          p.created_at,
          p.updated_at,
          c.name as category_name,
+         c.slug as category_slug,
          sc.name as subcategory_name,
          MIN(ps.sell_price) as min_price,
          MAX(ps.sell_price) as max_price,
@@ -321,6 +340,7 @@ const getProductById = async (req, res) => {
       `SELECT 
          p.*,
          c.name as category_name,
+         c.slug as category_slug,
          sc.name as subcategory_name
        FROM products p
        LEFT JOIN categories c ON p.category_id = c.id
@@ -388,6 +408,97 @@ const getProductById = async (req, res) => {
 
   } catch (error) {
     console.error('Get product error:', error);
+    res.status(500).json({
+      success: false,
+      message: 'Error fetching product',
+      error: error.message
+    });
+  }
+};
+
+// Get single product by category slug + product slug (for /products/radha-krishna/white-radha-krishna)
+const getProductByCategoryAndProductSlug = async (req, res) => {
+  try {
+    const { categorySlug, productSlug } = req.params;
+    if (!categorySlug || !productSlug) {
+      return res.status(400).json({ success: false, message: 'Category and product slug required' });
+    }
+
+    const [catRows] = await db.execute(
+      'SELECT id FROM categories WHERE slug = ? LIMIT 1',
+      [categorySlug]
+    );
+    if (catRows.length === 0) {
+      return res.status(404).json({ success: false, message: 'Category not found' });
+    }
+    const categoryId = catRows[0].id;
+
+    const [products] = await db.execute(
+      `SELECT 
+         p.*,
+         c.name as category_name,
+         c.slug as category_slug,
+         sc.name as subcategory_name
+       FROM products p
+       LEFT JOIN categories c ON p.category_id = c.id
+       LEFT JOIN subcategories sc ON p.subcategory_id = sc.id
+       WHERE p.category_id = ? AND p.slug = ? AND p.status = 'active'`,
+      [categoryId, productSlug]
+    );
+
+    if (products.length === 0) {
+      return res.status(404).json({ success: false, message: 'Product not found' });
+    }
+
+    const product = products[0];
+    const product_id = product.product_id;
+
+    const [colors] = await db.execute(
+      `SELECT 
+         pc.color_id,
+         pc.color_name,
+         pc.color_code,
+         pc.sort_order,
+         GROUP_CONCAT(pi.image_url ORDER BY pi.sort_order) as images,
+         GROUP_CONCAT(pi.alt_text ORDER BY pi.sort_order) as alt_texts
+       FROM product_colors pc
+       LEFT JOIN product_images pi ON pc.color_id = pi.color_id
+       WHERE pc.product_id = ?
+       GROUP BY pc.color_id
+       ORDER BY pc.sort_order`,
+      [product_id]
+    );
+
+    product.colors = colors.map(color => {
+      const images = color.images ? color.images.split(',') : [];
+      const altTexts = color.alt_texts ? color.alt_texts.split(',') : [];
+      return {
+        ...color,
+        images: images.map((img, idx) => ({
+          url: img,
+          alt_text: altTexts[idx] || ''
+        }))
+      };
+    });
+
+    const [sizes] = await db.execute(
+      'SELECT * FROM product_sizes WHERE product_id = ? ORDER BY size',
+      [product_id]
+    );
+    product.sizes = sizes;
+
+    const [attributes] = await db.execute(
+      'SELECT * FROM product_attributes WHERE product_id = ? ORDER BY sort_order',
+      [product_id]
+    );
+    product.attributes = attributes;
+
+    res.json({
+      success: true,
+      data: product
+    });
+  } catch (error) {
+    console.error('Get product by category/product slug error:', error);
     res.status(500).json({
       success: false,
       message: 'Error fetching product',
@@ -670,6 +781,26 @@ const getProductsByCategory = async (req, res) => {
        LIMIT ${limitNum} OFFSET ${offset}`,
       [category_id]
     );
+
+    // Attach colors and images for grid display (same as getAllProducts)
+    for (let product of products) {
+      const [colors] = await db.execute(
+        `SELECT 
+           pc.color_id,
+           pc.color_name,
+           pc.color_code,
+           GROUP_CONCAT(pi.image_url) as images
+         FROM product_colors pc
+         LEFT JOIN product_images pi ON pc.color_id = pi.color_id
+         WHERE pc.product_id = ?
+         GROUP BY pc.color_id`,
+        [product.product_id]
+      );
+      product.colors = colors.map(color => ({
+        ...color,
+        images: color.images ? color.images.split(',') : []
+      }));
+    }
 
     res.json({
       success: true,
@@ -1170,6 +1301,7 @@ module.exports = {
   createProduct,
   getAllProducts,
   getProductById,
+  getProductByCategoryAndProductSlug,
   updateProduct,
   deleteProduct,
   getProductsByCategory,

@@ -405,7 +405,7 @@ const Header = ({ onAccountClick }) => {
               />
             </li>
             <li>
-              <Link href="/projects" className={`header-nav-link-home ${pathname === '/projects' ? 'active' : ''}`}>PRODUCTS</Link>
+              <Link href="/products" className={`header-nav-link-home ${pathname === '/products' ? 'active' : ''}`}>PRODUCTS</Link>
             </li>
             <li>
               <Link href="/our-creations" className={`header-nav-link-home ${pathname === '/our-creations' ? 'active' : ''}`}>OUR CREATIONS</Link>
@@ -516,7 +516,7 @@ const Header = ({ onAccountClick }) => {
                 </Link>
               </li>
               <li>
-                <Link href="/projects" className={`header-mobile-nav-link ${pathname === '/projects' ? 'active' : ''}`} onClick={closeMobileMenu}>PRODUCTS</Link>
+                <Link href="/products" className={`header-mobile-nav-link ${pathname === '/products' ? 'active' : ''}`} onClick={closeMobileMenu}>PRODUCTS</Link>
               </li>
               <li>
                 <Link href="/our-creations" className={`header-mobile-nav-link ${pathname === '/our-creations' ? 'active' : ''}`} onClick={closeMobileMenu}>OUR CREATIONS</Link>

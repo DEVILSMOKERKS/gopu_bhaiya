@@ -3,12 +3,14 @@
 import { useState, useEffect, useMemo } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import axios from 'axios';
 import './Projects.css';
 
 const PLACEHOLDER_IMAGE = 'https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?w=400&h=500&fit=crop';
 
 const Projects = () => {
+  const pathname = usePathname();
   const [activeFilter, setActiveFilter] = useState('all');
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -45,21 +47,23 @@ const Projects = () => {
     }
   }, [API_URL]);
 
-  // Build category list from products (category_name, subcategory_name) + "all"
-  const categories = useMemo(() => {
-    const set = new Set(['all']);
+  // Build category list from products with id, name, slug (link to /category/:slug)
+  const categoryList = useMemo(() => {
+    const byId = new Map();
     products.forEach((p) => {
-      if (p.category_name) set.add(p.category_name);
-      if (p.subcategory_name) set.add(p.subcategory_name);
+      if (p.category_id != null && p.category_name) {
+        const slug = p.category_slug || p.category_name.toLowerCase().replace(/\s+/g, '-');
+        byId.set(p.category_id, { id: p.category_id, name: p.category_name, slug });
+      }
     });
-    return ['all', ...[...set].filter((c) => c !== 'all').sort()];
+    return [{ id: 'all', name: 'All Products', slug: null }, ...Array.from(byId.values()).sort((a, b) => a.name.localeCompare(b.name))];
   }, [products]);
 
-  // Filter products by selected category
+  // Filter products by selected category (only when staying on this page with "all" or legacy filter)
   const filteredProducts = useMemo(() => {
     if (activeFilter === 'all') return products;
     return products.filter(
-      (p) => p.category_name === activeFilter || p.subcategory_name === activeFilter
+      (p) => p.category_id === activeFilter || p.category_name === activeFilter || p.subcategory_name === activeFilter
     );
   }, [products, activeFilter]);
 
@@ -121,17 +125,27 @@ const Projects = () => {
       </div>
 
       <div className="projects-container">
-        {categories.length > 1 && (
+        {categoryList.length > 1 && (
           <div className="projects-filters">
-            {categories.map((category) => (
-              <button
-                key={category}
-                className={`filter-btn ${activeFilter === category ? 'active' : ''}`}
-                onClick={() => setActiveFilter(category)}
-              >
-                {category === 'all' ? 'All Products' : category}
-              </button>
-            ))}
+            {categoryList.map((cat) =>
+              cat.id === 'all' ? (
+                <Link
+                  key="all"
+                  href="/projects"
+                  className={`filter-btn ${pathname === '/projects' ? 'active' : ''}`}
+                >
+                  All Products
+                </Link>
+              ) : (
+                <Link
+                  key={cat.id}
+                  href={`/category/${cat.slug}`}
+                  className={`filter-btn ${pathname === `/category/${cat.slug}` ? 'active' : ''}`}
+                >
+                  {cat.name}
+                </Link>
+              )
+            )}
           </div>
         )}
 

@@ -14,6 +14,8 @@ const nextConfig = {
   },
 
   images: {
+    loader: 'custom',
+    loaderFile: './imageLoader.js',
     remotePatterns: [
       {
         protocol: 'http',
@@ -35,6 +37,13 @@ const nextConfig = {
 
     unoptimized: false,
     formats: ['image/avif', 'image/webp'],
+  },
+
+  async redirects() {
+    return [
+      { source: '/projects', destination: '/products', permanent: true },
+      { source: '/category/:slug', destination: '/products/:slug', permanent: true },
+    ];
   },
 
   env: {

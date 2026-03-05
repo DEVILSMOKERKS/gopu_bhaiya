@@ -15,6 +15,7 @@ const CategoryList = () => {
   const [error, setError] = useState('');
   const [searchTerm, setSearchTerm] = useState('');
   const [deleteLoading, setDeleteLoading] = useState(null);
+  const [imageErrors, setImageErrors] = useState({});
 
   // Get API URL from environment variable
   const API_URL = process.env.NEXT_PUBLIC_API_URL;
@@ -151,7 +152,7 @@ const CategoryList = () => {
                     <span className="categorylist-status-badge active">active</span>
                   </td>
                   <td className="categorylist-td categorylist-image-cell">
-                    {category.image_url ? (
+                    {category.image_url && !imageErrors[category.id] ? (
                       <Image
                         src={getImageSrc(category.image_url)}
                         alt={category.name}
@@ -159,10 +160,7 @@ const CategoryList = () => {
                         width={60}
                         height={60}
                         style={{ objectFit: 'cover' }}
-                        onError={(e) => {
-                          e.target.style.display = 'none';
-                          e.target.nextSibling.style.display = 'flex';
-                        }}
+                        onError={() => setImageErrors((prev) => ({ ...prev, [category.id]: true }))}
                       />
                     ) : (
                       <div className="categorylist-no-image">
