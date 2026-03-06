@@ -1,44 +1,223 @@
-.dream-temple-steps {
-  padding: 20px 20px;
-  background: var(--bg-primary);
-  position: relative;
+/* ===== ANCIENT HERITAGE × MODERN LUXURY THEME ===== */
+/* Color Palette: Antique Cream (#FFF9F1), Deep Saffron (#E67E45), Aged Gold (#D4AF37) */
+/* Inspired by Lord Ganesha craftsmanship - Medium format film aesthetic */
+/* UPDATED: Reduced gaps, more filled layout */
+
+:root {
+  /* Ancient Heritage Palette */
+  --antique-cream: #FFF9F1;
+  --deep-saffron: #E67E45;
+  --aged-gold: #D4AF37;
+  --temple-stone: #E8E0D5;
+  --burnt-umber: #8B5A2B;
+  --sacred-ivory: #FDF8F2;
+  --patal-gold: #B8860B;
+  --faded-lotus: #FFE9E0;
+  --sandalwood: #C9A87C;
+  
+  /* Semantic Variables */
+  --bg-primary: var(--antique-cream);
+  --bg-secondary: #FEF7ED;
+  --text-primary: #4A3B2A;
+  --text-tertiary: #6B5A48;
+  --primary-color: var(--deep-saffron);
+  --primary-dark: #C65F2A;
+  --gold-highlight: var(--aged-gold);
+  --creamy-color: #FFF4E5;
+  --shadow-md: 0 10px 30px rgba(215, 150, 90, 0.08), 0 4px 10px rgba(0, 0, 0, 0.02);
+  --shadow-green: 0 15px 40px rgba(215, 150, 90, 0.15), 0 0 0 2px rgba(212, 175, 55, 0.1);
+  --transition-normal: 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  --font-family: 'Cormorant Garamond', 'Times New Roman', serif;
+  --font-family-alt: 'Montserrat', 'Helvetica Neue', sans-serif;
 }
 
+/* ===== BACKGROUND TEXTURES & MOTIFS ===== */
+.dream-temple-steps {
+  padding: 80px 20px;
+  background: var(--bg-primary);
+  position: relative;
+  background-image: 
+    radial-gradient(circle at 10% 20%, rgba(212, 175, 55, 0.02) 0%, transparent 30%),
+    radial-gradient(circle at 90% 70%, rgba(230, 126, 69, 0.02) 0%, transparent 40%),
+    repeating-linear-gradient(45deg, rgba(210, 180, 140, 0.02) 0px, rgba(210, 180, 140, 0.02) 2px, transparent 2px, transparent 6px);
+}
+
+/* Parchment texture overlay */
+.dream-temple-steps::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='1' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100' height='100' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+  opacity: 0.15;
+  z-index: 1;
+}
+
+/* Lotus petal corner motif - Top Left */
+.dream-temple-steps::after {
+  content: '𑁍';
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  font-size: 4rem;
+  color: var(--aged-gold);
+  opacity: 0.08;
+  font-family: serif;
+  transform: rotate(-15deg);
+  z-index: 0;
+}
+
+/* Floral pattern border - subtle */
 .dream-temple-container {
   max-width: 1400px;
   margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+/* Decorative top border with floral motif */
+.dream-temple-container::before {
+  content: '';
+  position: absolute;
+  top: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 200px;
+  height: 8px;
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    var(--deep-saffron) 20%, 
+    var(--aged-gold) 50%,
+    var(--deep-saffron) 80%,
+    transparent 100%);
+  border-radius: 4px;
+  opacity: 0.2;
+}
+
+/* Small floral dots pattern */
+.dream-temple-container::after {
+  content: '';
+  position: absolute;
+  bottom: -20px;
+  right: 0;
+  width: 150px;
+  height: 150px;
+  background: radial-gradient(circle at 30% 30%, var(--aged-gold) 1px, transparent 1px),
+              radial-gradient(circle at 70% 60%, var(--deep-saffron) 1px, transparent 1px),
+              radial-gradient(circle at 40% 80%, var(--aged-gold) 1px, transparent 1px);
+  background-size: 30px 30px;
+  opacity: 0.1;
+  pointer-events: none;
+  z-index: 0;
 }
 
 .dream-temple-title {
-  font-size: 2.5rem;
-  font-weight: 700;
+  font-size: 3.2rem;
+  font-weight: 600;
   text-align: center;
-  margin-bottom: 15px;
-  color: var(--text-primary);
+  margin-bottom: 20px;
+  color: #3A2E1F;
   font-family: var(--font-family);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  text-shadow: 2px 2px 0 rgba(212, 175, 55, 0.05);
+}
+
+/* Lotus separator under title */
+.dream-temple-title::after {
+  content: '❀';
+  display: block;
+  font-size: 1.8rem;
+  color: var(--aged-gold);
+  opacity: 0.4;
+  margin-top: 5px;
+  letter-spacing: 10px;
+  font-weight: 300;
 }
 
 .dream-temple-subtitle {
-  font-size: 1.1rem;
+  font-size: 1.25rem;
   text-align: center;
   color: var(--text-tertiary);
   margin-bottom: 60px;
-  font-family: var(--font-family);
+  font-family: var(--font-family-alt);
+  font-weight: 300;
+  letter-spacing: 1px;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.8;
+  font-style: italic;
+  position: relative;
+  padding: 0 20px;
 }
 
+/* Subtle saffron underline */
+.dream-temple-subtitle::before {
+  content: '';
+  position: absolute;
+  bottom: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--deep-saffron), var(--aged-gold), var(--deep-saffron), transparent);
+}
+
+/* ===== MAIN WRAPPER - REDUCED GAPS ===== */
 .dream-temple-steps-wrapper {
   display: flex;
   align-items: flex-start;
-  justify-content: center;
-  gap: 0;
+  justify-content: space-between; /* Changed to space-between to fill gaps */
+  gap: 0; /* Removed gap completely */
   flex-wrap: nowrap;
   position: relative;
-  padding: 40px 20px;
+  padding: 50px 10px 40px; /* Reduced horizontal padding */
   overflow-x: hidden;
   overflow-y: hidden;
   -webkit-overflow-scrolling: touch;
   -ms-overflow-style: none;
   scrollbar-width: none;
+  /* Temple stone texture background for the steps area */
+  background: rgba(255, 249, 241, 0.7);
+  backdrop-filter: blur(2px);
+  border-radius: 120px 120px 60px 60px;
+  box-shadow: inset 0 0 50px rgba(212, 175, 55, 0.03);
+}
+
+/* Decorative bindi dots in wrapper */
+.dream-temple-steps-wrapper::before {
+  content: '• • •';
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: var(--aged-gold);
+  font-size: 1.2rem;
+  letter-spacing: 15px;
+  opacity: 0.2;
+}
+
+.dream-temple-steps-wrapper::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 5%; /* Increased coverage */
+  width: 90%; /* Increased width */
+  height: 1px;
+  background: linear-gradient(90deg, 
+    transparent, 
+    var(--aged-gold) 20%, 
+    var(--deep-saffron) 50%, 
+    var(--aged-gold) 80%, 
+    transparent);
+  opacity: 0.15;
 }
 
 .dream-temple-steps-wrapper::-webkit-scrollbar {
@@ -47,6 +226,7 @@
   height: 0;
 }
 
+/* ===== STEP ITEMS - MORE FILLED ===== */
 .dream-temple-step {
   display: flex;
   flex-direction: column;
@@ -55,28 +235,96 @@
   min-width: 0;
   max-width: 20%;
   position: relative;
+  transition: transform var(--transition-normal);
+  margin: 0; /* Remove any default margins */
+  padding: 0 5px; /* Minimal padding */
 }
 
-.dream-temple-step-circle {
-  width: 120px;
-  height: 120px;
+/* First step - no left padding */
+.dream-temple-step:first-child {
+  padding-left: 0;
+}
+
+/* Last step - no right padding */
+.dream-temple-step:last-child {
+  padding-right: 0;
+}
+
+.dream-temple-step:hover {
+  transform: translateY(-5px);
+}
+
+/* Lotus petal background behind each step */
+.dream-temple-step::before {
+  content: '';
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%) rotate(0deg);
+  width: 140px;
+  height: 140px;
+  background: radial-gradient(ellipse at 50% 30%, rgba(230, 126, 69, 0.02) 0%, transparent 60%);
   border-radius: 50%;
-  background: var(--bg-primary);
-  border: 2px solid var(--primary-color);
+  z-index: -1;
+  opacity: 0;
+  transition: opacity var(--transition-normal);
+}
+
+.dream-temple-step:hover::before {
+  opacity: 1;
+}
+
+/* ===== CIRCLES - SLIGHTLY LARGER TO FILL SPACE ===== */
+.dream-temple-step-circle {
+  width: 160px; /* Increased from 140px */
+  height: 160px; /* Increased from 140px */
+  border-radius: 50%;
+  background: linear-gradient(145deg, var(--antique-cream), #FCF3E5);
+  border: 2px solid var(--aged-gold);
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
-  margin-bottom: 20px;
+  margin-bottom: 25px;
   box-shadow: var(--shadow-md);
   transition: all var(--transition-normal);
   overflow: hidden;
+  /* Ancient coin effect */
+  box-shadow: 0 5px 15px rgba(212, 175, 55, 0.2),
+              0 0 0 1px rgba(212, 175, 55, 0.3) inset,
+              0 0 20px rgba(230, 126, 69, 0.1) inset;
+}
+
+/* Intricate border pattern around circles */
+.dream-temple-step-circle::before {
+  content: '';
+  position: absolute;
+  top: 8px; /* Adjusted from 5px */
+  left: 8px; /* Adjusted from 5px */
+  right: 8px; /* Adjusted from 5px */
+  bottom: 8px; /* Adjusted from 5px */
+  border: 1px dashed var(--aged-gold);
+  border-radius: 50%;
+  opacity: 0.2;
+  pointer-events: none;
+}
+
+.dream-temple-step-circle::after {
+  content: 'ॐ';
+  position: absolute;
+  bottom: -5px;
+  right: 5px;
+  font-size: 1.2rem;
+  color: var(--deep-saffron);
+  opacity: 0.1;
+  font-family: serif;
+  transform: rotate(10deg);
 }
 
 .dream-temple-step-circle:hover {
-  transform: scale(1.05);
-  box-shadow: var(--shadow-green);
-  border-color: var(--primary-dark);
+  transform: scale(1.08);
+  box-shadow: 0 15px 40px rgba(212, 175, 55, 0.25), 0 0 0 2px var(--aged-gold) inset;
+  border-color: var(--aged-gold);
 }
 
 .dream-temple-step-illustration {
@@ -86,50 +334,121 @@
   align-items: center;
   justify-content: center;
   border-radius: 50%;
+  position: relative;
+  z-index: 2;
 }
 
 .dream-temple-step-image {
-  width: 200%;
-  height: 200%;
+  width: 85%;
+  height: 85%;
   object-fit: contain;
   object-position: center;
   border-radius: 50%;
+  filter: sepia(0.15) contrast(1.05);
+  mix-blend-mode: multiply;
+  transition: filter var(--transition-normal);
+}
+
+.dream-temple-step-circle:hover .dream-temple-step-image {
+  filter: sepia(0) contrast(1.1);
+  transform: scale(1.05);
 }
 
 .dream-temple-step-title {
-  font-size: 13.6px;
+  font-size: 1rem;
   font-weight: 400;
   text-align: center;
   color: var(--text-primary);
   margin: 0;
-  line-height: 1.4;
-  max-width: 220px;
-  font-family: var(--font-family);
+  line-height: 1.6;
+  max-width: 200px;
+  font-family: var(--font-family-alt);
+  letter-spacing: 0.3px;
+  position: relative;
+  padding-top: 10px;
+}
+
+/* Small lotus indicator for each step */
+.dream-temple-step-title::before {
+  content: '☸';
+  display: block;
+  font-size: 0.9rem;
+  color: var(--deep-saffron);
+  opacity: 0.3;
+  margin-bottom: 5px;
+  transform: scale(0.8);
 }
 
 .dream-temple-step-number-prefix {
   font-weight: 700;
+  color: var(--aged-gold);
+  font-family: var(--font-family);
+  font-size: 1.1rem;
+  margin-right: 4px;
+  background: linear-gradient(135deg, var(--aged-gold), var(--deep-saffron));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
+/* ===== CONNECTORS - WIDER TO FILL GAPS ===== */
 .dream-temple-connector {
   display: flex;
   align-items: center;
   justify-content: center;
   flex: 0 0 auto;
-  width: 65px;
-  padding: 0 10px;
+  width: 60px; /* Increased from 50px to fill gaps */
+  padding: 0 2px; /* Minimal padding */
   position: relative;
   align-self: flex-start;
-  margin-top: 60px;
+  margin-top: 70px; /* Adjusted to align better with larger circles */
+}
+
+/* Remove connector after last step */
+.dream-temple-connector:last-of-type {
+  display: none;
+}
+
+/* Decorative connector with floral elements */
+.dream-temple-connector::before {
+  content: '❀';
+  position: absolute;
+  top: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: var(--aged-gold);
+  font-size: 1rem;
+  opacity: 0.2;
+}
+
+.dream-temple-connector::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 4px;
+  height: 4px;
+  background: var(--deep-saffron);
+  border-radius: 50%;
+  opacity: 0.3;
 }
 
 .dream-temple-arrow-icon {
-  width: 65px;
+  width: 45px; /* Increased from 40px */
   height: auto;
   object-fit: contain;
   flex-shrink: 0;
   display: block;
   margin: 0 auto;
+  filter: invert(62%) sepia(21%) saturate(1050%) hue-rotate(341deg) brightness(92%) contrast(85%);
+  opacity: 0.5;
+  transition: opacity var(--transition-normal), transform var(--transition-normal);
+}
+
+.dream-temple-connector:hover .dream-temple-arrow-icon {
+  opacity: 0.9;
+  transform: translateX(5px);
 }
 
 .dream-temple-step-placeholder {
@@ -138,24 +457,38 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--primary-color);
-  font-size: 2rem;
-  font-weight: 700;
-  background: var(--creamy-color);
+  color: var(--aged-gold);
+  font-size: 2.5rem;
+  font-weight: 600;
+  background: linear-gradient(135deg, var(--antique-cream), #FDF3E0);
   border-radius: 50%;
   font-family: var(--font-family);
+  text-shadow: 0 2px 5px rgba(212, 175, 55, 0.2);
 }
 
-
+/* Tablet View - Reduced gaps */
 @media (max-width: 968px) {
+  .dream-temple-steps {
+    padding: 60px 15px;
+  }
+  
+  .dream-temple-title {
+    font-size: 2.8rem;
+  }
+  
+  .dream-temple-subtitle {
+    font-size: 1.1rem;
+  }
+  
   .dream-temple-steps-wrapper {
     justify-content: flex-start;
-    gap: 15px;
-    padding: 30px 15px;
+    gap: 10px; /* Minimal gap for tablet */
+    padding: 40px 10px;
     overflow-x: auto;
     scroll-snap-type: x mandatory;
     scrollbar-width: none;
     -ms-overflow-style: none;
+    border-radius: 80px 80px 40px 40px;
   }
 
   .dream-temple-steps-wrapper::-webkit-scrollbar {
@@ -163,35 +496,50 @@
   }
 
   .dream-temple-step {
-    min-width: 180px;
+    min-width: 200px;
     max-width: none;
     flex: 0 0 auto;
     scroll-snap-align: center;
+    padding: 0 8px; /* Slightly more padding for touch */
   }
 
   .dream-temple-step-circle {
-    width: 180px;
-    height: 180px;
+    width: 170px; /* Increased for tablet */
+    height: 170px;
+  }
+
+  .dream-temple-step-title {
+    font-size: 0.95rem;
+    max-width: 180px;
   }
 
   .dream-temple-connector {
-    width: 50px;
-    margin-top: 90px;
+    width: 45px; /* Adjusted for tablet */
+    margin-top: 75px;
+  }
+  
+  .dream-temple-connector::before {
+    font-size: 0.8rem;
   }
 
   .dream-temple-arrow-icon {
-    width: 50px;
-    height: 18px;
+    width: 35px;
+    height: auto;
   }
 }
 
+/* Mobile Landscape - Reduced gaps */
 @media (max-width: 768px) {
   .dream-temple-steps {
-    padding: 60px 10px;
+    padding: 50px 10px;
   }
 
   .dream-temple-title {
-    font-size: 2rem;
+    font-size: 2.3rem;
+  }
+  
+  .dream-temple-title::after {
+    font-size: 1.5rem;
   }
 
   .dream-temple-subtitle {
@@ -200,55 +548,57 @@
   }
 
   .dream-temple-steps-wrapper {
-    gap: 12px;
-    padding: 30px 10px;
+    gap: 8px; /* Minimal gap */
+    padding: 30px 8px;
     overflow-x: auto;
     scrollbar-width: none;
     -ms-overflow-style: none;
-  }
-
-  .dream-temple-steps-wrapper::-webkit-scrollbar {
-    display: none;
+    border-radius: 60px 60px 30px 30px;
   }
 
   .dream-temple-step {
-    min-width: 160px;
-    max-width: none;
-    flex: 0 0 auto;
+    min-width: 170px;
+    padding: 0 5px;
   }
 
   .dream-temple-step-circle {
-    width: 160px;
-    height: 160px;
+    width: 150px; /* Increased */
+    height: 150px;
   }
 
   .dream-temple-step-title {
     font-size: 0.9rem;
-    max-width: 160px;
+    max-width: 150px;
   }
 
   .dream-temple-connector {
-    width: 50px;
-    margin-top: 80px;
+    width: 35px; /* Adjusted */
+    margin-top: 65px;
   }
 
   .dream-temple-arrow-icon {
-    width: 50px;
-    height: 16px;
+    width: 30px;
   }
 }
 
+/* Mobile Portrait - Reduced gaps */
 @media (max-width: 480px) {
   .dream-temple-steps {
     padding: 40px 5px;
   }
 
   .dream-temple-container {
-    padding: 0 10px;
+    padding: 0 5px;
   }
 
   .dream-temple-title {
-    font-size: 1.5rem;
+    font-size: 1.9rem;
+    letter-spacing: 1px;
+  }
+  
+  .dream-temple-title::after {
+    font-size: 1.2rem;
+    letter-spacing: 5px;
   }
 
   .dream-temple-subtitle {
@@ -258,40 +608,93 @@
   }
 
   .dream-temple-steps-wrapper {
-    gap: 10px;
-    padding: 30px 5px;
-    overflow-x: auto;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-  }
-
-  .dream-temple-steps-wrapper::-webkit-scrollbar {
-    display: none;
+    gap: 5px; /* Minimal gap */
+    padding: 25px 5px;
+    border-radius: 40px 40px 20px 20px;
   }
 
   .dream-temple-step {
     min-width: 140px;
-    max-width: none;
-    flex: 0 0 auto;
+    padding: 0 3px;
   }
 
   .dream-temple-step-circle {
-    width: 140px;
-    height: 140px;
+    width: 130px; /* Increased */
+    height: 130px;
+    margin-bottom: 15px;
+  }
+  
+  .dream-temple-step-circle::before {
+    top: 5px;
+    left: 5px;
+    right: 5px;
+    bottom: 5px;
   }
 
   .dream-temple-step-title {
     font-size: 0.8rem;
-    max-width: 140px;
+    max-width: 130px;
+  }
+  
+  .dream-temple-step-number-prefix {
+    font-size: 1rem;
   }
 
   .dream-temple-connector {
-    width: 50px;
+    width: 25px; /* Adjusted */
     margin-top: 50px;
+  }
+  
+  .dream-temple-connector::before {
+    font-size: 0.7rem;
+    top: -10px;
   }
 
   .dream-temple-arrow-icon {
-    width: 50px;
-    height: 50px;
+    width: 20px;
+  }
+}
+
+/* Small Mobile */
+@media (max-width: 360px) {
+  .dream-temple-title {
+    font-size: 1.6rem;
+  }
+  
+  .dream-temple-step {
+    min-width: 120px;
+    padding: 0 2px;
+  }
+
+  .dream-temple-step-circle {
+    width: 110px; /* Increased */
+    height: 110px;
+  }
+
+  .dream-temple-step-title {
+    font-size: 0.75rem;
+    max-width: 110px;
+  }
+
+  .dream-temple-connector {
+    width: 20px;
+    margin-top: 40px;
+  }
+  
+  .dream-temple-arrow-icon {
+    width: 18px;
+  }
+}
+
+/* Print styles - for that medium format film aesthetic */
+@media print {
+  .dream-temple-steps {
+    background: white;
+    filter: grayscale(0.3) sepia(0.2);
+  }
+  
+  .dream-temple-step-circle {
+    border: 1px solid #333;
+    box-shadow: none;
   }
 }

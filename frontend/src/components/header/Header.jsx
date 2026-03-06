@@ -11,14 +11,14 @@ import { useWishlistCart } from '../../context/wishlistCartContext';
 import { useUser } from '../../context/UserContext';
 import HomeMegaMenu from './HomeMegaMenu';
 import ExpertPopup from './ExpertPopup';
+import AnnouncementSlider from './AnnouncementSlider'; // Import karo
 import './header.css';
-import logo from '../../assets/Images/img/logo.jpg'
+import logo from '../../assets/Images/img/logobanner.png';
 
 const Header = ({ onAccountClick }) => {
   const pathname = usePathname();
   const router = useRouter();
   const isHomePage = pathname === '/';
-  // const [activeMegaMenu, setActiveMegaMenu] = useState(null); // Commented for future use
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
@@ -36,7 +36,6 @@ const Header = ({ onAccountClick }) => {
 
   // Handle scroll event to change header background
   useEffect(() => {
-    // On non-home pages, header should start as scrolled (white background)
     if (!isHomePage) {
       setIsScrolled(true);
     }
@@ -55,10 +54,8 @@ const Header = ({ onAccountClick }) => {
     };
   }, [isHomePage]);
 
-  // Get API URL from environment variable
   const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
-  // Debounced search function
   const performSearch = async (query) => {
     if (!query.trim()) {
       setSearchResults([]);
@@ -81,10 +78,8 @@ const Header = ({ onAccountClick }) => {
           },
         }
       );
-      console.log("✅ API response:", response.data);
   
       const products = response.data?.data || [];
-  
       setSearchResults(products);
       setShowSearchResults(true);
   
@@ -97,23 +92,19 @@ const Header = ({ onAccountClick }) => {
     }
   };
   
-  // Handle search input change with debouncing
   const handleSearchInputChange = (e) => {
     const query = e.target.value;
     setSearchQuery(query);
 
-    // Clear previous timeout
     if (searchTimeoutRef.current) {
       clearTimeout(searchTimeoutRef.current);
     }
 
-    // Set new timeout for debounced search
     searchTimeoutRef.current = setTimeout(() => {
       performSearch(query);
     }, 300);
   };
 
-  // Handle search result click
   const handleSearchResultClick = (product) => {
     setSearchQuery('');
     setSearchResults([]);
@@ -122,7 +113,6 @@ const Header = ({ onAccountClick }) => {
     router.push(`/product/${product.product_id}`);
   };
 
-  // Handle search form submit
   const handleSearchSubmit = (e) => {
     e.preventDefault();
     if (searchQuery.trim()) {
@@ -134,7 +124,6 @@ const Header = ({ onAccountClick }) => {
     }
   };
 
-  // Close search results when clicking outside
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (searchContainerRef.current && !searchContainerRef.current.contains(event.target)) {
@@ -148,7 +137,6 @@ const Header = ({ onAccountClick }) => {
     };
   }, []);
 
-  // Cleanup timeout on unmount
   useEffect(() => {
     return () => {
       if (searchTimeoutRef.current) {
@@ -165,23 +153,6 @@ const Header = ({ onAccountClick }) => {
     setIsMobileMenuOpen(false);
   };
 
-  const toggleSearch = () => {
-    setIsSearchOpen(!isSearchOpen);
-    if (!isSearchOpen) {
-      // Focus on search input when opening
-      setTimeout(() => {
-        const searchInput = document.getElementById('search-input') || document.getElementById('search-input-other');
-        if (searchInput) {
-          searchInput.focus();
-        }
-      }, 100);
-    } else {
-      setSearchQuery('');
-      setSearchResults([]);
-      setShowSearchResults(false);
-    }
-  };
-
   const handleAccountClick = () => {
     if (isAuthenticated) {
       router.push('/profile');
@@ -190,7 +161,6 @@ const Header = ({ onAccountClick }) => {
     }
   };
 
-  // Get product image
   const getProductImage = (product) => {
     if (!product.colors || product.colors.length === 0) {
       return '/placeholder-product.jpg';
@@ -203,7 +173,6 @@ const Header = ({ onAccountClick }) => {
       return '/placeholder-product.jpg';
     }
 
-    // Handle both string paths and object-based images
     let relativePath = '';
     if (typeof firstImage === 'string') {
       relativePath = firstImage;
@@ -220,12 +189,10 @@ const Header = ({ onAccountClick }) => {
       return '/placeholder-product.jpg';
     }
 
-    // If already absolute URL, return as is
     if (relativePath.startsWith('http://') || relativePath.startsWith('https://')) {
       return relativePath;
     }
 
-    // Ensure leading slash for relative paths
     if (!relativePath.startsWith('/')) {
       relativePath = `/${relativePath}`;
     }
@@ -236,35 +203,28 @@ const Header = ({ onAccountClick }) => {
 
   return (
     <>
-      <header className={`header ${isScrolled ? 'header-scrolled' : 'header-transparent'}`}>
-        {/* Floating Divine Symbols - Add these if you want extra effect */}
-        <div className="om-symbols">
-          <span>🕉️</span>
-          <span>🌺</span>
-          <span>🕉️</span>
-          <span>🌺</span>
-          <span>🕉️</span>
-        </div>
-
-        {/* Unified Header Structure for All Pages */}
-        {/* Top Bar - Search, Logo, Social Icons + BULK ORDER */}
+      {/* Announcement Slider - Top of the page */}
+      <AnnouncementSlider />
+      
+      <header className={`header ${isScrolled ? 'header-scrolled' : ''}`}>
+        {/* Top Bar */}
         <div className="header-top-bar">
           <div className="header-top-left">
-            <div className="header-search-bar-home" ref={searchContainerRef}>
-              <form onSubmit={handleSearchSubmit} className="header-search-form-home">
-                <HiSearch className="header-search-icon-home" />
+            <div className="header-search-bar" ref={searchContainerRef}>
+              <form onSubmit={handleSearchSubmit} className="header-search-form">
+                <HiSearch className="header-search-icon" />
                 <input
                   type="text"
                   placeholder="Search products..."
                   value={searchQuery}
                   onChange={handleSearchInputChange}
-                  className="header-search-input-home"
+                  className="header-search-input"
                 />
               </form>
               {showSearchResults && (
-                <div className="header-search-results-home">
+                <div className="header-search-results">
                   {isSearching ? (
-                    <div className="header-search-loading">Searching... <span>🕉️</span></div>
+                    <div className="header-search-loading">Searching...</div>
                   ) : searchResults.length > 0 ? (
                     <div className="header-search-results-list">
                       {searchResults.map((product) => (
@@ -277,8 +237,8 @@ const Header = ({ onAccountClick }) => {
                             <Image 
                               src={getProductImage(product)} 
                               alt={product.name} 
-                              width={100} 
-                              height={100}
+                              width={60} 
+                              height={60}
                               onError={(e) => {
                                 e.target.src = '/placeholder-product.jpg';
                               }}
@@ -295,7 +255,7 @@ const Header = ({ onAccountClick }) => {
                     </div>
                   ) : (
                     <div className="header-search-no-results">
-                      🌺 No products found 🌺
+                      No products found
                     </div>
                   )}
                 </div>
@@ -317,7 +277,7 @@ const Header = ({ onAccountClick }) => {
           </div>
 
           <div className="header-top-right">
-            {/* Social Icons - Added here as requested */}
+            {/* Social Icons */}
             <div className="header-social-icons">
               <a
                 href="https://www.instagram.com/mateshwari_exports/"
@@ -338,7 +298,7 @@ const Header = ({ onAccountClick }) => {
                 <FaFacebook className="header-social-icon" />
               </a>
               <a
-                href="https://www.youtube.com/@MateshwariExports"
+                href="https://youtube.com/@mateshwarimoortibhandar"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="header-social-icon-link youtube"
@@ -348,15 +308,13 @@ const Header = ({ onAccountClick }) => {
               </a>
             </div>
 
-            {/* ASK EXPERTS Button */}
+            {/* ASK EXPERTS Button - Clean version without decorative spans */}
             <button
-              className="header-bulk-order-btn"
+              className="header-expert-btn"
               type="button"
               onClick={() => setIsExpertPopupOpen(true)}
             >
-              <span className="om-left">🕉️</span>
-              <span className="flower-top">🌺</span>
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
                 <polyline points="14 2 14 8 20 8"></polyline>
                 <line x1="16" y1="13" x2="8" y2="13"></line>
@@ -364,24 +322,15 @@ const Header = ({ onAccountClick }) => {
                 <polyline points="10 9 9 9 8 9"></polyline>
               </svg>
               ASK EXPERTS
-              <span className="flower-bottom">🌺</span>
-              <span className="om-right">🕉️</span>
             </button>
           </div>
         </div>
 
-        {/* Navigation Bar - Same for All Pages */}
-        <nav className="header-nav-bar-home">
-          {/* Temple Top Decoration */}
-          <div className="temple-top">
-            <span></span>
-            <span></span>
-            <span></span>
-          </div>
-
-          <ul className="header-nav-links-home">
+        {/* Navigation Bar */}
+        <nav className="header-nav-bar">
+          <ul className="header-nav-links">
             <li
-              className="header-nav-item-home"
+              className="header-nav-item"
               onMouseEnter={() => {
                 clearTimeout(homeMenuTimeoutRef.current);
                 setIsHomeMegaMenuOpen(true);
@@ -392,7 +341,7 @@ const Header = ({ onAccountClick }) => {
                 }, 200);
               }}
             >
-              <Link href="/" className={`header-nav-link-home ${pathname === '/' ? 'active' : ''}`}>
+              <Link href="/" className={`header-nav-link ${pathname === '/' ? 'active' : ''}`}>
                 HOME
               </Link>
               <HomeMegaMenu
@@ -405,31 +354,31 @@ const Header = ({ onAccountClick }) => {
               />
             </li>
             <li>
-              <Link href="/products" className={`header-nav-link-home ${pathname === '/products' ? 'active' : ''}`}>PRODUCTS</Link>
+              <Link href="/products" className={`header-nav-link ${pathname === '/products' ? 'active' : ''}`}>PRODUCTS</Link>
             </li>
             <li>
-              <Link href="/our-creations" className={`header-nav-link-home ${pathname === '/our-creations' ? 'active' : ''}`}>OUR CREATIONS</Link>
+              <Link href="/our-creations" className={`header-nav-link ${pathname === '/our-creations' ? 'active' : ''}`}>OUR CREATIONS</Link>
             </li>
             <li>
-              <Link href="/our-services" className={`header-nav-link-home ${pathname === '/our-services' ? 'active' : ''}`}>OUR SERVICES</Link>
+              <Link href="/our-services" className={`header-nav-link ${pathname === '/our-services' ? 'active' : ''}`}>OUR SERVICES</Link>
             </li>
             <li>
-              <Link href="/how-to-place-order" className={`header-nav-link-home ${pathname === '/how-to-place-order' ? 'active' : ''}`}>HOW IT WORKS</Link>
+              <Link href="/how-to-place-order" className={`header-nav-link ${pathname === '/how-to-place-order' ? 'active' : ''}`}>HOW IT WORKS</Link>
             </li>
             <li>
-              <Link href="/blogs" className={`header-nav-link-home ${pathname === '/blogs' || pathname?.startsWith('/blog/') ? 'active' : ''}`}>BLOG</Link>
+              <Link href="/blogs" className={`header-nav-link ${pathname === '/blogs' || pathname?.startsWith('/blog/') ? 'active' : ''}`}>BLOG</Link>
             </li>
             <li>
-              <Link href="/book-appointment" className={`header-nav-link-home ${pathname === '/book-appointment' ? 'active' : ''}`}>BOOK APPOINTMENT</Link>
+              <Link href="/book-appointment" className={`header-nav-link ${pathname === '/book-appointment' ? 'active' : ''}`}>BOOK APPOINTMENT</Link>
             </li>
             <li>
-              <Link href="/testimonials" className={`header-nav-link-home ${pathname === '/testimonials' ? 'active' : ''}`}>TESTIMONIALS</Link>
+              <Link href="/testimonials" className={`header-nav-link ${pathname === '/testimonials' ? 'active' : ''}`}>TESTIMONIALS</Link>
             </li>
           </ul>
         </nav>
 
-        {/* Mobile Header - For all pages */}
-        <div className="header-mobile-home">
+        {/* Mobile Header */}
+        <div className="header-mobile">
           <button
             className="header-mobile-hamburger"
             onClick={toggleMobileMenu}
@@ -443,8 +392,8 @@ const Header = ({ onAccountClick }) => {
               src={logo} 
               alt="Mateshwari Exports" 
               className="header-mobile-logo-img" 
-              width={150} 
-              height={50} 
+              width={120} 
+              height={40} 
               priority 
             />
           </Link>
@@ -468,47 +417,38 @@ const Header = ({ onAccountClick }) => {
             >
               <FaFacebook className="header-mobile-social-icon" />
             </a>
-            <a
-              href="https://www.youtube.com/@MateshwariExports"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="header-mobile-social-icon-link"
-              aria-label="Subscribe to our YouTube channel"
-            >
-              <FaYoutube className="header-mobile-social-icon" />
-            </a>
           </div>
         </div>
 
-        {/* Mobile Menu for all pages */}
+        {/* Mobile Menu */}
         {isMobileMenuOpen && (
           <div
-            className={`header-mobile-menu-backdrop ${isMobileMenuOpen ? 'open' : ''}`}
+            className="header-mobile-menu-backdrop"
             onClick={closeMobileMenu}
           ></div>
         )}
         
-        <div className={`header-mobile-nav-menu ${isMobileMenuOpen ? 'open' : ''}`}>
+        <div className={`header-mobile-menu ${isMobileMenuOpen ? 'open' : ''}`}>
           <div className="header-mobile-menu-header">
-            <div className="header-mobile-logo">
+            <div className="header-mobile-menu-logo">
               <Image 
                 src={logo} 
                 alt="Mateshwari Exports" 
-                width={150} 
-                height={50} 
+                width={120} 
+                height={40} 
                 priority 
               />
             </div>
             <button
-              className="header-mobile-close-btn"
+              className="header-mobile-menu-close"
               onClick={closeMobileMenu}
               aria-label="Close mobile menu"
             >
-              <HiX className="header-mobile-close-icon" />
+              <HiX className="header-mobile-menu-close-icon" />
             </button>
           </div>
           
-          <nav className="header-mobile-navigation">
+          <nav className="header-mobile-nav">
             <ul className="header-mobile-nav-links">
               <li>
                 <Link href="/" className={`header-mobile-nav-link ${pathname === '/' ? 'active' : ''}`} onClick={closeMobileMenu}>

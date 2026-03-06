@@ -7,7 +7,7 @@ import { FaInstagram, FaFacebook, FaYoutube, FaCheck, FaTimes, FaEnvelope, FaPho
 import Link from 'next/link';
 import axios from 'axios';
 import WhatsAppFloat from '../WhatsAppFloat/WhatsAppFloat';
-import logo from '../../assets/Images/img/logo.jpg';
+import logo from '../../assets/Images/img/imag2.jpeg';
 
 
 const Footer = () => {
@@ -22,7 +22,7 @@ const Footer = () => {
 
   const showNotification = (type, message) => {
     setNotification({ show: true, type, message });
-    setTimeout(() => {
+    setTimeout(() => {  
       setNotification({ show: false, type: '', message: '' });
     }, 5000);
   };
@@ -111,7 +111,7 @@ const Footer = () => {
         {/* Left Section - Logo and Stay Connected */}
         <div className="footer-left-section">
           <div className="footer-logo-section">
-            <Link href="/" className="footer-logo-link">
+            <Link href="/" className="">
               <Image src={logo} alt="Mateshwari Exports" className="footer-logo-img" width={200} height={60} priority />
             </Link>
           </div>

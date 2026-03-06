@@ -17,7 +17,7 @@ const Home = () => {
   return (
     <>
       <HeroSection />
-      <DreamTempleSteps />
+      {/* <DreamTempleSteps /> */}
       <WelcomeToTilak />
 
       <PoojaRoomBudget />
@@ -29,7 +29,7 @@ const Home = () => {
 
       <ClientDiaries />
       <FollowUs />
-      <OurBlogs />
+      {/* <OurBlogs /> */}
     </>
   );
 };

@@ -40,7 +40,7 @@ const DreamTempleSteps = () => {
 
   return (
     <section className="dream-temple-steps">
-      <div className="dream-temple-container">
+      {/* <div className="dream-temple-container">
         <h2 className="dream-temple-title">Your Dream Temple in 5 steps</h2>
         <p className="dream-temple-subtitle">
           Looking to design your Dream Temple? Here&apos;s how you can get started.
@@ -59,7 +59,7 @@ const DreamTempleSteps = () => {
                         className="dream-temple-step-image"
                         width={90}
                         height={90}
-                        unoptimized // Optional: You can remove if using optimized loader and your next.config is ready
+                        unoptimized 
                         style={{ objectFit: 'contain' }}
                       />
                     ) : (
@@ -74,7 +74,7 @@ const DreamTempleSteps = () => {
                 </p>
               </div>
 
-              {/* Connecting Arrow (except for last step) */}
+              Connecting Arrow (except for last step)
               {index < steps.length - 1 && (
                 <div className="dream-temple-connector">
                   <Image
@@ -91,9 +91,9 @@ const DreamTempleSteps = () => {
             </React.Fragment>
           ))}
         </div>
-      </div>
+      </div> */}
     </section>
   );
-};
+};  
 
 export default DreamTempleSteps;

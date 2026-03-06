@@ -1,4 +1,4 @@
-import Product from '../../../../../src/pages/product/Product';
+import Product from '../../../../src/pages/product/Product.jsx';
 
 export const dynamic = 'force-dynamic';
 export const dynamicParams = true;

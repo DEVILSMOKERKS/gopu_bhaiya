@@ -73,9 +73,61 @@
 }
 
 /* =============================================
-   Pulse Animation
+   Blinker Effect (Updated)
    ============================================= */
 
+.whatsapp-float-blinker {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 14px;
+    height: 14px;
+    background-color: #ff4d4d;
+    border-radius: 50%;
+    border: 2px solid white;
+    z-index: 10;
+    animation: blink-animation 1.5s ease-in-out infinite;
+}
+
+.whatsapp-float-blinker::after {
+    content: '';
+    position: absolute;
+    top: -4px;
+    right: -4px;
+    width: 18px;
+    height: 18px;
+    background-color: rgba(255, 77, 77, 0.4);
+    border-radius: 50%;
+    animation: ripple-animation 1.5s ease-out infinite;
+}
+
+@keyframes blink-animation {
+    0%, 100% {
+        opacity: 1;
+        transform: scale(1);
+        background-color: #ff4d4d;
+        box-shadow: 0 0 0 0 rgba(255, 77, 77, 0.7);
+    }
+    50% {
+        opacity: 0.6;
+        transform: scale(1.2);
+        background-color: #ff3333;
+        box-shadow: 0 0 0 5px rgba(255, 77, 77, 0);
+    }
+}
+
+@keyframes ripple-animation {
+    0% {
+        transform: scale(1);
+        opacity: 0.8;
+    }
+    100% {
+        transform: scale(2.5);
+        opacity: 0;
+    }
+}
+
+/* Pulse Animation (Keep for WhatsApp button) */
 .whatsapp-float-pulse {
     position: absolute;
     top: 50%;
@@ -104,7 +156,6 @@
         transform: scale(0.8);
         opacity: 1;
     }
-
     100% {
         transform: scale(2);
         opacity: 0;
@@ -154,16 +205,16 @@
    Expanded Menu
    ============================================= */
 
-   .whatsapp-float-menu {
+.whatsapp-float-menu {
     position: absolute;
-    bottom: 140px; /* Increased to sit above both buttons */
+    bottom: 140px;
     right: 0;
     width: 300px;
     background: white;
     border-radius: 16px;
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
-    z-index: 10000; /* Ensure it is on top */
-    display: block; /* Ensure it's not hidden by other logic */
+    z-index: 10000;
+    display: block;
     transform: translateY(0);
     opacity: 1;
     pointer-events: all;
@@ -279,21 +330,20 @@
    Background Overlay
    ============================================= */
 
-   .whatsapp-float-overlay {
+.whatsapp-float-overlay {
     position: fixed;
     top: 0;
     left: 0;
     width: 100vw;
     height: 100vh;
     background: rgba(0, 0, 0, 0.2);
-    z-index: 9998; /* Just below the menu */
+    z-index: 9998;
 }
 
 @keyframes whatsapp-overlay-appear {
     from {
         opacity: 0;
     }
-
     to {
         opacity: 1;
     }
@@ -313,6 +363,10 @@
 }
 
 .whatsapp-float-container.expanded .whatsapp-float-tooltip {
+    display: none;
+}
+
+.whatsapp-float-container.expanded .whatsapp-float-blinker {
     display: none;
 }
 
@@ -345,7 +399,6 @@
 
     .whatsapp-float-tooltip {
         display: none;
-        /* Hide tooltip on mobile for better UX */
     }
 
     .whatsapp-float-header {
@@ -363,6 +416,11 @@
     .whatsapp-action-btn {
         padding: 10px 14px;
         font-size: 13px;
+    }
+
+    .whatsapp-float-blinker {
+        width: 12px;
+        height: 12px;
     }
 }
 
@@ -412,12 +470,13 @@
    ============================================= */
 
 @media (prefers-reduced-motion: reduce) {
-
     .whatsapp-float-button,
     .whatsapp-float-menu,
     .whatsapp-action-btn,
     .whatsapp-float-tooltip,
-    .whatsapp-pulse-ring {
+    .whatsapp-pulse-ring,
+    .whatsapp-float-blinker,
+    .whatsapp-float-blinker::after {
         animation: none;
         transition: none;
     }
@@ -431,6 +490,10 @@
 
     .whatsapp-float-menu {
         border: 2px solid black;
+    }
+
+    .whatsapp-float-blinker {
+        border: 2px solid white;
     }
 }
 

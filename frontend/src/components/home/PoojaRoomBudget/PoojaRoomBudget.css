@@ -1,5 +1,6 @@
 /* ============================================
-   POOJA ROOM BUDGET - GANESH THEME ENHANCED
+   POOJA ROOM BUDGET - FULL WIDTH SLIDES
+   LEFT TO RIGHT - MINIMAL GAPS
    ============================================ */
 
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700&display=swap');
@@ -21,14 +22,19 @@
 }
 
 /* ============================================
-   MAIN SECTION
+   MAIN SECTION - FULL WIDTH NO PADDING
    ============================================ */
 .pooja-room-budget {
-  padding: 80px 20px;
+  padding: 0;
   background: linear-gradient(135deg, #fff9f0 0%, #ffffff 50%, #fff5e6 100%);
   position: relative;
   overflow: hidden;
-  width: 100%;
+  width: 100vw; /* Full viewport width */
+  max-width: 100%;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw; /* Center alignment trick */
+  margin-right: -50vw;
 }
 
 /* Sacred Geometry Background */
@@ -60,21 +66,22 @@
 }
 
 .pooja-room-budget-container {
-  max-width: 1400px;
+  max-width: 100%; /* Full width */
   margin: 0 auto;
   position: relative;
   z-index: 2;
-  padding: 0 15px;
+  padding: 0; /* No padding */
   width: 100%;
 }
 
 /* ============================================
-   HEADER SECTION
+   HEADER SECTION - WITH PADDING ONLY FOR TEXT
    ============================================ */
 .pooja-room-budget-header {
   text-align: center;
-  margin-bottom: 50px;
+  margin-bottom: 30px;
   position: relative;
+  padding: 0 20px; /* Only horizontal padding for text */
 }
 
 /* Ganesh Symbol */
@@ -82,7 +89,7 @@
   content: '🕉️';
   font-size: 48px;
   display: block;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
   animation: gentleFloat 3s ease-in-out infinite;
   filter: drop-shadow(0 5px 10px rgba(198, 162, 60, 0.3));
 }
@@ -96,7 +103,7 @@
   font-size: 42px;
   font-weight: 800;
   color: #8b4513;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
   font-family: 'Playfair Display', 'Times New Roman', serif;
   text-transform: uppercase;
   letter-spacing: 2px;
@@ -106,7 +113,7 @@
   line-height: 1.2;
 }
 
-/* Leaf decorations */
+/* Leaf decorations - hide on mobile, show on desktop */
 .pooja-room-budget-title::before,
 .pooja-room-budget-title::after {
   content: '🌿';
@@ -119,27 +126,27 @@
 }
 
 .pooja-room-budget-title::before {
-  left: -60px;
+  left: -50px;
 }
 
 .pooja-room-budget-title::after {
-  right: -60px;
+  right: -50px;
 }
 
 /* Gold underline */
 .pooja-room-budget-title span {
   display: block;
-  width: 120px;
+  width: 100px;
   height: 4px;
   background: linear-gradient(90deg, #b68126, #f4c430, #b68126);
-  margin: 15px auto 0;
+  margin: 10px auto 0;
   border-radius: 4px;
   animation: widthPulse 3s ease-in-out infinite;
 }
 
 @keyframes widthPulse {
-  0%, 100% { width: 120px; opacity: 1; }
-  50% { width: 180px; opacity: 0.9; }
+  0%, 100% { width: 100px; opacity: 1; }
+  50% { width: 140px; opacity: 0.9; }
 }
 
 .pooja-room-budget-subtitle {
@@ -147,11 +154,11 @@
   color: #666;
   max-width: 700px;
   margin: 0 auto;
-  line-height: 1.8;
+  line-height: 1.7;
   font-family: 'Poppins', sans-serif;
   font-weight: 300;
   position: relative;
-  padding: 0 40px;
+  padding: 0 20px;
 }
 
 /* Bell decorations */
@@ -164,41 +171,35 @@
   transform: translateY(-50%);
   opacity: 0.4;
   filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
-}
-
-.pooja-room-budget-subtitle::before {
-  left: 0;
-}
-
-.pooja-room-budget-subtitle::after {
-  right: 0;
+  display: none; /* Hide by default, show on desktop */
 }
 
 /* ============================================
-   SWIPER CUSTOMIZATION
+   SWIPER - FULL WIDTH, NO PADDING
    ============================================ */
 .pooja-room-swiper {
   width: 100%;
-  padding: 20px 10px 60px !important;
-  margin: 0 auto;
+  padding: 0px 0 0px !important; /* NO horizontal padding */
+  margin: 0;
 }
 
 .pooja-room-swiper .swiper-wrapper {
-  padding: 10px 0 20px;
+  padding: 5px 0 15px;
 }
 
 .pooja-room-swiper .swiper-slide {
   height: auto;
   transition: all 0.3s ease;
+  opacity: 1 !important;
 }
 
 /* ============================================
-   CARDS
+   CARDS - FULL WIDTH IN SLIDE
    ============================================ */
 .pooja-room-budget-card {
   position: relative;
   background: #fff;
-  border-radius: 20px;
+  border-radius: 12px; /* Reduced from 16px */
   overflow: hidden;
   transition: var(--transition-smooth);
   box-shadow: 0 10px 30px rgba(198, 162, 60, 0.1);
@@ -207,10 +208,12 @@
   display: flex;
   flex-direction: column;
   border: 1px solid rgba(198, 162, 60, 0.2);
+  margin: 0; /* No margin */
+  width: 100%; /* Full width of slide */
 }
 
 .pooja-room-budget-card:hover {
-  transform: translateY(-10px);
+  transform: translateY(-6px);
   box-shadow: 0 30px 60px rgba(198, 162, 60, 0.25);
   border-color: var(--ganesh-gold);
 }
@@ -219,7 +222,7 @@
 .pooja-room-budget-image-wrapper {
   position: relative;
   width: 100%;
-  aspect-ratio: 3/4;
+  aspect-ratio: 3/4; /* Standard ratio */
   overflow: hidden;
   background: #f5f5f5;
 }
@@ -247,7 +250,7 @@
 }
 
 .pooja-room-budget-card:hover .pooja-room-budget-image {
-  transform: scale(1.1);
+  transform: scale(1.05);
 }
 
 /* ============================================
@@ -255,28 +258,22 @@
    ============================================ */
 .pooja-room-budget-price-overlay {
   position: absolute;
-  top: 15px;
-  left: 15px;
+  top: 10px;
+  left: 10px;
   background: linear-gradient(135deg, #800020, #a52a2a);
-  padding: 8px 18px;
-  border-radius: 30px;
+  padding: 5px 14px;
+  border-radius: 20px;
   z-index: 10;
   box-shadow: 0 5px 15px rgba(128, 0, 32, 0.3);
   border: 1px solid rgba(255, 215, 0, 0.5);
-  animation: gentlePulse 2.5s ease-in-out infinite;
-}
-
-@keyframes gentlePulse {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.03); }
 }
 
 .pooja-room-budget-price {
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 700;
   color: #fff;
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: 0.5px;
   text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
   font-family: 'Poppins', sans-serif;
   white-space: nowrap;
@@ -287,13 +284,13 @@
    ============================================ */
 .pooja-room-budget-size-overlay {
   position: absolute;
-  bottom: 15px;
-  left: 15px;
-  right: 15px;
+  bottom: 10px;
+  left: 10px;
+  right: 10px;
   background: rgba(255, 249, 230, 0.95);
   backdrop-filter: blur(5px);
-  padding: 15px 12px;
-  border-radius: 12px;
+  padding: 10px 8px;
+  border-radius: 8px;
   border: 1px solid rgba(198, 162, 60, 0.4);
   text-align: center;
   transition: var(--transition-smooth);
@@ -304,16 +301,16 @@
 
 .pooja-room-budget-card:hover .pooja-room-budget-size-overlay {
   background: #fff;
-  transform: translateY(-5px);
+  transform: translateY(-3px);
   border-color: var(--ganesh-gold);
-  box-shadow: 0 10px 25px rgba(198, 162, 60, 0.2);
+  box-shadow: 0 8px 20px rgba(198, 162, 60, 0.2);
 }
 
 .pooja-room-budget-size {
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 600;
   color: #8b4513;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.3px;
   display: block;
   font-family: 'Playfair Display', serif;
   line-height: 1.4;
@@ -322,14 +319,16 @@
 /* Diya decorations on hover */
 .pooja-room-budget-card:hover .pooja-room-budget-size::before {
   content: '🪔';
-  margin-right: 8px;
+  margin-right: 4px;
   opacity: 1;
+  font-size: 11px;
 }
 
 .pooja-room-budget-card:hover .pooja-room-budget-size::after {
   content: '🪔';
-  margin-left: 8px;
+  margin-left: 4px;
   opacity: 1;
+  font-size: 11px;
 }
 
 /* ============================================
@@ -337,8 +336,8 @@
    ============================================ */
 .swiper-button-prev,
 .swiper-button-next {
-  width: 48px !important;
-  height: 48px !important;
+  width: 40px !important;
+  height: 40px !important;
   background: rgba(255, 255, 255, 0.95);
   border-radius: 50%;
   box-shadow: 0 5px 20px rgba(198, 162, 60, 0.3);
@@ -350,7 +349,7 @@
 
 .swiper-button-prev::after,
 .swiper-button-next::after {
-  font-size: 20px !important;
+  font-size: 16px !important;
   font-weight: 900;
   color: #8b4513;
 }
@@ -358,7 +357,7 @@
 .swiper-button-prev:hover,
 .swiper-button-next:hover {
   background: linear-gradient(135deg, #b68126, #f4c430);
-  transform: scale(1.1);
+  transform: scale(1.05);
   border-color: #fff;
 }
 
@@ -378,32 +377,25 @@
    ============================================ */
 .swiper-pagination {
   position: relative !important;
-  margin-top: 30px !important;
+  margin-top: 20px !important;
   bottom: 0 !important;
 }
 
 .swiper-pagination-bullet {
-  width: 10px;
-  height: 10px;
+  width: 8px;
+  height: 8px;
   background: #d4af37;
   opacity: 0.4;
   transition: all 0.3s ease;
-  margin: 0 5px !important;
+  margin: 0 4px !important;
   border-radius: 50%;
 }
 
 .swiper-pagination-bullet-active {
-  width: 30px;
-  border-radius: 15px;
+  width: 24px;
+  border-radius: 12px;
   background: linear-gradient(90deg, #b68126, #f4c430);
   opacity: 1;
-  transform: scale(1.1);
-  box-shadow: 0 0 10px rgba(198, 162, 60, 0.5);
-}
-
-.swiper-pagination-bullet:hover {
-  opacity: 0.8;
-  transform: scale(1.2);
 }
 
 /* ============================================
@@ -411,7 +403,8 @@
    ============================================ */
 .pooja-room-budget-cta {
   text-align: center;
-  margin-top: 50px;
+  margin-top: 8px;
+  padding-bottom: 40px;
   position: relative;
   z-index: 10;
 }
@@ -419,20 +412,21 @@
 .pooja-room-budget-button {
   background: linear-gradient(135deg, #8b4513, #b68126);
   color: #fff;
-  padding: 18px 60px;
-  font-size: 18px;
+  padding: 14px 45px;
+  font-size: 16px;
   font-weight: 600;
-  letter-spacing: 2px;
-  border-radius: 50px;
+  letter-spacing: 1px;
+  border-radius: 35px;
   position: relative;
   overflow: hidden;
   transition: all 0.3s ease;
   border: 2px solid rgba(255, 215, 0, 0.3);
   text-transform: uppercase;
-  box-shadow: 0 10px 30px rgba(198, 162, 60, 0.3);
+  box-shadow: 0 8px 25px rgba(198, 162, 60, 0.3);
   cursor: pointer;
   font-family: 'Poppins', sans-serif;
   outline: none;
+  display: inline-block;
 }
 
 /* Shine effect */
@@ -452,44 +446,20 @@
 }
 
 .pooja-room-budget-button:hover {
-  transform: translateY(-3px) scale(1.02);
-  box-shadow: 0 15px 40px rgba(182, 129, 38, 0.4);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 35px rgba(182, 129, 38, 0.4);
   border-color: rgba(255, 215, 0, 0.6);
   background: linear-gradient(135deg, #b68126, #f4c430);
 }
 
 /* ============================================
-   RESPONSIVE DESIGN
+   RESPONSIVE DESIGN - FULL WIDTH AT ALL SIZES
    ============================================ */
 
 /* Large Desktop */
 @media (max-width: 1400px) {
   .pooja-room-budget-title {
     font-size: 38px;
-  }
-  
-  .pooja-room-budget-title::before {
-    left: -50px;
-  }
-  
-  .pooja-room-budget-title::after {
-    right: -50px;
-  }
-}
-
-/* Desktop */
-@media (max-width: 1280px) {
-  .pooja-room-budget {
-    padding: 70px 20px;
-  }
-  
-  .pooja-room-budget-title {
-    font-size: 34px;
-  }
-  
-  .pooja-room-budget-title::before,
-  .pooja-room-budget-title::after {
-    font-size: 24px;
   }
   
   .pooja-room-budget-title::before {
@@ -501,134 +471,136 @@
   }
 }
 
-/* Tablet Landscape */
-@media (max-width: 1024px) {
-  .pooja-room-budget {
-    padding: 60px 15px;
-  }
-  
-  .pooja-room-budget-header {
-    margin-bottom: 40px;
-  }
-  
+/* Desktop */
+@media (max-width: 1280px) {
   .pooja-room-budget-title {
-    font-size: 30px;
-    letter-spacing: 1.5px;
+    font-size: 34px;
   }
   
   .pooja-room-budget-title::before,
   .pooja-room-budget-title::after {
-    display: none; /* Hide side leaves on tablet */
+    font-size: 24px;
+  }
+  
+  .pooja-room-budget-title::before {
+    left: -40px;
+  }
+  
+  .pooja-room-budget-title::after {
+    right: -40px;
+  }
+}
+
+/* Tablet Landscape */
+@media (max-width: 1024px) {
+  .pooja-room-budget-header {
+    margin-bottom: 25px;
+  }
+  
+  .pooja-room-budget-title {
+    font-size: 30px;
+  }
+  
+  .pooja-room-budget-title::before,
+  .pooja-room-budget-title::after {
+    display: none; /* Hide side leaves */
   }
   
   .pooja-room-budget-title span {
-    width: 100px;
+    width: 90px;
   }
   
   @keyframes widthPulse {
-    0%, 100% { width: 100px; }
-    50% { width: 150px; }
+    0%, 100% { width: 90px; }
+    50% { width: 130px; }
   }
   
   .pooja-room-budget-subtitle {
     font-size: 16px;
-    padding: 0 30px;
-  }
-  
-  .pooja-room-budget-subtitle::before,
-  .pooja-room-budget-subtitle::after {
-    display: none;
-  }
-  
-  .pooja-room-budget-price {
-    font-size: 13px;
-  }
-  
-  .pooja-room-budget-size {
-    font-size: 14px;
-  }
-  
-  .swiper-button-prev,
-  .swiper-button-next {
-    width: 40px !important;
-    height: 40px !important;
-  }
-  
-  .swiper-button-prev::after,
-  .swiper-button-next::after {
-    font-size: 18px !important;
-  }
-}
-
-/* Tablet Portrait */
-@media (max-width: 768px) {
-  .pooja-room-budget {
-    padding: 50px 12px;
-  }
-  
-  .pooja-room-budget-header::before {
-    font-size: 40px;
-  }
-  
-  .pooja-room-budget-title {
-    font-size: 26px;
-    letter-spacing: 1px;
-  }
-  
-  .pooja-room-budget-title span {
-    width: 80px;
-    height: 3px;
-  }
-  
-  @keyframes widthPulse {
-    0%, 100% { width: 80px; }
-    50% { width: 120px; }
-  }
-  
-  .pooja-room-budget-subtitle {
-    font-size: 15px;
-    padding: 0 20px;
-    line-height: 1.6;
-  }
-  
-  .pooja-room-swiper {
-    padding: 15px 5px 50px !important;
-  }
-  
-  .pooja-room-budget-price-overlay {
-    top: 12px;
-    left: 12px;
-    padding: 6px 15px;
   }
   
   .pooja-room-budget-price {
     font-size: 12px;
   }
   
-  .pooja-room-budget-size-overlay {
-    bottom: 12px;
-    left: 12px;
-    right: 12px;
-    padding: 12px 10px;
-  }
-  
   .pooja-room-budget-size {
     font-size: 13px;
   }
   
+  .swiper-button-prev,
+  .swiper-button-next {
+    width: 36px !important;
+    height: 36px !important;
+  }
+  
+  .swiper-button-prev::after,
+  .swiper-button-next::after {
+    font-size: 14px !important;
+  }
+}
+
+/* Tablet Portrait */
+@media (max-width: 768px) {
+  .pooja-room-budget-header::before {
+    font-size: 40px;
+  }
+  
+  .pooja-room-budget-title {
+    font-size: 26px;
+  }
+  
+  .pooja-room-budget-title span {
+    width: 70px;
+    height: 3px;
+  }
+  
+  @keyframes widthPulse {
+    0%, 100% { width: 70px; }
+    50% { width: 110px; }
+  }
+  
+  .pooja-room-budget-subtitle {
+    font-size: 15px;
+  }
+  
+  .pooja-room-budget-price-overlay {
+    top: 8px;
+    left: 8px;
+    padding: 4px 12px;
+  }
+  
+  .pooja-room-budget-price {
+    font-size: 11px;
+  }
+  
+  .pooja-room-budget-size-overlay {
+    bottom: 8px;
+    left: 8px;
+    right: 8px;
+    padding: 8px 6px;
+  }
+  
+  .pooja-room-budget-size {
+    font-size: 12px;
+  }
+  
   .pooja-room-budget-cta {
-    margin-top: 40px;
+    margin-top: 25px;
+    padding-bottom: 30px;
   }
   
   .pooja-room-budget-button {
-    padding: 15px 45px;
-    font-size: 16px;
-    letter-spacing: 2px;
+    padding: 12px 35px;
+    font-size: 14px;
   }
   
   .swiper-button-prev,
   .swiper-button-next {
-    display: none !important; /* Hide nav buttons on tablet, use pagination dots */
+    display: none !important; /* Hide nav buttons on tablet */
+  }
+  
+  .swiper-pagination {
+    margin-top: 15px !important;
   }
 }
 
@@ -640,44 +612,39 @@
   
   .pooja-room-budget-subtitle {
     font-size: 14px;
-    padding: 0 15px;
+  }
+  
+  .pooja-room-swiper {
+    padding: 5px 0 40px !important;
   }
   
   .pooja-room-budget-price-overlay {
-    padding: 5px 12px;
+    padding: 3px 10px;
   }
   
   .pooja-room-budget-price {
-    font-size: 11px;
-    letter-spacing: 0.5px;
-  }
-  
-  .pooja-room-budget-size-overlay {
-    padding: 10px 8px;
+    font-size: 10px;
   }
   
   .pooja-room-budget-size {
-    font-size: 12px;
+    font-size: 11px;
   }
   
   .swiper-pagination-bullet {
-    width: 8px;
-    height: 8px;
+    width: 6px;
+    height: 6px;
+    margin: 0 3px !important;
   }
   
   .swiper-pagination-bullet-active {
-    width: 25px;
+    width: 20px;
   }
 }
 
 /* Mobile Medium */
 @media (max-width: 480px) {
-  .pooja-room-budget {
-    padding: 40px 10px;
-  }
-  
   .pooja-room-budget-header {
-    margin-bottom: 30px;
+    margin-bottom: 20px;
   }
   
   .pooja-room-budget-header::before {
@@ -689,64 +656,62 @@
   }
   
   .pooja-room-budget-title span {
-    width: 70px;
+    width: 60px;
   }
   
   @keyframes widthPulse {
-    0%, 100% { width: 70px; }
-    50% { width: 100px; }
+    0%, 100% { width: 60px; }
+    50% { width: 90px; }
   }
   
   .pooja-room-budget-subtitle {
     font-size: 13px;
-    padding: 0 10px;
   }
   
   .pooja-room-swiper {
-    padding: 10px 0 40px !important;
+    padding: 5px 0 30px !important;
   }
   
   .pooja-room-budget-price-overlay {
-    top: 10px;
-    left: 10px;
-    padding: 4px 10px;
+    top: 6px;
+    left: 6px;
+    padding: 2px 8px;
   }
   
   .pooja-room-budget-price {
-    font-size: 10px;
+    font-size: 9px;
   }
   
   .pooja-room-budget-size-overlay {
-    bottom: 10px;
-    left: 10px;
-    right: 10px;
-    padding: 8px 6px;
+    bottom: 6px;
+    left: 6px;
+    right: 6px;
+    padding: 6px 4px;
   }
   
   .pooja-room-budget-size {
-    font-size: 11px;
+    font-size: 10px;
   }
   
   .pooja-room-budget-cta {
-    margin-top: 30px;
+    margin-top: 20px;
+    padding-bottom: 25px;
   }
   
   .pooja-room-budget-button {
-    padding: 12px 30px;
-    font-size: 14px;
-    letter-spacing: 1.5px;
-    width: 100%;
-    max-width: 280px;
+    padding: 10px 25px;
+    font-size: 13px;
+    max-width: 240px;
   }
   
   .swiper-pagination-bullet {
-    width: 6px;
-    height: 6px;
-    margin: 0 3px !important;
+    width: 5px;
+    height: 5px;
+    margin: 0 2px !important;
   }
   
   .swiper-pagination-bullet-active {
-    width: 20px;
+    width: 18px;
   }
 }
 
@@ -761,16 +726,21 @@
   }
   
   .pooja-room-budget-price {
-    font-size: 9px;
+    font-size: 8px;
   }
   
   .pooja-room-budget-size {
-    font-size: 10px;
+    font-size: 9px;
   }
   
   .pooja-room-budget-button {
-    padding: 10px 25px;
-    font-size: 13px;
+    padding: 8px 20px;
+    font-size: 12px;
+    max-width: 200px;
+  }
+  
+  .pooja-room-swiper {
+    padding: 5px 0 25px !important;
   }
 }
 
@@ -781,6 +751,9 @@
   .pooja-room-budget {
     background: #fff;
     padding: 20px;
+    width: 100%;
+    left: 0;
+    margin: 0;
   }
   
   .pooja-room-budget-button,

@@ -1,40 +1,47 @@
 /* ============================================
-   FOOTER BASE STYLES
+   FOOTER - Unified Light Theme (Matching Header)
+   ============================================ */
+
+:root {
+  /* Using same variables as header for consistency */
+  --primary-bg: #fff5e6;              /* Soft Cream - Main Background */
+  --primary-saffron: #ff9933;          /* Saffron - Primary Accent */
+  --primary-saffron-dark: #e68a2e;      /* Darker Saffron - Hover States */
+  --text-primary: #4a3b2f;              /* Warm Dark Brown - Primary Text */
+  --text-secondary: #6b5a4c;             /* Medium Brown - Secondary Text */
+  --text-white: #ffffff;                  /* White Text */
+  --border-light: #e8e0d8;                 /* Soft Border */
+  --shadow-soft: 0 4px 12px rgba(0, 0, 0, 0.03);
+  --shadow-hover: 0 6px 16px rgba(0, 0, 0, 0.06);
+  --footer-bg: #faf1e8;                  /* Slightly darker cream for footer */
+}
+
+/* ============================================
+   FOOTER BASE STYLES - Light Theme
    ============================================ */
 .footer {
-  background-color: var(--bg-dark);
-  color: var(--text-white);
-  font-family: var(--font-family);
+  background-color: var(--footer-bg);
+  color: var(--text-primary);
+  font-family: 'Poppins', 'Montserrat', sans-serif;
   position: relative;
   overflow: hidden;
   padding: 60px 0 30px;
   margin-top: auto;
+  border-top: 1px solid var(--border-light);
 }
 
-/* Background Watermark */
+/* Remove watermark or make it very subtle */
 .footer-watermark {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 12rem;
-  font-weight: 900;
-  color: rgba(255, 255, 255, 0.03);
-  text-transform: uppercase;
-  letter-spacing: 20px;
-  white-space: nowrap;
-  z-index: 0;
-  pointer-events: none;
-  font-family: 'Arial', sans-serif;
+  display: none; /* Removing watermark for cleaner look */
 }
 
 /* ============================================
-   FOOTER MAIN CONTAINER
+   FOOTER MAIN CONTAINER - 2.5rem spacing
    ============================================ */
 .footer-main {
   max-width: 1400px;
   margin: 0 auto;
-  padding: 0 2rem;
+  padding: 0 2.5rem; /* 2.5rem spacing */
   display: grid;
   grid-template-columns: 1fr 1.5fr;
   gap: 4rem;
@@ -42,7 +49,7 @@
   z-index: 1;
 }
 
-/* ============================================
+/* ============================================     
    LEFT SECTION - LOGO & STAY CONNECTED
    ============================================ */
 .footer-left-section {
@@ -53,6 +60,9 @@
 
 .footer-logo-section {
   margin-bottom: 1rem;
+  display: block;
+  position: relative;
+  z-index: 2;
 }
 
 .footer-logo-link {
@@ -60,10 +70,21 @@
   text-decoration: none;
 }
 
+/* FIXED: Logo visibility on light background */
 .footer-logo-img {
-  height: 80px;
+  height: 70px; /* Increased size */
   width: auto;
+  max-width: 240px;
   object-fit: contain;
+  display: block;
+  /* No filter needed - logo will be visible on light background */
+  filter: none;
+  background: transparent;
+}
+
+/* Alternate: If logo is dark and needs to stand out more */
+.footer-logo-img.dark-logo {
+  filter: brightness(0.8); /* Slight darken if needed */
 }
 
 .footer-stay-connected {
@@ -75,12 +96,13 @@
 .footer-stay-connected-title {
   font-size: 1.5rem;
   font-weight: 600;
-  color: var(--text-white);
+  color: var(--text-primary);
   margin: 0;
   text-transform: capitalize;
+  letter-spacing: 0.3px;
 }
 
-/* Email Form */
+/* Email Form - Light Theme */
 .footer-email-form {
   width: 100%;
 }
@@ -89,48 +111,51 @@
   display: flex;
   align-items: center;
   gap: 0;
-  background: transparent;
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  border-radius: 4px;
+  background: white;
+  border: 1px solid var(--border-light);
+  border-radius: 50px; /* Rounded like header search */
   overflow: hidden;
   width: 100%;
   max-width: 400px;
+  box-shadow: var(--shadow-soft);
 }
 
 .footer-email-input {
   flex: 1;
-  padding: 12px 16px;
+  padding: 14px 20px; /* Larger padding */
   background: transparent;
   border: none;
-  color: var(--text-white);
-  font-size: 0.9rem;
+  color: var(--text-primary);
+  font-size: 1rem;
   outline: none;
 }
 
 .footer-email-input::placeholder {
-  color: rgba(255, 255, 255, 0.6);
+  color: var(--text-secondary);
+  opacity: 0.7;
 }
 
 .footer-email-input.error {
-  border-color: var(--accent-red);
+  border-color: #d44f4f;
 }
 
 .footer-email-submit-btn {
-  background: transparent;
+  background: var(--primary-saffron);
   border: none;
-  padding: 12px 16px;
-  color: var(--text-white);
+  padding: 14px 24px;
+  color: white;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: all var(--transition-normal);
-  border-left: 1px solid rgba(255, 255, 255, 0.3);
+  transition: background 0.2s ease;
+  border-radius: 0 50px 50px 0;
+  font-weight: 500;
+  font-size: 1rem;
 }
 
 .footer-email-submit-btn:hover:not(:disabled) {
-  background: rgba(255, 255, 255, 0.1);
-  color: var(--primary-color);
+  background: var(--primary-saffron-dark);
 }
 
 .footer-email-submit-btn:disabled,
@@ -140,25 +165,29 @@
 }
 
 .footer-email-error {
-  color: var(--accent-red);
-  font-size: 0.75rem;
+  color: #d44f4f;
+  font-size: 0.8rem;
   margin-top: 0.5rem;
+  padding-left: 0.5rem;
 }
 
-/* Consent Checkbox */
+/* Consent Checkbox - Light Theme */
 .footer-consent-checkbox {
   display: flex;
   align-items: flex-start;
-  gap: 10px;
-  font-size: 0.75rem;
+  gap: 12px;
+  font-size: 0.85rem;
   line-height: 1.5;
-  color: rgba(255, 255, 255, 0.8);
+  color: var(--text-secondary);
+  margin-top: 0.5rem;
 }
 
 .footer-consent-checkbox input[type="checkbox"] {
   margin-top: 3px;
-  accent-color: var(--primary-color);
+  accent-color: var(--primary-saffron);
   cursor: pointer;
+  width: 18px;
+  height: 18px;
 }
 
 .footer-consent-checkbox label {
@@ -169,37 +198,39 @@
 .footer-consent-required {
   display: inline-block;
   margin-top: 4px;
-  font-size: 0.7rem;
-  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.75rem;
+  color: var(--text-secondary);
   font-style: italic;
 }
 
-/* Social Icons */
+/* Social Icons - Matching Header */
 .footer-social-icons {
   display: flex;
-  gap: 1rem;
-  margin-top: 0.5rem;
+  gap: 12px;
+  margin-top: 1rem;
 }
 
 .footer-social-icon {
-  width: 36px;
-  height: 36px;
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  border-radius: 4px;
+  width: 44px; /* Same as header */
+  height: 44px; /* Same as header */
+  border: 1px solid var(--border-light);
+  border-radius: 50%; /* Changed to circle to match header */
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--text-white);
+  color: var(--text-secondary);
   text-decoration: none;
-  transition: all var(--transition-normal);
-  font-size: 1.1rem;
+  transition: all 0.2s ease;
+  font-size: 1.2rem;
+  background: white;
 }
 
 .footer-social-icon:hover {
-  border-color: var(--primary-color);
-  color: var(--primary-color);
-  background: rgba(182, 129, 38, 0.1);
+  background: var(--primary-saffron);
+  color: white;
+  border-color: var(--primary-saffron);
   transform: translateY(-2px);
+  box-shadow: var(--shadow-hover);
 }
 
 /* ============================================
@@ -214,16 +245,29 @@
 .footer-column {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 1.2rem;
 }
 
 .footer-column-title {
   font-size: 1.1rem;
   font-weight: 600;
-  color: var(--text-white);
-  margin: 0 0 1rem 0;
+  color: var(--text-primary);
+  margin: 0;
   text-transform: uppercase;
   letter-spacing: 0.5px;
+  position: relative;
+  padding-bottom: 0.5rem;
+}
+
+/* Simple underline for titles */
+.footer-column-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 30px;
+  height: 2px;
+  background: var(--primary-saffron);
 }
 
 .footer-column-links {
@@ -232,25 +276,26 @@
   margin: 0;
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
+  gap: 0.8rem;
 }
 
 .footer-column-links li {
-  font-size: 0.9rem;
-  color: rgba(255, 255, 255, 0.8);
-  transition: all var(--transition-normal);
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  transition: all 0.2s ease;
 }
 
 .footer-column-links li a {
-  color: rgba(255, 255, 255, 0.8);
+  color: var(--text-secondary);
   text-decoration: none;
-  transition: all var(--transition-normal);
+  transition: all 0.2s ease;
+  display: inline-block;
 }
 
 .footer-column-links li:hover,
 .footer-column-links li a:hover {
-  color: var(--primary-color);
-  padding-left: 5px;
+  color: var(--primary-saffron);
+  transform: translateX(5px);
 }
 
 /* Contact Links with Icons */
@@ -259,24 +304,26 @@
   align-items: flex-start;
   gap: 12px;
   line-height: 1.6;
+  color: var(--text-secondary);
 }
 
 .footer-contact-icon {
-  color: var(--primary-color);
-  font-size: 1rem;
+  color: var(--primary-saffron);
+  font-size: 1.1rem;
   margin-top: 3px;
   flex-shrink: 0;
 }
 
 .footer-contact-links li span,
 .footer-contact-links li a {
-  color: rgba(255, 255, 255, 0.8);
+  color: var(--text-secondary);
   text-decoration: none;
   flex: 1;
+  transition: color 0.2s ease;
 }
 
 .footer-contact-links li a:hover {
-  color: var(--primary-color);
+  color: var(--primary-saffron);
 }
 
 /* ============================================
@@ -284,23 +331,23 @@
    ============================================ */
 .footer-bottom {
   max-width: 1400px;
-  margin: 2rem auto 0;
-  padding: 1.5rem 2rem;
+  margin: 3rem auto 0;
+  padding: 1.5rem 2.5rem;
   text-align: center;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-top: 1px solid var(--border-light);
   position: relative;
   z-index: 1;
 }
 
 .footer-bottom p {
   margin: 0;
-  font-size: 0.85rem;
-  color: rgba(255, 255, 255, 0.7);
-  letter-spacing: 0.5px;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  letter-spacing: 0.3px;
 }
 
 /* ============================================
-   NOTIFICATION TOAST
+   NOTIFICATION TOAST - Light Theme
    ============================================ */
 .footer-notification {
   position: fixed;
@@ -308,19 +355,22 @@
   right: 20px;
   z-index: 10000;
   max-width: 400px;
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
   animation: slideIn 0.3s ease-out;
+  overflow: hidden;
 }
 
 .footer-notification.success {
-  background: linear-gradient(135deg, var(--primary-green), var(--primary-green));
-  color: var(--text-white);
+  background: white;
+  color: var(--text-primary);
+  border-left: 4px solid #4caf50;
 }
 
 .footer-notification.error {
-  background: linear-gradient(135deg, var(--accent-error), var(--accent-error));
-  color: var(--text-white);
+  background: white;
+  color: var(--text-primary);
+  border-left: 4px solid #f44336;
 }
 
 .notification-content {
@@ -334,11 +384,21 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 24px;
-  height: 24px;
+  width: 28px;
+  height: 28px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.2);
   flex-shrink: 0;
+  font-size: 1.1rem;
+}
+
+.footer-notification.success .notification-icon {
+  background: #e8f5e9;
+  color: #4caf50;
+}
+
+.footer-notification.error .notification-icon {
+  background: #ffebee;
+  color: #f44336;
 }
 
 .notification-message {
@@ -346,23 +406,27 @@
   font-size: 14px;
   font-weight: 500;
   line-height: 1.4;
+  color: var(--text-primary);
 }
 
 .notification-close {
   background: none;
   border: none;
-  color: var(--text-white);
+  color: var(--text-secondary);
   cursor: pointer;
   padding: 4px;
-  border-radius: 4px;
+  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: background-color 0.2s ease;
+  transition: background 0.2s ease;
+  width: 30px;
+  height: 30px;
 }
 
 .notification-close:hover {
-  background: rgba(255, 255, 255, 0.2);
+  background: #f5f5f5;
+  color: var(--text-primary);
 }
 
 @keyframes slideIn {
@@ -370,7 +434,6 @@
     transform: translateX(100%);
     opacity: 0;
   }
-
   to {
     transform: translateX(0);
     opacity: 1;
@@ -378,22 +441,22 @@
 }
 
 /* ============================================
-   RESPONSIVE DESIGN
+   RESPONSIVE DESIGN - 2.5rem spacing maintained
    ============================================ */
 @media (max-width: 1024px) {
-  .footer-watermark {
-    font-size: 8rem;
-    letter-spacing: 15px;
-  }
-
   .footer-main {
     grid-template-columns: 1fr;
     gap: 3rem;
+    padding: 0 2.5rem;
   }
 
   .footer-right-section {
     grid-template-columns: repeat(3, 1fr);
     gap: 2rem;
+  }
+  
+  .footer-logo-img {
+    height: 65px;
   }
 }
 
@@ -402,62 +465,60 @@
     padding: 40px 0 20px;
   }
 
-  .footer-watermark {
-    font-size: 4rem;
-    letter-spacing: 10px;
-  }
-
   .footer-main {
-    padding: 0 1.5rem;
+    padding: 0 2rem;
     gap: 2.5rem;
   }
 
   .footer-logo-img {
     height: 60px;
+    max-width: 200px;
   }
 
   .footer-stay-connected-title {
-    font-size: 1.2rem;
+    font-size: 1.3rem;
   }
 
   .footer-email-input-wrapper {
     max-width: 100%;
   }
+  
+  .footer-email-input {
+    padding: 12px 16px;
+  }
+  
+  .footer-email-submit-btn {
+    padding: 12px 20px;
+  }
 
   .footer-right-section {
     grid-template-columns: 1fr;
-    gap: 2rem;
+    gap: 2.5rem;
   }
 
   .footer-column-title {
     font-size: 1rem;
-    margin-bottom: 0.75rem;
   }
-
-  .footer-column-links {
-    gap: 0.5rem;
+  
+  .footer-column-title::after {
+    width: 25px;
   }
 
   .footer-column-links li {
-    font-size: 0.85rem;
+    font-size: 0.9rem;
   }
 
   .footer-contact-links li {
-    font-size: 0.85rem;
-    flex-direction: column;
-    gap: 8px;
-  }
-
-  .footer-contact-icon {
-    margin-top: 0;
+    font-size: 0.9rem;
   }
 
   .footer-bottom {
-    padding: 1rem 1.5rem;
+    padding: 1.2rem 2rem;
+    margin-top: 2.5rem;
   }
 
   .footer-bottom p {
-    font-size: 0.75rem;
+    font-size: 0.8rem;
   }
 
   .footer-notification {
@@ -468,11 +529,7 @@
   }
 
   .notification-content {
-    padding: 12px 16px;
-  }
-
-  .notification-message {
-    font-size: 13px;
+    padding: 14px 16px;
   }
 }
 
@@ -481,43 +538,90 @@
     padding: 30px 0 15px;
   }
 
-  .footer-watermark {
-    font-size: 3rem;
-    letter-spacing: 5px;
-  }
-
   .footer-main {
-    padding: 0 1rem;
+    padding: 0 1.5rem;
     gap: 2rem;
   }
 
   .footer-logo-img {
     height: 50px;
+    max-width: 160px;
   }
 
   .footer-stay-connected-title {
-    font-size: 1rem;
+    font-size: 1.1rem;
   }
-
-  .footer-consent-checkbox {
-    font-size: 0.7rem;
+  
+  .footer-email-input {
+    padding: 10px 14px;
+    font-size: 0.9rem;
   }
-
-  .footer-social-icon {
-    width: 32px;
-    height: 32px;
-    font-size: 1rem;
-  }
-
-  .footer-column-title {
+  
+  .footer-email-submit-btn {
+    padding: 10px 16px;
     font-size: 0.9rem;
   }
 
-  .footer-column-links li {
+  .footer-consent-checkbox {
     font-size: 0.8rem;
+    gap: 10px;
+  }
+  
+  .footer-consent-checkbox input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+  }
+
+  .footer-social-icon {
+    width: 40px;
+    height: 40px;
+    font-size: 1.1rem;
+  }
+
+  .footer-column-title {
+    font-size: 0.95rem;
+  }
+
+  .footer-column-links li {
+    font-size: 0.85rem;
   }
 
   .footer-contact-links li {
-    font-size: 0.8rem;
+    font-size: 0.85rem;
+    gap: 8px;
+    flex-direction: row; /* Keep row layout */
+  }
+  
+  .footer-contact-icon {
+    font-size: 1rem;
+  }
+
+  .footer-bottom {
+    padding: 1rem 1.5rem;
+  }
+
+  .footer-bottom p {
+    font-size: 0.75rem;
+  }
+}
+
+/* ============================================
+   PRINT STYLES
+   ============================================ */
+@media print {
+  .footer {
+    background: white !important;
+    color: black !important;
+    border-top: 1px solid #ddd;
+  }
+  
+  .footer-email-form,
+  .footer-social-icons,
+  .footer-notification {
+    display: none !important;
+  }
+  
+  .footer-logo-img {
+    filter: none !important;
   }
 }

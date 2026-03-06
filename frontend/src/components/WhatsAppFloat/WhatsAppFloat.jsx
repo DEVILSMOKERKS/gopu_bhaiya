@@ -4,7 +4,8 @@ import './WhatsAppFloat.css';
 
 const WhatsAppFloat = () => {
     const [isVisible, setIsVisible] = useState(false);
-    const [isExpanded, setIsExpanded] = useState(false); // used for call numbers popup
+    const [isExpanded, setIsExpanded] = useState(false);
+    const [showBlinker, setShowBlinker] = useState(true); // State for blinker
 
     // Show the icon after a small delay for better UX
     useEffect(() => {
@@ -15,11 +16,21 @@ const WhatsAppFloat = () => {
         return () => clearTimeout(timer);
     }, []);
 
+    // Auto-hide blinker after 30 seconds (optional)
+    useEffect(() => {
+        if (isVisible) {
+            const blinkerTimer = setTimeout(() => {
+                setShowBlinker(false);
+            }, 30000); // Hide after 30 seconds
+
+            return () => clearTimeout(blinkerTimer);
+        }
+    }, [isVisible]);
+
     // WhatsApp number and message
-    const whatsappNumber = "+917791983156"; // Primary WhatsApp / call number
+    const whatsappNumber = "+917791983156";
     const defaultMessage = "Hello! I'm interested in Mateshwari Moorti Bhandar collection. Can you help me?";
 
-    // Additional phone numbers for call popup
     const phoneNumbers = [
         {
             label: "Sales & Orders",
@@ -33,24 +44,22 @@ const WhatsAppFloat = () => {
 
     const handleWhatsAppClick = () => {
         const encodedMessage = encodeURIComponent(defaultMessage);
-        // WhatsApp wa.me links should use digits only (no "+" or spaces)
         const phoneForWhatsApp = whatsappNumber.replace(/[^\d]/g, '');
         const whatsappURL = `https://wa.me/${phoneForWhatsApp}?text=${encodedMessage}`;
-        // Use same-window navigation so it reliably opens on mobile
         window.open(whatsappURL, '_self');
+        setShowBlinker(false); // Hide blinker when clicked
     };
 
     const handleCallClick = () => {
         setIsExpanded(prev => !prev);
+        setShowBlinker(false); // Hide blinker when call menu is opened
     };
-    
 
     const toggleExpanded = () => {
         setIsExpanded(!isExpanded);
     };
 
     const handleDirectCall = (number) => {
-        // Allow + and digits in tel: link
         const cleaned = number.replace(/[^+\d]/g, '');
         window.open(`tel:${cleaned}`, '_self');
         setIsExpanded(false);
@@ -82,8 +91,7 @@ const WhatsAppFloat = () => {
                                 <button
                                     key={entry.number}
                                     className="whatsapp-action-btn call-btn"
-                                    onClick={() => 
-                                        (entry.number)}
+                                    onClick={() => handleDirectCall(entry.number)}
                                     aria-label={`Call ${entry.label}`}
                                 >
                                     <Phone size={18} />
@@ -98,9 +106,9 @@ const WhatsAppFloat = () => {
                 </div>
             )}
 
-            {/* Main floating buttons row: WhatsApp + Call (same size) */}
+            {/* Main floating buttons row */}
             <div className="whatsapp-float-buttons">
-                {/* Main WhatsApp Button */}
+                {/* Main WhatsApp Button with Blinker */}
                 <div
                     className="whatsapp-float-button"
                     onClick={handleWhatsAppClick}
@@ -113,6 +121,11 @@ const WhatsAppFloat = () => {
                         }
                     }}
                 >
+                    {/* Blinker - positioned at top right of button */}
+                    {showBlinker && !isExpanded && (
+                        <div className="whatsapp-float-blinker"></div>
+                    )}
+
                     <div className="whatsapp-float-icon">
                         {/* WhatsApp SVG Icon */}
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
@@ -134,7 +147,7 @@ const WhatsAppFloat = () => {
                     )}
                 </div>
 
-                {/* Call Button - same size as WhatsApp icon */}
+                {/* Call Button */}
                 <button
                     className="whatsapp-float-button call-float-button"
                     onClick={handleCallClick}
