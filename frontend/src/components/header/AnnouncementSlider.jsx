@@ -1,72 +1,29 @@
 'use client';
 
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Autoplay, Navigation, Pagination } from 'swiper/modules';
-
-// Import Swiper styles
-// import 'swiper/css';
-// import 'swiper/css/navigation';
-// import 'swiper/css/pagination';
-import './announcementSlider.css';  // 👈 NAYA CSS IMPORT
+import './announcementSlider.css';
 
 const AnnouncementSlider = () => {
   const announcements = [
-    {
-      id: 1,
-      icon: '🪔',
-      text: 'DIWALI OFFER',
-      highlight: 'FLAT 25% OFF',
-      badge: 'LIMITED TIME'
-    },
-    {
-      id: 2,
-      icon: '🚚',
-      text: 'FREE SHIPPING',
-      highlight: 'PAN INDIA',
-      badge: 'ABOVE ₹10,000'
-    },
-    {
-      id: 3,
-      icon: '✨',
-      text: 'SPECIAL OFFER',
-      highlight: 'BUY 2 GET 1 FREE',
-      badge: 'ON POOJA SETS'
-    },
-    {
-      id: 4,
-      icon: '🔔',
-      text: 'NEW ARRIVALS',
-      highlight: 'MARBLE GANESHA',
-      badge: 'PREMIUM COLLECTION'
-    }
+    'FREE SHIPPING PAN INDIA',
+    '100% AUTHENTIC HANDMADE PIECES',
+    'SHIPPING NATIONWIDE ABOVE ₹10,000',
+    'SPECIAL OFFERS ON POOJA SETS',
+    'NEW ARRIVALS • MARBLE GANESHA • PREMIUM COLLECTION',
+    'FLAT 25% OFF LIMITED TIME',
   ];
 
+  // Repeat for seamless marquee loop
+  const repeatedItems = [...announcements, ...announcements];
+
   return (
-    <div className="announcement-slider">
-      <Swiper
-        modules={[Autoplay, Navigation, Pagination]}
-        spaceBetween={0}
-        slidesPerView={1}
-        navigation={true}
-        pagination={{ clickable: true }}
-        autoplay={{
-          delay: 3000,
-          disableOnInteraction: false,
-        }}
-        loop={true}
-        speed={800}
-      >
-        {announcements.map((item) => (
-          <SwiperSlide key={item.id}>
-            <div className="announcement-slide-content">
-              <span className="announcement-icon">{item.icon}</span>
-              <span className="announcement-text">{item.text}</span>
-              <span className="announcement-highlight">{item.highlight}</span>
-              <span className="announcement-badge">{item.badge}</span>
-            </div>
-          </SwiperSlide>
+    <div className="marquee-container">
+      <div className="marquee-content">
+        {repeatedItems.map((text, index) => (
+          <span key={index} className="marquee-item">
+            {text}
+          </span>
         ))}
-      </Swiper>
+      </div>
     </div>
   );
 };

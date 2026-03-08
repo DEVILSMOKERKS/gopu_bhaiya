@@ -5,12 +5,14 @@ import { usePathname } from 'next/navigation';
 import Header from '../src/components/header/Header';
 import Footer from '../src/components/footer/Footer';
 import Signup from '../src/components/login/signup/Signup';
+import ConnectSoonPopup from '../src/components/ConnectSoonPopup/ConnectSoonPopup';
 
 export default function LayoutClient({ children }) {
   const pathname = usePathname();
   const isAdmin = pathname?.startsWith('/admin');
   const isComingSoon = false;
   const [isSignupOpen, setIsSignupOpen] = useState(false);
+  const [showConnectSoon, setShowConnectSoon] = useState(false);
 
   // Scroll to top on route change
   useEffect(() => {
@@ -19,11 +21,26 @@ export default function LayoutClient({ children }) {
     }
   }, [pathname, isAdmin]);
 
+  // Show Connect Soon popup on first visit (after delay)
+  useEffect(() => {
+    if (typeof window === 'undefined' || isAdmin) return;
+    const dismissed = localStorage.getItem('connectSoon_dismissed');
+    const submitted = localStorage.getItem('connectSoon_submitted');
+    if (dismissed || submitted) return;
+    const timer = setTimeout(() => setShowConnectSoon(true), 1500);
+    return () => clearTimeout(timer);
+  }, [isAdmin]);
+
   return (
     <>
       {!isComingSoon && !isAdmin && <Header onAccountClick={() => setIsSignupOpen(true)} />}
       {children}
       {!isComingSoon && !isAdmin && <Footer />}
+
+      {/* Connect Soon Popup - shows on first visit */}
+      {showConnectSoon && !isAdmin && (
+        <ConnectSoonPopup onClose={() => setShowConnectSoon(false)} />
+      )}
 
       {/* Signup Modal */}
       {isSignupOpen && (

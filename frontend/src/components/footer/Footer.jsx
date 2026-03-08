@@ -112,7 +112,7 @@ const Footer = () => {
         <div className="footer-left-section">
           <div className="footer-logo-section">
             <Link href="/" className="">
-              <Image src={logo} alt="Mateshwari Exports" className="footer-logo-img" width={200} height={60} priority />
+              <Image src={logo} alt="Mateshwari Moorti Bhandar" className="footer-logo-img" width={200} height={60} priority />
             </Link>
           </div>
 
@@ -158,7 +158,7 @@ const Footer = () => {
                 aria-label="Accept terms to subscribe"
               />
               <label htmlFor="footer-consent">
-                By Submitting Your Email, You Agree To Receive Advertising Emails From Mateshwari Exports. <span className="footer-consent-required">(Check to enable Subscribe)</span>
+                By Submitting Your Email, You Agree To Receive Advertising Emails From Mateshwari Moorti Bhandar. <span className="footer-consent-required">(Check to enable Subscribe)</span>
               </label>
             </div>
 
@@ -217,7 +217,7 @@ const Footer = () => {
 
           {/* Site Links Column */}
           <div className="footer-column">
-            <h3 className="footer-column-title">Site Links</h3>
+            <h3 className="footer-column-title">Contact Us</h3>
             <ul className="footer-column-links footer-contact-links">
               <li>
                 <FaEnvelope className="footer-contact-icon" />
@@ -232,13 +232,43 @@ const Footer = () => {
                 <span>2310, Khajane walo ka Rasta, Nehru Tailour Chouraha, Chandpole Bazar, Jaipur-302001 (Rajasthan) INDIA</span>
               </li>
             </ul>
+
+            <h3 className="footer-column-title footer-follow-title">Follow Us</h3>
+            <div className="footer-social-icons footer-social-icons-right">
+              <a href="https://www.instagram.com/mateshwari_exports/" target="_blank" rel="noopener noreferrer" className="footer-social-icon">
+                <FaInstagram />
+              </a>
+              <a href="https://www.facebook.com/mateshwariexports/" target="_blank" rel="noopener noreferrer" className="footer-social-icon">
+                <FaFacebook />
+              </a>
+              <a href="https://youtube.com/@mateshwarimoortibhandar" target="_blank" rel="noopener noreferrer" className="footer-social-icon">
+                <FaYoutube />
+              </a>
+            </div>
           </div>
+        </div>
+      </div>
+
+      {/* Google Map Section */}
+      <div className="footer-map-section">
+        <h3 className="footer-map-title">Visit Our Store</h3>
+        <div className="footer-map-wrapper">
+          <iframe
+            title="Mateshwari Moorti Bhandar Location"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3558.0!2d75.8175!3d26.9175!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x396db40a0bae6e29%3A0x2fc2c33e95f7e1f7!2sChandpole%20Bazaar%2C%20Jaipur%2C%20Rajasthan%20302001!5e0!3m2!1sen!2sin!4v1700000000000"
+            width="100%"
+            height="300"
+            style={{ border: 0, borderRadius: '12px' }}
+            allowFullScreen=""
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+          />
         </div>
       </div>
 
       {/* Footer Bottom - Copyright */}
       <div className="footer-bottom">
-        <p>© 2023 Mateshwari Exports. All Rights Reserved.</p>
+        <p>&copy; {new Date().getFullYear()} Mateshwari Moorti Bhandar. All Rights Reserved.</p>
       </div>
 
       {/* WhatsApp Float Component */}

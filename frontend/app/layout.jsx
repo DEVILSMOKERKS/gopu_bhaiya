@@ -13,7 +13,8 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        <link rel="icon" type="image/png" href="/logo.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/logobanner.png" />
+        <link rel="apple-touch-icon" href="/logobanner.png" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         {/* Meta Pixel Code */}
         <script

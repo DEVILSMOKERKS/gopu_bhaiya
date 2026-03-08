@@ -134,7 +134,7 @@ const JourneyMobileCarousel = () => {
   const journeyData = [
     {
       year: '2015',
-      desc: `Mateshwari Exports was founded with a vision to bring divine craftsmanship to every home. We started our journey by creating handcrafted idols and temple solutions, combining traditional artistry with modern precision.`,
+      desc: `Mateshwari Moorti Bhandar was founded with a vision to bring divine craftsmanship to every home. We started our journey by creating handcrafted idols and temple solutions, combining traditional artistry with modern precision.`,
       img: rectangle137
     },
     {
@@ -154,7 +154,7 @@ const JourneyMobileCarousel = () => {
     },
     {
       year: '2023',
-      desc: `Continuing our legacy of excellence, we remain dedicated to preserving traditional craftsmanship while embracing innovation. Today, Mateshwari Exports stands as a trusted name in divine home solutions.`,
+      desc: `Continuing our legacy of excellence, we remain dedicated to preserving traditional craftsmanship while embracing innovation. Today, Mateshwari Moorti Bhandar stands as a trusted name in divine home solutions.`,
       img: rectangle1372
     },
   ];
@@ -162,7 +162,7 @@ const JourneyMobileCarousel = () => {
   return (
     <div className="journey-carousel-mobile">
       <div className="journey-carousel-header">
-        <p className="journey-carousel-subtitle">About Mateshwari Exports</p>
+        <p className="journey-carousel-subtitle">About Mateshwari Moorti Bhandar</p>
         <h2 className="journey-carousel-title">Our Story of Growth & Success</h2>
         <p className="journey-carousel-description">
           Since 2015, we&apos;ve been dedicated to creating divine experiences through our handcrafted idols and temple solutions, bringing spiritual elegance to homes and hearts across the nation.
@@ -388,9 +388,9 @@ const WhatMakesUsDifferentSection = () => {
             {/* Right Text Section */}
             <div className="crafting-temples-text-area">
               <h2 className="crafting-temples-title">Crafting Temples, Building Trust</h2>
-              <h3 className="crafting-temples-subtitle">Bringing Your Dream Temple To Life With Mateshwari Exports</h3>
+              <h3 className="crafting-temples-subtitle">Bringing Your Dream Temple To Life With Mateshwari Moorti Bhandar</h3>
               <p className="crafting-temples-intro">
-                At Mateshwari Exports, we harmonize tradition, craftsmanship, and innovation to create timeless Pooja Room experiences. For the first time in the industry, we introduce a fully immersive virtual tour of our sacred spaces—designed to bring our artistry to your screen, wherever you are.
+                At Mateshwari Moorti Bhandar, we harmonize tradition, craftsmanship, and innovation to create timeless Pooja Room experiences. For the first time in the industry, we introduce a fully immersive virtual tour of our sacred spaces—designed to bring our artistry to your screen, wherever you are.
               </p>
               <div className="crafting-temples-features">
                 <div className="crafting-temples-feature-item">

@@ -267,7 +267,7 @@ const Header = ({ onAccountClick }) => {
             <Link href="/" className="header-logo-link">
               <Image 
                 src={logo} 
-                alt="Mateshwari Exports" 
+                alt="Mateshwari Moorti Bhandar" 
                 className="header-logo-img" 
                 width={150} 
                 height={50} 
@@ -390,7 +390,7 @@ const Header = ({ onAccountClick }) => {
           <Link href="/" className="header-mobile-logo-link">
             <Image 
               src={logo} 
-              alt="Mateshwari Exports" 
+              alt="Mateshwari Moorti Bhandar" 
               className="header-mobile-logo-img" 
               width={120} 
               height={40} 
@@ -433,7 +433,7 @@ const Header = ({ onAccountClick }) => {
             <div className="header-mobile-menu-logo">
               <Image 
                 src={logo} 
-                alt="Mateshwari Exports" 
+                alt="Mateshwari Moorti Bhandar" 
                 width={120} 
                 height={40} 
                 priority 

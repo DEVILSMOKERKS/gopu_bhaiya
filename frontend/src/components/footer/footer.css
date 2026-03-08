@@ -327,6 +327,60 @@
 }
 
 /* ============================================
+   FOLLOW US SOCIAL ICONS (RIGHT COLUMN)
+   ============================================ */
+.footer-follow-title {
+  margin-top: 1.5rem;
+}
+
+.footer-social-icons-right {
+  margin-top: 0;
+}
+
+/* ============================================
+   GOOGLE MAP SECTION
+   ============================================ */
+.footer-map-section {
+  max-width: 1400px;
+  margin: 3rem auto 0;
+  padding: 0 2.5rem;
+  position: relative;
+  z-index: 1;
+}
+
+.footer-map-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin: 0 0 1rem 0;
+  position: relative;
+  padding-bottom: 0.5rem;
+}
+
+.footer-map-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 30px;
+  height: 2px;
+  background: var(--primary-saffron);
+}
+
+.footer-map-wrapper {
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: var(--shadow-soft);
+  border: 1px solid var(--border-light);
+}
+
+.footer-map-wrapper iframe {
+  display: block;
+}
+
+/* ============================================
    FOOTER BOTTOM - COPYRIGHT
    ============================================ */
 .footer-bottom {
@@ -470,6 +524,11 @@
     gap: 2.5rem;
   }
 
+  .footer-map-section {
+    padding: 0 2rem;
+    margin-top: 2.5rem;
+  }
+
   .footer-logo-img {
     height: 60px;
     max-width: 200px;
@@ -541,6 +600,15 @@
   .footer-main {
     padding: 0 1.5rem;
     gap: 2rem;
+  }
+
+  .footer-map-section {
+    padding: 0 1.5rem;
+    margin-top: 2rem;
+  }
+
+  .footer-map-wrapper iframe {
+    height: 220px;
   }
 
   .footer-logo-img {
