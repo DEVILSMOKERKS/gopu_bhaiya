@@ -1,0 +1,111 @@
+.cta-banner {
+  background: linear-gradient(135deg, var(--brown, #3D2B10) 0%, var(--dark, #1A1208) 50%, var(--brown, #3D2B10) 100%);
+  padding: 80px 60px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.cta-banner::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at center, rgba(201, 168, 76, 0.12) 0%, transparent 70%);
+}
+
+.cta-banner-heading {
+  font-family: 'Cormorant Garamond', serif !important;
+  font-size: clamp(30px, 4vw, 52px);
+  font-weight: 300 !important;
+  color: var(--white, #FFFDF7);
+  margin-bottom: 16px;
+  position: relative;
+  text-transform: none !important;
+  letter-spacing: 0 !important;
+}
+
+.cta-banner-heading em {
+  color: var(--gold-light, #E8C97A);
+  font-style: italic;
+}
+
+.cta-banner-sub {
+  font-family: 'Lato', sans-serif !important;
+  font-size: 14px !important;
+  color: rgba(255, 253, 247, 0.65);
+  margin-bottom: 36px;
+  font-weight: 300;
+  position: relative;
+}
+
+.cta-banner-btns {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  position: relative;
+  flex-wrap: wrap;
+}
+
+.cta-btn-primary {
+  background: linear-gradient(135deg, var(--gold, #C9A84C), #A07828);
+  color: var(--white, #FFFDF7);
+  padding: 14px 32px;
+  border: none;
+  font-family: 'Cinzel', serif;
+  font-size: 11px;
+  letter-spacing: 2px;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  transition: all 0.3s;
+  clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+  box-shadow: 0 4px 20px rgba(201, 168, 76, 0.35);
+}
+
+.cta-btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 30px rgba(201, 168, 76, 0.5);
+}
+
+.cta-btn-outline {
+  background: transparent;
+  color: var(--gold-light, #E8C97A);
+  padding: 13px 32px;
+  border: 1px solid rgba(201, 168, 76, 0.5);
+  font-family: 'Cinzel', serif;
+  font-size: 11px;
+  letter-spacing: 2px;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  transition: all 0.3s;
+  clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+}
+
+.cta-btn-outline:hover {
+  background: rgba(201, 168, 76, 0.1);
+  border-color: var(--gold, #C9A84C);
+  transform: translateY(-3px);
+}
+
+@media (max-width: 768px) {
+  .cta-banner { padding: 60px 24px; }
+  .cta-banner-sub { font-size: 13px !important; margin-bottom: 28px; }
+  .cta-btn-primary,
+  .cta-btn-outline {
+    font-size: 10px;
+    padding: 12px 24px;
+    letter-spacing: 1.5px;
+  }
+}
+
+@media (max-width: 480px) {
+  .cta-banner { padding: 40px 16px; }
+  .cta-banner-btns { flex-direction: column; align-items: center; gap: 12px; }
+  .cta-btn-primary,
+  .cta-btn-outline {
+    width: 100%;
+    max-width: 280px;
+    text-align: center;
+  }
+}

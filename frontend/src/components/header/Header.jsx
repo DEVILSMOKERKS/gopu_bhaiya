@@ -9,7 +9,6 @@ import { FaInstagram, FaFacebook, FaYoutube } from 'react-icons/fa';
 import axios from 'axios';
 import { useWishlistCart } from '../../context/wishlistCartContext';
 import { useUser } from '../../context/UserContext';
-import HomeMegaMenu from './HomeMegaMenu';
 import ExpertPopup from './ExpertPopup';
 import AnnouncementSlider from './AnnouncementSlider'; // Import karo
 import './header.css';
@@ -26,13 +25,11 @@ const Header = ({ onAccountClick }) => {
   const [isSearching, setIsSearching] = useState(false);
   const [showSearchResults, setShowSearchResults] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const [isHomeMegaMenuOpen, setIsHomeMegaMenuOpen] = useState(false);
   const [isExpertPopupOpen, setIsExpertPopupOpen] = useState(false);
   const { cart, wishlist } = useWishlistCart();
   const { user, isAuthenticated } = useUser();
   const searchTimeoutRef = useRef(null);
   const searchContainerRef = useRef(null);
-  const homeMenuTimeoutRef = useRef(null);
 
   // Handle scroll event to change header background
   useEffect(() => {
@@ -48,9 +45,6 @@ const Header = ({ onAccountClick }) => {
     window.addEventListener('scroll', handleScroll);
     return () => {
       window.removeEventListener('scroll', handleScroll);
-      if (homeMenuTimeoutRef.current) {
-        clearTimeout(homeMenuTimeoutRef.current);
-      }
     };
   }, [isHomePage]);
 
@@ -328,53 +322,96 @@ const Header = ({ onAccountClick }) => {
 
         {/* Navigation Bar */}
         <nav className="header-nav-bar">
-          <ul className="header-nav-links">
-            <li
-              className="header-nav-item"
-              onMouseEnter={() => {
-                clearTimeout(homeMenuTimeoutRef.current);
-                setIsHomeMegaMenuOpen(true);
-              }}
-              onMouseLeave={() => {
-                homeMenuTimeoutRef.current = setTimeout(() => {
-                  setIsHomeMegaMenuOpen(false);
-                }, 200);
-              }}
-            >
-              <Link href="/" className={`header-nav-link ${pathname === '/' ? 'active' : ''}`}>
-                HOME
+          <div className="header-nav-links">
+            <div className="nav-item">
+              <Link href="/" className={`nav-link ${pathname === '/' ? 'active' : ''}`}>HOME</Link>
+            </div>
+
+            <div className="nav-item">
+              <Link href="/products" className={`nav-link ${pathname === '/products' || pathname?.startsWith('/products/') ? 'active' : ''}`}>
+                PRODUCTS <span className="nav-arrow">▾</span>
               </Link>
-              <HomeMegaMenu
-                isOpen={isHomeMegaMenuOpen}
-                onMouseLeave={() => {
-                  homeMenuTimeoutRef.current = setTimeout(() => {
-                    setIsHomeMegaMenuOpen(false);
-                  }, 200);
-                }}
-              />
-            </li>
-            <li>
-              <Link href="/products" className={`header-nav-link ${pathname === '/products' ? 'active' : ''}`}>PRODUCTS</Link>
-            </li>
-            <li>
-              <Link href="/our-creations" className={`header-nav-link ${pathname === '/our-creations' ? 'active' : ''}`}>OUR CREATIONS</Link>
-            </li>
-            <li>
-              <Link href="/our-services" className={`header-nav-link ${pathname === '/our-services' ? 'active' : ''}`}>OUR SERVICES</Link>
-            </li>
-            <li>
-              <Link href="/how-to-place-order" className={`header-nav-link ${pathname === '/how-to-place-order' ? 'active' : ''}`}>HOW IT WORKS</Link>
-            </li>
-            <li>
-              <Link href="/blogs" className={`header-nav-link ${pathname === '/blogs' || pathname?.startsWith('/blog/') ? 'active' : ''}`}>BLOG</Link>
-            </li>
-            <li>
-              <Link href="/book-appointment" className={`header-nav-link ${pathname === '/book-appointment' ? 'active' : ''}`}>BOOK APPOINTMENT</Link>
-            </li>
-            <li>
-              <Link href="/testimonials" className={`header-nav-link ${pathname === '/testimonials' ? 'active' : ''}`}>TESTIMONIALS</Link>
-            </li>
-          </ul>
+              <div className="mega-dropdown">
+                <div className="mega-col">
+                  <h4>By Deity</h4>
+                  <Link href="/products"><span className="mega-dot"></span>Ganesha Murti</Link>
+                  <Link href="/products"><span className="mega-dot"></span>Radha Krishna</Link>
+                  <Link href="/products"><span className="mega-dot"></span>Lakshmi Mata</Link>
+                  <Link href="/products"><span className="mega-dot"></span>Shiva Lingam</Link>
+                  <Link href="/products"><span className="mega-dot"></span>Saraswati Devi</Link>
+                  <Link href="/products"><span className="mega-dot"></span>Hanuman Ji</Link>
+                </div>
+                <div className="mega-col">
+                  <h4>By Material</h4>
+                  <Link href="/products"><span className="mega-dot"></span>White Marble</Link>
+                  <Link href="/products"><span className="mega-dot"></span>Black Marble</Link>
+                  <Link href="/products"><span className="mega-dot"></span>Makrana Marble</Link>
+                  <Link href="/products"><span className="mega-dot"></span>Sandstone</Link>
+                  <Link href="/products"><span className="mega-dot"></span>Fibre Murti</Link>
+                  <Link href="/products"><span className="mega-dot"></span>Brass Idols</Link>
+                </div>
+                <div className="mega-col">
+                  <h4>By Size</h4>
+                  <Link href="/products"><span className="mega-dot"></span>Small (6&quot;–12&quot;)</Link>
+                  <Link href="/products"><span className="mega-dot"></span>Medium (1–2 ft)</Link>
+                  <Link href="/products"><span className="mega-dot"></span>Large (2–4 ft)</Link>
+                  <Link href="/products"><span className="mega-dot"></span>Temple Size (4+ ft)</Link>
+                  <Link href="/products"><span className="mega-dot"></span>Pooja Sets</Link>
+                  <Link href="/products"><span className="mega-dot"></span>View All →</Link>
+                </div>
+              </div>
+            </div>
+
+            <div className="nav-item">
+              <Link href="/our-creations" className={`nav-link ${pathname === '/our-creations' ? 'active' : ''}`}>
+                OUR CREATIONS <span className="nav-arrow">▾</span>
+              </Link>
+              <div className="nav-dropdown">
+                <Link href="/our-creations"><span className="mega-dot"></span>Custom Murtis</Link>
+                <Link href="/our-creations"><span className="mega-dot"></span>Temple Installations</Link>
+                <Link href="/our-creations"><span className="mega-dot"></span>Festival Specials</Link>
+                <Link href="/our-creations"><span className="mega-dot"></span>Award & Gift Murtis</Link>
+                <Link href="/our-creations"><span className="mega-dot"></span>Portfolio Gallery</Link>
+              </div>
+            </div>
+
+            <div className="nav-item">
+              <Link href="/our-services" className={`nav-link ${pathname === '/our-services' ? 'active' : ''}`}>
+                OUR SERVICES <span className="nav-arrow">▾</span>
+              </Link>
+              <div className="nav-dropdown">
+                <Link href="/our-services"><span className="mega-dot"></span>Custom Carving</Link>
+                <Link href="/our-services"><span className="mega-dot"></span>Restoration & Repair</Link>
+                <Link href="/our-services"><span className="mega-dot"></span>Temple Design</Link>
+                <Link href="/our-services"><span className="mega-dot"></span>Prana Pratishtha</Link>
+                <Link href="/our-services"><span className="mega-dot"></span>Home Delivery & Install</Link>
+              </div>
+            </div>
+
+            <div className="nav-item">
+              <Link href="/how-to-place-order" className={`nav-link ${pathname === '/how-to-place-order' ? 'active' : ''}`}>HOW IT WORKS</Link>
+            </div>
+
+            <div className="nav-item">
+              <Link href="/blogs" className={`nav-link ${pathname === '/blogs' || pathname?.startsWith('/blog/') ? 'active' : ''}`}>
+                BLOG <span className="nav-arrow">▾</span>
+              </Link>
+              <div className="nav-dropdown">
+                <Link href="/blogs"><span className="mega-dot"></span>Vastu & Murti Placement</Link>
+                <Link href="/blogs"><span className="mega-dot"></span>Marble Care Tips</Link>
+                <Link href="/blogs"><span className="mega-dot"></span>Festival Guides</Link>
+                <Link href="/blogs"><span className="mega-dot"></span>All Articles</Link>
+              </div>
+            </div>
+
+            <div className="nav-item">
+              <Link href="/book-appointment" className={`nav-link ${pathname === '/book-appointment' ? 'active' : ''}`}>BOOK APPOINTMENT</Link>
+            </div>
+
+            <div className="nav-item">
+              <Link href="/testimonials" className={`nav-link ${pathname === '/testimonials' ? 'active' : ''}`}>TESTIMONIALS</Link>
+            </div>
+          </div>
         </nav>
 
         {/* Mobile Header */}

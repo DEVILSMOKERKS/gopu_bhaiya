@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Cinzel:wght@400;600;700&family=Lato:wght@300;400&display=swap');
 
 * {
   padding: 0px;
@@ -17,6 +17,21 @@
   --font-body: var(--__futura_pt_light_ef3a57, 'Arial', 'Helvetica Neue', 'Helvetica', sans-serif), var(--__futura_pt_light_Fallback_ef3a57, 'Arial', 'Helvetica Neue', 'Helvetica', sans-serif), 'Arial', 'Helvetica Neue', 'Helvetica', sans-serif;
   --font-primary: var(--__futura_pt_medium_6c980f, 'Arial', 'Helvetica Neue', 'Helvetica', sans-serif), var(--__futura_pt_medium_Fallback_6c980f, 'Arial', 'Helvetica Neue', 'Helvetica', sans-serif), 'Arial', 'Helvetica Neue', 'Helvetica', sans-serif;
   --futura-pt-light: var(--__futura_pt_light_ef3a57, 'Arial', 'Helvetica Neue', 'Helvetica', sans-serif), var(--__futura_pt_light_Fallback_ef3a57, 'Arial', 'Helvetica Neue', 'Helvetica', sans-serif), 'Arial', 'Helvetica Neue', 'Helvetica', sans-serif;
+
+  /* New Design System - Gold Theme */
+  --gold: #C9A84C;
+  --gold-light: #E8C97A;
+  --gold-pale: #F5E9C8;
+  --cream: #FAF6EE;
+  --dark: #1A1208;
+  --brown: #3D2B10;
+  --text: #2C1F0A;
+  --white: #FFFDF7;
+
+  /* Font Families - New */
+  --font-cinzel: 'Cinzel', serif;
+  --font-cormorant: 'Cormorant Garamond', serif;
+  --font-lato: 'Lato', sans-serif;
 
   /* Bootstrap Heading Color (if not defined) */
   --bs-heading-color: inherit;
@@ -177,4 +192,22 @@ textarea,
 select,
 label {
   font-family: var(--font-body);
+}
+
+body {
+  background: var(--cream, #FAF6EE);
+  overflow-x: hidden;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* ── GLOBAL MOBILE RESPONSIVE ── */
+@media (max-width: 768px) {
+  p {
+    font-size: 0.95rem !important;
+    margin-block-start: 0.6em;
+    margin-block-end: 0.6em;
+  }
 }

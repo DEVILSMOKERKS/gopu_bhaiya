@@ -1,18 +1,19 @@
-/* Marquee Announcement Bar - House of Tilak Style */
+/* Ticker - Gold/Dark Theme */
 .marquee-container {
-  position: relative;
-  width: 100%;
-  background: #B8860B;
-  color: #FFFFFF;
-  padding: 12px 0;
+  background: var(--dark, #1A1208);
+  color: var(--gold-light, #E8C97A);
+  font-family: 'Cinzel', serif;
+  font-size: 11px;
+  letter-spacing: 2px;
+  padding: 8px 0;
   overflow: hidden;
+  white-space: nowrap;
   z-index: 1001;
+  position: relative;
 }
 
 .marquee-content {
-  display: flex;
-  align-items: center;
-  width: max-content;
+  display: inline-flex;
   animation: marquee-scroll 35s linear infinite;
   animation-direction: reverse;
   white-space: nowrap;
@@ -25,20 +26,28 @@
 .marquee-item {
   display: inline-flex;
   align-items: center;
-  padding: 0 2rem;
-  border-right: 1px solid rgba(255, 255, 255, 0.5);
-  font-family: var(--font-primary);
-  font-size: 0.9rem;
-  font-weight: 500;
-  letter-spacing: 0.5px;
+  padding: 0 40px;
+  font-family: 'Cinzel', serif;
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 2px;
+  text-transform: uppercase;
 }
 
-
 @keyframes marquee-scroll {
-  0% {
-    transform: translateX(0);
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@media (max-width: 768px) {
+  .marquee-container {
+    font-size: 9px;
+    letter-spacing: 1.5px;
+    padding: 6px 0;
   }
-  100% {
-    transform: translateX(-50%);
+  .marquee-item {
+    padding: 0 20px;
+    font-size: 9px;
+    letter-spacing: 1.5px;
   }
 }
