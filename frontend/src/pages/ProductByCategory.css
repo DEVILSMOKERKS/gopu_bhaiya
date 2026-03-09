@@ -1,49 +1,143 @@
 /* ============================================
-   PRODUCT BY CATEGORY PAGE - Unified Light Theme
-   Grid Full Width from Start to End
+   PRODUCT BY CATEGORY PAGE - Marble Elegance Theme
+   Inspired by Pure White Marble Aesthetic
    ============================================ */
 
-/* Using same variables as header/footer for consistency */
 :root {
-  --primary-bg: #fff5e6;              /* Soft Cream - Main Background */
-  --primary-saffron: #ff9933;          /* Saffron - Primary Accent */
-  --primary-saffron-dark: #e68a2e;      /* Darker Saffron - Hover States */
-  --text-primary: #4a3b2f;              /* Warm Dark Brown - Primary Text */
-  --text-secondary: #6b5a4c;             /* Medium Brown - Secondary Text */
-  --text-tertiary: #8b7a6b;               /* Lighter Brown for descriptions */
-  --text-white: #ffffff;                  /* White Text */
-  --border-light: #e8e0d8;                 /* Soft Border */
-  --shadow-soft: 0 4px 12px rgba(0, 0, 0, 0.03);
-  --shadow-hover: 0 8px 24px rgba(0, 0, 0, 0.08);
-  --card-bg: #ffffff;                      /* White for cards */
+  --primary-bg: #FAF7F2;              /* Warm Marble White - Main Background */
+  --surface-bg: #FFFFFF;               /* Pure White - Card Background */
+  --primary-marble: #D4B48C;            /* Warm Marble Gold - Primary Accent */
+  --primary-marble-dark: #C4A47C;        /* Deep Marble - Hover States */
+  --primary-marble-light: #F5E6D3;        /* Light Marble for subtle backgrounds */
+  --text-primary: #2C2C2C;                /* Charcoal - Primary Text */
+  --text-secondary: #5C5C5C;               /* Warm Gray - Secondary Text */
+  --text-tertiary: #7E7E7E;                  /* Soft Gray - Descriptions */
+  --text-gold: #B76E3C;                       /* Warm Gold Accent */
+  --text-white: #FFFFFF;                       /* White Text */
+  --border-light: #E8E0D8;                      /* Soft Sand Border */
+  --border-marble: rgba(212, 180, 140, 0.3);     /* Marble Border */
+  --shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.03);
+  --shadow-hover: 0 20px 40px rgba(212, 180, 140, 0.1);
+  --card-bg: #FFFFFF;                           /* White for cards */
+  --gradient-marble: linear-gradient(135deg, #D4B48C 0%, #E5C9A8 100%);
+  --font-heading: 'Cormorant Garamond', 'Playfair Display', serif;
+  --font-body: 'Inter', 'Poppins', sans-serif;
 }
 
 /* ============================================
    MAIN CONTAINER
    ============================================ */
 .product-by-category-page {
-  padding-top: 0px; /* Account for fixed header */
+  padding-top: 0px;
   min-height: 100vh;
   background: var(--primary-bg);
+  position: relative;
+}
+
+/* Subtle Marble Texture Pattern */
+.product-by-category-page::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    linear-gradient(45deg, rgba(212, 180, 140, 0.02) 25%, transparent 25%),
+    linear-gradient(-45deg, rgba(212, 180, 140, 0.02) 25%, transparent 25%);
+  background-size: 60px 60px;
+  pointer-events: none;
+  opacity: 0.3;
 }
 
 /* ============================================
-   HEADER SECTION - Light Theme
+   HEADER SECTION - Marble Theme
    ============================================ */
 .product-by-category-header {
-    text-align: center;
-    padding: 12px 2.5rem 13px;
-    background: white;
-    border-bottom: 1px solid var(--border-light);
-    margin-bottom: 1rem;
+  position: relative;
+  text-align: center;
+  padding: 40px 2.5rem 35px;
+  background: linear-gradient(135deg, #FFFFFF 0%, #FAF7F2 100%);
+  border-bottom: 2px solid var(--border-marble);
+  margin-bottom: 2rem;
+  overflow: hidden;
 }
+
+/* Decorative Top Border - Like Marble Inlay */
+.product-by-category-header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: repeating-linear-gradient(
+    45deg,
+    var(--primary-marble) 0px,
+    var(--primary-marble) 10px,
+    transparent 10px,
+    transparent 20px
+  );
+}
+
+/* Decorative Element - Marble Temple Design */
+.product-by-category-header::after {
+  content: '🕉️';
+  position: absolute;
+  bottom: 10px;
+  right: 30px;
+  font-size: 2.5rem;
+  color: var(--border-marble);
+  opacity: 0.2;
+  filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.1));
+}
+
 .product-by-category-title {
-  font-size: 2.2rem !important;
+  font-size: 2.8rem !important;
   margin-bottom: 1rem;
   color: var(--text-primary);
   font-weight: 600;
-  letter-spacing: -0.02em;
-  font-family: 'Poppins', 'Montserrat', sans-serif;
+  letter-spacing: 1px;
+  font-family: var(--font-heading);
+  position: relative;
+  display: inline-block;
+  text-transform: uppercase;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.02);
+}
+
+/* Decorative lines around title - Like Marble Carving */
+.product-by-category-title::before,
+.product-by-category-title::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  width: 60px;
+  height: 2px;
+  background: var(--gradient-marble);
+  border-radius: 2px;
+}
+
+.product-by-category-title::before {
+  left: -80px;
+}
+
+.product-by-category-title::after {
+  right: -80px;
+}
+
+@media (max-width: 768px) {
+  .product-by-category-title::before,
+  .product-by-category-title::after {
+    width: 30px;
+  }
+  
+  .product-by-category-title::before {
+    left: -40px;
+  }
+  
+  .product-by-category-title::after {
+    right: -40px;
+  }
 }
 
 .product-by-category-subtitle {
@@ -51,77 +145,92 @@
   color: var(--text-secondary);
   max-width: 600px;
   margin: 0 auto;
-  font-family: 'Poppins', 'Montserrat', sans-serif;
+  font-family: var(--font-body);
+  font-weight: 300;
+  letter-spacing: 0.5px;
+  position: relative;
+  padding: 0 20px;
+  background: linear-gradient(135deg, transparent 0%, rgba(212, 180, 140, 0.05) 50%, transparent 100%);
+  display: inline-block;
+  border-radius: 30px;
 }
 
 /* ============================================
-   CONTAINER - Full Width from Start to End
+   CONTAINER
    ============================================ */
 .product-by-category-container {
   width: 100%;
-  max-width: 100%; /* Full width */
+  max-width: 100%;
   margin: 0;
-  padding: 0 2.5rem 3rem; /* Only horizontal padding, no max-width constraint */
+  padding: 0 2.5rem 4rem;
+  position: relative;
 }
 
 /* ============================================
-   BACK BUTTON
+   BACK BUTTON - Marble Style
    ============================================ */
 .product-by-category-back {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
   margin-bottom: 2rem;
-  color: var(--primary-saffron);
+  color: var(--text-secondary);
   text-decoration: none;
   font-size: 1rem;
   font-weight: 500;
-  transition: color 0.2s ease;
-  font-family: 'Poppins', 'Montserrat', sans-serif;
+  transition: all 0.3s ease;
+  font-family: var(--font-body);
+  padding: 8px 20px 8px 16px;
+  background: white;
+  border-radius: 40px;
+  border: 1px solid var(--border-light);
+  box-shadow: var(--shadow-soft);
 }
 
 .product-by-category-back:hover {
-  color: var(--primary-saffron-dark);
-  text-decoration: underline;
+  color: var(--primary-marble-dark);
+  border-color: var(--primary-marble);
+  transform: translateX(-5px);
+  box-shadow: var(--shadow-hover);
 }
 
-.product-by-category-back-top {
-  margin-bottom: 2rem;
+.product-by-category-back svg {
+  transition: transform 0.3s ease;
+}
+
+.product-by-category-back:hover svg {
+  transform: translateX(-3px);
 }
 
 /* ============================================
-   PRODUCT GRID - Full Width, Start to End
-   Cards stretch to fill available space
+   PRODUCT GRID
    ============================================ */
 .product-by-category-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 2rem;
   width: 100%;
 }
 
-/* For very large screens, ensure 6 columns with even distribution */
+/* Your existing responsive breakpoints */
 @media (min-width: 1800px) {
   .product-by-category-grid {
     grid-template-columns: repeat(6, 1fr);
   }
 }
 
-/* For large screens, 5 columns */
 @media (min-width: 1500px) and (max-width: 1799px) {
   .product-by-category-grid {
     grid-template-columns: repeat(5, 1fr);
   }
 }
 
-/* For medium-large screens, 4 columns */
 @media (min-width: 1200px) and (max-width: 1499px) {
   .product-by-category-grid {
     grid-template-columns: repeat(4, 1fr);
   }
 }
 
-/* For tablets, 3 columns */
 @media (min-width: 768px) and (max-width: 1199px) {
   .product-by-category-grid {
     grid-template-columns: repeat(3, 1fr);
@@ -129,7 +238,6 @@
   }
 }
 
-/* For small tablets, 2 columns */
 @media (min-width: 576px) and (max-width: 767px) {
   .product-by-category-grid {
     grid-template-columns: repeat(2, 1fr);
@@ -137,7 +245,6 @@
   }
 }
 
-/* For mobile, 1 column */
 @media (max-width: 575px) {
   .product-by-category-grid {
     grid-template-columns: 1fr;
@@ -146,45 +253,70 @@
 }
 
 /* ============================================
-   PRODUCT CARD - Light Theme
-   Cards will stretch to fill grid cells
+   PRODUCT CARD - Marble Showcase Design
    ============================================ */
 .product-by-category-card-link {
   display: block;
   text-decoration: none;
   color: inherit;
   height: 100%;
-  width: 100%; /* Full width of grid cell */
+  width: 100%;
 }
 
 .product-by-category-card {
   background: var(--card-bg);
-  border-radius: 16px;
+  border-radius: 20px;
   overflow: hidden;
   box-shadow: var(--shadow-soft);
-  transition: all 0.3s ease;
+  transition: all 0.4s ease;
   height: 100%;
-  width: 100%; /* Full width */
+  width: 100%;
   display: flex;
   flex-direction: column;
   border: 1px solid var(--border-light);
+  position: relative;
+  cursor: pointer;
+}
+
+/* Marble Vein Effect on Hover */
+.product-by-category-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    135deg,
+    transparent 0%,
+    rgba(212, 180, 140, 0.02) 50%,
+    transparent 100%
+  );
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
 }
 
 .product-by-category-card:hover {
-  transform: translateY(-6px);
+  transform: translateY(-8px);
   box-shadow: var(--shadow-hover);
-  border-color: var(--primary-saffron);
+  border-color: var(--primary-marble);
+}
+
+.product-by-category-card:hover::before {
+  opacity: 1;
 }
 
 /* ============================================
-   IMAGE WRAPPER
+   IMAGE WRAPPER - Premium Marble Presentation
    ============================================ */
 .product-by-category-image-wrapper {
   position: relative;
   width: 100%;
   aspect-ratio: 1 / 1;
   overflow: hidden;
-  background: #fafafa;
+  background: linear-gradient(135deg, #FFFFFF 0%, #FAF7F2 100%);
+  border-bottom: 2px solid var(--border-marble);
 }
 
 .product-by-category-image {
@@ -194,64 +326,125 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.5s ease;
+  transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
 .product-by-category-card:hover .product-by-category-image {
   transform: scale(1.08);
 }
 
+/* Marble Polish Effect on Image */
+.product-by-category-image-wrapper::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    135deg,
+    rgba(255,255,255,0.2) 0%,
+    rgba(212, 180, 140, 0.1) 50%,
+    rgba(255,255,255,0.2) 100%
+  );
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+
+.product-by-category-card:hover .product-by-category-image-wrapper::after {
+  opacity: 1;
+}
+
 /* ============================================
-   CATEGORY OVERLAY
+   CATEGORY OVERLAY - Premium Badge
    ============================================ */
 .product-by-category-overlay {
   position: absolute;
   top: 15px;
   right: 15px;
-  background: var(--primary-saffron);
-  padding: 6px 14px;
-  border-radius: 30px;
+  background: rgba(255, 255, 255, 0.95);
+  padding: 8px 18px;
+  border-radius: 40px;
   z-index: 2;
-  box-shadow: 0 2px 8px rgba(255, 153, 51, 0.3);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  border: 1px solid var(--border-marble);
+  backdrop-filter: blur(5px);
 }
 
 .product-by-category-card-category {
   font-size: 0.75rem;
-  color: white;
+  color: var(--text-primary);
   font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.3px;
+  letter-spacing: 0.5px;
+  font-family: var(--font-body);
+  background: var(--gradient-marble);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 /* ============================================
-   CARD CONTENT
+   CARD CONTENT - Clean Typography
    ============================================ */
 .product-by-category-content {
-  padding: 1.5rem;
+  padding: 1.8rem 1.5rem 1.5rem;
   display: flex;
   flex-direction: column;
   flex: 1;
+  position: relative;
+  background: white;
+}
+
+/* Decorative Element - Marble Dot */
+.product-by-category-content::before {
+  content: '⬩';
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: var(--primary-marble);
+  font-size: 1.5rem;
+  background: white;
+  padding: 0 15px;
+  line-height: 1;
 }
 
 .product-by-category-card-title {
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   margin-bottom: 0.75rem;
   color: var(--text-primary);
   font-weight: 600;
   line-height: 1.4;
-  font-family: 'Poppins', 'Montserrat', sans-serif;
+  font-family: var(--font-heading);
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
-  min-height: 3rem;
+  min-height: 3.3rem;
+  text-align: center;
+  letter-spacing: 0.3px;
+  position: relative;
+  padding-bottom: 8px;
+}
+
+.product-by-category-card-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 25%;
+  width: 50%;
+  height: 1px;
+  background: var(--gradient-marble);
+  border-radius: 2px;
 }
 
 .product-by-category-card-description {
   font-size: 0.9rem;
   color: var(--text-tertiary);
-  line-height: 1.5;
+  line-height: 1.6;
   margin-bottom: 1rem;
   display: -webkit-box;
   -webkit-line-clamp: 2;
@@ -259,57 +452,90 @@
   overflow: hidden;
   text-overflow: ellipsis;
   flex: 1;
+  text-align: center;
+  font-family: var(--font-body);
+  font-style: normal;
+  padding: 0.5rem 0;
 }
 
 /* ============================================
-   META SECTION (Price)
+   META SECTION (Price) - With Marble Accents
    ============================================ */
 .product-by-category-meta {
   margin: 1rem 0 1.2rem;
-  padding-top: 1rem;
-  border-top: 1px solid var(--border-light);
+  padding: 1rem 0;
+  border-top: 1px dashed var(--border-marble);
+  border-bottom: 1px dashed var(--border-marble);
+  text-align: center;
+  position: relative;
+  background: linear-gradient(90deg, transparent, rgba(212, 180, 140, 0.05), transparent);
 }
 
 .product-by-category-price {
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   font-weight: 700;
-  color: var(--primary-saffron);
-  font-family: 'Poppins', 'Montserrat', sans-serif;
+  color: var(--primary-marble-dark);
+  font-family: var(--font-heading);
+  display: inline-block;
+  position: relative;
+  padding: 0 15px;
+  letter-spacing: 0.5px;
 }
 
 .product-by-category-price::before {
   content: '₹';
-  font-size: 0.9rem;
-  margin-right: 2px;
+  font-size: 1rem;
+  margin-right: 3px;
   opacity: 0.8;
+  font-weight: 400;
 }
 
 /* ============================================
-   VIEW BUTTON
+   VIEW BUTTON - Marble Carving Design
    ============================================ */
 .product-by-category-view-btn {
   display: inline-block;
-  padding: 0.8rem 1.5rem;
-  background: var(--primary-saffron);
-  color: white;
+  padding: 1rem 2rem;
+  background: transparent;
+  color: var(--text-primary);
   text-decoration: none;
   border-radius: 40px;
   font-size: 0.9rem;
-  font-weight: 500;
-  transition: all 0.2s ease;
+  font-weight: 600;
+  transition: all 0.3s ease;
   text-transform: uppercase;
-  letter-spacing: 0.3px;
+  letter-spacing: 1.5px;
   text-align: center;
-  border: none;
+  border: 2px solid var(--primary-marble);
   cursor: pointer;
   width: 100%;
-  font-family: 'Poppins', 'Montserrat', sans-serif;
+  font-family: var(--font-body);
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.product-by-category-view-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: var(--gradient-marble);
+  transition: left 0.4s ease;
+  z-index: -1;
 }
 
 .product-by-category-view-btn:hover {
-  background: var(--primary-saffron-dark);
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(255, 153, 51, 0.3);
+  color: white;
+  border-color: var(--primary-marble-dark);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(212, 180, 140, 0.3);
+}
+
+.product-by-category-view-btn:hover::before {
+  left: 0;
 }
 
 /* ============================================
@@ -319,15 +545,17 @@
 .product-by-category-error,
 .product-by-category-empty {
   text-align: center;
-  padding: 4rem 2.5rem;
+  padding: 5rem 2.5rem;
   font-size: 1.1rem;
   color: var(--text-secondary);
   background: white;
-  border-radius: 16px;
+  border-radius: 20px;
   border: 1px solid var(--border-light);
   margin: 2rem 0;
   width: 100%;
-  font-family: 'Poppins', 'Montserrat', sans-serif;
+  font-family: var(--font-body);
+  position: relative;
+  box-shadow: var(--shadow-soft);
 }
 
 .product-by-category-loading {
@@ -339,12 +567,12 @@
 
 .product-by-category-loading::after {
   content: '';
-  width: 24px;
-  height: 24px;
-  border: 2px solid var(--border-light);
-  border-top-color: var(--primary-saffron);
+  width: 30px;
+  height: 30px;
+  border: 3px solid var(--border-marble);
+  border-top-color: var(--primary-marble);
   border-radius: 50%;
-  animation: spin 0.8s linear infinite;
+  animation: spin 1s linear infinite;
 }
 
 @keyframes spin {
@@ -352,13 +580,147 @@
 }
 
 .product-by-category-error {
-  color: #d44f4f;
-  background: #fff5f5;
-  border-color: #ffcdd2;
+  color: #c44536;
+  background: #fff3f0;
+  border-color: #ffcdb2;
 }
 
 .product-by-category-empty {
   color: var(--text-secondary);
+  background: linear-gradient(135deg, white, #FAF7F2);
+}
+
+/* ============================================
+   FEATURES SECTION - Like in the Image
+   ============================================ */
+.product-by-category-features {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin: 2rem 0;
+  padding: 1.5rem;
+  background: white;
+  border-radius: 16px;
+  border: 1px solid var(--border-marble);
+  box-shadow: var(--shadow-soft);
+}
+
+.product-by-category-feature {
+  text-align: center;
+  padding: 1rem;
+  position: relative;
+}
+
+.product-by-category-feature:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 25%;
+  height: 50%;
+  width: 1px;
+  background: var(--border-marble);
+}
+
+.product-by-category-feature-icon {
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+  display: block;
+  color: var(--primary-marble);
+}
+
+.product-by-category-feature-text {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+  font-family: var(--font-body);
+}
+
+/* ============================================
+   FAQ SECTION - Like in the Image
+   ============================================ */
+.product-by-category-faq {
+  margin: 3rem 0 0;
+  padding: 2rem;
+  background: white;
+  border-radius: 16px;
+  border: 1px solid var(--border-marble);
+}
+
+.product-by-category-faq-title {
+  font-size: 1.5rem;
+  color: var(--text-primary);
+  font-family: var(--font-heading);
+  margin-bottom: 1.5rem;
+  text-align: center;
+  position: relative;
+  display: inline-block;
+  padding: 0 2rem;
+  background: white;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.product-by-category-faq-title::before,
+.product-by-category-faq-title::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  width: 30px;
+  height: 2px;
+  background: var(--gradient-marble);
+}
+
+.product-by-category-faq-title::before {
+  left: -20px;
+}
+
+.product-by-category-faq-title::after {
+  right: -20px;
+}
+
+.product-by-category-faq-item {
+  margin-bottom: 1rem;
+  border-bottom: 1px solid var(--border-marble);
+  padding-bottom: 1rem;
+}
+
+.product-by-category-faq-item:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.product-by-category-faq-question {
+  font-size: 1rem;
+  color: var(--text-primary);
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  font-family: var(--font-body);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.product-by-category-faq-question::before {
+  content: 'Q.';
+  color: var(--primary-marble);
+  font-weight: 700;
+}
+
+.product-by-category-faq-answer {
+  font-size: 0.95rem;
+  color: var(--text-tertiary);
+  line-height: 1.6;
+  padding-left: 1.8rem;
+  font-family: var(--font-body);
+}
+
+.product-by-category-faq-answer::before {
+  content: 'A.';
+  color: var(--primary-marble);
+  font-weight: 600;
+  margin-right: 8px;
+  opacity: 0.8;
 }
 
 /* ============================================
@@ -366,11 +728,31 @@
    ============================================ */
 @media (max-width: 1200px) {
   .product-by-category-header {
-    padding: 30px 2rem;
+    padding: 35px 2rem;
+  }
+  
+  .product-by-category-title {
+    font-size: 2.4rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .product-by-category-header {
+    padding: 30px 1.5rem;
+  }
+  
+  .product-by-category-header::after {
+    font-size: 2rem;
+    right: 20px;
   }
   
   .product-by-category-title {
     font-size: 2rem;
+  }
+  
+  .product-by-category-title::before,
+  .product-by-category-title::after {
+    display: none;
   }
   
   .product-by-category-subtitle {
@@ -378,17 +760,35 @@
   }
   
   .product-by-category-container {
-    padding: 0 2rem 3rem;
+    padding: 0 1.5rem 3rem;
+  }
+  
+  .product-by-category-content {
+    padding: 1.5rem 1.2rem 1.2rem;
+  }
+  
+  .product-by-category-card-title {
+    font-size: 1.1rem;
+    min-height: 3rem;
+  }
+  
+  .product-by-category-price {
+    font-size: 1.2rem;
+  }
+  
+  .product-by-category-features {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .product-by-category-feature:not(:last-child)::after {
+    display: none;
   }
 }
 
-@media (max-width: 768px) {
-  .product-by-category-page {
-    padding-top: 180px;
-  }
-  
+@media (max-width: 576px) {
   .product-by-category-header {
-    padding: 25px 1.5rem;
+    padding: 25px 1rem;
   }
   
   .product-by-category-title {
@@ -396,47 +796,7 @@
   }
   
   .product-by-category-container {
-    padding: 0 1.5rem 2rem;
-  }
-  
-  .product-by-category-content {
-    padding: 1.2rem;
-  }
-  
-  .product-by-category-card-title {
-    font-size: 1rem;
-    min-height: 2.8rem;
-  }
-  
-  .product-by-category-card-description {
-    font-size: 0.85rem;
-  }
-  
-  .product-by-category-price {
-    font-size: 1.1rem;
-  }
-  
-  .product-by-category-view-btn {
-    padding: 0.7rem 1.2rem;
-    font-size: 0.85rem;
-  }
-}
-
-@media (max-width: 576px) {
-  .product-by-category-page {
-    padding-top: 160px;
-  }
-  
-  .product-by-category-header {
-    padding: 20px 1rem;
-  }
-  
-  .product-by-category-title {
-    font-size: 1.5rem;
-  }
-  
-  .product-by-category-container {
-    padding: 0 1rem 1.5rem;
+    padding: 0 1rem 2rem;
   }
   
   .product-by-category-grid {
@@ -444,32 +804,29 @@
   }
   
   .product-by-category-content {
-    padding: 1rem;
+    padding: 1.2rem 1rem 1rem;
   }
   
   .product-by-category-card-title {
-    font-size: 0.95rem;
-    margin-bottom: 0.5rem;
-    min-height: 2.6rem;
-  }
-  
-  .product-by-category-card-description {
-    font-size: 0.8rem;
-    margin-bottom: 0.8rem;
-  }
-  
-  .product-by-category-meta {
-    margin: 0.8rem 0 1rem;
-    padding-top: 0.8rem;
+    font-size: 1rem;
+    min-height: 2.8rem;
   }
   
   .product-by-category-price {
-    font-size: 1rem;
+    font-size: 1.1rem;
   }
   
   .product-by-category-view-btn {
-    padding: 0.6rem 1rem;
-    font-size: 0.8rem;
+    padding: 0.8rem 1.5rem;
+    font-size: 0.85rem;
+  }
+  
+  .product-by-category-faq {
+    padding: 1.5rem;
+  }
+  
+  .product-by-category-faq-title {
+    font-size: 1.3rem;
   }
 }
 
@@ -485,6 +842,11 @@
   .product-by-category-header {
     background: white;
     border-bottom: 1px solid #ddd;
+  }
+  
+  .product-by-category-header::before,
+  .product-by-category-header::after {
+    display: none;
   }
   
   .product-by-category-container {
@@ -503,13 +865,27 @@
 }
 
 /* ============================================
-   OPTIONAL: Remove any unwanted margins/padding
-   from parent containers that might affect the grid
+   ANIMATIONS
    ============================================ */
-body, 
-#__next, 
-.main-layout,
-.page-wrapper {
-  overflow-x: hidden;
-  width: 100%;
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
+
+.product-by-category-card {
+  animation: fadeIn 0.6s ease forwards;
+}
+
+/* Stagger animation for cards */
+.product-by-category-grid > *:nth-child(1) { animation-delay: 0.1s; }
+.product-by-category-grid > *:nth-child(2) { animation-delay: 0.2s; }
+.product-by-category-grid > *:nth-child(3) { animation-delay: 0.3s; }
+.product-by-category-grid > *:nth-child(4) { animation-delay: 0.4s; }
+.product-by-category-grid > *:nth-child(5) { animation-delay: 0.5s; }
+.product-by-category-grid > *:nth-child(6) { animation-delay: 0.6s; }
