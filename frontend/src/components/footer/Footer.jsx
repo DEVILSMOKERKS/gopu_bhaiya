@@ -7,7 +7,7 @@ import { FaInstagram, FaFacebook, FaYoutube, FaCheck, FaTimes, FaEnvelope, FaPho
 import Link from 'next/link';
 import axios from 'axios';
 import WhatsAppFloat from '../WhatsAppFloat/WhatsAppFloat';
-import logo from '../../assets/Images/img/imag2.jpeg';
+import logo from '../../assets/Images/img/logobanner.png';
 
 
 const Footer = () => {
@@ -162,7 +162,7 @@ const Footer = () => {
               </label>
             </div>
 
-            <div className="footer-social-icons">
+            {/* <div className="footer-social-icons">
               <a
                 href="https://www.instagram.com/mateshwari_exports/"
                 target="_blank"
@@ -187,8 +187,8 @@ const Footer = () => {
               >
                 <FaYoutube />
               </a>
-            </div>
-          </div>
+            </div> */}
+          </div>  
         </div>
 
         {/* Right Section - Navigation Columns */}
@@ -235,13 +235,13 @@ const Footer = () => {
 
             <h3 className="footer-column-title footer-follow-title">Follow Us</h3>
             <div className="footer-social-icons footer-social-icons-right">
-              <a href="https://www.instagram.com/mateshwari_exports/" target="_blank" rel="noopener noreferrer" className="footer-social-icon">
+              <a href="https://www.instagram.com/reel/DVA2HgUknfx/?utm_source=ig_web_copy_link" target="_blank" rel="noopener noreferrer" className="footer-social-icon">
                 <FaInstagram />
               </a>
-              <a href="https://www.facebook.com/mateshwariexports/" target="_blank" rel="noopener noreferrer" className="footer-social-icon">
+              <a href="facebook.com/share/18i5K67wfR/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" className="footer-social-icon">
                 <FaFacebook />
               </a>
-              <a href="https://youtube.com/@mateshwarimoortibhandar" target="_blank" rel="noopener noreferrer" className="footer-social-icon">
+              <a href="https://youtube.com/@mateshwarimoortibhandar?si=aS0wJmJW-7apUe2f" target="_blank" rel="noopener noreferrer" className="footer-social-icon">
                 <FaYoutube />
               </a>
             </div>

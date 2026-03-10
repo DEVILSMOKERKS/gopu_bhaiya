@@ -123,7 +123,7 @@ const ProductsPage = () => {
                       <p className="product-by-category-card-description">
                         {cat.description ? `${String(cat.description).slice(0, 120)}${cat.description.length > 120 ? '...' : ''}` : 'View variants'}
                       </p>
-                      <span className="product-by-category-view-btn">View Variants</span>
+                      <span className="product-by-category-view-btn">View More</span>
                     </div>
                   </div>
                 </Link>

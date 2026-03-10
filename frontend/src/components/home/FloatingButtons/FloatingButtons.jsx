@@ -19,7 +19,7 @@ const FloatingButtons = () => {
 
   return (
     <>
-      <div className="float-btns">
+      {/* <div className="float-btns">
         <a
           href="https://wa.me/919876543210"
           target="_blank"
@@ -36,7 +36,7 @@ const FloatingButtons = () => {
         >
           <FaPhone />
         </a>
-      </div>
+      </div> */}
 
       <button
         className={`back-to-top ${showTop ? 'visible' : ''}`}
