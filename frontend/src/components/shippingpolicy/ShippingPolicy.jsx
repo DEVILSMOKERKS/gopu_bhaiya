@@ -263,6 +263,9 @@ const ShippingPolicy = () => {
       <div className="shipping-policy-content">
         <header className="shipping-policy-header">
           <h1>{policyData.header?.page_title || 'SHIPPING POLICY'}</h1>
+          <p>
+            Learn how we pack, dispatch, and deliver handcrafted marble idols, temples, and custom devotional pieces with care.
+          </p>
           <p className="shipping-policy-last-updated">
             Last Updated: {policyData.header?.last_updated ? new Date(policyData.header.last_updated).toLocaleDateString() : new Date().toLocaleDateString()}
           </p>

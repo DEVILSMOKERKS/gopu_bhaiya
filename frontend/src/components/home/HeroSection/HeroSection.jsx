@@ -83,7 +83,7 @@ const HeroSection = () => {
   const slide = slides[currentSlide];
 
   return (
-    <section className="hero-slider-section">
+    <section className="hero-slider-section" aria-label="Featured collections carousel">
       <div className="hero-slider-desktop">
         <div className="hero-slider-images">
           <Image
@@ -123,17 +123,31 @@ const HeroSection = () => {
         </div>
       </div>
 
-      <button className="hero-slider-nav hero-slider-prev" onClick={goToPrevious}>
-        <FaChevronLeft />
+      <button
+        type="button"
+        className="hero-slider-nav hero-slider-prev"
+        onClick={goToPrevious}
+        aria-label="Previous slide"
+      >
+        <FaChevronLeft aria-hidden="true" />
       </button>
-      <button className="hero-slider-nav hero-slider-next" onClick={goToNext}>
-        <FaChevronRight />
+      <button
+        type="button"
+        className="hero-slider-nav hero-slider-next"
+        onClick={goToNext}
+        aria-label="Next slide"
+      >
+        <FaChevronRight aria-hidden="true" />
       </button>
 
-      <div className="hero-slider-dots">
+      <div className="hero-slider-dots" role="tablist" aria-label="Hero slide navigation">
         {slides.map((s, index) => (
           <button
             key={s.id}
+            type="button"
+            role="tab"
+            aria-selected={index === currentSlide}
+            aria-label={`Go to slide ${index + 1}`}
             className={`hero-slider-dot ${index === currentSlide ? 'active' : ''}`}
             onClick={() => goToSlide(index)}
           />

@@ -15,15 +15,15 @@ const MarqueeStrip = () => {
 
   const repeated = [...items, ...items];
 
-  return (
-    <div className="marquee-strip">
-      <div className="marquee-strip-inner">
-        {repeated.map((text, i) => (
-          <span key={i} className="marquee-strip-item">{text}</span>
-        ))}
-      </div>
-    </div>
-  );
+  // return (
+  //   <div className="marquee-strip">
+  //     <div className="marquee-strip-inner">
+  //       {repeated.map((text, i) => (
+  //         <span key={i} className="marquee-strip-item">{text}</span>
+  //       ))}
+  //     </div>
+  //   </div>
+  // );
 };
 
 export default MarqueeStrip;

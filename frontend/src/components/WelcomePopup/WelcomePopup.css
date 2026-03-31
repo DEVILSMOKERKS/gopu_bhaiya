@@ -1,0 +1,188 @@
+/* ============================================
+   WELCOME POPUP — Page refresh popup, glass style
+   ============================================ */
+
+.welcome-popup-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: rgba(0, 0, 0, 0);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.4s ease, visibility 0.4s ease, background 0.4s ease;
+}
+
+.welcome-popup-backdrop--visible {
+  opacity: 1;
+  visibility: visible;
+  background: rgba(0, 0, 0, 0.45);
+}
+
+.welcome-popup-box {
+  position: relative;
+  width: 100%;
+  max-width: 440px;
+  padding: 40px 32px 36px;
+  background: rgba(255, 253, 247, 0.96);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: 16px;
+  box-shadow: 0 24px 64px rgba(61, 43, 16, 0.2), 0 0 0 1px rgba(255, 255, 255, 0.5) inset;
+  transform: scale(0.95);
+  transition: transform 0.35s ease;
+}
+
+.welcome-popup-backdrop--visible .welcome-popup-box {
+  transform: scale(1);
+}
+
+.welcome-popup-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 40px;
+  height: 40px;
+  border: none;
+  background: rgba(92, 64, 51, 0.08);
+  color: #3D2B10;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.welcome-popup-close svg {
+  width: 20px;
+  height: 20px;
+}
+
+.welcome-popup-close:hover {
+  background: rgba(92, 64, 51, 0.15);
+  transform: scale(1.05);
+}
+
+.welcome-popup-title {
+  font-family: 'Times New Roman', Times, Georgia, serif;
+  font-size: clamp(1.35rem, 2.5vw, 1.6rem);
+  font-weight: 600;
+  color: #3D2B10;
+  margin: 0 0 14px;
+  line-height: 1.3;
+  padding-right: 36px;
+}
+
+.welcome-popup-text {
+  font-family: 'Times New Roman', Times, Georgia, serif;
+  font-size: 1rem;
+  color: #5C4033;
+  line-height: 1.55;
+  margin: 0 0 20px;
+}
+
+.welcome-popup-box--form {
+  max-width: 420px;
+}
+
+.welcome-popup-form {
+  margin-top: 4px;
+}
+
+.welcome-popup-form .form-input-group {
+  margin-bottom: 12px;
+}
+
+.welcome-popup-form .form-input-group:last-of-type {
+  margin-bottom: 16px;
+}
+
+.welcome-popup-btn--submit {
+  display: block;
+  width: 100%;
+  padding: 14px 24px;
+  background: linear-gradient(135deg, #C9A84C, #A07828);
+  color: #FFFDF7;
+  font-family: 'Times New Roman', Times, Georgia, serif;
+  font-size: 1rem;
+  font-weight: 600;
+  text-align: center;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  box-shadow: 0 4px 20px rgba(201, 168, 76, 0.35);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.welcome-popup-btn--submit:hover:not(.loading) {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(201, 168, 76, 0.45);
+}
+
+.welcome-popup-btn--submit.loading {
+  opacity: 0.85;
+  cursor: not-allowed;
+}
+
+.welcome-popup-form .status-alert {
+  margin-top: 12px;
+}
+
+.welcome-popup-btn {
+  display: inline-block;
+  width: 100%;
+  padding: 14px 24px;
+  background: linear-gradient(135deg, #C9A84C, #A07828);
+  color: #FFFDF7;
+  font-family: 'Times New Roman', Times, Georgia, serif;
+  font-size: 1rem;
+  font-weight: 600;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(201, 168, 76, 0.35);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.welcome-popup-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(201, 168, 76, 0.45);
+}
+
+/* Mobile: 85–90% width, large close button */
+@media (max-width: 480px) {
+  .welcome-popup-backdrop {
+    padding: 16px;
+  }
+
+  .welcome-popup-box {
+    width: 90%;
+    max-width: none;
+    padding: 36px 24px 32px;
+  }
+
+  .welcome-popup-close {
+    top: 12px;
+    right: 12px;
+    width: 48px;
+    height: 48px;
+  }
+
+  .welcome-popup-close svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  .welcome-popup-title {
+    padding-right: 0;
+    margin-bottom: 12px;
+  }
+
+  .welcome-popup-text {
+    margin-bottom: 20px;
+  }
+}

@@ -1,9 +1,11 @@
+'use client';
+
 import React, { useState, useEffect, useRef } from 'react';
 import './CustomTempleProjects.css';
-// Import background images - Update these paths when images are available
 import customProjectsBgDesktop from '../../../assets/Images/banner/customProjectsBgDesktop.jpg';
 import customProjectsBgMobile from '../../../assets/Images/banner/customProjectsBgMobile.jpg';
 import mandirImage from '../../../assets/Images/banner/mandir.jpg';
+import manufacturingImage1 from '../../../assets/Images/banner/manufacturingImage1.jpg';
 
 const stats = [
   { number: '97+', label: 'Cities' },
@@ -65,19 +67,30 @@ const CustomTempleProjects = () => {
   const [hasAnimated, setHasAnimated] = useState(false);
   const [countValues, setCountValues] = useState(stats.map(() => 0));
   const [isMobile, setIsMobile] = useState(false);
+  const [bgIndex, setBgIndex] = useState(0);
 
-  // Handle responsive background image
+  const backgroundSlides = [
+    mandirImage,
+    customProjectsBgDesktop,
+    customProjectsBgMobile,
+    manufacturingImage1,
+  ].filter(Boolean);
+
+  // Background slider: change every 5 seconds with smooth transition
   useEffect(() => {
-    const checkScreenSize = () => {
-      setIsMobile(window.innerWidth <= 968);
-    };
+    if (backgroundSlides.length <= 1) return;
+    const t = setInterval(() => {
+      setBgIndex((i) => (i + 1) % backgroundSlides.length);
+    }, 5000);
+    return () => clearInterval(t);
+  }, [backgroundSlides.length]);
 
+  // Handle responsive
+  useEffect(() => {
+    const checkScreenSize = () => setIsMobile(window.innerWidth <= 968);
     checkScreenSize();
     window.addEventListener('resize', checkScreenSize);
-
-    return () => {
-      window.removeEventListener('resize', checkScreenSize);
-    };
+    return () => window.removeEventListener('resize', checkScreenSize);
   }, []);
 
   // Intersection Observer to detect when stats container is fully visible
@@ -133,25 +146,20 @@ const CustomTempleProjects = () => {
     return img;
   };
 
-  const mandirSrc = getImageSrc(mandirImage);
-  const desktopBgSrc = getImageSrc(customProjectsBgDesktop);
-  const mobileBgSrc = getImageSrc(customProjectsBgMobile);
-
-  // Determine which background image to use
-  const backgroundImageSrc = mandirSrc
-    ? mandirSrc
-    : (isMobile ? mobileBgSrc : desktopBgSrc);
-
-  // Use inline styles for background image (Next.js compatible)
-  const sectionStyle = {
-    backgroundImage: backgroundImageSrc ? `url(${backgroundImageSrc})` : 'none',
-    backgroundSize: 'cover',
-    backgroundPosition: 'center',
-    backgroundRepeat: 'no-repeat'
-  };
-
   return (
-    <section ref={sectionRef} className="custom-temple-projects" style={sectionStyle}>
+    <section ref={sectionRef} className="custom-temple-projects">
+      {/* Background image slider — changes every 5s, smooth fade; content stays fixed on top */}
+      <div className="custom-temple-projects-bg-slider" aria-hidden="true">
+        {backgroundSlides.map((img, i) => (
+          <div
+            key={i}
+            className={`custom-temple-projects-bg-slide ${i === bgIndex ? 'active' : ''}`}
+            style={{
+              backgroundImage: getImageSrc(img) ? `url(${getImageSrc(img)})` : 'none',
+            }}
+          />
+        ))}
+      </div>
       <div className="custom-temple-projects-container">
         <h2 className="custom-temple-projects-title">Our Custom Completed Projects</h2>
         <p className="custom-temple-projects-subtitle">Crafted With Creativity, Built With Excellence</p>

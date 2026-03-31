@@ -60,7 +60,7 @@ const OurCreations = () => {
       <div className="creations-header">
         <h1 className="creations-title h2style">Our Creations</h1>
         <p className="creations-subtitle">
-          Discover our exquisite collection of handcrafted spiritual and artistic creations
+          Explore signature marble idols, temple concepts, pooja room ideas, and custom devotional work created with patience, detail, and traditional artistry.
         </p>
       </div>
 
@@ -84,7 +84,7 @@ const OurCreations = () => {
 
         <div className="creations-cta">
           <h2 className="cta-title">Interested in Custom Creations?</h2>
-          <p className="cta-text">We specialize in creating unique pieces tailored to your vision</p>
+          <p className="cta-text">We would love to create a piece that reflects your space, your devotion, and your vision.</p>
           <Link href="/book-appointment" className="cta-button">
             Book a Consultation
           </Link>

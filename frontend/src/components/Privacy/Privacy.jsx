@@ -7,6 +7,10 @@ const Privacypolicy = () => {
       <div className="privacy-policy-content">
         <header className="privacy-header">
           <h1>Privacy Policy</h1>
+          <p>
+            This page explains what information we collect, why we collect it, and how we keep it safe when you browse,
+            enquire, or place an order with Mateshwari Moorti Bhandar.
+          </p>
           <p className="privacy-last-updated">
             Last Updated: {new Date().toLocaleDateString()}
           </p>
@@ -26,7 +30,7 @@ const Privacypolicy = () => {
           <h2>2. Information We Collect</h2>
 
           <h3>2.1 Personal Information</h3>
-          <p>We may collect the following personal information: Name, email address, phone number, and postal address; Date of birth and gender (for personalized fashion recommendations); Payment information (credit card details, billing address); Purchase history and preferences; Customer service communications; Account credentials and profile information.</p>
+          <p>We may collect the following personal information: Name, email address, phone number, and postal address; payment information and billing details; order history and preferences; customer support conversations; and account or profile information you choose to share with us.</p>
 
           <h3>2.2 Automatically Collected Information</h3>
           <p>When you visit our website or use our app, we automatically collect: Device information (IP address, browser type, operating system); Usage data (pages visited, time spent, links clicked); Location data (with your consent); Cookies and similar tracking technologies.</p>
@@ -34,7 +38,7 @@ const Privacypolicy = () => {
 
         <section className="privacy-policy-section">
           <h2>3. How We Use Your Information</h2>
-          <p>We use the collected information for the following purposes: Process and fulfill your clothing orders; Provide customer support and respond to inquiries; Send order confirmations, shipping updates, and delivery notifications; Personalize your shopping experience and recommend products; Send marketing communications (with your consent); Improve our website, products, and services; Prevent fraud and ensure security; Comply with legal obligations.</p>
+          <p>We use the collected information to process your orders, respond to enquiries, send shipping and delivery updates, improve your experience on the website, recommend relevant products or services, prevent fraud, and comply with legal requirements.</p>
         </section>
 
         <section className="privacy-policy-section">
@@ -59,7 +63,7 @@ const Privacypolicy = () => {
 
         <section className="privacy-policy-section">
           <h2>8. Marketing Communications</h2>
-          <p>We may send you marketing communications about our latest fashion collections, promotions, and events. You can: Opt-in to receive marketing emails during account creation; Unsubscribe from marketing emails using the link in each email; Update your communication preferences in your account settings.</p>
+          <p>We may occasionally send updates about new collections, festive launches, consultations, and special offers. You can opt in when sharing your details, unsubscribe through the link in our emails, or ask us directly to update your communication preferences.</p>
         </section>
 
         <section className="privacy-policy-section">

@@ -194,6 +194,9 @@ const BookAppointment = () => {
     <div className="book-appointment-page">
       <div className="book-appointment-container">
         <h1 className="book-appointment-title">BOOK AN APPOINTMENT NOW</h1>
+        <p style={{ textAlign: 'center', fontSize: '1.1rem', color: '#666', marginBottom: '2rem' }}>
+          Schedule a personalized consultation with our expert team to discuss your custom marble idol design, temple setup, or spiritual art needs. We're here to help bring your vision to life with authentic craftsmanship and devotion.
+        </p>
 
         <form onSubmit={handleSubmit} className="appointment-form">
           {/* Personal Information Fields */}

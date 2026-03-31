@@ -1,458 +1,624 @@
 /* ============================================
-   MANUFACTURES IN MOTION - LIGHT THEME
-   CLEAN, MINIMAL, FULL WIDTH SLIDES
+   MANUFACTURES IN MOTION — Divine / Handicraft Theme
+   Sacred artisan aesthetic: marble, gold, lotus, mandala
    ============================================ */
 
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&family=Montserrat:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&display=swap');
 
 :root {
-  --light-bg: #fff5e6;              /* Soft Cream - Main Background */
-  --light-saffron: #ff9933;          /* Saffron - Primary Accent */
-  --light-saffron-dark: #e68a2e;      /* Darker Saffron - Hover States */
-  --text-primary: #4a3b2f;              /* Warm Dark Brown - Primary Text */
-  --text-secondary: #6b5a4c;             /* Medium Brown - Secondary Text */
-  --text-tertiary: #8b7a6b;               /* Lighter Brown for descriptions */
-  --text-white: #ffffff;                  /* White Text */
-  --border-light: #e8e0d8;                 /* Soft Border */
-  --shadow-soft: 0 4px 12px rgba(0, 0, 0, 0.03);
-  --shadow-hover: 0 8px 24px rgba(0, 0, 0, 0.08);
-  --card-bg: #ffffff;                      /* White for cards */
-  --transition-smooth: all 0.3s ease;
+  --mp-cream: #FFFDF7;
+  --mp-cream-alt: #FAF6EE;
+  --mp-cream-deep: #F2EBD9;
+  --mp-saffron: #C9A84C;
+  --mp-saffron-light: #E8C96A;
+  --mp-saffron-dark: #A07828;
+  --mp-brown: #3D2B10;
+  --mp-brown-muted: #7A5C30;
+  --mp-border: rgba(201, 168, 76, 0.35);
+  --mp-border-strong: rgba(201, 168, 76, 0.65);
+  --mp-shadow: 0 4px 24px rgba(61, 43, 16, 0.12);
 }
 
 /* ============================================
-   MAIN SECTION - FULL WIDTH NO PADDING
+   OUTER WRAPPER — sacred atmosphere
    ============================================ */
-.manufacturing-process {
+.manufacturing-process--blueprint {
+  width: 100%;
   padding: 0;
-  background: var(--light-bg);
+  min-height: 100vh;
   position: relative;
   overflow: hidden;
-  width: 100vw; /* Full viewport width */
-  max-width: 100%;
-  left: 50%;
-  right: 50%;
-  margin-left: -50vw; /* Center alignment trick */
-  margin-right: -50vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(180deg,
+    #1E1005 0%,
+    #2A1A06 3.5%,
+    #F5EDD8 7%,
+    #EDE5CC 45%,
+    #E8DFC8 55%,
+    #F0E8D5 93%,
+    #2A1A06 96.5%,
+    #1E1005 100%
+  );
 }
 
-/* Remove all decorative pseudo-elements */
-.manufacturing-process::before,
-.manufacturing-process::after {
-  display: none !important;
-}
-
-.manufacturing-process-container {
-  max-width: 100%; /* Full width */
-  margin: 0 auto;
-  position: relative;
-  z-index: 2;
-  padding: 0; /* No padding */
-  width: 100%;
-}
-
-/* ============================================
-   CINEMATIC TITLE - LIGHT THEME
-   ============================================ */
-.manufacturing-process-title {
-  font-size: 3.5rem;
-  font-weight: 800;
-  text-align: left;
-  margin-bottom: 30px;
-  color: var(--text-primary);
-  font-family: 'Playfair Display', serif;
-  letter-spacing: 1px;
-  position: relative;
-  line-height: 2.1;
-  text-transform: uppercase;
-  padding: 0 2.5rem; /* Only horizontal padding for text */
-}
-
-/* Saffron Underline */
-.manufacturing-process-title::after {
+.manufacturing-process--blueprint::before {
   content: '';
   position: absolute;
-  bottom: -10px;
-  left: 2.5rem;
-  width: 100px;
-  height: 3px;
-  background: var(--light-saffron);
-  border-radius: 3px;
-}
-
-/* Remove all decorative elements */
-.manufacturing-process-title::before {
-  display: none;
-}
-
-.manufacturing-process-title span {
-  display: block;
-  font-size: 1rem;
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 400;
-  letter-spacing: 4px;
-  text-transform: uppercase;
-  color: var(--text-secondary);
-  margin-top: 10px;
-  opacity: 0.8;
-}
-
-/* ============================================
-   DESKTOP GRID - HORIZONTAL SCROLL, NO GAPS
-   ============================================ */
-.manufacturing-process-grid-desktop {
-  display: flex;
-  flex-direction: row;
-  gap: 0; /* NO GAP */
-  overflow-x: auto;
-  overflow-y: hidden;
-  -webkit-overflow-scrolling: touch;
-  scroll-snap-type: x mandatory;
-  scrollbar-width: none;
-  scroll-behavior: smooth;
-  padding: 20px 0 40px; /* NO horizontal padding */
-  margin: 0;
-  cursor: grab;
-}
-
-.manufacturing-process-grid-desktop:active {
-  cursor: grabbing;
-}
-
-.manufacturing-process-grid-desktop::-webkit-scrollbar {
-  display: none;
-}
-
-.manufacturing-process-grid-desktop .manufacturing-process-card {
-  flex: 0 0 25%; /* Exactly 25% for 4 cards */
-  min-width: 25%;
-  scroll-snap-align: start;
-  margin: 0; /* No margin */
-  padding: 0 5px; /* Minimal padding between cards */
-}
-
-/* First and last card adjustments */
-.manufacturing-process-grid-desktop .manufacturing-process-card:first-child {
-  padding-left: 0;
-}
-
-.manufacturing-process-grid-desktop .manufacturing-process-card:last-child {
-  padding-right: 0;
-}
-
-/* ============================================
-   PREMIUM CARDS - LIGHT THEME
-   ============================================ */
-.manufacturing-process-card {
-  position: relative;
-  border-radius: 12px;
-  overflow: hidden;
-  background: var(--card-bg);
-  transition: var(--transition-smooth);
-  aspect-ratio: 2 / 3;
-  min-height: 500px;
-  box-shadow: var(--shadow-soft);
-  border: 1px solid var(--border-light);
-  width: 100%;
-}
-
-/* Remove all decorative pseudo-elements */
-.manufacturing-process-card::before,
-.manufacturing-process-card::after {
-  display: none !important;
-}
-
-/* Hover Effect */
-.manufacturing-process-card:hover {
-  transform: translateY(-8px);
-  box-shadow: var(--shadow-hover);
-  border-color: var(--light-saffron);
-}
-
-/* ============================================
-   IMAGE STYLING
-   ============================================ */
-.manufacturing-process-image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  border-radius: 12px;
-  transition: transform 0.5s ease;
-}
-
-.manufacturing-process-card:hover .manufacturing-process-image {
-  transform: scale(1.05);
-}
-
-/* Gradient Overlay - Subtle */
-.manufacturing-process-card .image-overlay {
-  position: absolute;
   inset: 0;
-  background: linear-gradient(to bottom, 
-    transparent 60%,
-    rgba(0,0,0,0.02) 80%,
-    rgba(0,0,0,0.05) 100%
-  );
-  z-index: 5;
+  background-image:
+    radial-gradient(ellipse at 50% 8%,  rgba(201,168,76,0.20) 0%, transparent 48%),
+    radial-gradient(ellipse at 50% 92%, rgba(201,168,76,0.16) 0%, transparent 48%),
+    radial-gradient(circle at 0%  50%,  rgba(160,120,40,0.07) 0%, transparent 38%),
+    radial-gradient(circle at 100% 50%, rgba(160,120,40,0.07) 0%, transparent 38%);
   pointer-events: none;
-  border-radius: 12px;
+  z-index: 0;
 }
 
 /* ============================================
-   PAGINATION DOTS - LIGHT THEME
+   TOP DARK BAND
    ============================================ */
-.manufacturing-process-pagination {
+.mp-band--top {
+  width: 100%;
+  position: relative;
+  z-index: 2;
+  background: linear-gradient(180deg, #1A0E04 0%, #2A1A06 65%, #3D2610 100%);
+  padding: 20px 0 16px;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
   gap: 10px;
-  margin-top: 30px;
-  padding-bottom: 40px;
+  border-bottom: 2px solid var(--mp-saffron-dark);
+  box-shadow: 0 6px 40px rgba(0,0,0,0.45);
+}
+
+.mp-band--bottom {
+  width: 100%;
+  position: relative;
+  z-index: 2;
+  background: linear-gradient(0deg, #1A0E04 0%, #2A1A06 65%, #3D2610 100%);
+  padding: 16px 0 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  border-top: 2px solid var(--mp-saffron-dark);
+  box-shadow: 0 -6px 40px rgba(0,0,0,0.45);
+}
+
+/* Ornament row inside bands */
+.mp-ornament-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 880px;
+  padding: 0 28px;
+}
+
+.mp-ornament-line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--mp-saffron) 40%, var(--mp-saffron-light) 50%, var(--mp-saffron) 60%, transparent);
+  margin: 0 14px;
+}
+
+/* Mantra strip */
+.mp-mantra-strip {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 0.68rem;
+  letter-spacing: 0.38em;
+  color: var(--mp-saffron);
+  opacity: 0.72;
+  text-transform: uppercase;
+  text-align: center;
+  user-select: none;
+}
+
+/* ============================================
+   CONTAINER
+   ============================================ */
+.manufacturing-process-container--blueprint {
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  position: relative;
+  z-index: 3;
+}
+
+/* ============================================
+   TITLE BLOCK
+   ============================================ */
+.mp-title-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 38px 1rem 24px;
+}
+
+.mp-lotus-icon {
+  margin-bottom: 12px;
+  opacity: 0.82;
+}
+
+.manufacturing-process-title--blueprint {
+  font-family: 'Cinzel', 'Times New Roman', serif;
+  font-size: clamp(1.45rem, 2.6vw, 2.3rem);
+  font-weight: 600;
+  color: var(--mp-brown);
+  margin: 0;
+  letter-spacing: 0.12em;
+  line-height: 1.2;
+  text-align: center;
+}
+
+.mp-title-sub {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-style: italic;
+  font-size: clamp(0.82rem, 1.3vw, 1.02rem);
+  color: var(--mp-brown-muted);
+  margin: 8px 0 0;
+  letter-spacing: 0.1em;
+  opacity: 0.82;
+}
+
+.mp-title-rule {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.mp-title-rule-line {
+  width: 76px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--mp-saffron));
+}
+
+.mp-title-rule-line--right {
+  background: linear-gradient(90deg, var(--mp-saffron), transparent);
+}
+
+.mp-title-rule-diamond {
+  width: 7px;
+  height: 7px;
+  background: var(--mp-saffron);
+  transform: rotate(45deg);
+  flex-shrink: 0;
+}
+
+/* ============================================
+   CAROUSEL FRAME — row: left-col | stage | right-col
+   ============================================ */
+.manufacturing-process-carousel-frame {
+  position: relative;
+  width: 100%;
+  padding: 0 0 36px;
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+}
+
+/* ============================================
+   SIDE COLUMNS — decorative themed strips
+   ============================================ */
+.mp-side-column {
+  flex-shrink: 0;
+  width: clamp(52px, 6.5vw, 100px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  padding: 16px 0;
   position: relative;
   z-index: 10;
 }
 
-/* Decorative Line Behind Dots */
-.manufacturing-process-pagination::before {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 150px;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, var(--light-saffron), transparent);
-  opacity: 0.3;
+.mp-side-column--left {
+  border-right: 1px solid var(--mp-border);
+  background: linear-gradient(180deg,
+    rgba(201,168,76,0.0) 0%,
+    rgba(201,168,76,0.05) 30%,
+    rgba(201,168,76,0.07) 50%,
+    rgba(201,168,76,0.05) 70%,
+    rgba(201,168,76,0.0) 100%
+  );
 }
 
-.manufacturing-process-dot {
-  width: 10px;
-  height: 10px;
+.mp-side-column--right {
+  border-left: 1px solid var(--mp-border);
+  background: linear-gradient(180deg,
+    rgba(201,168,76,0.0) 0%,
+    rgba(201,168,76,0.05) 30%,
+    rgba(201,168,76,0.07) 50%,
+    rgba(201,168,76,0.05) 70%,
+    rgba(201,168,76,0.0) 100%
+  );
+}
+
+.mp-side-line {
+  position: absolute;
+  top: 8%;
+  bottom: 8%;
+  width: 1px;
+  background: linear-gradient(180deg,
+    transparent 0%,
+    var(--mp-saffron) 25%,
+    var(--mp-saffron-light) 50%,
+    var(--mp-saffron) 75%,
+    transparent 100%
+  );
+  opacity: 0.38;
+}
+
+.mp-side-column--left  .mp-side-line { right: 12px; }
+.mp-side-column--right .mp-side-line { left: 12px; }
+
+.mp-side-motif {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  opacity: 0.72;
+}
+
+.mp-side-dot-stack {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+}
+
+.mp-side-dot {
   border-radius: 50%;
-  border: 2px solid var(--light-saffron);
-  background: transparent;
+  background: var(--mp-saffron);
+}
+
+/* ============================================
+   ARROWS — sit inside side columns
+   ============================================ */
+.manufacturing-process-arrow {
+  position: relative;
+  z-index: 20;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 1.5px solid var(--mp-saffron);
+  background: rgba(255,253,247,0.88);
+  backdrop-filter: blur(4px);
+  color: var(--mp-saffron-dark);
   cursor: pointer;
-  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.26s ease;
   padding: 0;
+  box-shadow: 0 2px 14px rgba(61,43,16,0.16);
+  flex-shrink: 0;
+}
+
+.manufacturing-process-arrow svg { width: 20px; height: 20px; }
+
+.manufacturing-process-arrow:hover {
+  background: var(--mp-saffron);
+  color: var(--mp-cream);
+  border-color: var(--mp-saffron-dark);
+  box-shadow: 0 4px 22px rgba(201,168,76,0.42);
+  transform: scale(1.1);
+}
+
+.manufacturing-process-arrow:active { transform: scale(0.94); }
+
+/* ============================================
+   STAGE WRAPPER & STAGE
+   ============================================ */
+.mp-stage-wrap {
+  flex: 1;
+  min-width: 0;
   position: relative;
 }
 
-.manufacturing-process-dot:hover {
-  transform: scale(1.2);
-  background: var(--light-saffron);
+.manufacturing-process-stage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 55px;
+  min-height: 80vh;
+  width: 100%;
+  position: relative;
+  perspective: 2200px;
+  transform-style: preserve-3d;
+  touch-action: pan-y;
+  overflow: visible;
 }
 
-.manufacturing-process-dot.active {
-  width: 30px;
-  border-radius: 15px;
-  background: var(--light-saffron);
-  border-color: var(--light-saffron);
+/* ============================================
+   PAGE TURN ANIMATION
+   ============================================ */
+.manufacturing-process-stage--direction-next .manufacturing-process-panel--center {
+  animation: pageTurnFromRight 0.78s cubic-bezier(0.33, 0, 0.18, 1) forwards;
+}
+.manufacturing-process-stage--direction-prev .manufacturing-process-panel--center {
+  animation: pageTurnFromLeft 0.78s cubic-bezier(0.33, 0, 0.18, 1) forwards;
+}
+
+@keyframes pageTurnFromRight {
+  0%   { transform: perspective(1400px) rotateY(-40deg) translateX(90px) scale(0.88); opacity: 0.3; }
+  38%  { transform: perspective(1400px) rotateY(-13deg) translateX(22px) scale(0.96); opacity: 0.76; }
+  100% { transform: perspective(1400px) rotateY(0deg)   translateX(0)    scale(1);    opacity: 1; }
+}
+@keyframes pageTurnFromLeft {
+  0%   { transform: perspective(1400px) rotateY(40deg)  translateX(-90px) scale(0.88); opacity: 0.3; }
+  38%  { transform: perspective(1400px) rotateY(13deg)  translateX(-22px) scale(0.96); opacity: 0.76; }
+  100% { transform: perspective(1400px) rotateY(0deg)   translateX(0)     scale(1);    opacity: 1; }
+}
+
+.manufacturing-process-stage--direction-next .manufacturing-process-panel--near-right {
+  animation: sideSlideInR 0.78s cubic-bezier(0.33, 0, 0.18, 1) forwards;
+}
+.manufacturing-process-stage--direction-prev .manufacturing-process-panel--near-left {
+  animation: sideSlideInL 0.78s cubic-bezier(0.33, 0, 0.18, 1) forwards;
+}
+@keyframes sideSlideInR {
+  0%   { opacity: 0.08; transform: scale(0.52) translateX(-44px) rotateY(-24deg); }
+  100% { opacity: 0.88; }
+}
+@keyframes sideSlideInL {
+  0%   { opacity: 0.08; transform: scale(0.52) translateX(44px) rotateY(24deg); }
+  100% { opacity: 0.88; }
+}
+
+/* ============================================
+   PANELS
+   ============================================ */
+.manufacturing-process-panel {
+  flex-shrink: 0;
+  transition:
+    transform 0.78s cubic-bezier(0.33, 0, 0.18, 1),
+    opacity   0.78s cubic-bezier(0.33, 0, 0.18, 1),
+    width     0.78s cubic-bezier(0.33, 0, 0.18, 1);
+  border: 1px solid var(--mp-border);
+  border-radius: 6px;
+  overflow: hidden;
+  background: var(--mp-cream-alt);
+  will-change: transform;
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+}
+
+.manufacturing-process-panel-inner,
+.manufacturing-process-panel-image {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+}
+
+/* CENTER */
+.manufacturing-process-panel--center {
+  width: min(520px, 44vw);
+  height: min(680px, 82vh);
+  max-width: 56vw;
   opacity: 1;
+  z-index: 5;
+  border: 1.5px solid var(--mp-border-strong);
+  box-shadow:
+    0 28px 80px rgba(61,43,16,0.32),
+    0 0 0 1px rgba(201,168,76,0.2);
+}
+
+.manufacturing-process-panel--center .manufacturing-process-panel-inner,
+.manufacturing-process-panel--center .manufacturing-process-panel-image {
+  width: 100%;
+  height: 100%;
+  aspect-ratio: auto;
+  min-height: 100%;
+}
+
+/* NEAR LEFT */
+.manufacturing-process-panel--near-left {
+  width: min(300px, 19vw);
+  height: min(400px, 56vh);
+  opacity: 0.88;
+  transform: scale(0.8) translateX(20px) rotateY(15deg);
+  z-index: 3;
+  margin-right: -50px;
+}
+
+/* NEAR RIGHT */
+.manufacturing-process-panel--near-right {
+  width: min(300px, 19vw);
+  height: min(400px, 56vh);
+  opacity: 0.88;
+  transform: scale(0.8) translateX(-20px) rotateY(-15deg);
+  z-index: 3;
+  margin-left: -50px;
+}
+
+/* FAR LEFT */
+.manufacturing-process-panel--far-left {
+  width: min(195px, 13vw);
+  height: min(260px, 36vh);
+  opacity: 0.5;
+  transform: scale(0.63) translateX(26px) rotateY(22deg);
+  z-index: 2;
+  margin-right: -64px;
+}
+
+/* FAR RIGHT */
+.manufacturing-process-panel--far-right {
+  width: min(195px, 13vw);
+  height: min(260px, 36vh);
+  opacity: 0.5;
+  transform: scale(0.63) translateX(-26px) rotateY(-22deg);
+  z-index: 2;
+  margin-left: -64px;
+}
+
+/* FAR FAR LEFT — new */
+.manufacturing-process-panel--far-far-left {
+  width: min(125px, 8.5vw);
+  height: min(167px, 23vh);
+  opacity: 0.26;
+  transform: scale(0.48) translateX(32px) rotateY(28deg);
+  z-index: 1;
+  margin-right: -70px;
+}
+
+/* FAR FAR RIGHT — new */
+.manufacturing-process-panel--far-far-right {
+  width: min(125px, 8.5vw);
+  height: min(167px, 23vh);
+  opacity: 0.26;
+  transform: scale(0.48) translateX(-32px) rotateY(-28deg);
+  z-index: 1;
+  margin-left: -70px;
+}
+
+/* 3/4 aspect ratio for all non-center panels */
+.manufacturing-process-panel--near-left  .manufacturing-process-panel-inner,
+.manufacturing-process-panel--near-left  .manufacturing-process-panel-image,
+.manufacturing-process-panel--near-right .manufacturing-process-panel-inner,
+.manufacturing-process-panel--near-right .manufacturing-process-panel-image,
+.manufacturing-process-panel--far-left   .manufacturing-process-panel-inner,
+.manufacturing-process-panel--far-left   .manufacturing-process-panel-image,
+.manufacturing-process-panel--far-right  .manufacturing-process-panel-inner,
+.manufacturing-process-panel--far-right  .manufacturing-process-panel-image,
+.manufacturing-process-panel--far-far-left  .manufacturing-process-panel-inner,
+.manufacturing-process-panel--far-far-left  .manufacturing-process-panel-image,
+.manufacturing-process-panel--far-far-right .manufacturing-process-panel-inner,
+.manufacturing-process-panel--far-far-right .manufacturing-process-panel-image {
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 3 / 4;
 }
 
 /* ============================================
-   MOBILE GRID - INTIMATE VIEWING
+   PAGINATION DOTS
    ============================================ */
-.manufacturing-process-grid-mobile {
-  display: none;
+.manufacturing-process-pagination--blueprint {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 13px;
+  padding: 4px 0 0;
+}
+
+.manufacturing-process-dot--blueprint {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  border: 1.5px solid var(--mp-saffron);
+  background: transparent;
+  cursor: pointer;
+  padding: 0;
+  transition: all 0.3s ease;
+}
+
+.manufacturing-process-dot--blueprint:hover {
+  background: rgba(201,168,76,0.32);
+  transform: scale(1.2);
+}
+
+.manufacturing-process-dot--blueprint.active {
+  background: var(--mp-saffron);
+  border-color: var(--mp-saffron-dark);
+  transform: scale(1.18);
+  box-shadow: 0 0 8px rgba(201,168,76,0.5);
 }
 
 /* ============================================
-   RESPONSIVE DESIGN - MAINTAINING FULL WIDTH
+   RESPONSIVE
    ============================================ */
-
-/* Large Desktop */
-@media (max-width: 1400px) {
-  .manufacturing-process-title {
-    font-size: 3.2rem;
-  }
-  
-  .manufacturing-process-grid-desktop .manufacturing-process-card {
-    min-height: 480px;
-  }
-}
-
-/* Tablet Landscape */
 @media (max-width: 1200px) {
-  .manufacturing-process-title {
-    font-size: 2.8rem;
+  .mp-side-column { width: clamp(40px, 5vw, 72px); }
+  .manufacturing-process-panel--center {
+    width: min(440px, 42vw);
+    height: min(587px, 76vh);
   }
-  
-  .manufacturing-process-grid-desktop .manufacturing-process-card {
-    flex: 0 0 33.333%; /* 3 cards */
-    min-width: 33.333%;
-    min-height: 450px;
+  .manufacturing-process-panel--far-far-left,
+  .manufacturing-process-panel--far-far-right {
+    width: min(95px, 6.5vw);
+    height: min(127px, 17vh);
   }
 }
 
-/* Tablet Portrait - Switch to 2 cards */
 @media (max-width: 968px) {
-  .manufacturing-process-title {
-    font-size: 2.5rem;
-    text-align: center;
-    padding: 0 1.5rem;
+  .mp-side-column { width: clamp(34px, 4.5vw, 56px); gap: 14px; }
+  .manufacturing-process-panel--center {
+    width: min(340px, 48vw);
+    height: min(453px, 68vh);
+    max-width: 60vw;
   }
-  
-  .manufacturing-process-title::after {
-    left: 50%;
-    transform: translateX(-50%);
-    width: 80px;
+  .manufacturing-process-panel--near-left,
+  .manufacturing-process-panel--near-right {
+    width: min(210px, 17vw);
+    height: min(280px, 40vh);
+    margin-right: -38px;
   }
-  
-  .manufacturing-process-grid-desktop .manufacturing-process-card {
-    flex: 0 0 50%; /* 2 cards */
-    min-width: 50%;
-    min-height: 400px;
-    padding: 0 8px;
+  .manufacturing-process-panel--near-right { margin-left: -38px; margin-right: 0; }
+  .manufacturing-process-panel--far-left,
+  .manufacturing-process-panel--far-right {
+    width: min(140px, 10vw);
+    height: min(187px, 27vh);
+    margin-right: -56px;
   }
-  
-  .manufacturing-process-pagination::before {
-    width: 120px;
-  }
+  .manufacturing-process-panel--far-right { margin-left: -56px; margin-right: 0; }
+  .manufacturing-process-panel--far-far-left,
+  .manufacturing-process-panel--far-far-right { display: none; }
+  .manufacturing-process-stage { min-height: 68vh; }
+  .mp-band--top, .mp-band--bottom { padding: 14px 0 10px; }
 }
 
-/* Mobile Landscape */
 @media (max-width: 680px) {
-  .manufacturing-process-title {
-    font-size: 2rem;
+  .mp-side-column { display: none; }
+  .manufacturing-process-carousel-frame {
+    padding: 0 0 30px;
+    position: relative;
   }
-  
-  .manufacturing-process-title span {
-    font-size: 0.8rem;
-    letter-spacing: 3px;
+  .manufacturing-process-panel--center {
+    width: min(290px, 74vw);
+    height: min(387px, 58vh);
+    max-width: 80vw;
   }
-  
-  .manufacturing-process-grid-desktop .manufacturing-process-card {
-    flex: 0 0 80%; /* Almost full width */
-    min-width: 80%;
-    min-height: 380px;
-    padding: 0 10px;
+  .manufacturing-process-panel--near-left,
+  .manufacturing-process-panel--near-right {
+    width: min(105px, 15vw);
+    height: min(140px, 21vh);
+    opacity: 0.68;
+    margin-right: -16px;
   }
-  
-  .manufacturing-process-card {
-    min-height: 380px;
+  .manufacturing-process-panel--near-right { margin-left: -16px; margin-right: 0; }
+  .manufacturing-process-panel--far-left,
+  .manufacturing-process-panel--far-right,
+  .manufacturing-process-panel--far-far-left,
+  .manufacturing-process-panel--far-far-right { display: none; }
+  /* fallback arrows on mobile */
+  .manufacturing-process-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 38px;
+    height: 38px;
   }
+  .manufacturing-process-arrow--left  { left: 6px; }
+  .manufacturing-process-arrow--right { right: 6px; }
+  .manufacturing-process-stage { min-height: 62vh; }
+  .manufacturing-process-title--blueprint { font-size: 1.4rem; }
 }
 
-/* Mobile Portrait */
 @media (max-width: 480px) {
-  .manufacturing-process-title {
-    font-size: 1.6rem;
-    padding: 0 1rem;
-    margin-bottom: 20px;
+  .manufacturing-process-panel--center {
+    width: min(264px, 82vw);
+    height: min(352px, 54vh);
   }
-  
-  .manufacturing-process-title span {
-    font-size: 0.7rem;
-    letter-spacing: 2px;
-  }
-  
-  .manufacturing-process-grid-desktop {
-    padding: 10px 0 30px;
-  }
-  
-  .manufacturing-process-grid-desktop .manufacturing-process-card {
-    flex: 0 0 85%;
-    min-width: 85%;
-    min-height: 350px;
-    padding: 0 8px;
-  }
-  
-  .manufacturing-process-card {
-    min-height: 350px;
-    border-radius: 10px;
-  }
-  
-  .manufacturing-process-image {
-    border-radius: 10px;
-  }
-  
-  .manufacturing-process-pagination {
-    gap: 8px;
-    margin-top: 20px;
-    padding-bottom: 30px;
-  }
-  
-  .manufacturing-process-dot {
-    width: 8px;
-    height: 8px;
-    border-width: 1.5px;
-  }
-  
-  .manufacturing-process-dot.active {
-    width: 25px;
-  }
-  
-  .manufacturing-process-pagination::before {
-    width: 100px;
-  }
-}
-
-/* Very Small Devices */
-@media (max-width: 360px) {
-  .manufacturing-process-title {
-    font-size: 1.4rem;
-  }
-  
-  .manufacturing-process-grid-desktop .manufacturing-process-card {
-    flex: 0 0 90%;
-    min-width: 90%;
-    min-height: 320px;
-  }
-  
-  .manufacturing-process-card {
-    min-height: 320px;
-  }
-}
-
-/* ============================================
-   ANIMATIONS - MINIMAL
-   ============================================ */
-
-/* Entry Animation */
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.manufacturing-process-card {
-  animation: fadeInUp 0.5s ease forwards;
-  animation-delay: calc(0.1s * var(--card-index, 0));
-}
-
-/* Stagger Animation */
-.manufacturing-process-card:nth-child(1) { --card-index: 1; }
-.manufacturing-process-card:nth-child(2) { --card-index: 2; }
-.manufacturing-process-card:nth-child(3) { --card-index: 3; }
-.manufacturing-process-card:nth-child(4) { --card-index: 4; }
-.manufacturing-process-card:nth-child(5) { --card-index: 5; }
-
-/* ============================================
-   PRINT STYLES
-   ============================================ */
-@media print {
-  .manufacturing-process {
-    background: white;
-    padding: 20px;
-    width: 100%;
-    left: 0;
-    margin: 0;
-  }
-  
-  .manufacturing-process-pagination {
-    display: none !important;
-  }
-  
-  .manufacturing-process-card {
-    break-inside: avoid;
-    box-shadow: none;
-    border: 1px solid #ddd;
+  .manufacturing-process-panel--near-left,
+  .manufacturing-process-panel--near-right {
+    width: min(84px, 12vw);
+    height: min(112px, 16vh);
+    opacity: 0.58;
   }
 }

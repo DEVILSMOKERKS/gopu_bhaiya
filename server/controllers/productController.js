@@ -25,6 +25,7 @@ const createProduct = async (req, res) => {
       product_detail,
       shipping_info,
       return_policy,
+      status,
       colors,
       sizes,
       attributes
@@ -41,14 +42,16 @@ const createProduct = async (req, res) => {
     // Parse JSON arrays
     let colorsArray = [];
     let sizesArray = [];
+    let attributesArray = [];
 
     try {
       if (colors) colorsArray = JSON.parse(colors);
       if (sizes) sizesArray = JSON.parse(sizes);
+      if (attributes) attributesArray = JSON.parse(attributes);
     } catch (parseError) {
       return res.status(400).json({
         success: false,
-        message: 'Invalid JSON format for colors or sizes'
+        message: 'Invalid JSON format for colors, sizes, or attributes'
       });
     }
 
@@ -69,14 +72,15 @@ const createProduct = async (req, res) => {
       const [productResult] = await connection.execute(
         `INSERT INTO products (sku, name, slug, category_id, subcategory_id, meta_title, meta_description, 
          featured_image, video_url, tags, is_featured, is_new, is_bestseller, is_customizable, 
-         min_order_quantity, lead_time_days, description, product_detail, shipping_info, return_policy) 
-         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+         min_order_quantity, lead_time_days, description, product_detail, shipping_info, return_policy, status) 
+         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
         [
           sku || null, name, productSlug || null, category_id || null, subcategory_id || null,
           meta_title || null, meta_description || null, featured_image || null, video_url || null,
           tags || null, is_featured ? 1 : 0, is_new ? 1 : 0, is_bestseller ? 1 : 0,
           is_customizable ? 1 : 0, min_order_quantity || 1, lead_time_days || null,
-          description || null, product_detail || null, shipping_info || null, return_policy || null
+          description || null, product_detail || null, shipping_info || null, return_policy || null,
+          status || 'active'
         ]
       );
 
@@ -129,7 +133,15 @@ const createProduct = async (req, res) => {
         );
       }
 
-      // Attributes are now managed separately via product-attributes API
+      for (let i = 0; i < attributesArray.length; i++) {
+        const attr = attributesArray[i];
+        if (attr?.name && attr?.value) {
+          await connection.execute(
+            'INSERT INTO product_attributes (product_id, attribute_name, attribute_value, sort_order) VALUES (?, ?, ?, ?)',
+            [productId, attr.name, attr.value, i]
+          );
+        }
+      }
 
       await connection.commit();
       connection.release();
@@ -554,14 +566,16 @@ const updateProduct = async (req, res) => {
     // Parse JSON arrays
     let colorsArray = [];
     let sizesArray = [];
+    let attributesArray = [];
 
     try {
       if (colors) colorsArray = JSON.parse(colors);
       if (sizes) sizesArray = JSON.parse(sizes);
+      if (attributes) attributesArray = JSON.parse(attributes);
     } catch (parseError) {
       return res.status(400).json({
         success: false,
-        message: 'Invalid JSON format for colors or sizes'
+        message: 'Invalid JSON format for colors, sizes, or attributes'
       });
     }
 
@@ -597,9 +611,9 @@ const updateProduct = async (req, res) => {
       );
 
       // Delete existing colors and sizes (this will cascade delete images)
-      // Attributes are managed separately via product-attributes API
       await connection.execute('DELETE FROM product_colors WHERE product_id = ?', [product_id]);
       await connection.execute('DELETE FROM product_sizes WHERE product_id = ?', [product_id]);
+      await connection.execute('DELETE FROM product_attributes WHERE product_id = ?', [product_id]);
 
       // Handle colors and images
       for (let i = 0; i < colorsArray.length; i++) {
@@ -632,7 +646,11 @@ const updateProduct = async (req, res) => {
         if (color.existingImages && Array.isArray(color.existingImages)) {
           const startIndex = color.images ? color.images.length : 0;
           for (let i = 0; i < color.existingImages.length; i++) {
-            const existingImageUrl = color.existingImages[i];
+            const existingImage = color.existingImages[i];
+            const existingImageUrl = typeof existingImage === 'string'
+              ? existingImage
+              : (existingImage?.url || existingImage?.image_url || '');
+            if (!existingImageUrl) continue;
             const altText = color.alt_text || `${color.name} - ${name}`;
             await connection.execute(
               'INSERT INTO product_images (color_id, image_url, alt_text, sort_order, is_default) VALUES (?, ?, ?, ?, ?)',
@@ -658,23 +676,13 @@ const updateProduct = async (req, res) => {
         );
       }
 
-      // Insert product attributes if provided
-      if (attributes) {
-        let attributesArray = [];
-        try {
-          attributesArray = JSON.parse(attributes);
-        } catch (parseError) {
-          console.error('Invalid JSON format for attributes');
-        }
-
-        for (let i = 0; i < attributesArray.length; i++) {
-          const attr = attributesArray[i];
-          if (attr.name && attr.value) {
-            await connection.execute(
-              'INSERT INTO product_attributes (product_id, attribute_name, attribute_value, sort_order) VALUES (?, ?, ?, ?)',
-              [product_id, attr.name, attr.value, i]
-            );
-          }
+      for (let i = 0; i < attributesArray.length; i++) {
+        const attr = attributesArray[i];
+        if (attr?.name && attr?.value) {
+          await connection.execute(
+            'INSERT INTO product_attributes (product_id, attribute_name, attribute_value, sort_order) VALUES (?, ?, ?, ?)',
+            [product_id, attr.name, attr.value, i]
+          );
         }
       }
 

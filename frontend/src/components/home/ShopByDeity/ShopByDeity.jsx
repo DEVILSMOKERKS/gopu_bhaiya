@@ -13,26 +13,26 @@ const categories = [
 ];
 
 const ShopByDeity = () => {
-  return (
-    <section className="sbd-section">
-      <div className="sbd-inner">
-        <div className="sbd-header">
-          <div className="sbd-badge">Browse Categories</div>
-          <h2 className="sbd-title">Shop by <em>Deity</em></h2>
-          <p className="sbd-sub">Handcrafted sacred idols for every devotional need</p>
-        </div>
-        <div className="sbd-grid">
-          {categories.map((cat, i) => (
-            <Link href={cat.link} key={i} className="sbd-card">
-              <div className="sbd-icon">{cat.icon}</div>
-              <div className="sbd-name">{cat.name}</div>
-              <div className="sbd-count">{cat.count}</div>
-            </Link>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
+  // return (
+  //   <section className="sbd-section">
+  //     <div className="sbd-inner">
+  //       <div className="sbd-header">
+  //         <div className="sbd-badge">Browse Categories</div>
+  //         <h2 className="sbd-title">Shop by <em>Deity</em></h2>
+  //         <p className="sbd-sub">Handcrafted sacred idols for every devotional need</p>
+  //       </div>
+  //       <div className="sbd-grid">
+  //         {categories.map((cat, i) => (
+  //           <Link href={cat.link} key={i} className="sbd-card">
+  //             <div className="sbd-icon">{cat.icon}</div>
+  //             <div className="sbd-name">{cat.name}</div>
+  //             <div className="sbd-count">{cat.count}</div>
+  //           </Link>
+  //         ))}
+  //       </div>
+  //     </div>
+  //   </section>
+  // );
 };
 
 export default ShopByDeity;

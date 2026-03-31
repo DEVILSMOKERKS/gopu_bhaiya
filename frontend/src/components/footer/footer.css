@@ -342,11 +342,30 @@
    ============================================ */
 .footer-map-section {
   max-width: 1400px;
-  margin: 3rem auto 0;
+  margin: 2rem auto 2rem; /* Thoda gap badhaya hai */
   padding: 0 2.5rem;
   position: relative;
   z-index: 1;
-  color: #FFFDF7;
+  text-align: center; /* Title center mein karne ke liye */
+}
+
+.footer-map-title {
+  font-family: 'Playfair Display', serif; /* Agar font available ho toh */
+  font-size: 2rem;
+  color: #d4af37; /* Golden color jo logo se match kare */
+  margin-bottom: 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.footer-map-wrapper {
+  overflow: hidden; /* Border radius ko fix karne ke liye */
+  filter: grayscale(20%) contrast(110%); /* Map ko thoda aesthetic look dene ke liye */
+  transition: filter 0.3s ease;
+}
+
+.footer-map-wrapper:hover {
+  filter: grayscale(0%) contrast(100%); /* Hover par map color full ho jayega */
 }
 
 .footer-map-title {

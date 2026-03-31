@@ -1,11 +1,24 @@
 'use client';
 
+import dynamic from 'next/dynamic';
 import { useState, useEffect } from 'react';
 import { usePathname } from 'next/navigation';
 import Header from '../src/components/header/Header';
 import Footer from '../src/components/footer/Footer';
-import Signup from '../src/components/login/signup/Signup';
-import ConnectSoonPopup from '../src/components/ConnectSoonPopup/ConnectSoonPopup';
+
+const Signup = dynamic(() => import('../src/components/login/signup/Signup'), {
+  ssr: false,
+});
+
+const ConnectSoonPopup = dynamic(
+  () => import('../src/components/ConnectSoonPopup/ConnectSoonPopup'),
+  { ssr: false }
+);
+
+const WelcomePopup = dynamic(
+  () => import('../src/components/WelcomePopup/WelcomePopup'),
+  { ssr: false }
+);
 
 export default function LayoutClient({ children }) {
   const pathname = usePathname();
@@ -17,7 +30,7 @@ export default function LayoutClient({ children }) {
   // Scroll to top on route change
   useEffect(() => {
     if (!isAdmin) {
-      window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+      window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
     }
   }, [pathname, isAdmin]);
 
@@ -41,6 +54,9 @@ export default function LayoutClient({ children }) {
       {showConnectSoon && !isAdmin && (
         <ConnectSoonPopup onClose={() => setShowConnectSoon(false)} />
       )}
+
+      {/* Welcome popup - shows on every page load/refresh */}
+      {!isAdmin && <WelcomePopup />}
 
       {/* Signup Modal */}
       {isSignupOpen && (
@@ -70,7 +86,6 @@ export default function LayoutClient({ children }) {
     </>
   );
 }
-
 
 
 

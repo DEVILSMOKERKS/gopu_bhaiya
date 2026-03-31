@@ -33,7 +33,7 @@ export async function generateMetadata({ params }) {
   };
 }
 
-export default async function ProductsByCategoryRoute({ params }) {
-  const { categorySlug } = await params;
+export default function ProductsByCategoryRoute({ params }) {
+  const { categorySlug } = params;
   return <ProductsByCategory categorySlug={categorySlug} backHref="/products" productLinkBase={`/products/${categorySlug}`} />;
 }

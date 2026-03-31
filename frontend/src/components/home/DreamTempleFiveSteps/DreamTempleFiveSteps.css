@@ -1,0 +1,236 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap');
+
+/* ============================================
+   YOUR DREAM TEMPLE IN 5 STEPS
+   Clean, minimalist process flow — white background
+   ============================================ */
+
+.dream-temple-five-infographic {
+  padding: 72px 48px 80px;
+  background-color: #ffffff;
+  font-family: 'Lato', sans-serif;
+}
+
+.dream-temple-five-wrap {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Header */
+.dream-temple-five-banner {
+  text-align: center;
+  margin-bottom: 64px;
+}
+
+.dream-temple-five-heading {
+  font-family: 'Lato', sans-serif;
+  font-size: clamp(1.2rem, 2.2vw, 1.65rem);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: #2c2c2c;
+  margin: 0 0 16px 0;
+  text-transform: uppercase;
+  line-height: 1.25;
+}
+
+.dream-temple-five-tagline {
+  font-family: 'Lato', sans-serif;
+  font-size: 0.92rem;
+  font-weight: 300;
+  color: #6b6b6b;
+  margin: 0;
+  letter-spacing: 0.01em;
+  line-height: 1.5;
+  max-width: 520px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Steps row — evenly distributed horizontal flow */
+.dream-temple-five-sequence {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+  gap: 0;
+  margin-bottom: 64px;
+  width: 100%;
+  max-width: 100%;
+}
+
+.dream-temple-five-panel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  flex: 1 1 0;
+  min-width: 130px;
+  max-width: 180px;
+  transition: transform 0.25s ease;
+}
+
+.dream-temple-five-panel:hover {
+  transform: translateY(-4px);
+}
+
+/* Circle — illustration only, thin grey border */
+.dream-temple-five-panel-circle {
+  width: 140px;
+  height: 140px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  border: 1.5px solid #d8cdb8;
+  background: #fafaf7;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+  overflow: hidden;
+  transition: box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.dream-temple-five-panel:hover .dream-temple-five-panel-circle {
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.12);
+  border-color: #e8c84a;
+}
+
+/* Label row — number (ochre) + title (dark grey) */
+.dream-temple-five-panel-label {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  text-align: center;
+  max-width: 160px;
+  justify-content: center;
+}
+
+.dream-temple-five-panel-num {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #e8c84a;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.dream-temple-five-panel-title {
+  font-size: 0.78rem;
+  font-weight: 400;
+  color: #3a3a3a;
+  letter-spacing: 0.01em;
+  line-height: 1.4;
+  margin: 0;
+}
+
+/* Dashed curved arrow — aligns with circle center, more space between steps */
+.dream-temple-five-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 48px;
+  min-width: 48px;
+  margin-top: 58px;
+  color: #999;
+  opacity: 0.85;
+}
+
+.dream-temple-five-arrow-svg {
+  width: 48px;
+  height: 24px;
+}
+
+/* CTA */
+.dream-temple-five-cta {
+  text-align: center;
+}
+
+.dream-temple-five-btn {
+  display: inline-block;
+  padding: 12px 28px;
+  background: #2c2c2c;
+  color: #fff;
+  font-family: 'Lato', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 6px;
+  transition: background 0.25s ease, transform 0.25s ease;
+}
+
+.dream-temple-five-btn:hover {
+  background: #3d2b10;
+  transform: translateY(-2px);
+}
+
+/* Tablet — wrap steps, hide arrows */
+@media (max-width: 900px) {
+  .dream-temple-five-sequence {
+    flex-wrap: wrap;
+    gap: 32px;
+    justify-content: center;
+  }
+
+  .dream-temple-five-arrow {
+    display: none;
+  }
+
+  .dream-temple-five-panel {
+    flex: 0 0 140px;
+    min-width: 140px;
+    max-width: 140px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .dream-temple-five-infographic {
+    padding: 48px 24px 56px;
+  }
+
+  .dream-temple-five-banner {
+    margin-bottom: 36px;
+  }
+
+  .dream-temple-five-sequence {
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+    margin-bottom: 48px;
+  }
+
+  .dream-temple-five-panel {
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    max-width: 320px;
+    gap: 16px;
+    text-align: left;
+  }
+
+  .dream-temple-five-panel-label {
+    flex-direction: row;
+    max-width: none;
+    flex: 1;
+  }
+
+  .dream-temple-five-panel-circle {
+    width: 120px;
+    height: 120px;
+    flex-shrink: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .dream-temple-five-infographic {
+    padding: 40px 20px 48px;
+  }
+
+  .dream-temple-five-heading {
+    font-size: 1.2rem;
+    letter-spacing: 0.05em;
+  }
+
+  .dream-temple-five-panel-circle {
+    width: 100px;
+    height: 100px;
+  }
+}

@@ -14,7 +14,7 @@ import './PoojaRoomBudget.css';
 import PricingPanel from '../PricingPanel/PricingPanel';
 
 // Imports wahi hain
-import mandirImg from '../../../assets/Images/insta/img4.jpeg';
+import mandirImg from '../../../assets/img/Collection/Collection1.jpg';
 import marbleMandirImg from '../../../assets/Images/insta/img3.jpeg';
 import ganesh from '../../../assets/Images/insta/img.jpeg';
 import ganesh2 from '../../../assets/Images/insta/img5.jpeg';

@@ -191,18 +191,23 @@ const EditProduct = ({ productId }) => {
             code: color.color_code || '#000000',
             images: [], // New uploaded images (Files)
             previewUrls: [], // Preview URLs for new images
-            existingImages: color.images || [] // Existing images from database (URLs)
+            existingImages: (color.images || []).map((img) =>
+              (typeof img === 'string' ? img : (img?.url || img?.image_url || ''))
+            ).filter(Boolean)
           })));
 
           // Set existing image previews for colors
           setTimeout(() => {
             setColors(prevColors => prevColors.map((color, index) => {
               const productColor = product.colors[index];
-              if (productColor && productColor.images) {
+              const existingImages = (productColor?.images || []).map((img) =>
+                (typeof img === 'string' ? img : (img?.url || img?.image_url || ''))
+              ).filter(Boolean);
+              if (productColor && existingImages.length > 0) {
                 return {
                   ...color,
-                  existingImages: productColor.images,
-                  previewUrls: productColor.images.map(img => `${API_URL.replace('/api', '')}${img}`)
+                  existingImages,
+                  previewUrls: existingImages.map(img => `${API_URL.replace('/api', '')}${img.startsWith('/') ? '' : '/'}${img}`)
                 };
               }
               return color;
@@ -478,7 +483,8 @@ const EditProduct = ({ productId }) => {
       // Add sizes
       formDataToSend.append('sizes', JSON.stringify(sizes));
 
-      // Attributes are managed separately via Product Attributes management page
+      const attributesToSend = selectedAttributes.filter(attr => attr.name && attr.value);
+      formDataToSend.append('attributes', JSON.stringify(attributesToSend));
 
       const token = typeof window !== 'undefined' ? localStorage.getItem('adminToken') : null;
       const response = await axios.put(`${API_URL}/products/${productId}`, formDataToSend, {
@@ -1115,7 +1121,7 @@ const EditProduct = ({ productId }) => {
             ))}
             {selectedAttributes.length === 0 && (
               <p className="editproduct-info-text">
-                Click "Add Attribute" to assign attributes to this product.
+                Click &quot;Add Attribute&quot; to assign attributes to this product.
               </p>
             )}
           </div>

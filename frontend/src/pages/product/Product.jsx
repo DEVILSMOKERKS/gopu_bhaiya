@@ -26,7 +26,7 @@ const Product = ({ productId: productIdProp, categorySlug, productSlug }) => {
   const [dragStart, setDragStart] = useState({ x: 0, y: 0 });
   const [expandedSections, setExpandedSections] = useState({
     productDetail: false,
-    productDetail: false,
+    productDescription: false,
     shippingReturn: true
   });
   const [showSizeChart, setShowSizeChart] = useState(false);
@@ -138,7 +138,7 @@ const Product = ({ productId: productIdProp, categorySlug, productSlug }) => {
         name: product.name,
         description: product.description,
         price: selectedSizeData ? selectedSizeData.sell_price : 0,
-        image: productImages.length > 0 ? `${API_URL.replace('/api', '')}${productImages[0]}` : '/src/assets/img/Bestseller1.jpg'
+        image: selectedColorData && selectedColorData.images && selectedColorData.images.length > 0 ? `${API_URL.replace('/api', '')}${selectedColorData.images[0]?.url || selectedColorData.images[0]}` : '/src/assets/img/Bestseller1.jpg'
       }
     };
 
@@ -184,7 +184,7 @@ const Product = ({ productId: productIdProp, categorySlug, productSlug }) => {
         name: product.name,
         description: product.description,
         price: selectedSizeData ? selectedSizeData.sell_price : 0,
-        image: productImages.length > 0 ? `${API_URL.replace('/api', '')}${productImages[0]}` : '/src/assets/img/Bestseller1.jpg'
+        image: selectedColorData && selectedColorData.images && selectedColorData.images.length > 0 ? `${API_URL.replace('/api', '')}${selectedColorData.images[0]?.url || selectedColorData.images[0]}` : '/src/assets/img/Bestseller1.jpg'
       }
     };
 

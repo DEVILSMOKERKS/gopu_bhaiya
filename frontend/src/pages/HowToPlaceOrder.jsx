@@ -102,7 +102,7 @@ const HowToPlaceOrder = () => {
       <div className="how-to-order-header">
         <h1 className="how-to-order-title">How It Works</h1>
         <p className="how-to-order-subtitle">
-          Simple steps to order our products or create custom designs
+          Easy steps to order premium marble idols, temple designs, and custom spiritual art. From browsing to doorstep delivery, we make spiritual shopping simple and joyful.
         </p>
       </div>
 

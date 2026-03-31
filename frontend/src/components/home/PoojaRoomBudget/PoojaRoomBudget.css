@@ -81,7 +81,7 @@
   text-align: center;
   margin-bottom: 30px;
   position: relative;
-  padding: 0 20px; /* Only horizontal padding for text */
+  padding: 20px 20px; /* Only horizontal padding for text */
 }
 
 /* Ganesh Symbol */

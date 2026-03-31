@@ -8,8 +8,7 @@ const ExpertPopup = ({ isOpen, onClose, API_URL }) => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-    productName: '',
-    quantity: 1,
+    mobile: '',
   });
   const [status, setStatus] = useState({ loading: false, message: '', type: '' });
 
@@ -24,17 +23,20 @@ const ExpertPopup = ({ isOpen, onClose, API_URL }) => {
     setStatus({ loading: true, message: '', type: '' });
 
     try {
-      const response = await axios.post(`${API_URL}/expert-inquiry`, formData);
-      
-      setStatus({ 
-        loading: false, 
-        message: 'Success! Our experts will contact you soon.', 
-        type: 'success' 
+      await axios.post(`${API_URL}/expert-inquiry`, {
+        ...formData,
+        productName: '',
+        quantity: 1,
       });
 
-      // Reset and close after 2 seconds
+      setStatus({
+        loading: false,
+        message: 'Success! Our experts will contact you soon.',
+        type: 'success',
+      });
+
       setTimeout(() => {
-        setFormData({ name: '', email: '', productName: '', quantity: 1 });
+        setFormData({ name: '', email: '', mobile: '' });
         setStatus({ loading: false, message: '', type: '' });
         onClose();
       }, 2500);
@@ -84,41 +86,28 @@ const ExpertPopup = ({ isOpen, onClose, API_URL }) => {
             </div>
 
             <div className="form-input-group">
-              <label>Email Address</label>
+              <label>Mobile Number</label>
+              <input
+                type="tel"
+                name="mobile"
+                required
+                value={formData.mobile}
+                onChange={handleChange}
+                placeholder="e.g. 98765 43210"
+              />
+            </div>
+
+            <div className="form-input-group">
+              <label>Email <span className="optional-label">(optional)</span></label>
               <input
                 type="email"
                 name="email"
-                required
                 value={formData.email}
                 onChange={handleChange}
                 placeholder="example@mail.com"
               />
             </div>
 
-            <div className="form-input-group">
-              <label>Product Name / Category</label>
-              <input
-                type="text"
-                name="productName"
-                required
-                value={formData.productName}
-                onChange={handleChange}
-                placeholder="Which product are you interested in?"
-              />
-            </div>
-
-            <div className="form-input-group">
-              <label>Approximate Quantity</label>
-              <input
-                type="number"
-                name="quantity"
-                min="1"
-                required
-                value={formData.quantity}
-                onChange={handleChange}
-              />
-            </div>
-            
             <button
               type="submit"
               disabled={status.loading}

@@ -108,6 +108,11 @@
     color: #374151;
     margin-bottom: 4px;
   }
+
+  .form-input-group .optional-label {
+    font-weight: 400;
+    color: #6b7280;
+  }
   
   .form-input-group input {
     width: 100%;

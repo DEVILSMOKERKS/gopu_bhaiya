@@ -4,7 +4,7 @@ const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 
 export const metadata = {
   title: 'Contact Us - Mateshwari Moorti Bhandar',
-  description: 'Get in touch with Mateshwari Moorti Bhandar. Contact us for custom marble idols, temple designs, consultations, and inquiries.',
+  description: 'Get in touch with Mateshwari Moorti Bhandar. Contact us for custom marble idols, temple designs, consultations and free quotes. We reply within 24 hours.',
   keywords: 'Contact Us, Mateshwari Moorti Bhandar, Custom Orders, Consultations, Inquiries',
   alternates: {
     canonical: `${BASE_URL}/contact-us`,

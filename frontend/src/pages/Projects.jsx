@@ -26,7 +26,6 @@ const Projects = () => {
         setError(null);
         const response = await axios.get(`${API_URL}/products`, {
           params: { page: 1, limit: 100 },
-          headers: { 'Cache-Control': 'no-cache' },
         });
         const data = response.data?.data ?? [];
         setProducts(Array.isArray(data) ? data : []);

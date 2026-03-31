@@ -4,26 +4,37 @@
 .custom-temple-projects {
   position: relative;
   padding: 100px 20px;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
   min-height: 400px;
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
 }
 
-/* Desktop Background - Now handled via inline styles */
-@media (min-width: 969px) {
-  .custom-temple-projects {
-    /* Background image set via inline styles for Next.js compatibility */
-  }
+/* Background image slider — smooth fade, content stays fixed */
+.custom-temple-projects-bg-slider {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
 }
 
-/* Mobile Background - Now handled via inline styles */
+.custom-temple-projects-bg-slide {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+.custom-temple-projects-bg-slide.active {
+  opacity: 1;
+  z-index: 1;
+}
+
 @media (max-width: 968px) {
   .custom-temple-projects {
-    /* Background image set via inline styles for Next.js compatibility */
     padding: 80px 15px;
     min-height: 400px;
   }
@@ -99,6 +110,85 @@
 }
 
 /* ============================================
+   HORIZONTAL IMAGE SCROLLER GALLERY
+   ============================================ */
+.custom-temple-projects-gallery-wrap {
+  margin-top: 48px;
+  width: 100%;
+  overflow: hidden;
+  padding: 8px 0;
+  -webkit-overflow-scrolling: touch;
+}
+
+.custom-temple-projects-gallery-track {
+  display: flex;
+  gap: 20px;
+  width: max-content;
+  animation: ctp-scroll 45s linear infinite;
+  will-change: transform;
+  touch-action: pan-y;
+}
+
+.custom-temple-projects-gallery-track:hover {
+  animation-play-state: paused;
+}
+
+@keyframes ctp-scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.custom-temple-projects-gallery-card {
+  flex-shrink: 0;
+  width: 300px;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.25);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.custom-temple-projects-gallery-card-inner {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 4 / 3;
+}
+
+.custom-temple-projects-gallery-card-img {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.5s ease;
+}
+
+.custom-temple-projects-gallery-card:hover .custom-temple-projects-gallery-card-img {
+  transform: scale(1.08);
+}
+
+.custom-temple-projects-gallery-card-overlay {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 16px 14px;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.75), transparent);
+  transition: background 0.3s ease;
+}
+
+.custom-temple-projects-gallery-card:hover .custom-temple-projects-gallery-card-overlay {
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.2));
+}
+
+.custom-temple-projects-gallery-card-title {
+  font-family: 'Times New Roman', Times, Georgia, serif;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #fff;
+  display: block;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+  letter-spacing: 0.02em;
+}
+
+/* ============================================
    RESPONSIVE DESIGN
    ============================================ */
 @media (max-width: 968px) {
@@ -167,5 +257,17 @@
 
   .custom-temple-projects-stat-label {
     font-size: 0.7rem;
+  }
+
+  .custom-temple-projects-gallery-wrap {
+    margin-top: 32px;
+  }
+
+  .custom-temple-projects-gallery-card {
+    width: 260px;
+  }
+
+  .custom-temple-projects-gallery-card-title {
+    font-size: 0.9rem;
   }
 }

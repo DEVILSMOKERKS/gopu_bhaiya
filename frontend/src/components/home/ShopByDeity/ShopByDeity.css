@@ -21,7 +21,7 @@
   font-family: 'Cinzel', serif;
   font-size: 10px;
   letter-spacing: 4px;
-  color: var(--gold, #C9A84C);
+  color:  #030202;
   text-transform: uppercase;
   margin-bottom: 16px;
 }
@@ -31,7 +31,7 @@
   content: '';
   width: 40px;
   height: 1px;
-  background: var(--gold, #C9A84C);
+  background: var(--gold, #0b0a08);
 }
 
 .sbd-title {

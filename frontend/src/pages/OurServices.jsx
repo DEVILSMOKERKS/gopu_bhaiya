@@ -55,7 +55,7 @@ const OurServices = () => {
       <div className="services-header">
         <h1 className="services-title h2style">Our Services</h1>
         <p className="services-subtitle">
-          Comprehensive solutions for all your spiritual and artistic needs
+          From custom murti carving to temple planning and installation guidance, our services are designed to make every sacred space feel personal, elegant, and meaningful.
         </p>
       </div>
 
@@ -82,7 +82,7 @@ const OurServices = () => {
           <div className="cta-content">
             <h2 className="cta-heading">Ready to Start Your Project?</h2>
             <p className="cta-description">
-              Contact us today to discuss your requirements and get a personalized quote
+              Share your idea with us and we will help shape it into a beautiful, lasting piece of devotional craftsmanship.
             </p>
             <div className="cta-buttons">
               <Link href="/book-appointment" className="cta-primary-btn">

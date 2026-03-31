@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useMemo, useRef } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname, useRouter } from 'next/navigation';
@@ -12,35 +12,75 @@ import { useUser } from '../../context/UserContext';
 import ExpertPopup from './ExpertPopup';
 import AnnouncementSlider from './AnnouncementSlider';
 import './header.css';
-import logo from '../../assets/Images/img/logobanner.png';
+import logo from '../../assets/Images/img/logo8.png';
 
-// ── Static menus (non-category) ────────────────────────────────────────────────
+// ── Spiritual / Ancient God fallback images ────────────────────────────────────
+const SPIRITUAL_IMGS = [
+  'https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/Ganesha_Basohli_miniature_circa_1730_Dubost_p73.jpg/800px-Ganesha_Basohli_miniature_circa_1730_Dubost_p73.jpg',
+  'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Image-Vishnu_Paria.jpg/800px-Image-Vishnu_Paria.jpg',
+  'https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Shiva_and_Parvati.jpg/800px-Shiva_and_Parvati.jpg',
+  'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Durga_Mahisasuramardini.jpg/800px-Durga_Mahisasuramardini.jpg',
+  'https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Rama_and_Sita_with_Lakshmana_in_the_forest.jpg/800px-Rama_and_Sita_with_Lakshmana_in_the_forest.jpg',
+  'https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/Hanuman_Ramayana.jpg/800px-Hanuman_Ramayana.jpg',
+  'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a3/Saraswati_by_Raja_Ravi_Varma.jpg/800px-Saraswati_by_Raja_Ravi_Varma.jpg',
+  'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Lakshmi_by_Raja_Ravi_Varma.jpg/800px-Lakshmi_by_Raja_Ravi_Varma.jpg',
+];
+
+const FALLBACK_IMG = SPIRITUAL_IMGS[0];
+
+// ── Static menus ──────────────────────────────────────────────────────────────
 const OUR_CREATIONS_MENU = [
-  { label: 'Custom Murtis',        href: '/our-creations', img: 'https://images.unsplash.com/photo-1567591370830-8dd9ef3b3e2c?w=320&q=80' },
-  { label: 'Temple Installations', href: '/our-creations', img: 'https://images.unsplash.com/photo-1576941089067-2de3c901e126?w=320&q=80' },
-  { label: 'Festival Specials',    href: '/our-creations', img: 'https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?w=320&q=80' },
-  { label: 'Award & Gift Murtis',  href: '/our-creations', img: 'https://images.unsplash.com/photo-1571863533956-01c88e79957e?w=320&q=80' },
-  { label: 'Portfolio Gallery',    href: '/our-creations', img: 'https://images.unsplash.com/photo-1584810359583-96fc3448beaa?w=320&q=80' },
+  { label: 'Custom Murtis',        href: '/our-creations', img: SPIRITUAL_IMGS[0] },
+  { label: 'Temple Installations', href: '/our-creations', img: SPIRITUAL_IMGS[1] },
+  { label: 'Festival Specials',    href: '/our-creations', img: SPIRITUAL_IMGS[2] },
+  { label: 'Award & Gift Murtis',  href: '/our-creations', img: SPIRITUAL_IMGS[3] },
+  { label: 'Portfolio Gallery',    href: '/our-creations', img: SPIRITUAL_IMGS[4] },
 ];
 
 const OUR_SERVICES_MENU = [
-  { label: 'Custom Carving',          href: '/our-services', img: 'https://images.unsplash.com/photo-1525909002-1b05e0c869d8?w=320&q=80' },
-  { label: 'Restoration & Repair',    href: '/our-services', img: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=320&q=80' },
-  { label: 'Temple Design',           href: '/our-services', img: 'https://images.unsplash.com/photo-1576941089067-2de3c901e126?w=320&q=80' },
-  { label: 'Prana Pratishtha',        href: '/our-services', img: 'https://images.unsplash.com/photo-1596797038530-2c107229654b?w=320&q=80' },
-  { label: 'Home Delivery & Install', href: '/our-services', img: 'https://images.unsplash.com/photo-1565193566173-7a0ee3dbe261?w=320&q=80' },
+  { label: 'Custom Carving',          href: '/our-services', img: SPIRITUAL_IMGS[5] },
+  { label: 'Restoration & Repair',    href: '/our-services', img: SPIRITUAL_IMGS[6] },
+  { label: 'Temple Design',           href: '/our-services', img: SPIRITUAL_IMGS[7] },
+  { label: 'Prana Pratishtha',        href: '/our-services', img: SPIRITUAL_IMGS[2] },
+  { label: 'Home Delivery & Install', href: '/our-services', img: SPIRITUAL_IMGS[1] },
 ];
 
 const BLOG_MENU = [
-  { label: 'Vastu & Murti Placement', href: '/blogs', img: 'https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?w=320&q=80' },
-  { label: 'Marble Care Tips',        href: '/blogs', img: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=320&q=80' },
-  { label: 'Festival Guides',         href: '/blogs', img: 'https://images.unsplash.com/photo-1584810359583-96fc3448beaa?w=320&q=80' },
-  { label: 'All Articles',            href: '/blogs', img: 'https://images.unsplash.com/photo-1567591370830-8dd9ef3b3e2c?w=320&q=80' },
+  { label: 'Vastu & Murti Placement', href: '/blogs', img: SPIRITUAL_IMGS[3] },
+  { label: 'Marble Care Tips',        href: '/blogs', img: SPIRITUAL_IMGS[4] },
+  { label: 'Festival Guides',         href: '/blogs', img: SPIRITUAL_IMGS[5] },
+  { label: 'All Articles',            href: '/blogs', img: SPIRITUAL_IMGS[6] },
 ];
 
-const FALLBACK_IMG = 'https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?w=320&q=80';
+// ── Shared image resolver (same as ProductByCategory.getProductImage) ──────────
+function resolveProductImage(product, baseUrl) {
+  if (product.colors?.length) {
+    const firstColor = product.colors[0];
+    const images = firstColor.images ?? (firstColor.image_url ? [firstColor.image_url] : []);
+    const firstImage = Array.isArray(images) ? images[0] : images;
+    if (firstImage) {
+      const path = (
+        typeof firstImage === 'string'
+          ? firstImage
+          : firstImage?.url || firstImage?.image_url || ''
+      ).replace(/\\/g, '/');
+      if (path) {
+        return path.startsWith('http')
+          ? path
+          : `${baseUrl}${path.startsWith('/') ? '' : '/'}${path}`;
+      }
+    }
+  }
+  if (product.featured_image) {
+    const path = product.featured_image.replace(/\\/g, '/');
+    return path.startsWith('http')
+      ? path
+      : `${baseUrl}${path.startsWith('/') ? '' : '/'}${path}`;
+  }
+  return null;
+}
 
-// ── Reusable: simple dropdown with live image preview ─────────────────────────
+// ── Simple dropdown with live image preview ────────────────────────────────────
 function ImageDropdown({ items }) {
   const [previewImg, setPreviewImg] = useState(items[0]?.img || FALLBACK_IMG);
   return (
@@ -71,91 +111,187 @@ function ImageDropdown({ items }) {
   );
 }
 
-// ── Products mega dropdown – categories from GET /api/categories ───────────────
+// ── Products mega dropdown with full product cards ─────────────────────────────
 function ProductsMegaDropdown({ categories, baseUrl }) {
-  // Convert API categories → { label, href, img }
-  const items = categories.map((cat) => {
-    const slug = cat.slug || cat.name?.toLowerCase().replace(/\s+/g, '-') || cat.id;
-    let img = FALLBACK_IMG;
-    if (cat.image_url) {
-      const path = String(cat.image_url).replace(/\\/g, '/');
-      img = path.startsWith('http') ? path : `${baseUrl}${path.startsWith('/') ? '' : '/'}${path}`;
+  const API_URL = process.env.NEXT_PUBLIC_API_URL;
+  const validCategories = categories.filter(
+    (cat) => cat && cat.id != null && String(cat.name || '').trim() !== ''
+  );
+
+  // { [cat.id]: product[] }  full product data per category
+  const [categoryProducts, setCategoryProducts] = useState({});
+
+  // Which category is hovered
+  const [activeCatId,   setActiveCatId]   = useState(null);
+  const [activeCatSlug, setActiveCatSlug] = useState('');
+  const [activeCatName, setActiveCatName] = useState('');
+
+  // ── Fetch products for every category (same endpoint as ProductByCategory) ─
+  useEffect(() => {
+    if (!API_URL || validCategories.length === 0) return;
+
+    // Seed first category as default active
+    if (validCategories[0]) {
+      const slug = validCategories[0].slug || validCategories[0].name?.toLowerCase().replace(/\s+/g, '-') || validCategories[0].id;
+      setActiveCatId(validCategories[0].id);
+      setActiveCatSlug(slug);
+      setActiveCatName(validCategories[0].name || '');
     }
-    return { label: cat.name || 'Category', href: `/products/${slug}`, img };
+
+    validCategories.forEach((cat) => {
+      axios
+        .get(`${API_URL}/products/category/${cat.id}`, {
+          params: { page: 1, limit: 12 },
+        })
+        .then((res) => {
+          const products = res.data?.data ?? [];
+          setCategoryProducts((prev) => ({ ...prev, [cat.id]: products }));
+        })
+        .catch(() => {
+          setCategoryProducts((prev) => ({ ...prev, [cat.id]: [] }));
+        });
+    });
+  }, [API_URL, validCategories, baseUrl]);
+
+  // ── Hover handler ─────────────────────────────────────────────────────────
+  const handleCategoryHover = (cat) => {
+    const slug = cat.slug || cat.name?.toLowerCase().replace(/\s+/g, '-') || cat.id;
+    setActiveCatId(cat.id);
+    setActiveCatSlug(slug);
+    setActiveCatName(cat.name || '');
+  };
+
+  // ── Build category nav items ──────────────────────────────────────────────
+  const catItems = validCategories.map((cat) => {
+    const slug = cat.slug || cat.name?.toLowerCase().replace(/\s+/g, '-') || cat.id;
+    return { cat, label: cat.name || 'Category', href: `/products/${slug}` };
   });
 
-  // Append "View All"
-  const allItems = [...items, { label: 'View All →', href: '/products', img: FALLBACK_IMG }];
+  const allCatItems = [...catItems, { cat: null, label: 'View All →', href: '/products' }];
 
-  // Split into columns of up to 7, max 3 columns
-  const CHUNK = 7;
-  const rawCols = [];
-  for (let i = 0; i < allItems.length; i += CHUNK) rawCols.push(allItems.slice(i, i + CHUNK));
-  const columns = rawCols.slice(0, 3);
+  // Active category's products
+  const activeProducts = (activeCatId ? categoryProducts[activeCatId] : []) || [];
+  const catIndex        = validCategories.findIndex((c) => c.id === activeCatId);
+  const spiritualImg    = SPIRITUAL_IMGS[catIndex >= 0 ? catIndex % SPIRITUAL_IMGS.length : 0];
+  const isActiveCategoryLoading = activeCatId != null && !(activeCatId in categoryProducts);
 
-  const [previewImg,   setPreviewImg]   = useState(allItems[0]?.img   || FALLBACK_IMG);
-  const [previewLabel, setPreviewLabel] = useState(allItems[0]?.label || '');
-
-  // Re-sync when categories first load
-  useEffect(() => {
-    if (allItems[0]) { setPreviewImg(allItems[0].img); setPreviewLabel(allItems[0].label); }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [categories.length]);
-
-  // Loading skeleton
-  if (categories.length === 0) {
+  // ── Loading skeleton ──────────────────────────────────────────────────────
+  if (validCategories.length === 0) {
     return (
-      <div className="mega-dropdown mega-img-dropdown">
-        <div className="mega-img-cols">
-          <div className="mega-col">
-            <h4>Categories</h4>
-            {[1, 2, 3, 4, 5].map((n) => <div key={n} className="mega-skeleton-row" />)}
-          </div>
+      <div className="mega-dropdown mega-products-dropdown">
+        <div className="mega-cat-col">
+          <h4 className="mega-col-heading">Our Categories</h4>
+          <div className="mega-empty-message">Categories are loading...</div>
         </div>
-        <div className="mega-img-preview">
-          <div className="mega-img-preview-skeleton" />
+        <div className="mega-products-col">
+          <div className="mega-products-col-header">
+            <h4 className="mega-col-heading">Products</h4>
+          </div>
+          <div className="mega-products-loading">
+            {[1, 2, 3, 4].map((n) => (
+              <div key={n} className="mega-product-skeleton">
+                <div className="mega-product-skeleton-img" />
+                <div className="mega-product-skeleton-text" />
+                <div className="mega-product-skeleton-price" />
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="mega-dropdown mega-img-dropdown">
-      {/* Columns */}
-      <div
-        className="mega-img-cols"
-        style={{ gridTemplateColumns: `repeat(${columns.length}, 1fr)` }}
-      >
-        {columns.map((col, ci) => (
-          <div className="mega-col" key={ci}>
-            <h4>{ci === 0 ? 'Our Categories' : <>&nbsp;</>}</h4>
-            {col.map((item) => (
-              <Link
-                key={item.label + item.href}
-                href={item.href}
-                onMouseEnter={() => { setPreviewImg(item.img); setPreviewLabel(item.label); }}
-              >
-                <span className="mega-dot" />
-                {item.label}
-              </Link>
-            ))}
-          </div>
+    <div className="mega-dropdown mega-products-dropdown">
+
+      {/* ── Column 1: Category list ───────────────────────────────────── */}
+      <div className="mega-cat-col">
+        <h4 className="mega-col-heading">Our Categories</h4>
+        {allCatItems.map((item) => (
+          <Link
+            key={item.label + item.href}
+            href={item.href}
+            className={`mega-cat-link ${item.cat && item.cat.id === activeCatId ? 'mega-cat-link--active' : ''}`}
+            onMouseEnter={() => item.cat ? handleCategoryHover(item.cat) : null}
+          >
+            <span className="mega-dot" />
+            {item.label}
+            {item.cat && <span className="mega-cat-arrow">›</span>}
+          </Link>
         ))}
       </div>
 
-      {/* Live preview panel */}
-      <div className="mega-img-preview">
-        <img
-          key={previewImg}
-          src={previewImg}
-          alt={previewLabel}
-          className="mega-img-preview-img"
-          onError={(e) => { e.target.src = FALLBACK_IMG; }}
-        />
-        <div className="mega-img-preview-overlay">
-          <span className="mega-img-preview-label">{previewLabel}</span>
+      {/* ── Column 2: Product cards for active category ───────────────── */}
+      <div className="mega-products-col">
+        <div className="mega-products-col-header">
+          <h4 className="mega-col-heading">{activeCatName || 'Products'}</h4>
+          {activeCatSlug && (
+            <Link href={`/products/${activeCatSlug}`} className="mega-view-all-link">
+              View All →
+            </Link>
+          )}
         </div>
+
+        {isActiveCategoryLoading ? (
+          /* Loading / empty state */
+          <div className="mega-products-loading">
+            {[1, 2, 3, 4].map((n) => (
+              <div key={n} className="mega-product-skeleton">
+                <div className="mega-product-skeleton-img" />
+                <div className="mega-product-skeleton-text" />
+                <div className="mega-product-skeleton-price" />
+              </div>
+            ))}
+          </div>
+        ) : activeProducts.length === 0 ? (
+          <div className="mega-empty-message mega-empty-message--products">
+            Products for this category will appear here.
+          </div>
+        ) : (
+          <div className="mega-products-grid">
+            {activeProducts.slice(0, 8).map((product) => {
+              const img = resolveProductImage(product, baseUrl) || spiritualImg;
+              const minPrice = product.min_price ?? product.price ?? null;
+              const maxPrice = product.max_price ?? null;
+
+              return (
+                <Link
+                  key={product.product_id}
+                  href={`/product/${product.product_id}`}
+                  className="mega-product-card"
+                >
+                  {/* Product Image */}
+                  <div className="mega-product-img-wrap">
+                    <img
+                      src={img}
+                      alt={product.name || 'Product'}
+                      className="mega-product-img"
+                      onError={(e) => { e.target.src = spiritualImg; }}
+                    />
+                  </div>
+
+                  {/* Product Info */}
+                  <div className="mega-product-info">
+                    <p className="mega-product-name">
+                      {product.name?.length > 28
+                        ? `${product.name.slice(0, 28)}…`
+                        : product.name || 'Product'}
+                    </p>
+                    <p className="mega-product-price">
+                      {minPrice != null
+                        ? maxPrice && maxPrice !== minPrice
+                          ? `₹${Number(minPrice).toLocaleString('en-IN')} – ₹${Number(maxPrice).toLocaleString('en-IN')}`
+                          : `₹${Number(minPrice).toLocaleString('en-IN')}`
+                        : 'Price on request'}
+                    </p>
+                  </div>
+                </Link>
+              );
+            })}
+          </div>
+        )}
       </div>
+
     </div>
   );
 }
@@ -173,9 +309,8 @@ const Header = ({ onAccountClick }) => {
   const [showSearchResults, setShowSearchResults] = useState(false);
   const [isScrolled,        setIsScrolled]        = useState(false);
   const [isExpertPopupOpen, setIsExpertPopupOpen] = useState(false);
-
-  // Live categories for the Products nav dropdown
-  const [navCategories, setNavCategories] = useState([]);
+  const [navCategories,     setNavCategories]     = useState([]);
+  const [navProducts,       setNavProducts]       = useState([]);
 
   const { cart, wishlist } = useWishlistCart();
   const { user, isAuthenticated } = useUser();
@@ -185,20 +320,52 @@ const Header = ({ onAccountClick }) => {
   const API_URL = process.env.NEXT_PUBLIC_API_URL;
   const baseUrl  = API_URL ? API_URL.replace('/api', '') : '';
 
-  // ── Fetch categories once on mount ────────────────────────────────────────
   useEffect(() => {
     if (!API_URL) return;
-    axios
-      .get(`${API_URL}/categories`, { headers: { 'Cache-Control': 'no-cache' } })
-      .then((res) => {
-        if (res.data?.success && Array.isArray(res.data.data)) {
-          setNavCategories(res.data.data.filter((c) => c.status !== 'inactive'));
-        }
+    Promise.all([
+      axios.get(`${API_URL}/categories`),
+      axios.get(`${API_URL}/products`, {
+        params: { page: 1, limit: 1000 },
+      }),
+    ])
+      .then(([categoryRes, productRes]) => {
+        const categoryData = categoryRes.data?.success && Array.isArray(categoryRes.data.data)
+          ? categoryRes.data.data.filter((c) => c.status !== 'inactive')
+          : [];
+        const productData = Array.isArray(productRes.data?.data)
+          ? productRes.data.data.filter((product) => product.category_id != null)
+          : [];
+
+        setNavCategories(categoryData);
+        setNavProducts(productData);
       })
-      .catch(() => {}); // silent fail – "View All" still shows
+      .catch(() => {});
   }, [API_URL]);
 
-  // ── Scroll ────────────────────────────────────────────────────────────────
+  const visibleNavCategories = useMemo(() => {
+    const byCategoryId = new Map();
+
+    navProducts.forEach((product) => {
+      if (product.category_id == null) return;
+
+      const existingCategory = navCategories.find((category) => category.id === product.category_id);
+      const fallbackName = String(existingCategory?.name || product.category_name || '').trim();
+      if (!fallbackName) return;
+
+      const fallbackSlug = fallbackName.toLowerCase().replace(/[^\w\s-]/g, '').replace(/\s+/g, '-');
+
+      if (!byCategoryId.has(product.category_id)) {
+        byCategoryId.set(product.category_id, {
+          id: product.category_id,
+          name: fallbackName,
+          slug: existingCategory?.slug || product.category_slug || fallbackSlug || String(product.category_id),
+        });
+      }
+    });
+
+    return Array.from(byCategoryId.values()).sort((a, b) => String(a.name).localeCompare(String(b.name)));
+  }, [navCategories, navProducts]);
+
   useEffect(() => {
     if (!isHomePage) setIsScrolled(true);
     const onScroll = () =>
@@ -207,14 +374,12 @@ const Header = ({ onAccountClick }) => {
     return () => window.removeEventListener('scroll', onScroll);
   }, [isHomePage]);
 
-  // ── Search ────────────────────────────────────────────────────────────────
   const performSearch = async (query) => {
     if (!query.trim()) { setSearchResults([]); setShowSearchResults(false); return; }
     try {
       setIsSearching(true);
       const res = await axios.get(`${API_URL}/products`, {
         params: { search: query, limit: 8 },
-        headers: { 'Cache-Control': 'no-cache' },
       });
       setSearchResults(res.data?.data || []);
       setShowSearchResults(true);
@@ -255,18 +420,11 @@ const Header = ({ onAccountClick }) => {
     return () => document.removeEventListener('mousedown', handler);
   }, []);
 
-  useEffect(() => () => { if (searchTimeoutRef.current) clearTimeout(searchTimeoutRef.current); }, []);
+  useEffect(() => () => {
+    if (searchTimeoutRef.current) clearTimeout(searchTimeoutRef.current);
+  }, []);
 
-  const getProductImage = (product) => {
-    if (!product.colors?.length) return '/placeholder-product.jpg';
-    const fi = product.colors[0]?.images?.[0];
-    if (!fi) return '/placeholder-product.jpg';
-    let rel = typeof fi === 'string' ? fi : (fi.image_url || fi.url || fi.path || fi.src || '');
-    if (!rel) return '/placeholder-product.jpg';
-    if (rel.startsWith('http')) return rel;
-    if (!rel.startsWith('/')) rel = `/${rel}`;
-    return `${baseUrl}${rel}`;
-  };
+  const getProductImage = (product) => resolveProductImage(product, baseUrl) || '/placeholder-product.jpg';
 
   return (
     <>
@@ -276,8 +434,6 @@ const Header = ({ onAccountClick }) => {
 
         {/* ── Top Bar ─────────────────────────────────────────────────────── */}
         <div className="header-top-bar">
-
-          {/* Search */}
           <div className="header-top-left">
             <div className="header-search-bar" ref={searchContainerRef}>
               <form onSubmit={handleSearchSubmit} className="header-search-form">
@@ -297,13 +453,25 @@ const Header = ({ onAccountClick }) => {
                   ) : searchResults.length > 0 ? (
                     <div className="header-search-results-list">
                       {searchResults.map((product) => (
-                        <div key={product.product_id} className="header-search-result-item" onClick={() => handleSearchResultClick(product)}>
+                        <div
+                          key={product.product_id}
+                          className="header-search-result-item"
+                          onClick={() => handleSearchResultClick(product)}
+                        >
                           <div className="header-search-result-image">
-                            <Image src={getProductImage(product)} alt={product.name} width={60} height={60} onError={(e) => { e.target.src = '/placeholder-product.jpg'; }} />
+                            <Image
+                              src={getProductImage(product)}
+                              alt={product.name}
+                              width={60}
+                              height={60}
+                              onError={(e) => { e.target.src = '/placeholder-product.jpg'; }}
+                            />
                           </div>
                           <div className="header-search-result-content">
                             <h4 className="header-search-result-title">{product.name}</h4>
-                            <p className="header-search-result-price">₹{product.min_price} – ₹{product.max_price}</p>
+                            <p className="header-search-result-price">
+                              ₹{product.min_price} – ₹{product.max_price}
+                            </p>
                           </div>
                         </div>
                       ))}
@@ -316,19 +484,23 @@ const Header = ({ onAccountClick }) => {
             </div>
           </div>
 
-          {/* Logo */}
           <div className="header-top-center">
             <Link href="/" className="header-logo-link">
               <Image src={logo} alt="Mateshwari Moorti Bhandar" className="header-logo-img" width={150} height={50} priority />
             </Link>
           </div>
 
-          {/* Social + Expert */}
           <div className="header-top-right">
             <div className="header-social-icons">
-              <a href="https://www.instagram.com/reel/DVA2HgUknfx/?utm_source=ig_web_copy_link" target="_blank" rel="noopener noreferrer" className="header-social-icon-link instagram" aria-label="Instagram"><FaInstagram className="header-social-icon" /></a>
-              <a href="facebook.com/share/18i5K67wfR/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" className="header-social-icon-link facebook" aria-label="Facebook"><FaFacebook className="header-social-icon" /></a>
-              <a href="https://youtube.com/@mateshwarimoortibhandar?si=aS0wJmJW-7apUe2f" target="_blank" rel="noopener noreferrer" className="header-social-icon-link youtube" aria-label="YouTube"><FaYoutube className="header-social-icon" /></a>
+              <a href="https://www.instagram.com/reel/DVA2HgUknfx/?utm_source=ig_web_copy_link" target="_blank" rel="noopener noreferrer" className="header-social-icon-link instagram" aria-label="Instagram">
+                <FaInstagram className="header-social-icon" />
+              </a>
+              <a href="https://facebook.com/share/18i5K67wfR/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" className="header-social-icon-link facebook" aria-label="Facebook">
+                <FaFacebook className="header-social-icon" />
+              </a>
+              <a href="https://youtube.com/@mateshwarimoortibhandar?si=aS0wJmJW-7apUe2f" target="_blank" rel="noopener noreferrer" className="header-social-icon-link youtube" aria-label="YouTube">
+                <FaYoutube className="header-social-icon" />
+              </a>
             </div>
             <button className="header-expert-btn" type="button" onClick={() => setIsExpertPopupOpen(true)}>
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -351,12 +523,14 @@ const Header = ({ onAccountClick }) => {
               <Link href="/" className={`nav-link ${pathname === '/' ? 'active' : ''}`}>HOME</Link>
             </div>
 
-            {/* PRODUCTS ← live API categories */}
             <div className="nav-item">
-              <Link href="/products" className={`nav-link ${pathname === '/products' || pathname?.startsWith('/products/') ? 'active' : ''}`}>
+              <Link
+                href="/products"
+                className={`nav-link ${pathname === '/products' || pathname?.startsWith('/products/') ? 'active' : ''}`}
+              >
                 PRODUCTS <span className="nav-arrow">▾</span>
               </Link>
-              <ProductsMegaDropdown categories={navCategories} baseUrl={baseUrl} />
+              <ProductsMegaDropdown categories={visibleNavCategories} baseUrl={baseUrl} />
             </div>
 
             <div className="nav-item">
@@ -374,22 +548,31 @@ const Header = ({ onAccountClick }) => {
             </div>
 
             <div className="nav-item">
-              <Link href="/how-to-place-order" className={`nav-link ${pathname === '/how-to-place-order' ? 'active' : ''}`}>HOW IT WORKS</Link>
+              <Link href="/how-to-place-order" className={`nav-link ${pathname === '/how-to-place-order' ? 'active' : ''}`}>
+                HOW IT WORKS
+              </Link>
             </div>
 
             <div className="nav-item">
-              <Link href="/blogs" className={`nav-link ${pathname === '/blogs' || pathname?.startsWith('/blog/') ? 'active' : ''}`}>
+              <Link
+                href="/blogs"
+                className={`nav-link ${pathname === '/blogs' || pathname?.startsWith('/blog/') ? 'active' : ''}`}
+              >
                 BLOG <span className="nav-arrow">▾</span>
               </Link>
               <ImageDropdown items={BLOG_MENU} />
             </div>
 
             <div className="nav-item">
-              <Link href="/book-appointment" className={`nav-link ${pathname === '/book-appointment' ? 'active' : ''}`}>BOOK APPOINTMENT</Link>
+              <Link href="/book-appointment" className={`nav-link ${pathname === '/book-appointment' ? 'active' : ''}`}>
+                BOOK APPOINTMENT
+              </Link>
             </div>
 
             <div className="nav-item">
-              <Link href="/testimonials" className={`nav-link ${pathname === '/testimonials' ? 'active' : ''}`}>TESTIMONIALS</Link>
+              <Link href="/testimonials" className={`nav-link ${pathname === '/testimonials' ? 'active' : ''}`}>
+                TESTIMONIALS
+              </Link>
             </div>
 
           </div>
@@ -397,19 +580,29 @@ const Header = ({ onAccountClick }) => {
 
         {/* ── Mobile Header ───────────────────────────────────────────────── */}
         <div className="header-mobile">
-          <button className="header-mobile-hamburger" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} aria-label="Toggle mobile menu">
+          <button
+            className="header-mobile-hamburger"
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            aria-label="Toggle mobile menu"
+          >
             <HiMenu className="header-mobile-hamburger-icon" />
           </button>
           <Link href="/" className="header-mobile-logo-link">
             <Image src={logo} alt="Mateshwari Moorti Bhandar" className="header-mobile-logo-img" width={120} height={40} priority />
           </Link>
           <div className="header-mobile-social-icons">
-            <a href="https://www.instagram.com/mateshwari_exports/" target="_blank" rel="noopener noreferrer" className="header-mobile-social-icon-link" aria-label="Instagram"><FaInstagram className="header-mobile-social-icon" /></a>
-            <a href="https://www.facebook.com/mateshwariexports/" target="_blank" rel="noopener noreferrer" className="header-mobile-social-icon-link" aria-label="Facebook"><FaFacebook className="header-mobile-social-icon" /></a>
+            <a href="https://www.instagram.com/mateshwari_exports/" target="_blank" rel="noopener noreferrer" className="header-mobile-social-icon-link" aria-label="Instagram">
+              <FaInstagram className="header-mobile-social-icon" />
+            </a>
+            <a href="https://www.facebook.com/mateshwariexports/" target="_blank" rel="noopener noreferrer" className="header-mobile-social-icon-link" aria-label="Facebook">
+              <FaFacebook className="header-mobile-social-icon" />
+            </a>
           </div>
         </div>
 
-        {isMobileMenuOpen && <div className="header-mobile-menu-backdrop" onClick={() => setIsMobileMenuOpen(false)} />}
+        {isMobileMenuOpen && (
+          <div className="header-mobile-menu-backdrop" onClick={() => setIsMobileMenuOpen(false)} />
+        )}
 
         <div className={`header-mobile-menu ${isMobileMenuOpen ? 'open' : ''}`}>
           <div className="header-mobile-menu-header">
@@ -434,18 +627,21 @@ const Header = ({ onAccountClick }) => {
                 { href: '/testimonials',       label: 'TESTIMONIALS' },
               ].map(({ href, label }) => (
                 <li key={href}>
-                  <Link href={href} className={`header-mobile-nav-link ${pathname === href ? 'active' : ''}`} onClick={() => setIsMobileMenuOpen(false)}>
+                  <Link
+                    href={href}
+                    className={`header-mobile-nav-link ${pathname === href ? 'active' : ''}`}
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
                     {label}
                   </Link>
                 </li>
               ))}
             </ul>
 
-            {/* Mobile: live category links below PRODUCTS */}
-            {navCategories.length > 0 && (
+            {visibleNavCategories.length > 0 && (
               <div className="header-mobile-categories">
                 <p className="header-mobile-categories-title">Browse Categories</p>
-                {navCategories.map((cat) => {
+                {visibleNavCategories.map((cat) => {
                   const slug = cat.slug || cat.name?.toLowerCase().replace(/\s+/g, '-') || cat.id;
                   return (
                     <Link

@@ -29,6 +29,28 @@ const PORT = process.env.PORT || 5000;
 
 const app = express();
 
+const parseAllowedOrigins = (...values) =>
+  values
+    .flatMap((value) => (value || '').split(','))
+    .map((origin) => origin.trim())
+    .filter(Boolean);
+
+const defaultAllowedOrigins = [
+  'http://localhost:3000',
+  'http://127.0.0.1:3000',
+  'http://localhost:5173',
+  'http://127.0.0.1:5173',
+  'https://www.mateshwarimoortibhandar.com',
+  'https://mateshwarimoortibhandar.com',
+];
+
+const allowedOrigins = Array.from(
+  new Set([
+    ...defaultAllowedOrigins,
+    ...parseAllowedOrigins(process.env.FRONTEND_URL, process.env.ADMIN_PANEL_URL, process.env.CORS_ALLOWED_ORIGINS),
+  ])
+);
+
 // CORS headers function for static files
 const addStaticCorsHeaders = (req, res, next) => {
   res.header('Access-Control-Allow-Origin', '*');
@@ -37,20 +59,22 @@ const addStaticCorsHeaders = (req, res, next) => {
   next();
 };
 
-const allowOrigin = ['https://www.mateshwarimoortibhandar.com', 'http://localhost:3000'];
 // Middleware
-app.use(cors({
+const corsOptions = {
   origin: (origin, callback) => {
-    if (!origin || allowOrigin.includes(origin)) {
-      callback(null, true);
-    } else {
-      callback(new Error('Not allowed by CORS'));
+    if (!origin || allowedOrigins.includes(origin)) {
+      return callback(null, true);
     }
-  }
-}
 
+    return callback(new Error(`Not allowed by CORS: ${origin}`));
+  },
+  methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Origin', 'X-Requested-With', 'Content-Type', 'Accept', 'Authorization'],
+  credentials: true,
+};
 
-));
+app.use(cors(corsOptions));
+app.options(/.*/, cors(corsOptions));
 app.use(helmet({
   crossOriginResourcePolicy: { policy: "cross-origin" },
   contentSecurityPolicy: {
@@ -116,6 +140,10 @@ app.use((req, res) => {
 // Error handler
 app.use((err, req, res, next) => {
   console.error(err.stack);
+  if (err.message && err.message.startsWith('Not allowed by CORS')) {
+    return res.status(403).json({ message: err.message });
+  }
+
   res.status(500).json({ message: 'Something went wrong!' });
 });
 

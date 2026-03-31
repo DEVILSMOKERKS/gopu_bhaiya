@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import axios from 'axios';
@@ -15,6 +15,7 @@ const PLACEHOLDER_IMAGE = 'https://images.unsplash.com/photo-1594633312681-425c7
  */
 const ProductsPage = () => {
   const [categories, setCategories] = useState([]);
+  const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -27,23 +28,55 @@ const ProductsPage = () => {
       setLoading(false);
       return;
     }
+
     setLoading(true);
     setError(null);
-    axios
-      .get(`${API_URL}/categories`, { headers: { 'Cache-Control': 'no-cache' } })
-      .then((res) => {
-        if (res.data?.success && Array.isArray(res.data.data)) {
-          setCategories(res.data.data.filter((c) => c.status !== 'inactive'));
-        } else {
-          setCategories([]);
-        }
+    Promise.all([
+      axios.get(`${API_URL}/categories`),
+      axios.get(`${API_URL}/products`, {
+        params: { page: 1, limit: 1000 },
+      }),
+    ])
+      .then(([categoryRes, productRes]) => {
+        const categoryData = categoryRes.data?.success && Array.isArray(categoryRes.data.data)
+          ? categoryRes.data.data
+          : [];
+        const productData = Array.isArray(productRes.data?.data) ? productRes.data.data : [];
+
+        setCategories(categoryData.filter((c) => c.status !== 'inactive'));
+        setProducts(productData.filter((product) => product.category_id != null));
       })
       .catch((err) => {
         setError(err.response?.data?.message || err.message || 'Failed to load categories');
         setCategories([]);
+        setProducts([]);
       })
       .finally(() => setLoading(false));
   }, [API_URL]);
+
+  const visibleCategories = useMemo(() => {
+    const byCategoryId = new Map();
+
+    products.forEach((product) => {
+      if (product.category_id == null) return;
+
+      const existingCategory = categories.find((category) => category.id === product.category_id);
+      const fallbackName = product.category_name || 'Category';
+      const fallbackSlug = fallbackName.toLowerCase().trim().replace(/[^\w\s-]/g, '').replace(/\s+/g, '-');
+
+      if (!byCategoryId.has(product.category_id)) {
+        byCategoryId.set(product.category_id, {
+          id: product.category_id,
+          name: existingCategory?.name || fallbackName,
+          slug: existingCategory?.slug || product.category_slug || fallbackSlug || String(product.category_id),
+          description: existingCategory?.description || '',
+          image_url: existingCategory?.image_url || product.featured_image || null,
+        });
+      }
+    });
+
+    return Array.from(byCategoryId.values()).sort((a, b) => String(a.name).localeCompare(String(b.name)));
+  }, [categories, products]);
 
   const getCategoryImage = (cat) => {
     if (!cat.image_url) return PLACEHOLDER_IMAGE;
@@ -84,16 +117,16 @@ const ProductsPage = () => {
       <div className="product-by-category-header">
         <h1 className="product-by-category-title">Products</h1>
         <p className="product-by-category-subtitle">
-          Choose a category to browse variants
+          Browse handcrafted collections by category and discover designs that suit your home, temple, or gifting needs.
         </p>
       </div>
 
       <div className="product-by-category-container">
-        {categories.length === 0 ? (
+        {visibleCategories.length === 0 ? (
           <div className="product-by-category-empty">No categories found.</div>
         ) : (
           <div className="product-by-category-grid">
-            {categories.map((cat) => {
+            {visibleCategories.map((cat) => {
               const slug = cat.slug || cat.name?.toLowerCase().replace(/\s+/g, '-') || cat.id;
               return (
                 <Link
@@ -112,18 +145,18 @@ const ProductsPage = () => {
                         style={{ objectFit: 'cover' }}
                         sizes="(max-width: 768px) 100vw, 380px"
                       />
-                      <div className="product-by-category-overlay">
+                      {/* <div className="product-by-category-overlay">
                         <span className="product-by-category-card-category">
                           {(cat.name || 'Category').toUpperCase()}
                         </span>
-                      </div>
+                      </div> */}
                     </div>
                     <div className="product-by-category-content">
                       <h3 className="product-by-category-card-title">{cat.name || 'Category'}</h3>
-                      <p className="product-by-category-card-description">
+                      {/* <p className="product-by-category-card-description">
                         {cat.description ? `${String(cat.description).slice(0, 120)}${cat.description.length > 120 ? '...' : ''}` : 'View variants'}
-                      </p>
-                      <span className="product-by-category-view-btn">View More</span>
+                      </p> */}
+                      <span className="product-by-category-view-btn">View More...</span>
                     </div>
                   </div>
                 </Link>
@@ -134,6 +167,6 @@ const ProductsPage = () => {
       </div>
     </div>
   );
-};
+};  
 
 export default ProductsPage;

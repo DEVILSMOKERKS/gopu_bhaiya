@@ -8,6 +8,9 @@ const Return = () => {
       <div className="return-policy-content">
         <header className="return-header">
           <h1>Exchange & Cancellation Policy</h1>
+          <p>
+            This policy explains when an order can be cancelled, when an exchange may be possible, and how our team supports you if something needs attention.
+          </p>
           <p className="return-last-updated">
             Last Updated: {new Date().toLocaleDateString()}
           </p>
@@ -19,7 +22,7 @@ const Return = () => {
             At Mateshwari Moorti Bhandar, we understand that purchasing marble idols and temple structures is a personal choice that reflects your spiritual and cultural preferences. We are committed to providing you with a seamless shopping experience and stand behind the quality of our products with our comprehensive exchange and cancellation policy.
           </p>
           <p>
-            Our policy is designed to protect both our customers and the integrity of our clothing pieces. We offer a 30-day exchange policy on most items, ensuring you can shop with confidence knowing that your satisfaction is our priority.
+            Our policy is designed to protect both our customers and the integrity of our handcrafted products. Where eligible, we offer a reasonable exchange window so you can shop with confidence and clarity.
           </p>
         </section>
 

@@ -861,7 +861,7 @@ const CreateProduct = () => {
             ))}
             {selectedAttributes.length === 0 && (
               <p className="createproduct-info-text">
-                Click "Add Attribute" to assign attributes to this product.
+                Click &quot;Add Attribute&quot; to assign attributes to this product.
               </p>
             )}
           </div>

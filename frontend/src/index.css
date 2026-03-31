@@ -1,22 +1,34 @@
+/* Fonts: display=swap avoids invisible text; loaded via preconnect above */
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Cinzel:wght@400;600;700&family=Lato:wght@300;400&display=swap');
 
 * {
   padding: 0px;
   margin: 0px;
   box-sizing: border-box;
-  font-family: var(--__futura_pt_light_ef3a57, 'Arial', 'Helvetica Neue', 'Helvetica', sans-serif), var(--__futura_pt_light_Fallback_ef3a57, 'Arial', 'Helvetica Neue', 'Helvetica', sans-serif), 'Arial', 'Helvetica Neue', 'Helvetica', sans-serif;
+  font-family: var(--font-body);
+}
+
+/* Homepage single H1: SEO-optimized 55–60 chars, ~580px width */
+.home-seo-title {
+  max-width: 580px;
+  margin: 0 auto;
+  padding: 0.75rem 1.25rem 0;
+  font-size: clamp(1.8rem, 4vw, 3rem);
+  font-weight: 700;
+  color: var(--dark, #1A1208);
+  text-align: center;
+  line-height: 1.25;
+  font-family: var(--font-heading);
 }
 
 :root {
-  /* Font Family - Headings */
-  --font-heading: var(--__futura_pt_medium_6c980f, 'Arial', 'Helvetica Neue', 'Helvetica', sans-serif), var(--__futura_pt_medium_Fallback_6c980f, 'Arial', 'Helvetica Neue', 'Helvetica', sans-serif), 'Arial', 'Helvetica Neue', 'Helvetica', sans-serif;
-  --futura-pt-medium: var(--__futura_pt_medium_6c980f, 'Arial', 'Helvetica Neue', 'Helvetica', sans-serif), var(--__futura_pt_medium_Fallback_6c980f, 'Arial', 'Helvetica Neue', 'Helvetica', sans-serif), 'Arial', 'Helvetica Neue', 'Helvetica', sans-serif;
-
-  /* Font Family - Body */
-  --font-family: var(--__futura_pt_light_ef3a57, 'Arial', 'Helvetica Neue', 'Helvetica', sans-serif), var(--__futura_pt_light_Fallback_ef3a57, 'Arial', 'Helvetica Neue', 'Helvetica', sans-serif), 'Arial', 'Helvetica Neue', 'Helvetica', sans-serif;
-  --font-body: var(--__futura_pt_light_ef3a57, 'Arial', 'Helvetica Neue', 'Helvetica', sans-serif), var(--__futura_pt_light_Fallback_ef3a57, 'Arial', 'Helvetica Neue', 'Helvetica', sans-serif), 'Arial', 'Helvetica Neue', 'Helvetica', sans-serif;
-  --font-primary: var(--__futura_pt_medium_6c980f, 'Arial', 'Helvetica Neue', 'Helvetica', sans-serif), var(--__futura_pt_medium_Fallback_6c980f, 'Arial', 'Helvetica Neue', 'Helvetica', sans-serif), 'Arial', 'Helvetica Neue', 'Helvetica', sans-serif;
-  --futura-pt-light: var(--__futura_pt_light_ef3a57, 'Arial', 'Helvetica Neue', 'Helvetica', sans-serif), var(--__futura_pt_light_Fallback_ef3a57, 'Arial', 'Helvetica Neue', 'Helvetica', sans-serif), 'Arial', 'Helvetica Neue', 'Helvetica', sans-serif;
+  /* Font Family - Times New Roman (classy typography) */
+  --font-heading: 'Cinzel', serif;
+  --font-body: 'Lato', sans-serif;
+  --font-family: 'Lato', sans-serif;
+  --font-primary: 'Lato', sans-serif;
+  --futura-pt-medium: 'Lato', sans-serif;
+  --futura-pt-light: 'Lato', sans-serif;
 
   /* New Design System - Gold Theme */
   --gold: #C9A84C;
@@ -150,10 +162,10 @@ h6 {
   font-weight: 500;
   line-height: 1.2;
   color: var(--bs-heading-color);
-  font-family: var(--futura-pt-medium, var(--font-heading, 'Arial', 'Helvetica', sans-serif)) !important;
+  font-family: var(--font-heading) !important;
 }
 
-/* Heading Styles with Futura PT Medium - Uppercase */
+/* Heading hierarchy - classy spacing */
 .h2style,
 .h3style,
 .h4style,
@@ -162,10 +174,9 @@ h2,
 h3,
 h4,
 h5 {
-  font-family: var(--futura-pt-medium, var(--font-heading, 'Arial', 'Helvetica', sans-serif)) !important;
-  text-transform: uppercase !important;
-  font-weight: 500 !important;
-  letter-spacing: .15rem;
+  font-family: var(--font-heading) !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.02em;
 }
 
 /* Paragraph Styles */
@@ -176,8 +187,9 @@ p {
   margin-inline-start: 0px;
   margin-inline-end: 0px;
   unicode-bidi: isolate;
-  font-family: var(--futura-pt-light) !important;
-  font-size: 1.17rem;
+  font-family: var(--font-body) !important;
+  font-size: 1.02rem;
+  line-height: 1.7;
   color: #2e2e2e;
 }
 
@@ -197,10 +209,43 @@ label {
 body {
   background: var(--cream, #FAF6EE);
   overflow-x: hidden;
+  color: var(--text);
+  font-family: var(--font-body);
 }
 
 html {
   scroll-behavior: smooth;
+}
+
+/* Focus visible for keyboard navigation — improves Accessibility score */
+:focus-visible {
+  outline: 2px solid var(--primary-color, #B68126);
+  outline-offset: 2px;
+}
+
+.home-seo-intro {
+  padding: 2.5rem 1.25rem 1rem;
+  background: linear-gradient(180deg, rgba(245, 233, 200, 0.45) 0%, rgba(250, 246, 238, 0) 100%);
+}
+
+.home-seo-description {
+  max-width: 760px;
+  margin: 0.5rem auto 0;
+  text-align: center;
+  color: #54412a;
+  font-size: 1.02rem;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
 
 /* ── GLOBAL MOBILE RESPONSIVE ── */
@@ -209,5 +254,13 @@ html {
     font-size: 0.95rem !important;
     margin-block-start: 0.6em;
     margin-block-end: 0.6em;
+  }
+
+  .home-seo-intro {
+    padding: 1.5rem 1rem 0.5rem;
+  }
+
+  .home-seo-description {
+    font-size: 0.95rem;
   }
 }

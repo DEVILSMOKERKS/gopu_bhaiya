@@ -7,6 +7,9 @@ const Terms = () => {
       <div className="terms-content">
         <header className="terms-header">
           <h1>Terms & Conditions</h1>
+          <p>
+            Please read these terms carefully before using the website or placing an order with Mateshwari Moorti Bhandar.
+          </p>
           <p className="terms-last-updated">
             Last Updated: {new Date().toLocaleDateString()}
           </p>
@@ -15,14 +18,14 @@ const Terms = () => {
         <section className="terms-section">
           <h2>Offer Details</h2>
 
-          <h3>Premium Designer Collection</h3>
-          <p>Customers can avail additional discounts on <strong>premium designer clothing</strong> using the below mentioned coupon codes subject to minimum cart value:</p>
+          <h3>Promotional Offers</h3>
+          <p>From time to time, customers may receive promotional discounts on selected products or collections, subject to eligibility, availability, and minimum order value.</p>
 
           <div className="terms-table-container">
             <table className="terms-table">
               <thead>
                 <tr>
-                  <th>Designer Collection Cart Value</th>
+                  <th>Order Value</th>
                   <th>Discount</th>
                   <th>Voucher</th>
                 </tr>
@@ -47,14 +50,14 @@ const Terms = () => {
             </table>
           </div>
 
-          <h3>Casual and Everyday Wear</h3>
-          <p>Customers can avail additional discounts on <strong>casual and everyday clothing</strong> using the below mentioned coupon codes subject to minimum cart value:</p>
+          <h3>Additional Offer Slabs</h3>
+          <p>Some campaigns may include additional voucher slabs for selected order values. These offers apply only where they are explicitly displayed on the website or shared by our team.</p>
 
           <div className="terms-table-container">
             <table className="terms-table">
               <thead>
                 <tr>
-                  <th>Casual Wear Cart Value</th>
+                  <th>Order Value</th>
                   <th>Discount</th>
                   <th>Voucher</th>
                 </tr>
@@ -77,9 +80,9 @@ const Terms = () => {
           <div className="terms-important-notes">
             <ul>
               <li>Voucher FLAT10 is applicable only on Premium Collection items.</li>
-              <li>Vouchers STYLE10/20/30 are applicable only on premium designer clothing. Not applicable on basic casual wear and accessories.</li>
-              <li>Vouchers CASUAL10/15 are applicable only on casual and everyday clothing. Not applicable on designer items and accessories.</li>
-              <li>Offers on clothing prices and discounts are valid only on selected products.</li>
+              <li>Voucher applicability may vary by collection, customization level, and campaign terms.</li>
+              <li>Selected offers may not be valid on custom orders, consultation-led projects, or already discounted products.</li>
+              <li>Offers and promotional pricing are valid only on selected products.</li>
               <li>All current vouchers are subject to discontinuation without prior notice.</li>
               <li>The applicability of any additional voucher is at the sole discretion of Mateshwari Moorti Bhandar.</li>
             </ul>
@@ -96,28 +99,28 @@ const Terms = () => {
         <section className="terms-section">
           <h2>Trademarks</h2>
           <p>
-            The trademarks, names, logos and service marks (collectively &quot;trademarks&quot;) displayed on this website are registered and unregistered trademarks of Mateshwari Moorti Bhandar Fashion. Nothing contained on this website should be construed as granting any license or right to use any trademark without the prior written permission of Mateshwari Moorti Bhandar Fashion.
+            The trademarks, names, logos and service marks displayed on this website are the property of Mateshwari Moorti Bhandar. Nothing on this website should be interpreted as granting permission to use them without prior written consent.
           </p>
         </section>
 
         <section className="terms-section">
           <h2>External Links</h2>
           <p>
-            External links may be provided for your convenience, but they are beyond the control of Mateshwari Moorti Bhandar Fashion and no representation is made as to their content. Use or reliance on any external links and the content thereon provided is at your own risk.
+            External links may be provided for your convenience, but they are beyond the control of Mateshwari Moorti Bhandar. Use of those links and any third-party content is at your own discretion and risk.
           </p>
         </section>
 
         <section className="terms-section">
           <h2>Warranties</h2>
           <p>
-            Mateshwari Moorti Bhandar Fashion makes no express, implied, residual, or other warranties, representations, statements, or guarantees whatsoever to you and specifically disclaims and excludes any and all implied warranties of merchantability, satisfactory quality, fitness for a particular purpose, and non-infringement of third party rights, unless otherwise disclaimable by law.
+            Except where otherwise required by law, Mateshwari Moorti Bhandar does not make additional warranties beyond those expressly stated for a product or service.
           </p>
         </section>
 
         <section className="terms-section">
           <h2>Prices</h2>
           <p>
-            Pricing is calculated based on current fabric costs, design complexity, and market trends, which are subject to fluctuations. Prices on Mateshwari Moorti Bhandar.com can change without notice. You will be charged the price listed on the day of purchase.
+            Pricing may vary based on material, craftsmanship, customization, size, and market conditions. Prices on the website may change without prior notice, and the final applicable price will be the one shown at the time of purchase or quotation.
           </p>
         </section>
 

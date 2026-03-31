@@ -71,7 +71,6 @@ const ProductByCategory = ({ categoryIdOrSlug }) => {
     axios
       .get(`${API_URL}/products/category/${categoryId}`, {
         params: { page: 1, limit: 100 },
-        headers: { 'Cache-Control': 'no-cache' },
       })
       .then((res) => {
         const data = res.data?.data ?? [];
@@ -148,7 +147,7 @@ const ProductByCategory = ({ categoryIdOrSlug }) => {
 
   const title = categoryName || 'Products';
   return (
-    <div className="product-by-category-page">
+    <div className="\+">
       <div className="product-by-category-header">
         <h1 className="product-by-category-title">{title}</h1>
         <p className="product-by-category-subtitle">
@@ -177,19 +176,19 @@ const ProductByCategory = ({ categoryIdOrSlug }) => {
                     style={{ objectFit: 'cover' }}
                     sizes="(max-width: 768px) 100vw, 380px"
                   />
-                  <div className="product-by-category-overlay">
+                  {/* <div className="product-by-category-overlay">
                     <span className="product-by-category-card-category">
                       {(product.category_name || product.subcategory_name || 'Product').toUpperCase()}
                     </span>
-                  </div>
+                  </div> */}
                 </div>
                 <div className="product-by-category-content">
                   <h3 className="product-by-category-card-title">{product.name}</h3>
-                  <p className="product-by-category-card-description">
+                  {/* <p className="product-by-category-card-description">
                     {product.description
                       ? `${product.description.replace(/<[^>]*>/g, '').slice(0, 120)}${product.description.length > 120 ? '...' : ''}`
                       : '—'}
-                  </p>
+                  </p> */}
                   <div className="product-by-category-meta">
                     <span className="product-by-category-price">
                       ₹{product.min_price ?? '—'} — ₹{product.max_price ?? '—'}

@@ -57,14 +57,14 @@ const AboutSection = () => {
             <div className="about-who-we-are-text-section">
               <h2 className="about-who-we-are-title">Who We Are</h2>
               <h3 className="about-who-we-are-subtitle">
-                Celebrating Tradition With A Modern Touch
+                50 Years of Sacred Craftsmanship and Divine Devotion
               </h3>
               <p className="about-who-we-are-description">
-                At Mateshwari Mandir, we believe every woman deserves to feel graceful, confident, and connected to her roots. Our collection of kurtis blends timeless Indian craftsmanship with contemporary designs, offering styles that are perfect for every occasion — from casual elegance to festive celebrations. Each piece is thoughtfully made using quality fabrics, intricate detailing, and vibrant colors that reflect the beauty of our rich culture. With us, it&apos;s not just fashion — it&apos;s a celebration of tradition, comfort, and individuality.
+                At Mateshwari Moorti Bhandar, we are dedicated to preserving the ancient art of marble idol craftsmanship. For over 50 years, our master artisans from Rajasthan have hand-carved exceptional marble murtis, temple designs, and sacred home solutions using the finest Makrana marble. Each piece we create is a spiritual journey — carved with devotion, blessed with tradition, and designed to transform your sacred space into a sanctuary of peace and divinity. We believe that true art isn't just about aesthetics; it's about connecting you with your spiritual roots and bringing timeless beauty into your home.
               </p>
 
               <Link href="#journey-section" className="about-who-we-are-cta-button" scroll={true}>
-                View More
+                Explore Our Journey
               </Link>
             </div>
 

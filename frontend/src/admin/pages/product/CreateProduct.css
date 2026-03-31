@@ -111,7 +111,7 @@
 .createproduct-form-group label {
   font-size: 0.875rem;
   font-weight: 600;
-  color: var(--text-secondary);
+  color: black;
 }
 
 .createproduct-form-group input,

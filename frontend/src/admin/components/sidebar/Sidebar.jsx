@@ -295,7 +295,7 @@ const Sidebar = ({ isMobileOpen, onMobileClose }) => {
             </div>
             <div className="admin-details">
               <h4>Admin User</h4>
-              <p>Mateshvariexporter@gmail.com</p>
+              <p>Mateshwarimoortibhandarindia@gmail.com</p>
             </div>
           </div>
         </div>

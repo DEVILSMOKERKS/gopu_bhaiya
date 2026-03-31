@@ -716,6 +716,12 @@ const Shop = () => {
       <div className="shop-hero-banner-mobile" style={{ position: 'relative', width: '100%', height: '200px' }}>
         <Image src={shopBannerMobile} alt="Shop Banner" className="shop-banner-image" fill style={{ objectFit: 'cover' }} />
       </div>
+      
+      {/* SEO H1 */}
+      <h1 style={{ position: 'absolute', left: '-9999px' }}>
+        Shop Premium Marble Idols, Temple Designs & Sacred Art from Mateshwari Moorti Bhandar
+      </h1>
+      
       <div className="shop-content">
         {/* Mobile Filter Button */}
         <div className="shop-mobile-filter-button" onClick={openMobileFilter}>

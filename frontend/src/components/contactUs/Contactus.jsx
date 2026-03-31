@@ -122,7 +122,7 @@ const ContactUs = () => {
 
       <div className="contactus-banner" style={{ position: 'relative', width: '100%', height: '200px' }}>
         <Image src={goldenImg} alt="Banner" fill style={{ objectFit: 'cover' }} />
-        <h2>CONTACT US</h2>
+        <h1>CONTACT US</h1>
       </div>
       <div className="contactus-content">
         {/* Left Section */}
@@ -133,10 +133,9 @@ const ContactUs = () => {
             </div>
             <span className="contactus-help-text">Need Any Help ?</span>
           </div>
-          <h3 className="contactus-title">GET IN TOUCH WITH US</h3>
+          <h2 className="contactus-title">GET IN TOUCH WITH US</h2>
           <p className="contactus-desc">
-            Have a question or custom request? Fill out the form below — we&apos;re
-            here to help. Thank you
+            Connect with our expert team at Mateshwari Moorti Bhandar. Whether you need guidance on custom marble idols, temple designs, or spiritual consultation, we're here to help you create something truly divine. Reach out to us today — we respond within 24 hours and offer free consultations for all your spiritual art needs.
           </p>
           <Image src={lineImg} alt="" className="contactus-line1" width={200} height={2} style={{ width: '100%', height: 'auto' }} />
           <div className="contactus-contact-block">

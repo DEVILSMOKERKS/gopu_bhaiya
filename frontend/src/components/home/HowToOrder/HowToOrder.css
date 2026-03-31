@@ -89,6 +89,8 @@
   width: 100%;
   max-width: 420px;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+  /* Use --brown/--dark (index.css); avoid --text-primary/--text-secondary which footer :root overrides for light-on-dark */
+  color: var(--brown, #3d2b10);
 }
 
 /* Progress Indicator */
@@ -107,7 +109,7 @@
 .how-to-order-form-title {
   font-size: 24px;
   font-weight: 600;
-  color: var(--text-primary);
+  color: var(--brown, #3d2b10);
   margin-bottom: 30px;
   font-family: var(--futura-pt-medium, 'Arial', 'Helvetica', sans-serif);
   text-transform: none;
@@ -123,7 +125,7 @@
   display: block;
   font-size: 14px;
   font-weight: 500;
-  color: var(--text-secondary);
+  color: var(--brown, #3d2b10);
   margin-bottom: 8px;
   font-family: var(--futura-pt-medium, 'Arial', 'Helvetica', sans-serif);
 }
@@ -137,7 +139,7 @@
   width: 100%;
   padding: 12px 16px;
   font-size: 14px;
-  color: var(--text-primary);
+  color: var(--dark, #1a1208);
   background: var(--bg-primary);
   border: 1px solid var(--border-light);
   border-radius: 4px;
@@ -183,7 +185,7 @@
 .how-to-order-country-code {
   font-size: 14px;
   font-weight: 500;
-  color: var(--text-secondary);
+  color: var(--brown, #3d2b10);
   font-family: var(--futura-pt-medium, 'Arial', 'Helvetica', sans-serif);
 }
 
@@ -227,7 +229,7 @@
 .how-to-order-radio-label {
   font-size: 14px;
   font-weight: 400;
-  color: var(--text-secondary);
+  color: var(--brown, #3d2b10);
   line-height: 1.5;
   cursor: pointer;
   font-family: var(--futura-pt-light, 'Arial', 'Helvetica', sans-serif);
@@ -253,7 +255,7 @@
 }
 
 .how-to-order-submit-btn:hover {
-  background: var(--text-secondary);
+  background: var(--primary-dark, #956213);
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }

@@ -39,12 +39,14 @@ const generateUniqueSubcategorySlug = async (name, excludeId = null) => {
 // Get all subcategories
 const getAllSubcategories = async (req, res) => {
   try {
+    const { category_id } = req.query;
     const [subcategories] = await db.execute(`
       SELECT sc.*, c.name as category_name 
       FROM subcategories sc
       LEFT JOIN categories c ON sc.category_id = c.id
+      ${category_id ? 'WHERE sc.category_id = ?' : ''}
       ORDER BY sc.name ASC
-    `);
+    `, category_id ? [category_id] : []);
 
     res.json({
       success: true,

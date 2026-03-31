@@ -233,7 +233,7 @@ const Footer = () => {
               </li>
             </ul>
 
-            <h3 className="footer-column-title footer-follow-title">Follow Us</h3>
+            {/* <h3 className="footer-column-title footer-follow-title">Follow Us</h3>
             <div className="footer-social-icons footer-social-icons-right">
               <a href="https://www.instagram.com/reel/DVA2HgUknfx/?utm_source=ig_web_copy_link" target="_blank" rel="noopener noreferrer" className="footer-social-icon">
                 <FaInstagram />
@@ -244,27 +244,44 @@ const Footer = () => {
               <a href="https://youtube.com/@mateshwarimoortibhandar?si=aS0wJmJW-7apUe2f" target="_blank" rel="noopener noreferrer" className="footer-social-icon">
                 <FaYoutube />
               </a>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
 
       {/* Google Map Section */}
-      <div className="footer-map-section">
-        <h3 className="footer-map-title">Visit Our Store</h3>
-        <div className="footer-map-wrapper">
-          <iframe
-            title="Mateshwari Moorti Bhandar Location"
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3558.0!2d75.8175!3d26.9175!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x396db40a0bae6e29%3A0x2fc2c33e95f7e1f7!2sChandpole%20Bazaar%2C%20Jaipur%2C%20Rajasthan%20302001!5e0!3m2!1sen!2sin!4v1700000000000"
-            width="100%"
-            height="300"
-            style={{ border: 0, borderRadius: '12px' }}
-            allowFullScreen=""
-            loading="lazy"
-            referrerPolicy="no-referrer-when-downgrade"
-          />
-        </div>
-      </div>
+   <div className="footer-map-section">
+  <h3 className="footer-map-title">Visit Our Store</h3>
+  
+  {/* Anchor tag add kiya hai jo click karne par maps open karega */}
+  <a 
+    href="https://www.google.com/maps?q=26.922306,75.812611" 
+    target="_blank" 
+    rel="noopener noreferrer"
+    className="footer-map-link"
+    style={{ textDecoration: 'none', display: 'block' }}
+  >
+    <div className="footer-map-wrapper">
+      <iframe
+        title="Mateshwari Moorti Bhandar Location"
+        src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3557.658097587841!2d75.81002777543949!3d26.9223055766418!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMjbCsDU1JzIwLjMiTiA3NcKwNDgnNDUuNCJF!5e0!3m2!1sen!2sin!4v1710240000000!5m2!1sen!2sin"
+        width="100%"
+        height="300"
+        style={{ 
+          border: '1.5px solid #d4af37', 
+          borderRadius: '12px', 
+          pointerEvents: 'none' // Taaki iframe ke andar ka zoom/scroll click ko block na kare
+        }}
+        allowFullScreen=""
+        loading="lazy"
+        referrerPolicy="no-referrer-when-downgrade"
+      />
+      
+      {/* Ek overlay text jo user ko bataye ki click karna hai */}
+      <div className="map-overlay-text">Click to View on Google Maps</div>
+    </div>
+  </a>
+</div>
 
       {/* Footer Bottom - Copyright */}
       <div className="footer-bottom">
