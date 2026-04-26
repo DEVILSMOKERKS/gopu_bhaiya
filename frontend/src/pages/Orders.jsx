@@ -20,6 +20,15 @@ const Orders = () => {
     fetchOrders();
   }, [currentPage, selectedStatus]);
 
+  // Remember where user came from so Order Details "Back" never lands on Cart
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    const statusPart = selectedStatus ? `?status=${encodeURIComponent(selectedStatus)}` : '';
+    const pagePart = currentPage && currentPage !== 1 ? `${statusPart ? '&' : '?'}page=${currentPage}` : '';
+    const rememberedPath = `/orders${statusPart}${pagePart}`;
+    sessionStorage.setItem('last_orders_path', rememberedPath);
+  }, [currentPage, selectedStatus]);
+
   const fetchOrders = async () => {
     try {
       setLoading(true);

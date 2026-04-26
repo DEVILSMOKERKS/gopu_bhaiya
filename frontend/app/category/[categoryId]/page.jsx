@@ -26,11 +26,11 @@ export async function generateMetadata({ params }) {
   } catch (_) {}
 
   return {
-    title: `${displayName} | Mateshwari Moorti Bhandar`,
-    description: `Browse ${displayName} - premium marble idols and temple designs from Mateshwari Moorti Bhandar.`,
+    title: `${displayName} | Welcome To Mateshwari Moorti Bhanda`,
+    description: `Browse ${displayName} - premium marble idols and temple designs from Welcome To Mateshwari Moorti Bhanda.`,
     alternates: { canonical: `${BASE_URL}/category/${categoryName}` },
     openGraph: {
-      title: `${displayName} | Mateshwari Moorti Bhandar`,
+      title: `${displayName} | Welcome To Mateshwari Moorti Bhanda`,
       url: `${BASE_URL}/category/${categoryName}`,
     },
   };

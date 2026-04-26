@@ -29,20 +29,20 @@ const CanonicalURL = () => {
         // Also update page title dynamically based on route
         const updatePageTitle = () => {
             const routeTitles = {
-                '/': 'Mateshwari Moorti Bhandar - Handcrafted Marble Idols & Temples',
-                '/shop': 'Shop - Mateshwari Moorti Bhandar',
-                '/cart': 'Shopping Cart - Mateshwari Moorti Bhandar',
-                '/checkout': 'Checkout - Mateshwari Moorti Bhandar',
-                '/profile': 'My Profile - Mateshwari Moorti Bhandar',
-                '/orders': 'My Orders - Mateshwari Moorti Bhandar',
-                '/wishlist': 'My Wishlist - Mateshwari Moorti Bhandar',
-                '/contact': 'Contact Us - Mateshwari Moorti Bhandar',
-                '/about': 'About Us - Mateshwari Moorti Bhandar',
-                '/forgot-password': 'Forgot Password - Mateshwari Moorti Bhandar',
-                '/reset-password': 'Reset Password - Mateshwari Moorti Bhandar'
+                '/': 'Welcome To Mateshwari Moorti Bhanda - Handcrafted Marble Idols & Temples',
+                '/shop': 'Shop - Welcome To Mateshwari Moorti Bhanda',
+                '/cart': 'Shopping Cart - Welcome To Mateshwari Moorti Bhanda',
+                '/checkout': 'Checkout - Welcome To Mateshwari Moorti Bhanda',
+                '/profile': 'My Profile - Welcome To Mateshwari Moorti Bhanda',
+                '/orders': 'My Orders - Welcome To Mateshwari Moorti Bhanda',
+                '/wishlist': 'My Wishlist - Welcome To Mateshwari Moorti Bhanda',
+                '/contact': 'Contact Us - Welcome To Mateshwari Moorti Bhanda',
+                '/about': 'About Us - Welcome To Mateshwari Moorti Bhanda',
+                '/forgot-password': 'Forgot Password - Welcome To Mateshwari Moorti Bhanda',
+                '/reset-password': 'Reset Password - Welcome To Mateshwari Moorti Bhanda'
             };
 
-            const title = routeTitles[pathname] || 'Mateshwari Moorti Bhandar - Handcrafted Marble Idols & Temples';
+            const title = routeTitles[pathname] || 'Welcome To Mateshwari Moorti Bhanda - Handcrafted Marble Idols & Temples';
             document.title = title;
         };
 

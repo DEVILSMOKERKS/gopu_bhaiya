@@ -19,7 +19,7 @@ const Return = () => {
         <section className="return-policy-section">
           <h2>1. Overview</h2>
           <p>
-            At Mateshwari Moorti Bhandar, we understand that purchasing marble idols and temple structures is a personal choice that reflects your spiritual and cultural preferences. We are committed to providing you with a seamless shopping experience and stand behind the quality of our products with our comprehensive exchange and cancellation policy.
+            At Welcome To Mateshwari Moorti Bhanda, we understand that purchasing marble idols and temple structures is a personal choice that reflects your spiritual and cultural preferences. We are committed to providing you with a seamless shopping experience and stand behind the quality of our products with our comprehensive exchange and cancellation policy.
           </p>
           <p>
             Our policy is designed to protect both our customers and the integrity of our handcrafted products. Where eligible, we offer a reasonable exchange window so you can shop with confidence and clarity.
@@ -39,9 +39,9 @@ const Return = () => {
         <section className="return-policy-section">
           <h2>3. Exchange Process</h2>
           <p>To initiate an exchange, follow these simple steps:</p>
-          <p><strong>Step 1:</strong> Log into your Mateshwari Moorti Bhandar account and click on &quot;My Orders&quot; section. Select the item you wish to exchange and click &quot;Initiate Exchange&quot; within 30 days of delivery.</p>
+          <p><strong>Step 1:</strong> Log into your Welcome To Mateshwari Moorti Bhanda account and click on &quot;My Orders&quot; section. Select the item you wish to exchange and click &quot;Initiate Exchange&quot; within 30 days of delivery.</p>
           <p><strong>Step 2:</strong> Choose the item you want to exchange for. Ensure the item is in its original condition with all packaging, tags, labels, and documentation included. Any missing components may affect your exchange eligibility.</p>
-          <p><strong>Step 3:</strong> Download and print the exchange shipping label provided by Mateshwari Moorti Bhandar. Securely package the item and attach the label to your package.</p>
+          <p><strong>Step 3:</strong> Download and print the exchange shipping label provided by Welcome To Mateshwari Moorti Bhanda. Securely package the item and attach the label to your package.</p>
           <p><strong>Step 4:</strong> Drop off your package at any authorized courier location. Exchange shipping is free for all eligible exchanges within India.</p>
           <p><strong>Step 5:</strong> Once we receive and inspect your exchange, we will process your new item shipment within 5-7 business days. If there&apos;s a price difference, it will be handled according to our exchange policy.</p>
         </section>
@@ -55,7 +55,7 @@ const Return = () => {
 
         <section className="return-policy-section">
           <h2>5. Exchange Information</h2>
-          <p><strong>Exchange Options:</strong> You can exchange for items of equal or higher value. For exchanges of higher value, you will need to pay the price difference through the following methods: Credit/Debit Card; Net Banking; Mateshwari Moorti Bhandar Cash Account; Bank Transfer.</p>
+          <p><strong>Exchange Options:</strong> You can exchange for items of equal or higher value. For exchanges of higher value, you will need to pay the price difference through the following methods: Credit/Debit Card; Net Banking; Welcome To Mateshwari Moorti Bhanda Cash Account; Bank Transfer.</p>
           <p><strong>Exchange Timeline:</strong> Exchange received (1-2 business days) → Quality check (2-3 business days) → New item shipped (5-7 business days). Total processing time: 8-12 business days from receipt of exchange.</p>
           <p><strong>Exchange Value:</strong> Full exchange value of the original purchase price. For exchanges of higher value, the price difference must be paid before the new item is shipped.</p>
         </section>
@@ -90,7 +90,7 @@ const Return = () => {
 
         <section className="return-policy-section">
           <h2>10. Important Notes</h2>
-          <p>All exchanges must be initiated within 30 days of the delivery date. Items must be in original condition with all packaging, tags, and labels included. Mateshwari Moorti Bhandar reserves the right to refuse exchanges that do not meet our policy requirements. Exchange shipping labels are valid for 7 days from the date of generation. For security reasons, we may require additional verification for high-value exchanges. This policy is subject to change without prior notice, but changes will not affect exchanges already in progress.</p>
+          <p>All exchanges must be initiated within 30 days of the delivery date. Items must be in original condition with all packaging, tags, and labels included. Welcome To Mateshwari Moorti Bhanda reserves the right to refuse exchanges that do not meet our policy requirements. Exchange shipping labels are valid for 7 days from the date of generation. For security reasons, we may require additional verification for high-value exchanges. This policy is subject to change without prior notice, but changes will not affect exchanges already in progress.</p>
         </section>
 
         <section className="return-policy-section">

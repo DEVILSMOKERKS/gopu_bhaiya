@@ -29,7 +29,7 @@ export async function generateMetadata({ params }) {
     const productName = product.name || 'Product';
     const productDescription = product.description
       ? product.description.replace(/<[^>]*>/g, '').substring(0, 160)
-      : `Buy ${productName} from Mateshwari Moorti Bhandar. Premium quality products with authentic craftsmanship.`;
+      : `Buy ${productName} from Welcome To Mateshwari Moorti Bhanda. Premium quality products with authentic craftsmanship.`;
 
     const productImage = product.images && product.images.length > 0
       ? (typeof product.images[0] === 'string'
@@ -46,7 +46,7 @@ export async function generateMetadata({ params }) {
     const keywords = [
       productName,
       category,
-      'Mateshwari Moorti Bhandar',
+      'Welcome To Mateshwari Moorti Bhanda',
       'Premium Fashion',
       'Authentic Craftsmanship',
       product.subcategory?.name || '',
@@ -56,17 +56,17 @@ export async function generateMetadata({ params }) {
     const canonicalUrl = `${BASE_URL}/product/${productId}`;
 
     return {
-      title: `${productName} | Mateshwari Moorti Bhandar`,
+      title: `${productName} | Welcome To Mateshwari Moorti Bhanda`,
       description: productDescription,
       keywords,
       alternates: {
         canonical: canonicalUrl,
       },
       openGraph: {
-        title: `${productName} | Mateshwari Moorti Bhandar`,
+        title: `${productName} | Welcome To Mateshwari Moorti Bhanda`,
         description: productDescription,
         url: canonicalUrl,
-        siteName: 'Mateshwari Moorti Bhandar',
+        siteName: 'Welcome To Mateshwari Moorti Bhanda',
         images: [
           {
             url: fullImageUrl,
@@ -80,7 +80,7 @@ export async function generateMetadata({ params }) {
       },
       twitter: {
         card: 'summary_large_image',
-        title: `${productName} | Mateshwari Moorti Bhandar`,
+        title: `${productName} | Welcome To Mateshwari Moorti Bhanda`,
         description: productDescription,
         images: [fullImageUrl],
       },
@@ -110,23 +110,23 @@ export async function generateMetadata({ params }) {
 
 function getDefaultMetadata(productId) {
   return {
-    title: 'Product | Mateshwari Moorti Bhandar',
-    description: 'Discover premium quality products from Mateshwari Moorti Bhandar. Authentic craftsmanship and timeless designs.',
-    keywords: 'Mateshwari Moorti Bhandar, Premium Fashion, Authentic Craftsmanship, Quality Products',
+    title: 'Product | Welcome To Mateshwari Moorti Bhanda',
+    description: 'Discover premium quality products from Welcome To Mateshwari Moorti Bhanda. Authentic craftsmanship and timeless designs.',
+    keywords: 'Welcome To Mateshwari Moorti Bhanda, Premium Fashion, Authentic Craftsmanship, Quality Products',
     alternates: {
       canonical: `${BASE_URL}/product/${productId}`,
     },
     openGraph: {
-      title: 'Product | Mateshwari Moorti Bhandar',
-      description: 'Discover premium quality products from Mateshwari Moorti Bhandar.',
+      title: 'Product | Welcome To Mateshwari Moorti Bhanda',
+      description: 'Discover premium quality products from Welcome To Mateshwari Moorti Bhanda.',
       url: `${BASE_URL}/product/${productId}`,
-      siteName: 'Mateshwari Moorti Bhandar',
+      siteName: 'Welcome To Mateshwari Moorti Bhanda',
       images: [
         {
           url: `${BASE_URL}/logo.png`,
           width: 1200,
           height: 630,
-          alt: 'Mateshwari Moorti Bhandar',
+          alt: 'Welcome To Mateshwari Moorti Bhanda',
         },
       ],
       type: 'website',
@@ -134,8 +134,8 @@ function getDefaultMetadata(productId) {
     },
     twitter: {
       card: 'summary_large_image',
-      title: 'Product | Mateshwari Moorti Bhandar',
-      description: 'Discover premium quality products from Mateshwari Moorti Bhandar.',
+      title: 'Product | Welcome To Mateshwari Moorti Bhanda',
+      description: 'Discover premium quality products from Welcome To Mateshwari Moorti Bhanda.',
       images: [`${BASE_URL}/logo.png`],
     },
     robots: {

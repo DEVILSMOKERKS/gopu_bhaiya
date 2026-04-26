@@ -4,23 +4,23 @@ export const dynamic = 'force-dynamic';
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 export const metadata = {
-  title: 'Projects - Mateshwari Moorti Bhandar',
+  title: 'Projects - Welcome To Mateshwari Moorti Bhanda',
   description: 'Explore our completed projects showcasing our craftsmanship and design expertise. See our temple designs, pooja rooms, and custom creations.',
-  keywords: 'Completed Projects, Temple Projects, Pooja Room Projects, Marble Idol Projects, Custom Creations, Mateshwari Moorti Bhandar',
+  keywords: 'Completed Projects, Temple Projects, Pooja Room Projects, Marble Idol Projects, Custom Creations, Welcome To Mateshwari Moorti Bhanda',
   alternates: {
     canonical: `${BASE_URL}/projects`,
   },
   openGraph: {
-    title: 'Projects - Mateshwari Moorti Bhandar',
+    title: 'Projects - Welcome To Mateshwari Moorti Bhanda',
     description: 'Explore our completed projects showcasing our craftsmanship and design expertise.',
     url: `${BASE_URL}/projects`,
-    siteName: 'Mateshwari Moorti Bhandar',
+    siteName: 'Welcome To Mateshwari Moorti Bhanda',
     images: [
       {
         url: `${BASE_URL}/logo.png`,
         width: 1200,
         height: 630,
-        alt: 'Mateshwari Moorti Bhandar Projects',
+        alt: 'Welcome To Mateshwari Moorti Bhanda Projects',
       },
     ],
     type: 'website',
@@ -28,7 +28,7 @@ export const metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Projects - Mateshwari Moorti Bhandar',
+    title: 'Projects - Welcome To Mateshwari Moorti Bhanda',
     description: 'Explore our completed projects showcasing our craftsmanship and design expertise.',
     images: [`${BASE_URL}/logo.png`],
   },
@@ -39,7 +39,19 @@ export const metadata = {
 };
 
 export default function ProjectsPage() {
-  return <Projects />;
+  return (
+    <>
+      <section className="page-seo-intro">
+        <h1 className="page-seo-title">Temple & Pooja Room Projects</h1>
+        <p className="page-seo-description">
+          See real work delivered for homes and temples - from custom mandir layouts and marble installations to finished
+          pooja rooms and devotional interiors. These projects highlight detailing, scale, and design choices, helping
+          you visualize what is possible before you start your own sacred space journey.
+        </p>
+      </section>
+      <Projects />
+    </>
+  );
 }
 
 

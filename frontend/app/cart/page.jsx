@@ -3,9 +3,9 @@ import Cart from '../../src/components/cart/Cart';
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 
 export const metadata = {
-  title: 'Shopping Cart - Mateshwari Moorti Bhandar',
+  title: 'Shopping Cart - Welcome To Mateshwari Moorti Bhanda',
   description: 'View your shopping cart items. Review and proceed to checkout for your selected marble idols and temple designs.',
-  keywords: 'Shopping Cart, Cart, Checkout, Mateshwari Moorti Bhandar',
+  keywords: 'Shopping Cart, Cart, Checkout, Welcome To Mateshwari Moorti Bhanda',
   alternates: {
     canonical: `${BASE_URL}/cart`,
   },

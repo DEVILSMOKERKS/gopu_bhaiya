@@ -27,7 +27,7 @@ const Testimonials = () => {
       rating: 5,
       image: placeholderAvatar,
       category: 'idols',
-      text: 'The marble idols we purchased are absolutely stunning. The quality is exceptional and they arrived well-packaged. Highly recommend Mateshwari Moorti Bhandar!',
+      text: 'The marble idols we purchased are absolutely stunning. The quality is exceptional and they arrived well-packaged. Highly recommend Welcome To Mateshwari Moorti Bhanda!',
       date: '2024-02-20'
     },
     {
@@ -92,7 +92,7 @@ const Testimonials = () => {
       <div className="testimonials-header">
         <h1 className="testimonials-title h2style">Testimonials</h1>
         <p className="testimonials-subtitle">
-          Hear from our satisfied customers about their experience with Mateshwari Moorti Bhandar
+          Hear from our satisfied customers about their experience with Welcome To Mateshwari Moorti Bhanda
         </p>
       </div>
 

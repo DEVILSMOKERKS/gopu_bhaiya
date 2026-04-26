@@ -29,7 +29,7 @@ export async function generateMetadata({ params }) {
     const productName = product.name || 'Product';
     const productDescription = product.description
       ? product.description.replace(/<[^>]*>/g, '').substring(0, 160)
-      : `Buy ${productName} from Mateshwari Moorti Bhandar.`;
+      : `Buy ${productName} from Welcome To Mateshwari Moorti Bhanda.`;
 
     const productImage =
       product.colors?.[0]?.images?.[0] != null
@@ -44,22 +44,22 @@ export async function generateMetadata({ params }) {
     const canonicalUrl = `${BASE_URL}/products/${categorySlug}/${productSlug}`;
 
     return {
-      title: `${productName} | Mateshwari Moorti Bhandar`,
+      title: `${productName} | Welcome To Mateshwari Moorti Bhanda`,
       description: productDescription,
-      keywords: [productName, category, 'Mateshwari Moorti Bhandar'].filter(Boolean).join(', '),
+      keywords: [productName, category, 'Welcome To Mateshwari Moorti Bhanda'].filter(Boolean).join(', '),
       alternates: { canonical: canonicalUrl },
       openGraph: {
-        title: `${productName} | Mateshwari Moorti Bhandar`,
+        title: `${productName} | Welcome To Mateshwari Moorti Bhanda`,
         description: productDescription,
         url: canonicalUrl,
-        siteName: 'Mateshwari Moorti Bhandar',
+        siteName: 'Welcome To Mateshwari Moorti Bhanda',
         images: fullImageUrl ? [{ url: fullImageUrl, width: 1200, height: 630, alt: productName }] : [],
         type: 'website',
         locale: 'en_IN',
       },
       twitter: {
         card: 'summary_large_image',
-        title: `${productName} | Mateshwari Moorti Bhandar`,
+        title: `${productName} | Welcome To Mateshwari Moorti Bhanda`,
         description: productDescription,
       },
       robots: { index: true, follow: true },
@@ -73,13 +73,13 @@ export async function generateMetadata({ params }) {
 function getDefaultMetadata(categorySlug, productSlug) {
   const canonicalUrl = `${BASE_URL}/products/${categorySlug}/${productSlug}`;
   return {
-    title: 'Product | Mateshwari Moorti Bhandar',
-    description: 'Premium marble idols and temple designs from Mateshwari Moorti Bhandar.',
+    title: 'Product | Welcome To Mateshwari Moorti Bhanda',
+    description: 'Premium marble idols and temple designs from Welcome To Mateshwari Moorti Bhanda.',
     alternates: { canonical: canonicalUrl },
     openGraph: {
-      title: 'Product | Mateshwari Moorti Bhandar',
+      title: 'Product | Welcome To Mateshwari Moorti Bhanda',
       url: canonicalUrl,
-      siteName: 'Mateshwari Moorti Bhandar',
+      siteName: 'Welcome To Mateshwari Moorti Bhanda',
       type: 'website',
       locale: 'en_IN',
     },

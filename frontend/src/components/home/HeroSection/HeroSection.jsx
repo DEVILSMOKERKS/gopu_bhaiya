@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
@@ -11,79 +11,109 @@ import hero2 from '../../../assets/Images/img/imag2.jpeg';
 import hero11 from '../../../assets/Images/img/imag3.jpeg';
 import hero12 from '../../../assets/Images/img/imag4.jpeg';
 
+const slides = [
+  {
+    id: 1,
+    image: hero1,
+    label: 'Sacred Craftsmanship Since 1972',
+    title: 'Divine Marble',
+    titleEm: 'Murtis, Carved with Devotion',
+    desc: 'Each idol is hand-carved by master artisans from Rajasthan using the finest Makrana marble, bringing divine presence into your home and temple.',
+    stats: [
+      { num: '5000+', label: 'Murtis Crafted' },
+      { num: '50+', label: 'Years Legacy' },
+      { num: '28', label: 'States Delivered' },
+    ],
+  },
+  {
+    id: 2,
+    image: hero2,
+    label: 'Premium Temple Grade',
+    title: 'Radha Krishna',
+    titleEm: 'Yugal Murti, Pure Devotion',
+    desc: 'Exquisitely painted, adorned with real gold leaf and precious stones for museum-quality sacred art.',
+    stats: [
+      { num: '200+', label: 'Temple Clients' },
+      { num: '100%', label: 'Handmade' },
+      { num: '4.9+', label: 'Customer Rating' },
+    ],
+  },
+  {
+    id: 3,
+    image: hero11,
+    label: 'Customise Your Murti',
+    title: 'Your Vision,',
+    titleEm: 'Our Artisans, Divine Result',
+    desc: 'From concept sketch to consecrated idol, we create bespoke murtis to your exact specifications.',
+    stats: [
+      { num: '15-45', label: 'Days Delivery' },
+      { num: 'Free', label: 'Consultation' },
+      { num: 'Lifetime', label: 'Guarantee' },
+    ],
+  },
+  {
+    id: 4,
+    image: hero12,
+    label: 'Handcrafted Excellence',
+    title: 'Sacred Art,',
+    titleEm: 'Timeless Beauty',
+    desc: 'Browse our curated collection of marble murtis, pooja sets, and temple solutions handcrafted in Jaipur.',
+    stats: [
+      { num: '500+', label: 'Products' },
+      { num: 'Pan India', label: 'Shipping' },
+      { num: '25%', label: 'Off Selected' },
+    ],
+  },
+];
+
 const HeroSection = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
-
-  const slides = [
-    {
-      id: 1,
-      image: hero1,
-      label: 'Sacred Craftsmanship Since 1972',
-      title: 'Divine Marble',
-      titleEm: 'Murtis, Carved with Devotion',
-      desc: 'Each idol is hand-carved by master artisans from Rajasthan using the finest Makrana marble — bringing divine presence into your home and temple.',
-      stats: [
-        { num: '5000+', label: 'Murtis Crafted' },
-        { num: '50+', label: 'Years Legacy' },
-        { num: '28', label: 'States Delivered' },
-      ],
-    },
-    {
-      id: 2,
-      image: hero2,
-      label: 'Premium Temple Grade',
-      title: 'Radha Krishna',
-      titleEm: 'Yugal Murti, Pure Devotion',
-      desc: 'Exquisitely painted, adorned with real gold leaf and precious stones — museum-quality sacred art for the most discerning devotees.',
-      stats: [
-        { num: '200+', label: 'Temple Clients' },
-        { num: '100%', label: 'Handmade' },
-        { num: '4.9★', label: 'Customer Rating' },
-      ],
-    },
-    {
-      id: 3,
-      image: hero11,
-      label: 'Customise Your Murti',
-      title: 'Your Vision,',
-      titleEm: 'Our Artisans, Divine Result',
-      desc: 'From concept sketch to consecrated idol — we create bespoke murtis to your exact specifications for homes, temples, and institutions.',
-      stats: [
-        { num: '15–45', label: 'Days Delivery' },
-        { num: 'Free', label: 'Consultation' },
-        { num: 'Lifetime', label: 'Guarantee' },
-      ],
-    },
-    {
-      id: 4,
-      image: hero12,
-      label: 'Handcrafted Excellence',
-      title: 'Sacred Art,',
-      titleEm: 'Timeless Beauty',
-      desc: 'Browse our curated collection of marble murtis, pooja sets, and temple solutions — all handcrafted with devotion in Jaipur, Rajasthan.',
-      stats: [
-        { num: '500+', label: 'Products' },
-        { num: 'Pan India', label: 'Shipping' },
-        { num: '25%', label: 'Off Selected' },
-      ],
-    },
-  ];
+  const touchStartX = useRef(null);
 
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % slides.length);
     }, 6000);
+
     return () => clearInterval(interval);
-  }, [slides.length]);
+  }, []);
 
   const goToSlide = (index) => setCurrentSlide(index);
   const goToPrevious = () => setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
   const goToNext = () => setCurrentSlide((prev) => (prev + 1) % slides.length);
 
+  const handleTouchStart = (event) => {
+    touchStartX.current = event.touches[0]?.clientX ?? null;
+  };
+
+  const handleTouchEnd = (event) => {
+    if (touchStartX.current === null) {
+      return;
+    }
+
+    const touchEndX = event.changedTouches[0]?.clientX ?? touchStartX.current;
+    const deltaX = touchStartX.current - touchEndX;
+
+    if (Math.abs(deltaX) > 50) {
+      if (deltaX > 0) {
+        goToNext();
+      } else {
+        goToPrevious();
+      }
+    }
+
+    touchStartX.current = null;
+  };
+
   const slide = slides[currentSlide];
 
   return (
-    <section className="hero-slider-section" aria-label="Featured collections carousel">
+    <section
+      className="hero-slider-section"
+      aria-label="Featured collections carousel"
+      onTouchStart={handleTouchStart}
+      onTouchEnd={handleTouchEnd}
+    >
       <div className="hero-slider-desktop">
         <div className="hero-slider-images">
           <Image
@@ -102,6 +132,11 @@ const HeroSection = () => {
               <div className="hero-label">
                 <span>{slide.label}</span>
               </div>
+              <div className="hero-mobile-slide-tag">
+                <span>{String(currentSlide + 1).padStart(2, '0')}</span>
+                <span>/</span>
+                <span>{String(slides.length).padStart(2, '0')}</span>
+              </div>
               <h1 className="hero-title-new">
                 {slide.title} <em>{slide.titleEm}</em>
               </h1>
@@ -111,10 +146,10 @@ const HeroSection = () => {
                 <Link href="/contact-us" className="hero-btn-outline">CUSTOM ORDER</Link>
               </div>
               <div className="hero-stats-row">
-                {slide.stats.map((s, i) => (
-                  <div key={i} className="hero-stat">
-                    <div className="hero-stat-num">{s.num}</div>
-                    <div className="hero-stat-label">{s.label}</div>
+                {slide.stats.map((stat) => (
+                  <div key={stat.label} className="hero-stat">
+                    <div className="hero-stat-num">{stat.num}</div>
+                    <div className="hero-stat-label">{stat.label}</div>
                   </div>
                 ))}
               </div>
@@ -141,9 +176,9 @@ const HeroSection = () => {
       </button>
 
       <div className="hero-slider-dots" role="tablist" aria-label="Hero slide navigation">
-        {slides.map((s, index) => (
+        {slides.map((item, index) => (
           <button
-            key={s.id}
+            key={item.id}
             type="button"
             role="tab"
             aria-selected={index === currentSlide}
@@ -152,6 +187,10 @@ const HeroSection = () => {
             onClick={() => goToSlide(index)}
           />
         ))}
+      </div>
+
+      <div className="hero-mobile-swipe-hint" aria-hidden="true">
+        Swipe to explore
       </div>
     </section>
   );

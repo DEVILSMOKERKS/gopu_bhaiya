@@ -9,7 +9,7 @@ const Privacypolicy = () => {
           <h1>Privacy Policy</h1>
           <p>
             This page explains what information we collect, why we collect it, and how we keep it safe when you browse,
-            enquire, or place an order with Mateshwari Moorti Bhandar.
+            enquire, or place an order with Welcome To Mateshwari Moorti Bhanda.
           </p>
           <p className="privacy-last-updated">
             Last Updated: {new Date().toLocaleDateString()}
@@ -19,7 +19,7 @@ const Privacypolicy = () => {
         <section className="privacy-policy-section">
           <h2>1. Introduction</h2>
           <p>
-            Welcome to Mateshwari Moorti Bhandar. We are committed to protecting your privacy and ensuring the security of your personal information. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website, use our mobile application, or make purchases from our store.
+            Welcome To Mateshwari Moorti Bhanda. We are committed to protecting your privacy and ensuring the security of your personal information. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website, use our mobile application, or make purchases from our store.
           </p>
           <p>
             By using our services, you consent to the data practices described in this policy. If you do not agree with our policies and practices, please do not use our services.
@@ -84,7 +84,7 @@ const Privacypolicy = () => {
         <section className="privacy-policy-section">
           <h2>12. Contact Information</h2>
           <div className="privacy-contact-info">
-            <p><strong>Mateshwari Moorti Bhandar</strong></p>
+            <p><strong>Welcome To Mateshwari Moorti Bhanda</strong></p>
             <p><strong>Email:</strong> Mateshvariexporter@gmail.com</p>
             <p><strong>Phone:</strong> +91 77919 83156 | +91 88242 92890 | +91 97845 03338</p>
             <p><strong>Address:</strong> 2310, Khajane walo ka Rasta, Nehru Tailour Chouraha, Chandpole Bazar, Jaipur-302001 (Rajasthan) INDIA</p>

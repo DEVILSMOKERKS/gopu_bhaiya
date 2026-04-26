@@ -1,44 +1,23 @@
 'use client';
 
-import React from 'react';
+import React, { useRef } from 'react';
 import Link from 'next/link';
 import './DreamTempleFiveSteps.css';
 
 const STEPS = [
-  {
-    number: 1,
-    title: "Let's Connect One on One",
-    icon: 'connect',
-  },
-  {
-    number: 2,
-    title: 'Explore our Catalog',
-    icon: 'catalog',
-  },
-  {
-    number: 3,
-    title: 'Place The Order',
-    icon: 'order',
-  },
-  {
-    number: 4,
-    title: 'Approval',
-    icon: 'approval',
-  },
-  {
-    number: 5,
-    title: 'Delivery and Installation',
-    icon: 'delivery',
-  },
+  { number: 1, title: "Let's Connect\nOne on One", icon: 'connect' },
+  { number: 2, title: 'Explore our\nCatalog', icon: 'catalog' },
+  { number: 3, title: 'Place The\nOrder', icon: 'order' },
+  { number: 4, title: 'Approval', icon: 'approval' },
+  { number: 5, title: 'Delivery and\nInstallation', icon: 'delivery' },
 ];
 
 const ochre = '#c9a84c';
 const darkGrey = '#3a3a3a';
 const lightGrey = '#9a9a9a';
 
-/* Flat vector illustrations matching reference: consultation, catalog, order, approval, delivery */
 const StepIcon = ({ type }) => {
-  const size = 72;
+  const size = 68;
   const vb = '0 0 100 100';
 
   if (type === 'connect') {
@@ -75,7 +54,7 @@ const StepIcon = ({ type }) => {
     return (
       <svg width={size} height={size} viewBox={vb} fill="none">
         <rect x="8" y="52" width="84" height="42" rx="2" fill={lightGrey} />
-        <rect x="14" y="58" width="72" height="28" rx="0" fill="#fff" stroke={darkGrey} strokeWidth="1" />
+        <rect x="14" y="58" width="72" height="28" fill="#fff" stroke={darkGrey} strokeWidth="1" />
         <line x1="20" y1="65" x2="80" y2="65" stroke={lightGrey} strokeWidth="0.8" />
         <line x1="20" y1="72" x2="80" y2="72" stroke={lightGrey} strokeWidth="0.8" />
         <line x1="20" y1="79" x2="65" y2="79" stroke={lightGrey} strokeWidth="0.8" />
@@ -96,7 +75,6 @@ const StepIcon = ({ type }) => {
         <rect x="45" y="48" width="14" height="28" fill={ochre} rx="1" />
         <rect x="62" y="32" width="32" height="22" rx="1" fill="#fff" stroke={darkGrey} strokeWidth="1" />
         <path d="M70 42 L74 46 L86 32" stroke={darkGrey} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fill="none" />
-        <path d="M82 55 L88 70 L78 68 Z" fill={darkGrey} />
       </svg>
     );
   }
@@ -118,59 +96,78 @@ const StepIcon = ({ type }) => {
 };
 
 const DreamTempleFiveSteps = () => {
-  return (
-    <section className="dream-temple-five-infographic" aria-labelledby="dream-temple-five-title">
-      <div className="dream-temple-five-wrap">
-        <div className="dream-temple-five-banner">
-          <h2 id="dream-temple-five-title" className="dream-temple-five-heading">
-            YOUR DREAM TEMPLE IN 5 STEPS
-          </h2>
-          <p className="dream-temple-five-tagline">
-            Looking to design your Dream Temple? Here&apos;s how you can get started.
-          </p>
-        </div>
+  const scrollRef = useRef(null);
+  const isDragging = useRef(false);
+  const startX = useRef(0);
+  const scrollLeft = useRef(0);
 
-        <div className="dream-temple-five-sequence">
-          {STEPS.map((step, index) => (
-            <React.Fragment key={step.number}>
-              <div className="dream-temple-five-panel">
-                <div className="dream-temple-five-panel-circle">
-                  <StepIcon type={step.icon} />
-                </div>
-                <div className="dream-temple-five-panel-label">
-                  <span className="dream-temple-five-panel-num">{step.number}</span>
-                  <span className="dream-temple-five-panel-title">{step.title}</span>
-                </div>
+  const onMouseDown = (e) => {
+    isDragging.current = true;
+    startX.current = e.pageX - scrollRef.current.offsetLeft;
+    scrollLeft.current = scrollRef.current.scrollLeft;
+    scrollRef.current.style.cursor = 'grabbing';
+  };
+
+  const onMouseLeave = () => {
+    isDragging.current = false;
+    if (scrollRef.current) scrollRef.current.style.cursor = 'grab';
+  };
+
+  const onMouseUp = () => {
+    isDragging.current = false;
+    if (scrollRef.current) scrollRef.current.style.cursor = 'grab';
+  };
+
+  const onMouseMove = (e) => {
+    if (!isDragging.current) return;
+    e.preventDefault();
+    const x = e.pageX - scrollRef.current.offsetLeft;
+    scrollRef.current.scrollLeft = scrollLeft.current - (x - startX.current) * 1.2;
+  };
+
+  return (
+    <section className="dtf-section" aria-labelledby="dtf-title">
+      <div className="dtf-header">
+        <h2 id="dtf-title" className="dtf-heading">Your Dream Temple In 5 Steps</h2>
+        <p className="dtf-tagline">
+          Looking to design your Dream Temple? Here&apos;s how you can get started.
+        </p>
+      </div>
+
+      <div
+        className="dtf-scroll-outer"
+        ref={scrollRef}
+        onMouseDown={onMouseDown}
+        onMouseLeave={onMouseLeave}
+        onMouseUp={onMouseUp}
+        onMouseMove={onMouseMove}
+      >
+        <div className="dtf-track">
+          {STEPS.map((step) => (
+            <div key={step.number} className="dtf-item">
+              <div className="dtf-circle">
+                <StepIcon type={step.icon} />
               </div>
-              {index < STEPS.length - 1 && (
-                <div className="dream-temple-five-arrow" aria-hidden="true">
-                  <svg viewBox="0 0 56 28" fill="none" className="dream-temple-five-arrow-svg">
-                    <path
-                      d="M2 14 Q28 6 54 14"
-                      stroke="currentColor"
-                      strokeWidth="1.5"
-                      strokeLinecap="round"
-                      strokeDasharray="5 4"
-                    />
-                    <path
-                      d="M48 10 L54 14 L48 18"
-                      stroke="currentColor"
-                      strokeWidth="1.5"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-                </div>
-              )}
-            </React.Fragment>
+              <div className="dtf-label">
+                <span className="dtf-num">{step.number}</span>
+                <span className="dtf-title">
+                  {step.title.split('\n').map((line, i) => (
+                    <React.Fragment key={i}>
+                      {i > 0 && <br />}
+                      {line}
+                    </React.Fragment>
+                  ))}
+                </span>
+              </div>
+            </div>
           ))}
         </div>
+      </div>
 
-        <div className="dream-temple-five-cta">
-          <Link href="/contact-us" className="dream-temple-five-btn">
-            Get started — Step 1
-          </Link>
-        </div>
+      <div className="dtf-cta">
+        <Link href="/contact-us" className="dtf-btn">
+          Get started — Step 1
+        </Link>
       </div>
     </section>
   );

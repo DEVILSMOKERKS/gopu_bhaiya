@@ -171,6 +171,16 @@
   margin-top: 16px;
 }
 
+.mp-mobile-hint {
+  display: none;
+  margin: 14px 0 0;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 0.92rem;
+  color: var(--mp-brown-muted);
+  text-align: center;
+  opacity: 0.85;
+}
+
 .mp-title-rule-line {
   width: 76px;
   height: 1px;
@@ -507,6 +517,16 @@
   padding: 4px 0 0;
 }
 
+.mp-slide-counter {
+  margin: 12px 0 0;
+  font-family: 'Cinzel', serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.24em;
+  color: var(--mp-brown-muted);
+  text-align: center;
+  text-transform: uppercase;
+}
+
 .manufacturing-process-dot--blueprint {
   width: 9px;
   height: 9px;
@@ -547,78 +567,149 @@
 }
 
 @media (max-width: 968px) {
-  .mp-side-column { width: clamp(34px, 4.5vw, 56px); gap: 14px; }
-  .manufacturing-process-panel--center {
-    width: min(340px, 48vw);
-    height: min(453px, 68vh);
-    max-width: 60vw;
-  }
-  .manufacturing-process-panel--near-left,
-  .manufacturing-process-panel--near-right {
-    width: min(210px, 17vw);
-    height: min(280px, 40vh);
-    margin-right: -38px;
-  }
-  .manufacturing-process-panel--near-right { margin-left: -38px; margin-right: 0; }
-  .manufacturing-process-panel--far-left,
-  .manufacturing-process-panel--far-right {
-    width: min(140px, 10vw);
-    height: min(187px, 27vh);
-    margin-right: -56px;
-  }
-  .manufacturing-process-panel--far-right { margin-left: -56px; margin-right: 0; }
-  .manufacturing-process-panel--far-far-left,
-  .manufacturing-process-panel--far-far-right { display: none; }
-  .manufacturing-process-stage { min-height: 68vh; }
-  .mp-band--top, .mp-band--bottom { padding: 14px 0 10px; }
-}
-
-@media (max-width: 680px) {
   .mp-side-column { display: none; }
+  .mp-mobile-hint { display: block; }
   .manufacturing-process-carousel-frame {
-    padding: 0 0 30px;
-    position: relative;
+    padding: 0 18px 28px;
+  }
+  .mp-stage-wrap {
+    width: 100%;
   }
   .manufacturing-process-panel--center {
-    width: min(290px, 74vw);
-    height: min(387px, 58vh);
-    max-width: 80vw;
+    width: min(540px, calc(100vw - 76px));
+    height: min(620px, 62vh);
+    max-width: none;
+    border-radius: 22px;
+    box-shadow:
+      0 22px 50px rgba(61,43,16,0.2),
+      0 0 0 1px rgba(201,168,76,0.16);
   }
   .manufacturing-process-panel--near-left,
-  .manufacturing-process-panel--near-right {
-    width: min(105px, 15vw);
-    height: min(140px, 21vh);
-    opacity: 0.68;
-    margin-right: -16px;
-  }
-  .manufacturing-process-panel--near-right { margin-left: -16px; margin-right: 0; }
+  .manufacturing-process-panel--near-right,
   .manufacturing-process-panel--far-left,
   .manufacturing-process-panel--far-right,
   .manufacturing-process-panel--far-far-left,
   .manufacturing-process-panel--far-far-right { display: none; }
-  /* fallback arrows on mobile */
+  .manufacturing-process-stage {
+    min-height: 0;
+    gap: 0;
+    padding: 0;
+  }
   .manufacturing-process-arrow {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    width: 38px;
-    height: 38px;
+    width: 42px;
+    height: 42px;
+    background: rgba(255,251,242,0.95);
   }
-  .manufacturing-process-arrow--left  { left: 6px; }
-  .manufacturing-process-arrow--right { right: 6px; }
-  .manufacturing-process-stage { min-height: 62vh; }
-  .manufacturing-process-title--blueprint { font-size: 1.4rem; }
+  .manufacturing-process-arrow:hover {
+    transform: translateY(-50%) scale(1.06);
+  }
+  .manufacturing-process-arrow:active {
+    transform: translateY(-50%) scale(0.96);
+  }
+  .manufacturing-process-arrow--left { left: 8px; }
+  .manufacturing-process-arrow--right { right: 8px; }
+  .mp-band--top, .mp-band--bottom { padding: 14px 0 10px; }
+}
+
+@media (max-width: 680px) {
+  .manufacturing-process--blueprint {
+    min-height: auto;
+    background: linear-gradient(
+      180deg,
+      #f7efd9 0%,
+      #fbf7ec 12%,
+      #f4ebd5 52%,
+      #f8f1df 88%,
+      #6b4415 100%
+    );
+  }
+  .mp-band--top {
+    padding: 12px 0 10px;
+  }
+  .mp-band--bottom {
+    padding: 10px 0 12px;
+  }
+  .mp-mantra-strip,
+  .mp-ornament-row {
+    display: none;
+  }
+  .mp-title-block {
+    padding: 24px 18px 18px;
+  }
+  .manufacturing-process-title--blueprint {
+    font-size: 1.28rem;
+    letter-spacing: 0.12em;
+  }
+  .mp-title-sub {
+    font-size: 0.92rem;
+    letter-spacing: 0.06em;
+  }
+  .mp-title-rule {
+    margin-top: 14px;
+  }
+  .manufacturing-process-carousel-frame {
+    padding: 0 12px 20px;
+    position: relative;
+  }
+  .mp-stage-wrap {
+    width: 100%;
+    padding: 0 6px;
+  }
+  .manufacturing-process-panel--center {
+    width: min(360px, calc(100vw - 44px));
+    height: min(430px, 54vh);
+    max-width: none;
+    border-radius: 18px;
+    box-shadow:
+      0 18px 42px rgba(61, 43, 16, 0.2),
+      0 0 0 1px rgba(201, 168, 76, 0.18);
+  }
+  .manufacturing-process-stage {
+    min-height: auto;
+  }
+  .manufacturing-process-arrow {
+    top: calc(50% - 10px);
+    width: 36px;
+    height: 36px;
+    background: rgba(255, 251, 242, 0.95);
+    box-shadow: 0 8px 20px rgba(61, 43, 16, 0.16);
+  }
+  .manufacturing-process-arrow--left  { left: 2px; }
+  .manufacturing-process-arrow--right { right: 2px; }
+  .manufacturing-process-pagination--blueprint {
+    gap: 9px;
+    padding-bottom: 8px;
+  }
+  .manufacturing-process-dot--blueprint.active {
+    transform: scale(1.1);
+  }
 }
 
 @media (max-width: 480px) {
-  .manufacturing-process-panel--center {
-    width: min(264px, 82vw);
-    height: min(352px, 54vh);
+  .mp-title-block {
+    padding: 20px 14px 16px;
   }
-  .manufacturing-process-panel--near-left,
-  .manufacturing-process-panel--near-right {
-    width: min(84px, 12vw);
-    height: min(112px, 16vh);
-    opacity: 0.58;
+  .manufacturing-process-title--blueprint {
+    font-size: 1.14rem;
+    letter-spacing: 0.1em;
+  }
+  .mp-title-sub {
+    font-size: 0.84rem;
+  }
+  .mp-stage-wrap {
+    padding: 0 4px;
+  }
+  .manufacturing-process-panel--center {
+    width: min(300px, calc(100vw - 36px));
+    height: min(382px, 48vh);
+  }
+  .manufacturing-process-arrow--left  { left: -2px; }
+  .manufacturing-process-arrow--right { right: -2px; }
+  .mp-slide-counter {
+    font-size: 0.66rem;
+    letter-spacing: 0.18em;
   }
 }

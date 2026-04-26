@@ -30,10 +30,10 @@ const OurVision = () => {
           <div className="our-vision-text-section">
             <h2 className="our-vision-title">Our Vision</h2>
             <h3 className="our-vision-subtitle">
-              Bringing Your Dream Temple To Life With Mateshwari Moorti Bhandar
+              Bringing Your Dream Temple To Life With Welcome To Mateshwari Moorti Bhanda
             </h3>
             <p className="our-vision-description">
-              At Mateshwari Moorti Bhandar, we harmonize tradition, craftsmanship, and innovation to create timeless Pooja Room experiences. For the first time in the industry, we introduce a fully immersive virtual tour of our sacred spaces—designed to bring our artistry to your screen, wherever you are.
+              At Welcome To Mateshwari Moorti Bhanda, we harmonize tradition, craftsmanship, and innovation to create timeless Pooja Room experiences. For the first time in the industry, we introduce a fully immersive virtual tour of our sacred spaces—designed to bring our artistry to your screen, wherever you are.
             </p>
 
             <div className="our-vision-features">

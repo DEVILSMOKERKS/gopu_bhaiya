@@ -104,15 +104,13 @@ const Footer = () => {
 
   return (
     <footer className="footer">
-      {/* Background Watermark */}
-      <div className="footer-watermark">MATESHWARI EXPORTS</div>
-
+      
       <div className="footer-main">
         {/* Left Section - Logo and Stay Connected */}
         <div className="footer-left-section">
           <div className="footer-logo-section">
             <Link href="/" className="">
-              <Image src={logo} alt="Mateshwari Moorti Bhandar" className="footer-logo-img" width={200} height={60} priority />
+              <Image src={logo} alt="Welcome To Mateshwari Moorti Bhanda" className="footer-logo-img" width={200} height={60} priority />
             </Link>
           </div>
 
@@ -158,7 +156,7 @@ const Footer = () => {
                 aria-label="Accept terms to subscribe"
               />
               <label htmlFor="footer-consent">
-                By Submitting Your Email, You Agree To Receive Advertising Emails From Mateshwari Moorti Bhandar. <span className="footer-consent-required">(Check to enable Subscribe)</span>
+                By Submitting Your Email, You Agree To Receive Advertising Emails From Welcome To Mateshwari Moorti Bhanda. <span className="footer-consent-required">(Check to enable Subscribe)</span>
               </label>
             </div>
 
@@ -263,7 +261,7 @@ const Footer = () => {
   >
     <div className="footer-map-wrapper">
       <iframe
-        title="Mateshwari Moorti Bhandar Location"
+        title="Welcome To Mateshwari Moorti Bhanda Location"
         src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3557.658097587841!2d75.81002777543949!3d26.9223055766418!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMjbCsDU1JzIwLjMiTiA3NcKwNDgnNDUuNCJF!5e0!3m2!1sen!2sin!4v1710240000000!5m2!1sen!2sin"
         width="100%"
         height="300"
@@ -285,7 +283,7 @@ const Footer = () => {
 
       {/* Footer Bottom - Copyright */}
       <div className="footer-bottom">
-        <p>&copy; {new Date().getFullYear()} Mateshwari Moorti Bhandar. All Rights Reserved.</p>
+        <p>&copy; {new Date().getFullYear()} Welcome To Mateshwari Moorti Bhanda. All Rights Reserved.</p>
       </div>
 
       {/* WhatsApp Float Component */}

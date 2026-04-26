@@ -48,7 +48,7 @@ const ComingSoon = () => {
         <div className="header-section">
           <div className="logo-container">
             <div className="brand-info">
-              <h2 className="brand-title">Mateshwari Moorti Bhandar</h2>
+              <h2 className="brand-title">Welcome To Mateshwari Moorti Bhanda</h2>
               <div className="brand-tagline">Premium Fashion & Lifestyle</div>
             </div>
           </div>

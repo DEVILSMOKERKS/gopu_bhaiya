@@ -137,6 +137,17 @@ const OrderDetails = ({ orderId }) => {
     return `${address.address}, ${address.city}, ${address.postalCode}`;
   };
 
+  const handleBackToOrders = () => {
+    if (typeof window !== 'undefined') {
+      const lastOrdersPath = sessionStorage.getItem('last_orders_path');
+      if (lastOrdersPath && lastOrdersPath.startsWith('/orders')) {
+        router.push(lastOrdersPath);
+        return;
+      }
+    }
+    router.push('/orders');
+  };
+
   if (loading) {
     return (
       <div className="order-details-container">
@@ -153,7 +164,7 @@ const OrderDetails = ({ orderId }) => {
       <div className="order-details-container">
         <div className="error-message">
           <p>{error || 'Order not found'}</p>
-          <button onClick={() => router.push('/orders')}>Back to Orders</button>
+          <button onClick={handleBackToOrders}>Back to Orders</button>
         </div>
       </div>
     );
@@ -163,7 +174,7 @@ const OrderDetails = ({ orderId }) => {
     <div className="order-details-container">
       {/* Header */}
       <div className="order-details-header">
-        <button className="back-btn" onClick={() => router.push('/orders')}>
+        <button className="back-btn" onClick={handleBackToOrders}>
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
             <path d="M19 12H5M12 19l-7-7 7-7" />
           </svg>

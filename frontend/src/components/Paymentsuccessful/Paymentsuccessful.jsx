@@ -17,7 +17,7 @@ const Paymentsuccessful = () => {
                 <h1 className="paymentsuccessful-title">Payment Successful</h1>
 
                 <div className="paymentsuccessful-message">
-                    <p>Thank You For Choosing Mateshwari Moorti Bhandar, Your Order Will Be Generated Based On Your Delivery Request.</p>
+                    <p>Thank You For Choosing Welcome To Mateshwari Moorti Bhanda, Your Order Will Be Generated Based On Your Delivery Request.</p>
                     <p>The Receipt Has Been Sent To Your Email</p>
                 </div>
 

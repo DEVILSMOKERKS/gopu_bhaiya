@@ -12,7 +12,7 @@ const Who = () => {
           <h2 className="who-title">Who We Are</h2>
           <h3 className="who-subtitle">Celebrating Tradition With A Modern Touch</h3>
           <p className="who-description">
-            At Mateshwari Moorti Bhandar, we believe every home deserves to feel divine, blessed, and connected to its spiritual roots.
+            At Welcome To Mateshwari Moorti Bhanda, we believe every home deserves to feel divine, blessed, and connected to its spiritual roots.
             Our collection of kurtis blends timeless Indian craftsmanship with contemporary designs, offering
             styles that are perfect for every occasion — from casual elegance to festive celebrations.
           </p>
@@ -32,7 +32,7 @@ const Who = () => {
             <Image
               src="https://ik.imagekit.io/adsrc2244/mateshwarimoortibhandar/main-page/who-banner%202.png?updatedAt=1761544773496"
               className="who-main-image"
-              alt="Who We Are - Mateshwari Moorti Bhandar"
+              alt="Who We Are - Welcome To Mateshwari Moorti Bhanda"
               width={600}
               height={800}
               style={{ width: '100%', height: 'auto' }}

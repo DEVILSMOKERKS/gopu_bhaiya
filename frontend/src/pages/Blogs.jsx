@@ -95,7 +95,7 @@ const Blogs = () => {
       <div className="blogs-page">
         <div className="blogs-header">
           <h1>Our Blog</h1>
-          <p>Read practical guides, devotional insights, design ideas, and care tips from the team behind Mateshwari Moorti Bhandar.</p>
+          <p>Read practical guides, devotional insights, design ideas, and care tips from the team behind Welcome To Mateshwari Moorti Bhanda.</p>
         </div>
         <div className="blogs-skeleton">
           {[1, 2, 3, 4, 5, 6].map((i) => (
@@ -117,7 +117,7 @@ const Blogs = () => {
     <div className="blogs-page">
       <div className="blogs-header">
         <h1>Our Blog</h1>
-        <p>Read practical guides, devotional insights, design ideas, and care tips from the team behind Mateshwari Moorti Bhandar.</p>
+        <p>Read practical guides, devotional insights, design ideas, and care tips from the team behind Welcome To Mateshwari Moorti Bhanda.</p>
       </div>
 
       <div className="blogs-container">

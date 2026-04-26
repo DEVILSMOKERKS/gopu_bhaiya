@@ -5,7 +5,7 @@ const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 export const metadata = {
   title: 'Return and Refund Policy',
   description:
-    'Understand exchange, cancellation, and refund terms for orders placed with Mateshwari Moorti Bhandar.',
+    'Understand exchange, cancellation, and refund terms for orders placed with Welcome To Mateshwari Moorti Bhanda.',
   alternates: {
     canonical: `${BASE_URL}/return-and-refund`,
   },

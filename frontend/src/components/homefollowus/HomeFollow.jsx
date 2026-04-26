@@ -12,7 +12,7 @@ const HomeFollow = () => {
 
     return (
         <div className="homefollowus">
-            <h2 className="homefollowus-title">Follow Us @Mateshwari Moorti Bhandar</h2>
+            <h2 className="homefollowus-title">Follow Us @Welcome To Mateshwari Moorti Bhanda</h2>
             <div className="homefollowus-container">
                 <div className="homefollowus-main-image" style={{ height: '400px', overflow: 'hidden', position: 'relative' }}>
                     <a href={instagramUrl} target="_blank" rel="noopener noreferrer" className="instagram-link" style={{ position: 'relative', display: 'block', overflow: 'hidden', height: '100%' }}>

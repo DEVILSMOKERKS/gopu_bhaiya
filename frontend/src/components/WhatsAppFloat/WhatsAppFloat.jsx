@@ -29,7 +29,7 @@ const WhatsAppFloat = () => {
 
     // WhatsApp number and message
     const whatsappNumber = "+917791983156";
-    const defaultMessage = "Hello! I'm interested in Mateshwari Moorti Bhandar collection. Can you help me?";
+    const defaultMessage = "Hello! I'm interested in Welcome To Mateshwari Moorti Bhanda collection. Can you help me?";
 
     const phoneNumbers = [
         {

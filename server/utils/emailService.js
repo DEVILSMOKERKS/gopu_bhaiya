@@ -13,7 +13,7 @@ const getConfig = () => {
   const secure = (process.env.SMTP_SECURE || process.env.EMAIL_SECURE || 'true').toLowerCase() === 'true';
   const user = (process.env.SMTP_USER || process.env.EMAIL_USER || '').trim();
   const pass = (process.env.SMTP_PASS || process.env.EMAIL_PASSWORD || '').trim();
-  const fromName = process.env.EMAIL_FROM_NAME || 'Mateshwari Moorti Bhandar';
+  const fromName = process.env.EMAIL_FROM_NAME || 'Welcome To Mateshwari Moorti Bhanda';
   return { host, port, secure, user, pass, fromName };
 };
 
@@ -98,7 +98,7 @@ async function sendMail(options) {
  */
 async function sendOTP(to, otp, opts = {}) {
   const expires = opts.expiresInMinutes != null ? opts.expiresInMinutes : 10;
-  const subject = opts.subject || 'Your verification code - Mateshwari Moorti Bhandar';
+  const subject = opts.subject || 'Your verification code - Welcome To Mateshwari Moorti Bhanda';
   const html = `
     <div style="font-family: Arial, sans-serif; max-width: 480px; margin: 0 auto; padding: 24px;">
       <div style="background: linear-gradient(135deg, #B68126 0%, #956213 100%); padding: 20px; text-align: center; border-radius: 10px 10px 0 0;">
@@ -108,7 +108,7 @@ async function sendOTP(to, otp, opts = {}) {
         <p style="color: #333; margin: 0 0 16px 0;">Your one-time verification code is:</p>
         <p style="font-size: 28px; font-weight: bold; letter-spacing: 6px; color: #B68126; margin: 16px 0;">${otp}</p>
         <p style="color: #666; font-size: 14px; margin: 16px 0 0 0;">This code expires in ${expires} minutes. Do not share it with anyone.</p>
-        <p style="color: #999; font-size: 12px; margin: 24px 0 0 0;">— Mateshwari Moorti Bhandar</p>
+        <p style="color: #999; font-size: 12px; margin: 24px 0 0 0;">— Welcome To Mateshwari Moorti Bhanda</p>
       </div>
     </div>
   `;

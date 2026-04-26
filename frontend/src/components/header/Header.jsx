@@ -114,8 +114,12 @@ function ImageDropdown({ items }) {
 // ── Products mega dropdown with full product cards ─────────────────────────────
 function ProductsMegaDropdown({ categories, baseUrl }) {
   const API_URL = process.env.NEXT_PUBLIC_API_URL;
-  const validCategories = categories.filter(
+  const validCategories = useMemo(() => categories.filter(
     (cat) => cat && cat.id != null && String(cat.name || '').trim() !== ''
+  ), [categories]);
+  const categoryIdsKey = useMemo(
+    () => validCategories.map((cat) => cat.id).join(','),
+    [validCategories]
   );
 
   // { [cat.id]: product[] }  full product data per category
@@ -151,7 +155,7 @@ function ProductsMegaDropdown({ categories, baseUrl }) {
           setCategoryProducts((prev) => ({ ...prev, [cat.id]: [] }));
         });
     });
-  }, [API_URL, validCategories, baseUrl]);
+  }, [API_URL, categoryIdsKey]);
 
   // ── Hover handler ─────────────────────────────────────────────────────────
   const handleCategoryHover = (cat) => {
@@ -426,6 +430,23 @@ const Header = ({ onAccountClick }) => {
 
   const getProductImage = (product) => resolveProductImage(product, baseUrl) || '/placeholder-product.jpg';
 
+  const mobileNavItems = [
+    { href: '/', label: 'Home' },
+    { href: '/products', label: 'Products' },
+    { href: '/our-creations', label: 'Creations' },
+    { href: '/our-services', label: 'Services' },
+    { href: '/how-to-place-order', label: 'How It Works' },
+    { href: '/blogs', label: 'Blog' },
+    { href: '/book-appointment', label: 'Book Now' },
+    { href: '/testimonials', label: 'Reviews' },
+  ];
+
+  const isNavItemActive = (href) => (
+    href === '/'
+      ? pathname === '/'
+      : pathname === href || pathname?.startsWith(`${href}/`)
+  );
+
   return (
     <>
       <AnnouncementSlider />
@@ -486,7 +507,7 @@ const Header = ({ onAccountClick }) => {
 
           <div className="header-top-center">
             <Link href="/" className="header-logo-link">
-              <Image src={logo} alt="Mateshwari Moorti Bhandar" className="header-logo-img" width={150} height={50} priority />
+              <Image src={logo} alt="Welcome To Mateshwari Moorti Bhanda" className="header-logo-img" width={260} height={96} priority />
             </Link>
           </div>
 
@@ -523,7 +544,7 @@ const Header = ({ onAccountClick }) => {
               <Link href="/" className={`nav-link ${pathname === '/' ? 'active' : ''}`}>HOME</Link>
             </div>
 
-            <div className="nav-item">
+            <div className="nav-item nav-item--products">
               <Link
                 href="/products"
                 className={`nav-link ${pathname === '/products' || pathname?.startsWith('/products/') ? 'active' : ''}`}
@@ -580,23 +601,49 @@ const Header = ({ onAccountClick }) => {
 
         {/* ── Mobile Header ───────────────────────────────────────────────── */}
         <div className="header-mobile">
-          <button
-            className="header-mobile-hamburger"
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            aria-label="Toggle mobile menu"
-          >
-            <HiMenu className="header-mobile-hamburger-icon" />
-          </button>
-          <Link href="/" className="header-mobile-logo-link">
-            <Image src={logo} alt="Mateshwari Moorti Bhandar" className="header-mobile-logo-img" width={120} height={40} priority />
-          </Link>
-          <div className="header-mobile-social-icons">
-            <a href="https://www.instagram.com/mateshwari_exports/" target="_blank" rel="noopener noreferrer" className="header-mobile-social-icon-link" aria-label="Instagram">
-              <FaInstagram className="header-mobile-social-icon" />
-            </a>
-            <a href="https://www.facebook.com/mateshwariexports/" target="_blank" rel="noopener noreferrer" className="header-mobile-social-icon-link" aria-label="Facebook">
-              <FaFacebook className="header-mobile-social-icon" />
-            </a>
+          <div className="header-mobile-top">
+            <button
+              className="header-mobile-hamburger"
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              aria-label="Toggle mobile menu"
+            >
+              <HiMenu className="header-mobile-hamburger-icon" />
+            </button>
+            <Link href="/" className="header-mobile-logo-link">
+              <Image src={logo} alt="Welcome To Mateshwari Moorti Bhanda" className="header-mobile-logo-img" width={180} height={66} priority />
+            </Link>
+            <div className="header-mobile-social-icons">
+              <a href="https://www.instagram.com/mateshwari_exports/" target="_blank" rel="noopener noreferrer" className="header-mobile-social-icon-link" aria-label="Instagram">
+                <FaInstagram className="header-mobile-social-icon" />
+              </a>
+              <a href="https://www.facebook.com/mateshwariexports/" target="_blank" rel="noopener noreferrer" className="header-mobile-social-icon-link" aria-label="Facebook">
+                <FaFacebook className="header-mobile-social-icon" />
+              </a>
+            </div>
+          </div>
+
+          <div className="header-mobile-bottom">
+            <button
+              className="header-mobile-expert-btn"
+              type="button"
+              onClick={() => setIsExpertPopupOpen(true)}
+            >
+              Ask Our Experts
+            </button>
+          </div>
+
+          <div className="header-mobile-slider" aria-label="Quick navigation">
+            {mobileNavItems.map(({ href, label }) => {
+              return (
+                <Link
+                  key={href}
+                  href={href}
+                  className={`header-mobile-slider-link ${isNavItemActive(href) ? 'active' : ''}`}
+                >
+                  {label}
+                </Link>
+              );
+            })}
           </div>
         </div>
 
@@ -607,7 +654,7 @@ const Header = ({ onAccountClick }) => {
         <div className={`header-mobile-menu ${isMobileMenuOpen ? 'open' : ''}`}>
           <div className="header-mobile-menu-header">
             <div className="header-mobile-menu-logo">
-              <Image src={logo} alt="Mateshwari Moorti Bhandar" width={120} height={40} priority />
+              <Image src={logo} alt="Welcome To Mateshwari Moorti Bhanda" width={180} height={66} priority />
             </div>
             <button className="header-mobile-menu-close" onClick={() => setIsMobileMenuOpen(false)} aria-label="Close">
               <HiX className="header-mobile-menu-close-icon" />
@@ -616,23 +663,14 @@ const Header = ({ onAccountClick }) => {
 
           <nav className="header-mobile-nav">
             <ul className="header-mobile-nav-links">
-              {[
-                { href: '/',                   label: 'HOME' },
-                { href: '/products',           label: 'PRODUCTS' },
-                { href: '/our-creations',      label: 'OUR CREATIONS' },
-                { href: '/our-services',       label: 'OUR SERVICES' },
-                { href: '/how-to-place-order', label: 'HOW IT WORKS' },
-                { href: '/blogs',              label: 'BLOG' },
-                { href: '/book-appointment',   label: 'BOOK APPOINTMENT' },
-                { href: '/testimonials',       label: 'TESTIMONIALS' },
-              ].map(({ href, label }) => (
+              {mobileNavItems.map(({ href, label }) => (
                 <li key={href}>
                   <Link
                     href={href}
-                    className={`header-mobile-nav-link ${pathname === href ? 'active' : ''}`}
+                    className={`header-mobile-nav-link ${isNavItemActive(href) ? 'active' : ''}`}
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
-                    {label}
+                    {label.toUpperCase()}
                   </Link>
                 </li>
               ))}

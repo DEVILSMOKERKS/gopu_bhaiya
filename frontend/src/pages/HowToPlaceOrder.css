@@ -238,7 +238,12 @@
 
 @media (max-width: 768px) {
   .how-to-place-order-page {
-    padding: 100px 1rem 3rem 1rem;
+    padding: 100px 0.95rem 3rem;
+  }
+
+  .how-to-place-order-page .how-to-order-header {
+    margin-bottom: 2.5rem;
+    padding: 1.25rem 0 0.5rem;
   }
 
   .how-to-place-order-page .how-to-order-title {
@@ -249,18 +254,43 @@
     font-size: 1rem;
   }
 
-  .how-to-place-order-page .steps-grid {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
+  .how-to-place-order-page .order-process-section {
+    margin-bottom: 4rem;
   }
+
+  .how-to-place-order-page .steps-grid {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: minmax(272px, 84vw);
+    gap: 1rem;
+    overflow-x: auto;
+    padding: 0 0.2rem 0.75rem;
+    margin-bottom: 2rem;
+    scroll-snap-type: x proximity;
+    scrollbar-width: none;
+  }
+  .how-to-place-order-page .steps-grid::-webkit-scrollbar { display: none; }
 
   .how-to-place-order-page .step-card {
     padding: 2rem 1.5rem;
+    scroll-snap-align: start;
   }
 
   .how-to-place-order-page .info-cards {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: minmax(260px, 86vw);
+    gap: 1rem;
+    overflow-x: auto;
+    padding-bottom: 0.5rem;
+    margin-top: 1.5rem;
+    scroll-snap-type: x proximity;
+    scrollbar-width: none;
+  }
+  .how-to-place-order-page .info-cards::-webkit-scrollbar { display: none; }
+
+  .how-to-place-order-page .info-card {
+    scroll-snap-align: start;
   }
 
   .how-to-place-order-page .additional-info-section {
@@ -273,8 +303,24 @@
 }
 
 @media (max-width: 480px) {
+  .how-to-place-order-page {
+    padding: 96px 0.85rem 2.5rem;
+  }
+
   .how-to-place-order-page .how-to-order-title {
     font-size: 1.75rem;
+  }
+
+  .how-to-place-order-page .section-title {
+    font-size: 1.35rem;
+  }
+
+  .how-to-place-order-page .section-description {
+    margin-bottom: 1.5rem;
+  }
+
+  .how-to-place-order-page .steps-grid {
+    grid-auto-columns: minmax(248px, 88vw);
   }
 
   .how-to-place-order-page .step-card {
@@ -290,5 +336,9 @@
   .how-to-place-order-page .step-icon {
     width: 20px;
     height: 20px;
+  }
+
+  .how-to-place-order-page .additional-info-section {
+    padding: 1.6rem 1rem;
   }
 }

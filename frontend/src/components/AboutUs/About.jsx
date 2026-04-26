@@ -60,7 +60,7 @@ const AboutSection = () => {
                 50 Years of Sacred Craftsmanship and Divine Devotion
               </h3>
               <p className="about-who-we-are-description">
-                At Mateshwari Moorti Bhandar, we are dedicated to preserving the ancient art of marble idol craftsmanship. For over 50 years, our master artisans from Rajasthan have hand-carved exceptional marble murtis, temple designs, and sacred home solutions using the finest Makrana marble. Each piece we create is a spiritual journey — carved with devotion, blessed with tradition, and designed to transform your sacred space into a sanctuary of peace and divinity. We believe that true art isn't just about aesthetics; it's about connecting you with your spiritual roots and bringing timeless beauty into your home.
+                At Welcome To Mateshwari Moorti Bhanda, we are dedicated to preserving the ancient art of marble idol craftsmanship. For over 50 years, our master artisans from Rajasthan have hand-carved exceptional marble murtis, temple designs, and sacred home solutions using the finest Makrana marble. Each piece we create is a spiritual journey — carved with devotion, blessed with tradition, and designed to transform your sacred space into a sanctuary of peace and divinity. We believe that true art isn't just about aesthetics; it's about connecting you with your spiritual roots and bringing timeless beauty into your home.
               </p>
 
               <Link href="#journey-section" className="about-who-we-are-cta-button" scroll={true}>
@@ -134,7 +134,7 @@ const JourneyMobileCarousel = () => {
   const journeyData = [
     {
       year: '2015',
-      desc: `Mateshwari Moorti Bhandar was founded with a vision to bring divine craftsmanship to every home. We started our journey by creating handcrafted idols and temple solutions, combining traditional artistry with modern precision.`,
+      desc: `Welcome To Mateshwari Moorti Bhanda was founded with a vision to bring divine craftsmanship to every home. We started our journey by creating handcrafted idols and temple solutions, combining traditional artistry with modern precision.`,
       img: rectangle137
     },
     {
@@ -154,7 +154,7 @@ const JourneyMobileCarousel = () => {
     },
     {
       year: '2023',
-      desc: `Continuing our legacy of excellence, we remain dedicated to preserving traditional craftsmanship while embracing innovation. Today, Mateshwari Moorti Bhandar stands as a trusted name in divine home solutions.`,
+      desc: `Continuing our legacy of excellence, we remain dedicated to preserving traditional craftsmanship while embracing innovation. Today, Welcome To Mateshwari Moorti Bhanda stands as a trusted name in divine home solutions.`,
       img: rectangle1372
     },
   ];
@@ -162,7 +162,7 @@ const JourneyMobileCarousel = () => {
   return (
     <div className="journey-carousel-mobile">
       <div className="journey-carousel-header">
-        <p className="journey-carousel-subtitle">About Mateshwari Moorti Bhandar</p>
+        <p className="journey-carousel-subtitle">About Welcome To Mateshwari Moorti Bhanda</p>
         <h2 className="journey-carousel-title">Our Story of Growth & Success</h2>
         <p className="journey-carousel-description">
           Since 2015, we&apos;ve been dedicated to creating divine experiences through our handcrafted idols and temple solutions, bringing spiritual elegance to homes and hearts across the nation.
@@ -388,9 +388,9 @@ const WhatMakesUsDifferentSection = () => {
             {/* Right Text Section */}
             <div className="crafting-temples-text-area">
               <h2 className="crafting-temples-title">Crafting Temples, Building Trust</h2>
-              <h3 className="crafting-temples-subtitle">Bringing Your Dream Temple To Life With Mateshwari Moorti Bhandar</h3>
+              <h3 className="crafting-temples-subtitle">Bringing Your Dream Temple To Life With Welcome To Mateshwari Moorti Bhanda</h3>
               <p className="crafting-temples-intro">
-                At Mateshwari Moorti Bhandar, we harmonize tradition, craftsmanship, and innovation to create timeless Pooja Room experiences. For the first time in the industry, we introduce a fully immersive virtual tour of our sacred spaces—designed to bring our artistry to your screen, wherever you are.
+                At Welcome To Mateshwari Moorti Bhanda, we harmonize tradition, craftsmanship, and innovation to create timeless Pooja Room experiences. For the first time in the industry, we introduce a fully immersive virtual tour of our sacred spaces—designed to bring our artistry to your screen, wherever you are.
               </p>
               <div className="crafting-temples-features">
                 <div className="crafting-temples-feature-item">

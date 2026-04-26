@@ -42,11 +42,11 @@ const createTransporter = () => getTransporter();
 // Email templates
 const emailTemplates = {
   passwordReset: (resetLink, adminName) => ({
-    subject: 'Password Reset Request - Mateshwari Moorti Bhandar Admin',
+    subject: 'Password Reset Request - Welcome To Mateshwari Moorti Bhanda Admin',
     html: `
       <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
         <div style="background: linear-gradient(135deg, ${EMAIL_COLORS.primary} 0%, ${EMAIL_COLORS.primaryDark} 100%); padding: 30px; text-align: center; border-radius: 10px 10px 0 0;">
-          <h1 style="color: ${EMAIL_COLORS.textWhite}; margin: 0; font-size: 24px;">Mateshwari Moorti Bhandar Admin</h1>
+          <h1 style="color: ${EMAIL_COLORS.textWhite}; margin: 0; font-size: 24px;">Welcome To Mateshwari Moorti Bhanda Admin</h1>
           <p style="color: ${EMAIL_COLORS.textWhite}; margin: 10px 0 0 0; opacity: 0.9;">Password Reset Request</p>
         </div>
         
@@ -54,7 +54,7 @@ const emailTemplates = {
           <h2 style="color: ${EMAIL_COLORS.textPrimary}; margin: 0 0 20px 0;">Hello ${adminName},</h2>
           
           <p style="color: ${EMAIL_COLORS.textTertiary}; line-height: 1.6; margin: 0 0 20px 0;">
-            We received a request to reset your password for your Mateshwari Moorti Bhandar Admin account. 
+            We received a request to reset your password for your Welcome To Mateshwari Moorti Bhanda Admin account. 
             If you didn't make this request, you can safely ignore this email.
           </p>
           
@@ -88,18 +88,18 @@ const emailTemplates = {
           <hr style="border: none; border-top: 1px solid ${EMAIL_COLORS.borderMedium}; margin: 30px 0;">
           
           <p style="color: ${EMAIL_COLORS.textQuaternary}; font-size: 12px; margin: 0; text-align: center;">
-            This email was sent from Mateshwari Moorti Bhandar Admin Panel. 
+            This email was sent from Welcome To Mateshwari Moorti Bhanda Admin Panel. 
             If you have any questions, please contact support.
           </p>
         </div>
       </div>
     `,
     text: `
-      Password Reset Request - Mateshwari Moorti Bhandar Admin
+      Password Reset Request - Welcome To Mateshwari Moorti Bhanda Admin
       
       Hello ${adminName},
       
-      We received a request to reset your password for your Mateshwari Moorti Bhandar Admin account. 
+      We received a request to reset your password for your Welcome To Mateshwari Moorti Bhanda Admin account. 
       If you didn't make this request, you can safely ignore this email.
       
       Click the following link to reset your password:
@@ -110,16 +110,16 @@ const emailTemplates = {
       If you're having trouble, copy and paste the URL into your browser.
       
       Best regards,
-      Mateshwari Moorti Bhandar Admin Team
+      Welcome To Mateshwari Moorti Bhanda Admin Team
     `
   }),
 
   welcomeAdmin: (adminName, loginUrl) => ({
-    subject: 'Welcome to Mateshwari Moorti Bhandar Admin Panel',
+    subject: 'Welcome To Mateshwari Moorti Bhanda Admin Panel',
     html: `
       <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
         <div style="background: linear-gradient(135deg, ${EMAIL_COLORS.primary} 0%, ${EMAIL_COLORS.primaryDark} 100%); padding: 30px; text-align: center; border-radius: 10px 10px 0 0;">
-          <h1 style="color: ${EMAIL_COLORS.textWhite}; margin: 0; font-size: 24px;">Welcome to Mateshwari Moorti Bhandar</h1>
+          <h1 style="color: ${EMAIL_COLORS.textWhite}; margin: 0; font-size: 24px;">Welcome To Mateshwari Moorti Bhanda</h1>
           <p style="color: ${EMAIL_COLORS.textWhite}; margin: 10px 0 0 0; opacity: 0.9;">Admin Panel Access</p>
         </div>
         
@@ -127,7 +127,7 @@ const emailTemplates = {
           <h2 style="color: ${EMAIL_COLORS.textPrimary}; margin: 0 0 20px 0;">Hello ${adminName},</h2>
           
           <p style="color: ${EMAIL_COLORS.textTertiary}; line-height: 1.6; margin: 0 0 20px 0;">
-            Welcome to the Mateshwari Moorti Bhandar Admin Panel! Your account has been successfully created and you can now access the admin dashboard.
+            Welcome to the Welcome To Mateshwari Moorti Bhanda Admin Panel! Your account has been successfully created and you can now access the admin dashboard.
           </p>
           
           <div style="text-align: center; margin: 30px 0;">
@@ -155,17 +155,17 @@ const emailTemplates = {
           <hr style="border: none; border-top: 1px solid ${EMAIL_COLORS.borderMedium}; margin: 30px 0;">
           
           <p style="color: ${EMAIL_COLORS.textQuaternary}; font-size: 12px; margin: 0; text-align: center;">
-            Welcome to Mateshwari Moorti Bhandar Admin Panel
+            Welcome To Mateshwari Moorti Bhanda Admin Panel
           </p>
         </div>
       </div>
     `,
     text: `
-      Welcome to Mateshwari Moorti Bhandar Admin Panel
+      Welcome To Mateshwari Moorti Bhanda Admin Panel
       
       Hello ${adminName},
       
-      Welcome to the Mateshwari Moorti Bhandar Admin Panel! Your account has been successfully created and you can now access the admin dashboard.
+      Welcome to the Welcome To Mateshwari Moorti Bhanda Admin Panel! Your account has been successfully created and you can now access the admin dashboard.
       
       Access your admin panel here: ${loginUrl}
       
@@ -179,7 +179,7 @@ const emailTemplates = {
       If you have any questions or need assistance, please don't hesitate to contact our support team.
       
       Best regards,
-      Mateshwari Moorti Bhandar Admin Team
+      Welcome To Mateshwari Moorti Bhanda Admin Team
     `
   }),
 
@@ -247,7 +247,7 @@ const emailTemplates = {
           <hr style="border: none; border-top: 1px solid ${EMAIL_COLORS.borderMedium}; margin: 30px 0;">
           
           <p style="color: ${EMAIL_COLORS.textQuaternary}; font-size: 12px; margin: 0; text-align: center;">
-            Thank you for choosing Mateshwari Moorti Bhandar! We appreciate your business.
+            Thank you for choosing Welcome To Mateshwari Moorti Bhanda! We appreciate your business.
           </p>
         </div>
       </div>
@@ -280,7 +280,7 @@ const emailTemplates = {
       
       Need Help? Contact our customer support team at Mateshvariexporter@gmail.com
       
-      Thank you for choosing Mateshwari Moorti Bhandar!
+      Thank you for choosing Welcome To Mateshwari Moorti Bhanda!
     `
   }),
 
@@ -325,7 +325,7 @@ const emailTemplates = {
           <hr style="border: none; border-top: 1px solid ${EMAIL_COLORS.borderMedium}; margin: 30px 0;">
           
           <p style="color: ${EMAIL_COLORS.textQuaternary}; font-size: 12px; margin: 0; text-align: center;">
-            Thank you for choosing Mateshwari Moorti Bhandar! We hope you love your purchase.
+            Thank you for choosing Welcome To Mateshwari Moorti Bhanda! We hope you love your purchase.
           </p>
         </div>
       </div>
@@ -348,17 +348,17 @@ const emailTemplates = {
       
       Pro Tip: You can also track your package directly on the courier's website using the tracking number above.
       
-      Thank you for choosing Mateshwari Moorti Bhandar!
+      Thank you for choosing Welcome To Mateshwari Moorti Bhanda!
     `
   }),
 
   contactConfirmation: (contactData) => ({
-    subject: 'Thank you for contacting Mateshwari Moorti Bhandar - We\'ll get back to you soon!',
+    subject: 'Thank you for contacting Welcome To Mateshwari Moorti Bhanda - We\'ll get back to you soon!',
     html: `
       <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
         <div style="background: linear-gradient(135deg, ${EMAIL_COLORS.primary} 0%, ${EMAIL_COLORS.primaryDark} 100%); padding: 30px; text-align: center; border-radius: 10px 10px 0 0;">
           <h1 style="color: ${EMAIL_COLORS.textWhite}; margin: 0; font-size: 24px;">📧 Message Received!</h1>
-          <p style="color: ${EMAIL_COLORS.textWhite}; margin: 10px 0 0 0; opacity: 0.9;">Thank you for contacting Mateshwari Moorti Bhandar</p>
+          <p style="color: ${EMAIL_COLORS.textWhite}; margin: 10px 0 0 0; opacity: 0.9;">Thank you for contacting Welcome To Mateshwari Moorti Bhanda</p>
         </div>
         
         <div style="background: ${EMAIL_COLORS.bgPrimary}; padding: 30px; border-radius: 0 0 10px 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
@@ -392,13 +392,13 @@ const emailTemplates = {
           <hr style="border: none; border-top: 1px solid ${EMAIL_COLORS.borderMedium}; margin: 30px 0;">
           
           <p style="color: ${EMAIL_COLORS.textQuaternary}; font-size: 12px; margin: 0; text-align: center;">
-            Thank you for choosing Mateshwari Moorti Bhandar! We appreciate your patience.
+            Thank you for choosing Welcome To Mateshwari Moorti Bhanda! We appreciate your patience.
           </p>
         </div>
       </div>
     `,
     text: `
-      Thank you for contacting Mateshwari Moorti Bhandar - We'll get back to you soon!
+      Thank you for contacting Welcome To Mateshwari Moorti Bhanda - We'll get back to you soon!
       
       Hello ${contactData.name},
       
@@ -412,7 +412,7 @@ const emailTemplates = {
       
       Need Immediate Help? For urgent matters, you can call us at +91 77919 83156 | +91 88242 92890 | +91 97845 03338 or email us at Mateshvariexporter@gmail.com
       
-      Thank you for choosing Mateshwari Moorti Bhandar! We appreciate your patience.
+      Thank you for choosing Welcome To Mateshwari Moorti Bhanda! We appreciate your patience.
     `
   }),
 
@@ -457,7 +457,7 @@ const emailTemplates = {
           <hr style="border: none; border-top: 1px solid ${EMAIL_COLORS.borderMedium}; margin: 30px 0;">
           
           <p style="color: ${EMAIL_COLORS.textQuaternary}; font-size: 12px; margin: 0; text-align: center;">
-            This is an automated notification from the Mateshwari Moorti Bhandar Admin Panel.
+            This is an automated notification from the Welcome To Mateshwari Moorti Bhanda Admin Panel.
           </p>
         </div>
       </div>
@@ -479,7 +479,7 @@ const emailTemplates = {
       
       View Query Details: ${process.env.ADMIN_PANEL_URL}/contact-queries/${contactData.queryId}
       
-      This is an automated notification from the Mateshwari Moorti Bhandar Admin Panel.
+      This is an automated notification from the Welcome To Mateshwari Moorti Bhanda Admin Panel.
     `
   }),
 
@@ -525,7 +525,7 @@ const emailTemplates = {
           <hr style="border: none; border-top: 1px solid ${EMAIL_COLORS.borderMedium}; margin: 30px 0;">
           
           <p style="color: ${EMAIL_COLORS.textQuaternary}; font-size: 12px; margin: 0; text-align: center;">
-            Thank you for choosing Mateshwari Moorti Bhandar! We appreciate your patience.
+            Thank you for choosing Welcome To Mateshwari Moorti Bhanda! We appreciate your patience.
           </p>
         </div>
       </div>
@@ -550,12 +550,12 @@ const emailTemplates = {
       
       Need More Help? If you have any questions about this update, please contact us at Mateshvariexporter@gmail.com or call us at +91 77919 83156 | +91 88242 92890 | +91 97845 03338
       
-      Thank you for choosing Mateshwari Moorti Bhandar! We appreciate your patience.
+      Thank you for choosing Welcome To Mateshwari Moorti Bhanda! We appreciate your patience.
     `
   }),
 
   consultationConfirmation: (data) => ({
-    subject: 'Talk to Our Expert – Request Received | Mateshwari Moorti Bhandar',
+    subject: 'Talk to Our Expert – Request Received | Welcome To Mateshwari Moorti Bhanda',
     html: `
       <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
         <div style="background: linear-gradient(135deg, ${EMAIL_COLORS.primary} 0%, ${EMAIL_COLORS.primaryDark} 100%); padding: 30px; text-align: center; border-radius: 10px 10px 0 0;">
@@ -576,7 +576,7 @@ const emailTemplates = {
             Need immediate help? Call us at +91 77919 83156 | +91 88242 92890 | +91 97845 03338 or email Mateshvariexporter@gmail.com
           </p>
           <hr style="border: none; border-top: 1px solid ${EMAIL_COLORS.borderMedium}; margin: 30px 0;" />
-          <p style="color: ${EMAIL_COLORS.textQuaternary}; font-size: 12px; margin: 0; text-align: center;">Mateshwari Moorti Bhandar</p>
+          <p style="color: ${EMAIL_COLORS.textQuaternary}; font-size: 12px; margin: 0; text-align: center;">Welcome To Mateshwari Moorti Bhanda</p>
         </div>
       </div>
     `,
@@ -591,7 +591,7 @@ const emailTemplates = {
 
       Need immediate help? Call +91 77919 83156 | +91 88242 92890 | +91 97845 03338 or email Mateshvariexporter@gmail.com
 
-      Mateshwari Moorti Bhandar
+      Welcome To Mateshwari Moorti Bhanda
     `
   }),
 
@@ -618,7 +618,7 @@ const emailTemplates = {
             <a href="${process.env.ADMIN_PANEL_URL || ''}/admin/expert-consultations" style="background: ${EMAIL_COLORS.accentError}; color: ${EMAIL_COLORS.textWhite}; padding: 12px 30px; text-decoration: none; border-radius: 8px; display: inline-block; font-weight: 500;">View in Admin</a>
           </div>
           <hr style="border: none; border-top: 1px solid ${EMAIL_COLORS.borderMedium}; margin: 30px 0;" />
-          <p style="color: ${EMAIL_COLORS.textQuaternary}; font-size: 12px; margin: 0; text-align: center;">Mateshwari Moorti Bhandar Admin</p>
+          <p style="color: ${EMAIL_COLORS.textQuaternary}; font-size: 12px; margin: 0; text-align: center;">Welcome To Mateshwari Moorti Bhanda Admin</p>
         </div>
       </div>
     `,
@@ -636,7 +636,7 @@ const emailTemplates = {
   }),
 
   consultationStatusUpdate: (data) => ({
-    subject: 'Your Expert Consultation Status Updated | Mateshwari Moorti Bhandar',
+    subject: 'Your Expert Consultation Status Updated | Welcome To Mateshwari Moorti Bhanda',
     html: `
       <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
         <div style="background: linear-gradient(135deg, ${EMAIL_COLORS.primaryGreen} 0%, ${EMAIL_COLORS.primaryGreen} 100%); padding: 30px; text-align: center; border-radius: 10px 10px 0 0;">
@@ -651,7 +651,7 @@ const emailTemplates = {
             ${data.adminNotes ? `<p style="color: ${EMAIL_COLORS.textTertiary}; margin: 10px 0 0 0;"><strong>Note:</strong> ${data.adminNotes}</p>` : ''}
           </div>
           <hr style="border: none; border-top: 1px solid ${EMAIL_COLORS.borderMedium}; margin: 30px 0;" />
-          <p style="color: ${EMAIL_COLORS.textQuaternary}; font-size: 12px; margin: 0; text-align: center;">Mateshwari Moorti Bhandar</p>
+          <p style="color: ${EMAIL_COLORS.textQuaternary}; font-size: 12px; margin: 0; text-align: center;">Welcome To Mateshwari Moorti Bhanda</p>
         </div>
       </div>
     `,
@@ -663,17 +663,17 @@ const emailTemplates = {
       Your expert consultation status: ${data.oldStatus} → ${data.newStatus}
       ${data.adminNotes ? `Note: ${data.adminNotes}` : ''}
 
-      Mateshwari Moorti Bhandar
+      Welcome To Mateshwari Moorti Bhanda
     `
   }),
 
   appointmentConfirmation: (data) => ({
-    subject: 'Appointment Request Received | Mateshwari Moorti Bhandar',
+    subject: 'Appointment Request Received | Welcome To Mateshwari Moorti Bhanda',
     html: `
       <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
         <div style="background: linear-gradient(135deg, ${EMAIL_COLORS.primary} 0%, ${EMAIL_COLORS.primaryDark} 100%); padding: 30px; text-align: center; border-radius: 10px 10px 0 0;">
           <h1 style="color: ${EMAIL_COLORS.textWhite}; margin: 0; font-size: 24px;">Appointment Request Received</h1>
-          <p style="color: ${EMAIL_COLORS.textWhite}; margin: 10px 0 0 0; opacity: 0.9;">Mateshwari Moorti Bhandar</p>
+          <p style="color: ${EMAIL_COLORS.textWhite}; margin: 10px 0 0 0; opacity: 0.9;">Welcome To Mateshwari Moorti Bhanda</p>
         </div>
         <div style="background: ${EMAIL_COLORS.bgPrimary}; padding: 30px; border-radius: 0 0 10px 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
           <h2 style="color: ${EMAIL_COLORS.textPrimary}; margin: 0 0 20px 0;">Hello ${data.name},</h2>
@@ -689,7 +689,7 @@ const emailTemplates = {
           </div>
           <p style="color: ${EMAIL_COLORS.textTertiary}; line-height: 1.6; margin: 0 0 20px 0;">If you need to change or cancel, call us at +91 77919 83156 | +91 88242 92890 | +91 97845 03338 or email Mateshvariexporter@gmail.com</p>
           <hr style="border: none; border-top: 1px solid ${EMAIL_COLORS.borderMedium}; margin: 30px 0;" />
-          <p style="color: ${EMAIL_COLORS.textQuaternary}; font-size: 12px; margin: 0; text-align: center;">Mateshwari Moorti Bhandar</p>
+          <p style="color: ${EMAIL_COLORS.textQuaternary}; font-size: 12px; margin: 0; text-align: center;">Welcome To Mateshwari Moorti Bhanda</p>
         </div>
       </div>
     `,
@@ -705,7 +705,7 @@ const emailTemplates = {
       Date: ${data.selectedDate} at ${data.selectedTime}
 
       Contact: +91 77919 83156 | +91 88242 92890 | +91 97845 03338 | Mateshvariexporter@gmail.com
-      Mateshwari Moorti Bhandar
+      Welcome To Mateshwari Moorti Bhanda
     `
   }),
 
@@ -729,7 +729,7 @@ const emailTemplates = {
             <p style="color: ${EMAIL_COLORS.textTertiary}; margin: 5px 0;"><strong>Time:</strong> ${data.selectedTime}</p>
           </div>
           <hr style="border: none; border-top: 1px solid ${EMAIL_COLORS.borderMedium}; margin: 30px 0;" />
-          <p style="color: ${EMAIL_COLORS.textQuaternary}; font-size: 12px; margin: 0; text-align: center;">Mateshwari Moorti Bhandar Admin</p>
+          <p style="color: ${EMAIL_COLORS.textQuaternary}; font-size: 12px; margin: 0; text-align: center;">Welcome To Mateshwari Moorti Bhanda Admin</p>
         </div>
       </div>
     `,
@@ -744,16 +744,16 @@ const emailTemplates = {
       Date: ${data.selectedDate}
       Time: ${data.selectedTime}
 
-      Mateshwari Moorti Bhandar Admin
+      Welcome To Mateshwari Moorti Bhanda Admin
     `
   }),
 
   newsletterWelcome: (data) => ({
-    subject: 'Welcome to Mateshwari Moorti Bhandar Newsletter! 🎉',
+    subject: 'Welcome To Mateshwari Moorti Bhanda Newsletter! 🎉',
     html: `
       <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
         <div style="background: linear-gradient(135deg, ${EMAIL_COLORS.primaryDark} 0%, ${EMAIL_COLORS.primaryDark} 100%); padding: 30px; text-align: center; border-radius: 10px 10px 0 0;">
-          <h1 style="color: ${EMAIL_COLORS.textWhite}; margin: 0; font-size: 24px;">Welcome to Mateshwari Moorti Bhandar!</h1>
+          <h1 style="color: ${EMAIL_COLORS.textWhite}; margin: 0; font-size: 24px;">Welcome To Mateshwari Moorti Bhanda!</h1>
           <p style="color: ${EMAIL_COLORS.textWhite}; margin: 10px 0 0 0; opacity: 0.9;">You're now part of our exclusive club</p>
         </div>
         
@@ -761,7 +761,7 @@ const emailTemplates = {
           <h2 style="color: ${EMAIL_COLORS.textPrimary}; margin: 0 0 20px 0;">Thank you for subscribing! 🎉</h2>
           
           <p style="color: ${EMAIL_COLORS.textTertiary}; line-height: 1.6; margin: 0 0 20px 0;">
-            Welcome to the Mateshwari Moorti Bhandar family! We're thrilled to have you join our exclusive newsletter community.
+            Welcome to the Welcome To Mateshwari Moorti Bhanda family! We're thrilled to have you join our exclusive newsletter community.
           </p>
           
           <div style="background: ${EMAIL_COLORS.bgSecondary}; padding: 20px; border-radius: 8px; margin: 20px 0;">
@@ -789,11 +789,11 @@ const emailTemplates = {
       </div>
     `,
     text: `
-      Welcome to Mateshwari Moorti Bhandar Newsletter! 🎉
+      Welcome To Mateshwari Moorti Bhanda Newsletter! 🎉
       
       Thank you for subscribing!
       
-      Welcome to the Mateshwari Moorti Bhandar family! We're thrilled to have you join our exclusive newsletter community.
+      Welcome to the Welcome To Mateshwari Moorti Bhanda family! We're thrilled to have you join our exclusive newsletter community.
       
       What you'll get:
       - 🎂 15% off for your birthday!
@@ -809,11 +809,11 @@ const emailTemplates = {
   }),
 
   newsletterSubscription: (data) => ({
-    subject: 'New Newsletter Subscription - Mateshwari Moorti Bhandar',
+    subject: 'New Newsletter Subscription - Welcome To Mateshwari Moorti Bhanda',
     html: `
       <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
         <div style="background: linear-gradient(135deg, ${EMAIL_COLORS.primaryDark} 0%, ${EMAIL_COLORS.primaryDark} 100%); padding: 30px; text-align: center; border-radius: 10px 10px 0 0;">
-          <h1 style="color: ${EMAIL_COLORS.textWhite}; margin: 0; font-size: 24px;">Mateshwari Moorti Bhandar Admin</h1>
+          <h1 style="color: ${EMAIL_COLORS.textWhite}; margin: 0; font-size: 24px;">Welcome To Mateshwari Moorti Bhanda Admin</h1>
           <p style="color: ${EMAIL_COLORS.textWhite}; margin: 10px 0 0 0; opacity: 0.9;">New Newsletter Subscription</p>
         </div>
         
@@ -835,13 +835,13 @@ const emailTemplates = {
           </div>
           
           <p style="color: ${EMAIL_COLORS.textTertiary}; line-height: 1.6; margin: 0; font-size: 14px; text-align: center;">
-            This is an automated notification from the Mateshwari Moorti Bhandar newsletter subscription.
+            This is an automated notification from the Welcome To Mateshwari Moorti Bhanda newsletter subscription.
           </p>
         </div>
       </div>
     `,
     text: `
-      New Newsletter Subscription - Mateshwari Moorti Bhandar
+      New Newsletter Subscription - Welcome To Mateshwari Moorti Bhanda
       
       New Newsletter Subscriber
       
@@ -852,7 +852,7 @@ const emailTemplates = {
       
       View in Admin Panel: ${process.env.ADMIN_PANEL_URL}/admin
       
-      This is an automated notification from the Mateshwari Moorti Bhandar newsletter subscription.
+      This is an automated notification from the Welcome To Mateshwari Moorti Bhanda newsletter subscription.
     `
   }),
 
@@ -861,7 +861,7 @@ const emailTemplates = {
     html: `
       <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
         <div style="background: linear-gradient(135deg, ${EMAIL_COLORS.primaryDark} 0%, ${EMAIL_COLORS.primaryDark} 100%); padding: 30px; text-align: center; border-radius: 10px 10px 0 0;">
-          <h1 style="color: ${EMAIL_COLORS.textWhite}; margin: 0; font-size: 24px;">Mateshwari Moorti Bhandar Newsletter</h1>
+          <h1 style="color: ${EMAIL_COLORS.textWhite}; margin: 0; font-size: 24px;">Welcome To Mateshwari Moorti Bhanda Newsletter</h1>
           <p style="color: ${EMAIL_COLORS.textWhite}; margin: 10px 0 0 0; opacity: 0.9;">${data.subject}</p>
         </div>
         
@@ -880,7 +880,7 @@ const emailTemplates = {
           <hr style="border: none; border-top: 1px solid ${EMAIL_COLORS.borderMedium}; margin: 30px 0;">
           
           <p style="color: ${EMAIL_COLORS.textTertiary}; line-height: 1.6; margin: 0; font-size: 14px; text-align: center;">
-            Thank you for being part of the Mateshwari Moorti Bhandar family!<br>
+            Thank you for being part of the Welcome To Mateshwari Moorti Bhanda family!<br>
             Follow us on social media for daily inspiration and updates.
           </p>
         </div>
@@ -893,7 +893,7 @@ const emailTemplates = {
       
       Shop Now: ${process.env.FRONTEND_URL}/shop
       
-      Thank you for being part of the Mateshwari Moorti Bhandar family!
+      Thank you for being part of the Welcome To Mateshwari Moorti Bhanda family!
       Follow us on social media for daily inspiration and updates.
     `
   })

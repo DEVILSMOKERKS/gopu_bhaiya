@@ -84,7 +84,7 @@ export default function WelcomePopup() {
           </svg>
         </button>
         <h2 id="welcome-popup-title" className="welcome-popup-title">
-          Welcome to MATESHWARI Moorti Bhandar
+          Welcome to Welcome To Mateshwari Moorti Bhanda
         </h2>
         <p className="welcome-popup-text">
           Discover beautifully handcrafted marble murtis and custom temple designs created by skilled artisans.

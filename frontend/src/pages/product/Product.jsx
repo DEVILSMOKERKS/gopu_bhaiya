@@ -117,27 +117,30 @@ const Product = ({ productId: productIdProp, categorySlug, productSlug }) => {
 
   // Handle add to cart
   const handleAddToCart = () => {
-    if (!selectedSize) {
+    const hasSizes = Array.isArray(product?.sizes) && product.sizes.length > 0;
+    if (hasSizes && !selectedSize) {
       alert('Please select a size first');
       return;
     }
 
-    const selectedSizeData = product.sizes.find(size => size.size === selectedSize);
+    const selectedSizeData = product?.sizes?.find((size) => size.size === selectedSize);
     const selectedColorData = product.colors && product.colors[selectedColor];
+    const fallbackPrice =
+      product?.min_price ?? product?.price ?? product?.max_price ?? 0;
 
     const cartData = {
       product_id: product.product_id,
       color_id: selectedColorData ? selectedColorData.color_id : null,
       size_id: selectedSizeData ? selectedSizeData.size_id : null,
       quantity: 1,
-      size_name: selectedSize,
+      size_name: hasSizes ? selectedSize : '',
       color_name: selectedColorData ? selectedColorData.color_name : 'Default',
-      sell_price: selectedSizeData ? selectedSizeData.sell_price : 0,
+      sell_price: selectedSizeData ? selectedSizeData.sell_price : fallbackPrice,
       product: {
         product_id: product.product_id,
         name: product.name,
         description: product.description,
-        price: selectedSizeData ? selectedSizeData.sell_price : 0,
+        price: selectedSizeData ? selectedSizeData.sell_price : fallbackPrice,
         image: selectedColorData && selectedColorData.images && selectedColorData.images.length > 0 ? `${API_URL.replace('/api', '')}${selectedColorData.images[0]?.url || selectedColorData.images[0]}` : '/src/assets/img/Bestseller1.jpg'
       }
     };
@@ -163,27 +166,30 @@ const Product = ({ productId: productIdProp, categorySlug, productSlug }) => {
 
   // Handle buy now
   const handleBuyNow = () => {
-    if (!selectedSize) {
+    const hasSizes = Array.isArray(product?.sizes) && product.sizes.length > 0;
+    if (hasSizes && !selectedSize) {
       alert('Please select a size first');
       return;
     }
 
-    const selectedSizeData = product.sizes.find(size => size.size === selectedSize);
+    const selectedSizeData = product?.sizes?.find((size) => size.size === selectedSize);
     const selectedColorData = product.colors && product.colors[selectedColor];
+    const fallbackPrice =
+      product?.min_price ?? product?.price ?? product?.max_price ?? 0;
 
     const cartData = {
       product_id: product.product_id,
       color_id: selectedColorData ? selectedColorData.color_id : null,
       size_id: selectedSizeData ? selectedSizeData.size_id : null,
       quantity: 1,
-      size_name: selectedSize,
+      size_name: hasSizes ? selectedSize : '',
       color_name: selectedColorData ? selectedColorData.color_name : 'Default',
-      sell_price: selectedSizeData ? selectedSizeData.sell_price : 0,
+      sell_price: selectedSizeData ? selectedSizeData.sell_price : fallbackPrice,
       product: {
         product_id: product.product_id,
         name: product.name,
         description: product.description,
-        price: selectedSizeData ? selectedSizeData.sell_price : 0,
+        price: selectedSizeData ? selectedSizeData.sell_price : fallbackPrice,
         image: selectedColorData && selectedColorData.images && selectedColorData.images.length > 0 ? `${API_URL.replace('/api', '')}${selectedColorData.images[0]?.url || selectedColorData.images[0]}` : '/src/assets/img/Bestseller1.jpg'
       }
     };
@@ -801,7 +807,7 @@ const Product = ({ productId: productIdProp, categorySlug, productSlug }) => {
 
           {/* Add to Cart / Go to Cart Button */}
           {(() => {
-            const selectedSizeData = product.sizes.find(size => size.size === selectedSize);
+            const selectedSizeData = product?.sizes?.find(size => size.size === selectedSize);
             const selectedColorData = product.colors && product.colors[selectedColor];
             const isProductInCart = isInCart(
               product.product_id,

@@ -57,23 +57,23 @@ const FloatingButtons = dynamic(
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 
 export const metadata = {
-  title: 'Mateshwari Moorti Bhandar - Premium Marble Idols & Temple Designs',
-  description: 'Discover handcrafted marble idols, temple designs and pooja rooms from Jaipur. Custom murtis, Radha Krishna, Ganesha and more. Trusted since 1972. Free consultation.',
-  keywords: 'Marble Idols, Temple Designs, Pooja Room, Stone Carvings, Religious Artifacts, Custom Designs, Mateshwari Moorti Bhandar, Spiritual Art',
+  title: 'Marble Idols & Temple Designs in Jaipur | Mateshwari',
+  description: 'Handcrafted marble idols, custom mandirs and pooja room designs from Jaipur. Trusted since 1972. Explore Radha Krishna, Ganesh, Shiv and more, or request a custom creation with a free consultation.',
+  keywords: 'Marble Idols, Temple Designs, Pooja Room, Stone Carvings, Religious Artifacts, Custom Designs, Welcome To Mateshwari Moorti Bhanda, Spiritual Art',
   alternates: {
     canonical: BASE_URL,
   },
   openGraph: {
-    title: 'Mateshwari Moorti Bhandar - Premium Marble Idols & Temple Designs',
-    description: 'Discover authentic marble idols, temple designs, and custom spiritual artworks.',
+    title: 'Marble Idols & Temple Designs in Jaipur | Mateshwari',
+    description: 'Handcrafted marble idols, custom mandirs and pooja room designs from Jaipur - trusted since 1972.',
     url: BASE_URL,
-    siteName: 'Mateshwari Moorti Bhandar',
+    siteName: 'Welcome To Mateshwari Moorti Bhanda',
     images: [
       {
         url: `${BASE_URL}/logo.png`,
         width: 1200,
         height: 630,
-        alt: 'Mateshwari Moorti Bhandar',
+        alt: 'Welcome To Mateshwari Moorti Bhanda',
       },
     ],
     type: 'website',
@@ -81,8 +81,8 @@ export const metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Mateshwari Moorti Bhandar - Premium Marble Idols & Temple Designs',
-    description: 'Discover authentic marble idols, temple designs, and custom spiritual artworks.',
+    title: 'Marble Idols & Temple Designs in Jaipur | Mateshwari',
+    description: 'Handcrafted marble idols, custom mandirs and pooja room designs from Jaipur - trusted since 1972.',
     images: [`${BASE_URL}/logo.png`],
   },
   robots: {
@@ -94,14 +94,15 @@ export const metadata = {
 export default function HomePage() {
   return (
     <>
-      <section className="home-seo-intro">
+      <section className="page-seo-intro">
         <h1 className="home-seo-title">
           Handcrafted Marble Idols, Custom Mandirs, and Pooja Room Designs
         </h1>
-        <p className="home-seo-description">
-          Explore timeless devotional craftsmanship from Jaipur, including custom murtis, marble temples,
-          and spiritual interiors created to bring warmth, beauty, and devotion into your space.
-        </p>
+        {/* <p className="page-seo-description">
+          Explore timeless devotional craftsmanship from Jaipur - custom murtis, marble temples, and pooja room designs
+          made with fine detailing and premium stone. Browse ready collections or share your requirements for a custom
+          piece; our team guides you on size, finish, and delivery with clear communication.
+        </p> */}
       </section>
       <HeroSection />
       <ShopByDeity />

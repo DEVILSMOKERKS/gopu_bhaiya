@@ -104,7 +104,7 @@ const Clientdiaries = () => {
     {
       id: 10,
       src: Collection2,
-      alt: "Customer with Mateshwari Moorti Bhandar idols",
+      alt: "Customer with Welcome To Mateshwari Moorti Bhanda idols",
       size: "medium"
     },
     {
@@ -178,7 +178,7 @@ const Clientdiaries = () => {
       <div className="clientdiaries-carousel-header">
         <div className="clientdiaries-carousel-title-wrapper">
           <span className="clientdiaries-carousel-title-line"></span>
-          <h2 className="clientdiaries-carousel-title">MATESHWARI MOORTI BHANDAR CLIENT DIARIES</h2>
+          <h2 className="clientdiaries-carousel-title">Welcome To Mateshwari Moorti Bhanda CLIENT DIARIES</h2>
           <span className="clientdiaries-carousel-title-line"></span>
         </div>
         <p className="clientdiaries-carousel-subtitle">

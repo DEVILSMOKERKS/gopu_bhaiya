@@ -21,7 +21,7 @@ exports.createInquiry = async (req, res) => {
                 <p><strong>Product Interest:</strong> ${productName}</p>
                 <p><strong>Quantity Requested:</strong> ${quantity}</p>
                 <hr style="border: 0; border-top: 1px solid #eee;" />
-                <p style="font-size: 12px; color: #888;">Submitted via Mateshwari Moorti Bhandar Expert Form.</p>
+                <p style="font-size: 12px; color: #888;">Submitted via Welcome To Mateshwari Moorti Bhanda Expert Form.</p>
             </div>
         `;
 

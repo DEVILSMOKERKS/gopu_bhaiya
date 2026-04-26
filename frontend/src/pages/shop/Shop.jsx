@@ -719,7 +719,7 @@ const Shop = () => {
       
       {/* SEO H1 */}
       <h1 style={{ position: 'absolute', left: '-9999px' }}>
-        Shop Premium Marble Idols, Temple Designs & Sacred Art from Mateshwari Moorti Bhandar
+        Shop Premium Marble Idols, Temple Designs & Sacred Art from Welcome To Mateshwari Moorti Bhanda
       </h1>
       
       <div className="shop-content">

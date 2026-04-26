@@ -68,7 +68,7 @@ const subscribeNewsletter = async (req, res) => {
 
         res.status(201).json({
             success: true,
-            message: 'Successfully subscribed to newsletter! Welcome to the Mateshwari Moorti Bhandar family!'
+            message: 'Successfully subscribed to newsletter! Welcome to the Welcome To Mateshwari Moorti Bhanda family!'
         });
 
     } catch (error) {

@@ -5,7 +5,7 @@ const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 export const metadata = {
   title: 'Shipping Policy',
   description:
-    'Review shipping timelines, packaging details, delivery coverage, and support information from Mateshwari Moorti Bhandar.',
+    'Review shipping timelines, packaging details, delivery coverage, and support information from Welcome To Mateshwari Moorti Bhanda.',
   alternates: {
     canonical: `${BASE_URL}/shipping-policy`,
   },

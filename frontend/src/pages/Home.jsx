@@ -27,10 +27,14 @@ import OurBlogs from '../components/home/OurBlogs/OurBlogs';
 const Home = () => {
   return (
     <>
-      {/* Single SEO H1 per page: 55–60 chars, ~580px width */}
-      {/* <h1 className="home-seo-title">
-        Handcrafted Marble Idols & Temples | Mateshwari Moorti Bhandar
-      </h1> */}
+      <section className="page-seo-intro">
+        <h1 className="page-seo-title">Marble Idols & Temple Designs in Jaipur</h1>
+        <p className="page-seo-description">
+          Discover handcrafted marble idols, custom mandirs, and pooja room designs created with devotion and fine
+          detailing. Explore ready collections or request a custom murti - our Jaipur team helps you choose the right
+          size, finish, and delivery plan with clear guidance.
+        </p>
+      </section>
       <HeroSection />
       {/* <MarqueeStrip /> */}
 

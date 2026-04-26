@@ -69,18 +69,18 @@
 
 @media (max-width: 768px) {
   .float-btns {
-    right: 14px;
-    bottom: 70px;
+    right: 12px;
+    bottom: 96px;
     gap: 8px;
   }
   .float-btn {
-    width: 44px;
-    height: 44px;
+    width: 42px;
+    height: 42px;
     font-size: 18px;
   }
   .back-to-top {
     right: 16px;
-    bottom: 16px;
+    bottom: 18px;
     width: 36px;
     height: 36px;
     font-size: 14px;

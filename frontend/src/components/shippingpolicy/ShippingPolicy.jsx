@@ -71,7 +71,7 @@ const ShippingPolicy = () => {
       <>
         <section className="shipping-policy-section">
           <h2>1. SHIPPING INFORMATION</h2>
-          <p>At Mateshwari Moorti Bhandar, we understand the importance of timely delivery for your marble idols and temple structures. We offer reliable shipping services across India with secure packaging and insurance coverage. Our commitment to excellence extends beyond crafting beautiful idols to ensuring they reach you safely and on time.</p>
+          <p>At Welcome To Mateshwari Moorti Bhanda, we understand the importance of timely delivery for your marble idols and temple structures. We offer reliable shipping services across India with secure packaging and insurance coverage. Our commitment to excellence extends beyond crafting beautiful idols to ensuring they reach you safely and on time.</p>
           <p>We partner with trusted logistics providers to deliver your orders with the utmost care and attention. Every shipment is handled with the same precision and dedication that goes into creating our fashion pieces.</p>
         </section>
 
@@ -104,7 +104,7 @@ const ShippingPolicy = () => {
 
           <h3>3.1 Free Shipping</h3>
           <p>• Orders above ₹2,000: Free shipping across India</p>
-          <p>• Mateshwari Moorti Bhandar Elite Members: Free shipping on all orders regardless of value</p>
+          <p>• Welcome To Mateshwari Moorti Bhanda Elite Members: Free shipping on all orders regardless of value</p>
           <p>• Corporate orders: Free shipping for bulk purchases</p>
           <p>• Designer collections: Free shipping for orders above ₹5,000</p>
 
@@ -120,7 +120,7 @@ const ShippingPolicy = () => {
           <p>We ensure your clothing reaches you safely with multiple layers of protection and security measures. Our packaging is designed to withstand the rigors of transportation while maintaining the elegance of your purchase:</p>
 
           <h3>4.1 Secure Packaging</h3>
-          <p>• Premium packaging boxes with Mateshwari Moorti Bhandar branding and elegant design</p>
+          <p>• Premium packaging boxes with Welcome To Mateshwari Moorti Bhanda branding and elegant design</p>
           <p>• Tamper-evident seals for security and authenticity verification</p>
           <p>• Bubble wrap and protective materials to prevent damage</p>
           <p>• Water-resistant outer packaging for monsoon protection</p>
@@ -231,7 +231,7 @@ const ShippingPolicy = () => {
         <section className="shipping-policy-section">
           <h2>10. CONTACT INFORMATION</h2>
           <div className="shipping-policy-contact-info">
-            <p><strong>Mateshwari Moorti Bhandar</strong></p>
+            <p><strong>Welcome To Mateshwari Moorti Bhanda</strong></p>
             <p><strong>Shipping Support:</strong> Mateshvariexporter@gmail.com</p>
             <p><strong>Customer Care:</strong> Mateshvariexporter@gmail.com</p>
             <p><strong>Phone:</strong> +91 77919 83156 | +91 88242 92890 | +91 97845 03338</p>

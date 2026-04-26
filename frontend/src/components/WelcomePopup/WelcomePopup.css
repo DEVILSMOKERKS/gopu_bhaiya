@@ -5,14 +5,15 @@
 .welcome-popup-backdrop {
   position: fixed;
   inset: 0;
-  z-index: 9999;
+  z-index: 10020;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 20px;
+  padding: 24px 20px;
   background: rgba(0, 0, 0, 0);
   opacity: 0;
   visibility: hidden;
+  overflow-y: auto;
   transition: opacity 0.4s ease, visibility 0.4s ease, background 0.4s ease;
 }
 
@@ -27,12 +28,15 @@
   width: 100%;
   max-width: 440px;
   padding: 40px 32px 36px;
+  margin: auto;
+  max-height: calc(100vh - 48px);
   background: rgba(255, 253, 247, 0.96);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border-radius: 16px;
   box-shadow: 0 24px 64px rgba(61, 43, 16, 0.2), 0 0 0 1px rgba(255, 255, 255, 0.5) inset;
   transform: scale(0.95);
+  overflow-y: auto;
   transition: transform 0.35s ease;
 }
 
@@ -156,13 +160,15 @@
 /* Mobile: 85–90% width, large close button */
 @media (max-width: 480px) {
   .welcome-popup-backdrop {
-    padding: 16px;
+    align-items: flex-start;
+    padding: 88px 16px 16px;
   }
 
   .welcome-popup-box {
-    width: 90%;
+    width: min(100%, 420px);
     max-width: none;
     padding: 36px 24px 32px;
+    max-height: calc(100vh - 104px);
   }
 
   .welcome-popup-close {

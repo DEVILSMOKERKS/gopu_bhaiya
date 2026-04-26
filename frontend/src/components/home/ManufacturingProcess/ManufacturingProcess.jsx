@@ -217,7 +217,7 @@ const ManufacturingProcess = () => {
         <div className="mp-title-block">
           <div className="mp-lotus-icon"><LotusSVG /></div>
           <h2 className="manufacturing-process-title manufacturing-process-title--blueprint">
-            Manufactures In Motion
+            Manufacturing in Motion
           </h2>
           <p className="mp-title-sub">The Sacred Art of Marble Murti Craftsmanship</p>
           <div className="mp-title-rule">
@@ -225,6 +225,7 @@ const ManufacturingProcess = () => {
             <div className="mp-title-rule-diamond" />
             <div className="mp-title-rule-line mp-title-rule-line--right" />
           </div>
+          <p className="mp-mobile-hint">Swipe to explore each stage of our workshop journey.</p>
         </div>
 
         {/* Carousel frame */}
@@ -305,6 +306,9 @@ const ManufacturingProcess = () => {
             />
           ))}
         </div>
+        <p className="mp-slide-counter">
+          {String(activeIndex + 1).padStart(2, '0')} / {String(SLIDES.length).padStart(2, '0')}
+        </p>
 
       </div>{/* /container */}
 

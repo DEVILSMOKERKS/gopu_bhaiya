@@ -84,9 +84,9 @@ const ClientDiaries = () => {
     <section className="client-diaries">
       <div className="client-diaries-container">
         <div className="client-diaries-header">
-          <h2 className="client-diaries-title">MATESHWARI Moorti Bhandar Diaries</h2>
+          <h2 className="client-diaries-title">Welcome To Mateshwari Moorti Bhanda Diaries</h2>
           <p className="client-diaries-subtitle">
-            Share Your #MATESHWARI Moorti Bhandar Experience And Inspire Others With Your Story!
+            Share Your #Welcome To Mateshwari Moorti Bhanda Experience And Inspire Others With Your Story!
           </p>
           <button className="client-diaries-button" onClick={handleShareStory}>
             Share Your Story

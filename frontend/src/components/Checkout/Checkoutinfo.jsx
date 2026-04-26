@@ -582,7 +582,7 @@ const Checkoutinfo = () => {
       <div className="checkoutinfo-left">
         {/* Header */}
         <div className="checkoutinfo-header">
-          <div className="checkoutinfo-logo">Mateshwari Moorti Bhandar</div>
+          <div className="checkoutinfo-logo">Welcome To Mateshwari Moorti Bhanda</div>
           <div className="checkoutinfo-progress">
             <span>Cart</span>
             <span>/</span>

@@ -13,29 +13,29 @@ export const viewport = {
 export const metadata = {
   metadataBase: new URL(BASE_URL),
   title: {
-    default: 'Mateshwari Moorti Bhandar',
-    template: '%s | Mateshwari Moorti Bhandar',
+    default: 'Welcome To Mateshwari Moorti Bhanda',
+    template: '%s | Welcome To Mateshwari Moorti Bhanda',
   },
   description:
-    'Handcrafted marble idols, custom mandirs, pooja room designs, and devotional artistry from Jaipur by Mateshwari Moorti Bhandar.',
-  applicationName: 'Mateshwari Moorti Bhandar',
+    'Handcrafted marble idols, custom mandirs, pooja room designs, and devotional artistry from Jaipur by Welcome To Mateshwari Moorti Bhanda.',
+  applicationName: 'Welcome To Mateshwari Moorti Bhanda',
   keywords: [
     'marble idols',
     'marble mandir',
     'pooja room design',
     'custom murti',
     'Jaipur marble idols',
-    'Mateshwari Moorti Bhandar',
+    'Welcome To Mateshwari Moorti Bhanda',
   ],
   alternates: {
     canonical: BASE_URL,
   },
   openGraph: {
-    title: 'Mateshwari Moorti Bhandar',
+    title: 'Welcome To Mateshwari Moorti Bhanda',
     description:
       'Handcrafted marble idols, custom mandirs, pooja room designs, and devotional artistry from Jaipur.',
     url: BASE_URL,
-    siteName: 'Mateshwari Moorti Bhandar',
+    siteName: 'Welcome To Mateshwari Moorti Bhanda',
     locale: 'en_IN',
     type: 'website',
   },

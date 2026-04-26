@@ -8,7 +8,7 @@ const Terms = () => {
         <header className="terms-header">
           <h1>Terms & Conditions</h1>
           <p>
-            Please read these terms carefully before using the website or placing an order with Mateshwari Moorti Bhandar.
+            Please read these terms carefully before using the website or placing an order with Welcome To Mateshwari Moorti Bhanda.
           </p>
           <p className="terms-last-updated">
             Last Updated: {new Date().toLocaleDateString()}
@@ -84,7 +84,7 @@ const Terms = () => {
               <li>Selected offers may not be valid on custom orders, consultation-led projects, or already discounted products.</li>
               <li>Offers and promotional pricing are valid only on selected products.</li>
               <li>All current vouchers are subject to discontinuation without prior notice.</li>
-              <li>The applicability of any additional voucher is at the sole discretion of Mateshwari Moorti Bhandar.</li>
+              <li>The applicability of any additional voucher is at the sole discretion of Welcome To Mateshwari Moorti Bhanda.</li>
             </ul>
           </div>
         </section>
@@ -99,21 +99,21 @@ const Terms = () => {
         <section className="terms-section">
           <h2>Trademarks</h2>
           <p>
-            The trademarks, names, logos and service marks displayed on this website are the property of Mateshwari Moorti Bhandar. Nothing on this website should be interpreted as granting permission to use them without prior written consent.
+            The trademarks, names, logos and service marks displayed on this website are the property of Welcome To Mateshwari Moorti Bhanda. Nothing on this website should be interpreted as granting permission to use them without prior written consent.
           </p>
         </section>
 
         <section className="terms-section">
           <h2>External Links</h2>
           <p>
-            External links may be provided for your convenience, but they are beyond the control of Mateshwari Moorti Bhandar. Use of those links and any third-party content is at your own discretion and risk.
+            External links may be provided for your convenience, but they are beyond the control of Welcome To Mateshwari Moorti Bhanda. Use of those links and any third-party content is at your own discretion and risk.
           </p>
         </section>
 
         <section className="terms-section">
           <h2>Warranties</h2>
           <p>
-            Except where otherwise required by law, Mateshwari Moorti Bhandar does not make additional warranties beyond those expressly stated for a product or service.
+            Except where otherwise required by law, Welcome To Mateshwari Moorti Bhanda does not make additional warranties beyond those expressly stated for a product or service.
           </p>
         </section>
 
@@ -127,7 +127,7 @@ const Terms = () => {
         <section className="terms-section">
           <h2>Disclaimer of Liability</h2>
           <p>
-            Mateshwari Moorti Bhandar Fashion disclaims all liability for any loss, damage, personal injury, or expense of any kind whatsoever and howsoever caused, whether directly or indirectly from the use of or reliance upon any information, material, or services available on this website, or any other matter relating to this website and even if such loss or damage is caused by or results from the negligence or gross negligence of Mateshwari Moorti Bhandar Fashion, or an authorized representative of Mateshwari Moorti Bhandar Fashion, or for any other reason whatsoever.
+            Welcome To Mateshwari Moorti Bhanda Fashion disclaims all liability for any loss, damage, personal injury, or expense of any kind whatsoever and howsoever caused, whether directly or indirectly from the use of or reliance upon any information, material, or services available on this website, or any other matter relating to this website and even if such loss or damage is caused by or results from the negligence or gross negligence of Welcome To Mateshwari Moorti Bhanda Fashion, or an authorized representative of Welcome To Mateshwari Moorti Bhanda Fashion, or for any other reason whatsoever.
           </p>
         </section>
 
@@ -149,7 +149,7 @@ const Terms = () => {
           <h2>Cancellation & Returns</h2>
           <p><strong>Order Cancellation:</strong> Orders can be canceled at no cost before the Dispatch Confirmation E-mail. Individual items can be canceled within an order if it contains 2 or more items without canceling the entire order.</p>
           <p><strong>Refunds for Prepaid Orders:</strong> Amount will be credited to the payment source (Credit Card/Debit Card/Net Banking).</p>
-          <p><strong>30 Day Money Back Policy:</strong> Refunds are credited to the Mateshwari Moorti Bhandar Cash account (not applicable on designer items above INR 10,000, accessories, and customized orders). You can choose to make another purchase or get the amount refunded to your bank account.</p>
+          <p><strong>30 Day Money Back Policy:</strong> Refunds are credited to the Welcome To Mateshwari Moorti Bhanda Cash account (not applicable on designer items above INR 10,000, accessories, and customized orders). You can choose to make another purchase or get the amount refunded to your bank account.</p>
           <p><strong>Refunds for Cash on Delivery Orders:</strong> Processed to the user&apos;s bank account.</p>
           <p><strong>Gift Card Orders:</strong> Refunded back to the gift card.</p>
           <p><strong>Return Conditions for Specific Vouchers:</strong> For products ordered using FLAT02, FLAT05, FLAT10, FLAT15, FLAT20, DIWALI05, DIWALI10, DIWALI15, DIWALI20, DIWALI25, LOVE05, LOVE10, LOVE15, all products in the order need to be returned together.</p>
@@ -165,14 +165,14 @@ const Terms = () => {
         <section className="terms-section">
           <h2>Contests</h2>
           <p>
-            Winners of contests and giveaways are selected at the company&apos;s discretion. Prizes/gifts are non-returnable/exchangeable. Any additional facilities are at the company&apos;s discretion. Mateshwari Moorti Bhandar reserves the right to change contest terms and conditions without prior intimation. All disputes will be resolved via email at legal@Mateshwari Moorti Bhandarfashion.com.
+            Winners of contests and giveaways are selected at the company&apos;s discretion. Prizes/gifts are non-returnable/exchangeable. Any additional facilities are at the company&apos;s discretion. Welcome To Mateshwari Moorti Bhanda reserves the right to change contest terms and conditions without prior intimation. All disputes will be resolved via email at legal@Welcome To Mateshwari Moorti Bhandafashion.com.
           </p>
         </section>
 
         <section className="terms-section">
           <h2>Contact Information</h2>
           <div className="terms-contact-info">
-            <p><strong>Mateshwari Moorti Bhandar Fashion</strong></p>
+            <p><strong>Welcome To Mateshwari Moorti Bhanda Fashion</strong></p>
             <p><strong>Email:</strong> Mateshvariexporter@gmail.com</p>
             <p><strong>Phone:</strong> +91 77919 83156 | +91 88242 92890 | +91 97845 03338</p>
             <p><strong>Address:</strong> 2310, Khajane walo ka Rasta, Nehru Tailour Chouraha, Chandpole Bazar, Jaipur-302001 (Rajasthan) INDIA</p>

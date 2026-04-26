@@ -21,6 +21,32 @@
   font-family: var(--font-heading);
 }
 
+/* Universal page SEO intro (H1 + 40–60 word description) */
+.page-seo-intro {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 28px 18px 10px;
+  text-align: center;
+}
+
+.page-seo-title {
+  max-width: 820px;
+  margin: 0 auto;
+  font-size: clamp(1.6rem, 3.2vw, 2.6rem);
+  font-weight: 700;
+  color: var(--dark, #1A1208);
+  line-height: 1.25;
+  font-family: var(--font-heading);
+}
+
+.page-seo-description {
+  max-width: 820px;
+  margin: 10px auto 0;
+  color: #3a3a3a;
+  font-size: 1.02rem;
+  line-height: 1.75;
+}
+
 :root {
   /* Font Family - Times New Roman (classy typography) */
   --font-heading: 'Cinzel', serif;

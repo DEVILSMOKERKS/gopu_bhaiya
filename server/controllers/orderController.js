@@ -192,15 +192,15 @@ const createCodOrder = async (req, res) => {
         const { sendEmail } = require('../utils/emailSender');
         await sendEmail(
           shipping_address.email,
-          'Welcome to Mateshwari Moorti Bhandar - Your Account Details',
+          'Welcome To Mateshwari Moorti Bhanda - Your Account Details',
           `
-            <h2>Welcome to Mateshwari Moorti Bhandar!</h2>
+            <h2>Welcome To Mateshwari Moorti Bhanda!</h2>
             <p>Your account has been created successfully.</p>
             <p><strong>Your Login Details:</strong></p>
             <p>Email: ${shipping_address.email}</p>
             <p>Password: MMB@#$123</p>
             <p>Please keep this password safe and change it after your first login.</p>
-            <p>Thank you for choosing Mateshwari Moorti Bhandar!</p>
+            <p>Thank you for choosing Welcome To Mateshwari Moorti Bhanda!</p>
           `
         );
       }
@@ -719,15 +719,15 @@ const verifyPayment = async (req, res) => {
         const { sendEmail } = require('../utils/emailSender');
         await sendEmail(
           shipping_address.email,
-          'Welcome to Mateshwari Moorti Bhandar - Your Account Details',
+          'Welcome To Mateshwari Moorti Bhanda - Your Account Details',
           `
-            <h2>Welcome to Mateshwari Moorti Bhandar!</h2>
+            <h2>Welcome To Mateshwari Moorti Bhanda!</h2>
             <p>Your account has been created successfully.</p>
             <p><strong>Your Login Details:</strong></p>
             <p>Email: ${shipping_address.email}</p>
             <p>Password: MMB@#$123</p>
             <p>Please keep this password safe and change it after your first login.</p>
-            <p>Thank you for choosing Mateshwari Moorti Bhandar!</p>
+            <p>Thank you for choosing Welcome To Mateshwari Moorti Bhanda!</p>
           `
         );
       }

@@ -130,7 +130,7 @@ const AdminRoute = () => {
             color: '#374151'
           }}>
             <h1 style={{ fontSize: '2.5rem', marginBottom: '1rem', color: '#1f2937' }}>
-              Welcome to Mateshwari Moorti Bhandar Admin
+              Welcome To Mateshwari Moorti Bhanda Admin
             </h1>
             <p style={{ fontSize: '1.125rem', marginBottom: '2rem', color: '#6b7280' }}>
               Manage your e-commerce store with ease

@@ -45,7 +45,7 @@ function TimelineStory() {
     const timelineData = [
         {
             year: '2015',
-            description: 'Mateshwari Moorti Bhandar was founded with a vision to bring divine craftsmanship to every home. We started our journey by creating handcrafted idols and temple solutions, combining traditional artistry with modern precision.',
+            description: 'Welcome To Mateshwari Moorti Bhanda was founded with a vision to bring divine craftsmanship to every home. We started our journey by creating handcrafted idols and temple solutions, combining traditional artistry with modern precision.',
             image: Bestseller1,
             position: 'left'
         },
@@ -69,7 +69,7 @@ function TimelineStory() {
         },
         {
             year: '2023',
-            description: 'Continuing our legacy of excellence, we remain dedicated to preserving traditional craftsmanship while embracing innovation. Today, Mateshwari Moorti Bhandar stands as a trusted name in divine home solutions.',
+            description: 'Continuing our legacy of excellence, we remain dedicated to preserving traditional craftsmanship while embracing innovation. Today, Welcome To Mateshwari Moorti Bhanda stands as a trusted name in divine home solutions.',
             image: Bestseller5,
             position: 'left'
         }
@@ -78,7 +78,7 @@ function TimelineStory() {
     return (
         <div className="timeline-container">
             <div className="timeline-header">
-                <p className="timeline-subtitle">About Mateshwari Moorti Bhandar</p>
+                <p className="timeline-subtitle">About Welcome To Mateshwari Moorti Bhanda</p>
                 <h1 className="timeline-title">Our Story of Growth & Success</h1>
                 <p className="timeline-description">
                     Since 2015, we&apos;ve been dedicated to creating divine experiences through our handcrafted idols and temple solutions, bringing spiritual elegance to homes and hearts across the nation.

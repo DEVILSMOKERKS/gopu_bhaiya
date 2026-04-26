@@ -715,11 +715,11 @@ const forgotPassword = async (req, res) => {
     const resetLink = `${process.env.FRONTEND_URL || 'http://localhost:5173'}/reset-password?token=${resetToken}`;
 
     // Send email with reset link
-    const emailSubject = 'Password Reset Request - Mateshwari Moorti Bhandar';
+    const emailSubject = 'Password Reset Request - Welcome To Mateshwari Moorti Bhanda';
     const emailHtml = `
       <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
         <div style="text-align: center; margin-bottom: 30px;">
-          <h1 style="color: ${EMAIL_COLORS.primaryDark}; margin: 0;">Mateshwari Moorti Bhandar</h1>
+          <h1 style="color: ${EMAIL_COLORS.primaryDark}; margin: 0;">Welcome To Mateshwari Moorti Bhanda</h1>
           <p style="color: ${EMAIL_COLORS.textTertiary}; margin: 5px 0;">Handcrafted Marble Idols & Temples</p>
         </div>
         
@@ -729,7 +729,7 @@ const forgotPassword = async (req, res) => {
             Hello ${user.name},
           </p>
           <p style="color: ${EMAIL_COLORS.textTertiary}; line-height: 1.6; margin-bottom: 20px;">
-            We received a request to reset your password for your Mateshwari Moorti Bhandar account. If you made this request, click the button below to reset your password:
+            We received a request to reset your password for your Welcome To Mateshwari Moorti Bhanda account. If you made this request, click the button below to reset your password:
           </p>
           
           <div style="text-align: center; margin: 30px 0;">
@@ -759,7 +759,7 @@ const forgotPassword = async (req, res) => {
         
         <div style="text-align: center; color: ${EMAIL_COLORS.textQuaternary}; font-size: 14px;">
           <p>If you didn't request this password reset, please ignore this email.</p>
-          <p>© 2024 Mateshwari Moorti Bhandar. All rights reserved.</p>
+          <p>© 2024 Welcome To Mateshwari Moorti Bhanda. All rights reserved.</p>
         </div>
       </div>
     `;

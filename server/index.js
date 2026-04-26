@@ -40,6 +40,8 @@ const defaultAllowedOrigins = [
   'http://127.0.0.1:3000',
   'http://localhost:5173',
   'http://127.0.0.1:5173',
+  'http://localhost:5174',
+  'http://127.0.0.1:5174',
   'https://www.mateshwarimoortibhandar.com',
   'https://mateshwarimoortibhandar.com',
 ];
@@ -122,14 +124,14 @@ app.use('/api', bookAppointmentRoutes);
 app.get('/api/health', (req, res) => {
   res.json({
     status: 'OK',
-    message: 'Mateshwari Moorti Bhandar API is running',
+    message: 'Welcome To Mateshwari Moorti Bhanda API is running',
     timestamp: new Date().toISOString()
   });
 });
 
 // Welcome endpoint
 app.get('/welcome', (req, res) => {
-  res.send('Welcome to Mateshwari Moorti Bhandar E-commerce API');
+  res.send('Welcome To Mateshwari Moorti Bhanda E-commerce API');
 });
 
 // 404 handler
@@ -148,6 +150,6 @@ app.use((err, req, res, next) => {
 });
 
 app.listen(PORT, '0.0.0.0', () => {
-  console.log(`🚀 Mateshwari Moorti Bhandar server is running on port ${PORT}`);
+  console.log(`🚀 Welcome To Mateshwari Moorti Bhanda server is running on port ${PORT}`);
   console.log(`📊 Health check: http://localhost:${PORT}/api/health`);
 });
