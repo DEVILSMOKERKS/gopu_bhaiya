@@ -95,9 +95,9 @@ export default function HomePage() {
   return (
     <>
       <section className="page-seo-intro">
-        <h1 className="home-seo-title">
+        {/* <h1 className="home-seo-title">
           Handcrafted Marble Idols, Custom Mandirs, and Pooja Room Designs
-        </h1>
+        </h1> */}
         {/* <p className="page-seo-description">
           Explore timeless devotional craftsmanship from Jaipur - custom murtis, marble temples, and pooja room designs
           made with fine detailing and premium stone. Browse ready collections or share your requirements for a custom

@@ -16,8 +16,7 @@ export default function WelcomePopup() {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-    productName: '',
-    quantity: 1,
+    mobile: '',
   });
   const [status, setStatus] = useState({ loading: false, message: '', type: '' });
 
@@ -49,7 +48,7 @@ export default function WelcomePopup() {
       });
 
       setTimeout(() => {
-        setFormData({ name: '', email: '', productName: '', quantity: 1 });
+        setFormData({ name: '', email: '', mobile: '' });
         setStatus({ loading: false, message: '', type: '' });
         handleClose();
       }, 2500);
@@ -84,7 +83,7 @@ export default function WelcomePopup() {
           </svg>
         </button>
         <h2 id="welcome-popup-title" className="welcome-popup-title">
-          Welcome to Welcome To Mateshwari Moorti Bhanda
+          Welcome to Mateshwari Moorti Bhanda
         </h2>
         <p className="welcome-popup-text">
           Discover beautifully handcrafted marble murtis and custom temple designs created by skilled artisans.
@@ -92,14 +91,23 @@ export default function WelcomePopup() {
 
         <form onSubmit={handleSubmit} className="welcome-popup-form">
           <div className="form-input-group">
-            <label>Full Name</label>
+            <label>Full Name <span className="optional-label">(optional)</span></label>
             <input
               type="text"
               name="name"
-              required
               value={formData.name}
               onChange={handleChange}
               placeholder="Enter your name"
+            />
+          </div>
+          <div className="form-input-group">
+            <label>Mobile Number <span className="optional-label">(optional)</span></label>
+            <input
+              type="tel"
+              name="mobile"
+              value={formData.mobile}
+              onChange={handleChange}
+              placeholder="+91 XXXXX XXXXX"
             />
           </div>
           <div className="form-input-group">
@@ -110,28 +118,6 @@ export default function WelcomePopup() {
               value={formData.email}
               onChange={handleChange}
               placeholder="example@mail.com"
-            />
-          </div>
-          <div className="form-input-group">
-            <label>Product Name / Category</label>
-            <input
-              type="text"
-              name="productName"
-              required
-              value={formData.productName}
-              onChange={handleChange}
-              placeholder="Which product are you interested in?"
-            />
-          </div>
-          <div className="form-input-group">
-            <label>Approximate Quantity</label>
-            <input
-              type="number"
-              name="quantity"
-              min="1"
-              required
-              value={formData.quantity}
-              onChange={handleChange}
             />
           </div>
           <button

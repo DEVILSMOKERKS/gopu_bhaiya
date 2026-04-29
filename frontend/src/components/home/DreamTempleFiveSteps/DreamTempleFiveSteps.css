@@ -5,13 +5,15 @@
   background: #fff;
   padding: 56px 0 52px;
   font-family: 'Lato', sans-serif;
+  width: 100%;
+  overflow: hidden;
 }
 
 /* ─── Header ──────────────────────────────────────────────── */
 .dtf-header {
   text-align: center;
   padding: 0 24px;
-  margin-bottom: 32px;
+  margin-bottom: 36px;
 }
 
 .dtf-heading {
@@ -40,7 +42,7 @@
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
   padding: 8px 0 20px;
-  cursor: grab;
+  cursor: default;
   user-select: none;
 }
 
@@ -48,15 +50,33 @@
   display: none;
 }
 
-/* ─── Track: all items in one horizontal row ──────────────── */
+/* ─── Full-width 5-column grid on desktop ─────────────────── */
 .dtf-track {
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  align-items: start;
+  padding: 0 40px;
   gap: 0;
-  /* left padding shows partial first card on mobile */
-  padding: 0 20px;
-  width: max-content;
+  width: 100%;
+  box-sizing: border-box;
+  position: relative;
+}
+
+/* Connector line running through circle centers */
+.dtf-track::before {
+  content: '';
+  position: absolute;
+  top: 74px;
+  left: calc(40px + 9.5%);
+  right: calc(40px + 9.5%);
+  height: 1px;
+  background: linear-gradient(90deg,
+    transparent 0%,
+    #d8d0c0 8%,
+    #d8d0c0 92%,
+    transparent 100%
+  );
+  z-index: 0;
 }
 
 /* ─── Each step item ──────────────────────────────────────── */
@@ -65,14 +85,27 @@
   flex-direction: column;
   align-items: center;
   gap: 12px;
-  width: 145px;
-  flex-shrink: 0;
+  padding: 0 4px;
+  position: relative;
+  z-index: 1;
+  animation: dtf-fadeup 0.5s ease both;
+}
+
+.dtf-item:nth-child(1) { animation-delay: 0.05s; }
+.dtf-item:nth-child(2) { animation-delay: 0.13s; }
+.dtf-item:nth-child(3) { animation-delay: 0.21s; }
+.dtf-item:nth-child(4) { animation-delay: 0.29s; }
+.dtf-item:nth-child(5) { animation-delay: 0.37s; }
+
+@keyframes dtf-fadeup {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
 /* ─── Circle ──────────────────────────────────────────────── */
 .dtf-circle {
-  width: 118px;
-  height: 118px;
+  width: 148px;
+  height: 148px;
   border-radius: 50%;
   border: 1.5px solid #d8d0c0;
   background: #fff;
@@ -81,12 +114,13 @@
   justify-content: center;
   overflow: hidden;
   flex-shrink: 0;
-  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
 }
 
 .dtf-item:hover .dtf-circle {
   border-color: #c9a84c;
-  box-shadow: 0 4px 16px rgba(201, 168, 76, 0.18);
+  box-shadow: 0 4px 18px rgba(201, 168, 76, 0.2);
+  transform: translateY(-3px);
 }
 
 /* ─── Label ───────────────────────────────────────────────── */
@@ -105,7 +139,7 @@
 }
 
 .dtf-title {
-  font-size: 0.88rem;
+  font-size: clamp(0.78rem, 1vw, 0.9rem);
   font-weight: 400;
   color: #1a1a1a;
   line-height: 1.45;
@@ -114,7 +148,7 @@
 /* ─── CTA ─────────────────────────────────────────────────── */
 .dtf-cta {
   text-align: center;
-  margin-top: 32px;
+  margin-top: 36px;
   padding: 0 24px;
 }
 
@@ -136,40 +170,51 @@
   transform: translateY(-2px);
 }
 
-/* ─── Desktop: wider circles, more spacing ────────────────── */
-@media (min-width: 900px) {
-  .dtf-section {
-    padding: 72px 0 72px;
+/* ─── Tablet: horizontal scroll ───────────────────────────── */
+@media (max-width: 900px) {
+  .dtf-scroll-outer {
+    cursor: grab;
   }
 
   .dtf-track {
-    /* center the track on large screens */
-    padding: 0 calc((100vw - 900px) / 2);
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 0;
+    padding: 0 20px;
+    width: max-content;
+  }
+
+  .dtf-track::before {
+    top: 74px;
+    left: 20px;
+    right: 20px;
   }
 
   .dtf-item {
-    width: 180px;
+    width: 160px;
+    flex-shrink: 0;
   }
 
   .dtf-circle {
-    width: 140px;
-    height: 140px;
-  }
-
-  .dtf-title {
-    font-size: 0.9rem;
+    width: 136px;
+    height: 136px;
   }
 }
 
-/* ─── Mobile tweaks ───────────────────────────────────────── */
+/* ─── Mobile ──────────────────────────────────────────────── */
 @media (max-width: 480px) {
   .dtf-item {
-    width: 130px;
+    width: 138px;
   }
 
   .dtf-circle {
-    width: 108px;
-    height: 108px;
+    width: 112px;
+    height: 112px;
+  }
+
+  .dtf-track::before {
+    top: 56px;
   }
 
   .dtf-heading {

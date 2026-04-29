@@ -102,6 +102,7 @@ const DreamTempleFiveSteps = () => {
   const scrollLeft = useRef(0);
 
   const onMouseDown = (e) => {
+    if (window.innerWidth > 900) return;
     isDragging.current = true;
     startX.current = e.pageX - scrollRef.current.offsetLeft;
     scrollLeft.current = scrollRef.current.scrollLeft;
@@ -110,12 +111,12 @@ const DreamTempleFiveSteps = () => {
 
   const onMouseLeave = () => {
     isDragging.current = false;
-    if (scrollRef.current) scrollRef.current.style.cursor = 'grab';
+    if (scrollRef.current && window.innerWidth <= 900) scrollRef.current.style.cursor = 'grab';
   };
 
   const onMouseUp = () => {
     isDragging.current = false;
-    if (scrollRef.current) scrollRef.current.style.cursor = 'grab';
+    if (scrollRef.current && window.innerWidth <= 900) scrollRef.current.style.cursor = 'grab';
   };
 
   const onMouseMove = (e) => {
