@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 import { HiHeart, HiOutlineHeart } from 'react-icons/hi';
 import { useWishlistCart } from '../../../context/wishlistCartContext';
 import { sampleProducts } from '../../../data/productsData';
+import { getProductPriceRangeText } from '../../../Utils/productPrice';
 import './DirectFromMakersHands.css';
 import Image from 'next/image';
 
@@ -220,7 +221,7 @@ const DirectFromMakersHands = () => {
                                 <p className="direct-makers-hands-card-description">
                                     {product.description || 'Lorem Ipsum To Add....'}
                                 </p>
-                                <p className="direct-makers-hands-card-price">₹{product.min_price ? product.min_price.toLocaleString('en-IN') : '1,80000'}</p>
+                                <p className="direct-makers-hands-card-price">{getProductPriceRangeText(product, '₹1,80,000')}</p>
                             </div>
                         ))}
                     </div>
@@ -256,7 +257,7 @@ const DirectFromMakersHands = () => {
                             <p className="direct-makers-hands-card-description">
                                 {product.description || 'Lorem Ipsum To Add....'}
                             </p>
-                            <p className="direct-makers-hands-card-price">₹{product.min_price ? product.min_price.toLocaleString('en-IN') : '1,80000'}</p>
+                            <p className="direct-makers-hands-card-price">{getProductPriceRangeText(product, '₹1,80,000')}</p>
                         </div>
                     ))}
                 </div>

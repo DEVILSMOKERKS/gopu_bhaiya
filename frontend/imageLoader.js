@@ -1,17 +1,44 @@
 /**
- * Custom image loader. Skips Next.js image optimization for:
- * - Backend URLs (localhost:5000) - avoids "upstream response is invalid"
- * - Next.js static assets (/_next/static/) - avoids 404 when optimizer can't resolve them
+ * Custom image loader.
+ * Bypasses Next.js optimization for:
+ * - Inline/local previews (`data:` / `blob:`)
+ * - Absolute remote URLs
+ * - Backend-uploaded asset paths like `/products/...`
+ * - Next.js static assets
  */
+const API_URL = process.env.NEXT_PUBLIC_API_URL || '';
+const BACKEND_BASE_URL = API_URL.replace(/\/api\/?$/, '');
+const BACKEND_UPLOAD_PREFIXES = [
+  '/profile/',
+  '/blogs/',
+  '/categories/',
+  '/subcategories/',
+  '/products/',
+  '/reviews/',
+];
+
 export default function imageLoader({ src, width, quality }) {
-  const isBackendUrl =
-    typeof src === 'string' &&
-    (src.startsWith('http://localhost:5000') || src.startsWith('http://127.0.0.1:5000'));
-
-  const isStaticAsset = typeof src === 'string' && src.startsWith('/_next/static/');
-
-  if (isBackendUrl || isStaticAsset) {
+  if (typeof src !== 'string' || !src) {
     return src;
   }
-  return `/_next/image?url=${encodeURIComponent(src)}&w=${width}&q=${quality || 75}`;
+
+  const normalizedSrc = src.trim();
+  const isInlinePreview =
+    normalizedSrc.startsWith('data:') || normalizedSrc.startsWith('blob:');
+  const isAbsoluteUrl =
+    normalizedSrc.startsWith('http://') || normalizedSrc.startsWith('https://');
+  const isStaticAsset = normalizedSrc.startsWith('/_next/static/');
+  const isBackendUpload =
+    BACKEND_BASE_URL &&
+    BACKEND_UPLOAD_PREFIXES.some((prefix) => normalizedSrc.startsWith(prefix));
+
+  if (isInlinePreview || isAbsoluteUrl || isStaticAsset) {
+    return normalizedSrc;
+  }
+
+  if (isBackendUpload) {
+    return `${BACKEND_BASE_URL}${normalizedSrc}`;
+  }
+
+  return `/_next/image?url=${encodeURIComponent(normalizedSrc)}&w=${width}&q=${quality || 75}`;
 }

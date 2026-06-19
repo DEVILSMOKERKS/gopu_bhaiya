@@ -1,6 +1,8 @@
 const db = require('../config/db');
 const { upload } = require('../middleware/multer');
 
+const toBooleanFlag = (value) => value === true || value === 'true' || value === 1 || value === '1';
+
 // Create Product
 const createProduct = async (req, res) => {
   try {
@@ -19,6 +21,7 @@ const createProduct = async (req, res) => {
       is_new,
       is_bestseller,
       is_customizable,
+      ask_for_price,
       min_order_quantity,
       lead_time_days,
       description,
@@ -71,14 +74,14 @@ const createProduct = async (req, res) => {
       // Insert product
       const [productResult] = await connection.execute(
         `INSERT INTO products (sku, name, slug, category_id, subcategory_id, meta_title, meta_description, 
-         featured_image, video_url, tags, is_featured, is_new, is_bestseller, is_customizable, 
+         featured_image, video_url, tags, is_featured, is_new, is_bestseller, is_customizable, ask_for_price,
          min_order_quantity, lead_time_days, description, product_detail, shipping_info, return_policy, status) 
-         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
         [
           sku || null, name, productSlug || null, category_id || null, subcategory_id || null,
           meta_title || null, meta_description || null, featured_image || null, video_url || null,
-          tags || null, is_featured ? 1 : 0, is_new ? 1 : 0, is_bestseller ? 1 : 0,
-          is_customizable ? 1 : 0, min_order_quantity || 1, lead_time_days || null,
+          tags || null, toBooleanFlag(is_featured) ? 1 : 0, toBooleanFlag(is_new) ? 1 : 0, toBooleanFlag(is_bestseller) ? 1 : 0,
+          toBooleanFlag(is_customizable) ? 1 : 0, toBooleanFlag(ask_for_price) ? 1 : 0, min_order_quantity || 1, lead_time_days || null,
           description || null, product_detail || null, shipping_info || null, return_policy || null,
           status || 'active'
         ]
@@ -266,6 +269,7 @@ const getAllProducts = async (req, res) => {
          p.is_new,
          p.is_bestseller,
          p.is_customizable,
+         p.ask_for_price,
          p.min_order_quantity,
          p.lead_time_days,
          p.view_count,
@@ -538,6 +542,7 @@ const updateProduct = async (req, res) => {
       is_new,
       is_bestseller,
       is_customizable,
+      ask_for_price,
       min_order_quantity,
       lead_time_days,
       description,
@@ -596,15 +601,15 @@ const updateProduct = async (req, res) => {
         `UPDATE products SET 
          sku = ?, name = ?, slug = ?, category_id = ?, subcategory_id = ?, 
          meta_title = ?, meta_description = ?, featured_image = ?, video_url = ?, tags = ?,
-         is_featured = ?, is_new = ?, is_bestseller = ?, is_customizable = ?,
+         is_featured = ?, is_new = ?, is_bestseller = ?, is_customizable = ?, ask_for_price = ?,
          min_order_quantity = ?, lead_time_days = ?, description = ?, product_detail = ?,
          shipping_info = ?, return_policy = ?, status = ?, updated_at = CURRENT_TIMESTAMP
          WHERE product_id = ?`,
         [
           sku || null, name, productSlug || null, category_id || null, subcategory_id || null,
           meta_title || null, meta_description || null, featured_image || null, video_url || null,
-          tags || null, is_featured ? 1 : 0, is_new ? 1 : 0, is_bestseller ? 1 : 0,
-          is_customizable ? 1 : 0, min_order_quantity || 1, lead_time_days || null,
+          tags || null, toBooleanFlag(is_featured) ? 1 : 0, toBooleanFlag(is_new) ? 1 : 0, toBooleanFlag(is_bestseller) ? 1 : 0,
+          toBooleanFlag(is_customizable) ? 1 : 0, toBooleanFlag(ask_for_price) ? 1 : 0, min_order_quantity || 1, lead_time_days || null,
           description || null, product_detail || null, shipping_info || null,
           return_policy || null, status || 'active', product_id
         ]
@@ -769,6 +774,7 @@ const getProductsByCategory = async (req, res) => {
          p.is_new,
          p.is_bestseller,
          p.is_customizable,
+         p.ask_for_price,
          p.min_order_quantity,
          p.lead_time_days,
          p.view_count,
@@ -849,6 +855,7 @@ const getProductsBySubcategory = async (req, res) => {
          p.is_new,
          p.is_bestseller,
          p.is_customizable,
+         p.ask_for_price,
          p.min_order_quantity,
          p.lead_time_days,
          p.view_count,
@@ -918,6 +925,7 @@ const getBestsellerProducts = async (req, res) => {
          p.is_new,
          p.is_bestseller,
          p.is_customizable,
+         p.ask_for_price,
          p.min_order_quantity,
          p.lead_time_days,
          p.view_count,
@@ -1053,6 +1061,7 @@ const getNewArrivalProducts = async (req, res) => {
          p.is_new,
          p.is_bestseller,
          p.is_customizable,
+         p.ask_for_price,
          p.min_order_quantity,
          p.lead_time_days,
          p.view_count,
@@ -1206,6 +1215,7 @@ const getAlsoLikeProducts = async (req, res) => {
          p.is_new,
          p.is_bestseller,
          p.is_customizable,
+         p.ask_for_price,
          p.min_order_quantity,
          p.lead_time_days,
          p.view_count,

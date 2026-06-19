@@ -5,6 +5,7 @@ import Link from 'next/link';
 import axios from 'axios';
 import Image from 'next/image';
 import { FaPlus, FaEdit, FaEye, FaTrash, FaSearch, FaDownload } from 'react-icons/fa';
+import { getProductPriceRangeText, isAskForPrice } from '../../../Utils/productPrice';
 import './ProductList.css';
 
 const ProductList = () => {
@@ -113,13 +114,7 @@ const ProductList = () => {
   };
 
   const getPriceRange = (product) => {
-    if (product.min_price && product.max_price) {
-      if (product.min_price === product.max_price) {
-        return `₹${product.min_price}`;
-      }
-      return `₹${product.min_price} - ₹${product.max_price}`;
-    }
-    return 'N/A';
+    return getProductPriceRangeText(product, 'N/A');
   };
 
   const getDefaultImage = (product) => {
@@ -371,6 +366,9 @@ const ProductList = () => {
                 <td className="productlist-td productlist-price-td">
                   <div className="productlist-price-info">
                     <span className="productlist-price">{getPriceRange(product)}</span>
+                    {isAskForPrice(product) && (
+                      <p className="productlist-rate">Frontend: Ask For Price</p>
+                    )}
                     {product.rate && (
                       <p className="productlist-rate">Rate: ₹{product.rate}</p>
                     )}

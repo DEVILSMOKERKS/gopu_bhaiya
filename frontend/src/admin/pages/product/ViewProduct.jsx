@@ -6,6 +6,7 @@ import Link from 'next/link';
 import axios from 'axios';
 import Image from 'next/image';
 import { FaArrowLeft, FaEdit, FaTrash, FaEye } from 'react-icons/fa';
+import { getAskForPriceText, getDisplayPriceText, getProductPriceRangeText, isAskForPrice } from '../../../Utils/productPrice';
 import './ViewProduct.css';
 
 const ViewProduct = ({ productId }) => {
@@ -78,13 +79,7 @@ const ViewProduct = ({ productId }) => {
   };
 
   const getPriceRange = (product) => {
-    if (product.min_price && product.max_price) {
-      if (product.min_price === product.max_price) {
-        return `₹${product.min_price}`;
-      }
-      return `₹${product.min_price} - ₹${product.max_price}`;
-    }
-    return 'N/A';
+    return getProductPriceRangeText(product, 'N/A');
   };
 
   const getFirstSizePrices = (product) => {
@@ -223,11 +218,15 @@ const ViewProduct = ({ productId }) => {
             </div>
 
             <div className="viewproduct-product-price">
-              {getFirstSizePrices(product) ? (
+              {isAskForPrice(product) ? (
+                <div className="viewproduct-price-display">
+                  <h2>{getAskForPriceText()}</h2>
+                </div>
+              ) : getFirstSizePrices(product) ? (
                 <div className="viewproduct-price-display">
                   <div className="viewproduct-price-row">
-                    <span className="viewproduct-actual-price">₹{getFirstSizePrices(product).actual}</span>
-                    <span className="viewproduct-selling-price">₹{getFirstSizePrices(product).selling}</span>
+                    <span className="viewproduct-actual-price">{getDisplayPriceText(product, getFirstSizePrices(product).actual, 'N/A')}</span>
+                    <span className="viewproduct-selling-price">{getDisplayPriceText(product, getFirstSizePrices(product).selling, 'N/A')}</span>
                   </div>
                   {getFirstSizePrices(product).offer > 0 && (
                     <div className="viewproduct-offer-badge">

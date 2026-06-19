@@ -6,6 +6,7 @@ import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import axios from 'axios';
 import { useWishlistCart } from '../../context/wishlistCartContext';
+import { getAskForPriceText, getDisplayPriceText, isAskForPrice } from '../../Utils/productPrice';
 import './product.css';
 import AlsoLike from '../../components/alsoLike/AlsoLike';
 import ProductReview from './ProductReview';
@@ -401,6 +402,7 @@ const Product = ({ productId: productIdProp, categorySlug, productSlug }) => {
         product_id: product.product_id,
         name: product.name,
         description: product.description,
+        ask_for_price: product.ask_for_price,
         price: getCurrentPrice(),
         min_price: Math.min(...product.sizes.map(size => size.sell_price)),
         colors: product.colors || [],
@@ -732,20 +734,22 @@ const Product = ({ productId: productIdProp, categorySlug, productSlug }) => {
             <div className="price-container">
               <div className="price-main-row">
                 <div className="price-comparison">
-                  <span className="selling-price">₹{getCurrentPrice().toLocaleString()}</span>
-                  {getCurrentActualPrice() > 0 && getCurrentActualPrice() > getCurrentPrice() && (
+                  <span className="selling-price">{getDisplayPriceText(product, getCurrentPrice())}</span>
+                  {!isAskForPrice(product) && getCurrentActualPrice() > 0 && getCurrentActualPrice() > getCurrentPrice() && (
                     <div className="mrp-container">
-                      <span className="actual-price">₹{getCurrentActualPrice().toLocaleString()}</span>
+                      <span className="actual-price">{getDisplayPriceText(product, getCurrentActualPrice())}</span>
                     </div>
                   )}
                 </div>
-                {getDiscountPercentage() > 0 && (
+                {!isAskForPrice(product) && getDiscountPercentage() > 0 && (
                   <span className="discount-badge">{getDiscountPercentage()}% OFF</span>
                 )}
               </div>
-              {getDiscountPercentage() > 0 && (
+              {isAskForPrice(product) ? (
+                <div className="savings-info">{getAskForPriceText()}</div>
+              ) : getDiscountPercentage() > 0 && (
                 <div className="savings-info">
-                  You save ₹{(getCurrentActualPrice() - getCurrentPrice()).toLocaleString()}
+                  You save {getDisplayPriceText(product, getCurrentActualPrice() - getCurrentPrice())}
                 </div>
               )}
             </div>
@@ -798,7 +802,7 @@ const Product = ({ productId: productIdProp, categorySlug, productSlug }) => {
                     onClick={() => handleSizeSelect(size.size)}
                   >
                     <span className="size-value">{size.size}</span>
-                    <span className="size-price">₹{size.sell_price.toLocaleString()}</span>
+                    <span className="size-price">{getDisplayPriceText(product, size.sell_price)}</span>
                   </button>
                 ))}
               </div>

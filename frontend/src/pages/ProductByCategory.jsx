@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import axios from 'axios';
+import { getProductPriceRangeText } from '../Utils/productPrice';
 import './ProductByCategory.css';
 
 const PLACEHOLDER_IMAGE = 'https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?w=400&h=500&fit=crop';
@@ -191,7 +192,7 @@ const ProductByCategory = ({ categoryIdOrSlug }) => {
                   </p> */}
                   <div className="product-by-category-meta">
                     <span className="product-by-category-price">
-                      ₹{product.min_price ?? '—'} — ₹{product.max_price ?? '—'}
+                      {getProductPriceRangeText(product, 'Price not available')}
                     </span>
                   </div>
                   <Link

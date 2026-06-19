@@ -9,6 +9,7 @@ import { FaInstagram, FaFacebook, FaYoutube } from 'react-icons/fa';
 import axios from 'axios';
 import { useWishlistCart } from '../../context/wishlistCartContext';
 import { useUser } from '../../context/UserContext';
+import { getProductPriceRangeText } from '../../Utils/productPrice';
 import ExpertPopup from './ExpertPopup';
 import AnnouncementSlider from './AnnouncementSlider';
 import './header.css';
@@ -255,8 +256,7 @@ function ProductsMegaDropdown({ categories, baseUrl }) {
           <div className="mega-products-grid">
             {activeProducts.slice(0, 8).map((product) => {
               const img = resolveProductImage(product, baseUrl) || spiritualImg;
-              const minPrice = product.min_price ?? product.price ?? null;
-              const maxPrice = product.max_price ?? null;
+              const priceText = getProductPriceRangeText(product);
 
               return (
                 <Link
@@ -282,11 +282,7 @@ function ProductsMegaDropdown({ categories, baseUrl }) {
                         : product.name || 'Product'}
                     </p>
                     <p className="mega-product-price">
-                      {minPrice != null
-                        ? maxPrice && maxPrice !== minPrice
-                          ? `₹${Number(minPrice).toLocaleString('en-IN')} – ₹${Number(maxPrice).toLocaleString('en-IN')}`
-                          : `₹${Number(minPrice).toLocaleString('en-IN')}`
-                        : 'Price on request'}
+                      {priceText}
                     </p>
                   </div>
                 </Link>
@@ -491,7 +487,7 @@ const Header = ({ onAccountClick }) => {
                           <div className="header-search-result-content">
                             <h4 className="header-search-result-title">{product.name}</h4>
                             <p className="header-search-result-price">
-                              ₹{product.min_price} – ₹{product.max_price}
+                              {getProductPriceRangeText(product)}
                             </p>
                           </div>
                         </div>

@@ -30,6 +30,7 @@ const EditProduct = ({ productId }) => {
     is_new: false,
     is_bestseller: false,
     is_customizable: false,
+    ask_for_price: false,
     min_order_quantity: 1,
     lead_time_days: '',
     description: '',
@@ -175,6 +176,7 @@ const EditProduct = ({ productId }) => {
           is_new: product.is_new || false,
           is_bestseller: product.is_bestseller || false,
           is_customizable: product.is_customizable || false,
+          ask_for_price: Boolean(product.ask_for_price),
           min_order_quantity: product.min_order_quantity || 1,
           lead_time_days: product.lead_time_days || '',
           description: product.description || '',
@@ -413,9 +415,6 @@ const EditProduct = ({ productId }) => {
         if (!size.sell_price || size.sell_price <= 0) {
           errors.push(`Size ${index + 1} selling price must be greater than 0`);
         }
-        if (size.sell_price > size.actual_price) {
-          errors.push(`Size ${index + 1} selling price cannot be greater than actual price`);
-        }
         if (size.stock < 0) {
           errors.push(`Size ${index + 1} stock cannot be negative`);
         }
@@ -451,8 +450,14 @@ const EditProduct = ({ productId }) => {
       const formDataToSend = new FormData();
 
       // Add basic product info
+      const booleanFields = ['is_featured', 'is_new', 'is_bestseller', 'is_customizable', 'ask_for_price'];
       Object.keys(formData).forEach(key => {
-        if (formData[key]) {
+        if (booleanFields.includes(key)) {
+          formDataToSend.append(key, formData[key] ? 'true' : 'false');
+          return;
+        }
+
+        if (formData[key] !== '' && formData[key] !== null && formData[key] !== undefined) {
           formDataToSend.append(key, formData[key]);
         }
       });
@@ -739,6 +744,7 @@ const EditProduct = ({ productId }) => {
                   Customizable
                 </label>
               </div>
+
             </div>
 
             <div className="editproduct-form-grid">
@@ -901,6 +907,20 @@ const EditProduct = ({ productId }) => {
           {/* Sizes & Pricing */}
           <div className="editproduct-form-section">
             <h2>Sizes & Pricing</h2>
+            <div className="editproduct-form-group">
+              <label>
+                <input
+                  type="checkbox"
+                  name="ask_for_price"
+                  checked={formData.ask_for_price}
+                  onChange={(e) => setFormData(prev => ({ ...prev, ask_for_price: e.target.checked }))}
+                />
+                Show Ask For Price on Frontend
+              </label>
+              <small className="editproduct-info-text">
+                Price admin me rahega, frontend par amount ki jagah Ask For Price dikhaya jayega.
+              </small>
+            </div>
             {sizes.map((size, sizeIndex) => (
               <div key={sizeIndex} className="editproduct-size-item">
                 <div className="editproduct-size-header">

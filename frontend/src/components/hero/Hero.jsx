@@ -7,6 +7,7 @@ import Image from 'next/image';
 import axios from 'axios';
 import { HiSearch, HiX } from 'react-icons/hi';
 import { useUser } from '../../context/UserContext';
+import { getProductPriceRangeText } from '../../Utils/productPrice';
 import './hero.css';
 
 // Define image URLs solely for rotation count and for reference in CSS
@@ -240,7 +241,7 @@ const Hero = () => {
                         {product.category_name} {product.subcategory_name && `> ${product.subcategory_name}`}
                       </p>
                       <p className="hero-search-result-price">
-                        ₹{product.min_price} - ₹{product.max_price}
+                        {getProductPriceRangeText(product)}
                       </p>
                     </div>
                   </div>

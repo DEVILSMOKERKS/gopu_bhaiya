@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { useRouter, useSearchParams, usePathname } from 'next/navigation';
 import axios from 'axios';
 import './shop.css';
+import { getProductPriceRangeText } from '../../Utils/productPrice';
 // import shopBanner from '../../assets/Images/banner/hero6.jpg';
 // import shopBannerMobile from '../../assets/Images/banner/shopBannerMobile.jpg';
 import { useUser } from '../../context/UserContext';
@@ -585,10 +586,7 @@ const Shop = () => {
     setIsMobileFilterOpen(false);
   };
 
-  // Format price
-  const formatPrice = (price) => {
-    return `₹${parseFloat(price).toFixed(2)}`;
-  };
+  const getCardPrice = (product) => getProductPriceRangeText(product);
 
   // Check if product is new (created within last 30 days)
   const isNewProduct = (createdAt) => {
@@ -946,7 +944,7 @@ const Shop = () => {
                   <p className="shop-product-description">{product.description}</p>
                   <div className="shop-product-price-colors">
                     <span className="shop-product-price">
-                      {product.min_price ? formatPrice(product.min_price) : 'Price not available'}
+                      {getCardPrice(product)}
                     </span>
                     <div className="shop-product-color-swatches">
                       {product.colors && product.colors.map((colorData, colorIndex) => (
@@ -1012,7 +1010,7 @@ const Shop = () => {
                   <p className="shop-product-description">{product.description}</p>
                   <div className="shop-product-price-colors">
                     <span className="shop-product-price">
-                      {product.min_price ? formatPrice(product.min_price) : 'Price not available'}
+                      {getCardPrice(product)}
                     </span>
                     <div className="shop-product-color-swatches">
                       {product.colors && product.colors.map((colorData, colorIndex) => (
@@ -1068,7 +1066,7 @@ const Shop = () => {
                     <p className="shop-product-description">{product.description}</p>
                     <div className="shop-product-price-colors">
                       <span className="shop-product-price">
-                        {product.min_price ? formatPrice(product.min_price) : 'Price not available'}
+                        {getCardPrice(product)}
                       </span>
                       <div className="shop-product-color-swatches">
                         {product.colors && product.colors.map((colorData, colorIndex) => (

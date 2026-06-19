@@ -35,9 +35,6 @@ export const validateProduct = (formData, colors, sizes) => {
       if (!size.sell_price || size.sell_price <= 0) {
         errors.push(`Size ${index + 1} selling price must be greater than 0`);
       }
-      if (size.sell_price > size.actual_price) {
-        errors.push(`Size ${index + 1} selling price cannot be greater than actual price`);
-      }
       if (size.stock < 0) {
         errors.push(`Size ${index + 1} stock cannot be negative`);
       }

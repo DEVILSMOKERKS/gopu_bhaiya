@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import axios from 'axios';
 import './AlsoLike.css';
+import { getProductPriceRangeText } from '../../Utils/productPrice';
 import BestSeller1 from '../../assets/img/Bestseller1.jpg'
 import BestSeller2 from '../../assets/img/Bestseller2.jpg'
 import BestSeller3 from '../../assets/img/Bestseller3.jpg'
@@ -40,7 +41,7 @@ const AlsoLike = ({ productId }) => {
             id: product.product_id,
             name: product.name,
             description: product.description || 'Premium Quality Product',
-            price: `₹${(product.min_price || 0).toLocaleString()}`,
+            price: getProductPriceRangeText(product),
             colors: product.colors && product.colors.length > 0
               ? product.colors.map((color, colorIndex) => {
                 const firstImage = color.images && color.images.length > 0 ? color.images[0] : null;

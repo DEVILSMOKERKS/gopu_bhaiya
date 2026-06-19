@@ -86,6 +86,7 @@ const getUserWishlist = async (req, res) => {
          p.is_new,
          p.is_bestseller,
          p.is_customizable,
+         p.ask_for_price,
          p.min_order_quantity,
          p.lead_time_days,
          p.view_count,

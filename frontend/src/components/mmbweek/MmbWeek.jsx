@@ -4,6 +4,7 @@ import { useState, useRef, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import axios from 'axios';
 import { useWishlistCart } from '../../context/wishlistCartContext';
+import { getProductPriceRangeText } from '../../Utils/productPrice';
 import './mmbweek.css';
 import Image from 'next/image';
 import BestSeller1 from '../../assets/img/Bestseller1.jpg'
@@ -37,7 +38,7 @@ const MmbWeek = () => {
             day: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'][index] || 'New Arrival',
             name: product.name,
             description: product.description || 'Premium Quality Product',
-            price: `₹${(product.min_price || 0).toLocaleString()}`,
+            price: getProductPriceRangeText(product),
             // Preserve original API data for wishlist functionality
             originalProduct: product,
             image: product.colors && product.colors.length > 0 && product.colors[0].images && product.colors[0].images.length > 0
@@ -229,6 +230,7 @@ const MmbWeek = () => {
                           product_id: item.id,
                           name: item.name,
                           description: item.description,
+                          ask_for_price: item.originalProduct.ask_for_price,
                           price: item.price,
                           min_price: item.originalProduct.min_price || 0,
                           colors: item.originalProduct.colors || [],

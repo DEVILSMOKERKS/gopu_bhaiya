@@ -4,6 +4,7 @@ import { useState } from 'react';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { useWishlistCart } from '../../context/wishlistCartContext';
+import { getDisplayPriceText, getProductPriceRangeText } from '../../Utils/productPrice';
 import './Wishlist.css';
 
 // Placeholder image path
@@ -62,20 +63,14 @@ const Wishlist = () => {
       if (selectedSize) {
         const selectedSizeData = product.sizes.find(size => size.size === selectedSize);
         if (selectedSizeData) {
-          return `₹${selectedSizeData.sell_price.toLocaleString()}`;
+          return getDisplayPriceText(product, selectedSizeData.sell_price);
         }
       }
       // If no size selected, show the first size price
-      return `₹${product.sizes[0].sell_price.toLocaleString()}`;
+      return getDisplayPriceText(product, product.sizes[0].sell_price);
     }
 
-    // Fallback to min_price if available
-    if (product.min_price) {
-      return `₹${product.min_price.toLocaleString()}`;
-    }
-
-    // Fallback to product price
-    return product.price || 'Price not available';
+    return getProductPriceRangeText(product);
   };
 
   const handleRemoveFromWishlist = (item) => {

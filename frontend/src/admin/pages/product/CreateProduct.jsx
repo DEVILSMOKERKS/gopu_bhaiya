@@ -29,6 +29,7 @@ const CreateProduct = () => {
     is_new: false,
     is_bestseller: false,
     is_customizable: false,
+    ask_for_price: false,
     min_order_quantity: 1,
     lead_time_days: '',
     description: '',
@@ -244,8 +245,14 @@ const CreateProduct = () => {
       const formDataToSend = new FormData();
 
       // Add basic product info
+      const booleanFields = ['is_featured', 'is_new', 'is_bestseller', 'is_customizable', 'ask_for_price'];
       Object.keys(formData).forEach(key => {
-        if (formData[key]) {
+        if (booleanFields.includes(key)) {
+          formDataToSend.append(key, formData[key] ? 'true' : 'false');
+          return;
+        }
+
+        if (formData[key] !== '' && formData[key] !== null && formData[key] !== undefined) {
           formDataToSend.append(key, formData[key]);
         }
       });
@@ -521,6 +528,7 @@ const CreateProduct = () => {
                   Customizable
                 </label>
               </div>
+
             </div>
 
             <div className="createproduct-form-grid">
@@ -641,6 +649,20 @@ const CreateProduct = () => {
           {/* Sizes & Pricing */}
           <div className="createproduct-form-section">
             <h2>Sizes & Pricing</h2>
+            <div className="createproduct-form-group">
+              <label>
+                <input
+                  type="checkbox"
+                  name="ask_for_price"
+                  checked={formData.ask_for_price}
+                  onChange={(e) => setFormData(prev => ({ ...prev, ask_for_price: e.target.checked }))}
+                />
+                Show Ask For Price on Frontend
+              </label>
+              <small className="createproduct-info-text">
+                Price admin me save rahega, lekin customer side par amount ki jagah Ask For Price dikhega.
+              </small>
+            </div>
             {sizes.map((size, sizeIndex) => (
               <div key={sizeIndex} className="createproduct-size-item">
                 <div className="createproduct-size-header">

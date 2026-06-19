@@ -5,6 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import axios from 'axios';
+import { getProductPriceRangeText } from '../Utils/productPrice';
 import './Projects.css';
 
 const PLACEHOLDER_IMAGE = 'https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?w=400&h=500&fit=crop';
@@ -179,7 +180,7 @@ const Projects = () => {
                   </p>
                   <div className="project-meta">
                     <span className="project-price">
-                      ₹{product.min_price ?? '—'} — ₹{product.max_price ?? '—'}
+                      {getProductPriceRangeText(product, 'Price not available')}
                     </span>
                   </div>
                   <Link
