@@ -15,7 +15,6 @@ import AnnouncementSlider from './AnnouncementSlider';
 import './header.css';
 import logo from '../../assets/Images/img/logo8.png';
 
-// ── Spiritual / Ancient God fallback images ────────────────────────────────────
 const SPIRITUAL_IMGS = [
   'https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/Ganesha_Basohli_miniature_circa_1730_Dubost_p73.jpg/800px-Ganesha_Basohli_miniature_circa_1730_Dubost_p73.jpg',
   'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Image-Vishnu_Paria.jpg/800px-Image-Vishnu_Paria.jpg',
@@ -29,31 +28,29 @@ const SPIRITUAL_IMGS = [
 
 const FALLBACK_IMG = SPIRITUAL_IMGS[0];
 
-// ── Static menus ──────────────────────────────────────────────────────────────
 const OUR_CREATIONS_MENU = [
-  { label: 'Custom Murtis',        href: '/our-creations', img: SPIRITUAL_IMGS[0] },
+  { label: 'Custom Murtis', href: '/our-creations', img: SPIRITUAL_IMGS[0] },
   { label: 'Temple Installations', href: '/our-creations', img: SPIRITUAL_IMGS[1] },
-  { label: 'Festival Specials',    href: '/our-creations', img: SPIRITUAL_IMGS[2] },
-  { label: 'Award & Gift Murtis',  href: '/our-creations', img: SPIRITUAL_IMGS[3] },
-  { label: 'Portfolio Gallery',    href: '/our-creations', img: SPIRITUAL_IMGS[4] },
+  { label: 'Festival Specials', href: '/our-creations', img: SPIRITUAL_IMGS[2] },
+  { label: 'Award & Gift Murtis', href: '/our-creations', img: SPIRITUAL_IMGS[3] },
+  { label: 'Portfolio Gallery', href: '/our-creations', img: SPIRITUAL_IMGS[4] },
 ];
 
 const OUR_SERVICES_MENU = [
-  { label: 'Custom Carving',          href: '/our-services', img: SPIRITUAL_IMGS[5] },
-  { label: 'Restoration & Repair',    href: '/our-services', img: SPIRITUAL_IMGS[6] },
-  { label: 'Temple Design',           href: '/our-services', img: SPIRITUAL_IMGS[7] },
-  { label: 'Prana Pratishtha',        href: '/our-services', img: SPIRITUAL_IMGS[2] },
+  { label: 'Custom Carving', href: '/our-services', img: SPIRITUAL_IMGS[5] },
+  { label: 'Restoration & Repair', href: '/our-services', img: SPIRITUAL_IMGS[6] },
+  { label: 'Temple Design', href: '/our-services', img: SPIRITUAL_IMGS[7] },
+  { label: 'Prana Pratishtha', href: '/our-services', img: SPIRITUAL_IMGS[2] },
   { label: 'Home Delivery & Install', href: '/our-services', img: SPIRITUAL_IMGS[1] },
 ];
 
 const BLOG_MENU = [
   { label: 'Vastu & Murti Placement', href: '/blogs', img: SPIRITUAL_IMGS[3] },
-  { label: 'Marble Care Tips',        href: '/blogs', img: SPIRITUAL_IMGS[4] },
-  { label: 'Festival Guides',         href: '/blogs', img: SPIRITUAL_IMGS[5] },
-  { label: 'All Articles',            href: '/blogs', img: SPIRITUAL_IMGS[6] },
+  { label: 'Marble Care Tips', href: '/blogs', img: SPIRITUAL_IMGS[4] },
+  { label: 'Festival Guides', href: '/blogs', img: SPIRITUAL_IMGS[5] },
+  { label: 'All Articles', href: '/blogs', img: SPIRITUAL_IMGS[6] },
 ];
 
-// ── Shared image resolver (same as ProductByCategory.getProductImage) ──────────
 function resolveProductImage(product, baseUrl) {
   if (product.colors?.length) {
     const firstColor = product.colors[0];
@@ -72,18 +69,20 @@ function resolveProductImage(product, baseUrl) {
       }
     }
   }
+
   if (product.featured_image) {
     const path = product.featured_image.replace(/\\/g, '/');
     return path.startsWith('http')
       ? path
       : `${baseUrl}${path.startsWith('/') ? '' : '/'}${path}`;
   }
+
   return null;
 }
 
-// ── Simple dropdown with live image preview ────────────────────────────────────
 function ImageDropdown({ items }) {
   const [previewImg, setPreviewImg] = useState(items[0]?.img || FALLBACK_IMG);
+
   return (
     <div className="nav-dropdown img-dropdown">
       <div className="img-dropdown-list">
@@ -112,30 +111,28 @@ function ImageDropdown({ items }) {
   );
 }
 
-// ── Products mega dropdown with full product cards ─────────────────────────────
 function ProductsMegaDropdown({ categories, baseUrl }) {
   const API_URL = process.env.NEXT_PUBLIC_API_URL;
-  const validCategories = useMemo(() => categories.filter(
-    (cat) => cat && cat.id != null && String(cat.name || '').trim() !== ''
-  ), [categories]);
+  const validCategories = useMemo(
+    () => categories.filter(
+      (cat) => cat && cat.id != null && String(cat.name || '').trim() !== ''
+    ),
+    [categories]
+  );
+
   const categoryIdsKey = useMemo(
     () => validCategories.map((cat) => cat.id).join(','),
     [validCategories]
   );
 
-  // { [cat.id]: product[] }  full product data per category
   const [categoryProducts, setCategoryProducts] = useState({});
-
-  // Which category is hovered
-  const [activeCatId,   setActiveCatId]   = useState(null);
+  const [activeCatId, setActiveCatId] = useState(null);
   const [activeCatSlug, setActiveCatSlug] = useState('');
   const [activeCatName, setActiveCatName] = useState('');
 
-  // ── Fetch products for every category (same endpoint as ProductByCategory) ─
   useEffect(() => {
     if (!API_URL || validCategories.length === 0) return;
 
-    // Seed first category as default active
     if (validCategories[0]) {
       const slug = validCategories[0].slug || validCategories[0].name?.toLowerCase().replace(/\s+/g, '-') || validCategories[0].id;
       setActiveCatId(validCategories[0].id);
@@ -156,9 +153,8 @@ function ProductsMegaDropdown({ categories, baseUrl }) {
           setCategoryProducts((prev) => ({ ...prev, [cat.id]: [] }));
         });
     });
-  }, [API_URL, categoryIdsKey]);
+  }, [API_URL, categoryIdsKey, validCategories]);
 
-  // ── Hover handler ─────────────────────────────────────────────────────────
   const handleCategoryHover = (cat) => {
     const slug = cat.slug || cat.name?.toLowerCase().replace(/\s+/g, '-') || cat.id;
     setActiveCatId(cat.id);
@@ -166,7 +162,6 @@ function ProductsMegaDropdown({ categories, baseUrl }) {
     setActiveCatName(cat.name || '');
   };
 
-  // ── Build category nav items ──────────────────────────────────────────────
   const catItems = validCategories.map((cat) => {
     const slug = cat.slug || cat.name?.toLowerCase().replace(/\s+/g, '-') || cat.id;
     return { cat, label: cat.name || 'Category', href: `/products/${slug}` };
@@ -174,13 +169,11 @@ function ProductsMegaDropdown({ categories, baseUrl }) {
 
   const allCatItems = [...catItems, { cat: null, label: 'View All →', href: '/products' }];
 
-  // Active category's products
   const activeProducts = (activeCatId ? categoryProducts[activeCatId] : []) || [];
-  const catIndex        = validCategories.findIndex((c) => c.id === activeCatId);
-  const spiritualImg    = SPIRITUAL_IMGS[catIndex >= 0 ? catIndex % SPIRITUAL_IMGS.length : 0];
+  const catIndex = validCategories.findIndex((c) => c.id === activeCatId);
+  const spiritualImg = SPIRITUAL_IMGS[catIndex >= 0 ? catIndex % SPIRITUAL_IMGS.length : 0];
   const isActiveCategoryLoading = activeCatId != null && !(activeCatId in categoryProducts);
 
-  // ── Loading skeleton ──────────────────────────────────────────────────────
   if (validCategories.length === 0) {
     return (
       <div className="mega-dropdown mega-products-dropdown">
@@ -208,8 +201,6 @@ function ProductsMegaDropdown({ categories, baseUrl }) {
 
   return (
     <div className="mega-dropdown mega-products-dropdown">
-
-      {/* ── Column 1: Category list ───────────────────────────────────── */}
       <div className="mega-cat-col">
         <h4 className="mega-col-heading">Our Categories</h4>
         {allCatItems.map((item) => (
@@ -226,7 +217,6 @@ function ProductsMegaDropdown({ categories, baseUrl }) {
         ))}
       </div>
 
-      {/* ── Column 2: Product cards for active category ───────────────── */}
       <div className="mega-products-col">
         <div className="mega-products-col-header">
           <h4 className="mega-col-heading">{activeCatName || 'Products'}</h4>
@@ -238,7 +228,6 @@ function ProductsMegaDropdown({ categories, baseUrl }) {
         </div>
 
         {isActiveCategoryLoading ? (
-          /* Loading / empty state */
           <div className="mega-products-loading">
             {[1, 2, 3, 4].map((n) => (
               <div key={n} className="mega-product-skeleton">
@@ -264,7 +253,6 @@ function ProductsMegaDropdown({ categories, baseUrl }) {
                   href={`/product/${product.product_id}`}
                   className="mega-product-card"
                 >
-                  {/* Product Image */}
                   <div className="mega-product-img-wrap">
                     <img
                       src={img}
@@ -274,16 +262,13 @@ function ProductsMegaDropdown({ categories, baseUrl }) {
                     />
                   </div>
 
-                  {/* Product Info */}
                   <div className="mega-product-info">
                     <p className="mega-product-name">
                       {product.name?.length > 28
                         ? `${product.name.slice(0, 28)}…`
                         : product.name || 'Product'}
                     </p>
-                    <p className="mega-product-price">
-                      {priceText}
-                    </p>
+                    <p className="mega-product-price">{priceText}</p>
                   </div>
                 </Link>
               );
@@ -291,37 +276,36 @@ function ProductsMegaDropdown({ categories, baseUrl }) {
           </div>
         )}
       </div>
-
     </div>
   );
 }
 
-// ── Main Header ────────────────────────────────────────────────────────────────
 const Header = ({ onAccountClick }) => {
-  const pathname   = usePathname();
-  const router     = useRouter();
+  const pathname = usePathname();
+  const router = useRouter();
   const isHomePage = pathname === '/';
 
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [searchQuery,       setSearchQuery]       = useState('');
-  const [searchResults,     setSearchResults]     = useState([]);
-  const [isSearching,       setIsSearching]       = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
+  const [searchResults, setSearchResults] = useState([]);
+  const [isSearching, setIsSearching] = useState(false);
   const [showSearchResults, setShowSearchResults] = useState(false);
-  const [isScrolled,        setIsScrolled]        = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
   const [isExpertPopupOpen, setIsExpertPopupOpen] = useState(false);
-  const [navCategories,     setNavCategories]     = useState([]);
-  const [navProducts,       setNavProducts]       = useState([]);
+  const [navCategories, setNavCategories] = useState([]);
+  const [navProducts, setNavProducts] = useState([]);
 
   const { cart, wishlist } = useWishlistCart();
   const { user, isAuthenticated } = useUser();
-  const searchTimeoutRef   = useRef(null);
+  const searchTimeoutRef = useRef(null);
   const searchContainerRef = useRef(null);
 
   const API_URL = process.env.NEXT_PUBLIC_API_URL;
-  const baseUrl  = API_URL ? API_URL.replace('/api', '') : '';
+  const baseUrl = API_URL ? API_URL.replace('/api', '') : '';
 
   useEffect(() => {
     if (!API_URL) return;
+
     Promise.all([
       axios.get(`${API_URL}/categories`),
       axios.get(`${API_URL}/products`, {
@@ -368,14 +352,18 @@ const Header = ({ onAccountClick }) => {
 
   useEffect(() => {
     if (!isHomePage) setIsScrolled(true);
-    const onScroll = () =>
-      setIsScrolled((window.pageYOffset || document.documentElement.scrollTop) > 50);
+    const onScroll = () => setIsScrolled((window.pageYOffset || document.documentElement.scrollTop) > 50);
     window.addEventListener('scroll', onScroll);
     return () => window.removeEventListener('scroll', onScroll);
   }, [isHomePage]);
 
   const performSearch = async (query) => {
-    if (!query.trim()) { setSearchResults([]); setShowSearchResults(false); return; }
+    if (!query.trim()) {
+      setSearchResults([]);
+      setShowSearchResults(false);
+      return;
+    }
+
     try {
       setIsSearching(true);
       const res = await axios.get(`${API_URL}/products`, {
@@ -399,7 +387,9 @@ const Header = ({ onAccountClick }) => {
   };
 
   const handleSearchResultClick = (product) => {
-    setSearchQuery(''); setSearchResults([]); setShowSearchResults(false);
+    setSearchQuery('');
+    setSearchResults([]);
+    setShowSearchResults(false);
     router.push(`/product/${product.product_id}`);
   };
 
@@ -407,15 +397,19 @@ const Header = ({ onAccountClick }) => {
     e.preventDefault();
     if (searchQuery.trim()) {
       router.push(`/shop?search=${encodeURIComponent(searchQuery)}`);
-      setSearchQuery(''); setSearchResults([]); setShowSearchResults(false);
+      setSearchQuery('');
+      setSearchResults([]);
+      setShowSearchResults(false);
     }
   };
 
   useEffect(() => {
     const handler = (e) => {
-      if (searchContainerRef.current && !searchContainerRef.current.contains(e.target))
+      if (searchContainerRef.current && !searchContainerRef.current.contains(e.target)) {
         setShowSearchResults(false);
+      }
     };
+
     document.addEventListener('mousedown', handler);
     return () => document.removeEventListener('mousedown', handler);
   }, []);
@@ -448,8 +442,6 @@ const Header = ({ onAccountClick }) => {
       <AnnouncementSlider />
 
       <header className={`header ${isScrolled ? 'header-scrolled' : ''}`}>
-
-        {/* ── Top Bar ─────────────────────────────────────────────────────── */}
         <div className="header-top-bar">
           <div className="header-top-left">
             <div className="header-search-bar" ref={searchContainerRef}>
@@ -532,10 +524,8 @@ const Header = ({ onAccountClick }) => {
           </div>
         </div>
 
-        {/* ── Nav Bar ─────────────────────────────────────────────────────── */}
         <nav className="header-nav-bar">
           <div className="header-nav-links">
-
             <div className="nav-item">
               <Link href="/" className={`nav-link ${pathname === '/' ? 'active' : ''}`}>HOME</Link>
             </div>
@@ -591,11 +581,9 @@ const Header = ({ onAccountClick }) => {
                 TESTIMONIALS
               </Link>
             </div>
-
           </div>
         </nav>
 
-        {/* ── Mobile Header ───────────────────────────────────────────────── */}
         <div className="header-mobile">
           <div className="header-mobile-top">
             <button
@@ -629,17 +617,15 @@ const Header = ({ onAccountClick }) => {
           </div>
 
           <div className="header-mobile-slider" aria-label="Quick navigation">
-            {mobileNavItems.map(({ href, label }) => {
-              return (
-                <Link
-                  key={href}
-                  href={href}
-                  className={`header-mobile-slider-link ${isNavItemActive(href) ? 'active' : ''}`}
-                >
-                  {label}
-                </Link>
-              );
-            })}
+            {mobileNavItems.map(({ href, label }) => (
+              <Link
+                key={href}
+                href={href}
+                className={`header-mobile-slider-link ${isNavItemActive(href) ? 'active' : ''}`}
+              >
+                {label}
+              </Link>
+            ))}
           </div>
         </div>
 
@@ -693,7 +679,6 @@ const Header = ({ onAccountClick }) => {
             )}
           </nav>
         </div>
-
       </header>
 
       <ExpertPopup isOpen={isExpertPopupOpen} onClose={() => setIsExpertPopupOpen(false)} API_URL={API_URL} />

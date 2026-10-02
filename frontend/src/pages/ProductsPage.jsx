@@ -10,8 +10,7 @@ const PLACEHOLDER_IMAGE = 'https://images.unsplash.com/photo-1594633312681-425c7
 
 /**
  * Level 1: Categories page at /products
- * Shows grid of categories (Ganesh Temple, Radha Krishna, etc.) from GET /api/categories.
- * Each card links to /products/:categorySlug (variant listing).
+ * Shows grid of categories from GET /api/categories.
  */
 const ProductsPage = () => {
   const [categories, setCategories] = useState([]);
@@ -31,6 +30,7 @@ const ProductsPage = () => {
 
     setLoading(true);
     setError(null);
+
     Promise.all([
       axios.get(`${API_URL}/categories`),
       axios.get(`${API_URL}/products`, {
@@ -145,17 +145,9 @@ const ProductsPage = () => {
                         style={{ objectFit: 'cover' }}
                         sizes="(max-width: 768px) 100vw, 380px"
                       />
-                      {/* <div className="product-by-category-overlay">
-                        <span className="product-by-category-card-category">
-                          {(cat.name || 'Category').toUpperCase()}
-                        </span>
-                      </div> */}
                     </div>
                     <div className="product-by-category-content">
                       <h3 className="product-by-category-card-title">{cat.name || 'Category'}</h3>
-                      {/* <p className="product-by-category-card-description">
-                        {cat.description ? `${String(cat.description).slice(0, 120)}${cat.description.length > 120 ? '...' : ''}` : 'View variants'}
-                      </p> */}
                       <span className="product-by-category-view-btn">View More...</span>
                     </div>
                   </div>
@@ -167,6 +159,6 @@ const ProductsPage = () => {
       </div>
     </div>
   );
-};  
+};
 
 export default ProductsPage;

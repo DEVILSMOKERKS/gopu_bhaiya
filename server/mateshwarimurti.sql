@@ -249,6 +249,7 @@ CREATE TABLE
     `is_new` tinyint (1) DEFAULT 0,
     `is_bestseller` tinyint (1) DEFAULT 0,
     `is_customizable` tinyint (1) DEFAULT 0,
+    `ask_for_price` tinyint (1) DEFAULT 0,
     `min_order_quantity` int (11) DEFAULT 1,
     `lead_time_days` int (11) DEFAULT NULL,
     `view_count` int (11) DEFAULT 0,
